@@ -1,0 +1,20 @@
+First, download the GloVe model to the models folder from: http://nlp.stanford.edu/data/glove.840B.300d.zip 
+The extracted model is a 5.65GB text file: glove.840B.300dcasedCommoncrawl.txt
+
+Add the jar files in the lib folder to your classpath.
+
+WEAT: WordEmbeddingAssociationTest - Tests the model for different types of biases:
+
+Pick a number for bias type to test:
+type 1:  biasType = flowers-insects-attitude
+type 2:  biasType = instruments-weapons-attitude
+type 3:  biasType = racial-attitude
+type 4:  biasType = racial-attitude-market-discrimination
+type 5:  biasType = racial-attitude-market-discrimination-small
+type 6:  biasType = gender-bias-career-family
+type 7:  biasType = gender-bias-math-arts
+type 8:  biasType = gender-bias-science-arts
+type 9:  biasType = mental-physical-illness-stability
+type 10:  biasType = age-attitude
+      	
+WEFAT: WordEmbeddingFactualAssociationTestNames & WordEmbeddingFactualAssociationTestProfessions - Tests the model to uncover veridical information.

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1509467327901.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1104401154",
+    "id" : "AF006C4",
+    "lastKnownWriteTime" : 1509489731,
+    "last_content_update" : 1509489731956,
+    "path" : "~/Documents/research/Projects/IATLANG/2_pretrained_w2v_models/IAT_wiki_lang.Rmd",
+    "project_path" : "2_pretrained_w2v_models/IAT_wiki_lang.Rmd",
+    "properties" : {
+        "cursorPosition" : "225,0",
+        "scrollLine" : "162"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

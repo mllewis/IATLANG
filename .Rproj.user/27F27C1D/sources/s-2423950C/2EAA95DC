@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1509477369224.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2EAA95DC",
+    "lastKnownWriteTime" : 1509489044,
+    "last_content_update" : 1509489044767,
+    "path" : "~/Documents/research/Projects/IATLANG/2_pretrained_w2v_models/IAT_utils.R",
+    "project_path" : "2_pretrained_w2v_models/IAT_utils.R",
+    "properties" : {
+        "cursorPosition" : "27,29",
+        "scrollLine" : "25",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
