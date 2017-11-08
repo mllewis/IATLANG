@@ -229,3 +229,26 @@ ggplot(all_es, aes(y = d, x = es_source, fill = es_source)) +
   facet_wrap(~study_name, drop = TRUE, scales = "free_x", nrow = 2) +
   theme(legend.position = "none")
 ```
+
+
+## Get usable languages
+
+```{r}
+iat_langs <- read_csv("../data/other/countries_lang.csv")
+
+wiki_langs <- read_csv("../data/other/wiki_useable_langs.csv", col_names = F) %>%
+                  rename(language_code = X1)
+
+good_langs <- inner_join(iat_langs, wiki_langs, by = "language_code") %>%
+  distinct(language_name, language_code)
+
+write_csv(good_langs, "../data/other/langs_for_study1.csv")
+```
+
+```{r}
+m = rev(c(W6$category_1, W6$category_2, W6$attribute_1, 
+  W6$attribute_2, W7$category_1, W7$category_2,
+  W7$attribute_1, W7$attribute_2))
+
+write_csv(as.data.frame(m), "t.csv")
+```

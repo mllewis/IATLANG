@@ -39,8 +39,8 @@ get_sYXab <- function(df){
   
   df %>%
     group_by(category_type) %>%
-    summarize(sum_swab = mean(swab)) %>%
-    spread(category_type, sum_swab) %>%
+    summarize(mean_swab = mean(swab)) %>%
+    spread(category_type, mean_swab) %>%
     summarize(sYXab_num = category_1 - category_2) %>%
     transmute(sYXab = sYXab_num/sYXab_denom) %>%
     unlist(use.names = FALSE)

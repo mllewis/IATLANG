@@ -28,7 +28,7 @@ opts_chunk$set(echo = T, message = F, warning = F,
 
 Set params
 ```{r}
-MIN_PARTICIPANTS_PER_COUNTRY <- 100
+MIN_PARTICIPANTS_PER_COUNTRY <- 50
 ```
 
 ## Gender-career

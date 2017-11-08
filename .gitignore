@@ -46,3 +46,4 @@ stimuli/*
 *.vrb
 *.xdy
 *.tdo
+.Rproj.user
