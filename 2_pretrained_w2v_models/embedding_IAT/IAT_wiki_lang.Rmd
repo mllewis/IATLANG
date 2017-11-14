@@ -1,0 +1,39 @@
+---
+title: IAT task for wiki-trained word2vec models
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+```{r setup, include = F}
+rm(list = ls())
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+library(stringr)
+library(forcats)
+library(broom)
+library(fastrtext)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+
+source("IAT_utils.R")
+```
+
+```{r}
+countries_langs <- read_csv("../../data/other/countries_lang.csv")
+
+translated_wiki_langs <- read_csv("../../data/other/langs_for_study1.csv")
+iat_countries<- read_csv("../../data/other/iat_behavior_langs.csv") %>%
+  left_join(countries_langs %>% select(coutry_code, language_code), by = c("countryres"= "country_code"))
+
+
+```

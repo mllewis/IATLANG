@@ -32,7 +32,7 @@ IAT task for english trained word2vec model from Wikipedia
 
 All WEAT words from Calliskan 2017 (WordEmbeddingAssociationTest.java)
 ```{r}
-#Greenwald, 1998: "Measuring Individual Differences in Implicit Cognition: The Implicit Association Test" 
+# Greenwald, 1998: "Measuring Individual Differences in Implicit Cognition: The Implicit Association Test" 
 # universally accepted attitude towards flowers and insects
 W1 <- list(test_name = "WEAT_1",
            bias_type = "flowers-insects-attitude",
