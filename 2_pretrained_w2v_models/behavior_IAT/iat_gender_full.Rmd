@@ -33,7 +33,7 @@ opts_chunk$set(echo = T, message = F, warning = F,
 
 Set params
 ```{r}
-MIN_PARTICIPANTS_PER_COUNTRY <- 500
+MIN_PARTICIPANTS_PER_COUNTRY <- 400
 ```
 
 ## Gender-career
@@ -54,7 +54,7 @@ Read in career-gender IAT data.
 
 #write_feather(d, "../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
 
-d_raw<- read_feather("../../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
+d_raw <- read_feather("../../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
   select(D_biep.Male_Career_all, sex, countryres, PCT_error_3467, 
          Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, Mn_RT_all_7)
 ```
@@ -93,6 +93,8 @@ country_ns <- count(d_clean, countryres)  %>%
 d_clean_frequent <- d_clean %>%
   inner_join(country_ns) %>%
   filter(!is.na(country_name))
+
+# write_csv(country_ns, "../../data/other/iat_behavior_langs.csv")
 ```
 
 There are `r nrow(country_ns)` with at least `r MIN_PARTICIPANTS_PER_COUNTRY` participants. This includes `r sum(country_ns$n)` participants.
