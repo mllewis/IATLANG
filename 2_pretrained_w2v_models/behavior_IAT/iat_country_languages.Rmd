@@ -44,9 +44,9 @@ _From 2005 to the end of 2016, there are more than 1,645,902 session IDs created
 
 ******
 
-Read in 2016 gender IAT data. 
+Read in 2005-2016 gender IAT data. 
 ```{r}
-d <- read_sav("data/Gender-Career IAT.public.2016.sav") %>%
+d <- read_sav("../../data/IAT/Gender-Career/Gender-Career\ IAT.public.2005-2016.sav") %>%
   select(D_biep.Male_Career_all, sex, countryres)
 
 countries <- rev(sort(unique(d$countryres)))[1:181]

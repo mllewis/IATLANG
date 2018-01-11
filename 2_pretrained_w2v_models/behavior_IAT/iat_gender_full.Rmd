@@ -45,6 +45,9 @@ _From 2005 to the end of 2016, there are more than 1,645,902 session IDs created
 
 Note that the DV here is the pre-calculated "D" score from the D alogrithm by Greenwald and colleagues (2003). This monotonically scales with cohen's d, but I have not calculated cohen's d here.
 
+https://osf.io/f6mnr/
+http://projectimplicit.net/nosek/iat/
+
 ******
 
 ## Pre-processing
@@ -56,7 +59,8 @@ Read in career-gender IAT data.
 
 d_raw <- read_feather("../../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
   select(D_biep.Male_Career_all, sex, countryres, PCT_error_3467, 
-         Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, Mn_RT_all_7)
+         Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, Mn_RT_all_7,
+         assocareer, assofamily)
 ```
 
 Do same exclusions as Nosek (2002), pg. 104. Also exclude NA sex, D, country.
@@ -124,9 +128,10 @@ d_es <- d_clean_frequent %>%
 
 ## Country means
 ```{r}
-country_means_career <-d_clean_frequent %>%
+country_means_career <- d_clean_frequent %>%
   group_by(country_name) %>%
-  multi_boot_standard(col = "overall_iat_score") 
+  multi_boot_standard(col = "overall_iat_score")  %>%
+  mutate(type = "country_means_D_score")
 ```
 
 ```{r}
@@ -186,13 +191,14 @@ Women > men. This is consistent with Harvesting Implicit Group Attitudes and Bel
 
 Get country means
 ```{r}
-country_means_career <- d_clean_frequent %>%
+country_means_career_gender <- d_clean_frequent %>%
   group_by(country_name, sex) %>%
-  multi_boot_standard(col = "overall_iat_score") 
+  multi_boot_standard(col = "overall_iat_score") %>%
+  mutate(type = "country_gender_D_score")
 ```
 
 ```{r, fig.width = 10}
-ggplot(country_means_career, aes(x = reorder(country_name, mean), 
+ggplot(country_means_career_gender, aes(x = reorder(country_name, mean), 
                                  y = mean, fill = sex)) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("IAT gender-career bias (2005 - 2016 data)") +
@@ -206,7 +212,7 @@ ggplot(country_means_career, aes(x = reorder(country_name, mean),
 
 Genders separately
 ```{r}
-country_means_career %>%
+country_means_career_gender %>%
   filter(sex == "f") %>%
   ggplot(aes(x = reorder(country_name, mean), 
                                  y = mean, fill = sex)) +
@@ -220,7 +226,7 @@ country_means_career %>%
   theme(axis.text.x = element_text(angle = 60, hjust = 1),
         legend.position = "none") 
 
-country_means_career %>%
+country_means_career_gender %>%
   filter(sex == "m") %>%
   ggplot(aes(x = reorder(country_name, mean), 
                                  y = mean, fill = sex)) +
@@ -242,7 +248,11 @@ country_means_career_diff <- d_clean_frequent %>%
   select(country_name, sex, overall_iat_score) %>%
   group_by(country_name) %>%
   do(tidy(t.test(overall_iat_score ~ sex, .))) %>%
-  select(country_name, estimate, p.value, conf.low, conf.high)
+  mutate(type = "country_gender_D_score_diff") %>%
+  rename(mean = estimate, 
+         ci_lower = conf.low,
+         ci_upper = conf.high) %>%
+    select(country_name, ci_lower, ci_upper, mean, type)
 
 
 ggplot(country_means_career_diff, aes(x = reorder(country_name, estimate), 
@@ -289,4 +299,61 @@ ggplot(map_data, aes(x = long, y = lat,
   theme_bw() +
   coord_map(xlim = c(-13, 35),  ylim = c(32, 71))
 ```
+
+## ratio (within subjects)
+```{r}
+country_RT_ratio_career <- d_clean_frequent %>%
+  rowwise()%>%
+  mutate(ratio_RT = mean(c(Mn_RT_all_7, Mn_RT_all_6))/mean(c(Mn_RT_all_3, Mn_RT_all_4))) %>%
+  group_by(country_name) %>%
+  multi_boot_standard(col = "ratio_RT")  %>%
+  mutate(type = "country_RT_ratio")
+```
+
+## mean reaction time overall 
+```{r}
+country_gender_RT_mean_career <- d_clean_frequent %>%
+  mutate(mean_RT = Mn_RT_all_3467) %>%
+  group_by(country_name, sex) %>%
+  multi_boot_standard(col = "mean_RT")  %>%
+  mutate(type = "country_RT_mean")
+
+```
+
+## explict measure of bias in project implict
+https://mfr.osf.io/render?url=https://osf.io/thvzf/?action=download%26mode=render
+
+assocareer: 'How strongly do you associate the following with males and females?<br/><br/><b>Career</b>' 1=female 7= male
+
+assofamily: 'How strongly do you associate the following with males and females?<br/><br/><b>Family</b>' 1=female 7= male
+```{r}
+country_fam_male_family <- d_clean_frequent %>%
+  group_by(country_name) %>%
+  multi_boot_standard(col = "assofamily", na.rm = T)  %>%
+  mutate(type = "country_fam_male")
+
+country_career_male_career <- d_clean_frequent %>%
+  group_by(country_name) %>%
+  multi_boot_standard(col = "assocareer", na.rm = T)  %>%
+  mutate(type = "country_career_male")
+
+```
+
+Write all 
+```{r}
+all_measures <- bind_rows(list(country_means_career, 
+             country_means_career_gender, 
+             country_means_career_diff, 
+             country_gender_RT_mean_career, 
+             country_RT_ratio_career,
+             country_fam_male_family, 
+             country_career_male_career)) %>%
+  mutate_if(is.character, as.factor)
+
+
+# write_csv(all_measures, "IAT_behavior_measures.csv")
+
+
+```
+
 

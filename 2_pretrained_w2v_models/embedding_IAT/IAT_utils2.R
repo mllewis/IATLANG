@@ -1,27 +1,5 @@
 # IAT utility functions
 
-write_subsetted_models <- function(word_list, model, lang_code){
-  
-  relevant_vectors <- word_list %>%
-      merge(model  %>% rename(translation = V1),  # get vectors for relevant words only
-                by = "translation", all.x = TRUE)
-  
-  # write raw vectors
-  relevant_raw_vector_path <- "../../data/models/wikipedia/subsetted_career_models/raw/"
-  write_csv(relevant_vectors, paste0(relevant_raw_vector_path, "wiki.", lang_code, "_raw_career.csv"))
-  
-  calculated_vectors <- relevant_vectors %>%
-    select(-translation) %>%
-    group_by(language_code, target_word, translation_id) %>%
-    summarise_at(vars(V2:V301), sum) %>%
-    group_by(language_code, target_word) %>%
-    summarize_at(vars(V2:V301), mean)
-  
-  # write calculated vectors
-  relevant_calculated_vector_path <- "../../data/models/wikipedia/subsetted_career_models/calculated/"
-  write_csv(calculated_vectors, paste0(relevant_calculated_vector_path, "wiki.", 
-                                       lang_code, "_calculated_career.csv"))
-}
 
 # gets df with each unique pairing of category and attribute
 prep_word_list <- function(word_list) {
@@ -50,7 +28,7 @@ get_swabs <- function(df, model){
     mutate(cosine_sim = get_word_distance_cos(model, category_value, attribute_value)) %>%
     ungroup() %>% # gets rid of rowwise error message
     group_by(category_type, category_value, attribute_type) %>%
-    summarize(word_attribute_mean = mean(cosine_sim)) %>%
+    summarize(word_attribute_mean = mean(cosine_sim, na.rm = TRUE)) %>%
     spread(attribute_type, word_attribute_mean) %>%
     mutate(swab = attribute_1 - attribute_2)
 }
@@ -58,11 +36,11 @@ get_swabs <- function(df, model){
 
 # effect size function on Caliskan pg 2 (top right)
 get_sYXab <- function(df){
-  sYXab_denom <- sd(df$swab)
+  sYXab_denom <- sd(df$swab, na.rm = TRUE)
   
   df %>%
     group_by(category_type) %>%
-    summarize(mean_swab = mean(swab)) %>%
+    summarize(mean_swab = mean(swab, na.rm = TRUE)) %>%
     spread(category_type, mean_swab) %>%
     summarize(sYXab_num = category_1 - category_2) %>%
     transmute(sYXab = sYXab_num/sYXab_denom) %>%
@@ -71,8 +49,8 @@ get_sYXab <- function(df){
 
 # wrapper for ES function
 get_ES <- function(df, model) {
-  print(pluck(df, "test_name"))
-  es <- prep_word_list(df[-1:-2]) %>%
+
+    es <- prep_word_list(df[-1:-2]) %>%
     get_swabs(., model) %>%
     get_sYXab()
   

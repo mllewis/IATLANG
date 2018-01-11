@@ -207,7 +207,7 @@ W10 <- list(test_name = "WEAT_10",
 model <- load_model("../data/models/wikipedia/wiki.en.bin")
 test_list <- list(W1, W2, W3, W4, W5, W6, W7, W8, W9, W10)
 
-wiki_es <-map_df(test_list, get_ES, model) 
+wiki_es <- map_df(test_list, get_ES, model) 
 ```
 
 ## Plot with behavioral ES and Caliskan, et al. (2017) effect sizes
