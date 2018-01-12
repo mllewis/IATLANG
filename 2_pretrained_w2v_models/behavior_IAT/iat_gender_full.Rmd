@@ -28,7 +28,7 @@ library(countrycode)
 library(feather)
 
 opts_chunk$set(echo = T, message = F, warning = F, 
-               error = F, tidy = F, cache = F)
+               error = F, tidy = F, cache = T)
 ```
 
 Set params
@@ -60,7 +60,7 @@ Read in career-gender IAT data.
 d_raw <- read_feather("../../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
   select(D_biep.Male_Career_all, sex, countryres, PCT_error_3467, 
          Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, Mn_RT_all_7,
-         assocareer, assofamily)
+         assocareer, assofamily, impcareer, impfamily, actualduties, idealduties, femaleceos)
 ```
 
 Do same exclusions as Nosek (2002), pg. 104. Also exclude NA sex, D, country.
@@ -103,28 +103,6 @@ d_clean_frequent <- d_clean %>%
 
 There are `r nrow(country_ns)` with at least `r MIN_PARTICIPANTS_PER_COUNTRY` participants. This includes `r sum(country_ns$n)` participants.
 
-
-```{r, include = F, eval = F}
-# Calculate ES
-# Hm, ignore this for now
-d_es <- d_clean_frequent %>%
-  rowwise () %>%
-  mutate(Mn_RT_34 = mean(c(Mn_RT_all_3, Mn_RT_all_4)),
-         Mn_RT_67 = mean(c(Mn_RT_all_6, Mn_RT_all_7))) %>%
-  group_by(country_name) %>%
-  summarize(mean_34 = mean(Mn_RT_34),
-            sd_34 = sd(Mn_RT_34),
-            mean_67 = mean(Mn_RT_67),
-            sd_67 = sd(Mn_RT_67),
-            n = n()) %>%
-  rowwise() %>%
-  do(data.frame(cohens_d = compute.es::mes(.$mean_34, .$mean_67, .$sd_34,
-                     .$sd_67, .$n, .$n, verbose = F)$d,
-               d_var = compute.es::mes(.$mean_34, .$mean_67, .$sd_34,
-                     .$sd_67, .$n, .$n, verbose = F)$var.d)) %>%
-  mutate(high = cohens_d + (1.96*d_var),
-         low = cohens_d - (1.96*d_var))
-```
 
 ## Country means
 ```{r}
@@ -210,6 +188,18 @@ ggplot(country_means_career_gender, aes(x = reorder(country_name, mean),
   theme(axis.text.x = element_text(angle = 60, hjust = 1)) 
 ```
 
+Males have far more variability:
+```{r}
+ggplot(country_means_career_gender, 
+                                 aes(x = sex, 
+                                     y = mean, 
+                                     fill = sex, 
+                                     color = sex, 
+                                     group = sex)) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
+  theme_bw()
+```
+
 Genders separately
 ```{r}
 country_means_career_gender %>%
@@ -255,13 +245,13 @@ country_means_career_diff <- d_clean_frequent %>%
     select(country_name, ci_lower, ci_upper, mean, type)
 
 
-ggplot(country_means_career_diff, aes(x = reorder(country_name, estimate), 
-                                 y = estimate)) +
+ggplot(country_means_career_diff, aes(x = reorder(country_name, mean), 
+                                 y = mean)) +
   geom_bar(stat = "identity", position = "dodge") +
   ggtitle("IAT gender-career bias (2005 - 2016 data)") +
   ylab("IAT gender bias (F-M difference)") +
   xlab("Country") +
-  geom_linerange(aes(ymin = conf.low, ymax = conf.high),  
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper),  
                  position = position_dodge(width = .9)) +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 60, hjust = 1),
@@ -272,7 +262,7 @@ ggplot(country_means_career_diff, aes(x = reorder(country_name, estimate),
 ```{r, fig.width = 10}
 
 map_data <- left_join(map_world, country_means_career_diff) %>%
-  rename(gender_bias = estimate) %>%
+  rename(gender_bias = mean) %>%
   filter(lat > -57, 
          long > -165) 
 
@@ -326,28 +316,53 @@ https://mfr.osf.io/render?url=https://osf.io/thvzf/?action=download%26mode=rende
 assocareer: 'How strongly do you associate the following with males and females?<br/><br/><b>Career</b>' 1=female 7= male
 
 assofamily: 'How strongly do you associate the following with males and females?<br/><br/><b>Family</b>' 1=female 7= male
-```{r}
-country_fam_male_family <- d_clean_frequent %>%
-  group_by(country_name) %>%
+```{r, eval = F}
+country_fam_male_family_gender <- d_clean_frequent %>%
+  group_by(country_name, sex) %>%
   multi_boot_standard(col = "assofamily", na.rm = T)  %>%
   mutate(type = "country_fam_male")
 
-country_career_male_career <- d_clean_frequent %>%
+country_fam_male_family <- d_clean_frequent %>%
   group_by(country_name) %>%
+  multi_boot_standard(col = "assofamily", na.rm = T)  %>%
+  mutate(type = "country_fam_male",
+         sex = "all")
+
+country_career_male_career_gender <- d_clean_frequent %>%
+  group_by(country_name, sex) %>%
   multi_boot_standard(col = "assocareer", na.rm = T)  %>%
   mutate(type = "country_career_male")
 
+country_career_importance_gender <- d_clean_frequent %>%
+  group_by(country_name, sex) %>%
+  multi_boot_standard(col = "impcareer", na.rm = T)  %>%
+  mutate(type = "career_importance")
+
+country_family_importance_gender <- d_clean_frequent %>%
+  group_by(country_name, sex) %>%
+  multi_boot_standard(col = "impfamily", na.rm = T)  %>%
+  mutate(type = "family_importance")
+
+country_actual_duties_gender <- d_clean_frequent %>%
+  group_by(country_name, sex) %>%
+  multi_boot_standard(col = "actualduties", na.rm = T)  %>%
+  mutate(type = "actual_duties")
 ```
 
 Write all 
-```{r}
-all_measures <- bind_rows(list(country_means_career, 
+```{r, eval = F}
+all_measures <- bind_rows(list(
+             country_means_career, 
              country_means_career_gender, 
              country_means_career_diff, 
              country_gender_RT_mean_career, 
              country_RT_ratio_career,
-             country_fam_male_family, 
-             country_career_male_career)) %>%
+             country_fam_male_family_gender, 
+             country_fam_male_family,
+             country_career_male_career_gender,
+             country_career_importance_gender,
+             country_family_importance_gender,
+             country_actual_duties_gender)) %>%
   mutate_if(is.character, as.factor)
 
 

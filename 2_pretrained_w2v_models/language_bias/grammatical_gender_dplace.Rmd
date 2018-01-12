@@ -38,9 +38,9 @@ Autotype:
   
   
 ```{r}
-codes <- read_csv( "../data/wals/iso3_to_wals.csv")
+codes <- read_csv( "../../data/wals/iso3_to_wals.csv")
 
-d <- read_csv( "../data/other/langs_for_study1.csv") %>%
+d <- read_csv( "../../data/other/langs_for_study1.csv") %>%
   mutate(iso3 = iso.lang(language_name)) %>%
   mutate(language_name = tolower(language_name)) %>%
   left_join(codes %>% select(ascii_name, id), by = c("language_name" = "ascii_name")) %>%
@@ -70,6 +70,12 @@ langs_with_features <- d %>%
   select(-2, -4, -12, -15, -17, -LID, -longitude, -latitude)
 
 kable(langs_with_features)
+
+langs_with_features <- langs_with_features %>%
+  mutate_if(is.character, as.factor) %>%
+  mutate(source = "wals/autotype")
+
+write_csv(langs_with_features, "gender_grammar.csv")
 ```
 
 Playing with D-place
