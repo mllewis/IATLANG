@@ -165,7 +165,7 @@ W9 <- list(test_name = "WEAT_9",
            bias_type = "mental-physical-illness-controllability",
            category_1 = c("sad" , "hopeless" , "gloomy" , "tearful" , "miserable" , "depressed"),
            category_2 = c("sick" , "illness" , "influenza" , "disease" , "virus" , "cancer"),
-           attribute_1 = c("impermanent", "unstable", "variable",  "fleeting", "short-term",
+           attribute_1 = c("impermanent", "unstable", "variable",  "fleeting", "shortterm", # model only has non-hyphenated version of short-term
                            "brief", "occasional"),
            attribute_2 = c("stable", "always", "constant", "persistent", "chronic", "prolonged",
                            "forever"))
@@ -200,27 +200,6 @@ model <- fread(
                 unlist(lapply(2:301, function(x) paste0("V", x)))))
 
 test_list <- list(W1, W2, W3, W4, W5, W6, W7, W8, W9, W10)
-wiki_es <- map_df(test_list, get_ES, model) 
+walk(test_list, get_ES, model) 
 
-# write_csv(wiki_es, "../data/study2/wiki_es.csv")
-wiki_es <- read_csv("../data/study2/wiki_es.csv")
-
-
-########
-## Plot with behavioral ES and Caliskan, et al. (2017) effect sizes
-caliskan_es  <- read_csv("../data/study2/caliskan_es.csv")
-
-all_es <- wiki_es %>%
-  rename(wiki = effect_size) %>%
-  left_join(caliskan_es) %>%
-  gather("es_source", "d", 3:6) %>%
-  mutate(es_source = fct_relevel(es_source, "original"),
-         study_name = paste0(bias_type, " \n(", test,")"),
-         study_name = as.factor(study_name),
-         study_name = factor(study_name,
-                             levels(study_name )[c(2,6,8,9,10,3,4,5,7,1)]))
-
-ggplot(all_es, aes(y = d, x = es_source, fill = es_source)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap(~study_name, drop = TRUE, scales = "free_x", nrow = 2) +
-  theme(legend.position = "none")
+# wiki_es <- read_csv("../data/study2/wiki_es.csv")

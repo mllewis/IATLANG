@@ -56,7 +56,10 @@ get_ES <- function(df, model) {
     get_swabs(., model) %>%
     get_sYXab()
   
-  data.frame(test = pluck(df, "test_name"), 
-             bias_type = pluck(df, "bias_type"),
-             effect_size = es)
+  new_row <- data.frame(test = pluck(df, "test_name"), 
+                       bias_type = pluck(df, "bias_type"),
+                       effect_size = es)
+  
+  output_path <- "/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/data/study2/caliskan_wiki_es.csv"
+  write_csv(new_row, append = TRUE, path = output_path)
 }
