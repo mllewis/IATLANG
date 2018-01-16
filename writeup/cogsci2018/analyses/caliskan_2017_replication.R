@@ -1,16 +1,4 @@
----
-title: IAT task for wiki-trained word2vec models
-author: Molly Lewis 
-date: "`r Sys.Date()`"
-output: 
-  html_document:
-    code_folding: hide
-    number_sections: no
-    toc: yes
----
-  
-```{r setup, include = F}
-rm(list = ls())
+## IAT task for english trained word2vec model from Wikipedia (replicating Caliskan 2017)
 
 # load packages
 library(knitr)
@@ -20,18 +8,15 @@ library(langcog)
 library(stringr)
 library(forcats)
 library(broom)
-library(fastrtext)
+library(data.table)
 
-opts_chunk$set(echo = T, message = F, warning = F, 
-               error = F, tidy = F, cache = F)
-
+# helper functions
 source("IAT_utils.R")
-```
 
-IAT task for english trained word2vec model from Wikipedia
 
-All WEAT words from Calliskan 2017 (WordEmbeddingAssociationTest.java)
-```{r}
+####### All WEAT words from Calliskan 2017 #########
+# taken from: WordEmbeddingAssociationTest.java file
+ 
 # Greenwald, 1998: "Measuring Individual Differences in Implicit Cognition: The Implicit Association Test" 
 # universally accepted attitude towards flowers and insects
 W1 <- list(test_name = "WEAT_1",
@@ -125,7 +110,7 @@ W4 <- list(test_name = "WEAT_4",
 # Bertrand, 2003: "Are Emily and Greg More Employable than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination"
 W5 <- list(test_name = "WEAT_5",
            bias_type = "racial-attitude-market-discrimination2",
-          category_1 = c("Todd", "Neil", "Geoffrey", "Brett", "Brendan", "Greg",
+           category_1 = c("Todd", "Neil", "Geoffrey", "Brett", "Brendan", "Greg",
                          "Matthew", "Brad","Allison","Anne","Carrie","Emily","Jill",
                          "Laurie","Meredith","Sarah"),
            category_2 = c("Kareem", "Darnell", "Tyrone", "Hakim", "Jamal",
@@ -141,7 +126,7 @@ W5 <- list(test_name = "WEAT_5",
 # http://projectimplicit.net/nosek/papers/harvesting.GroupDynamics.pdf
 W6 <- list(test_name = "WEAT_6",
            bias_type = "gender-bias-career-family",
-          category_1 = c("John", "Paul", "Mike", "Kevin", "Steve", "Greg", "Jeff", "Bill"),
+           category_1 = c("John", "Paul", "Mike", "Kevin", "Steve", "Greg", "Jeff", "Bill"),
            category_2 = c("Amy", "Joan", "Lisa", "Sarah", "Diana", "Kate", "Ann", "Donna"),
            attribute_1 = c("executive", "management", "professional", "corporation", "salary", 
                                 "office", "business", "career"),
@@ -166,12 +151,12 @@ W7 <- list(test_name = "WEAT_7",
 
 W8 <- list(test_name = "WEAT_8",
            bias_type = "gender-bias-science-arts",
-          category_1 = c("science", "technology", "physics",
+           category_1 = c("science", "technology", "physics",
                          "chemistry", "Einstein", "NASA", "experiment", "astronomy"),
-          category_2 = c("poetry", "art", "Shakespeare",
+           category_2 = c("poetry", "art", "Shakespeare",
                           "dance", "literature", "novel", "symphony", "drama"),
-          attribute_1 = c("brother", "father", "uncle", "grandfather", "son", "he", "his", "him"),
-          attribute_2 = c("sister", "mother", "aunt", "grandmother", "daughter", "she", "hers", "her"))
+           attribute_1 = c("brother", "father", "uncle", "grandfather", "son", "he", "his", "him"),
+           attribute_2 = c("sister", "mother", "aunt", "grandmother", "daughter", "she", "hers", "her"))
 
 ## WEAT 9 terms:  	#http://ccf.fiu.edu/research/publications/articles-2010-present/jscp2011305484.pdf
 # Mentally ill people and physically ill people being associated with being controllable or uncontrollable.      		
@@ -200,19 +185,30 @@ W10 <- list(test_name = "WEAT_10",
                            "friend" , "laughter" , "happy"),
            attribute_2 = c("agony" , "terrible" , "horrible" , "nasty" , "evil" ,
                            "war" , "awful" , "failure"))
-```
 
-## Get effect sizes from wikipedia model
-```{r}
-model <- load_model("../data/models/wikipedia/wiki.en.bin")
+####### Get wikipedia effect sizes #########
+MODEL_PATH <- "/Volumes/wilbur_the_great/fasttext_models/wiki.en.vec"
+
+model <- fread( 
+  MODEL_PATH,
+  header = FALSE,
+  skip = 1,
+  quote = "",
+  encoding = "UTF-8",
+  data.table = TRUE,
+  col.names = c("target_word", 
+                unlist(lapply(2:301, function(x) paste0("V", x)))))
 
 test_list <- list(W1, W2, W3, W4, W5, W6, W7, W8, W9, W10)
 wiki_es <- map_df(test_list, get_ES, model) 
-```
 
+# write_csv(wiki_es, "../data/study2/wiki_es.csv")
+wiki_es <- read_csv("../data/study2/wiki_es.csv")
+
+
+########
 ## Plot with behavioral ES and Caliskan, et al. (2017) effect sizes
-```{r}
-caliskan_es  <- read_csv("../../data/other/caliskan_es.csv")
+caliskan_es  <- read_csv("../data/study2/caliskan_es.csv")
 
 all_es <- wiki_es %>%
   rename(wiki = effect_size) %>%
@@ -228,27 +224,3 @@ ggplot(all_es, aes(y = d, x = es_source, fill = es_source)) +
   geom_bar(stat = "identity", position = "dodge") +
   facet_wrap(~study_name, drop = TRUE, scales = "free_x", nrow = 2) +
   theme(legend.position = "none")
-```
-
-
-## Get usable languages
-
-```{r}
-iat_langs <- read_csv("../data/other/countries_lang.csv")
-
-wiki_langs <- read_csv("../data/other/wiki_useable_langs.csv", col_names = F) %>%
-                  rename(language_code = X1)
-
-good_langs <- inner_join(iat_langs, wiki_langs, by = "language_code") %>%
-  distinct(language_name, language_code)
-
-write_csv(good_langs, "../data/other/langs_for_study1.csv")
-```
-
-```{r}
-m = rev(c(W6$category_1, W6$category_2, W6$attribute_1, 
-  W6$attribute_2, W7$category_1, W7$category_2,
-  W7$attribute_1, W7$attribute_2))
-
-write_csv(as.data.frame(m), "t.csv")
-```

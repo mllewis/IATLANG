@@ -1,0 +1,80 @@
+---
+title: Behavior bias vs. explicit bias
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+library(stringr)
+library(forcats)
+library(broom)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+Are the explicit measures correlated with implicit  measures?
+
+```{r}
+countries_langs <- read_csv("../../data/other/countries_lang.csv") %>%
+  mutate(language_name = ifelse(language_name == "Spanish; Castilian", "Spanish", language_name),
+         language_name = ifelse(language_name == "Dutch; Flemish", "Dutch", language_name))
+
+
+IAT_behavior_measures_explicit <- read_csv("IAT_behavior_measures.csv") %>%
+  left_join(countries_langs %>% select(country_name, language_name, language_code)) %>%
+  filter(type %in% c("country_fam_male", 
+             "country_career_male")) %>%
+  group_by(type, language_code, sex) %>%
+  summarize(mean = mean(mean)) 
+
+IAT_behavior_measures_imp <- read_csv("../behavior_IAT/IAT_behavior_measures.csv") %>%
+  left_join(countries_langs %>% select(country_name, language_name, language_code)) %>%
+  filter(type %in% c("country_means_D_score", 
+             "country_gender_D_score")) %>%
+  group_by(type, language_code, sex) %>%
+  summarize(mean = mean(mean)) 
+
+```
+
+
+```{r}
+IAT_behavior_measures_explicit %>%
+  group_by(type, sex) %>%
+  multi_boot_standard(col = "mean") %>%
+  ggplot(aes(x = sex, y = mean, fill = sex)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ggtitle("Explicit bias") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper),  
+                 position = position_dodge(width = .9)) +
+  facet_wrap(~type) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) 
+
+```
+
+```{r}
+d <- left_join(IAT_behavior_measures_explicit, 
+               IAT_behavior_measures_imp, 
+               by = c("language_code"))
+```
+
+```{r,  fig.width = 10, fig.height = 5}
+d %>%
+ggplot( aes(x = mean.x, y = mean.y, 
+            group = sex.y, color = sex.y)) + 
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_grid(type.y ~ type.x + sex.x , scales = "free_x", drop = T) +
+  theme_bw()
+```

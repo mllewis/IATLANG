@@ -33,6 +33,8 @@ Here we test two hypotheses:
 
 Both of these predictions pan out. The relationships are particularly strong for male participants from the IAT - this could be because there's a male bias in wikipedia editors.
 
+
+
 # Implicit measures of bias (IAT score)
 Here we look at whether IAT scores behavioral scores (from project implicit) correlate with language bias for a range of difference languages. Note this is at the language level (averaging across countries that speak the same language for the IAT behavioral data).
 
@@ -71,6 +73,8 @@ ggplot(d, aes(x = mean)) +
   theme_bw()
 ```
 
+
+
 ### Language 
 ```{r, fig.height = 2.5, fig.width = 3}
 ggplot(lang_bias, aes(x = lang_bias)) +
@@ -90,6 +94,15 @@ ggplot( aes(x = mean, y = lang_bias, group = sex, color = sex)) +
   facet_grid(.~ type, scales = "free_x", drop = T) +
   theme_bw()
 ```
+
+```{r}
+ggplot(d, aes(x = mean, y = lang_bias, color = sex, group = sex)) +
+  geom_smooth(method = "lm") +
+  geom_label(aes(label =  language_code)) +
+  facet_grid(~ type, scales = "free" ) +
+  theme_bw()
+```
+
 
 ```{r, fig.width = 6}
 d %>%
@@ -208,6 +221,21 @@ iat_means <-  full_d %>%
   geom_linerange(aes(ymin = ci_lower, ymax = ci_upper),  
                  position = position_dodge(width = .9)) +
   theme_bw() 
+```
+
+Effect size
+```{r}
+iat_means <-  full_d %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  mutate(sex = ifelse(is.na(sex), "all", sex)) %>%
+  group_by(type, sex, wikipedia_grammar_type2) %>%
+  summarize(sd = sd(mean),
+            mean = mean(mean),
+            n = n())
+
+#compute.es::mes(0.3878186, 0.3623428, 0.02424421, 0.02142372, 16, 11 )
+
+#compute.es::mes(0.3709505, 0.3077983,  0.03150937, 0.04381712, 16, 11 )
 ```
 
 ### Language IAT measures

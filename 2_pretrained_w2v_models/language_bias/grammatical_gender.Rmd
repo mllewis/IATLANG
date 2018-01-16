@@ -131,7 +131,7 @@ iat_means <-  full_d %>%
                  position = position_dodge(width = .9)) +
   theme_bw() 
 ```
-\
+
 ```{r}
 lang_hand_means <-  full_d %>%
   filter(!is.na(wikipedia_grammar_type2)) %>%
