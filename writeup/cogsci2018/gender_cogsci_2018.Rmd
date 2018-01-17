@@ -176,9 +176,9 @@ Finally, previous work has shown  a difference for women
 # Study 2: Cross-cultural gender bias in language
 In Study 2, we ask whether participants' implicit and explicit gender biases are correlated with biases found in the semantics of participants' native languages. To model semantics, we turn to a recently developed machine-learning method for deriving lexical semantics from text: auto-encoding neural network models. The underlying assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with -- an approach known as distributional semantics [@firth1957synopsis]. Under this approach, a word like “dog” is represented more semantically similar to “hound” than “banana” because it co-occurs with words more in common with “hound” than “banana” in a large corpus of text. 
 
-Recent developments in machine learning allow the idea of distributional semantics to be implentented in a way that both takes into account many features of local language structure while remaining computationally tractable. The  best known of these word embedding models is _word2vec_ [@mikolov2013efficient]. The model's output is a vector for each word reprseneting its semantics. A measure of the semantic similarity between two words can be derived by taking the distance between the word vectors (using cosine distance, for example). Similarity measures derived from these models have been shown to be highly correlated with human judgements of word similarity [e.g., @hill2015simlex].
+Recent developments in machine learning allow the idea of distributional semantics to be implentented in a way that both takes into account many features of local language structure while remaining computationally tractable. The  best known of these word embedding models is _word2vec_ [@mikolov2013efficient]. The model's input is a corpus of text, and the output is a vector for each word correspdoing its semantics. From these vectors, we can derive a measure of the semantic similarity between two words by taking the distance between the word vectors (using cosine distance, for example). Similarity measures estimated from these models have been shown to be highly correlated with human judgements of word similarity [e.g., @hill2015simlex].
 
-Recent work has used models like word2vec to measure the presence of social biases in the semantics of English in a way that is highly analogus to the behvioral IAT (Caliskan, Bryson, & Narayanan, 2017; henceforth _CBN_). This is done by measuring the distance in vector space between the same sets of words that are presented to participants in the IAT task. CBN demonstrate that these distance measures are highly correlated with reaction times in the behavioral IAT task, suggesting  that the biases measured by the IAT are also found in the lexical semantics of natural language.
+In addition to quantifying word similarity, models like word2vec have been used to measure the presence of social biases in the semantics of English in a way that is highly analogus to the behvioral IAT (Caliskan, Bryson, & Narayanan, 2017; henceforth _CBN_). This is done by measuring the distance in vector space between the same sets of words that are presented to participants in the IAT task. CBN demonstrate that these distance measures are highly correlated with reaction times in the behavioral IAT task, suggesting  that the biases measured by the IAT are also found in the lexical semantics of natural language.
 
 In Study 2, we use the method described by CBN to measure the biases in the semantics of the natural languages spoken in the countries of participants in Study 1. To do this, we take advantage of a set of models that have been pre-trained on a corpus of Wikipedia text in a large number of languages [@bojanowski2016enriching]. In Study 2a, we replicate the CBN findings with the Wikipedia corpus; In Study 2b, we show that the implicit and explicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the semantics of the natural language spoken by those participants.
 
@@ -186,7 +186,7 @@ In Study 2, we use the method described by CBN to measure the biases in the sema
 ### Method
 We use a word embedding model that has been pre-trained model on the corpus of English Wikipedia using the fastText algorithm [@bojanowski2016enriching]\footnote{Available here: https://github.com/facebookresearch/fastText/}. The model contains 2,519,370 words with each word reprsented by a 300 dimension vector. 
 
-Using the Wikpedia fastText model, we calculate an effect size for each of the 10 biases reported in CBN, corresponding to behavioral IAT results existing in the literature: flowers-insects, instruments-weapons, race, gender-career gender-math, gender-science, mental-physical (originally labeled as WEAT 1-10). We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs. relative similarity of female to career). This measure is  analagous the behavioral D-score measure in Study 1 and, like for D-score, larger values indicate a larger bias.
+Using the Wikpedia fastText model, we calculate an effect size for each of the 10 biases reported in CBN, corresponding to behavioral IAT results existing in the literature: flowers-insects, instruments-weapons, race, gender-career gender-math, gender-science, mental-physical (labeled as WEAT 1-10 in CBN). We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs. relative similarity of female to career). This measure is  analagous the behavioral D-score measure in Study 1 and, like for D-score, larger values indicate a larger bias.
 
 
 ### Results
@@ -287,6 +287,10 @@ d <- country_means_career_implicit %>%
 langs_to_do <- c("ro", "zu", "th", "vi", "ga", "hi", "hu", "el", "hr", "ps")
 ```
 
+TO DO:
+- do effect seizes for IAT behavioral
+- weight behavior and implict regression by certainty 
+- deal with translations - google vs. non google (remove google ones from "hand translations")
 
 
 # Study 3: grammar and bias

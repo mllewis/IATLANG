@@ -1,21 +1,18 @@
-## IAT task for english trained word2vec model from Wikipedia (replicating Caliskan 2017)
+## IAT task for english trained word2vec model from Wikipedia (replicating Caliskan 2017; caliskan_wiki_es.csv) ##
 
 # load packages
-library(knitr)
-library(rmarkdown)
 library(tidyverse)
-library(langcog)
-library(stringr)
-library(forcats)
-library(broom)
 library(data.table)
 
 # helper functions
 source("IAT_utils.R")
 
+####### Parameters #########
+MODEL_PATH <- "/Volumes/wilbur_the_great/fasttext_models/wiki.en.vec"
+OUTPUT_FILE <- "data/caliskan_wiki_es.csv"
 
 ####### All WEAT words from Calliskan 2017 #########
-# taken from: WordEmbeddingAssociationTest.java file
+# words taken from: WordEmbeddingAssociationTest.java Caliskan et al. 2017 file
  
 # Greenwald, 1998: "Measuring Individual Differences in Implicit Cognition: The Implicit Association Test" 
 # universally accepted attitude towards flowers and insects
@@ -186,9 +183,9 @@ W10 <- list(test_name = "WEAT_10",
            attribute_2 = c("agony" , "terrible" , "horrible" , "nasty" , "evil" ,
                            "war" , "awful" , "failure"))
 
-####### Get wikipedia effect sizes #########
-MODEL_PATH <- "/Volumes/wilbur_the_great/fasttext_models/wiki.en.vec"
+test_list <- list(W1, W2, W3, W4, W5, W6, W7, W8, W9, W10)
 
+####### Get wikipedia effect sizes #########
 model <- fread( 
   MODEL_PATH,
   header = FALSE,
@@ -199,6 +196,10 @@ model <- fread(
   col.names = c("target_word", 
                 unlist(lapply(2:301, function(x) paste0("V", x)))))
 
-test_list <- list(W1, W2, W3, W4, W5, W6, W7, W8, W9, W10)
-walk(test_list, get_ES, model) 
+# wrapper function
+get_wiki_es_caliskan_replication <- function(word_list, model, output_file){
+    ES <- get_ES(word_list, model) %>%
+    write_csv(ES, append = TRUE, path = output_file)
+  }
 
+walk(test_list, get_wiki_es_caliskan_replication, model, OUTPUT_FILE) 
