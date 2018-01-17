@@ -44,7 +44,7 @@ We quantified the degree of gender bias in a culture using data from the Implici
 ## Method
 
 ```{r}
-raw_iat_behavioral <- read_feather("data/study1/Gender-Career IAT.public.2005-2016.feather") %>%
+raw_iat_behavioral <- read_feather("analysis/study1/data/Gender-Career IAT.public.2005-2016.feather") %>%
   select(D_biep.Male_Career_all,sex, countryres,PCT_error_3467, Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, Mn_RT_all_7, assocareer, assofamily,N_ERROR_3, N_ERROR_4, N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7) %>%
     rename(overall_iat_D_score = D_biep.Male_Career_all) 
 
@@ -192,13 +192,13 @@ Using the Wikpedia fastText model, we calculate an effect size for each of the 1
 ### Results
 ```{r WEAT_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.6, fig.height=3.6, set.cap.width=T, num.cols.cap=1, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). The effect sizes reported in CBN are plotted against  effect sizes from the Wikipedia corpus.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
 
-wiki_es <- read_csv("data/study2/caliskan_wiki_es.csv", 
+wiki_es <- read_csv("analysis/study2a/data/caliskan_wiki_es.csv",  
                     col_names = c("test", "study_name",
                                   "wiki", "study_name2",
                                   "WEAT_name"))
-# from analysis/caliskan_2017_replication.R
+# from caliskan_2017_replication.R
 
-caliskan_es  <- read_csv("data/study2/caliskan_es.csv")
+caliskan_es  <- read_csv("analysis/study2a/data/caliskan_es.csv")
 
 all_es <- wiki_es %>%
   left_join(caliskan_es) %>%
@@ -276,8 +276,8 @@ With our corpus validated, we next turn to estimating the magnitude of the gende
 
 ```{r}
 # Read in behavior and language biases
-countries_to_langs <- read_csv("data/study2/languages_with_percent.csv")  # this comes from analyses/get_language_percentage.R
-language_means_career_implicit <- read_csv("data/study2/career_effect_sizes.csv")  # this comes from analysis/IAT_wiki_lang.R
+countries_to_langs <- read_csv("analysis/study2b/data/languages_with_percent.csv")  # this comes from get_language_percentage.R
+language_means_career_implicit <- read_csv("analysis/study2b/data/career_effect_sizes.csv")  # this comes from IAT_wiki_lang.R
 
 d <- country_means_career_implicit %>%
   left_join(countries_to_langs, by = "country_name") %>%

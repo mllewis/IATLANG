@@ -1,12 +1,13 @@
-# get percentage language spoken in each country from CIA factbook
+## Get percentage language spoken in each country from CIA factbook (languages_with_percent.csv) ##
 
 library(tidyverse)
 library(jsonlite)
 library(countrycode)
-libray(lingtypology)
+library(lingtypology)
 
+# these data are from https://github.com/opendatajson/factbook.json
 get_language_info <- function(country_code){
-  d <- read_json(paste0("all_countries/", country_code, ".json"))
+  d <- read_json(paste0("data/factbook_json/", country_code, ".json"))
   lang_info <- d$`People and Society`$Languages$text
   name <- d$Government$`Country name`$`conventional short form`$text
   
@@ -37,10 +38,10 @@ percent_language <- country_info %>%
   select(fips_country_code, country_name, lang, percent, everything())
   
 
-# write_csv(percent_language, "percent_country_language_raw.csv")
+# write_csv(percent_language, "data/percent_country_language_raw.csv")
 
 # read in cleaned percent_language
-clean_percentage_language <- read_csv("percent_country_language_clean.csv") %>%
+clean_percentage_language <- read_csv("data/percent_country_language_clean.csv") %>%
   select(fips_country_code, country_name, lang_clean, percent_clean) %>%
   filter(!is.na(lang_clean)) %>%
   mutate(lang_clean = str_trim(lang_clean),
@@ -54,7 +55,7 @@ filtered_percent_language <- clean_percentage_language %>%
   arrange(country_name) 
 
 # wikipedia mappings      
-lang_names_to_wiki <- read_csv("../data/study2/language_names_to_wiki_codes.csv") %>%
+lang_names_to_wiki <- read_csv("data/language_names_to_wiki_codes.csv") %>%
   distinct() # this was coded by hand
 
 languages_with_percent_final <- filtered_percent_language %>%
@@ -65,5 +66,5 @@ languages_with_percent_final <- filtered_percent_language %>%
   select(country_code, country_name, wiki_language_code, language_name, prop_language)
 
 
-#write_csv(languages_with_percent_final, "../data/study2/languages_with_percent.csv")  
+#write_csv(languages_with_percent_final, "data/languages_with_percent.csv")  
          

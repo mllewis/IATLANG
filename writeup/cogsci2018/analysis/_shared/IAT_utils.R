@@ -33,9 +33,6 @@ get_swabs <- function(df, model){
     mutate(swab = attribute_1 - attribute_2)
 }
 
-df <- test_list[[3]]
-df <- prep_word_list(df[-1:-2])
-
 # effect size function on Caliskan pg 2 (top right)
 get_sYXab <- function(df){
   sYXab_denom <- sd(df$swab)
@@ -56,10 +53,8 @@ get_ES <- function(df, model) {
     get_swabs(., model) %>%
     get_sYXab()
   
-  new_row <- data.frame(test = pluck(df, "test_name"), 
-                       bias_type = pluck(df, "bias_type"),
-                       effect_size = es)
+  data.frame(test = pluck(df, "test_name"), 
+             bias_type = pluck(df, "bias_type"),
+             effect_size = es)
   
-  output_path <- "/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/data/study2/caliskan_wiki_es.csv"
-  write_csv(new_row, append = TRUE, path = output_path)
 }

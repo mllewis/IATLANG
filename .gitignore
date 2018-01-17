@@ -13,8 +13,14 @@ stimuli/*
 *data/*
 *4-Word-Embedding/*
 writeup/cogsci2018/data/study1/Gender-Career\ IAT.public.2005-2016.feather
+writeup/cogsci2018/data/study1/Gender-Career IAT.public.2005-2016.feather
 2_pretrained_w2v_models/factbook.json/*
-
+data/IAT/Gender-Career/Gender-Career\ IAT.public.2005-2016.feather
+*/data/*
+data/IAT/Gender-Career/Gender-Career\ IAT.public.2005-2016.sav
+writeup/cogsci2018/analysis/*/data/*
+*.csv
+*.feather
 # LaTeX #
 *.bet
 *.acn
