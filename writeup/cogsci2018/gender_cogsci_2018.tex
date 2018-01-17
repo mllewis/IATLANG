@@ -67,8 +67,8 @@ IAT, cultural biases, gender, linguistic relativity.
 
 \section{Introduction}\label{introduction}
 
-\section{Study 1: Cross-cultural gender bias in
-behavior}\label{study-1-cross-cultural-gender-bias-in-behavior}
+\section{Study 1: Cross-cultural gender bias in implicit
+behavior}\label{study-1-cross-cultural-gender-bias-in-implicit-behavior}
 
 We quantified the degree of gender bias in a culture using data from the
 Implicit Association Task (``IAT''; Greenwald, McGhee, \& Schwartz,
@@ -161,11 +161,11 @@ distributional semantics (Firth, 1957). Under this approach, a word like
 ``banana'' because it co-occurs with words more in common with ``hound''
 than ``banana'' in a large corpus of text.
 
-Recent developments in machine learning allow for the implementation of
-the idea of distributional semantics in a way that both takes into
-account many features of local language structure while remaining
-computationally tractable. The best known of these word embedding models
-is \emph{word2vec} (Mikolov, Chen, Corrado, \& Dean, 2013). The model's
+Recent developments in machine learning allow the idea of distributional
+semantics to be implentented in a way that both takes into account many
+features of local language structure while remaining computationally
+tractable. The best known of these word embedding models is
+\emph{word2vec} (Mikolov, Chen, Corrado, \& Dean, 2013). The model's
 output is a vector for each word reprseneting its semantics. A measure
 of the semantic similarity between two words can be derived by taking
 the distance between the word vectors (using cosine distance, for
@@ -173,12 +173,12 @@ example). Similarity measures derived from these models have been shown
 to be highly correlated with human judgements of word similarity (e.g.,
 Hill, Reichart, \& Korhonen, 2015).
 
-Recent work has used models like \emph{word2vec} to measure the presence
-of social biases in the semantics of English in a way that is highly
+Recent work has used models like word2vec to measure the presence of
+social biases in the semantics of English in a way that is highly
 analogus to the behvioral IAT (Caliskan, Bryson, \& Narayanan, 2017;
 henceforth \emph{CBN}). This is done by measuring the distance in vector
 space between the same sets of words that are presented to participants
-in the IAT. They demonstrate that these distance measures are highly
+in the IAT task. CBN demonstrate that these distance measures are highly
 correlated with reaction times in the behavioral IAT task, suggesting
 that the biases measured by the IAT are also found in the lexical
 semantics of natural language.
@@ -186,13 +186,12 @@ semantics of natural language.
 In Study 2, we use the method described by CBN to measure the biases in
 the semantics of the natural languages spoken in the countries of
 participants in Study 1. To do this, we take advantage of a set of
-models that have been pre-trained on the corpus of Wikipedia text in a
+models that have been pre-trained on a corpus of Wikipedia text in a
 large number of languages (Bojanowski, Grave, Joulin, \& Mikolov, 2016).
 In Study 2a, we replicate the CBN findings with the Wikipedia corpus; In
-Study 2b, we demonstrate that the implicit and explicit gender biases
-reported in Study 1 for individual countries are correlated with the
-biases found in the semantics of the natural language spoken by those
-participants.
+Study 2b, we show that the implicit and explicit gender biases reported
+in Study 1 for individual countries are correlated with the biases found
+in the semantics of the natural language spoken by those participants.
 
 \subsection{Study 2a: Replication of Caliskan, et
 al.~(2017)}\label{study-2a-replication-of-caliskan-et-al.2017}
@@ -212,7 +211,7 @@ results existing in the literature: flowers-insects,
 instruments-weapons, race, gender-career gender-math, gender-science,
 mental-physical (originally labeled as WEAT 1-10). We calculate the bias
 using the same effect size metric described in CBN, a standardized
-difference score in the relative similarity of the target words to the
+difference score of the relative similarity of the target words to the
 target attributes (i.e.~relative similarity of male to career
 vs.~relative similarity of female to career). This measure is analagous
 the behavioral D-score measure in Study 1 and, like for D-score, larger
@@ -227,7 +226,7 @@ values indicate a larger bias.
 
 }
 
-\caption[Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al]{Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al. (2017; CBN). The effect sizes reported in CBN are plotted against  effect sizes from the Wikipedia corpus.  Color corresponds to  bias type, and shape corresponds to the two CBN models trained on different corpora and with different algorithms.}\label{fig:WEAT_plot}
+\caption[Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al]{Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al. (2017; CBN). The effect sizes reported in CBN are plotted against  effect sizes from the Wikipedia corpus.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms.}\label{fig:WEAT_plot}
 \end{figure}
 \end{CodeChunk}
 
@@ -237,7 +236,7 @@ different models (trained on the Common Crawl and Google News corpora).
 With the exception of biases related to race and age, effect sizes from
 the Wikipedia corpus are highly similar to those reported by CBN. In
 particular, for the gender-career IAT -- the bias relevant to our
-current purposes -- we estimate the effect size to be 1.78, and CBN
+current purposes -- we estimate the effect size to be 1.78, while CBN
 estimates it to be 1.81 (Common Crawl) and 1.89 (Google News).
 
 \subsection{Study 2b: Predicting implicit bias with language

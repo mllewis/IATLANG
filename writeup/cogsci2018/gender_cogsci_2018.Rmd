@@ -176,7 +176,7 @@ Finally, previous work has shown  a difference for women
 # Study 2: Cross-cultural gender bias in language
 In Study 2, we ask whether participants' implicit and explicit gender biases are correlated with biases found in the semantics of participants' native languages. To model semantics, we turn to a recently developed machine-learning method for deriving lexical semantics from text: auto-encoding neural network models. The underlying assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with -- an approach known as distributional semantics [@firth1957synopsis]. Under this approach, a word like “dog” is represented more semantically similar to “hound” than “banana” because it co-occurs with words more in common with “hound” than “banana” in a large corpus of text. 
 
-Recent developments in machine learning allow for the implementation of the idea of distributional semantics in a way that both takes into account many features of local language structure while remaining computationally tractable. The  best known of these word embedding models is _word2vec_ [@mikolov2013efficient]. The model's output is a vector for each word reprseneting its semantics. A measure of the semantic similarity between two words can be derived by taking the distance between the word vectors (using cosine distance, for example). Similarity measures derived from these models have been shown to be highly correlated with human judgements of word similarity [e.g., @hill2015simlex].
+Recent developments in machine learning allow the idea of distributional semantics to be implentented in a way that both takes into account many features of local language structure while remaining computationally tractable. The  best known of these word embedding models is _word2vec_ [@mikolov2013efficient]. The model's output is a vector for each word reprseneting its semantics. A measure of the semantic similarity between two words can be derived by taking the distance between the word vectors (using cosine distance, for example). Similarity measures derived from these models have been shown to be highly correlated with human judgements of word similarity [e.g., @hill2015simlex].
 
 Recent work has used models like word2vec to measure the presence of social biases in the semantics of English in a way that is highly analogus to the behvioral IAT (Caliskan, Bryson, & Narayanan, 2017; henceforth _CBN_). This is done by measuring the distance in vector space between the same sets of words that are presented to participants in the IAT task. CBN demonstrate that these distance measures are highly correlated with reaction times in the behavioral IAT task, suggesting  that the biases measured by the IAT are also found in the lexical semantics of natural language.
 
@@ -190,7 +190,7 @@ Using the Wikpedia fastText model, we calculate an effect size for each of the 1
 
 
 ### Results
-```{r WEAT_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.6, fig.height=3.6, set.cap.width=T, num.cols.cap=1, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). The effect sizes reported in CBN are plotted against  effect sizes from the Wikipedia corpus.  Color corresponds to  bias type, and shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
+```{r WEAT_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.6, fig.height=3.6, set.cap.width=T, num.cols.cap=1, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). The effect sizes reported in CBN are plotted against  effect sizes from the Wikipedia corpus.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
 
 wiki_es <- read_csv("data/study2/caliskan_wiki_es.csv", 
                     col_names = c("test", "study_name",
@@ -273,6 +273,19 @@ With our corpus validated, we next turn to estimating the magnitude of the gende
 ### Method
 
 ### Results
+
+```{r}
+# Read in behavior and language biases
+countries_to_langs <- read_csv("data/study2/languages_with_percent.csv")  # this comes from analyses/get_language_percentage.R
+language_means_career_implicit <- read_csv("data/study2/career_effect_sizes.csv")  # this comes from analysis/IAT_wiki_lang.R
+
+d <- country_means_career_implicit %>%
+  left_join(countries_to_langs, by = "country_name") %>%
+  left_join(language_means_career_implicit, by = c("wiki_language_code" = "language_code" ))
+# google translate does not have cantoness
+
+langs_to_do <- c("ro", "zu", "th", "vi", "ga", "hi", "hu", "el", "hr", "ps")
+```
 
 
 
