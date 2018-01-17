@@ -185,7 +185,7 @@ W10 <- list(test_name = "WEAT_10",
 
 test_list <- list(W1, W2, W3, W4, W5, W6, W7, W8, W9, W10)
 
-####### Get wikipedia effect sizes #########
+####### Get wikipedia effect sizes for all tests in English #########
 model <- fread( 
   MODEL_PATH,
   header = FALSE,
@@ -198,7 +198,7 @@ model <- fread(
 
 # wrapper function
 get_wiki_es_caliskan_replication <- function(word_list, model, output_file){
-    ES <- get_ES(word_list, model) %>%
+    ES <- get_ES(word_list, model)
     write_csv(ES, append = TRUE, path = output_file)
   }
 

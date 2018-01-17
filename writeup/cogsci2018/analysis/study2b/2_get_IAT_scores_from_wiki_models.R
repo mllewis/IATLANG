@@ -102,3 +102,21 @@ get_wiki_es <- function(current_lang, calculated_prefix, output_path, word_list)
 
 # do the thing
 walk(wiki_langs, get_wiki_es, CALCULATED_VECTOR_PATH, ES_OUTPUT_PATH, WORD_LIST)
+
+######################## loop over langs and get effect sizes ########################
+count_missing<- function(current_lang, calculated_prefix, output_path){
+  
+  # read back in subsetted file
+  subsetted_model <- read_csv(paste0(calculated_prefix, 
+                                     "wiki.", current_lang, "_calculated_career.csv")) %>%
+    select(-wiki_language_code) %>%
+    filter(V2 == 0)
+
+  
+  data.frame(language_code = current_lang,
+             num_missing = nrow(subsetted_model))
+
+}
+
+# do the thing
+m = map_df(wiki_langs, count_missing, CALCULATED_VECTOR_PATH)

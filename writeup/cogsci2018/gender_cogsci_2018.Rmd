@@ -25,13 +25,14 @@ knitr::opts_chunk$set(fig.width=3, fig.height=3, fig.crop = F, fig.pos = "tb", f
 
 ```{r, libraries}
 library(tidyverse)
-library(countrycode)
 library(feather)
+library(countrycode)
 library(broom)
 library(forcats)
 library(png)
 library(grid)
 library(xtable)
+library(ggrepel)
 
 TEXT_SIZE <- 10
 ```
@@ -39,7 +40,7 @@ TEXT_SIZE <- 10
 # Introduction
 
 # Study 1: Cross-cultural gender bias in implicit behavior
-We quantified the degree of gender bias in a culture using data from the Implicit Association Task ["IAT"; @greenwald1998measuring]. The IAT measures the strength of respondents' associations between two pairs of concepts (e.g., male-career/female-family vs.\ male-family/female-career). The underlying assumption of the measure is that concepts that are represented as more similar to each other in the cognitive system should be easier to pair together in a behavioral task, compared to two concepts that are relatively dissimilar. Concepts are paired in the task by assigning them to the same response keys in a 2AFC categorization task. In the critical blocks of the task, concepts are assigned to keys in a way that is either bias-congruent (i.e. Key A = male/career; Key B = female/family) or bias-incongruent (i.e. Key A = male/family; Key B = female/career). Participants are then presented with a word related to one of the four concepts and asked to classify it by responding with one of the two keys as quickly as possible. Slower reaction times in the bias-incongruent blocks relative to the bias-congruent blocks are interpretted as an implicit association between the correspondings concepts (i.e. a bias to associate male with career, and female with family). 
+We quantified the degree of gender bias in a culture using data from the Implicit Association Task ["IAT"; @greenwald1998measuring]. The IAT measures the strength of respondents' associations between two pairs of concepts (e.g., male-career/female-family vs.\ male-family/female-career). The underlying assumption of the measure is that concepts that are represented as more similar to each other should be easier to pair together in a behavioral task, compared to two concepts that are relatively dissimilar. Concepts are paired in the task by assigning them to the same response keys in a 2AFC categorization task. In the critical blocks of the task, concepts are assigned to keys in a way that is either bias-congruent (i.e. Key A = male/career; Key B = female/family) or bias-incongruent (i.e. Key A = male/family; Key B = female/career). Participants are then presented with a word related to one of the four concepts and asked to classify it as quickly as possible by responding with one of the two keys. Slower reaction times in the bias-incongruent blocks relative to the bias-congruent blocks are interpretted as indicating an implicit association between the correspondings concepts (i.e. a bias to associate male with career, and female with family). 
 
 ## Method
 
@@ -102,16 +103,17 @@ iat_behavioral_tidy <- iat_behavioral %>%
 We analyzed an exisiting dataset of IAT scores collected online from a large, culturally diverse sample [Project Implicit: https://implicit.harvard.edu/implicit/; @nosek2002harvesting]\footnote{All analysis code can be found in an online repository: https://github.com/mllewis/IATLANG}. Our analysis included all gender-career IAT scores collected from respondents between 2005 and 2016 who had complete data and  were located in countries with more than `r MIN_PARTICIPANTS_PER_COUNTRY` total respondents (_N_ = `r format(nrow(raw_iat_behavioral_complete_dense_country),big.mark=",")`). We further restricted our sample based on participants' reaction times and errors using the same criteria described in Nosek, Banjai, and Greenwald (2002, pg. 104). Our final sample included `r format(nrow(iat_behavioral),big.mark=",")` participants from `r nrow(country_ns)` countries, with a median of `r format(round(median(country_ns$n)), big.mark = ",")` participants per country.
 
 <!-- exclusion rate = nosek's (15%) --> 
-Several measures have been used in the literature to describe the difference in reaction time between bias congruent and incongruent blocks. Here, we use the best perfomring measure, D-score, which quantifies the difference between critical blocks while also accounting for individual differences in response time [@greenwald2003understanding].
+Several measures have been used in the literature to describe the difference in reaction time between bias congruent and incongruent blocks. Here, we use the best performing measure, D-score, which quantifies the difference between critical blocks for each participant while controling individual differences in response time [@greenwald2003understanding]. For each country, we calculated an effect size as the mean D-score divided by its standard deviation.
 
 In addition to the implicit measure, we also analyzed an explicit measure of gender bias. After completing the IAT, participants were asked, "How strongly do you associate the following with males and females?" for both the words "career" and "family." Participants indicated their response on a Likert scale ranging from female (1) to male (7).  We calculated an explicit gender bias score for each participant as the career response minus the family response, such that greater values indicated more gender bias (as for the D-score).
 
 ## Results
 
-```{r map, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.8, fig.height=2.5, set.cap.width=T, num.cols.cap=1, fig.cap = "IAT gender bias (D-score) for the 49 countries with available data. All countries show a gender bias, with red indicating above average and blue indicating below average bias."}
+```{r map, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.8, fig.height=2.5, set.cap.width=T, num.cols.cap=1, fig.cap = "IAT gender bias effect size for the 49 countries with available data. All countries show a gender bias, with red indicating above average and blue indicating below average bias."}
 country_means_career_implicit <- iat_behavioral_tidy %>%
   group_by(country_name) %>%
-  summarize(mean_iat = mean(overall_iat_D_score)) 
+  summarize(mean_iat = mean(overall_iat_D_score),
+            es_behavioral_iat = mean(overall_iat_D_score)/sd(overall_iat_D_score)) 
 
 map_world <- map_data(map = "world") %>%
   mutate(country_name = region) %>%
@@ -125,13 +127,19 @@ map_data <- country_means_career_implicit %>%
   filter(lat > -57, 
          long > -165) 
 
-# Europe inset 
+SCALE_MIDPOINT <- mean(country_means_career_implicit$es_behavioral_iat, na.rm = T)
+
+# Europe inset (note that Hong Kong is missing from this map)
 ggplot(map_data, aes(x = long, y = lat, 
                             group = group, 
-                            fill = mean_iat)) + 
-  scale_fill_gradient2("", breaks =  c(.3, .35, .4, .45), limits=c(.3,.45), 
-                       midpoint = mean(map_data$mean_iat,
-                                       na.rm = T), 
+                            fill = es_behavioral_iat)) + 
+  #scale_fill_gradient2("", breaks =  c(.3, .35, .4, .45), limits=c(.3,.45), 
+  #                     midpoint = mean(map_data$mean_iat,
+  #                                     na.rm = T), 
+  #                     low = "blue", high = "red") +
+  scale_fill_gradient2("", breaks =  c(.9, 1, 1.1, 1.2),
+                       limits=c(SCALE_MIDPOINT - .2, SCALE_MIDPOINT + .2), 
+                       midpoint = SCALE_MIDPOINT, 
                        low = "blue", high = "red") +
   geom_polygon(color = "black", size = .1) +
   ggtitle("IAT Gender Bias") +
@@ -149,14 +157,14 @@ ggplot(map_data, aes(x = long, y = lat,
 ```
 
 ```{r explicit_implicit_all}
-# by-subject correlations
+# by-subject correlations (overall_iat_D_score)
 subj_means_career_explicit <- iat_behavioral_tidy %>%
     mutate(explicit_dif = assocareer - assofamily) 
 
 imp_exp_subjs <- cor.test(subj_means_career_explicit$overall_iat_D_score, 
          subj_means_career_explicit$explicit_dif)
 
-# by country correlations
+# by country correlations  (overall_iat_D_score)
 country_means_career_explicit <- subj_means_career_explicit %>%
   group_by(country_name) %>%
   summarize(mean_diff = mean(explicit_dif, na.rm = T),
@@ -164,9 +172,18 @@ country_means_career_explicit <- subj_means_career_explicit %>%
 
 imp_exp_country <- cor.test(country_means_career_explicit$mean_iat,
                             country_means_career_explicit$mean_diff) 
+
+# by country correlations (effect sizes)
+country_means_career_explicit_es <- subj_means_career_explicit %>%
+  group_by(country_name) %>%
+  summarize(mean_diff = mean(explicit_dif, na.rm = T),
+            es_behavioral_iat = mean(overall_iat_D_score)/sd(overall_iat_D_score))
+
+imp_exp_country_es <- cor.test(country_means_career_explicit_es$es_behavioral_iat,
+                            country_means_career_explicit_es$mean_diff) 
 ```
 
-Broadly, we replicate the patterns in the IAT literature [@nosek2002harvesting]. First, participants in all countries showed a bias to associate men with career and females with family. Figure 1 shows the magnitude of the IAT gender bias (D-score) across all 49 countries (_M_ = `r round(mean(country_means_career_implicit$mean_iat),2)`; _SD_ = `r round(sd(country_means_career_implicit$mean_iat),2)`). Second, implicit and explicit bias measures  were correlated both at the level of individual participants (_r_ = `r round(as.numeric(imp_exp_subjs$estimate), 2)`; _p_ < .00001) and at the level of countries (_r_ = `r round(as.numeric(imp_exp_country$estimate), 2)`; _p_ = `r round(as.numeric(imp_exp_country$p.value), 2)`).
+Broadly, we replicate the patterns in the IAT literature [@nosek2002harvesting]. First, participants in all countries showed a bias to associate men with career and females with family. Figure 1 shows the magnitude of the IAT gender bias (effect size) across all 49 countries (_M_ = `r round(mean(country_means_career_implicit$mean_iat),2)`; _SD_ = `r round(sd(country_means_career_implicit$mean_iat),2)`). Second, implicit and explicit bias measures were correlated both at the level of individual participants (_r_ = `r round(as.numeric(imp_exp_subjs$estimate), 2)`; _p_ < .00001) and at the level of countries (_r_ = `r round(as.numeric(imp_exp_country_es$estimate), 2)`; _p_ = `r round(as.numeric(imp_exp_country_es$p.value), 2)`).
 
 ```{r, gender_bias}
 ```
@@ -176,17 +193,17 @@ Finally, previous work has shown  a difference for women
 # Study 2: Cross-cultural gender bias in language
 In Study 2, we ask whether participants' implicit and explicit gender biases are correlated with biases found in the semantics of participants' native languages. To model semantics, we turn to a recently developed machine-learning method for deriving lexical semantics from text: auto-encoding neural network models. The underlying assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with -- an approach known as distributional semantics [@firth1957synopsis]. Under this approach, a word like “dog” is represented more semantically similar to “hound” than “banana” because it co-occurs with words more in common with “hound” than “banana” in a large corpus of text. 
 
-Recent developments in machine learning allow the idea of distributional semantics to be implentented in a way that both takes into account many features of local language structure while remaining computationally tractable. The  best known of these word embedding models is _word2vec_ [@mikolov2013efficient]. The model's input is a corpus of text, and the output is a vector for each word correspdoing its semantics. From these vectors, we can derive a measure of the semantic similarity between two words by taking the distance between the word vectors (using cosine distance, for example). Similarity measures estimated from these models have been shown to be highly correlated with human judgements of word similarity [e.g., @hill2015simlex].
+Recent developments in machine learning allow the idea of distributional semantics to be implentented in a way that both takes into account many features of local language structure while remaining computationally tractable. The  best known of these word embedding models is _word2vec_ [@mikolov2013efficient]. The model's input is a corpus of text and the output is a vector for each word corressponding to its semantics. From these vectors, we can derive a measure of the semantic similarity between two words by taking the distance between the word vectors (using cosine distance, for example). Similarity measures estimated from these models have been shown to be highly correlated with human judgements of word similarity [e.g., @hill2015simlex].
 
 In addition to quantifying word similarity, models like word2vec have been used to measure the presence of social biases in the semantics of English in a way that is highly analogus to the behvioral IAT (Caliskan, Bryson, & Narayanan, 2017; henceforth _CBN_). This is done by measuring the distance in vector space between the same sets of words that are presented to participants in the IAT task. CBN demonstrate that these distance measures are highly correlated with reaction times in the behavioral IAT task, suggesting  that the biases measured by the IAT are also found in the lexical semantics of natural language.
 
-In Study 2, we use the method described by CBN to measure the biases in the semantics of the natural languages spoken in the countries of participants in Study 1. To do this, we take advantage of a set of models that have been pre-trained on a corpus of Wikipedia text in a large number of languages [@bojanowski2016enriching]. In Study 2a, we replicate the CBN findings with the Wikipedia corpus; In Study 2b, we show that the implicit and explicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the semantics of the natural language spoken by those participants.
+In Study 2, we use the method described by CBN to measure the biases in the semantics of the natural languages spoken in the countries of participants in Study 1. While CBN only analyzed biases for models trained on English, we extend their method to compare biases across a wide number of languages. To do this, we take advantage of a set of models that have been pre-trained on a corpus of Wikipedia text in a large number of languages [@bojanowski2016enriching]. In Study 2a, we replicate the CBN findings with the Wikipedia corpus; In Study 2b, we show that the implicit and explicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the semantics of the natural language spoken by those participants.
 
 ## Study 2a: Replication of Caliskan, et al.\ (2017)
 ### Method
 We use a word embedding model that has been pre-trained model on the corpus of English Wikipedia using the fastText algorithm [@bojanowski2016enriching]\footnote{Available here: https://github.com/facebookresearch/fastText/}. The model contains 2,519,370 words with each word reprsented by a 300 dimension vector. 
 
-Using the Wikpedia fastText model, we calculate an effect size for each of the 10 biases reported in CBN, corresponding to behavioral IAT results existing in the literature: flowers-insects, instruments-weapons, race, gender-career gender-math, gender-science, mental-physical (labeled as WEAT 1-10 in CBN). We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs. relative similarity of female to career). This measure is  analagous the behavioral D-score measure in Study 1 and, like for D-score, larger values indicate a larger bias.
+Using the Wikpedia fastText model, we calculate an effect size for each of the 10 biases reported in CBN, corresponding to behavioral IAT results existing in the literature: flowers-insects, instruments-weapons, race, gender-career gender-math, gender-science, mental-physical (labeled as WEAT 1-10 in CBN). We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs. relative similarity of female to career). This measure is  analagous the behavioral effect size measure in Study 1 and, like for the behavioral effect size, larger values indicate a larger bias.
 
 
 ### Results
@@ -240,7 +257,7 @@ ggplot(all_es, aes(x = wiki,
   ggtitle("IAT language effect sizes") +
   xlab("Effect size (Wikipedia corpus)") +
   ylab("Effect size (Caliskan, et al., 2017)") +
-  ggrepel::geom_text_repel(aes(label = study_name2), 
+  geom_text_repel(aes(label = study_name2), 
                              force = 5, 
                              color = "black", 
                              size = 2.3, 
@@ -265,32 +282,101 @@ gender_bias_es_cc <- filter(all_es, study_name == "gender-bias-career-family" & 
 gender_bias_es_gn <- filter(all_es, study_name == "gender-bias-career-family" & es_source == "Google News (word2vec)" )$d[1]
 ```
 
-Figure 2 shows the effect size measures derived from the Wikipedia corpus plotted against effect size esimtates reported by CBN from two different models (trained on the Common Crawl and  Google News corpora). With the exception of biases related to race and age, effect sizes from the Wikipedia corpus are highly similar to those reported by CBN. In particular, for the gender-career IAT -- the bias relevant to our current purposes -- we estimate the effect size to be  `r round(gender_bias_es_wiki,2)`, while CBN estimates it to be `r gender_bias_es_cc` (Common Crawl) and `r gender_bias_es_gn` (Google News).
+Figure 2 shows the effect size measures derived from the Wikipedia corpus plotted against effect size esimtates reported by CBN from two different models (trained on the Common Crawl and  Google News corpora). With the exception of biases related to race and age, effect sizes from the Wikipedia corpus are comparable to those reported by CBN. In particular, for the gender-career IAT -- the bias relevant to our current purposes -- we estimate the effect size to be  `r round(gender_bias_es_wiki,2)`, while CBN estimates it to be `r gender_bias_es_cc` (Common Crawl) and `r gender_bias_es_gn` (Google News).
 
 ## Study 2b: Predicting implicit bias with language IAT
-With our corpus validated, we next turn to estimating the magnitude of the gender-career bias in the each of the languages spoken in the countries described in Study 1 with the goal of examining the relationship between behavioral gender biases and language gender biases.
+With our corpus validated, we next turn toward examining the relationship between behavioral and linguistic gender biases. In Study 2b, we estimate the magnitude of the gender-career bias in the each of the languages spoken in the countries described in Study 1 and compare it with estimates of behavioral gender bias from Study 1. If language causally influences psyschological gender bias, we predict these two measures should be positively correlated.
 
 ### Method
 
-### Results
 
-```{r}
-# Read in behavior and language biases
-countries_to_langs <- read_csv("analysis/study2b/data/languages_with_percent.csv")  # this comes from get_language_percentage.R
-language_means_career_implicit <- read_csv("analysis/study2b/data/career_effect_sizes.csv")  # this comes from IAT_wiki_lang.R
+```{r read_in_language_bias_data}
+# read in behavior and language biases
+countries_to_langs <- read_csv("analysis/study2b/data/languages_with_percent.csv") %>% # this comes from get_language_percentage.R
+  mutate(country_name = fct_recode(country_name,
+                               "United States of America"= "United States", 
+                                UK = "United Kingdom",
+                                "Russian Federation" = "Russia",
+                                "Republic of Korea" = "South Korea"),
+         wiki_language_code = fct_recode(wiki_language_code,
+                               "zh"= "zh_yue")) # Cantonese isn't in gtranslate
+  
+language_means_career_implicit_hand <- read.csv("analysis/study2b/data/career_effect_sizes_hand_translations.csv", 
+                                                col.names = c("wiki_language_code", "test_id", "test_name", "es_hand_translation"), header = F,
+                                                fill = TRUE)  %>%
+  select(-test_id, -test_name)
 
 d <- country_means_career_implicit %>%
   left_join(countries_to_langs, by = "country_name") %>%
-  left_join(language_means_career_implicit, by = c("wiki_language_code" = "language_code" ))
-# google translate does not have cantoness
+  left_join(language_means_career_implicit_hand, by = "wiki_language_code") %>%
+  select(language_name, wiki_language_code, country_name, 
+         prop_language, mean_iat, es_behavioral_iat, es_hand_translation)
 
-langs_to_do <- c("ro", "zu", "th", "vi", "ga", "hi", "hu", "el", "hr", "ps")
+lang_participant_totals <- countries_to_langs %>%
+  left_join(country_ns, by = c("country_code" = "countryres"))  %>%
+  group_by(language_name) %>%
+  summarize(total_per_lang = sum(n, na.rm = T))
+
+unique_langs_per_country <- d %>%
+  group_by(country_name) %>%
+  arrange(-prop_language)  %>%
+  slice(1)
+max_prop_es_translations <- select(unique_langs_per_country, country_name, es_hand_translation)
+
+all <- country_means_career_implicit %>%
+  left_join(max_prop_es_translations) %>%
+  left_join(countries_to_langs, by = "country_name") %>%
+  group_by(language_name) %>%
+  summarize_at(vars(mean_iat:es_hand_translation), mean, na.rm = T) %>%
+  left_join(lang_participant_totals) %>%
+  filter(language_name != "Cantonese" & language_name != "Pashto")
 ```
 
-TO DO:
-- do effect seizes for IAT behavioral
-- weight behavior and implict regression by certainty 
-- deal with translations - google vs. non google (remove google ones from "hand translations")
+```{r behavior_vs_language_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries; Study 1) versus gender bias effect size estimated from embedding models trained on each language."}
+behavior_lang_cor_imp <- cor.test(all$es_hand_translation, all$es_behavioral_iat)
+
+ggplot(all, aes(x = es_hand_translation, y = es_behavioral_iat)) +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_text_repel(aes(label = language_name), size = 2.3) + 
+  geom_point() +
+  annotate("text", x = .75, y = .9, 
+           label = paste0("r = ", round(unlist(behavior_lang_cor_imp$estimate, use.names = F),2)),
+           color = "red",
+           size = 5) +
+  theme_minimal() +
+  ggtitle("Gender IAT Behavioral and \nLinguistic Effect Sizes") +
+  ylab("Implicit Behavior Gender Bias\n (effect size)") +
+  xlab("Language Embedding Gender Bias\n (effect size)") +
+  theme(text = element_text(size = TEXT_SIZE))
+
+# when averaging across countries weight by country population
+```
+
+For each country included in Study 1, we identifed the most frequently spoken language in those countries using the CIA factbook [@ciafactbook]. This included a total of `r length(unique(unique_langs_per_country$language_name)) - 1` unique languages. For a sample of 20 of these languages, we had native speakers translate the set of 32 words from the gender-career IAT, with a slight modification \footnote{The language sample was determined by accessibility to native spekers, but included languages from a variety of language families.}. The original gender-career IAT task  [@nosek2002harvesting] used proper names to cue the male and female categories (e.g. "John", "Amy"). Because there are not direct translation equivalents of proper names across languages, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "male," "man," "female," "woman"; @nosek2002harvesting].
+
+We next used these translations to calculate an effect size from the models trained on Wikipedia in each language, as for English in Study 2a. Our method for calculating effect size from the embedding models was identical to Study 2a. We compared these estimates of linguistic gender bias to the behavioral gender bias effect sizes reported in Study 1 by averaging across countries that spoke the same primary language.  
+
+### Results
+```{r explicit_corrs_with_language}
+d <- country_means_career_explicit_es %>%
+  left_join(countries_to_langs, by = "country_name") %>%
+  left_join(language_means_career_implicit_hand, by = "wiki_language_code") %>%
+  select(language_name, wiki_language_code, country_name, 
+         prop_language, mean_diff, es_hand_translation)
+
+all <- country_means_career_explicit_es %>%
+  left_join(max_prop_es_translations) %>%
+  left_join(countries_to_langs, by = "country_name") %>%
+  group_by(language_name) %>%
+  summarize_at(vars(mean_diff:es_hand_translation), mean, na.rm = T) %>%
+  left_join(lang_participant_totals) %>%
+  filter(language_name != "Cantonese" & language_name != "Pashto")
+
+behavior_lang_cor_exp <- cor.test(all$es_hand_translation, all$mean_diff)
+#unlist(round(behavior_lang_cor_imp$p.value, 2), use.names = F)
+```
+
+Implicit IAT gender bias effect sizes were positively correlated with effect sizes of gender bias estimated from the native language embedding model (_r_ = `r unlist(round(behavior_lang_cor_imp$estimate, 2), use.names = F)`; _p_ = .047; Fig.\ 3), suggesting that countries that have a larger gender bias encoded in their language also have a larger psychological gender bias. Explicit gender bias was not correlated with language gender bias (_r_ = `r unlist(round(behavior_lang_cor_exp$estimate, 2), use.names = F)`; _p_ = `r unlist(round(behavior_lang_cor_exp$p.value, 2), use.names = F)`). 
 
 
 # Study 3: grammar and bias
