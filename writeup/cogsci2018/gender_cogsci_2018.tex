@@ -112,7 +112,7 @@ blocks. Here, we use the best performing measure, D-score, which
 quantifies the difference between critical blocks for each participant
 while controling for individual differences in response time (Greenwald,
 Nosek, \& Banaji, 2003). For each country, we calculated an effect size
-as the mean D-score divided by its standard deviation.
+as the mean D-score divided by its standard deviation (Cohen's d).
 
 In addition to the implicit measure, we also analyzed an explicit
 measure of gender bias. After completing the IAT, participants were
@@ -212,16 +212,20 @@ The model contains 2,519,370 words with each word reprsented by a 300
 dimension vector.
 
 Using the Wikpedia fastText model, we calculate an effect size for each
-of the 10 biases reported in CBN, corresponding to behavioral IAT
-results existing in the literature: flowers-insects,
-instruments-weapons, race, gender-career gender-math, gender-science,
-mental-physical (labeled as WEAT 1-10 in CBN). We calculate the bias
-using the same effect size metric described in CBN, a standardized
-difference score of the relative similarity of the target words to the
-target attributes (i.e.~relative similarity of male to career
-vs.~relative similarity of female to career). This measure is analagous
-the behavioral effect size measure in Study 1 and, like for the
-behavioral effect size, larger values indicate a larger bias.
+of the 10 biases reported in CBN which correspond to behavioral IAT
+results existing in the literature: flowers/insects/pleasant/unpleasant,
+instruments/weapons/pleasant/unpleasant,
+European-American/Afro-American/pleasant/unpleasant\footnote{CBN test three versions of this bias.},
+males/females/career/family, math/arts/male/female,
+science/arts/male/female, mental disease/physical
+disease/permanent/temporary, and young/old/pleasant/unpleasant (labeled
+as WEAT 1-10 in CBN). We calculate the bias using the same effect size
+metric described in CBN, a standardized difference score of the relative
+similarity of the target words to the target attributes (i.e.~relative
+similarity of male to career vs.~relative similarity of female to
+career). This measure is analagous the behavioral effect size measure in
+Study 1 and, like for the behavioral effect size, larger values indicate
+a larger bias.
 
 \subsubsection{Results}\label{results-1}
 
@@ -257,17 +261,6 @@ causally influences psyschological gender bias, we predict these two
 measures should be positively correlated.
 
 \subsubsection{Method}\label{method-2}
-
-\begin{CodeChunk}
-\begin{figure}[t]
-
-{\centering \includegraphics{figs/behavior_vs_language_plot-1} 
-
-}
-
-\caption[Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries]{Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries; Study 1) versus gender bias effect size estimated from embedding models trained on each language.}\label{fig:behavior_vs_language_plot}
-\end{figure}
-\end{CodeChunk}
 
 For each country included in Study 1, we identifed the most frequently
 spoken language in those countries using the CIA factbook (Central
@@ -325,16 +318,22 @@ psychological gender biases.
 \end{figure}
 \end{CodeChunk}
 
-```
-
 \section{Study 4: exploring bias more
 directly}\label{study-4-exploring-bias-more-directly}
 
-\section{to do - does anything predict gender inqequality in study 1
-(that paper i
-saw)}\label{to-do---does-anything-predict-gender-inqequality-in-study-1-that-paper-i-saw}
+\section{to do}\label{to-do}
 
-\section{Conclusion}\label{conclusion}
+\begin{itemize}
+\tightlist
+\item
+  does anything predict gender inqequality in study 1 (that paper i saw)
+\item
+  explain language != culture thing
+\item
+  a bunch more words for google translate
+\item
+  break down men vs women (?) \# Conclusion
+\end{itemize}
 
 \section{References}\label{references}
 

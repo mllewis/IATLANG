@@ -8,8 +8,8 @@ library(data.table)
 
 
 ####################### SET PARAMS ######################
-INPUT_PATH <- "data/google_translated_words.csv"
-OUTPUT_PATH <- "data/tidy_google_translations.csv"
+INPUT_PATH <- "data/google_translated_words_expanded.csv"
+OUTPUT_PATH <- "data/tidy_google_translations_expanded.csv"
 
 ####################### READ DATA ######################
 # langs missing from translations that are present in IAT data: tl (tagalog), hr (croatian), ro (romanian), el (greek), th (thai), zu (zulu)
@@ -31,7 +31,7 @@ translated_clean <- translated_words %>%
 #### gather multiple translations and words for each translation ####
 tidy_translations <- translated_clean %>%
   separate(translation, 
-           c("t1", "t2", "t3", "t4", "t5", "t6", "t7"), "/") %>%
+           c("t1", "t2", "t3", "t4", "t5", "t6", "t7"), "/") %>% # multiple translations per word
   gather("translation_id", "translation", -1:-2) %>%
   separate(translation, 
            c("w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"), " ") %>%

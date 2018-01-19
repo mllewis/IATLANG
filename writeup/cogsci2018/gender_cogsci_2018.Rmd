@@ -104,7 +104,7 @@ iat_behavioral_tidy <- iat_behavioral %>%
 We analyzed an exisiting dataset of IAT scores collected online from a large, culturally diverse sample [Project Implicit: https://implicit.harvard.edu/implicit/; @nosek2002harvesting]\footnote{All analysis code can be found in an online repository: https://github.com/mllewis/IATLANG}. Our analysis included all gender-career IAT scores collected from respondents between 2005 and 2016 who had complete data and  were located in countries with more than `r MIN_PARTICIPANTS_PER_COUNTRY` total respondents (_N_ = `r format(nrow(raw_iat_behavioral_complete_dense_country),big.mark=",")`). We further restricted our sample based on participants' reaction times and errors using the same criteria described in Nosek, Banjai, and Greenwald (2002, pg. 104). Our final sample included `r format(nrow(iat_behavioral),big.mark=",")` participants from `r nrow(country_ns)` countries, with a median of `r format(round(median(country_ns$n)), big.mark = ",")` participants per country.
 
 <!-- exclusion rate = nosek's (15%) --> 
-Several measures have been used in the literature to describe the difference in reaction time between bias congruent and incongruent blocks. Here, we use the best performing measure, D-score, which quantifies the difference between critical blocks for each participant while controling for individual differences in response time [@greenwald2003understanding]. For each country, we calculated an effect size as the mean D-score divided by its standard deviation.
+Several measures have been used in the literature to describe the difference in reaction time between bias congruent and incongruent blocks. Here, we use the best performing measure, D-score, which quantifies the difference between critical blocks for each participant while controling for individual differences in response time [@greenwald2003understanding]. For each country, we calculated an effect size as the mean D-score divided by its standard deviation (Cohen's d).
 
 In addition to the implicit measure, we also analyzed an explicit measure of gender bias. After completing the IAT, participants were asked, "How strongly do you associate the following with males and females?" for both the words "career" and "family." Participants indicated their response on a Likert scale ranging from female (1) to male (7).  We calculated an explicit gender bias score for each participant as the career response minus the family response, such that greater values indicated more gender bias (as for the behavioral effect size).
 
@@ -204,7 +204,7 @@ In Study 2, we use the method described by CBN to measure the biases in the sema
 ### Method
 We use a word embedding model that has been pre-trained model on the corpus of English Wikipedia using the fastText algorithm [@bojanowski2016enriching]\footnote{Available here: https://github.com/facebookresearch/fastText/}. The model contains 2,519,370 words with each word reprsented by a 300 dimension vector. 
 
-Using the Wikpedia fastText model, we calculate an effect size for each of the 10 biases reported in CBN, corresponding to behavioral IAT results existing in the literature: flowers-insects, instruments-weapons, race, gender-career gender-math, gender-science, mental-physical (labeled as WEAT 1-10 in CBN). We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs. relative similarity of female to career). This measure is  analagous the behavioral effect size measure in Study 1 and, like for the behavioral effect size, larger values indicate a larger bias.
+Using the Wikpedia fastText model, we calculate an effect size for each of the 10 biases reported in CBN which correspond to behavioral IAT results existing in the literature:   flowers/insects/pleasant/unpleasant, instruments/weapons/pleasant/unpleasant, European-American/Afro-American/pleasant/unpleasant\footnote{CBN test three versions of this bias.},  males/females/career/family, math/arts/male/female, science/arts/male/female, mental disease/physical disease/permanent/temporary, and young/old/pleasant/unpleasant (labeled as WEAT 1-10 in CBN). We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analagous the behavioral effect size measure in Study 1 and, like for the behavioral effect size, larger values indicate a larger bias.
 
 
 ### Results
@@ -290,7 +290,7 @@ With our corpus validated, we next turn toward examining the relationship betwee
 
 ### Method
 
-```{r read_in_language_bias_data}
+```{r read_in_language_bias_data,include = F}
 # behavioral means by langauge
 countries_to_langs <- read_csv("analysis/study2b/data/languages_with_percent.csv") %>% # this comes from get_language_percentage.R
   mutate(country_name = fct_recode(country_name,
@@ -308,7 +308,6 @@ unique_langs_per_country <- countries_to_langs %>%
   slice(1)
 max_prop_es_translations <- unique_langs_per_country %>%
   select(country_name, country_code, language_name, wiki_language_code) 
-
 
 # average across countries weighting by number of participatns
 implicit_behavioral_means_by_language <- country_means_career_implicit %>%
@@ -333,10 +332,9 @@ all <- implicit_behavioral_means_by_language %>%
             es_behavioral_iat = mean(es_behavioral_iat)) %>%
   left_join(language_means_career_implicit_hand, by = "wiki_language_code")  %>%
   filter(language_name != "Cantonese" & !is.na(es_behavioral_iat_weighted)) 
-
 ```
 
-```{r behavior_vs_language_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries; Study 1) versus gender bias effect size estimated from embedding models trained on each language."}
+```{r behavior_vs_language_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries; Study 1) versus gender bias effect size estimated from embedding models trained on each language.", include = F}
 #behavior_lang_cor_imp <- cor.test(all$es_hand_translation, all$es_behavioral_iat)
 behavior_lang_cor_imp <- cor.test(all$es_hand_translation, all$es_behavioral_iat_weighted)
 
@@ -424,11 +422,14 @@ ggplot(iat_means2, aes(x = wikipedia_grammar_type2,
 ```
 
 
-```
 
 # Study 4: exploring bias more directly
 
-# to do - does anything predict gender inqequality in study 1 (that paper i saw)
+# to do 
+- does anything predict gender inqequality in study 1 (that paper i saw)
+- explain language != culture thing 
+- a bunch more words for google translate
+- break down men vs women (?)
 # Conclusion 
 
 

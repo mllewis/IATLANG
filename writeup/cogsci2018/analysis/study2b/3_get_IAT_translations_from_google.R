@@ -28,7 +28,7 @@ get_essay_words_translation <- function(targ_lang, word, output_path){
 
 
 ####################### SET PARAMS ######################
-OUTPUT_PATH <- "data/google_translated_names.csv"
+OUTPUT_PATH <- "data/google_translated_words_expanded.csv"
 #OUTPUT_PATH <- "data/google_translated_words.csv"
 gl_auth("/Users/mollylewis/Documents/research/Projects/L2ETS/studies/study2/analyses/3_translation_analyses/prompt_embeddings/L2ETS\ prompt\ translations-a8edd99b5aa9.json") # authenticate google api
 
@@ -41,21 +41,28 @@ iat_langs <- read_csv("data/language_names_to_wiki_codes.csv")$wiki_language_cod
 #  unlist(use.names = F)
 
 # names
-target_words <- read_csv("data/all_tidy_names_sampled.csv") %>%
-  rename(langs = wiki_language_code,
-         words = target_word) 
+#target_words <- read_csv("data/all_tidy_names_sampled.csv") %>%
+#  rename(langs = wiki_language_code,
+#         words = target_word) 
   
+# expanded words
+target_words <- c("mister", "father", "uncle", "sir", "gentleman", "patriarch", "husband", 
+                  "nephew","miss", "mother", "aunt", "madame", "lady", "matriarch", 
+                  "wife", "niece",  "enterprise", "money", "meeting", "decisions", 
+                  "operator",  "market", "supervisor", "administrator","house", 
+                  "household", "kids", "chore", "kin", "people", "relationship", "folks")
 
 ################## GET ALL TRANSLATIONS ######################
-#lw_combos <- expand.grid(iat_langs, sort(target_words)) %>%
-#  rename(langs = Var1, words = Var2)
+lw_combos <- expand.grid(iat_langs, sort(target_words)) %>%
+  rename(langs = Var1, words = Var2)
 
-#walk2(as.character(lw_combos$langs),  
-#      as.character(lw_combos$words), 
-#      get_essay_words_translation,
-#      OUTPUT_PATH)
-
-walk2(as.character(target_words$langs),  
-      as.character(target_words$words), 
+walk2(as.character(lw_combos$langs),  
+      as.character(lw_combos$words), 
       get_essay_words_translation,
-      OUTPUT_PATH) 
+      OUTPUT_PATH)
+
+# names
+#walk2(as.character(target_words$langs),  
+#      as.character(target_words$words), 
+#      get_essay_words_translation,
+#      OUTPUT_PATH) 
