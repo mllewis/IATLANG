@@ -28,22 +28,34 @@ get_essay_words_translation <- function(targ_lang, word, output_path){
 
 
 ####################### SET PARAMS ######################
-OUTPUT_PATH <- "data/google_translated_words.csv"
+OUTPUT_PATH <- "data/google_translated_names.csv"
+#OUTPUT_PATH <- "data/google_translated_words.csv"
 gl_auth("/Users/mollylewis/Documents/research/Projects/L2ETS/studies/study2/analyses/3_translation_analyses/prompt_embeddings/L2ETS\ prompt\ translations-a8edd99b5aa9.json") # authenticate google api
 
 # langs
 iat_langs <- read_csv("data/language_names_to_wiki_codes.csv")$wiki_language_code[c(-25, -34)]
 
 # words
-target_words <- read_csv("data/tidy_translations.csv") %>%
-  distinct(target_word) %>%
-  unlist(use.names = F)
+#target_words <- read_csv("data/tidy_translations.csv") %>%
+#  distinct(target_word) %>%
+#  unlist(use.names = F)
+
+# names
+target_words <- read_csv("data/all_tidy_names_sampled.csv") %>%
+  rename(langs = wiki_language_code,
+         words = target_word) 
+  
 
 ################## GET ALL TRANSLATIONS ######################
-lw_combos <- expand.grid(iat_langs, sort(target_words)) %>%
-  rename(langs = Var1, words = Var2)
+#lw_combos <- expand.grid(iat_langs, sort(target_words)) %>%
+#  rename(langs = Var1, words = Var2)
 
-walk2(as.character(lw_combos$langs),  
-      as.character(lw_combos$words), 
+#walk2(as.character(lw_combos$langs),  
+#      as.character(lw_combos$words), 
+#      get_essay_words_translation,
+#      OUTPUT_PATH)
+
+walk2(as.character(target_words$langs),  
+      as.character(target_words$words), 
       get_essay_words_translation,
       OUTPUT_PATH) 

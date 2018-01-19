@@ -100,3 +100,106 @@ all %>%
   facet_grid(~key)
 
 corrr::correlate(all[,-1:-4])
+
+
+
+
+library(gapminder)
+
+pop_data <- gapminder %>%
+  group_by(country) %>%
+  filter(year == max(year)) %>%
+  select(country, pop) %>%
+  ungroup() %>%
+  mutate(country = fct_recode(country,
+                                   "United States of America"= "United States", 
+                                    "UK" = "United Kingdom",
+                                   "Republic of Korea" = "Korea, Rep."))
+
+country_ns <- raw_iat_behavioral_complete %>%
+  count(countryres)  %>%
+  filter(n >= MIN_PARTICIPANTS_PER_COUNTRY) %>%
+  arrange(-n)
+
+d_with_pop = d %>%
+  left_join(pop_data, by = c("country_name" = "country"))  %>%
+  left_join(left_join(countries_to_langs, country_ns, 
+                      by = c("country_code" = "countryres")) %>% 
+            select(country_name, n)) %>%
+  distinct() 
+d_with_pop[d_with_pop$country_name == "Cyprus", "pop"] = 1170125
+d_with_pop[d_with_pop$country_name == "Russian Federation", "pop"] = 144463451
+d_with_pop[d_with_pop$country_name == "Hong Kong", "pop"]  = 7389500
+d_with_pop[d_with_pop$country_name == "United Arab Emirates", "pop"]  = 9400000
+d_with_pop[d_with_pop$country_name == "UK", "n"]  = 638082
+
+
+country_normalized = d_with_pop %>%
+  group_by(language_name) %>%
+  mutate(normalized_n = n/sum(n),
+         normalized_pop = log(pop)/sum(log(pop)),
+         country_weights = normalized_n*normalized_pop) %>%
+  distinct() %>%
+  group_by(country_name) %>%
+  mutate(country_weights = country_weights/sum(country_weights))
+  
+
+weighted_all <- d_with_pop %>%
+  left_join(country_normalized) %>%
+  group_by(language_name) %>%
+  summarize(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
+                                                       normalized_n, na.rm = T),
+            iat_mean_weighted = weighted.mean(mean_iat, 
+                                              normalized_n, na.rm = T),
+            n = sum(n)) %>%
+  left_join(countries_to_langs) %>%
+  left_join(language_means_career_implicit_hand) %>%
+  left_join(language_means_career_implicit_google) %>%
+  distinct(language_name, .keep_all = T)
+
+
+cor.test(weighted_all$es_behavioral_iat_weighted, weighted_all$es_hand_translation)
+cor.test(weighted_all$es_behavioral_iat_weighted, weighted_all$es_google_translation)
+
+m = lm(es_behavioral_iat_weighted ~ es_hand_translation, 
+       data = weighted_all)
+summary(m)
+
+  m = lm(es_behavioral_iat_weighted ~ es_google_translation, weights = log(n), 
+       data = weighted_all)
+summary(m)
+
+all <- implicit_behavioral_means_by_language %>%
+  group_by(wiki_language_code, language_name) %>%
+  summarize(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
+                                                       normalized_n, na.rm = T),
+            es_behavioral_iat = mean(es_behavioral_iat)) %>%
+  left_join(language_means_career_implicit_google, by = "wiki_language_code")  %>%
+  left_join(language_means_career_implicit_hand, by = "wiki_language_code")  %>%
+  filter(language_name != "Cantonese" & !is.na(es_behavioral_iat_weighted))  
+
+behavior_lang_cor_imp <- cor.test(all$es_google_translation, all$es_hand_translation)
+behavior_lang_cor_imp <- cor.test(all$es_google_translation, all$es_behavioral_iat_weighted)
+
+ggplot(all, aes(x = es_behavioral_iat_weighted, y = es_google_translation)) +
+  #geom_smooth(method='lm')
+  geom_text(aes(label = wiki_language_code)) +
+  
+  
+  ### NAME STUFF ##
+  
+  # get language means
+  language_means_career_implicit_hand_names <- read.csv("analysis/study2b/data/career_effect_sizes_hand_translations_names.csv", 
+                                                        col.names = c("wiki_language_code", "test_id", "test_name", "es_hand_translation"), 
+                                                        header = F,
+                                                        fill = TRUE)  %>%
+  select(-test_id, -test_name)
+
+
+behavior_lang_cor_imp <- cor.test(all$es_hand_translation, all$es_behavioral_iat_weighted)
+ggplot(all %>%, aes(x = es_hand_translation, y = es_behavioral_iat_weighted)) +
+  geom_text(aes(label = language_name))
+
+
+
+
