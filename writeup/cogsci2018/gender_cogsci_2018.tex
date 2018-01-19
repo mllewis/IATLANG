@@ -71,9 +71,9 @@ IAT, cultural biases, gender, linguistic relativity.
 behavior}\label{study-1-cross-cultural-gender-bias-in-implicit-behavior}
 
 We quantified the degree of gender bias in a culture using data from the
-Implicit Association Task (``IAT''; Greenwald, McGhee, \& Schwartz,
-1998). The IAT measures the strength of respondents' associations
-between two pairs of concepts (e.g., male-career/female-family
+Implicit Association Task (IAT; Greenwald, McGhee, \& Schwartz, 1998).
+The IAT measures the strength of respondents' associations between two
+pairs of concepts (e.g., male-career/female-family
 vs.~male-family/female-career). The underlying assumption of the measure
 is that concepts that are represented as more similar to each other
 should be easier to pair together in a behavioral task, compared to two
@@ -112,7 +112,8 @@ blocks. Here, we use the best performing measure, D-score, which
 quantifies the difference between critical blocks for each participant
 while controling for individual differences in response time (Greenwald,
 Nosek, \& Banaji, 2003). For each country, we calculated an effect size
-as the mean D-score divided by its standard deviation (Cohen's d).
+as the mean D-score divided by its standard deviation (Cohen's
+\emph{d}), with larger values indicate greater bias.
 
 In addition to the implicit measure, we also analyzed an explicit
 measure of gender bias. After completing the IAT, participants were
@@ -121,8 +122,13 @@ females?'' for both the words ``career'' and ``family.'' Participants
 indicated their response on a Likert scale ranging from female (1) to
 male (7). We calculated an explicit gender bias score for each
 participant as the career response minus the family response, such that
-greater values indicated more gender bias (as for the behavioral effect
-size).
+greater values indicated more gender bias.
+
+Finally, we also examined an independent measure of gender parity,
+called the Women's Peace and Security Index (WPS, 2017), which measures
+inclusion, justice, and security of women by country, with larger values
+indicating more gender equality. We predicted this measure would be
+correlated with measures of implicit and explicit gender bias.
 
 \subsection{Results}\label{results}
 
@@ -138,16 +144,37 @@ size).
 \end{CodeChunk}
 
 Broadly, we replicate previous findings in the literature on the
-gender-career bias (Nosek et al., 2002). First, participants in all
+gender-career IAT (Nosek et al., 2002). First, participants in all
 countries showed a bias to associate men with career and females with
 family. Figure 1 shows the magnitude of the IAT gender bias (effect
 size) across all 49 countries (\emph{M} = 0.37; \emph{SD} = 0.03).
 Second, implicit and explicit bias measures were correlated both at the
 level of individual participants (\emph{r} = 0.15; \emph{p} \textless{}
 .00001) and at the level of countries (\emph{r} = 0.32; \emph{p} =
-0.02).
+0.02). Third, consistent with previous findings (Nosek et al., 2002),
+the magnitude of the implicit bias is larger for female participants
+compared to males (\emph{t} = 97.23; \emph{p} \textless{} .00001).
 
-Finally, previous work has shown a difference for women
+\begin{CodeChunk}
+\begin{figure}[t]
+
+{\centering \includegraphics{figs/WPS_plot-1} 
+
+}
+
+\caption[Magnitude of thie implicit gender bias (measured by the IAT) predicted by an indepedent measure of gender equality, Women's Peace and Security Index (WPS)]{Magnitude of thie implicit gender bias (measured by the IAT) predicted by an indepedent measure of gender equality, Women's Peace and Security Index (WPS).  Each point corresponds to a country. Contra our prediction, we find that countries with greater gender equality have larger implicit bias.}\label{fig:WPS_plot}
+\end{figure}
+\end{CodeChunk}
+
+We next asked whether our independent measure of gender equality, WPS,
+predicted variability in implicit and explicit gender bias by country.
+WPS was strongly correlated with implicit bias (\emph{r} = 0.46;
+\emph{p} = \textless{}.01; Fig.~X), but not explicit bias (\emph{r} =
+-0.01; \emph{p} = 0.96). However, we find that the implicit bias effect
+is in the opposite of the predicted direction: Countries with higher
+gender equality have larger implicit bias.
+
+\subsection{Discussion}\label{discussion}
 
 \section{Study 2: Cross-cultural gender bias in
 language}\label{study-2-cross-cultural-gender-bias-in-language}
@@ -172,7 +199,7 @@ tractable. The best known of these word embedding models is
 as input a corpus of text and outputs a vector for each word
 corressponding to its semantics. From these vectors, we can derive a
 measure of the semantic similarity between two words by taking the
-distance between the word vectors (using cosine distance, for example).
+distance between their vectors (using cosine distance, for example).
 Similarity measures estimated from these models have been shown to be
 highly correlated with human judgements of word similarity (e.g., Hill,
 Reichart, \& Korhonen, 2015).
@@ -225,7 +252,7 @@ similarity of the target words to the target attributes (i.e.~relative
 similarity of male to career vs.~relative similarity of female to
 career). This measure is analagous the behavioral effect size measure in
 Study 1 and, like for the behavioral effect size, larger values indicate
-a larger bias.
+larger bias.
 
 \subsubsection{Results}\label{results-1}
 
@@ -262,6 +289,17 @@ measures should be positively correlated.
 
 \subsubsection{Method}\label{method-2}
 
+\begin{CodeChunk}
+\begin{figure}[t]
+
+{\centering \includegraphics{figs/behavior_vs_language_plot-1} 
+
+}
+
+\caption[Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries]{Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries; Study 1) versus gender bias effect size estimated from embedding models trained on each language.}\label{fig:behavior_vs_language_plot}
+\end{figure}
+\end{CodeChunk}
+
 For each country included in Study 1, we identifed the most frequently
 spoken language in those countries using the CIA factbook (Central
 Intelligence Agency, 2017). This included a total of 32 unique
@@ -278,11 +316,21 @@ had been previously used for a different version of the gender IAT
 
 We used these translations to calculate an effect size from the models
 trained on Wikipedia in each language, using the same methood as in
-Study 2a. We then compared estimates of linguistic gender bias to the
-behavioral gender bias effect sizes reported in Study 1 (averaging
-across countries that spoke the same primary language).
+Study 2a. We then compared the effect size of the linguistic gender bias
+to the behavioral gender bias across, averaging across countries that
+spoke the same language (weighting by sample size).
 
 \subsubsection{Results}\label{results-2}
+
+Implicit IAT gender bias effect sizes were positively correlated with
+effect sizes of gender bias estimated from the native language embedding
+model (\emph{r} = 0.48; \emph{p} = 0.03; Fig.~3), suggesting that
+countries that have more gender bias encoded in their language also have
+a larger psychological gender bias. Explicit gender bias was not
+reliably correlated with language gender bias (\emph{r} = 0.23; \emph{p}
+= 0.32).
+
+\subsection{Discussion}\label{discussion-1}
 
 \section{Study 3: Grammar and Gender
 Bias}\label{study-3-grammar-and-gender-bias}
@@ -294,46 +342,31 @@ also consistent with a second hypothesis in which the causal influence
 goes the opposition direction: Psychological gender bias leads to a
 gender bias becoming encoded in the language. In Study 3, we test the
 causal hypothesis more directly by examining whether there is a
-relationship between psychological gender bias and language along
+relationship between psychological gender bias and language along a
 linguistic dimension that is unlikely to be subject to change -- namely,
 grammatical gender. While of course grammars do change, they are less
-malaable than the semantics of words, and thus less likely to be
-casually affected by psychological biases. We predict, therefore, that
-if there is some causal influence of language on psycholgical biases
-languages that encode gender grammatically bias will tend to have large
-psychological gender biases.
+malleable than the semantics of words, and thus less likely to be
+affected by psychological biases. We predict, therefore, that if there
+is some causal influence of language on psycholgical biases languages
+that encode gender grammatically will tend to have larger psychological
+gender biases.
 
 \subsection{Method}\label{method-3}
 
 \subsection{Results}\label{results-3}
 
-\begin{CodeChunk}
-\begin{figure}[t]
-
-{\centering \includegraphics{figs/grammatical_gender_plot-1} 
-
-}
-
-\caption[Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries]{Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries; Study 1) versus gender bias effect size estimated from embedding models trained on each language.}\label{fig:grammatical_gender_plot}
-\end{figure}
-\end{CodeChunk}
+\subsection{Discussion}\label{discussion-2}
 
 \section{Study 4: exploring bias more
 directly}\label{study-4-exploring-bias-more-directly}
 
 \section{to do}\label{to-do}
 
-\begin{itemize}
-\tightlist
-\item
-  does anything predict gender inqequality in study 1 (that paper i saw)
-\item
-  explain language != culture thing
-\item
-  a bunch more words for google translate
-\item
-  break down men vs women (?) \# Conclusion
-\end{itemize}
+does anything predict gender inqequality in study 1 (that paper i saw)
+explain language != culture thing a bunch more words for google
+translate break down men vs women (?)
+
+\section{Conclusion}\label{conclusion}
 
 \section{References}\label{references}
 
@@ -385,5 +418,9 @@ arXiv:1301.3781}.
 Nosek, B. A., Banaji, M. R., \& Greenwald, A. G. (2002). Harvesting
 implicit group attitudes and beliefs from a demonstration web site.
 \emph{Group Dynamics: Theory, Research, and Practice}, \emph{6}(1), 101.
+
+\hypertarget{ref-wps}{}
+Women's Peace and Security Index. (2017). Retrieved from
+\url{https://giwps.georgetown.edu/}
 
 \end{document}

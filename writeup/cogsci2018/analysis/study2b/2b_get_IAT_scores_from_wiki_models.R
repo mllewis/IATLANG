@@ -99,7 +99,7 @@ get_wiki_es <- function(current_lang, calculated_prefix, output_path, word_list)
 }
 
 # do the thing
-walk("tr", get_wiki_es, CALCULATED_VECTOR_PATH, ES_OUTPUT_PATH, WORD_LIST)
+walk(wiki_langs, get_wiki_es, CALCULATED_VECTOR_PATH, ES_OUTPUT_PATH, WORD_LIST)
 
 ######################## loop over langs and get effect sizes ########################
 count_missing<- function(current_lang, calculated_prefix, output_path){

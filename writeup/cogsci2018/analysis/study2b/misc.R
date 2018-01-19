@@ -195,10 +195,62 @@ ggplot(all, aes(x = es_behavioral_iat_weighted, y = es_google_translation)) +
                                                         fill = TRUE)  %>%
   select(-test_id, -test_name)
 
+#parity stuff
 
 behavior_lang_cor_imp <- cor.test(all$es_hand_translation, all$es_behavioral_iat_weighted)
 ggplot(all %>%, aes(x = es_hand_translation, y = es_behavioral_iat_weighted)) +
   geom_text(aes(label = language_name))
+
+gdi <- read_csv("analysis/study1/data/GDI_index_2016.csv", na = "..") %>%
+  select(1:2) %>%
+  mutate(country_name = fct_recode(country_name, 
+                                   "Hong Kong" = "Hong Kong, China (SAR)",
+                                   "Republic of Korea" = "Korea (Republic of)",
+                                   "UK" = "United Kingdom",
+                                   "United States of America" = "United States"))
+wps <- read_tsv("analysis/study1/data/WPS_index.csv") %>%
+  mutate(country_name = fct_recode(country_name, 
+                                   "Republic of Korea" = "Korea, Republic of",
+                                   "UK" = "United Kingdom"))
+
+country_means_career_implicit_with_indices <- country_means_career_implicit %>%
+  left_join(gdi) %>%
+  left_join(wps) 
+
+cor.test(country_means_career_implicit_with_indices$es_behavioral_iat, 
+         country_means_career_implicit_with_indices$wps_index)
+
+
+
+```{r}
+google_expanded_es_with_grammar <- google_expanded_es %>%
+  left_join(gender_data %>% select(language_code, wikipedia_grammar_type2), by = c("wiki_language_code" = "language_code")) %>%
+  filter(!is.na(wikipedia_grammar_type2) )
+
+ggplot(google_expanded_es_with_grammar, 
+       aes(x = es_google_translation_ex, y = es_behavioral_iat_weighted, color = wikipedia_grammar_type2)) +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_text_repel(aes(label = language_name), size = 2.3) + 
+  geom_point() +
+  facet_wrap(~wikipedia_grammar_type2)
+
+google_expanded_es_with_grammar %>%
+  group_by(wikipedia_grammar_type2)%>%
+  do(tidy(cor.test(.$es_google_translation_ex, .$es_behavioral_iat_weighted)))
+
+
+hand_es_with_grammar <- all %>%
+  left_join(gender_data %>% select(language_code, wikipedia_grammar_type2), by = c("wiki_language_code" = "language_code")) %>%
+  filter(!is.na(wikipedia_grammar_type2) )
+
+ggplot(hand_es_with_grammar, 
+       aes(x = es_hand_translation, y = es_behavioral_iat_weighted, color = wikipedia_grammar_type2)) +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_text_repel(aes(label = language_name), size = 2.3) + 
+  geom_point() +
+  facet_wrap(~wikipedia_grammar_type2)
+
+```
 
 
 
