@@ -86,13 +86,13 @@ female/career). Participants are then presented with a word related to
 one of the four concepts and asked to classify it as quickly as possible
 by responding with one of the two keys. Slower reaction times in the
 bias-incongruent blocks relative to the bias-congruent blocks are
-interpretted as indicating an implicit association between the
+interpreted as indicating an implicit association between the
 corresponding concepts (i.e.~a bias to associate male with career, and
 female with family).
 
 \subsection{Method}\label{method}
 
-We analyzed an exisiting dataset of IAT scores collected online from a
+We analyzed an existing dataset of IAT scores collected online from a
 large, culturally diverse sample (Project Implicit:
 \url{https://implicit.harvard.edu/implicit/}; Nosek, Banaji, \&
 Greenwald,
@@ -110,10 +110,10 @@ Several measures have been used in the literature to describe the
 difference in reaction time between bias congruent and incongruent
 blocks. Here, we use the best performing measure, D-score, which
 quantifies the difference between critical blocks for each participant
-while controling for individual differences in response time (Greenwald,
-Nosek, \& Banaji, 2003). For each country, we calculated an effect size
-as the mean D-score divided by its standard deviation (Cohen's
-\emph{d}), with larger values indicate greater bias.
+while controlling for individual differences in response time
+(Greenwald, Nosek, \& Banaji, 2003). For each country, we calculated an
+effect size as the mean D-score divided by its standard deviation
+(Cohen's \emph{d}), with larger values indicate greater bias.
 
 In addition to the implicit measure, we also analyzed an explicit
 measure of gender bias. After completing the IAT, participants were
@@ -162,7 +162,7 @@ compared to males (\emph{t} = 97.23; \emph{p} \textless{} .00001).
 
 }
 
-\caption[Magnitude of thie implicit gender bias (measured by the IAT) predicted by an indepedent measure of gender equality, Women's Peace and Security Index (WPS)]{Magnitude of thie implicit gender bias (measured by the IAT) predicted by an indepedent measure of gender equality, Women's Peace and Security Index (WPS).  Each point corresponds to a country. Contra our prediction, we find that countries with greater gender equality have larger implicit bias.}\label{fig:WPS_plot}
+\caption[Magnitude of the implicit gender bias (measured by the IAT) predicted by an independent measure of gender equality, Women's Peace and Security Index (WPS)]{Magnitude of the implicit gender bias (measured by the IAT) predicted by an independent measure of gender equality, Women's Peace and Security Index (WPS).  Each point corresponds to a country. Contra our prediction, we find that countries with greater gender equality have larger implicit bias.}\label{fig:WPS_plot}
 \end{figure}
 \end{CodeChunk}
 
@@ -192,12 +192,12 @@ distributional semantics (Firth, 1957). Under this approach, a word like
 than ``banana'' in a large corpus of text.
 
 Recent developments in machine learning allow the idea of distributional
-semantics to be implentented in a way that both takes into account many
+semantics to be implemented in a way that both takes into account many
 features of local language structure while remaining computationally
 tractable. The best known of these word embedding models is
 \emph{word2vec} (Mikolov, Chen, Corrado, \& Dean, 2013). The model takes
 as input a corpus of text and outputs a vector for each word
-corressponding to its semantics. From these vectors, we can derive a
+corresponding to its semantics. From these vectors, we can derive a
 measure of the semantic similarity between two words by taking the
 distance between their vectors (using cosine distance, for example).
 Similarity measures estimated from these models have been shown to be
@@ -206,13 +206,14 @@ Reichart, \& Korhonen, 2015).
 
 In addition to quantifying word similarity, models like word2vec have
 been used to measure the presence of social biases in the semantics of
-English in a way that is highly analogus to the behvioral IAT (Caliskan,
-Bryson, \& Narayanan, 2017; henceforth \emph{CBN}). This is done by
-measuring the distance in vector space between the same sets of words
-that are presented to participants in the IAT task. CBN demonstrate that
-these distance measures are highly correlated with reaction times in the
-behavioral IAT task, suggesting that the biases measured by the IAT are
-also found in the lexical semantics of natural language.
+English in a way that is highly analoguous to the behavioral IAT
+(Caliskan, Bryson, \& Narayanan, 2017; henceforth \emph{CBN}). This is
+done by measuring the distance in vector space between the same sets of
+words that are presented to participants in the IAT task. CBN
+demonstrate that these distance measures are highly correlated with
+reaction times in the behavioral IAT task, suggesting that the biases
+measured by the IAT are also found in the lexical semantics of natural
+language.
 
 In Study 2, we use the method described by CBN to measure the biases in
 the semantics of the natural languages spoken in the countries of
@@ -235,7 +236,7 @@ We use a word embedding model that has been pre-trained model on the
 corpus of English Wikipedia using the fastText algorithm (Bojanowski et
 al.,
 2016)\footnote{Available here: https://github.com/facebookresearch/fastText/}.
-The model contains 2,519,370 words with each word reprsented by a 300
+The model contains 2,519,370 words with each word represented by a 300
 dimension vector.
 
 Using the Wikpedia fastText model, we calculate an effect size for each
@@ -250,7 +251,7 @@ as WEAT 1-10 in CBN). We calculate the bias using the same effect size
 metric described in CBN, a standardized difference score of the relative
 similarity of the target words to the target attributes (i.e.~relative
 similarity of male to career vs.~relative similarity of female to
-career). This measure is analagous the behavioral effect size measure in
+career). This measure is analogous the behavioral effect size measure in
 Study 1 and, like for the behavioral effect size, larger values indicate
 larger bias.
 
@@ -268,7 +269,7 @@ larger bias.
 \end{CodeChunk}
 
 Figure 2 shows the effect size measures derived from the Wikipedia
-corpus plotted against effect size esimtates reported by CBN from two
+corpus plotted against effect size estimates reported by CBN from two
 different models (trained on the Common Crawl and Google News corpora).
 With the exception of biases related to race and age, effect sizes from
 the Wikipedia corpus are comparable to those reported by CBN. In
@@ -284,7 +285,7 @@ relationship between psychological and linguistic gender biases. In
 Study 2b, we estimate the magnitude of the gender-career bias in each of
 the languages spoken in the countries described in Study 1 and compare
 it with estimates of behavioral gender bias from Study 1. If language
-causally influences psyschological gender bias, we predict these two
+causally influences psychological gender bias, we predict these two
 measures should be positively correlated.
 
 \subsubsection{Method}\label{method-2}
@@ -296,11 +297,11 @@ measures should be positively correlated.
 
 }
 
-\caption[Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries]{Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries; Study 1) versus gender bias effect size estimated from embedding models trained on each language.}\label{fig:behavior_vs_language_plot}
+\caption[Gender bias effect size for each language from the behavioral IAT task (averaging across countries]{Gender bias effect size for each language from the behavioral IAT task (averaging across countries; Study 1) versus gender bias effect size estimated from embedding models trained on each language.}\label{fig:behavior_vs_language_plot}
 \end{figure}
 \end{CodeChunk}
 
-For each country included in Study 1, we identifed the most frequently
+For each country included in Study 1, we identified the most frequently
 spoken language in those countries using the CIA factbook (Central
 Intelligence Agency, 2017). This included a total of 32 unique
 languages. For a sample of 20 of these languages (see Fig.~3), we had
@@ -315,10 +316,10 @@ had been previously used for a different version of the gender IAT
 (e.g., ``male,'' ``man,'' ``female,'' ``woman;'' Nosek et al., 2002).
 
 We used these translations to calculate an effect size from the models
-trained on Wikipedia in each language, using the same methood as in
-Study 2a. We then compared the effect size of the linguistic gender bias
-to the behavioral gender bias across, averaging across countries that
-spoke the same language (weighting by sample size).
+trained on Wikipedia in each language, using the same method as in Study
+2a. We then compared the effect size of the linguistic gender bias to
+the behavioral gender bias, averaging across countries that spoke the
+same language (weighting by sample size).
 
 \subsubsection{Results}\label{results-2}
 
@@ -347,7 +348,7 @@ linguistic dimension that is unlikely to be subject to change -- namely,
 grammatical gender. While of course grammars do change, they are less
 malleable than the semantics of words, and thus less likely to be
 affected by psychological biases. We predict, therefore, that if there
-is some causal influence of language on psycholgical biases languages
+is some causal influence of language on psychological biases languages
 that encode gender grammatically will tend to have larger psychological
 gender biases.
 
@@ -356,15 +357,6 @@ gender biases.
 \subsection{Results}\label{results-3}
 
 \subsection{Discussion}\label{discussion-2}
-
-\section{Study 4: exploring bias more
-directly}\label{study-4-exploring-bias-more-directly}
-
-\section{to do}\label{to-do}
-
-does anything predict gender inqequality in study 1 (that paper i saw)
-explain language != culture thing a bunch more words for google
-translate break down men vs women (?)
 
 \section{Conclusion}\label{conclusion}
 
