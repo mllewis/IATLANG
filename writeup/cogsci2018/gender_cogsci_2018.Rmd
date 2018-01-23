@@ -34,11 +34,18 @@ library(grid)
 library(xtable)
 library(ggrepel)
 library(langcog)
+library(compute.es)
 
 TEXT_SIZE <- 10
 ```
 
 # Introduction
+ -> why these effects matter
+
+Chugh, D. (2004). Societal and managerial implications of implicit social cognition: Why milliseconds matter. Social Justice Research, 17, 203– 222. doi:10.1023/B:SORE.0000027410.26010.40
+Rudman, L. A. (2004). Social justice in our minds, homes, and society: The nature, causes, and consequences of implicit bias. Social Justice Re- search, 17, 129–142. doi:10.1023/B:SORE.0000027406.32604.f6
+
+correlations are small with explict (oswald 2013), but matter Greenwald (2015; https://faculty.washington.edu/agg/pdf/Greenwald,Banaji&Nosek.JPSP.2015.pdf)
 
 # Study 1: Cross-cultural gender bias in implicit behavior
 We quantified the degree of gender bias in a culture using data from the Implicit Association Task [IAT; @greenwald1998measuring]. The IAT measures the strength of respondents' associations between two pairs of concepts (e.g., male-career/female-family vs.\ male-family/female-career). The underlying assumption of the measure is that concepts that are represented as more similar to each other should be easier to pair together in a behavioral task, compared to two concepts that are relatively dissimilar. Concepts are paired in the task by assigning them to the same response keys in a 2AFC categorization task. In the critical blocks of the task, concepts are assigned to keys in a way that is either bias-congruent (i.e. Key A = male/career; Key B = female/family) or bias-incongruent (i.e. Key A = male/family; Key B = female/career). Participants are then presented with a word related to one of the four concepts and asked to classify it as quickly as possible by responding with one of the two keys. Slower reaction times in the bias-incongruent blocks relative to the bias-congruent blocks are interpreted as indicating an implicit association between the corresponding concepts (i.e.\ a bias to associate male with career, and female with family). 
@@ -47,7 +54,10 @@ We quantified the degree of gender bias in a culture using data from the Implici
 
 ```{r}
 raw_iat_behavioral <- read_feather("analysis/study1/data/Gender-Career IAT.public.2005-2016.feather") %>%
-  select(D_biep.Male_Career_all,sex, countryres,PCT_error_3467, Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, Mn_RT_all_7, assocareer, assofamily,N_ERROR_3, N_ERROR_4, N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7) %>%
+  select(D_biep.Male_Career_all,sex, countryres, PCT_error_3467, 
+         Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, 
+         Mn_RT_all_7, assocareer, assofamily,N_ERROR_3, N_ERROR_4,
+         N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7) %>%
     rename(overall_iat_D_score = D_biep.Male_Career_all) 
 
 # this file is "Gender-Career/Gender-Career IAT.public.2005-2016.sav" in feather form (taken from: https://osf.io/gmewy/) 
@@ -60,6 +70,7 @@ raw_iat_behavioral_complete <- raw_iat_behavioral %>%
                                 filter(sex %in% c("f", "m"),
                                        !is.na(countryres), 
                                        countryres != ".",
+                                       countryres != "nu",  # not clear what this refersto (it's lower case and not in codebook- Niue seems unlikely)
                                        !is.na(overall_iat_D_score))
 
 country_ns <- raw_iat_behavioral_complete %>%
@@ -69,13 +80,12 @@ country_ns <- raw_iat_behavioral_complete %>%
 
 raw_iat_behavioral_complete_dense_country <- raw_iat_behavioral_complete %>%
   filter(countryres %in% country_ns$countryres)
-
 ```
 
 ```{r, behavioral_exclusions}
 # same exclusions as Nosek, Banjali, & Greenwald (2002), pg. 104. 
 iat_behavioral <- raw_iat_behavioral_complete_dense_country %>%
-  filter(Mn_RT_all_3467 <= 1500, #RTs
+  filter(Mn_RT_all_3467 <= 1500, # RTs
          Mn_RT_all_3 <= 1800,
          Mn_RT_all_4 <= 1800,
          Mn_RT_all_6 <= 1800,
@@ -86,22 +96,19 @@ iat_behavioral <- raw_iat_behavioral_complete_dense_country %>%
          N_ERROR_7/N_7 <=.25)
 ```
 
-
 ```{r, tidy_names}
-iat_behavioral_tidy <- iat_behavioral %>%
-        mutate(country_name = countrycode(countryres,
-                                    "iso2c",
-                                    "country.name"),
-              country_name = replace(country_name, 
-                                country_name == "Viet Nam", "Vietnam"),
-              country_name = replace(country_name, 
-                                country_name == "Taiwan, Province of China", "Taiwan"),
-              country_name = replace(country_name, 
-                                countryres == "UK", "UK"))
+project_implicit_countries <- read_csv("analysis/study1/data/project_implicit_country_codes.csv") 
+# these are from Gender-Career_IAT_public_2005-2016_codebook.xlsx; country_name are relabeled from original
 
+iat_behavioral_tidy <- iat_behavioral %>% # join in country names
+                          left_join(project_implicit_countries) %>%
+                          select(-countryres)
+
+country_ns_final <- iat_behavioral_tidy %>%
+                           count(country_name)  
 ```
 
-We analyzed an existing dataset of IAT scores collected online from a large, culturally diverse sample [Project Implicit: https://implicit.harvard.edu/implicit/; @nosek2002harvesting]\footnote{All analysis code can be found in an online repository: https://github.com/mllewis/IATLANG}. Our analysis included all gender-career IAT scores collected from respondents between 2005 and 2016 who had complete data and  were located in countries with more than `r MIN_PARTICIPANTS_PER_COUNTRY` total respondents (_N_ = `r format(nrow(raw_iat_behavioral_complete_dense_country),big.mark=",")`). We further restricted our sample based on participants' reaction times and errors using the same criteria described in Nosek, Banjai, and Greenwald (2002, pg. 104). Our final sample included `r format(nrow(iat_behavioral),big.mark=",")` participants from `r nrow(country_ns)` countries, with a median of `r format(round(median(country_ns$n)), big.mark = ",")` participants per country.
+We analyzed an existing dataset of IAT scores collected online from a large, culturally diverse sample [Project Implicit: https://implicit.harvard.edu/implicit/; @nosek2002harvesting]\footnote{All analysis code can be found in an online repository: https://github.com/mllewis/IATLANG}. Our analysis included all gender-career IAT scores collected from respondents between 2005 and 2016 who had complete data and  were located in countries with more than `r MIN_PARTICIPANTS_PER_COUNTRY` total respondents (_N_ = `r format(nrow(raw_iat_behavioral_complete_dense_country),big.mark=",")`). We further restricted our sample based on participants' reaction times and errors using the same criteria described in Nosek, Banjai, and Greenwald (2002, pg. 104). Our final sample included `r format(nrow(iat_behavioral),big.mark=",")` participants from `r nrow(country_ns_final)` countries, with a median of `r format(round(median(country_ns_final$n)), big.mark = ",")` participants per country.
 
 <!-- exclusion rate = nosek's (15%) --> 
 Several measures have been used in the literature to describe the difference in reaction time between bias congruent and incongruent blocks. Here, we use the best performing measure, D-score, which quantifies the difference between critical blocks for each participant while controlling for individual differences in response time [@greenwald2003understanding]. For each country, we calculated an effect size as the mean D-score divided by its standard deviation (Cohen's _d_), with larger values indicate greater bias.
@@ -112,11 +119,10 @@ Finally, we also examined an independent measure of gender parity, called the Wo
 
 ## Results
 
-```{r map, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.8, fig.height=2.5, set.cap.width=T, num.cols.cap=1, fig.cap = "IAT gender bias effect size for 49 countries with available data. All countries show a gender bias, with red indicating above average and blue indicating below average bias."}
+```{r map, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.8, fig.height=2.5, set.cap.width=T, num.cols.cap=1, fig.cap = "IAT gender bias effect size for 48 countries with available data. All countries show a gender bias, with red indicating above average and blue indicating below average bias."}
 country_means_career_implicit <- iat_behavioral_tidy %>%
   group_by(country_name) %>%
-  summarize(mean_iat = mean(overall_iat_D_score),
-            es_behavioral_iat = mean(overall_iat_D_score)/sd(overall_iat_D_score)) 
+  summarize(es_behavioral_iat = mean(overall_iat_D_score)/sd(overall_iat_D_score)) 
 
 map_world <- map_data(map = "world") %>%
   mutate(country_name = region) %>%
@@ -190,11 +196,16 @@ imp_exp_country_es <- cor.test(country_means_career_explicit_es$es_behavioral_ia
 men <- filter(iat_behavioral_tidy, sex == "m")
 women <- filter(iat_behavioral_tidy, sex == "f")
 t_test_gender <- t.test(women$overall_iat_D_score, men$overall_iat_D_score, paired = F)
+
+n1 <- 470215 #nrow(women)# weirdly this doesn't work as variables
+n2 <- 193494 #nrow(men) 
+gender_participant_d <-  tes(t_test_gender$statistic[[1]], n1, n2)
+
 ```
 
-Broadly, we replicate previous findings in the literature on the gender-career IAT [@nosek2002harvesting]. First, participants in all countries showed a bias to associate men with career and females with family. Figure 1 shows the magnitude of the IAT gender bias (effect size) across all 49 countries (_M_ = `r round(mean(country_means_career_implicit$mean_iat),2)`; _SD_ = `r round(sd(country_means_career_implicit$mean_iat),2)`). Second, implicit and explicit bias measures were correlated both at the level of individual participants (_r_ = `r round(as.numeric(imp_exp_subjs$estimate), 2)`; _p_ < .00001) and at the level of countries (_r_ = `r round(as.numeric(imp_exp_country_es$estimate), 2)`; _p_ = `r round(as.numeric(imp_exp_country_es$p.value), 2)`). Third, consistent with previous findings [@nosek2002harvesting], the magnitude of the implicit bias is larger for female participants compared to males  (_t_ = `r round(as.numeric(t_test_gender$statistic), 2)`; _p_ < .00001).
+Broadly, we replicate previous findings in the literature on the gender-career IAT [@nosek2002harvesting]. First, participants in all countries showed a bias to associate men with career and females with family. Figure 1 shows the magnitude of the IAT gender bias (effect size) across all 48 countries (_M_ = `r round(mean(country_means_career_implicit$mean_iat),2)`; _SD_ = `r round(sd(country_means_career_implicit$mean_iat),2)`). Second, implicit and explicit bias measures were correlated both at the level of individual participants (_r_ = `r round(as.numeric(imp_exp_subjs$estimate), 2)`; _p_ < .00001) and at the level of countries (_r_ = `r round(as.numeric(imp_exp_country_es$estimate), 2)`; _p_ = `r round(as.numeric(imp_exp_country_es$p.value), 2)`). Third, consistent with previous findings [@nosek2002harvesting], the magnitude of the implicit bias is larger for female participants compared to males  (_d_ = `r gender_participant_d$d`; _p_ < .00001). <low correlation consistent with the idea that implicit and explicit measure different things, oswald 2013>
 
-```{r WPS_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Magnitude of the implicit gender bias (measured by the IAT) predicted by an independent measure of gender equality, Women's Peace and Security Index (WPS).  Each point corresponds to a country. Contra our prediction, we find that countries with greater gender equality have larger implicit bias."}
+```{r WPS_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Magnitude of the implicit gender bias (measured by the IAT) predicted by an independent measure of gender equality, Women's Peace and Security Index (WPS).  Each point corresponds to a country with outlier points labeled. Contra our prediction, we find that countries with greater gender equality have larger implicit bias."}
 wps <- read_csv("analysis/study1/data/WPS_index.csv") %>%
     mutate(country_name = fct_recode(country_name, 
                                    "Republic of Korea" = "Korea, Republic of",
@@ -212,24 +223,24 @@ country_means_career_implicit_index <- cor.test(country_means_career_implicit_wi
 
 ggplot(country_means_career_implicit_with_index,
        aes(x = wps_index, y = es_behavioral_iat)) +
-    geom_point(aes(fill=es_behavioral_iat),pch=21, size = 2) +
+      geom_point(aes(fill=es_behavioral_iat),pch=21, size = 2) +
 
-  geom_text_repel(aes(label = country_name2), size = 2.3) +
-  geom_smooth(method = "lm", alpha = .2, color = "black") +
-  scale_fill_gradient2("", breaks =  c(.9, 1, 1.1, 1.2),
+      geom_text_repel(aes(label = country_name2), size = 2.3) +
+      geom_smooth(method = "lm", alpha = .2, color = "black") +
+      scale_fill_gradient2("", breaks =  c(.9, 1, 1.1, 1.2),
                        limits=c(SCALE_MIDPOINT - .2, SCALE_MIDPOINT + .2), 
                        midpoint = SCALE_MIDPOINT, 
                        low = "blue", high = "red") +
-  ylab("Implicit Behavioral Gender Bias \n(effect size)") +
-  xlab("Women's Peace and Security Index") +
-  #geom_label(aes(label = country_name), size = .9)
-  annotate("text", x = .8, y = .87, 
+      ylab("Implicit Behavioral Gender Bias \n(effect size)") +
+      xlab("Women's Peace and Security Index") +
+      #geom_label(aes(label = country_name), size = .9)
+      annotate("text", x = .8, y = .87, 
            label = paste0("r = ", round(unlist(country_means_career_implicit_index$estimate, use.names = F),2)),
            color = "red",
            size = 5) +
-  theme_minimal() +
-  theme(text = element_text(size = TEXT_SIZE), 
-        legend.position = "none")
+      theme_minimal() +
+      theme(text = element_text(size = TEXT_SIZE), 
+            legend.position = "none")
 
 country_means_career_explicit_with_index <- country_means_career_explicit_es %>%
   left_join(wps) 
@@ -237,11 +248,9 @@ country_means_career_explicit_with_index <- country_means_career_explicit_es %>%
 country_means_career_explicit_index <- cor.test(country_means_career_explicit_with_index$mean_diff, country_means_career_explicit_with_index$wps_index)
 ```
 
-
 We next asked whether our independent measure of gender equality, WPS, predicted variability in implicit and explicit gender bias by country. WPS was strongly correlated with implicit bias (_r_ = `r unlist(round(country_means_career_implicit_index$estimate, 2), use.names = F)`; _p_ =  <.01; Fig.\ X), but not explicit bias (_r_ = `r unlist(round(country_means_career_explicit_index$estimate, 2), use.names = F)`; _p_ = `r unlist(round(country_means_career_explicit_index$p.value, 2), use.names = F)`). However, we find that the implicit bias effect is in the opposite of the predicted direction: Countries with higher gender equality have larger implicit bias. 
 
 ## Discussion
-
 
 
 # Study 2: Cross-cultural gender bias in language
@@ -258,7 +267,6 @@ In Study 2, we use the method described by CBN to measure the biases in the sema
 We use a word embedding model that has been pre-trained model on the corpus of English Wikipedia using the fastText algorithm [@bojanowski2016enriching]\footnote{Available here: https://github.com/facebookresearch/fastText/}. The model contains 2,519,370 words with each word represented by a 300 dimension vector. 
 
 Using the Wikpedia fastText model, we calculate an effect size for each of the 10 biases reported in CBN which correspond to behavioral IAT results existing in the literature:   flowers/insects/pleasant/unpleasant, instruments/weapons/pleasant/unpleasant, European-American/Afro-American/pleasant/unpleasant\footnote{CBN test three versions of this bias.},  males/females/career/family, math/arts/male/female, science/arts/male/female, mental disease/physical disease/permanent/temporary, and young/old/pleasant/unpleasant (labeled as WEAT 1-10 in CBN). We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous the behavioral effect size measure in Study 1 and, like for the behavioral effect size, larger values indicate larger bias.
-
 
 ### Results
 ```{r WEAT_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.6, fig.height=3.6, set.cap.width=T, num.cols.cap=1, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). The effect sizes reported in CBN are plotted against  effect sizes from the Wikipedia corpus.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
@@ -365,7 +373,7 @@ max_prop_es_translations <- unique_langs_per_country %>%
 # average across countries weighting by number of participatns
 implicit_behavioral_means_by_language <- country_means_career_implicit %>%
   left_join(max_prop_es_translations) %>%
-  left_join(country_ns, by = c("country_code"= "countryres")) %>%
+  left_join(country_ns_final, by = c("country_code"= "countryres")) %>%
   group_by(language_name) %>%
   mutate(normalized_n = n/sum(n)) %>%
   select(wiki_language_code, language_name, country_name, 
@@ -380,7 +388,7 @@ header = F,
 
 all_hand_es <- implicit_behavioral_means_by_language %>%
   group_by(wiki_language_code, language_name) %>%
-  summarize(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
+  summarise(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
                                                        normalized_n, na.rm = T),
             es_behavioral_iat = mean(es_behavioral_iat)) %>%
   left_join(language_means_career_implicit_hand, by = "wiki_language_code")  %>%
@@ -394,21 +402,21 @@ col.names = c("wiki_language_code", "test_id", "test_name", "es_google_translati
 header = F,
                                                 fill = TRUE)  %>%
   select(-test_id, -test_name)
-
-google_expanded_es <- implicit_behavioral_means_by_language %>%
-  group_by(wiki_language_code, language_name) %>%
-  summarize(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
-                                                       normalized_n, na.rm = T),
-            es_behavioral_iat = mean(es_behavioral_iat)) %>%
-  left_join(language_means_career_implicit_g, by = "wiki_language_code")  %>%
-  filter(language_name != "Cantonese" & !is.na(es_behavioral_iat_weighted))  %>% ungroup()
+  
+  google_expanded_es <- implicit_behavioral_means_by_language %>%
+    group_by(wiki_language_code, language_name) %>%
+    summarise(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
+                                                         normalized_n, na.rm = T),
+              es_behavioral_iat = mean(es_behavioral_iat)) %>%
+    left_join(language_means_career_implicit_g, by = "wiki_language_code")  %>%
+    filter(language_name != "Cantonese" & !is.na(es_behavioral_iat_weighted))  %>% ungroup()
 
 behavior_lang_cor_imp_google <- cor.test(google_expanded_es$es_google_translation_ex, google_expanded_es$es_behavioral_iat_weighted)
 
 ggplot(google_expanded_es, aes(x = es_google_translation_ex, 
                       y = es_behavioral_iat_weighted)) +
   geom_smooth(method = "lm", alpha = .2, color = "black") +
-  geom_text_repel(aes(label = language_name), size = 2.3) + 
+  #geom_text_repel(aes(label = language_name), size = 2.3) + 
   geom_point() +
   annotate("text", x = .75, y = .9, 
            label = paste0("r = ", round(unlist(behavior_lang_cor_imp_google$estimate, use.names = F),2)),
@@ -449,7 +457,7 @@ We used these translations to calculate an effect size from the models trained o
 country_means_career_explicit_es_with_weights <- country_means_career_explicit_es %>%
   select(-es_behavioral_iat) %>%
   left_join(max_prop_es_translations, by = "country_name") %>%
-  left_join(country_ns, by = c("country_code"= "countryres")) %>%
+  left_join(country_ns_final, by = c("country_code"= "countryres")) %>%
   group_by(language_name) %>%
   mutate(normalized_n = n/sum(n))
 
@@ -482,7 +490,6 @@ gender_data <- read_csv("analysis/study3/data/gender_grammar.csv") %>%
 ## Results
 
 ```{r grammatical_gender_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Gender bias effect size for each language from the behavioral IAT task (averaging acrouss countries; Study 1) versus gender bias effect size estimated from embedding models trained on each language.", eval = F}
-
 
 
 ## es behavior
@@ -557,7 +564,7 @@ header = F, fill = TRUE)  %>% select(-test_id, -test_name)
 
 google_expanded_es <- implicit_behavioral_means_by_language %>%
   group_by(wiki_language_code, language_name) %>%
-  summarize(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
+  summarise(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
                                                        normalized_n, na.rm = T),
             es_behavioral_iat = mean(es_behavioral_iat)) %>%
   left_join(language_means_career_implicit_g, by = "wiki_language_code")  %>%
