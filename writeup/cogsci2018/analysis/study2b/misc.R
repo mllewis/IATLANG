@@ -254,4 +254,119 @@ ggplot(hand_es_with_grammar,
 
 
 
+## es behaviorv2
+iat_means_with_grammar <- all_hand_es %>%
+  full_join(gender_data, by = c("wiki_language_code" = "language_code")) %>%
+  select(-contains("test")) %>%
+  mutate(wikipedia_grammar_type2 = fct_recode(wikipedia_grammar_type2, 
+                                              "Grammatical Gender"= "MF", 
+                                              "No Grammatical Gender" = "none")) %>%
+  filter(!is.na(wikipedia_grammar_type2) & !is.na(es_hand_translation)) %>%
+  group_by(wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "es_behavioral_iat_weighted", na.rm = T) %>%
+  ungroup()
+
+ggplot(iat_means_with_grammar, 
+       aes(x = wikipedia_grammar_type2, 
+           y = mean, 
+           fill = wikipedia_grammar_type2, 
+           color = wikipedia_grammar_type2)) +
+  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper),  
+                  position = position_dodge(width = .9))
+
+## es hand
+iat_means_with_grammar <- all_hand_es %>%
+  full_join(gender_data, by = c("wiki_language_code" = "language_code")) %>%
+  select(-contains("test")) %>%
+  mutate(wikipedia_grammar_type2 = fct_recode(wikipedia_grammar_type2, 
+                                              "Grammatical Gender"= "MF", 
+                                              "No Grammatical Gender" = "none")) %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  group_by(wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "es_hand_translation", na.rm = T) %>%
+  ungroup()
+
+ggplot(iat_means_with_grammar, 
+       aes(x = wikipedia_grammar_type2, 
+           y = mean, 
+           fill = wikipedia_grammar_type2, 
+           color = wikipedia_grammar_type2)) +
+  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper),  
+                  position = position_dodge(width = .9))
+
+#m <- lm( es_behavioral_iat_weighted ~ es_hand_translation * wikipedia_grammar_type2,data = iat_means_with_grammar)
+
+#m <- lm( es_behavioral_iat_weighted ~ es_google_translation_ex + wikipedia_grammar_type2,data = iat_means_with_grammar_google)
+
+#summary(m)
+
+```
+
+```{r, include = F, eval = F}
+# es google expanded
+language_means_career_implicit_g <- read.csv("analysis/study2b/data/career_effect_sizes_google_translations_expanded.csv", 
+                                             col.names = c("wiki_language_code", "test_id", "test_name", "es_google_translation_ex"), 
+                                             header = F, fill = TRUE)  %>% select(-test_id, -test_name)
+
+google_expanded_es <- implicit_behavioral_means_by_language %>%
+  group_by(wiki_language_code, language_name) %>%
+  summarise(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
+                                                       normalized_n, na.rm = T),
+            es_behavioral_iat = mean(es_behavioral_iat)) %>%
+  left_join(language_means_career_implicit_g, by = "wiki_language_code")  %>%
+  filter(language_name != "Cantonese" & !is.na(es_behavioral_iat_weighted))  %>% ungroup()
+
+iat_means_with_grammar_google <- google_expanded_es %>%
+  full_join(gender_data, by = c("wiki_language_code" = "language_code")) %>%
+  select(-contains("test")) %>%
+  mutate(wikipedia_grammar_type2 = fct_recode(wikipedia_grammar_type2, 
+                                              "Grammatical Gender"= "MF", 
+                                              "No Grammatical Gender" = "none")) %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  group_by(wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "es_google_translation_ex", na.rm = T) %>%
+  ungroup()
+
+ggplot(iat_means_with_grammar_google, 
+       aes(x = wikipedia_grammar_type2, 
+           y = mean, 
+           fill = wikipedia_grammar_type2, 
+           color = wikipedia_grammar_type2)) +
+  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper),  
+                  position = position_dodge(width = .9))
+
+```
+
+```{r, eval = F}
+all <- country_means_career_explicit_es %>%
+  left_join(max_prop_es_translations) %>%
+  left_join(countries_to_langs, by = "country_name") %>%
+  group_by(wiki_language_code.x) %>%
+  summarize_at(vars(mean_diff:es_behavioral_iat), mean, na.rm = T) 
+
+full_d <- all %>%
+  full_join(gender_data, by = c("wiki_language_code.x" = "language_code")) %>%
+  select(-contains("test")) %>%
+  mutate(wikipedia_grammar_type2 = fct_recode(wikipedia_grammar_type2, 
+                                              "Grammatical Gender"= "MF", 
+                                              "No Grammatical Gender" = "none"))
+
+iat_means2 <-  full_d %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  group_by(wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "es_behavioral_iat", na.rm = T)
+
+ggplot(iat_means2, aes(x = wikipedia_grammar_type2, 
+                       y = mean, fill = wikipedia_grammar_type2, color = wikipedia_grammar_type2)) +
+  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper),  
+                  position = position_dodge(width = .9)) +
+  theme_minimal() +
+  ggtitle("Gender IAT Behavioral versus Grammar Type") +
+  ylab("IAT Behavioral Effect size") +
+  xlab("Grammar Type") +
+  scale_colour_manual(values = c("red", "blue")) +
+  theme(text = element_text(size = TEXT_SIZE),
+        legend.position = "none")
+```
+
 
