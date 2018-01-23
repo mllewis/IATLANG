@@ -500,7 +500,7 @@ gender_data <- read_csv("analysis/study3/data/gender_grammar.csv") %>%
                                           "No Grammatical Gender", 
                                           "Grammatical Gender"))
 ```
-For each of the `r length(unique(unique_langs_per_country$language_name))` languages represented in our sample of participants (Study 1), we coded whether gender was encoded grammatically. We used a coarse binary coding scheme, categorizing a language as encoding grammatical gender if it made any gender distinction on noun classes (male, female, common or neuter), and as not encoding gender grammatically otherwise. We coded this distinction on the basis of the WALS typological database where available [Feature 32a; @wals], and consulted additional resources as necessary. Our sample included `r nrow(filter(gender_data, wikipedia_grammar_type2 == "Grammatical Gender"))` languages that encoded grammatical gender and `r nrow(filter(gender_data, wikipedia_grammar_type2 == "No Grammatical Gender"))` that did not. 
+For each of the `r length(unique(unique_langs_per_country$language_name))` languages represented in our sample of participants (Study 1), we coded whether gender was encoded grammatically. We used a coarse binary coding scheme, categorizing a language as encoding grammatical gender if it made any gender distinction on noun classes (male, female, common or neuter), and as not encoding gender grammatically otherwise. We coded this distinction on the basis of the WALS typological database [Feature 32a; @wals], where available, and consulted additional resources as necessary. Our sample included `r nrow(filter(gender_data, wikipedia_grammar_type2 == "Grammatical Gender"))` languages that encoded grammatical gender and `r nrow(filter(gender_data, wikipedia_grammar_type2 == "No Grammatical Gender"))` that did not. 
 
 ## Results
 
@@ -520,6 +520,7 @@ iat_means_with_grammar %>%
   geom_boxplot() +
   #geom_text(aes(label = lang_label, x = as.numeric(as.factor(wikipedia_grammar_type2)) + .1, y = es_behavioral_iat_weighted + .01), size = 3, color = "black") +
   #geom_text_repel(aes(label = lang_label), color = "black", point.padding = .1, size = 3) +
+  scale_color_manual(values = c("red", "blue")) +
   geom_point(color = "black", alpha = .4,
              aes(x = jitter(as.numeric(as.factor(wikipedia_grammar_type2)), .5), 
                  shape = outlier_status), 
@@ -543,8 +544,10 @@ none <- filter(iat_means_with_grammar,
 with_hindi_t <- t.test(mf$es_behavioral_iat_weighted, 
                        none$es_behavioral_iat_weighted, 
                        paired = F)
-gender_grammar_d <- tes(with_hindi_t$statistic[[1]], nrow(mf), nrow(none), verbose = F)
-
+gender_grammar_d <- tes(with_hindi_t$statistic[[1]], 
+                        nrow(mf), 
+                        nrow(none), 
+                        verbose = F)
 ```
 
 ```{r behavior_grammar_no_hindi_stats}
@@ -589,11 +592,10 @@ d_language_grammar <- tes(t_language$statistic[[1]],
                         nrow(mf[!is.na(mf$es_hand_translation),]), 
                         nrow(none[!is.na(none$es_hand_translation),]), 
                         verbose = F)
-
 # Hindi and Hungarian not in hand-coded translations
 ```
 
-Languages that encode grammatical gender tended to have speakers with greater gender bias measured through the behavioral IAT (_M_ = `r round(mean(mf$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(mf$es_behavioral_iat_weighted), 2)`) compared to speakers of langauges that do not gramamtically encode gender (_M_ = `r round(mean(none$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(none$es_behavioral_iat_weighted), 2)`), though this difference was not reliable (_d_ = `r gender_grammar_d$d` [`r gender_grammar_d$l.d`, `r gender_grammar_d$u.d`], _t_(`r round(with_hindi_t$parameter,2)`) = `r round(with_hindi_t$statistic,2)`; _p_ = `r round(with_hindi_t$p.value, 2)`; Fig. 4). In a post-hoc analysis, we excluded outliers located more than two standard deviations from the group mean (Hungarian and Hindi). With these exclusions, we find a reliable difference between language types (_d_ = `r gender_grammar_d_no_hindi$d` [`r gender_grammar_d_no_hindi$l.d`, `r gender_grammar_d_no_hindi$u.d`], _t_(`r round(no_hindi_t$parameter,2)`) = `r round(no_hindi_t$statistic,2)`; _p_ < .01). In addition, we find the same pattern for language IAT (Study 2), with languages that encoded gender grammatical tending to have larger language IAT gender biases, compared to those who do not (_t_(`r round(t_language$parameter,2)`) = `r round(t_language$statistic[[1]],2)`; _p_ = `r round(t_language$p.value, 2)`).
+Languages that encode grammatical gender tended to have speakers with greater gender bias measured through the behavioral IAT (_M_ = `r round(mean(mf$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(mf$es_behavioral_iat_weighted), 2)`) compared to speakers of langauges that do not gramamtically encode gender (_M_ = `r round(mean(none$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(none$es_behavioral_iat_weighted), 2)`), though this difference was not reliable (_d_ = `r gender_grammar_d$d` [`r gender_grammar_d$l.d`, `r gender_grammar_d$u.d`], _t_(`r round(with_hindi_t$parameter,2)`) = `r round(with_hindi_t$statistic,2)`; _p_ = `r round(with_hindi_t$p.value, 2)`; Fig. 4). In a post-hoc analysis, we excluded outliers located more than two standard deviations from the group mean (Hungarian and Hindi). With these exclusions, we find a reliable difference between language types (_d_ = `r gender_grammar_d_no_hindi$d` [`r gender_grammar_d_no_hindi$l.d`, `r gender_grammar_d_no_hindi$u.d`]; _t_(`r round(no_hindi_t$parameter,2)`) = `r round(no_hindi_t$statistic,2)`; _p_ < .01). In addition, we find the same pattern for language IAT (Study 2), with languages that encoded gender grammatical tending to have larger language IAT gender biases, compared to those who do not (_t_(`r round(t_language$parameter,2)`) = `r round(t_language$statistic[[1]],2)`; _p_ = `r round(t_language$p.value, 2)`).
 
 ## Discussion
 
