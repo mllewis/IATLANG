@@ -1,0 +1,18 @@
+==== Gary Notes - project implicit === 
+
+- positive that D score is not flipped (emailed project implict): 
+
+The D_biep.Male_Career_all variable is the overall IAT D score and is the variable you will want to use for analysis. Your interpretation is correct that positive scores mean a stronger association for Male and Career and negative scores indicate a strong association for Female and Career. 
+
+- replicate caliskan 
+
+- both would have to be flipped to see this pattern
+
+- maybe related to female-male difference (females have bigger implicit vs. explicit)
+
+- though explicit questions funky
+
+Next things to do:
+	* dplace scores
+	* examine variability in word relationships
+

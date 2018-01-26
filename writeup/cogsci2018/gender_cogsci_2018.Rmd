@@ -1,5 +1,5 @@
 ---
-title: "Exploring a Causal Link between Language and Cultural Biases"
+title: "Language use shapes gender biases"
 bibliography: library.bib
 csl: apa6.csl
 document-params: "10pt, letterpaper"
@@ -26,7 +26,6 @@ knitr::opts_chunk$set(fig.width=3, fig.height=3, fig.crop = F, fig.pos = "tb", f
 ```{r, libraries}
 library(tidyverse)
 library(feather)
-#library(countrycode)
 library(broom)
 library(forcats)
 library(png)
@@ -40,15 +39,22 @@ TEXT_SIZE <- 10
 ```
 
 # Introduction
- -> why these effects matter
+The language used to communicate information influences how a listener interprets that information [@loftus1996eyewitness;@tversky1981framing;@fausey2010subtle]. You are more likely to to assume, for example, that a  . The language tool is perhaps most impactful in learning about a domain that is entirely arbitrary and must be transmitted explicitly: culture. In the present paper, we consider one aspect of culture---gender roles---and examine the extent to which differences in languge use may lead to cross-cultural variability in conceptions of gender. 
 
-Chugh, D. (2004). Societal and managerial implications of implicit social cognition: Why milliseconds matter. Social Justice Research, 17, 203– 222. doi:10.1023/B:SORE.0000027410.26010.40
-Rudman, L. A. (2004). Social justice in our minds, homes, and society: The nature, causes, and consequences of implicit bias. Social Justice Re- search, 17, 129–142. doi:10.1023/B:SORE.0000027406.32604.f6
+The gender domain is a useful case study of the relationship between language and thought for a number of reasons. First, there is reason to think that abstract domains, like gender,  may be more subject to the influence of language relative to more perceptually grounded domains [@boroditsky2001]. Second, many langauges encode gender explicitly in their grammar. Third, gender conceptions are highly variable across cultures and have clear and important social implications. And, fourth, there is independent evidence that language can play a powerful role in transmitting culture to chidlren [cimpian], including gender [other]. 
 
-correlations are small with explict (oswald 2013), but matter Greenwald (2015; https://faculty.washington.edu/agg/pdf/Greenwald,Banaji&Nosek.JPSP.2015.pdf)
+For our purposes, we define the hypothesis space of possible relationships between language and gender biases with two broad extremes: (1) language causally influences gender biases (_language-causal hypothesis_); (2) gender bias, which is attributable to language-independent factors, causally influences language (_language-as-reflection hypothesis_). We assume that the language-as-reflection hypothesis is true to some extent; the way we talk about gender almost certainly reflects how we think about gender.  If, for example, you think nurses are most commonly women, you are likely to use a female pronoun to refer to a generic nurse. Our goal here is to understand the extent to which language may also exert a causal influence on conceptualizations of gender.
 
-# Study 1: Cross-cultural gender bias in implicit behavior
-We quantified the degree of gender bias in a culture using data from the Implicit Association Task [IAT; @greenwald1998measuring]. The IAT measures the strength of respondents' implicit associations between two pairs of concepts (e.g., male-career/female-family vs.\ male-family/female-career). The underlying assumption of the measure is that concepts that are represented as more similar to each other should be easier to pair together in a behavioral task, compared to two concepts that are relatively dissimilar. Concepts are paired in the task by assigning them to the same response keys in a 2AFC categorization task. In the critical blocks of the task, concepts are assigned to keys in a way that is either bias-congruent (i.e. Key A = male/career; Key B = female/family) or bias-incongruent (i.e. Key A = male/family; Key B = female/career). Participants are then presented with a word related to one of the four concepts and asked to classify it as quickly as possible by responding with one of the two keys. Slower reaction times in the bias-incongruent blocks relative to the bias-congruent blocks are interpreted as indicating an implicit association between the corresponding concepts (i.e.\ a bias to associate male with career, and female with family). 
+In particular, we explore two possible mechanisms by which the way we speak may influence notions of gender [@whorf1945grammatical].\footnote{These mechanisms are what Whorf (1945) refers to as phenotypes (overt) and cryptotypes (covert).}  The first is through the overt grammatical marking of gender on nouns, which are obligatory in roughly one quarter of languages [e.g., in Spanish, “nina” (girl) and “enfermera” (nurse) both take plural marker _-a_ to indicate grammatical femininity; @corbett1991]. Because grammatical gender has a natural link to the real world, speakers may assume that grammatical markers are meaningful even when applied to inanimate objects that do not have a biological gender.  In addition, the mere presence of obligatory marking of grammatical gender may  promote bias  by making the  dimension of gender more salient to speakers.
+
+A second route by which language may shape psychological gender is through the distribution of words in use: Words that tend to occur in similar context in language may lead speakers to assume---either implicitly or explicitly---that they have similar meanings. For example, statistically, the word “nurse” occurs in many of the same contexts as the pronoun “her,” providing an implicit link between these two concepts that may lead to a bias to assume that nurses are female. This second route may be a particularly influential because the bias is encoded in language in a way that is more implicit than grammatical markers of gender.
+
+There is an existing body of experimental work that points to a link between language and psychological gender bias with both adults [e.g.,@phillips2003can] and children [e.g., @sera1994grammatical]. For example, Phillips and Boroditsky (2003) asked Spanish-English and German-English adult bilinguals to make similarity judgements between pairs of pictures depicting an object with a natural gender (e.g., a bride) and one without (e.g., a toaster). They found that participants rated pairs as more similar when the pictures matched in grammatical gender in their native language. While these types of studies provide suggestive evidence for a causal link between language and psychological gender bias, they are limited by the fact that they typically only compare speakers of  2-3 different languages and measure bias in a way that is explicit and thus subject to demand characteristics
+
+[INTRODUCE IAT/EMBEDDING MODELS] In what follows, we ask whether they way gender is encoded linguistically across 31 different languages predicts cross-cultural variability in psychological gender bias. We begin in Study 1 by describing cross-cultural variability in psychological gender biases as measured implicitly. In Studies 2 and 3, we try to predict this variability with cross-linguistic variability in lexical semantics and grammatical gender. Together, our data provide evidence suggesting that language plays a causal role in shaping culturally-specific notions of gender.
+
+# Study 1: Cross-cultural variability in psychological gender bias
+To quantify the degree of gender bias in a culture, we used data from the Implicit Association Task [IAT; @greenwald1998measuring]. The IAT measures the strength of respondents' implicit associations between two pairs of concepts (e.g., male-career/female-family vs.\ male-family/female-career). The underlying assumption of the measure is that concepts that are represented as more similar to each other should be easier to pair together in a behavioral task, compared to two concepts that are relatively dissimilar. Concepts are paired in the task by assigning them to the same response keys in a 2AFC categorization task. In the critical blocks of the task, concepts are assigned to keys in a way that is either bias-congruent (i.e. Key A = male/career; Key B = female/family) or bias-incongruent (i.e. Key A = male/family; Key B = female/career). Participants are then presented with a word related to one of the four concepts and asked to classify it as quickly as possible by responding with one of the two keys. Slower reaction times in the bias-incongruent blocks relative to the bias-congruent blocks are interpreted as indicating an implicit association between the corresponding concepts (i.e.\ a bias to associate male with career, and female with family). 
 
 ## Method
 
@@ -56,7 +62,7 @@ We quantified the degree of gender bias in a culture using data from the Implici
 raw_iat_behavioral <- read_feather("analysis/study1/data/Gender-Career IAT.public.2005-2016.feather") %>%
   select(D_biep.Male_Career_all,sex, countryres, PCT_error_3467, 
          Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, 
-         Mn_RT_all_7, assocareer, assofamily,N_ERROR_3, N_ERROR_4,
+         Mn_RT_all_7, assocareer, assofamily, N_ERROR_3, N_ERROR_4,
          N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7) %>%
     rename(overall_iat_D_score = D_biep.Male_Career_all) 
 
@@ -110,7 +116,7 @@ country_ns_final <- iat_behavioral_tidy %>%
 We analyzed an existing IAT dataset collected online by Project Implicit [https://implicit.harvard.edu/implicit/; @nosek2002harvesting]\footnote{All analysis code can be found in an online repository: https://github.com/mllewis/IATLANG}. Our analysis included all gender-career IAT scores collected from respondents between 2005 and 2016 who had complete data and  were located in countries with more than `r MIN_PARTICIPANTS_PER_COUNTRY` total respondents (_N_ = `r format(nrow(raw_iat_behavioral_complete_dense_country),big.mark=",")`). We further restricted our sample based on participants' reaction times and errors using the same criteria described in Nosek, Banjai, and Greenwald (2002, pg.\ 104). Our final sample included `r format(nrow(iat_behavioral), big.mark=",")` participants from `r nrow(country_ns_final)` countries, with a median of `r format(round(median(country_ns_final$n)), big.mark = ",")` participants per Country. Note that although the respondents were from largely non-English speaking countries, the IAT was conducted in English. We do not have language background data from the participants, but we assume that most respondents from non-English speaking countries were native speakers of the dominant language of the country and L2 speakers of English. 
 
 <!-- exclusion rate = nosek's (15%) --> 
-Several measures have been used in the literature to quantify gender biases from reaction time to congruent and incongruent blocks.  Here, we used the most robust measure, D-score, which quantifies the difference between critical blocks for each participant while controlling for individual differences in response time [@greenwald2003understanding]. For each country, we calculated an effect size as the mean D-score divided by its standard deviation (Cohen's _d_); larger values indicate greater bias.
+Several measures have been used in the literature to quantify the difference in reaction time between congruent and incongruent blocks.  Here, we used the most robust measure, D-score, which measures the difference between critical blocks for each participant while controlling for individual differences in response time [@greenwald2003understanding]. For each country, we calculated an effect size as the mean D-score divided by its standard deviation (Cohen's _d_); larger values indicate greater bias.
 
 In addition to the implicit measure, we also analyzed an explicit measure of gender bias. After completing the IAT, participants were asked, "How strongly do you associate the following with males and females?" for both the words "career" and "family." Participants indicated their response on a Likert scale ranging from female (1) to male (7).  We calculated an explicit gender bias score for each participant as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family.
 
@@ -229,8 +235,8 @@ ggplot(country_means_career_implicit_with_index,
                        limits = c(SCALE_MIDPOINT - .2, SCALE_MIDPOINT + .2), 
                        midpoint = SCALE_MIDPOINT, 
                        low = "blue", high = "red") +
-      ylab("Implicit Behavioral Gender Bias \n(effect size)") +
-      xlab("Women's Peace and Security Index") +
+      ylab("Psychological Gender Bias \n(effect size)") +
+      xlab("Women's Peace and Security Equality Index") +
       #geom_label(aes(label = country_name), size = .9)
       annotate("text", x = .8, y = .87, 
            label = paste0("r = ", round(unlist(country_means_career_implicit_index$estimate, 
@@ -251,16 +257,14 @@ country_means_career_explicit_index <- cor.test(country_means_career_explicit_wi
 Our independent measure of gender equality---the Women's Peace and Security Index---was uncorrelated with explicit bias (_r_ = `r unlist(round(country_means_career_explicit_index$estimate, 2), use.names = F)`; _p_ = `r unlist(round(country_means_career_explicit_index$p.value, 2), use.names = F)`). Counter to our expectations, we found that countries such as the Netherlands, with allegedly greatest gender equality, have participants with the highest implicit gender bias according to the IAT (_r_ = `r unlist(round(country_means_career_implicit_index$estimate, 2), use.names = F)`; _p_ <.01; Fig.\ X).
 
 ## Discussion
-In Study 1, we replicate previously reported patterns of gender bias in the gender-career IAT literature, with roughly comparable effect sizes (c.f.\ Nosek, et al.\ (2002): overall effect: _d_ = .72; explicit-implict correlation: _r_ = .17; participant gender effect: _d_  =  .1). The weak correlation between explicit and implicit measures is consistent with claims that these two measures tap into different cognitive constructs [@oswald2013predicting].
+In Study 1, we replicate previously reported patterns of gender bias in the gender-career IAT literature, with roughly comparable effect sizes (c.f.\ Nosek, et al., 2002: overall effect: _d_ = .72; explicit-implicit correlation: _r_ = .17; participant gender effect: _d_  =  .1). The weak correlation between explicit and implicit measures is consistent with claims that these two measures tap into different cognitive constructs [@oswald2013predicting].
 
-The novel finding from Study 1 is the direction of the correlation between actual gender equality of a country (as measured by the WPS) and implicit gender bias---participantsw in countries with greater ginder equality have _greater_ implicit gender bias. This robust correlation is particularly surpising given that the English was likely the second language for most of the participants in our sample. 
+The novel finding from Study 1 is the direction of the correlation between objective gender bias of a country (as measured by the WPS) and implicit gender bias---participants in countries with greater gender equality have _greater_ implicit gender bias. This robust correlation is particularly surprising given that the English was likely the second language for most of the participants in our sample, which introduces additional noise into the measurement. In the General Discussion, we speculate about possible reasons for this positive correlation. 
 
-# Study 2: Cross-cultural gender bias in language
-In Study 2, we ask whether participants' implicit and explicit gender biases are correlated with biases found in the semantics of participants' native languages. To model semantics, we turn to a recently developed machine-learning method for deriving lexical semantics from text: auto-encoding neural network models. The underlying assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with -- an approach known as distributional semantics [@firth1957synopsis]. Under this approach, a word like “dog” is represented more semantically similar to “hound” than “banana” because it co-occurs with words more in common with “hound” than “banana” in a large corpus of text. 
+# Study 2: Prediciting psychological gender bias with semantics
+In Study 2, we ask whether participants' psychological gender biases -- implicit and explicit -- are correlated with the semantic structure of their native languages. For example, are the semantics of the words “woman” and “family” more similar in Hungarian than in English? Evidence for a  positive correlation between psychological and semantic gender biases would suggest either that psychological gender biases derive partly from exposure to language or that language reflects pre-existing gender biases. Importantly, we expect psychological and semantic gender biases to be correlated regardless of the direction of the relationship between psychological and objective gender bias found in Study 1. 
 
-In Study 2, we ask whether participants' implicit and explicit gender
-biases are correlated with the semantic structure of different languages. For example, are the semantics of the words “woman” and “family” more similar in French than in English? To the extent that there are positive correlations between implicit and explicit gender-biases and semantics, we may speculate that the gender biases derive in part from exposure to language or else that the structure of the language reflects pre-existing gender biases. To model semantics, we turn to a
-machine-learning methods for deriving lexical semantics from large corpora of text: auto-encoding neural network models. The underlying assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with -- an approach known as distributional semantics [@firth1957synopsis]. Under this approach, a word like "dog" is represented as more similar to "hound" than "banana" because it occurs with words more in common with "hound" than "banana" where co-occurrences are effectively defined at multiple hierarchical levels.
+To model semantics, we turn to a machine-learning methods for deriving lexical semantics from large corpora of text: auto-encoding neural network models. The underlying assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with -- an approach known as distributional semantics [@firth1957synopsis]. Under this approach, a word like "dog" is represented as more similar to "hound" than "banana" because it occurs with words more in common with "hound" than "banana" where co-occurrences are effectively defined at multiple hierarchical levels.
 
 Recent developments in machine learning allow the idea of distributional
 semantics to be implemented in a way that both takes into account many
@@ -268,19 +272,19 @@ features of local language structure while remaining computationally
 tractable. The best known of these word embedding models is
 _word2vec_ [@mikolov2013efficient]. The model takes as input a corpus of text and outputs a vector for each word corresponding to its semantics. From these vectors, we can derive a measure of the semantic similarity between two words by taking the distance between their vectors (e.g., cosine distance). Similarity measures estimated from these models have been shown to be highly correlated with human judgements of word similarity [e.g., @hill2015simlex], though more for some forms of similarity than others [@chen2017evaluating].
 
-It turns out, that various human biases as measured by the IAT can be predicted from distributional semantics models like word2vec. Caliskan, Bryson,  and Narayanan (2017; henceforth _CBN_) measured the distance in vector space between the same sets of
+It turns out that various human biases as measured by the IAT can be predicted from distributional semantics models like word2vec. Caliskan, Bryson,  and Narayanan (2017; henceforth _CBN_) measured the distance in vector space between the same sets of
 words that are presented to participants in the IAT task. CBN
 found that these distance measures are highly correlated with
 reaction times in the behavioral IAT task. For example, in the career-gender IAT, CBN find a bias in the semantics of English to associate males with career  and females with family,  suggesting that the biases measured by the IAT are also found in the lexical semantics of natural
 language.
 
-In Study 2, we use the method described by CBN to measure the biases in the semantics of the natural languages spoken in the countries of participants in Study 1. While CBN only analyzed biases for models trained on English, we extend their method to compare biases across a wide number of languages. To do this, we take advantage of a set of models that have been pre-trained on a corpus of Wikipedia text in a large number of languages [@bojanowski2016enriching]. In Study 2a, we replicate the CBN findings with the Wikipedia corpus; In Study 2b, we show that the implicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the semantics of the natural language spoken by those participants.
+In Study 2, we use the same method described by CBN to measure the biases in the semantics of the natural languages spoken in the countries of participants in Study 1. While CBN only analyzed biases for models trained on English, we extend their method to compare biases across a wide number of languages. To do this, we take advantage of a set of models that have been pre-trained on a corpus of Wikipedia text in a large number of languages [@bojanowski2016enriching]. In Study 2a, we replicate the CBN findings with the Wikipedia corpus; In Study 2b, we show that the implicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the semantics of the natural language spoken by those participants.
 
 ## Study 2a: Replication of Caliskan, et al.\ (2017)
 ### Method
-We use a word embedding model that has been pre-trained model on the corpus of English Wikipedia using the fastText algorithm [@bojanowski2016enriching]\footnote{Available here: https://github.com/facebookresearch/fastText/}. The model contains 2,519,370 words with each word represented by a 300 dimension vector. 
+We use a word embedding model that has been pre-trained model on the corpus of English Wikipedia using the fastText algorithm [@bojanowski2016enriching]\footnote{Available here: https://github.com/facebookresearch/fastText/}. The model contains 2,519,370 words with each word represented by a 300 dimensional vector. 
 
-Using the Wikpedia-trained model, we calculate an effect size for each of the 10 biases reported in CBN which correspond to behavioral IAT results existing in the literature:   flowers/insects--pleasant/unpleasant, instruments/weapons--pleasant/unpleasant, European-American/Afro-American--pleasant/unpleasant,\footnote{CBN test three versions of this bias.}  males/females--career/family, math/arts--male/female, science/arts--male/female, mental-disease/physical-disease--permanent/temporary, and young/old--pleasant/unpleasant (labeled as WEAT 1-10 in CBN). We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous the behavioral effect size measure in Study 1 and, like for the behavioral effect size, larger values indicate larger gender bias.
+Using the Wikipedia-trained model, we calculate an effect size for each of the 10 biases reported in CBN which correspond to behavioral IAT results existing in the literature:   flowers/insects--pleasant/unpleasant, instruments/weapons--pleasant/unpleasant, European-American/Afro-American--pleasant/unpleasant,\footnote{CBN test three versions of this bias.}  males/females--career/family, math/arts--male/female, science/arts--male/female, mental-disease/physical-disease--permanent/temporary, and young/old--pleasant/unpleasant (labeled as WEAT 1-10 in CBN). We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous the behavioral effect size measure in Study 1 and, like for the behavioral effect size, larger values indicate larger gender bias.
 
 ### Results
 ```{r WEAT_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.6, fig.height=3.6, set.cap.width=T, num.cols.cap=1, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). The effect sizes reported in CBN are plotted against  effect sizes from the Wikipedia corpus.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
@@ -360,7 +364,7 @@ gender_bias_es_gn <- filter(all_es, study_name == "gender-bias-career-family" & 
 
 Figure 2 shows the effect size measures derived from the Wikipedia corpus plotted against effect size estimates reported by CBN from two different models (trained on the Common Crawl and  Google News corpora). With the exception of biases related to race and age, effect sizes from the Wikipedia corpus are comparable to those reported by CBN. In particular, for the gender-career IAT -- the bias relevant to our current purposes -- we estimate the effect size to be  `r round(gender_bias_es_wiki,2)`, while CBN estimates it as `r gender_bias_es_cc` (Common Crawl) and `r gender_bias_es_gn` (Google News).
 
-## Study 2b: Predicting implicit bias with language IAT
+## Study 2b: Cross-linguistic gender semantics
 With our corpus validated, we next turn toward examining the relationship between psychological and linguistic gender biases. In Study 2b, we estimate the magnitude of the gender-career bias in each of the languages spoken in the countries described in Study 1 and compare it with estimates of behavioral gender bias from Study 1. If language causally influences psychological gender bias, we predict these two measures should be positively correlated.
 
 ### Method
@@ -489,8 +493,8 @@ Implicit IAT gender bias effect sizes were positively correlated with effect siz
 
 ## Discussion
 
-# Study 3: Grammar and Gender Bias
-Study 2 suggests that psychological gender bias and linguistic gender bias are correlated, consistent with the idea that language may play a causal factor in shape gender bias in behavior. Nevertheless, Study 2 is also consistent with a second hypothesis in which the causal influence goes the opposition direction:  greater psychological gender biases cause greater gender biases becoming encoded in the statistics of the language. In Study 3, we test the language-causal hypothesis more directly by examining whether there is a relationship between psychological gender bias and language along a linguistic dimension that is unlikely to be a subject of rapid change -- namely, grammatical gender. While of course grammars do change, they are less malleable than the semantics of words, and thus less likely to be affected by psychological biases. We predict, therefore, that if there is some causal influence of language on psychological biases languages that encode gender grammatically will tend to have larger psychological gender biases.
+# Study 3: Prediciting psychological gender bias with grammar
+Study 2 suggests that psychological gender bias and linguistic gender bias are correlated, consistent with the idea that language may play a causal factor in shaping participants psychological gender bias. Nevertheless, Study 2 is also consistent with a second hypothesis in which the causal influence goes the opposition direction:  greater psychological gender biases cause greater gender biases becoming encoded in the statistics of the language. In Study 3, we test the language-causal hypothesis more directly by examining whether there is a relationship between psychological gender bias and language along a linguistic dimension that is unlikely to be a subject of rapid change -- namely, grammatical gender. While of course grammars do change, they are less malleable than the semantics of words, and thus less likely to be affected by psychological biases. We predict, therefore, that if there is some causal influence of language on psychological biases languages that encode gender grammatically will tend to have larger psychological gender biases.
 
 ## Method
 ```{r}
@@ -500,11 +504,11 @@ gender_data <- read_csv("analysis/study3/data/gender_grammar.csv") %>%
                                           "No Grammatical Gender", 
                                           "Grammatical Gender"))
 ```
-For each of the `r length(unique(unique_langs_per_country$language_name))` languages represented in our sample of participants (Study 1), we coded whether gender was encoded grammatically. We used a coarse binary coding scheme, categorizing a language as encoding grammatical gender if it made any gender distinction on noun classes (male, female, common or neuter), and as not encoding gender grammatically otherwise. We coded this distinction on the basis of the WALS typological database [Feature 32a; @wals], where available, and consulted additional resources as necessary. Our sample included `r nrow(filter(gender_data, wikipedia_grammar_type2 == "Grammatical Gender"))` languages that encoded grammatical gender and `r nrow(filter(gender_data, wikipedia_grammar_type2 == "No Grammatical Gender"))` that did not. 
+For each of the `r length(unique(unique_langs_per_country$language_name))` languages represented in our sample of participants (Study 1), we coded whether gender was encoded grammatically. We used a coarse binary coding scheme, categorizing a language as encoding grammatical gender if it made any gender distinction on noun classes (male, female, common or neuter), and as not encoding gender grammatically otherwise. We coded this distinction on the basis of the WALS typological database [Feature 32a; @wals] where available, and consulted additional resources as necessary. Our sample included `r nrow(filter(gender_data, wikipedia_grammar_type2 == "Grammatical Gender"))` languages that encoded grammatical gender and `r nrow(filter(gender_data, wikipedia_grammar_type2 == "No Grammatical Gender"))` that did not. 
 
 ## Results
 
-```{r grammatical_gender_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Behavioral IAT effect size as a function of whether participants' (assumed) native language encoded gender grammatically. Each point corresponds to a language (N = 31) with outliers shown as triangles (jittered along the x-axis for visibility)."}
+```{r grammatical_gender_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Behavioral IAT effect size as a function of whether participants' (assumed) native language encodes gender grammatically. Each point corresponds to a language (N = 31) with outliers shown as triangles (jittered along the x-axis for visibility)."}
 
 ## es behavior
 iat_means_with_grammar <- all_hand_es %>%
@@ -517,9 +521,7 @@ iat_means_with_grammar %>%
   ggplot(aes(x = wikipedia_grammar_type2, 
              y = es_behavioral_iat_weighted,
              color = wikipedia_grammar_type2)) +
-  geom_boxplot() +
-  #geom_text(aes(label = lang_label, x = as.numeric(as.factor(wikipedia_grammar_type2)) + .1, y = es_behavioral_iat_weighted + .01), size = 3, color = "black") +
-  #geom_text_repel(aes(label = lang_label), color = "black", point.padding = .1, size = 3) +
+  geom_boxplot(outlier.alpha = 0) +
   scale_color_manual(values = c("red", "blue")) +
   geom_point(color = "black", alpha = .4,
              aes(x = jitter(as.numeric(as.factor(wikipedia_grammar_type2)), .5), 
@@ -595,11 +597,63 @@ d_language_grammar <- tes(t_language$statistic[[1]],
 # Hindi and Hungarian not in hand-coded translations
 ```
 
-Languages that encode grammatical gender tended to have speakers with greater gender bias measured through the behavioral IAT (_M_ = `r round(mean(mf$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(mf$es_behavioral_iat_weighted), 2)`) compared to speakers of langauges that do not gramamtically encode gender (_M_ = `r round(mean(none$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(none$es_behavioral_iat_weighted), 2)`), though this difference was not reliable (_d_ = `r gender_grammar_d$d` [`r gender_grammar_d$l.d`, `r gender_grammar_d$u.d`], _t_(`r round(with_hindi_t$parameter,2)`) = `r round(with_hindi_t$statistic,2)`; _p_ = `r round(with_hindi_t$p.value, 2)`; Fig. 4). In a post-hoc analysis, we excluded outliers located more than two standard deviations from the group mean (Hungarian and Hindi). With these exclusions, we find a reliable difference between language types (_d_ = `r gender_grammar_d_no_hindi$d` [`r gender_grammar_d_no_hindi$l.d`, `r gender_grammar_d_no_hindi$u.d`]; _t_(`r round(no_hindi_t$parameter,2)`) = `r round(no_hindi_t$statistic,2)`; _p_ < .01). In addition, we find the same pattern for language IAT (Study 2), with languages that encoded gender grammatical tending to have larger language IAT gender biases, compared to those who do not (_t_(`r round(t_language$parameter,2)`) = `r round(t_language$statistic[[1]],2)`; _p_ = `r round(t_language$p.value, 2)`).
+```{r, include = F}
+
+iat_means_with_grammar %>%
+  ungroup() %>%
+  ggplot(aes(x = wikipedia_grammar_type2, 
+             y = es_hand_translation,
+             color = wikipedia_grammar_type2)) +
+  geom_boxplot(outlier.alpha = 0) +
+  scale_color_manual(values = c("red", "blue")) +
+  geom_point(color = "black", alpha = .4,
+             aes(x = jitter(as.numeric(as.factor(wikipedia_grammar_type2)), .5)), 
+             size = 2) +
+  theme_minimal() +
+  ggtitle("IAT Effect Size and Grammar Type") +
+  ylab("Linguistic IAT Effect Size\n (Cohen's IAT)") +
+  xlab("Grammar Type") +
+  theme(legend.position = "none",
+        text = element_text(size = TEXT_SIZE))
+
+iat_means_with_grammar %>%
+  group_by(wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "es_hand_translation", na.rm = T) %>%
+  ggplot(aes(x = wikipedia_grammar_type2,  
+             y = mean,
+             color = wikipedia_grammar_type2)) +
+  scale_color_manual(values = c("red", "blue")) +
+  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper)) +
+  theme_minimal() +
+  ggtitle("IAT Linguistic Effect Size and Grammar Type") +
+  ylab("Linguistic IAT Effect Size\n (Cohen's IAT)") +
+  xlab("Grammar Type") +
+  theme(legend.position = "none",
+        text = element_text(size = TEXT_SIZE))
+
+```
+
+Languages that encode grammatical gender tended to have speakers with greater gender bias, as measured through the behavioral IAT (Study 1; _M_ = `r round(mean(mf$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(mf$es_behavioral_iat_weighted), 2)`) compared to speakers of languages that do not grammatically encode gender (_M_ = `r round(mean(none$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(none$es_behavioral_iat_weighted), 2)`), though this difference was not reliable (_d_ = `r gender_grammar_d$d` [`r gender_grammar_d$l.d`, `r gender_grammar_d$u.d`], _t_(`r round(with_hindi_t$parameter,2)`) = `r round(with_hindi_t$statistic,2)`; _p_ = `r round(with_hindi_t$p.value, 2)`; Fig. 4). In a post-hoc analysis, we excluded outliers located more than two standard deviations from the group mean (Hungarian and Hindi). With these exclusions, we find a reliable difference between language types (_d_ = `r gender_grammar_d_no_hindi$d` [`r gender_grammar_d_no_hindi$l.d`, `r gender_grammar_d_no_hindi$u.d`]; _t_(`r round(no_hindi_t$parameter,2)`) = `r round(no_hindi_t$statistic,2)`; _p_ < .01). In addition, we find the same pattern for language IAT (Study 2), with languages that encode gender grammatically tending to have larger language IAT gender biases, compared to those who do not (_t_(`r round(t_language$parameter,2)`) = `r round(t_language$statistic[[1]],2)`; _p_ = `r round(t_language$p.value, 2)`).
 
 ## Discussion
+*not mutually exclusive
+*grammar and embedding models show account for the same biases.
+*we can do this with other biases
+*can examine more directly the words driving the effect (more thatn just the IAT effect)
+* Mechanism: implicit grammar (shared caregory with males); explicit grammar (essentialism); general semantics
 
+Gatlet's problem (not random select, and gender biased to certain languages)
 # Conclusion 
+
+
+ -> why these effects matter
+ * "language causal hypothesis"
+
+Chugh, D. (2004). Societal and managerial implications of implicit social cognition: Why milliseconds matter. Social Justice Research, 17, 203– 222. doi:10.1023/B:SORE.0000027410.26010.40
+Rudman, L. A. (2004). Social justice in our minds, homes, and society: The nature, causes, and consequences of implicit bias. Social Justice Re- search, 17, 129–142. doi:10.1023/B:SORE.0000027406.32604.f6
+
+correlations are small with explict (oswald 2013), but matter Greenwald (2015; https://faculty.washington.edu/agg/pdf/Greenwald,Banaji&Nosek.JPSP.2015.pdf)
+
 
 
 # References 

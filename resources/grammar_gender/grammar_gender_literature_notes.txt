@@ -1,0 +1,78 @@
+------------GRAMMAR GENDER LITERATURE NOTES--------------------------
+
+It is possible that language has the greatest influence on thought in abstract domains like grammatical gender – ones not so reliant on sensory experience (Boroditsky, 2000; 2001)
+
+
+Bassetti, B. A. L. (2014). Is grammatical gender considered arbitrary or semantically motivated? Evidence from young adult monolinguals, second language learners, and early bilinguals. British Journal of Psychology, 105: 273–294. - this is neat but the pragmatics are weird (suggest that gender is meaningful)
+
+Send en, M.G., Sikstr€om, S., & Lindholm, T. (2015). “She” and “he” in news media messages: Pronoun use reflects gender biases in semantic contexts. Sex Roles, 72(1–2), 40–49. - in corpus of news text male pronouns used more positively using LSA with english text- this is neeat
+
+##### PSYCHOLOINGUISTIC EVIDENCE FOR EFFECTS OF GENDER #######
+Bigler 1995 - gender based systems of creaing "teams" of kids leads to categorization (don't want to play with other team)
+
+#### SUBJECTIVE/EXPLICIT JUDEMENTS of GENDER ####
+Konishi 1993 - masculine gendered words rated as having more masculine properties (e.g. potent) [subjective judgement]
+
+Sera, Berge Castillo 1994/Sera 2002 - kids assign male voices to male gendered words [subjective judgement]
+
+Bowers et al. 1999
+Mills (1986)  - kids assign names to toys consistent with gender 
+
+
+######## IMPLICT JUDGEMENTS OF GENDER: ########
+Cubelli 2011 - psycholinguistic evience - words sharing same gender activate eachother, where task is category judgement
+
+Boroditsky & Schmidt, 2000 - harder to learn when theres a mis-match
+
+## Categorization judgements
+
+Boroditsy, Schmidt, Phillips 2003/phillips Borodistky 2003
+
+Kuriniski (2016) - as hungarian speakers (no genders) learn more spanish (gender), categorization judgements change
+
+Kurinski and Sera (2011) - same as Kurinski 2016 with english speakers
+
+Vernich - categorizaiton - nice review of literature
+
+Athanasopoulos, P., & Boutonnet, B. (2016). Learning grammatical gender in a second language changes categorization of inanimate objects: Replications and new evidence from English learners of L2 French. In R. Alonso Alonso (Ed.), Cross-linguistic influence in second language acquisition (pp. 173–192). Bristol: Multilingual Matters.
+
+Vigliocco 2005 - categorization jugdgement, but effect not for all gendered languages
+
+
+####### GRAMMATICAL GENDER AND OBJECTIVE MEASURES OF INEQUALITY ####:
+
+Shoam - wage inquality
+
+Santacreu-Vasut, E., Shenkar, O., & Shoham, A. (2014). Linguistic gender marking and its international
+business ramifications. Journal of International Business Studies, 45(9), 1170–1178. - gram- matical gender marking has a negative effect on the participation of females on corporate boards of directors and in the management of large teams. 
+
+Santacreu-Vasut, E., Shoham, A., & Gay, V. (2013). Do female/male distinctions in language matter?
+Evidence from gender political quotas. Applied Economics Letters, 20(5), 495–498.
+
+van der Velde, L., Tyrowicz, J., & Siwinska, J. (2015). Language and (the estimates of) the gender wage gap. Economics Letters, 136, 165–170.
+
+L. Davis and Reynolds (2016) show that grammatical gender marking has an impact on the educa- tional attainment between genders. 
+
+Gay, V., Hicks, D.L., Santacreu-Vasut, E., & Shoham, A. (2015). Decomposing culture: Can gendered language influence women’s economic engagement? Fox School of Business Research Paper, 15–46. - GII index
+
+Hechavarr 2018 - gendered languages influences early entruprenual involvemnt, controling for lots of stuff; Overall, men participate 2.1 times more than women when their language uses a sex-based system.
+
+Hicks, D.L., Santacreu-Vasut, E., & Shoham, A. (2015). Does mother tongue make for women’s work? Linguistics, household labor, and gender identity. Journal of Economic Behavior & Organization, 110(1), 19–44.
+
+Lieu (2018) - pronouns and gender equality using WALS and world value survey, nice experimental design with bilinguals where ask gender questions in languages that do and do not have grammatial gender
+
+
+
+MISC: 
+# Boroditsky, Schmidt, Phillips, 2002 
+
+- why might grammatical gender be taken as meaningful
+- children have no reason to assume its not meaningful (Piaget - moon; essentialism)
+- needing to refer to an object may make dimension more meaningful
+
+EXP: 
+(1) is memory betteer when give names in english that are gendered consistly with grammar?
+(2) Teach novel grammatical category where males are part of level A and females B
+
+
+
