@@ -411,7 +411,7 @@ ggplot(all_es, aes(x = wiki,
         legend.background = element_rect(fill = "white"),
         legend.text = element_text(size = TEXT_SIZE - 3),
         legend.title = element_text(size = TEXT_SIZE - 2),
-        legend.margin=margin(3, 3, 0, 3, unit='pt'))
+        legend.margin = margin(3, 3, 0, 3, unit='pt'))
 ```
 
 ```{r english_language_career_es}
@@ -419,7 +419,7 @@ gender_bias_es_wiki <- filter(all_es, study_name == "gender-bias-career-family")
 
 gender_bias_es_cc <- filter(all_es, study_name == "gender-bias-career-family" & es_source == "Common Crawl (GloVe)" )$d[1]
 
-gender_bias_es_gn <- filter(all_es, study_name == "gender-bias-career-family" & es_source == "Google News (word2vec)" )$d[1]
+gender_bias_es_gn <- filter(all_es, study_name == "gender-bias-career-family" & es_source == "Google News (word2vec)")$d[1]
 ```
 
 Figure 2 shows the effect size measures derived from the Wikipedia corpus plotted against effect size estimates reported by CBN from two different models (trained on the Common Crawl and  Google News corpora). With the exception of biases related to race and age, effect sizes from the Wikipedia corpus are comparable to those reported by CBN. In particular, for the gender-career IAT---the bias relevant to our current purposes---we estimate the effect size to be  `r round(gender_bias_es_wiki,2)`, while CBN estimates it as approximately  `r round(mean(c(gender_bias_es_cc,gender_bias_es_gn)),2)`.
@@ -477,38 +477,6 @@ all_hand_es <- implicit_behavioral_means_by_country_with_language %>%
   ungroup()
 ```
 
-```{r, read_in_language_bias_data_google, eval = F}
-language_means_career_implicit_g <- read.csv("analysis/study2b/data/career_effect_sizes_google_translations_expanded.csv", 
-col.names = c("wiki_language_code", "test_id", "test_name", "es_google_translation_ex"), 
-header = F,
-                                                fill = TRUE)  %>%
-  select(-test_id, -test_name)
-  
-  google_expanded_es <- implicit_behavioral_means_by_language %>%
-    group_by(wiki_language_code, language_name) %>%
-    summarise(es_behavioral_iat_weighted = weighted.mean(es_behavioral_iat, 
-                                                         normalized_n, na.rm = T),
-              es_behavioral_iat = mean(es_behavioral_iat)) %>%
-    left_join(language_means_career_implicit_g, by = "wiki_language_code")  %>%
-    filter(language_name != "Cantonese" & !is.na(es_behavioral_iat_weighted))  %>% ungroup()
-
-behavior_lang_cor_imp_google <- cor.test(google_expanded_es$es_google_translation_ex, google_expanded_es$es_behavioral_iat_weighted)
-
-ggplot(google_expanded_es, aes(x = es_google_translation_ex, 
-                      y = es_behavioral_iat_weighted)) +
-  geom_smooth(method = "lm", alpha = .2, color = "black") +
-  #geom_text_repel(aes(label = language_name), size = 2.3) + 
-  geom_point() +
-  annotate("text", x = .75, y = .9, 
-           label = paste0("r = ", round(unlist(behavior_lang_cor_imp_google$estimate, use.names = F),2)),
-           color = "red",
-           size = 5) +
-  theme_minimal() +
-  ggtitle("Gender IAT Behavioral and \nLinguistic Effect Sizes") +
-  ylab("Implicit Behavior Gender Bias\n (effect size)") +
-  xlab("Language Embedding Gender Bias\n (effect size)") +
-  theme(text = element_text(size = TEXT_SIZE))
-```
 
 ```{r behavior_vs_language_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Gender bias effect size for each language from the behavioral IAT task (averaging across countries speaking the same primary language; Study 1) versus gender bias effect size estimated from embedding models trained on each language."}
 #behavior_lang_cor_imp <- cor.test(all_hand_es$es_hand_translation, all_hand_es$es_behavioral_iat)
