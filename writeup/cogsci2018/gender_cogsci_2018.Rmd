@@ -3,6 +3,8 @@ title: "Language use shapes cultural biases: Large scale evidence from gender"
 bibliography: library.bib
 csl: apa6.csl
 document-params: "10pt, letterpaper"
+header-includes: |
+    \newcommand*\rot{\rotatebox{90}}
 
 author-information: > 
     \author{{\large \bf Molly Lewis} \\ \texttt{mollyllewis@gmail.com} \\ Department of Psychology  \\ University of Wisconsin-Madison
@@ -15,11 +17,13 @@ keywords:
     "IAT, cultural biases, gender, linguistic relativity."
     
 output: cogsci2016::cogsci_paper
+
 ---
 
-```{r global_options, include=FALSE}
+```{r global_options, include = FALSE}
 rm(list=ls())
-knitr::opts_chunk$set(fig.width=3, fig.height=3, fig.crop = F, fig.pos = "tb", fig.path='figs/',
+knitr::opts_chunk$set(fig.width=3, fig.height=3, 
+                      fig.crop = F, fig.pos = "tb", fig.path='figs/',
                       echo=F, warning=F, cache=F, message=F, sanitize = T)
 ```
 
@@ -69,7 +73,6 @@ An existing body of experimental work points to a link between language and psyc
 In what follows, we ask whether the way gender is encoded linguistically
 across 31 different languages predicts cross-cultural variability in a particular manifestation of a gender bias---the bias to associate men with careers and women with family. We begin in Study 1 by describing cross-cultural variability in psychological gender biases using an implicit measure. In Study 2, we use semantic-embedding models to examine whether variability in lexical semantics predicts variability in psychological gender biases. In Study 3, we ask whether the presence of grammatical gender in a language is associated with greater implicit gender bias. Together, our data suggest that both language statistics and language structure likely play a causal role in shaping culturally-specific notions of gender.
 
-
 # Study 1: Gender bias across cultures
 In Study 1, we describe how a widely studied gender bias---the propensity to associate women with family and men with careers---varies across cultures. To quantify this bias, we used data from a large-scale administration of an  Implicit  Association Task [IAT; @greenwald1998measuring] by Project Implicit [@nosek2002harvesting]. The IAT measures the strength of respondents' implicit associations between two pairs of concepts (e.g., male-career/female-family vs. male-family/female-career) accessed via verbal cues (i.e., words like “man”  and  “business”).
 
@@ -78,7 +81,7 @@ The underlying assumption of the IAT  is that words (or images) denoting more si
 
 ## Method
 
-```{r}
+```{r read_behavioral_iat_data}
 raw_iat_behavioral <- read_feather("analysis/study1/data/Gender-Career IAT.public.2005-2016.feather") %>%
   select(D_biep.Male_Career_all,sex, countryres, PCT_error_3467, 
          Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, 
@@ -89,7 +92,7 @@ raw_iat_behavioral <- read_feather("analysis/study1/data/Gender-Career IAT.publi
 # this file is "Gender-Career/Gender-Career IAT.public.2005-2016.sav" in feather form (taken from: https://osf.io/gmewy/) 
 ```
 
-```{r, get_complete_data}
+```{r get_complete_data}
 MIN_PARTICIPANTS_PER_COUNTRY <- 400
 
 raw_iat_behavioral_complete <- raw_iat_behavioral %>%
@@ -108,7 +111,7 @@ raw_iat_behavioral_complete_dense_country <- raw_iat_behavioral_complete %>%
   filter(countryres %in% country_ns$countryres)
 ```
 
-```{r, behavioral_exclusions}
+```{r behavioral_exclusions}
 # same exclusions as Nosek, Banjali, & Greenwald (2002), pg. 104. 
 iat_behavioral <- raw_iat_behavioral_complete_dense_country %>%
   filter(Mn_RT_all_3467 <= 1500, # RTs
@@ -122,7 +125,7 @@ iat_behavioral <- raw_iat_behavioral_complete_dense_country %>%
          N_ERROR_7/N_7 <=.25)
 ```
 
-```{r, tidy_names}
+```{r tidy_names}
 project_implicit_countries <- read_csv("analysis/study1/data/project_implicit_country_codes.csv") 
 # these are from Gender-Career_IAT_public_2005-2016_codebook.xlsx; country_name are relabeled from original
 
@@ -145,7 +148,7 @@ the Women's Peace and Security Index (WPS, 2017), which measures inclusion, just
 
 ## Results
 
-```{r map, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.8, fig.height=2.5, set.cap.width=T, num.cols.cap=1, fig.cap = "IAT gender bias effect size for 48 countries with available data. All countries show a gender bias, with red indicating above average and blue indicating below average bias."}
+```{r country_gender_bias_map, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.8, fig.height=2.5, set.cap.width=T, num.cols.cap=1, fig.cap = "IAT gender bias effect size for 48 countries with available data. All countries show a gender bias, with red indicating above average and blue indicating below average bias."}
 # overall effect size
 es_behavioral_iat_by_participant <- mean(iat_behavioral_tidy$overall_iat_D_score)/
   sd(iat_behavioral_tidy$overall_iat_D_score)
@@ -212,7 +215,7 @@ imp_exp_country_es <- cor.test(country_means_career_explicit_es$es_behavioral_ia
                             country_means_career_explicit_es$exp_mean_diff) 
 ```
 
-```{r, participant_gender_bias}
+```{r participant_gender_bias}
 men <- filter(iat_behavioral_tidy, sex == "m")
 women <- filter(iat_behavioral_tidy, sex == "f")
 t_test_gender <- t.test(women$overall_iat_D_score, men$overall_iat_D_score, paired = F)
@@ -274,7 +277,7 @@ country_means_career_explicit_index <- cor.test(country_means_career_explicit_wi
 
 Our independent measure of gender equality---the Women's Peace and Security Index---was uncorrelated with explicit bias (_r_ = `r unlist(round(country_means_career_explicit_index$estimate, 2), use.names = F)`; _p_ = `r unlist(round(country_means_career_explicit_index$p.value, 2), use.names = F)`). Counter to our expectations, we found that countries such as the Netherlands, with allegedly greatest gender equality, have participants who show highest implicit gender bias according to the IAT (_r_ = `r unlist(round(country_means_career_implicit_index$estimate, 2), use.names = F)`; _p_ <.01; Fig.\ 1b).
 
-```{r, prop_female_confound}
+```{r prop_female_confound}
 prop_women <- iat_behavioral_tidy %>% 
   group_by(country_name) %>%
   summarize(prop_fem = length(which(sex == "f"))/n()) 
@@ -290,7 +293,7 @@ confound_model_1 <- lm(es_behavioral_iat ~ wps_index + prop_fem, country_means_c
 
 We explored this surprising finding by testing two possible confounds with WPS. First, previous research has shown that women tend to have a larger implicit gender bias than men [@nosek2002harvesting]. If countries with greater gender parity have more female participants, this would explain the pattern of findings. The data do not support this: In an additive linear model predicting IAT behavioral bias with both WPS and the prop.\ female participants, prop.\ female participants was not a reliable predictor of IAT bias ($\beta$ = `r round(confound_model_1$estimate[confound_model_1$term == "prop_fem"],2)`; _t_ =  `r round(confound_model_1$statistic[confound_model_1$term == "prop_fem"],2)`; _p_ = `r round(confound_model_1$p.value[confound_model_1$term == "prop_fem"],2)`).
 
-```{r, proficiency_confound}
+```{r proficiency_confound}
 epi <- read_csv("analysis/study1/data/epi.csv") %>%
   rename(ep_index = `2017 Score`) %>% 
   mutate(country_name = str_sub(country_name, 2, -1)) %>%
@@ -429,7 +432,7 @@ With our corpus validated, we next turn toward examining the relationship betwee
 
 ### Method
 
-```{r read_in_language_bias_data}
+```{r read_language_bias_data}
 # behavioral means by langauge
 countries_to_langs <- read_csv("analysis/study2b/data/languages_with_percent.csv") %>% # this comes from get_language_percentage.R
   mutate(country_name = fct_recode(country_name,
@@ -522,7 +525,7 @@ behavior_lang_cor_exp <- cor.test(language_means_career_explicit_language$es_han
 Implicit IAT gender bias effect sizes were positively correlated with effect sizes of gender bias estimated from the native language embedding model (_r_ = `r unlist(round(behavior_lang_cor_imp$estimate, 2), use.names = F)`; _p_ = `r unlist(round(behavior_lang_cor_imp$p.value, 2), use.names = F)`; Fig.\ 3), suggesting that countries that have more gender bias encoded in their language also have a larger psychological gender bias. Explicit gender bias was not reliably correlated with language gender bias (_r_ = `r unlist(round(behavior_lang_cor_exp$estimate, 2), use.names = F)`; _p_ = `r unlist(round(behavior_lang_cor_exp$p.value, 2), use.names = F)`). 
 
 ## Discussion
-Consistent with our prediction, we find that the degree of behavioral IAT bias in a country is correlated with the degree of bis in the semantics of participants' native language.
+Consistent with our prediction, we find that the magnitude of a country's implict gender bias is correlated with the degree of bias in the semantics of participants' native language.
 
 # Study 3: Gender bias and grammar
 The findings in Study 2 are consistent with both the language-as-causal and
@@ -535,7 +538,7 @@ gender biases.
 
 
 ## Method
-```{r}
+```{r read_gender_data}
 gender_data <- read_csv("analysis/study3/data/gender_grammar.csv") %>%
   select(language_code, language_name, wikipedia_grammar_type) %>%
   mutate(wikipedia_grammar_type2 = ifelse(wikipedia_grammar_type == "none",
@@ -551,7 +554,7 @@ grammatical gender if it made any gender distinction on noun classes
 grammatically otherwise. We coded this distinction on the basis of the
 WALS typological database [Feature 32a; @wals] where
 available, and consulted additional resources as necessary. Our sample
-included `r nrow(filter(gender_data, wikipedia_grammar_type2 == "Grammatical Gender"))`  languages with grammatical gender.
+included `r nrow(filter(gender_data, wikipedia_grammar_type2 == "Grammatical Gender"))`  languages with grammatical gender, and `r nrow(filter(gender_data, wikipedia_grammar_type2 == "No Grammatical Gender"))` without.
 
 ## Results
 
@@ -576,7 +579,7 @@ iat_means_with_grammar %>%
              size = 2) +
   theme_minimal() +
   ggtitle("IAT Effect Size and Grammar Type") +
-  ylab("Behavioral IAT Effect Size\n (Cohen's IAT)") +
+  ylab("Behavioral IAT Effect Size\n (Cohen's d)") +
   xlab("Grammar Type") +
   theme(legend.position = "none",
         text = element_text(size = TEXT_SIZE))
@@ -632,7 +635,7 @@ gender_grammar_d_no_hindi <- tes(no_hindi_t$statistic[[1]],
                                  verbose = F)
 ```
 
-```{r, language_grammar_stats}
+```{r language_grammar_stats}
 t_language <- t.test(mf$es_hand_translation, 
                      none$es_hand_translation, 
                      paired = F)
@@ -644,74 +647,20 @@ d_language_grammar <- tes(t_language$statistic[[1]],
 # Hindi and Hungarian not in hand-coded translations
 ```
 
-```{r, include = F}
-
-iat_means_with_grammar %>%
-  ungroup() %>%
-  ggplot(aes(x = wikipedia_grammar_type2, 
-             y = es_hand_translation,
-             color = wikipedia_grammar_type2)) +
-  geom_boxplot(outlier.alpha = 0) +
-  scale_color_manual(values = c("red", "blue")) +
-  geom_point(color = "black", alpha = .4,
-             aes(x = jitter(as.numeric(as.factor(wikipedia_grammar_type2)), .5)), 
-             size = 2) +
-  theme_minimal() +
-  ggtitle("IAT Effect Size and Grammar Type") +
-  ylab("Linguistic IAT Effect Size\n (Cohen's IAT)") +
-  xlab("Grammar Type") +
-  theme(legend.position = "none",
-        text = element_text(size = TEXT_SIZE))
-
-iat_means_with_grammar %>%
-  group_by(wikipedia_grammar_type2) %>%
-  multi_boot_standard(col = "es_hand_translation", na.rm = T) %>%
-  ggplot(aes(x = wikipedia_grammar_type2,  
-             y = mean,
-             color = wikipedia_grammar_type2)) +
-  scale_color_manual(values = c("red", "blue")) +
-  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper)) +
-  theme_minimal() +
-  ggtitle("IAT Linguistic Effect Size and Grammar Type") +
-  ylab("Linguistic IAT Effect Size\n (Cohen's IAT)") +
-  xlab("Grammar Type") +
-  theme(legend.position = "none",
-        text = element_text(size = TEXT_SIZE))
-
-```
-
-Languages that encode grammatical gender tended to have speakers with greater psychological gender bias (Study 1; _M_ = `r round(mean(mf$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(mf$es_behavioral_iat_weighted), 2)`) compared to speakers of languages that do not grammatically encode gender (_M_ = `r round(mean(none$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(none$es_behavioral_iat_weighted), 2)`), though this difference was not reliable (_d_ = `r gender_grammar_d$d` [`r gender_grammar_d$l.d`, `r gender_grammar_d$u.d`], _t_(`r round(with_hindi_t$parameter,2)`) = `r round(with_hindi_t$statistic,2)`; _p_ = `r round(with_hindi_t$p.value, 2)`; Fig. 4). In a post-hoc analysis, we excluded outliers located more than two standard deviations from the group mean (Hungarian and Hindi). With these exclusions, we find a reliable difference between language types (_d_ = `r gender_grammar_d_no_hindi$d` [`r gender_grammar_d_no_hindi$l.d`, `r gender_grammar_d_no_hindi$u.d`]; _t_(`r round(no_hindi_t$parameter,2)`) = `r round(no_hindi_t$statistic,2)`; _p_ < .01). In addition, we find the same pattern for language IAT (Study 2), with languages that encode gender grammatically tending to have larger language IAT gender biases, compared to those who do not (_t_(`r round(t_language$parameter,2)`) = `r round(t_language$statistic[[1]],2)`; _p_ = `r round(t_language$p.value, 2)`). 
+Languages that encode grammatical gender tended to have speakers with greater psychological gender bias (Study 1; _M_ = `r round(mean(mf$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(mf$es_behavioral_iat_weighted), 2)`) compared to speakers of languages that do not grammatically encode gender (_M_ = `r round(mean(none$es_behavioral_iat_weighted), 2)`; _SD_ =  `r round(sd(none$es_behavioral_iat_weighted), 2)`), though this difference was not reliable (_d_ = `r gender_grammar_d$d` [`r gender_grammar_d$l.d`, `r gender_grammar_d$u.d`], _t_(`r round(with_hindi_t$parameter,2)`) = `r round(with_hindi_t$statistic,2)`; _p_ = `r round(with_hindi_t$p.value, 2)`; Fig. 4). In a post-hoc analysis, we excluded outliers located more than two standard deviations from the group mean (Hungarian and Hindi). With these exclusions, we find a reliable difference between language types (_d_ = `r gender_grammar_d_no_hindi$d` [`r gender_grammar_d_no_hindi$l.d`, `r gender_grammar_d_no_hindi$u.d`]; _t_(`r round(no_hindi_t$parameter,2)`) = `r round(no_hindi_t$statistic,2)`; _p_ < .01). In addition, we find the same pattern for language IAT (Study 2), with languages that encode gender grammatically tending to have larger language IAT gender biases, compared to those that do not (_t_(`r round(t_language$parameter,2)`) = `r round(t_language$statistic[[1]],2)`; _p_ = `r round(t_language$p.value, 2)`). 
 
 ## Discussion
-Study 3 provides evidence that grammatical gender may have a causal influence on gender biases.
+Study 3 provides evidence that the presence of grammatical gender in a language predicts implicit gender bias, consistent with the language-as-causal account. 
 
 # General Discussion and Conclusion
-[TO DO]
-<!--
-*not mutually exclusive
-*grammar and embedding models show account for the same biases.
-*we can do this with other biases
-*can examine more directly the words driving the effect (more thatn just the IAT effect)
-* Mechanism: implicit grammar (shared caregory with males); explicit grammar (essentialism); general semantics
+Across three studies, we explore the relationship between a culturally-constructed norm---gender---and the the linguistic encoding of that norm. We find evidence for a close correspondence: Languages that have larger gender biases encoded in their lexical semantics (Study 2) and grammatial gender markers (Study 3) tend to have speakers with larger implicit gender bias. Study 2 is consistent with both the language-as-reflection and the language-as-causal hypotheses, but Study 3 is only consistent with the language-as-causal hypothesis. Taken together, the most likely interpretation of our data is that both mechanisms are at play and act synergistically, such that the way we talk about gender shapes the way we think about it and the way we think about gender shapes the way we talk about it. 
 
-* stuff about gender
-Gatlet's problem (not random select, and gender biased to certain languages)
--->
+In addition, our work is the first to report the surprising positive correlation between implicit gender bias and objective gender equality. The source of this correlation is not clear, but we speculate that greater gender equality could emerge as a consequence of _increased_ attention to gender inequality, leading to both objective equality but also increased implicit bias. An important  next step for understanding this relationship will be to examine whether this relationship holds for other sorts of biases, such as race, and to explore the sources of these biases at the level of individual words.
 
+More generally, the task for future work will be to specify the dynamics of these causal mechanisms with more precision.  The ultimate goal is to specify the relative influence of structural and semantic aspects of langauge on conceptualizations of the world and the role of these mechanisms in development when children are first acquiring cultural knowledge.  The data here provide an early step toward that goal. 
 
-<!--
- -> why these effects matter
- * "language causal hypothesis"
-
-Chugh, D. (2004). Societal and managerial implications of implicit social cognition: Why milliseconds matter. Social Justice Research, 17, 203– 222. doi:10.1023/B:SORE.0000027410.26010.40
-Rudman, L. A. (2004). Social justice in our minds, homes, and society: The nature, causes, and consequences of implicit bias. Social Justice Re- search, 17, 129–142. doi:10.1023/B:SORE.0000027406.32604.f6
-
-correlations are small with explict (oswald 2013), but matter Greenwald (2015; https://faculty.washington.edu/agg/pdf/Greenwald,Banaji&Nosek.JPSP.2015.pdf)
-
--->
 
 ```{r save_complete_df, eval = F}
-
 all_measures_df <- country_means_career_implicit_with_index %>% # implicit
   select(-country_name_lab, -es_behavioral_iat) %>%
   left_join(country_means_career_explicit_es, by = "country_name") %>%  # explicit 
@@ -721,7 +670,6 @@ all_measures_df <- country_means_career_implicit_with_index %>% # implicit
   select(country_name, language_name, exp_mean_diff, 
          es_behavioral_iat, wps_index, normalized_n,  es_hand_translation) %>%
   left_join(prop_women)
-  
 # write_csv(all_measures_df, "analysis/all_measures_df.csv")
 ```
 
@@ -739,11 +687,7 @@ nocite: |
 
 ...
 
-```{r}
-# References will be generated automatically by Pandoc and included here.
-# The following code is some latex to format the bibliography. Do not remove it.
-```
-
 \setlength{\parindent}{-0.1in} 
 \setlength{\leftskip}{0.125in}
 \noindent
+\newcommand{\squeezeup}{\vspace{-10mm}}
