@@ -1,0 +1,283 @@
+---
+title: Gender bias and grammatical gender
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: yes
+    toc_float: true
+    toc: yes
+---
+  
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+library(stringr)
+library(forcats)
+library(broom)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = T)
+
+```
+
+Here we test two hypotheses:
+
+  * As predicted by Caliskan, et al., cross-cultural variability in implicit bias will be correlated with bias from word embedding models
+  * Bias (for both language and behavioral IAT) will be larger for those languages that encode gender grammatically, compared to those who do not.
+
+Both of these predictions pan out. The relationships are particularly strong for male participants from the IAT - this could be because there's a male bias in wikipedia editors.
+
+
+
+# Implicit measures of bias (IAT score)
+Here we look at whether IAT scores behavioral scores (from project implicit) correlate with language bias for a range of difference languages. Note this is at the language level (averaging across countries that speak the same language for the IAT behavioral data).
+
+Though I explored a range of different measures, the pre-calculated D-score appears to be the best measure of bias. High D-scores indicates more male-career bias. I look at D-score by participant gender, and with all participants. 
+
+IAT scores calculated from the embeddings model are based on Wikipedia fasttext models (https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md). I use the same measure of effect size as Caliskan et al.
+
+```{r}
+# Read in behavior and language biases
+countries_langs <- read_csv("../../data/other/countries_lang.csv") %>%
+  mutate(language_name = ifelse(language_name == "Spanish; Castilian", "Spanish", language_name),
+         language_name = ifelse(language_name == "Dutch; Flemish", "Dutch", language_name))
+
+IAT_behavior_measures_imp <- read_csv("../behavior_IAT/IAT_behavior_measures.csv") %>%
+  left_join(countries_langs %>% select(country_name, language_name, language_code)) %>%
+  filter(type %in% c("country_means_D_score", 
+             "country_gender_D_score")) %>%
+  group_by(type, language_code, sex) %>%
+  summarize(mean = mean(mean)) 
+
+lang_bias <- read_csv("career_effect_sizes.csv") 
+
+d <- left_join(IAT_behavior_measures_imp, lang_bias) %>%
+  mutate_if(is.character, as.factor) %>%
+  filter(!is.na(lang_bias))
+```
+
+There are `r length(unique(d$language_code))` languages represented here.
+
+## Measures
+### Behavior
+```{r, fig.width = 5, fig.height = 2.5}
+ggplot(d, aes(x = mean)) +
+  geom_histogram() +
+  facet_wrap(~type + sex, scales = "free_x")+
+  theme_bw()
+```
+
+
+
+### Language 
+```{r, fig.height = 2.5, fig.width = 3}
+ggplot(lang_bias, aes(x = lang_bias)) +
+  geom_histogram() +
+  theme_bw()
+```
+
+## Correlation between measures 
+
+Each point below is a language. We find that male IAT bias is reliably correlated with bias from the embedding models.
+
+```{r,  fig.width = 5, fig.height = 2.5}
+d %>%
+ggplot( aes(x = mean, y = lang_bias, group = sex, color = sex)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_grid(.~ type, scales = "free_x", drop = T) +
+  theme_bw()
+```
+
+```{r}
+ggplot(d, aes(x = mean, y = lang_bias, color = sex, group = sex)) +
+  geom_smooth(method = "lm") +
+  geom_label(aes(label =  language_code)) +
+  facet_grid(~ type, scales = "free" ) +
+  theme_bw()
+```
+
+
+```{r, fig.width = 6}
+d %>%
+  group_by(type, sex) %>%
+  do(tidy(cor.test(.$mean, .$lang_bias))) %>%
+  arrange(p.value) %>%
+  select(-parameter, -method, -alternative) %>%
+  kable()
+```
+
+
+# Explicit measures of bias
+
+Next, we ask whether the explicit questions asked in the IAT correlate with the language IAT measure. 
+
+We look at two measures (explained here: 
+https://mfr.osf.io/render?url=https://osf.io/thvzf/?action=download%26mode=render):
+
+assocareer: 'How strongly do you associate the following with males and females? Career; 1=female 7= male
+
+assofamily: 'How strongly do you associate the following with males and females? Family; 1=female 7= male
+
+
+```{r}
+# Read in behavior and language biases
+countries_langs <- read_csv("../../data/other/countries_lang.csv") %>%
+  mutate(language_name = ifelse(language_name == "Spanish; Castilian", "Spanish", language_name),
+         language_name = ifelse(language_name == "Dutch; Flemish", "Dutch", language_name))
+
+
+IAT_behavior_measures_exp <- read_csv("IAT_behavior_measures.csv") %>%
+  left_join(countries_langs %>% select(country_name, language_name, language_code)) %>%
+  filter(type %in% c("country_fam_male", 
+             "country_career_male")) %>%
+  group_by(type, language_code, sex) %>%
+  summarize(mean = mean(mean)) 
+
+d <- left_join(IAT_behavior_measures_exp, lang_bias) %>%
+  mutate_if(is.character, as.factor) %>%
+  filter(!is.na(lang_bias))
+```
+
+## Measure
+```{r, fig.width = 5, fig.height = 4}
+ggplot(d, aes(x = mean)) +
+  geom_histogram() +
+  facet_wrap(sex ~type, scales = "free_x",)+
+  theme_bw()
+```
+
+## Correlation between measures
+
+I find that the degree to which males associate family with males is negatively correlated with bias. The career question is not predictive.
+
+```{r,  fig.width = 6, fig.height = 2.5}
+d %>%
+ggplot( aes(x = mean, y = lang_bias, group = sex, color = sex)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_grid(.~ type, scales = "free_x", drop = T) +
+  theme_bw()
+```
+
+
+```{r, fig.width = 10}
+d %>%
+  group_by(type, sex) %>%
+  do(tidy(cor.test(.$mean, .$lang_bias))) %>%
+  arrange(p.value) %>%
+  select(-parameter, -method, -alternative) %>%
+  kable()
+```
+
+# Relationship between grammar type and bias measures
+
+Finally, we ask whether a language encodes gender predicts its bias. WALS strangely only has this coded for about half of the langauges in our sample. I coded the rest from wikipedia (https://en.wikipedia.org/wiki/List_of_languages_by_type_of_grammatical_genders). For the ones that were coded by both, they always agreed. Here are the distributions of languages across grammar types (CN = common/neuter, MF = masculine/feminine, MFN = masculine/feminine/neuter).
+
+```{r}
+gender_data <- read_csv("../language_bias/gender_grammar.csv") %>%
+  rename(wikipedia_grammar_type = Wikipedia) %>%
+  select(language_code, language_name, wikipedia_grammar_type) %>%
+  filter(!is.na(wikipedia_grammar_type)) %>%
+  mutate(wikipedia_grammar_type2 = ifelse(wikipedia_grammar_type == "none", "none", "MF"))
+```
+
+
+```{r}
+kable(arrange(gender_data, wikipedia_grammar_type2))
+count(gender_data, wikipedia_grammar_type2)  %>%
+  kable()
+
+count(gender_data, wikipedia_grammar_type2)  %>%
+  kable()
+```
+
+## Implicit measures
+For both IAT measures, languages with bigger grammatical bias have large implicit bias than languages that don't, and this effect is larger for male participants.
+
+### Behavioral IAT measure
+```{r, fig.height = 3, fig.width = 8}
+full_d <- IAT_behavior_measures_imp %>%
+  full_join(lang_bias, by = "language_code") %>%
+  full_join(gender_data, by = "language_code") %>%
+  select(-contains("test"))
+
+iat_means <-  full_d %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  mutate(sex = ifelse(is.na(sex), "all", sex)) %>%
+  group_by(type, sex, wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "mean", na.rm = T)
+
+  ggplot(iat_means, aes(x = sex, 
+                                 y = mean, fill = wikipedia_grammar_type2)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~type, scales = "free") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper),  
+                 position = position_dodge(width = .9)) +
+  theme_bw() 
+```
+
+Effect size
+```{r}
+iat_means <-  full_d %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  mutate(sex = ifelse(is.na(sex), "all", sex)) %>%
+  group_by(type, sex, wikipedia_grammar_type2) %>%
+  summarize(sd = sd(mean),
+            mean = mean(mean),
+            n = n())
+
+#compute.es::mes(0.3878186, 0.3623428, 0.02424421, 0.02142372, 16, 11 )
+
+#compute.es::mes(0.3709505, 0.3077983,  0.03150937, 0.04381712, 16, 11 )
+```
+
+### Language IAT measures
+```{r, fig.height = 3, fig.width = 6}
+lang_means <-  full_d %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  mutate(sex = ifelse(is.na(sex), "all", sex)) %>%
+  filter(sex == "all") %>%
+  group_by(wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "lang_bias", na.rm = T)
+
+  ggplot(lang_means, aes(x = wikipedia_grammar_type2, 
+                                 y = mean, fill = wikipedia_grammar_type2)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper),  
+                 position = position_dodge(width = .9)) +
+  theme_bw() 
+```
+
+## Explicit measure
+
+This effect is also in the predicted direction: Languages that don't have grammatical gender are more likely to associate males with family (but the reverse is true for career?).
+```{r, fig.height = 3, fig.width =8}
+full_d <- IAT_behavior_measures_exp %>%
+  full_join(lang_bias, by = "language_code") %>%
+  full_join(gender_data, by = "language_code") %>%
+  select(-contains("test"))
+
+iat_means <-  full_d %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  mutate(sex = ifelse(is.na(sex), "all", sex)) %>%
+  group_by(type, sex, wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "mean", na.rm = T)
+
+  ggplot(iat_means, aes(x = sex, 
+                                 y = mean, fill = wikipedia_grammar_type2)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~type, scales = "free") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper),  
+                 position = position_dodge(width = .9)) +
+  theme_bw() 
+```
+
+
+

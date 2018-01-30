@@ -224,7 +224,7 @@ gender_participant_d <- tes(t_test_gender$statistic[[1]], n1, n2, verbose = F)
 Our analyses confirm two key findings in the literature on the gender-career IAT [@nosek2002harvesting]. First, participants showed an overall bias to
 associate men with career and females with family  (_d_ = `r round(es_behavioral_iat_by_participant,2)`). Figure 1a shows the mean effect size for each of the 48 countries in our sample, with participants from all countries showing a gender bias (_M_ = `r round(mean(country_means_career_implicit$es_behavioral_iat),2)`; _SD_ = `r round(sd(country_means_career_implicit$es_behavioral_iat), 2)`). Second, implicit and explicit bias measures were moderately correlated both at the level of individual participants (_r_ = `r round(as.numeric(imp_exp_subjs$estimate), 2)`; _p_ < .00001) and at the level of countries (_r_ = `r round(as.numeric(imp_exp_country_es$estimate), 2)`; _p_ = `r round(as.numeric(imp_exp_country_es$p.value), 2)`).
 
-```{r WPS_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=2.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Study 1: Implicit gender bias (measured by the IAT) predicted by an independent measure of gender equality, Women, Peace, and Security Index (WPS).  Each point corresponds to a country with notable points labeled."}
+```{r WPS_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.4, fig.height=2.8, set.cap.width=T, num.cols.cap=1, fig.cap = "Study 1: Implicit gender bias (measured by the IAT) predicted by an independent measure of gender equality, Women, Peace, and Security Index (WPS).  Each point corresponds to a country with notable points labeled."}
 
 wps <- read_csv("analysis/study1/data/WPS_index.csv") %>%
     mutate(country_name = fct_recode(country_name, 
@@ -252,7 +252,7 @@ ggplot(country_means_career_implicit_with_index,
                        limits = c(SCALE_MIDPOINT - .2, SCALE_MIDPOINT + .2), 
                        midpoint = SCALE_MIDPOINT, 
                        low = "blue", high = "red") +
-      #ggtitle("Study 1: IAT Gender Bias and Gender Equality") +
+      ggtitle("IAT Gender Bias and Gender Equality") +
       ylab("IAT Gender Bias (effect size)") +
       xlab("Women, Peace, and Security Equality Index") +
       #geom_label(aes(label = country_name), size = .9)
@@ -478,7 +478,7 @@ all_hand_es <- implicit_behavioral_means_by_country_with_language %>%
 ```
 
 
-```{r behavior_vs_language_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.5, fig.height=3.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Study 2b: Behavioral IAT gender bias (Study 1) by language versus language-embedding IAT gender bias, estimated from models trained on each language."}
+```{r behavior_vs_language_plot, fig.env="figure", fig.pos = "t", fig.align='center', fig.width=3.3, fig.height=3.1, set.cap.width=T, num.cols.cap=1, fig.cap = "Study 2b: Behavioral IAT gender bias (Study 1) by language versus language-embedding IAT gender bias, estimated from models trained on each language."}
 behavior_lang_cor_imp <- cor.test(all_hand_es$es_hand_translation, all_hand_es$es_behavioral_iat_weighted)
 
 ggplot(all_hand_es, aes(x = es_hand_translation, y = es_behavioral_iat_weighted)) +

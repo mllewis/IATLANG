@@ -1,0 +1,194 @@
+---
+title: Gender in languages
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+```{r setup, include = F}
+rm(list = ls())
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+library(stringr)
+library(forcats)
+library(broom)
+library(lingtypology)
+library(knitr)
+library(dplacer)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+WALS:
+  - 30a: Number of Genders
+  - 31a: Sex-based and Non-sex-based Gender Systems
+  - 32a: Systems of Gender Assignment
+  - 44a: Gender Distinctions in Independent Personal Pronouns
+Autotype:
+  gender: Gender: Various aspects of gender distinctions and their reflexes. (https://github.com/autotyp/autotyp-data#the-autotyp-database)
+  
+  
+```{r}
+codes <- read_csv( "../../data/wals/iso3_to_wals.csv")
+
+d <- read_csv( "../../data/other/langs_for_study1.csv") %>%
+  mutate(iso3 = iso.lang(language_name)) %>%
+  mutate(language_name = tolower(language_name)) %>%
+  left_join(codes %>% select(ascii_name, id), by = c("language_name" = "ascii_name")) %>%
+  mutate(id = replace(id, iso3 == "rus", "rus"),
+         id = replace(id, iso3 == "swe", "swe"),
+         id = replace(id, iso3 == "tur", "tur"),
+         id = replace(id, language_code == "zh", "mnd"),
+         id = replace(id, language_code == "es", "spa"),
+         id = replace(id, language_code == "nl", "dut"),
+         id = replace(id, language_code == "ar", "arb"),
+         iso3 = replace(iso3, language_code == "ar", "arb"),
+         iso3 = replace(iso3, language_code == "nl", "nld"),
+         iso3 = replace(iso3, language_code == "zh", "cmn"),
+         iso3 = replace(iso3, language_code == "es", "spa"),
+         iso3 = replace(iso3, language_code == "ms", "zsm"),
+         iso3 = replace(iso3, language_code == "fa", "pes")) %>%
+  rename(wals_id = "id") %>%
+  mutate(glottocode = gltc.iso(iso3))
+         
+
+wals_data <- wals.feature(c("30a", "31a", "32a", "44a"))
+autotyp_data <- autotyp.feature(c("Gender")) #, "Grammatical_markers", "Agreement"))
+
+langs_with_features <- d %>%
+  left_join(wals_data %>% select(-glottocode), by = c("wals_id" = "wals.code")) %>%
+  left_join(autotyp_data, by = c("glottocode" = "Glottocode")) %>%
+  select(-2, -4, -12, -15, -17, -LID, -longitude, -latitude)
+
+kable(langs_with_features)
+
+langs_with_features <- langs_with_features %>%
+  mutate_if(is.character, as.factor) %>%
+  mutate(source = "wals/autotype")
+
+write_csv(langs_with_features, "gender_grammar.csv")
+```
+
+Playing with D-place
+```{r}
+societies <- dplace_all_societies() 
+
+langs_with_features_for_dplace <- langs_with_features %>%
+               mutate(glottocode = 
+                      replace(glottocode, glottocode == "port1283", "gali1257"),
+                      glottocode = replace(glottocode, glottocode == "ital1282", "neap1235"),
+                      glottocode = replace(glottocode, glottocode == "stan1306", "mala1479"))
+  
+iat_societies <- societies %>%
+  right_join(langs_with_features_for_dplace, 
+             by = c("language.glotto_code" = "glottocode" )) %>%
+  filter(!is.na(id)) %>%
+  select(1:2, 11, 12, 9, 28)
+
+culture_data <- map_df(iat_societies$ext_id, get_dplace_data)
+
+
+get_dplace_data <- function(ext_id){
+  d = dplace_society(ext_id)
+  
+  env_data <- d$env %>%
+               mutate(Label = NA,
+                      Description = NA,
+                      var_type = "env")
+  
+  trait_data <- d$trait %>%
+                  rename(Variable = "Name",
+                          Value = "Code") %>%
+                  mutate(var_type = "trait")
+  
+  d_culture <- bind_rows(trait_data, env_data) %>%
+    mutate(ext_id = ext_id) %>%
+    select(ext_id, var_type, everything())
+  
+  d_culture
+}
+
+ext_id_key <- societies %>% 
+  select(ext_id, language.name) %>% distinct(ext_id, .keep_all = T) %>%
+  filter(ext_id %in% unique(culture_data$ext_id)) %>%
+  mutate(name_id = paste0(language.name, ext_id)) %>%
+  select(-language.name)
+
+MIN_VARS <- 11
+
+good_vars = culture_data %>%
+  filter(var_type == "trait") %>%
+  count(Variable) %>%
+  filter(n >= MIN_VARS)
+
+culture_data_filt <- culture_data %>%
+  filter(Variable %in% good_vars$Variable) %>%
+  select(ext_id, Variable, Value) %>%
+  distinct(ext_id, Variable,.keep_all = TRUE) %>%
+  mutate(Value = as.numeric(Value)) %>%
+  filter(!is.na(Value)) %>%
+  left_join(ext_id_key)  %>%
+filter(name_id != "JapaneseSCCS117",
+       name_id != "TurkishSCCS47") %>%
+  mutate(Value = as.factor(Value))
+  #select(-ext_id) %>%
+  #spread(name_id, Value)
+
+get_unique_relation_id <- function (x, y){
+  pairs = c(x, y)
+  ordered = order(pairs)
+  paste0(pairs[ordered[1]], pairs[ordered[2]])
+}
+
+
+pairs <- expand.grid(unique(culture_data_filt$name_id),
+            unique(culture_data_filt$name_id)) %>%
+  filter(Var1 != Var2) %>%
+  rowwise() %>%
+  mutate(unique_id = get_unique_relation_id(Var1, Var2)) %>%
+  distinct(unique_id, .keep_all = T) %>%
+  select(-unique_id) %>%
+  rename(c1 = Var1,
+         c2 = Var2)%>%
+  mutate(c1 = as.character(c1),
+         c2 = as.character(c2))
+
+get_country_sim <- function(c1, c2, dataset){
+
+  all_complete <- dataset %>%
+    filter(name_id == c1 |
+           name_id == c2) %>%
+    select(-ext_id) %>%
+    spread(name_id, Value) %>%
+    filter(complete.cases(.))
+  
+  total_complete <- nrow(all_complete)
+  prop_same <- sum(all_complete[,2] == all_complete[,3])/total_complete
+  
+  data.frame(c1 = c1, 
+             c2 = c2,
+             prop_same = prop_same,
+             n_complete = total_complete)
+}
+
+
+pairwise_sim <- pmap_df(pairs, get_country_sim, culture_data_filt) %>%
+  mutate(prop_same = log(prop_same))
+
+k <- spread(pairwise_sim %>% select(-n_complete), c2, prop_same)
+centroid_mat <- as.matrix(k[,-1])
+rownames(centroid_mat) <- k[,1]
+
+ggdendro::ggdendrogram(hclust(dist(centroid_mat)), size = 2) +
+  ggtitle("Pairwise cultural similarity")
+
+```
