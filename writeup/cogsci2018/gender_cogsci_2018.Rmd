@@ -84,7 +84,7 @@ raw_iat_behavioral <- read_feather("analysis/study1/data/Gender-Career IAT.publi
          N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7) %>%
     rename(overall_iat_D_score = D_biep.Male_Career_all) 
 
-# this file is "Gender-Career/Gender-Career IAT.public.2005-2016.sav" in feather form (taken from: https://osf.io/gmewy/) 
+# this file is "Gender-Career/Gender-Career IAT.public.2005-2016.sav" in feather form (taken from: https://osf.io/gmewy/); it is not in the repository because it is too big
 ```
 
 ```{r get_complete_data}
@@ -170,27 +170,7 @@ map_data <- country_means_career_implicit %>%
 
 SCALE_MIDPOINT <- mean(country_means_career_implicit$es_behavioral_iat, na.rm = T)
 
-# Europe inset (note that Hong Kong is missing from this map)
-ggplot(map_data, aes(x = long, y = lat, 
-                            group = group, 
-                            fill = es_behavioral_iat)) + 
-  scale_fill_gradient2("", breaks =  c(.9, 1, 1.1, 1.2),
-                       limits=c(SCALE_MIDPOINT - .2, SCALE_MIDPOINT + .2), 
-                       midpoint = SCALE_MIDPOINT, 
-                       low = "blue", high = "red") +
-  geom_polygon(color = "black", size = .1) +
-  ggtitle("IAT Gender Bias") +
-  theme(text = element_text(size = TEXT_SIZE),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.background = element_rect(fill = "white"),
-        axis.title = element_blank(),
-        axis.text = element_blank(),
-        axis.ticks = element_blank(),
-        legend.position = c(.1, .35),
-        legend.background = element_rect(fill=alpha('white', 0)),
-        legend.key.size = unit(0.2, "in"),
-        legend.text = element_text(size = 8.7))
+
 ```
 
 ```{r explicit_implicit_all}

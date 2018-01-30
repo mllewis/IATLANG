@@ -11,16 +11,16 @@ source("../_shared/IAT_utils.R")
 MODEL_PREFIX <- "/Volumes/wilbur_the_great/fasttext_models/wiki."
 
 # hand translations
-#TRANSLATION_PATH <- "data/tidy_hand_translations.csv"
-#RAW_VECTOR_PATH <- "data/wiki_language_embeddings_career/raw/"
-#CALCULATED_VECTOR_PATH <- "data/wiki_language_embeddings_career/calculated/"
-#ES_OUTPUT_PATH <- "data/career_effect_sizes_hand_translations.csv"
+TRANSLATION_PATH <- "data/tidy_hand_translations.csv"
+RAW_VECTOR_PATH <- "data/wiki_language_embeddings_career/raw/"
+CALCULATED_VECTOR_PATH <- "data/wiki_language_embeddings_career/calculated/"
+ES_OUTPUT_PATH <- "data/career_effect_sizes_hand_translations.csv"
 
 # google translations
-TRANSLATION_PATH <- "data/tidy_google_translations.csv"
-RAW_VECTOR_PATH <- "data/wiki_language_embeddings_career/raw/google_" 
-CALCULATED_VECTOR_PATH <- "data/wiki_language_embeddings_career/calculated/google_" 
-ES_OUTPUT_PATH <- "data/career_effect_sizes_google_translations.csv"
+#TRANSLATION_PATH <- "data/tidy_google_translations.csv"
+#RAW_VECTOR_PATH <- "data/wiki_language_embeddings_career/raw/google_" 
+#CALCULATED_VECTOR_PATH <- "data/wiki_language_embeddings_career/calculated/google_" 
+#ES_OUTPUT_PATH <- "data/career_effect_sizes_google_translations.csv"
 
 WORD_LIST <- list(test_name = "WEAT_6", # not identical to caliskan (caliskan used proper names)
                   bias_type = "gender-bias-career-family",
