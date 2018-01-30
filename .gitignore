@@ -19,11 +19,12 @@ writeup/cogsci2018/gender_cogsci_2018.log
 writeup/cogsci2018/tmp-pdfcrop-61689.tex
 writeup/cogsci2018/gender_cogsci_2018.tex
 writeup/cogsci2018/gender_cogsci_2018_cache/latex/*
+writeup/cogsci2018/analysis/study2b/data/raw/*
+
 2_pretrained_w2v_models/factbook.json/*
 writeup/cogsci2018/study2b/google_translate_and_names_analysis/* 
 data/IAT/Gender-Career/Gender-Career\ IAT.public.2005-2016.feather
 data/IAT/Gender-Career/Gender-Career\ IAT.public.2005-2016.sav
-writeup/cogsci2018/analysis/*/data/*
 *.csv
 *.feather
 # LaTeX #
