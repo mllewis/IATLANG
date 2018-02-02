@@ -1,6 +1,6 @@
 language_name,language_code,iso3,glottocode,30a,31a,32a,44a,Gender.n,Gender.Presence,source,wikipedia_grammar_type,
 arabic,ar,arb,stan1318,NA,NA,NA,NA,NA,NA,wals/autotype,MF,
-dutch; flemish,nl,nld,dutc1256,NA,NA,NA,3rd person singular only,NA,NA,wals/autotype,CN,https://en.wikipedia.org/wiki/List_of_languages_by_type_of_grammatical_genders
+dutch; flemish,nl,nld,dutc1256,NA,NA,NA,3rd person singular only,NA,NA,wals/autotype,CN,
 portuguese,pt,por,port1283,NA,NA,NA,NA,NA,NA,wals/autotype,MF,
 danish,da,dan,dani1285,NA,NA,NA,NA,NA,NA,wals/autotype,CN,
 italian,it,ita,ital1282,NA,NA,NA,3rd person singular only,NA,NA,wals/autotype,MF,
