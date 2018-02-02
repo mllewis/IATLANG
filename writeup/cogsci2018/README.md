@@ -1,6 +1,6 @@
 ## Cogsci 2018 paper directory
 
-The primary analyses are in the manuscript file, `gender_cogsci_2018.Rmd`. Pre-processing and data for the three studies in the paper can be found in the `analysis/` directory. The contents of this directory are described in more detail below. Note that in order to reproduce the entire pipeline files from three sources must be downloaded that are not contained in this repository because they are too large ([raw Project Implicit IAT data](https://osf.io/b5q8g/); [country-by-langauge data](https://github.com/opendatajson/factbook.json); [pre-trained Wikipedia models](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md)). All of these data sources are freely available.
+The primary analyses are in the manuscript file, `gender_cogsci_2018.Rmd`. Pre-processing and data for the three studies in the paper can be found in the `analysis/` directory. The contents of this directory are described in more detail below. Note that in order to reproduce the entire pipeline, files from three sources must be downloaded that are not contained in this repository because they are too large ([raw Project Implicit IAT data](https://osf.io/b5q8g/); [country-by-langauge data](https://github.com/opendatajson/factbook.json); [pre-trained Wikipedia models](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md)). All of these data sources are freely available.
 
 * Study 1/
 	* data/
