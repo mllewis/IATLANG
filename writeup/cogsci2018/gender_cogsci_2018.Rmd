@@ -622,7 +622,7 @@ xtable::print.xtable(measure_corr_table,
 
 Table 1 presents the correlation between language IAT gender bias estimated from the native language embedding model and all other measures. Language IAT and Behavioral IAT effect sizes were positively correlated (_r_ = `r unlist(round(behavior_lang_cor_imp$estimate, 2), use.names = F)`; _p_ = `r unlist(round(behavior_lang_cor_imp$p.value, 2), use.names = F)`; Fig.\ 3). Explicit gender bias (_r_ = `r unlist(round(behavior_lang_cor_exp$estimate, 2), use.names = F)`; _p_ = `r unlist(round(behavior_lang_cor_exp$p.value, 2), use.names = F)`) and WPS index (_r_ = .25; _p_ =  .29) were not reliably correlated with language gender bias.
 
-Thus, as predicted, we find in Study 3  that countries with a larger gender bias in the semantics of their language tend  to have speakers with greater implicit gender bias. 
+Thus, as predicted, we find in Study 2  that countries with a larger gender bias in the semantics of their language tend  to have speakers with greater implicit gender bias. 
 
 # Study 3: Gender bias and grammar
 The findings in Study 2 are consistent with both the language-as-causal and
