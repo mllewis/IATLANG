@@ -5,4 +5,4 @@ This project examines the relationship between gender bias and lexical semantics
 
 Below is a key figure from the paper showing cross-cultural variability in the magnitude of the bias to associate men with career and women with family, as measured by effect sizes from the IAT. All countries show a positive bias, with red and blue indicating above and below average bias. 
 
-![](writeup/cogsci2018/figs/country_gender_bias_map-1.pnf?raw=true)
+![](writeup/cogsci2018/figs/country_gender_bias_map-1.png?raw=true)
