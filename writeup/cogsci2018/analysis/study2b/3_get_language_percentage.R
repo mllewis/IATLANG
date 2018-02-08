@@ -38,7 +38,7 @@ percent_language <- country_info %>%
   select(fips_country_code, country_name, lang, percent, everything())
   
 
-# write_csv(percent_language, "data/percent_country_language_raw.csv")
+# write_csv(percent_language, "data/percent_country_language_cleaned.csv")
 
 # read in cleaned percent_language
 clean_percentage_language <- read_csv("data/percent_country_language_clean.csv") %>%

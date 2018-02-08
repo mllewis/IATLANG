@@ -5,7 +5,7 @@
 library(tidyverse)
 library(data.table)
 
-source("../_shared/IAT_utils.R")
+source("../study2a/IAT_utils.R")
 
 ################ set parameters ############
 MODEL_PREFIX <- "/Volumes/wilbur_the_great/fasttext_models/wiki."
