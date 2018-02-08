@@ -26,18 +26,24 @@ opts_chunk$set(echo = T, message = F, warning = F,
                error = F, tidy = F, cache = F)
 ```
 
-Read in four sets of effect sizes: career (hand translations), career (google translations), flowers (google translations), and weapons (google translations). 
-
-We need to exclude some languages based on the mean proportion missing translations for each test .1 seems like a conservative cuttoff.
 
 ```{r}
-ALPHA <- .1
+ALPHA <- .05
+PROP_MISSING_CUTOFF <- .2
 
-TESTS <- c("career_google", "career_hand", "flowers_google", "career_behavioral_iat", "wps_index", "weapons_google")
-
+MEASURES <- c("career_google", 
+           "career_hand",
+           "flowers_google",
+           "career_behavioral_iat",
+           "wps_index",
+           "weapons_google")
 ```
 
-```{r}
+Read in four sets of effect sizes: career (hand translations), career (google translations), flowers (google translations), and weapons (google translations). 
+
+We need to exclude some languages based on the mean proportion missing translations for each test. Here, the cutoff for proportion missing is `r PROP_MISSING_CUTOFF`. Note that correlations are starred/highlighted at the `r ALPHA` level.
+
+```{r read_in_language_data}
 career_hand <- read.csv("/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/analysis/study2b/data/career_effect_sizes_hand_translations.csv", col.names = c("wiki_language_code", "test_id", "test_name", "es"),  header = F, fill = TRUE) %>%
   mutate(test_version = "career_hand")
 
@@ -51,43 +57,9 @@ flowers_google <- read.csv("../data/flowers_effect_sizes_google.csv",
 weapons_google <- read.csv("../data/weapons_effect_sizes_google.csv", 
                            col.names = c("wiki_language_code", "test_id", "test_name", "es"), header = F, fill = TRUE) %>%
   mutate(test_version = "weapons_google")
-
 ```
 
-### Distribution of proportion missing translations
-```{r}
-prop_missing_raw <- read_csv("../data/prop_google_translate_missing.csv")  %>%
-  rowwise() %>%
-  mutate(mean_prop_missing = mean(c(prop_missing_career, prop_missing_flowers, prop_missing_weapons))) %>%
-  arrange(-mean_prop_missing)
-
-ggplot(prop_missing_raw, aes(x = mean_prop_missing)) +
-  geom_histogram() +
-  theme_classic()
-```
-
-### Distribution of effect sizes by test (prop_missing < .1)
-```{r, fig.width = 9}
-PROP_MISSING_CUTOFF <- .1
-prop_missing <- prop_missing_raw %>%
-  filter(mean_prop_missing < PROP_MISSING_CUTOFF) 
-
-all_es<- bind_rows(list(career_hand, career_google,flowers_google, weapons_google))  %>%
-  select(-test_id, -test_name) %>%
-  filter(wiki_language_code %in% prop_missing$language_code) %>%
-  filter(wiki_language_code != "zh_yue")
-
-ggplot(all_es, aes(x = es, fill = test_version)) +
-  geom_density(alpha = .5) +
-  theme_classic()
-```
-
-Weapons and flowers have much less spread that career.
-
-
-### Correlations between effect sizes (prop_missing < .1)
-
-```{r}
+```{r read_in_behavioral_data}
 lang_codes <- read_csv("/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/analysis/study2b/data/language_names_to_wiki_codes.csv")
 
 behavioral_wps <- read_csv("/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/analysis/all/all_measures_df.csv") %>%
@@ -97,28 +69,62 @@ behavioral_wps <- read_csv("/Users/mollylewis/Documents/research/Projects/IATLAN
               weighted.mean(es_behavioral_iat,
                             normalized_n, na.rm = T),
             wps_index = mean(wps_index)) 
-
 ```
 
-```{r}
-PROP_MISSING_CUTOFF <- .1
 
+### Distribution of proportion missing translations
+```{r, fig.width = 5, fig.height = 4}
+prop_missing_raw <- read_csv("../data/prop_google_translate_missing.csv")  %>%
+  filter(language_code != "zh_yue") %>%
+  rowwise() %>%
+  mutate(mean_prop_missing = mean(c(prop_missing_career, prop_missing_flowers, prop_missing_weapons))) %>%
+  arrange(-mean_prop_missing)
+
+ggplot(prop_missing_raw, aes(x = mean_prop_missing)) +
+  geom_histogram() +
+  theme_classic()
+```
+
+### Distribution of effect sizes by test.
+
+
+```{r filter_and_join}
 prop_missing <- prop_missing_raw %>%
-  filter(mean_prop_missing < PROP_MISSING_CUTOFF) 
+  #filter(mean_prop_missing < PROP_MISSING_CUTOFF)  %>%
+  filter((prop_missing_career < PROP_MISSING_CUTOFF) & 
+           (prop_missing_flowers < PROP_MISSING_CUTOFF) & 
+           (prop_missing_weapons < PROP_MISSING_CUTOFF)) 
+  #filter(!(language_code %in% c("vi"))
 
-all_es_wide <- bind_rows(list(career_hand, career_google, flowers_google, weapons_google))  %>%
+all_es <- bind_rows(list(career_hand, career_google, 
+                        flowers_google, weapons_google))  %>%
   select(-test_id, -test_name) %>%
-  filter(wiki_language_code %in% prop_missing$language_code) %>%
-  filter(wiki_language_code != "zh_yue") %>%
+  filter(wiki_language_code %in% prop_missing$language_code)
+```
+
+```{r, fig.width = 5.5, fig.height = 5}
+ggplot(all_es, aes(x = es, fill = test_version)) +
+  geom_density(alpha = .5) +
+  theme_classic()
+```
+
+Weapons and flowers have much less spread that career.
+
+
+### Correlations between effect sizes 
+
+
+```{r, get_corrs}
+all_es_wide <- all_es %>%
   spread(test_version, es) %>%
   left_join(behavioral_wps)
 
-unique_pairs <- tidyr::crossing(TESTS ,TESTS) %>% 
+unique_pairs <- tidyr::crossing(MEASURES ,MEASURES) %>% 
   magrittr::set_colnames(c("test1", "test2")) %>%
   rowwise() %>%
-  mutate(test1 = sort(c(test1, test2))[1],       # sort order of words for each row
+  mutate(test1 = sort(c(test1, test2))[1],       
          test2 = sort(c(test1, test2))[2]) %>%
-  filter(test1 != test2) %>%                      # remove word combinations with itself
+  filter(test1 != test2) %>%                      
   unique()  
 
 get_corr <- function(test1, test2, df){
@@ -135,89 +141,68 @@ map2_df(unique_pairs$test1, unique_pairs$test2, get_corr, all_es_wide)  %>%
   kable()
 ```
 
-Note that correlations are highlighted at the `r ALPHA` level.
-```{r}
+```{r big_corr_plot1}
+corr_plot <- function(data, mapping, z){
+  p <- ggplot(data = data, mapping = mapping) + 
+    geom_point(size = .4) + 
+    geom_smooth(method = lm,  color="blue", alpha = .3) +
+    theme_minimal()
+  p
+}
+
+GGally::ggpairs(all_es_wide, columns = 2:7, 
+                lower = list(continuous = corr_plot))
+```
+
+```{r point_plot, include = F}
+ggplot(all_es_wide, aes(x = weapons_google,
+                                  y = career_behavioral_iat, 
+                                  label = wiki_language_code)) +
+  geom_text() +
+  geom_smooth(method = "lm")
+
+``` 
+
+```{r small_corr_plot1}
 corr_mat <- cor(all_es_wide[,c(-1)], 
                 use = "pairwise.complete.obs")
+
 p.mat <- cor.mtest(all_es_wide[,c(-1)], 
-                  conf.level = .95,  
+                  conf.level = (1-ALPHA),  
                   use = "pairwise.complete.obs")$p
 
 cols = rev(colorRampPalette(c("red", "white", "blue"))(100))
 
 corrplot(corr_mat, method = "color",  col = cols,
-         type = "upper", order = "hclust", number.cex = .7,
-         addCoef.col = "black", # Add coefficient of correlation
-         tl.col = "black", tl.srt = 90, # Text label color and rotation
-         # Combine with significance
+         type = "upper", order = "original", number.cex = .7,
+         addCoef.col = "black", 
          p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
-         # hide correlation coefficient on the principal diagonal
+         tl.col = "black", tl.srt = 90,
          diag = FALSE)
-
 ```
 
-### Correlations between effect sizes (prop_missing < .2)
 ```{r}
-PROP_MISSING_CUTOFF <- .2
+lm(career_behavioral_iat~ flowers_google + career_google, data = all_es_wide) %>%
+  summary()
 
-prop_missing <- prop_missing_raw %>%
-  filter(mean_prop_missing < PROP_MISSING_CUTOFF) 
+lm(career_hand ~ wps_index + flowers_google, data = all_es_wide) %>%
+  summary()
 
-all_es_wide <- bind_rows(list(career_hand, career_google,flowers_google, weapons_google))  %>%
-  select(-test_id, -test_name) %>%
-  filter(wiki_language_code %in% prop_missing$language_code) %>%
-  filter(wiki_language_code != "zh_yue") %>%
-  spread(test_version, es) %>%
-  left_join(behavioral_wps)
+lm(career_google ~ wps_index + flowers_google, data = all_es_wide) %>%
+  summary()
 
- map2_df(unique_pairs$test1, unique_pairs$test2, get_corr, all_es_wide)  %>%
-  select(test1, test2, estimate, statistic, p.value, parameter) %>%
-    mutate(sig = ifelse(p.value < ALPHA, "*", "")) %>%
-  kable()
- 
-```
- 
-```{r}
-corr_mat <- cor(all_es_wide[,c(-1)], use = "pairwise.complete.obs")
-p.mat <- cor.mtest(all_es_wide[,c(-1)], 
-                  conf.level = .95,  
-                  use = "pairwise.complete.obs")$p
+lm(career_hand ~ wps_index + weapons_google, data = all_es_wide) %>%
+  summary()
 
-corrplot(corr_mat, method = "color",  col = cols,
-         type = "upper", order = "hclust", number.cex = .7,
-         addCoef.col = "black", # Add coefficient of correlation
-         tl.col = "black", tl.srt = 90, # Text label color and rotation
-         # Combine with significance
-         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
-         # hide correlation coefficient on the principal diagonal
-         diag = FALSE)
+lm(career_google ~ wps_index + weapons_google, data = all_es_wide) %>%
+  summary()
 
-```
- 
- 
-```{r, eval = F}
+lm(career_hand ~ wps_index + weapons_google  + flowers_google, data = all_es_wide) %>%
+  summary()
 
-library(corrr)
-library(corrplot)
-correlate(all_es_wide[,-1], use = "pairwise.complete.obs") %>%
-  rplot()
+lm(career_google ~ wps_index + weapons_google  + flowers_google, data = all_es_wide) %>%
+  summary()
 
-res1 <- cor.mtest(all_es_wide[,-1], 
-                  conf.level = .95,  
-                  use = "pairwise.complete.obs")
-
-
-
-## specialized the insignificant value according to the significant level
-corrplot(M, p.mat = res1$p, sig.level = .2)
-corrplot.mixed(M, 
-               lower.col = "black",
-               number.cex = .7, 
-               p.mat = res1$p, 
-               sig.level = ALPHA)
-
-corrplot.mixed(M, type = "upper", order = "hclust", 
-         p.mat = res1$p, sig.level = 0.01)
 
 
 ```
