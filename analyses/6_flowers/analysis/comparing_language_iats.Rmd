@@ -118,6 +118,7 @@ Weapons and flowers have much less spread that career.
 all_es_wide <- all_es %>%
   spread(test_version, es) %>%
   left_join(behavioral_wps)
+write_csv(all_es_wide, "data/all_es_wide.csv")
 
 unique_pairs <- tidyr::crossing(MEASURES ,MEASURES) %>% 
   magrittr::set_colnames(c("test1", "test2")) %>%

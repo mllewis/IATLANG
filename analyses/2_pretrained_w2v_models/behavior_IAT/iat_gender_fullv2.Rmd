@@ -1,0 +1,163 @@
+---
+title: IAT LANG
+subtitle: full gender-career data (2005-2016)
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+rm(list = ls())
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+library(stringr)
+library(forcats)
+library(broom)
+library(haven)
+library(countrycode)
+library(feather)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = T)
+```
+
+Set params
+```{r}
+MIN_PARTICIPANTS_PER_COUNTRY <- 400
+```
+
+## Gender-career
+From wiki: 
+
+_From 2005 to present, the Gender-Career IAT was available on the Project Implicit demonstration website (https://implicit.harvard.edu/implicit/selectatest.html Click on “Gender-Career IAT” to try it yourself). The Gender-Career IAT includes one standard IAT (Male vs. Female; Career vs. Family), sets of explicit measures on gender roles (such as association between career with females or males, personal importance of career or family), set of demographic questions (age, gender, education level, number of children, etc.), and debriefing questions about how respondents thought about their IAT score after the task._
+
+_From 2005 to the end of 2016, there are more than 1,645,902 session IDs created for Gender-Career IAT, and the overall completion rate is around 49.8%. There were 1,052,013 respondents who completed the standard IAT part of the task, which is 63.9% of the total respondents_
+
+Note that the DV here is the pre-calculated "D" score from the D alogrithm by Greenwald and colleagues (2003). This monotonically scales with cohen's d, but I have not calculated cohen's d here.
+
+https://osf.io/f6mnr/
+http://projectimplicit.net/nosek/iat/
+
+******
+
+## Pre-processing
+Read in career-gender IAT data. 
+```{r}
+#d <- read_sav("../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.sav") 
+#write_feather(d, "../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
+raw_iat_behavioral <- read_feather("../../../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
+  rename(mixed_countryres = countryres) %>%
+  select(D_biep.Male_Career_all,sex, age,mixed_countryres, PCT_error_3467, 
+         Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, 
+         Mn_RT_all_7, assocareer, assofamily, N_ERROR_3, N_ERROR_4,
+         N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7) %>%
+    rename(overall_iat_D_score = D_biep.Male_Career_all) 
+
+# this file is "Gender-Career/Gender-Career IAT.public.2005-2016.sav" in feather form (taken from: https://osf.io/gmewy/); it is not in the repository because it is too big.
+```
+
+```{r get_complete_data}
+
+country_key <- read_csv("../../../data/other/mixed_countryres_to_country_res_key.csv")
+
+raw_iat_behavioral_complete <- raw_iat_behavioral %>%
+                                filter(sex %in% c("f", "m"),
+                                       !is.na(mixed_countryres), 
+                                       mixed_countryres != ".",
+                                       mixed_countryres != "nu",  # not clear what this refers to (it's lower case and not in codebook- Niue seems unlikely)
+                                       !is.na(overall_iat_D_score)) %>%
+                                left_join(country_key) %>%
+                                select(-mixed_countryres)
+                                      
+
+country_ns <- raw_iat_behavioral_complete %>%
+  left_join(country_key) %>%
+  count(countryres)  %>%
+  filter(n >= MIN_PARTICIPANTS_PER_COUNTRY) %>%
+  arrange(-n)
+
+raw_iat_behavioral_complete_dense_country <- raw_iat_behavioral_complete %>%
+  filter(countryres %in% country_ns$countryres)
+```
+
+```{r behavioral_exclusions}
+# same exclusions as Nosek, Banjali, & Greenwald (2002), pg. 104. 
+iat_behavioral <- raw_iat_behavioral_complete_dense_country %>%
+  filter(Mn_RT_all_3467 <= 1500, # RTs
+         Mn_RT_all_3 <= 1800,
+         Mn_RT_all_4 <= 1800,
+         Mn_RT_all_6 <= 1800,
+         Mn_RT_all_7 <= 1800) %>%
+  filter(N_ERROR_3/N_3 <=.25, # errors
+         N_ERROR_4/N_4 <=.25,
+         N_ERROR_6/N_6 <=.25,
+         N_ERROR_7/N_7 <=.25)
+```
+
+There are `r nrow(country_ns)` with at least `r MIN_PARTICIPANTS_PER_COUNTRY` participants. This includes `r sum(country_ns$n)` participants.
+
+## Country means
+```{r}
+country_means_career <- iat_behavioral %>%
+  group_by(countryres) %>%
+  multi_boot_standard(col = "overall_iat_D_score") 
+```
+
+Plot
+```{r}
+ggplot(country_means_career, aes(x = reorder(countryres, mean), 
+                                 y = mean)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  ggtitle("IAT gender-career bias (2005 - 2016 data)") +
+  ylab("IAT gender bias") +
+  xlab("Country") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper),  
+                 position = position_dodge(width = .9)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1),
+        legend.position = "none") 
+```
+
+Get age and sex controlled values
+```{r}
+country_means_career_as <- iat_behavioral %>%
+  group_by(countryres) %>%
+  do(tidy(lm(overall_iat_D_score ~ age + sex, d = .)))  %>%
+  mutate(ci_lower_as_intercept = estimate - (1.96*std.error),
+         ci_upper_as_intercept = estimate + (1.96*std.error)) %>%
+  filter(term == "(Intercept)") %>%
+  select(countryres, estimate, ci_lower_as_intercept, ci_upper_as_intercept) %>%
+  rename(estimate_as_intercept = estimate)
+```
+
+Get age controlled values only
+```{r}
+country_means_career_a <- iat_behavioral %>%
+  group_by(countryres) %>%
+  do(tidy(lm(overall_iat_D_score ~ age, d = .)))  %>%
+  mutate(ci_lower_a_intercept = estimate - (1.96*std.error),
+         ci_upper_a_intercept = estimate + (1.96*std.error)) %>%
+  filter(term == "(Intercept)") %>%
+  select(countryres, estimate, ci_lower_a_intercept, ci_upper_a_intercept) %>%
+  rename(estimate_a_intercept = estimate)
+```
+
+Join together and save
+```{r}
+all_d_by_country <- country_means_career %>%
+  left_join(country_means_career_as) %>%
+  left_join(country_means_career_a)
+
+write_csv(all_d_by_country,"../../../data/IAT/Gender-Career/by_country_means_400.csv") 
+```
+

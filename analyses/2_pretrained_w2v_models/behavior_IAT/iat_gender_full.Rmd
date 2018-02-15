@@ -54,10 +54,9 @@ http://projectimplicit.net/nosek/iat/
 Read in career-gender IAT data. 
 ```{r}
 #d <- read_sav("../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.sav") 
-
 #write_feather(d, "../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
 
-d_raw <- read_feather("../../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
+d_raw <- read_feather("../../../data/IAT/Gender-Career/Gender-Career IAT.public.2005-2016.feather") %>%
   select(D_biep.Male_Career_all, sex, countryres, PCT_error_3467, 
          Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, Mn_RT_all_7,
          assocareer, assofamily, impcareer, impfamily, actualduties, idealduties, femaleceos)

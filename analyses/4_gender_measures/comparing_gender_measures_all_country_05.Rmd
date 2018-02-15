@@ -1,0 +1,214 @@
+---
+title: Comparing objective gender measures 
+subtitle: country level (alpha = .1)
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+rm(list = ls())
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(knitr)
+library(broom)
+library(corrplot)
+library(countrycode)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+```{r}
+ALPHA <- .1
+```
+
+Six gender parity indicators:
+
+* GDI: Gender-related Development Index- http://hdr.undp.org/en/data# (Gender Development Index (GDI).csv) 
+* GII: Gender Inequality index - http://hdr.undp.org/en/data# (Gender Inequality Index (GII).csv)
+* GGI: World Economic Forum’s Gender Gap Index -  http://reports.weforum.org/global-gender-gap-report-2016/rankings/  (WEF_GGGR_Dataset_2016.xlsx)
+* SIGI:  https://www.genderindex.org/ranking/  (SIGI.csv)
+* WPS: https://giwps.georgetown.edu/the-index/  (WPS_index.csv)
+* GPI: Gender Parity Index (MDG) -  Taken from Worldbank (wbstats package)
+
+We exclude GPI because it's missing for about half of countries - shoud look into this.
+
+## IAT bias measures
+```{r}
+# read in country to language
+all_countries <- read_csv("data/other/country_to_lang.csv")
+all_countries[all_countries$country_name == "UK", "country_code"] = "GB"
+          
+# read in bias measures
+bias_measures <- read_csv("data/other/all_es_wide.csv") %>%
+  select(-wps_index) 
+
+#bias_measures[bias_measures$weapons_google < .5, "weapons_google"] = NA
+#bias_measures[bias_measures$flowers_google < .9, "flowers_google"] = NA
+```
+
+```{r, fig.height = 4}
+bias_measures %>%
+  gather("measure", "value", c(-1,-6)) %>%
+  ggplot(aes(x = measure, y = value)) +
+  geom_boxplot() +
+  theme_bw()
+```
+
+## Objective gender measures
+```{r}
+#read in gender measures
+hdi <- read_csv("data/gender_measures/HDI_complete.csv") %>%
+  mutate_at(3:28, as.numeric) %>%
+  mutate(mean_value = rowMeans(.[,3:28], na.rm = T))   %>%
+  mutate(country_code = countrycode(country, "country.name", "iso2c")) %>%
+  select(kpi_name, country_code, mean_value) %>%
+  spread(kpi_name, mean_value, -2) %>%
+  select(country_code, `Median Age`) %>%
+  rename(median_age = `Median Age`) 
+
+all_gender_measures <- read_csv("data/gender_measures/all_gender_measures.csv") %>%
+  select(-sigi, -sigi_physical, -wb_cpia, -contains("schooling"), -gpi_literacy, -contains("ggi_"), -sigi_son) %>%
+  left_join(hdi)
+
+```
+
+```{r, fig.width = 7, fig.height = 4}
+all_gender_measures %>%
+  gather(measure, value, -1:-3) %>%
+  ggplot(aes(x = value)) +
+  geom_histogram() +
+  facet_wrap(~measure, scales = "free", ncol = 4) +
+  ggtitle("raw") +
+  theme_bw()
+```
+
+Transform skewed measures.
+```{r, fig.width = 7, fig.height = 4}
+all_gender_measures_transformed <- all_gender_measures %>%
+  mutate(sigi_fam_log = log(sigi_fam),
+         gii_log = log(gii),
+         gdi_exp = gdi^10) %>%
+  select(-sigi_fam,  -gii, -gdi) %>%
+  mutate(sigi_fam_log = ifelse(is.infinite(sigi_fam_log), NA,  sigi_fam_log))
+
+all_gender_measures_transformed %>%
+  gather(measure, value, -1:-3) %>%
+  ggplot(aes(x = value)) +
+  geom_histogram() +
+  ggtitle("transformed")+
+  facet_wrap(~measure, scales = "free", ncol = 4) +
+  theme_bw()
+```
+
+## Correlation between measures
+```{r}
+# merge together
+full_df_partial = all_countries %>%
+  left_join(bias_measures, 
+            by = "wiki_language_code") %>%
+  left_join(all_gender_measures_transformed,  by = "country_code") %>%
+  select(-contains(".y"))  %>%
+  #select(c(-10:-13, -16)) %>%
+  select(1:5, 8,  everything()) 
+
+mod1 <- lm(career_behavioral_iat ~ median_age, 
+           data = full_df_partial)
+
+
+full_df = full_df_partial %>%
+  modelr::add_residuals(mod1) %>%
+  rename(career_behavioral_iat_resid = resid) %>%
+  select(1:6, career_behavioral_iat_resid, everything())
+
+```
+
+```{r small_corr_plot1, fig.height = 6, fig.width = 6}
+corr_mat <- cor(full_df[,c(-1:-3)], 
+                use = "pairwise.complete.obs")
+
+p.mat <- cor.mtest(full_df[,c(-1:-3)], 
+                  conf.level = (1-ALPHA),  
+                  use = "pairwise.complete.obs")$p
+
+cols = rev(colorRampPalette(c("red", "white", "blue"))(100))
+
+corrplot(corr_mat, method = "color",  col = cols,
+         type = "upper", order = "original", number.cex = .7,
+         addCoef.col = "black", 
+         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
+         tl.col = "black", tl.srt = 90,
+         diag = FALSE)
+```
+
+```{r, }
+MEASURES <- names(full_df)[-1:-3]
+unique_pairs <- tidyr::crossing(MEASURES ,MEASURES) %>% 
+  magrittr::set_colnames(c("test1", "test2")) %>%
+  rowwise() %>%
+  mutate(test1 = sort(c(test1, test2))[1],       
+         test2 = sort(c(test1, test2))[2]) %>%
+  filter(test1 != test2) %>%                      
+  unique() 
+
+get_corr <- function(test1, test2, df){
+  
+  df %>%
+    select(test1, test2) %>%
+    do(tidy(cor.test(unlist(.[,1]), unlist(.[,2])))) %>%
+    mutate(test1 = test1, 
+           test2 = test2)
+}
+
+map2_df(unique_pairs$test1, unique_pairs$test2, get_corr, full_df)  %>%
+  select(test1, test2, estimate, statistic, p.value, parameter) %>%
+  mutate(sig = ifelse(p.value < ALPHA, "*", "")) %>%
+  #arrange(p.value) %>%
+  kable()
+```
+
+### Flowers
+```{r}
+full_df %>%
+  select(1, 8, c(10:15)) %>%
+  gather("measure", "value", c(-1,-2)) %>%
+  ggplot(aes(x = value, y = flowers_google)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~measure, scales = "free") +
+  theme_bw()
+```
+
+### Weapons
+```{r}
+full_df %>%
+  select(1, 9, c(10:15)) %>%
+  gather("measure", "value", c(-1,-2)) %>%
+  ggplot(aes(x = value, y = weapons_google)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~measure, scales = "free") +
+  theme_bw()
+```
+
+### Career
+```{r}
+full_df %>%
+  select(1, 4, c(10:15)) %>%
+  gather("measure", "value", c(-1,-2)) %>%
+  ggplot(aes(x = value, y =career_google)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~measure, scales = "free") +
+  theme_bw()
+```
