@@ -63,10 +63,10 @@ weapons_google <- read.csv("../data/weapons_effect_sizes_google.csv",
 lang_codes <- read_csv("/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/analysis/study2b/data/language_names_to_wiki_codes.csv")
 
 behavioral_wps <- read_csv("/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/analysis/all/all_measures_df.csv") %>%
-   left_join(lang_codes) %>%
+  left_join(lang_codes) %>%
   group_by(wiki_language_code) %>%
   summarise(career_behavioral_iat =
-              weighted.mean(es_behavioral_iat,
+            weighted.mean(es_behavioral_iat,
                             normalized_n, na.rm = T),
             wps_index = mean(wps_index)) 
 ```
@@ -112,8 +112,6 @@ Weapons and flowers have much less spread that career.
 
 
 ### Correlations between effect sizes 
-
-
 ```{r, get_corrs}
 all_es_wide <- all_es %>%
   spread(test_version, es) %>%

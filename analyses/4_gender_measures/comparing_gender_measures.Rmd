@@ -66,7 +66,7 @@ bias_measures %>%
 
 ## Objective gender measures
 ```{r}
-#read in gender measures
+# read in gender measures
 all_gender_measures <- read_csv("data/gender_measures/all_gender_measures.csv") %>%
   select(-sigi, -sigi_physical, -wb_cpia, -contains("schooling"), -gpi_literacy, -contains("ggi_"), -sigi_son)
 ```
