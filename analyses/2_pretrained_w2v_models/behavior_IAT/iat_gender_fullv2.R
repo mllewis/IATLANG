@@ -36,7 +36,6 @@ raw_iat_behavioral_complete <- raw_iat_behavioral %>%
                                 left_join(country_key) %>%
                                 select(-mixed_countryres)
                                       
-
 country_ns <- raw_iat_behavioral_complete %>%
   left_join(country_key) %>%
   count(countryres)  %>%
@@ -88,5 +87,3 @@ all_d_by_country <- country_means_career %>%
   left_join(country_means_career_a)
 
 write_csv(all_d_by_country,"../../../data/IAT/Gender-Career/by_country_means_400.csv") 
-
-

@@ -1,0 +1,380 @@
+---
+title: Montag children's book corpus
+subtitle: training w2v on corpus
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(tidytext)
+library(langcog)
+library(data.table)
+library(wordVectors)
+library(corpus)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+## Train word2vec model on montag corpus.
+```{r, eval = F, include = F}
+d_raw <- read_lines("100Books.txt")  %>%
+  as.data.frame() %>%
+  rename("text" = ".")  %>%
+      filter(!str_detect(text, regex("^Title",
+                                                 ignore_case = TRUE)),
+           !str_detect(text, regex("^Author",
+                                                 ignore_case = TRUE)),
+           text != "")
+
+PATH <- "100Books_clean.txt"
+#write_delim(d_raw, PATH)
+
+prep_word2vec(origin=PATH,destination="books_prepped.txt",lowercase=T,bundle_ngrams=1)
+```
+
+```{r  include = F}
+model <- train_word2vec("books_prepped.txt",
+                        "childers_book_vectors_uni.bin", 
+                        vectors=200,threads=4,
+                        window=12,iter=5,
+                        negative_samples=0, 
+                        min_count = 5, force = T)
+model_df <- model %>%
+  as.data.frame() %>%
+  rownames_to_column("target_word")
+
+#write_csv(model_df, "w2v_montag_corpus.csv")
+```
+
+### Plot centroid of each book 
+(sum of all words in book)
+```{r}
+model_df <- read_csv("w2v_montag_corpus.csv")
+
+montag_counts <- read_csv("tidy_montag_corpus.csv") %>%
+  rename(target_word = word) %>%
+  count(title, target_word)
+
+# get location of essay in the vector space 
+get_one_essay_location <- function(book_title, 
+                                   model, 
+                                   book_data){
+  
+  # merge current essay with corresponding word vecs
+  merged_vectors <- book_data[title == book_title] %>%
+    merge(model, all.x = TRUE, by = "target_word")
+  
+  # get pieces to essay vector computation
+  word_vectors <- merged_vectors %>%  # get word vectors only
+    select(V1:V200) %>%
+    as.matrix()
+  counts <- merged_vectors$n # get counts
+
+  # weighted by number of times word appears in essay
+  count_weighted_vecs <- word_vectors * counts # weight by n word appears
+  essay_vector_count_weighted <- t(colSums(count_weighted_vecs, 
+                                           na.rm = TRUE)) # sum across words
+ 
+  # return essay vector
+  count_weighting_vec <- data.frame(title = book_title,
+                                    essay_vector_count_weighted)
+
+}
+
+essay_locations <- 
+  map_df(unique(montag_counts$title), 
+         get_one_essay_location, model_df, 
+         as.data.table(montag_counts))
+
+# get tsne coordinates
+tsne_out = Rtsne::Rtsne(as.matrix(essay_locations[,-1]))
+tsne_dims <- tsne_out$Y %>%
+  as.data.frame() %>%
+  rename(tsne_X = V1,
+         tsne_Y = V2)  
+
+#write_csv(tsne_dims, "book_tsne_montag_w2v.csv")
+```
+
+```{r}
+tsne_dims <- read_csv("book_tsne_montag_w2v.csv") %>%
+  bind_cols(title = unique(montag_counts$title)) 
+
+ggplot(tsne_dims,
+         aes(x = tsne_X, y = tsne_Y)) +
+  geom_text(aes(label = title), size = 2) +
+  theme_void()
+```
+
+## Compare gender words
+Get N closest words (N = 200) to "boy" and "girl" word pairs. Then, plot in 2d space and try to predict words with independent ratings (Glasglow and Byrsbaert).
+
+```{r}
+# Read in w2v and norms.
+gender_norms <- read_csv("GlasgowNorms.csv") %>%
+  select(word, GEND_M) %>%
+  rename(gender_maleness = GEND_M)
+
+affect_norms <- read_csv("BRM-emot-submit.csv") %>%
+  select(2,3,6,9) %>%
+  rename(word = Word,
+         valence = V.Mean.Sum, 
+         affect = A.Mean.Sum,
+         dominance = D.Mean.Sum)
+```
+
+### Boy vs. girl
+#### Distribution in 2d w2v space
+
+The large point corresponds to the target boy and girl words.
+
+```{r, fig.height = 6}
+BOY_WORD <- "boy"
+GIRL_WORD <- "girl"
+
+boy_words <- model %>% 
+  closest_to(BOY_WORD, n = 201, fancy_names = F) %>%
+  slice(-1) %>%
+  mutate(word_type = "boy") 
+  #mutate(word = text_tokens(word, stemmer = "en") %>% unlist())
+
+girl_words <- model %>% 
+  closest_to(GIRL_WORD, n = 201, fancy_names = F) %>%
+  slice(-1) %>%
+  mutate(word_type = "girl") 
+  #mutate(word = text_tokens(word, stemmer = "en") %>% unlist())
+
+word_dims <- boy_words %>%
+  bind_rows(girl_words) %>%
+  select(-similarity, -word_type) %>%
+  add_row(word = GIRL_WORD) %>%
+  add_row(word = BOY_WORD) %>%
+  rename(target_word = word) %>%
+  left_join(model_df) %>%
+  distinct(target_word, .keep_all=T)
+
+# get tsne coordinates
+tsne_out = Rtsne::Rtsne(as.matrix(word_dims[,-1]))
+tsne_dims <- tsne_out$Y %>%
+  as.data.frame() %>%
+  rename(tsne_X = V1,
+         tsne_Y = V2)  %>%
+  bind_cols(target_word = word_dims$target_word) %>%
+  select(target_word, everything()) 
+
+tsne_words <- boy_words %>%
+  bind_rows(girl_words) %>%
+  select(-similarity) %>% 
+  rename(target_word = word) %>%
+  left_join(tsne_dims)
+
+targ_words <- tsne_dims %>%
+  filter(target_word %in% c(BOY_WORD, GIRL_WORD)) %>%
+  mutate(word_type = ifelse(target_word == BOY_WORD,
+                            "boy", "girl"))
+ 
+ggplot(tsne_words,
+         aes(x = tsne_X, y = tsne_Y)) +
+  geom_text(aes(label = target_word, color = word_type),
+            size = 2) +
+  scale_color_manual(values = c("blue", "red")) +
+  geom_point(aes(color = word_type), 
+             data = targ_words, size = 4) +
+  theme_void()
+```
+
+#### Independent ratings
+```{r, fig.height = 3}
+boy_words %>%
+  bind_rows(girl_words) %>%
+  left_join(gender_norms) %>%
+  left_join(affect_norms) %>%
+  gather("norm", "rating", -1:-3) %>%
+  group_by(norm, word_type) %>%
+  multi_boot_standard(col = "rating", na.rm = T) %>%
+  ggplot(aes(x = fct_rev(word_type), y = mean, 
+             fill = word_type)) +
+    facet_wrap(~norm, nrow = 1) +
+    geom_bar(stat = "identity") +
+    ggtitle(paste0(BOY_WORD, " vs. ", GIRL_WORD)) +
+    ylab("Mean rating") +
+    xlab("gender of target words") +
+    ylim(0, 7) +
+    geom_linerange(aes(ymin = ci_lower, ymax = ci_upper)) +
+    theme_minimal() +
+    theme(legend.position = "none")
+```
+
+
+### Him vs. her
+#### Distribution in 2d w2v space
+```{r, fig.height = 6}
+BOY_WORD <- "him"
+GIRL_WORD <- "her"
+
+boy_words <- model %>% 
+  closest_to(BOY_WORD, n = 201, fancy_names = F) %>%
+  slice(-1) %>%
+  mutate(word_type = "boy") 
+  #mutate(word = text_tokens(word, stemmer = "en") %>% unlist())
+
+girl_words <- model %>% 
+  closest_to(GIRL_WORD, n = 201, fancy_names = F) %>%
+  slice(-1) %>%
+  mutate(word_type = "girl") 
+  #mutate(word = text_tokens(word, stemmer = "en") %>% unlist())
+
+word_dims <- boy_words %>%
+  bind_rows(girl_words) %>%
+  select(-similarity, -word_type) %>%
+  add_row(word = GIRL_WORD) %>%
+  add_row(word = BOY_WORD) %>%
+  rename(target_word = word) %>%
+  left_join(model_df) %>%
+  distinct(target_word, .keep_all=T)
+
+# get tsne coordinates
+tsne_out = Rtsne::Rtsne(as.matrix(word_dims[,-1]))
+tsne_dims <- tsne_out$Y %>%
+  as.data.frame() %>%
+  rename(tsne_X = V1,
+         tsne_Y = V2)  %>%
+  bind_cols(target_word = word_dims$target_word) %>%
+  select(target_word, everything()) 
+
+tsne_words <- boy_words %>%
+  bind_rows(girl_words) %>%
+  select(-similarity) %>% 
+  rename(target_word = word) %>%
+  left_join(tsne_dims)
+
+targ_words <- tsne_dims %>%
+  filter(target_word %in% c(BOY_WORD, GIRL_WORD)) %>%
+  mutate(word_type = ifelse(target_word == BOY_WORD,
+                            "boy", "girl"))
+ 
+ggplot(tsne_words,
+         aes(x = tsne_X, y = tsne_Y)) +
+  geom_text(aes(label = target_word, color = word_type),
+            size = 2) +
+  scale_color_manual(values = c("blue", "red")) +
+  geom_point(aes(color = word_type), 
+             data = targ_words, size = 4) +
+  theme_void()
+```
+
+#### Independent ratings
+```{r, fig.height = 3}
+boy_words %>%
+  bind_rows(girl_words) %>%
+  left_join(gender_norms) %>%
+  left_join(affect_norms) %>%
+  gather("norm", "rating", -1:-3) %>%
+  group_by(norm, word_type) %>%
+  multi_boot_standard(col = "rating", na.rm = T) %>%
+  ggplot(aes(x = fct_rev(word_type), y = mean, 
+             fill = word_type)) +
+    facet_wrap(~norm, nrow = 1) +
+    geom_bar(stat = "identity") +
+    ggtitle(paste0(BOY_WORD, " vs. ", GIRL_WORD)) +
+    ylab("Mean rating") +
+    ylim(0, 7) +
+    xlab("gender of target words") +
+
+    geom_linerange(aes(ymin = ci_lower, ymax = ci_upper)) +
+    theme_minimal() +
+    theme(legend.position = "none")
+```
+
+### His vs. her
+#### Distribution in 2d w2v space
+```{r, fig.height = 6}
+BOY_WORD <- "his"
+GIRL_WORD <- "her"
+
+boy_words <- model %>% 
+  closest_to(BOY_WORD, n = 201, fancy_names = F) %>%
+  slice(-1) %>%
+  mutate(word_type = "boy") 
+  #mutate(word = text_tokens(word, stemmer = "en") %>% unlist())
+
+girl_words <- model %>% 
+  closest_to(GIRL_WORD, n = 201, fancy_names = F) %>%
+  slice(-1) %>%
+  mutate(word_type = "girl") 
+  #mutate(word = text_tokens(word, stemmer = "en") %>% unlist())
+
+
+word_dims <- boy_words %>%
+  bind_rows(girl_words) %>%
+  select(-similarity, -word_type) %>%
+  add_row(word = GIRL_WORD) %>%
+  add_row(word = BOY_WORD) %>%
+  rename(target_word = word) %>%
+  left_join(model_df) %>%
+  distinct(target_word, .keep_all=T)
+
+# get tsne coordinates
+tsne_out = Rtsne::Rtsne(as.matrix(word_dims[,-1]))
+tsne_dims <- tsne_out$Y %>%
+  as.data.frame() %>%
+  rename(tsne_X = V1,
+         tsne_Y = V2)  %>%
+  bind_cols(target_word = word_dims$target_word) %>%
+  select(target_word, everything()) 
+
+tsne_words <- boy_words %>%
+  bind_rows(girl_words) %>%
+  select(-similarity) %>% 
+  rename(target_word = word) %>%
+  left_join(tsne_dims)
+
+targ_words <- tsne_dims %>%
+  filter(target_word %in% c(BOY_WORD, GIRL_WORD)) %>%
+  mutate(word_type = ifelse(target_word == BOY_WORD,
+                            "boy", "girl"))
+ 
+ggplot(tsne_words,
+         aes(x = tsne_X, y = tsne_Y)) +
+  geom_text(aes(label = target_word, color = word_type),
+            size = 2) +
+  scale_color_manual(values = c("blue", "red")) +
+  geom_point(aes(color = word_type), 
+             data = targ_words, size = 4) +
+  theme_void()
+```
+
+#### Independent ratings
+```{r, fig.height = 3}
+boy_words %>%
+  bind_rows(girl_words) %>%
+  left_join(gender_norms) %>%
+  left_join(affect_norms) %>%
+  gather("norm", "rating", -1:-3) %>%
+  group_by(norm, word_type) %>%
+  multi_boot_standard(col = "rating", na.rm = T) %>%
+  ggplot(aes(x = fct_rev(word_type), y = mean, 
+             fill = word_type)) +
+    facet_wrap(~norm, nrow = 1) +
+    geom_bar(stat = "identity") +
+    ggtitle(paste0(BOY_WORD, " vs. ", GIRL_WORD)) +
+    ylab("Mean rating") +
+    xlab("gender of target words") +
+    ylim(0, 7) +
+    geom_linerange(aes(ymin = ci_lower, ymax = ci_upper)) +
+    theme_minimal() +
+    theme(legend.position = "none")
+```

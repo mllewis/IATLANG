@@ -106,7 +106,8 @@ W3 <- list(test_name = "WEAT_3",
 W4 <- list(test_name = "WEAT_4",
            bias_type = "racial-attitude-market-discrimination1",
            category_1 = c("Todd", "Neil", "Geoffrey", "Brett", "Brendan", "Greg", "Matthew",
-                          "Brad","Allison","Anne","Carrie","Emily","Jill","Laurie","Meredith",
+                          "Brad","Allison","Anne","Carrie","Emily", "Jill", "Laurie",
+                          "Meredith",
                           "Sarah"),
            category_2 = c("Kareem", "Darnell", "Tyrone", "Hakim", "Jamal",
                           "Leroy","Jermaine","Rasheed","Aisha","Ebony","Keisha","Kenya",
@@ -114,7 +115,8 @@ W4 <- list(test_name = "WEAT_4",
            attribute_1 = c("caress", "freedom", "health", "love", "peace", "cheer", 
                            "friend","heaven", "loyal", "pleasure", "diamond", "gentle",
                            "honest", "lucky", "rainbow","diploma", "gift", "honor",
-                           "miracle", "sunrise", "family", "happy", "laughter","paradise", "vacation"),
+                           "miracle", "sunrise", "family", "happy", "laughter",
+                           "paradise", "vacation"),
            attribute_2 = c("abuse" , "crash" , "filth" , "murder" , "sickness" ,
                            "accident" , "death" , "grief" , "poison" , "stink" ,
                            "assault" , "disaster" , "hatred" , "pollute" , "tragedy" ,
@@ -232,7 +234,6 @@ ggplot(all_es, aes(y = d, x = es_source, fill = es_source)) +
 
 
 ## Get usable languages
-
 ```{r}
 iat_langs <- read_csv("../data/other/countries_lang.csv")
 

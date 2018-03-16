@@ -26,6 +26,7 @@ writeup/cogsci2018/analysis/study2b/google_translate_and_names_analysis/*
 writeup/cogsci2018/analysis/study2b/google_translate_and_names_analysis/*
 data/IAT/Gender-Career/Gender-Career\ IAT.public.2005-2016.feather
 data/IAT/Gender-Career/Gender-Career\ IAT.public.2005-2016.sav
+analyses/childrens_books/wiki.en.vec
 .csv
 *.feather
 # LaTeX #

@@ -110,7 +110,6 @@ ggplot(all_es, aes(x = es, fill = test_version)) +
 
 Weapons and flowers have much less spread that career.
 
-
 ### Correlations between effect sizes 
 ```{r, get_corrs}
 all_es_wide <- all_es %>%
@@ -118,7 +117,7 @@ all_es_wide <- all_es %>%
   left_join(behavioral_wps)
 write_csv(all_es_wide, "data/all_es_wide.csv")
 
-unique_pairs <- tidyr::crossing(MEASURES ,MEASURES) %>% 
+unique_pairs <- tidyr::crossing(MEASURES, MEASURES) %>% 
   magrittr::set_colnames(c("test1", "test2")) %>%
   rowwise() %>%
   mutate(test1 = sort(c(test1, test2))[1],       

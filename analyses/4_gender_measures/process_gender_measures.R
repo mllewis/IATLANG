@@ -84,6 +84,3 @@ all <- list(country_to_langs, gdi, gii, ggi, sigi, wps) %>%
          country_code = countrycode)
 
 write_csv(all, "data/gender_measures/all_gender_measures2.csv")
-
-
-

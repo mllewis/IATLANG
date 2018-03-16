@@ -56,9 +56,6 @@ bias_measures <- read_csv("../../data/IAT/Gender-Career/by_country_means_400.csv
   left_join(key) %>%
   left_join(language_measures)
 
-bias_measures2 <- read_csv("data/other/all_es_wide.csv") %>%
-  select(-wps_index) 
-
 ```
 
 ```{r, fig.height = 4}
@@ -74,10 +71,6 @@ bias_measures %>%
 #read in gender measures
 all_gender_measures <- read_csv("data/gender_measures/all_gender_measures2.csv") %>%
   select(-sigi, -sigi_physical,  -contains("ggi_"), -sigi_son)
-
-#read in gender measures2
-all_gender_measures2 <- read_csv("data/gender_measures/all_gender_measures.csv") %>%
-  select(-sigi, -sigi_physical, -wb_cpia, -contains("schooling"), -gpi_literacy, -contains("ggi_"), -sigi_son)
 ```
 
 ```{r, fig.width = 7, fig.height = 4}
@@ -141,12 +134,13 @@ full_df_lang = bias_measures %>%
   select(-country_name, -weapons_google) %>%
   group_by(wiki_language_code) %>%
   summarize_at(vars(mean:sigi_fam_log), mean) %>%
-  select(-wiki_language_code, -career_hand)
+  select(wiki_language_code, everything()) %>%
+  select(-career_hand)
 
-corr_mat <- cor(full_df_lang, 
+corr_mat <- cor(full_df_lang[,-1], 
                 use = "pairwise.complete.obs")
 
-p.mat <- cor.mtest(full_df_lang, 
+p.mat <- cor.mtest(full_df_lang[,-1], 
                   conf.level = (1-ALPHA),  
                   use = "pairwise.complete.obs")$p
 
@@ -163,6 +157,7 @@ corrplot(corr_mat, method = "color",  col = cols,
 
 ```{r}
 ggplot(full_df_lang, aes(x = career_google, y = mean)) +
-  geom_point() +
+  #geom_point() +
+  geom_text(aes(label = wiki_language_code))
   geom_smooth(method = "lm")
 ```
