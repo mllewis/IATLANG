@@ -61,18 +61,3 @@ if (!file.exists("cookbooks.txt")) prep_word2vec(origin="cookbooks",destination=
 model <- train_word2vec("cookbooks.txt","cookbook_vectors.bin", vectors=200,threads=4,window=12,iter=5,negative_samples=0)
 
 ```
-
-
-```{r}
-d_raw <- read_lines("/Users/mollylewis/Documents/research/Projects/IATLANG/analyses/childrens_books/100Books.txt")  %>%
-  as.data.frame() %>%
-  rename("text" = ".")  %>%
-      filter(!str_detect(text, regex("^Title",
-                                                 ignore_case = TRUE)),
-           !str_detect(text, regex("^Author",
-                                                 ignore_case = TRUE)),
-           text != "")
-
-write_delim(d_raw, "/Users/mollylewis/Documents/research/Projects/IATLANG/analyses/childrens_books/100Books_clean.txt")
-
-``

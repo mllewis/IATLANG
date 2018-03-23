@@ -23,10 +23,17 @@ library(langcog)
 library(data.table)
 library(wordVectors)
 library(corpus)
+library(kableExtra)
 
 opts_chunk$set(echo = T, message = F, warning = F, 
                error = F, tidy = F, cache = F)
 ```
+FINDINGS:
+
+- The N closest words to "boy" and "girl" are almost non-overlapping, suggesting that the concepts of maleness and femaleness are located in different parts of semantic space (maybe related to valence?)
+- There are more male-biased books than female-biased books (61% vs. 39%).
+- There's less variability in semantic space for female-biased books, compared to male-biased books.
+
 
 ## Train word2vec model on montag corpus.
 ```{r, eval = F, include = F}
@@ -42,7 +49,7 @@ d_raw <- read_lines("100Books.txt")  %>%
 PATH <- "100Books_clean.txt"
 #write_delim(d_raw, PATH)
 
-prep_word2vec(origin=PATH,destination="books_prepped.txt",lowercase=T,bundle_ngrams=1)
+prep_word2vec(origin = PATH,destination="books_prepped.txt",lowercase=T,bundle_ngrams=1)
 ```
 
 ```{r  include = F}
@@ -59,8 +66,8 @@ model_df <- model %>%
 #write_csv(model_df, "w2v_montag_corpus.csv")
 ```
 
-### Plot centroid of each book 
-(sum of all words in book)
+### Book centroids
+This is the distribution of books in semantic space using t-sne coordinates. The cenroid of each book is calculated as the sum of all words in book.
 ```{r}
 model_df <- read_csv("w2v_montag_corpus.csv")
 
@@ -119,7 +126,7 @@ ggplot(tsne_dims,
   theme_void()
 ```
 
-## Compare gender words
+## Relative position of gender-related words
 Get N closest words (N = 200) to "boy" and "girl" word pairs. Then, plot in 2d space and try to predict words with independent ratings (Glasglow and Byrsbaert).
 
 ```{r}
@@ -317,7 +324,6 @@ girl_words <- model %>%
   mutate(word_type = "girl") 
   #mutate(word = text_tokens(word, stemmer = "en") %>% unlist())
 
-
 word_dims <- boy_words %>%
   bind_rows(girl_words) %>%
   select(-similarity, -word_type) %>%
@@ -377,4 +383,112 @@ boy_words %>%
     geom_linerange(aes(ymin = ci_lower, ymax = ci_upper)) +
     theme_minimal() +
     theme(legend.position = "none")
+```
+
+## Gender score of each word
+To calculate gender bias score for each word,  I took the mean distance to 4 “male” words (“boy”, “man”,  “he”, “him”) and the mean distance to 4 “female” words (“girl”, “woman”,  “she”, “her”), and subtracted the two. Positive numbers indicate male bias. 
+
+```{r}
+w2v_norms <- read_csv("gender_score_output_montag_trained.csv", 
+                      col_names = c("target_word", "female_score",
+                                    "male_score", "gender_score")) %>%
+  distinct(.keep_all = T) %>%
+  anti_join(stop_words %>% filter(lexicon == "SMART"), 
+            by = c("target_word" = "word"))
+
+ggplot(w2v_norms, aes(x = gender_score)) +
+    ggtitle("Gender score distribution from word embedding models")+
+  xlab("Gender score + => more male") +
+    geom_histogram() +
+    theme_classic()
+```
+
+Glasglow norms:
+```{r}
+norms <- read_csv("GlasgowNorms.csv") %>%
+  select(word, GEND_M, contains("_M")) 
+
+all_norms <- left_join(w2v_norms, norms, by = c("target_word"= "word")) %>%
+  rename(gender_rating = GEND_M) %>%
+  select(target_word, gender_score, gender_rating)
+
+
+ggplot(all_norms,aes(y = gender_score, x = gender_rating)) +
+    geom_point() +
+    geom_smooth(method = "lm")  +
+    ggtitle("Correlation between gender norms and word embedding gender score")+
+    ylab("word2vec gender score") +
+    scale_x_continuous(name = "mean rating", 
+                     limits = c(1, 7),
+                     breaks = 1:7) +
+  theme_classic()
+
+cor_summary <- cor.test(all_norms$gender_score, all_norms$gender_rating)
+cor_summary
+```
+
+These are correlated with the Glasglow norms, though not as strongly as when using the Wikipedia-trained corpus.
+
+## Gender score by book
+
+Here I calculated a gender score for each book as the mean gender score of all the words in the book (unweighted for word frequency.)
+```{r}
+montag <- read_csv("tidy_montag_corpus.csv") %>%
+  rename(target_word = word)
+
+tidy_with_norms <- montag %>%
+  left_join(w2v_norms)
+
+norm_means <- tidy_with_norms %>%
+  group_by(title) %>%
+  multi_boot_standard(col = "gender_score", na.rm = T)
+
+norm_means_wide <- norm_means %>%
+  select(title, mean) %>%
+  arrange(mean)
+
+kable(norm_means_wide, "html") %>%
+  kable_styling() %>%
+  scroll_box(width = "900px", height = "400px")
+```
+
+```{r}
+ggplot(norm_means_wide, aes(x = mean)) +
+    geom_histogram() +
+    ggtitle("mean rating by book") +
+    xlab("word2vec gender rating (+ => more male)") +
+    geom_vline(aes(xintercept = 0), color = "red", linetype = 2) +
+    theme_classic()
+
+#norm_means_wide %>%
+ # mutate(male = ifelse(mean > 0, 1, 0)) %>%
+ # ungroup()%>%
+ # count(male)
+  
+```
+
+
+```{r}
+tsne_dims <- read_csv("book_tsne_montag_w2v.csv") %>%
+  bind_cols(gender_rating = norm_means$mean)  %>%
+  bind_cols(title = norm_means$title)  %>%
+  mutate(gender_rating_cat = ifelse(gender_rating > 0, 
+                                    "male", "female"))
+
+
+  ggplot(tsne_dims,
+         aes(x = tsne_X, y = tsne_Y, color = gender_rating)) +
+  geom_text(aes(label = title, color = gender_rating), size = 2) +
+  #geom_point() +
+  scale_color_gradient2(low = "red", high = "blue") +
+    theme_void()
+  
+  
+  ggplot(tsne_dims,
+         aes(x = tsne_X, y = tsne_Y, color = gender_rating)) +
+    geom_point() +
+  #geom_text(aes(label = title, color = gender_rating), size = 2) +
+  #geom_point() +
+  scale_color_gradient2(low = "red", high = "blue") +
+    theme_void()
 ```

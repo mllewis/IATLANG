@@ -69,6 +69,7 @@ tidy_books <- d_clean %>%
 #write_csv(tidy_books, "tidy_montag_corpus.csv")
 ```
 
+
 ### Glasglow norms 
 (Gender + others)
 
