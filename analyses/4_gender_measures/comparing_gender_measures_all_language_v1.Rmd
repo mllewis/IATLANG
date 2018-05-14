@@ -1,6 +1,6 @@
 ---
 title: Comparing objective gender measures
-subtitle: language level (alpha = .1)
+subtitle: language level (alpha = .05)
 author: Molly Lewis 
 date: "`r Sys.Date()`"
 output: 
@@ -29,7 +29,7 @@ opts_chunk$set(echo = T, message = F, warning = F,
 ```
 
 ```{r}
-ALPHA <- .1
+ALPHA <- .05
 ```
 
 Six gender parity indicators:
@@ -123,9 +123,9 @@ full_df_partial = all_countries %>%
   select(1:5, 8,  everything())  %>%
   group_by(wiki_language_code.x) %>%
   summarize_at(vars(career_google:gdi_exp), mean, na.rm = T) 
+
 mod1 <- lm(career_behavioral_iat ~ median_age, 
            data = full_df_partial)
-
 
 full_df = full_df_partial %>%
   modelr::add_residuals(mod1) %>%

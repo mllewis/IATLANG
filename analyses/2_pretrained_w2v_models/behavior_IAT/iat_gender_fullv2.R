@@ -22,7 +22,7 @@ raw_iat_behavioral <- read_feather("../../../data/IAT/Gender-Career/Gender-Caree
   rename(mixed_countryres = countryres) %>%
   select(D_biep.Male_Career_all, sex, age, mixed_countryres, PCT_error_3467, 
          Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, 
-         Mn_RT_all_7, assocareer, assofamily, N_3, N_4, N_6, N_7) %>%
+         Mn_RT_all_7, assocareer, assofamily, N_3, N_4, N_6, N_7, N_ERROR_3, N_ERROR_4, N_ERROR_7, N_ERROR_6) %>%
     rename(overall_iat_D_score = D_biep.Male_Career_all) 
 
 country_key <- read_csv("../../../data/other/mixed_countryres_to_country_res_key.csv")
@@ -60,7 +60,6 @@ iat_behavioral <- raw_iat_behavioral_complete_dense_country %>%
 country_means_career <- iat_behavioral %>%
   group_by(countryres) %>%
   multi_boot_standard(col = "overall_iat_D_score") 
-
 
 country_means_career_as <- iat_behavioral %>%
   group_by(countryres) %>%
