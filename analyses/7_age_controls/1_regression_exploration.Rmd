@@ -1,0 +1,445 @@
+---
+title: IAT regressions with Age
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(feather)
+library(lme4)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+
+scale_this <- function(x) as.vector(scale(x))
+ALPHA <- .05
+cols <- rev(colorRampPalette(c("red", "white", "blue"))(100))
+
+```
+
+These analyses predict iat behavioral, language iat measure, objective equality measures (ggi, wps, percentage women in stem). GGI and WPS are standard measures of gender equality with larger numbers indicating higher equality. Percentage women in stem comes from Stoet and Geary paper (there are also misc other objective variables from this paper)
+
+The analyses are done at three different levels - participant, country, and language.
+
+The resid values are the iat scores (impicit and explicit) residualizing out age, sex (resid1), and age, sex relgiosity, and explicit/implicit score (resid2).
+
+_Participant level findings_
+
+* When you control for age of participants, ggi predicts iat scores in the same direciton we found before: more equal countryies have higher behavioral iat. The same pattern holds for wps.
+* Language iat also predicts behavioral iat, controling for ggi/wps and explicit scores
+
+_Country level findings_
+
+* GGI predicts behavioral iat, controling for stuff in regression, in the predicted direction: higher ggi, lower bias. But effect of ggi goes away whne you look at residuals.
+* However, for WPS, the effect is in the same direction as at the participant level: higher wps, higher behavioral bias.
+* GGI  predicts women in stem measure in same direction as participant level: higher ggi, lower percentage of women in stem (this is the Stoet and Geary 2018 effect)
+* Importantly, es_behavioral_iat also predict percentage of women in stem, controling for ggi and explicit beliefs: higher iat bias, lower percentage of women in stem.
+
+So the relationship between objective measures of equality and behavioral iat is the same between participant and country level (more equality, more bias), except for one regression (iat~ggi + age etc.).
+
+_Language level findings_
+
+* career language iat does not predict behavioral iat, when you control for mean age of participants, but the effect is in the predicted direction 
+* flower language iat does not predict behavioral iat at all
+* career language iat does not predict percentage women measure, but does predict satisfaction (from Stoet and Geary), even after controlling for ggi
+
+So, in sum:
+
+* At the participant level, language iat predicts behavioral iat controling for explicit bias and objective measures (more language iat bias, more behavioral iat bias)
+* As in the cogsci paper, objective equality is positively associated with iat bias at the participant level (more equal, more bias). This is true from multiple measures (GGI and WPS).
+* With minor complications, we see the same  relationship as at the country level between objective  equality and iat behavioral bias (more equal, more bias).
+* Replicating Stoet and Geary, we also find at the country level that GGI is negatively associated with percentage women in stem (more equal, less stem) - but there's an independent contribution of behavior iat in the predicted direction (more iat bias, less stem). 
+* Nothing is significant at the language level (though might try weighted averages here, as before).
+
+
+```{r}
+PARTICIPANT_DF_PATH <- "by_participant_df.csv"
+COUNTRY_DF_PATH <- "by_country_df.csv"
+LANGUAGE_DF_PATH <- "by_language_df.csv"
+
+
+participant_df_raw <- read_csv(PARTICIPANT_DF_PATH) 
+participant_df <- participant_df_raw %>%
+  mutate(es_iat_sex_age_religion_explicit_resid = as.numeric(es_iat_sex_age_religion_explicit_resid),
+          es_explicit_sex_age_religion_iat_resid = as.numeric( es_explicit_sex_age_religion_iat_resid)) %>%
+  mutate_at(vars(education, religionid,), as.numeric) %>%
+  mutate(age_log = log(age)) %>%
+  mutate_at(vars(overall_iat_D_score, age, religionid, explicit_dif, es_iat_sex_age_resid, es_iat_sex_age_religion_explicit_resid, es_explicit_sex_age_implicit_resid, 
+                 es_explicit_sex_age_religion_iat_resid), scale_this)
+
+country_df <- read_csv(COUNTRY_DF_PATH) %>%
+    mutate(es_behavioral_iat_resid2 = as.numeric(es_behavioral_iat_resid2),
+          es_behavioral_iat_resid1 = as.numeric(es_behavioral_iat_resid1)) %>%
+    mutate_if(is.numeric, scale_this) %>%
+   select(-ggi_stoet)
+
+language_df <- read_csv(LANGUAGE_DF_PATH) %>%
+    mutate_if(is.numeric, scale_this) %>%
+   select(-weapons_google, -career_google)
+```
+
+## Participant Level
+
+```{r}
+participant_df_full <- participant_df %>%
+  left_join(country_df %>% select(country_code:satisfaction, wiki_language_code), 
+            by = c("countryres" = "country_code")) %>%
+  left_join(language_df %>% select(career_hand,flowers_google, wiki_language_code))
+
+```
+
+### Raw correlations
+```{r, fig.width = 10, fig.height = 10}
+participant_df_corr <- participant_df_full %>%
+  select_if(is.numeric)
+corr_mat <- cor(participant_df_corr, 
+                use = "pairwise.complete.obs")
+
+p.mat <- corrplot::cor.mtest(participant_df_corr, 
+                  conf.level = (1-ALPHA),  
+                  use = "pairwise.complete.obs")$p
+
+corrplot::corrplot(corr_mat, method = "color",  col = cols,
+         order = "original", number.cex = .7,
+         addCoef.col = "black", 
+         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
+         tl.col = "black", tl.srt = 90,
+         diag = FALSE)
+```
+
+### Regressions
+
+#### ggi predicts iat score
+```{r}
+lm(overall_iat_D_score ~  ggi  + age_log,
+data = participant_df_full) %>%
+  summary()
+
+lm(overall_iat_D_score ~  ggi  + age_log + religionid  + as.factor(sex) ,
+data = participant_df_full) %>%
+  summary()
+
+lm(overall_iat_D_score ~  ggi  + age_log + religionid  + as.factor(sex) + explicit_dif ,
+data = participant_df_full) %>%
+  summary()
+
+lm(es_iat_sex_age_resid ~  ggi   ,
+data = participant_df_full) %>%
+  summary()
+
+lm(es_iat_sex_age_resid ~  wps   ,
+data = participant_df_full) %>%
+  summary()
+```
+
+#### language also iat predicts iat score
+```{r}
+lm(overall_iat_D_score ~  career_hand + ggi  + age_log,
+data = participant_df_full) %>%
+  summary()
+
+lm(es_iat_sex_age_resid ~  career_hand + ggi ,
+data = participant_df_full) %>%
+  summary()
+
+lm(es_iat_sex_age_resid ~  career_hand + ggi + es_explicit_sex_age_implicit_resid,
+data = participant_df_full) %>%
+  summary()
+
+lm(es_iat_sex_age_resid ~  career_hand + wps,
+data = participant_df_full) %>%
+  summary()
+```
+
+
+
+
+## Country Level
+
+### Raw correlations
+
+```{r, fig.width = 8, fig.height = 8}
+country_df_corr <- country_df %>%
+  select_if(is.numeric)
+
+corr_mat <- cor(country_df_corr, 
+                use = "pairwise.complete.obs")
+
+p.mat <- corrplot::cor.mtest(country_df_corr, 
+                  conf.level = (1-ALPHA),  
+                  use = "pairwise.complete.obs")$p
+corrplot::corrplot(corr_mat, method = "color",  col = cols,
+         order = "original", number.cex = .7,
+         addCoef.col = "black", 
+         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
+         tl.col = "black", tl.srt = 90,
+         diag = FALSE)
+```
+
+### Regressions
+
+#### Predicting IAT Scores{.tabset}
+
+Controling for stuff, objective measure ggi is correlated with iat in the predicted direction: more objectively equal, less bias. Wps is predictive in the same direction when you control for age etc. by residualizing it out.
+
+
+##### ggi
+```{r}
+lm(es_behavioral_iat ~ ggi + participant_sex + participant_age +   participant_religosity + es_behavioral_explicit, 
+data = country_df) %>%
+  summary()
+
+lm(es_behavioral_iat ~ ggi + es_behavioral_explicit , 
+data = country_df) %>%
+  summary()
+```
+
+##### ggi-residuals
+```{r}
+lm(es_behavioral_iat_resid1 ~ ggi +  es_behavioral_explicit_resid1, 
+data = country_df) %>%
+  summary()
+
+lm(es_behavioral_iat_resid2 ~ ggi +  es_behavioral_explicit_resid2, 
+data = country_df) %>%
+  summary()
+
+lm(es_behavioral_iat_resid1 ~ ggi  , 
+data = country_df) %>%
+  summary()
+```
+
+
+##### wps
+```{r}
+lm(es_behavioral_iat ~ wps + participant_sex + participant_age +   participant_religosity + es_behavioral_explicit, 
+data = country_df) %>%
+  summary()
+```
+
+##### wps-residuals
+```{r}
+lm(es_behavioral_iat_resid1 ~ wps +  es_behavioral_explicit_resid1, 
+data = country_df) %>%
+  summary()
+
+lm(es_behavioral_iat_resid1 ~ wps  , 
+data = country_df) %>%
+  summary()
+```
+
+
+#### Predicting women in stem{.tabset}
+Both iat and ggi are predictors of percentage women in stem. The ggi measure is in the same direction as Stoet. The IAT measure is in the predicted direction: more biased, few women in stem. Explicit judgement do not predict percentage of women in stem. It does not predict any of the other measures for Stoet paper. 
+
+##### model with controls 
+```{r}
+lm(per_women_stem ~  es_behavioral_iat + ggi+  es_behavioral_explicit + participant_sex + participant_age + participant_religosity  , 
+data = country_df) %>%
+  summary()
+```
+
+##### residuals
+```{r}
+lm(per_women_stem ~ es_behavioral_iat_resid2 * ggi *  es_behavioral_explicit_resid1*es_behavioral_iat_resid2 , 
+data = country_df) %>%
+  summary()
+
+lm(per_women_stem ~ es_behavioral_iat_resid1 + ggi, 
+data = country_df) %>%
+  summary()
+
+lm(per_women_stem ~ es_behavioral_iat_resid1 + wps +  es_behavioral_explicit_resid1, 
+data = country_df) %>%
+  summary()
+```
+
+```{r}
+country_df_with_lang <- country_df %>%
+  left_join(language_df %>% select(wiki_language_code, career_hand, career_google))
+
+lm(per_women_stem ~ es_behavioral_iat_resid1  * es_behavioral_explicit_resid1  + ggi * intra_indv_diff * career_hand, 
+data = country_df_with_lang) %>%
+  summary()
+
+self_efficacy_diff
+lm(per_women_stem ~ es_behavioral_iat_resid2  *career_google* ggi  , 
+data = country_df_with_lang) %>%
+  summary()
+
+
+
+library(olsrr)
+model <- lm(per_women_stem ~ es_behavioral_iat_resid1  * es_behavioral_explicit_resid1   * career_hand * ggi + self_efficacy_diff + intra_indv_diff, 
+data = country_df_with_lang) 
+m = ols_step_all_possible(model)
+
+k = arrange(m, aic) %>%
+  slice(1:100) %>%
+  filter(str_detect(predictors, "career_hand"),
+         !str_detect(predictors, "career_google"))
+
+
+lm(self_efficacy_diff ~ es_behavioral_iat_resid1 + career_hand+ ggi  , 
+data = country_df_with_lang) %>%
+  summary()
+
+lm(science_literacy_diff ~ es_behavioral_iat_resid1 *career_google* ggi *  es_behavioral_explicit_resid1, 
+data = country_df_with_lang) %>%
+  summary()
+
+
+lm(per_women_stem ~   ggi +  es_behavioral_iat_resid1+  career_hand , 
+data = country_df_with_lang) %>%
+  summary()
+
+```
+
+```{r}
+lm(self_efficacy_diff ~ career_google *   satisfaction  * es_behavioral_explicit_resid1, 
+data = country_df_with_lang) %>%
+  summary()
+
+```
+
+## Language Level
+
+### Raw correlations
+
+```{r, fig.width = 8, fig.height = 8}
+language_df_with_ggi <- country_df %>%
+  select(ggi, wps, wiki_language_code,es_behavioral_iat_resid2, es_behavioral_iat_resid1) %>%
+  group_by(wiki_language_code)  %>%
+  summarize_all(mean, na.rm = T) %>%
+  left_join(language_df %>% select(-es_behavioral_iat_resid2, -es_behavioral_iat_resid1)) %>%
+  select(-contains("weighted"), -contains("stoet"))  %>%
+  mutate(hand_bias = ifelse(career_hand > 1,  "pos", "neg"),
+         google_bias = ifelse(career_hand > 1,  "pos", "neg"))
+
+language_df_corr <- language_df_with_ggi %>%
+  select_if(is.numeric)
+corr_mat <- cor(language_df_corr, 
+                use = "pairwise.complete.obs")
+
+p.mat <- corrplot::cor.mtest(language_df_corr, 
+                  conf.level = (1-ALPHA),  
+                  use = "pairwise.complete.obs")$p
+
+corrplot::corrplot(corr_mat, method = "color",  col = cols,
+         order = "original", number.cex = .7,
+         addCoef.col = "black", 
+         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
+         tl.col = "black", tl.srt = 90,
+         diag = FALSE)
+```
+
+### Regressions predicting  behavioral iat{.tabset}
+##### Career language
+behvioral iat is correlated with language measure, but goes away when you control for mean age
+
+##### model with controls
+```{r}
+lm(es_behavioral_iat ~  career_hand,
+data = language_df_with_ggi) %>%
+  summary()
+
+lm(es_behavioral_iat  ~  career_hand + participant_age ,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_iat  ~  career_hand  * participant_age ,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_iat  ~  career_google  * wps ,
+data = language_df_with_ggi) %>%
+  summary()
+
+lm(es_behavioral_iat  ~  career_hand  * participant_age  + ggi,
+data = language_df_with_ggi) %>%
+  summary()
+
+lm(es_behavioral_iat ~  google_bias * participant_age,
+data = language_df_with_ggi) %>%
+  summary()
+```
+
+###### Residuals
+
+```{r}
+lm(es_behavioral_iat_resid1 ~  career_hand *participant_age,
+data = language_df_with_ggi) %>%
+  summary()
+
+lm(es_behavioral_iat_resid2 ~ career_hand, data = language_df_with_ggi) %>%
+  summary()
+
+lm(es_behavioral_iat_resid2  ~  career_hand*participant_age  + es_behavioral_explicit_resid2*participant_age  ,
+data = language_df_with_ggi) %>%
+  summary()
+
+lm(es_behavioral_iat_resid2  ~  career_hand + ggi   ,
+data = language_df_with_ggi) %>%
+  summary()
+
+m = language_df_with_ggi[!is.na(language_df_with_ggi$career_hand),]
+plot(m$participant_age, m$es_behavioral_iat)
+plot( m$career_hand, m$es_behavioral_iat)
+plot( m$career_hand, m$participant_age)
+
+ggplot(m, aes(x = career_hand, y = es_behavioral_iat )) +
+  geom_point(size = 3, aes(color = participant_age)) +
+  geom_text(aes(label= wiki_language_code, x = career_hand +.1)) +
+  theme_bw()
+
+hist( m$career_google)
+
+
+```
+
+##### Flowers language
+Flowers not predictive.
+
+```{r}
+
+lm(es_behavioral_iat_resid1  ~  flowers_google  + es_behavioral_explicit_resid1 + ggi ,
+data = language_df_with_ggi) %>%
+  summary()
+
+```
+
+
+### Regressions Predicting Stoet measures{.tabset}
+
+#### women in stem
+```{r}
+lm(per_women_stem ~  ggi+  career_hand   , 
+data = language_df_with_ggi) %>%
+  summary()
+```
+
+#### satisfaction
+
+```{r}
+lm(satisfaction ~  ggi +  career_hand , 
+data = language_df_with_ggi) %>%
+  summary()
+
+lm(satisfaction ~  ggi+  flowers_google, 
+data = language_df_with_ggi) %>%
+  summary()
+```

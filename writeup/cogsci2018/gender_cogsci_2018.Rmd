@@ -116,9 +116,6 @@ country_ns_final <- iat_behavioral_tidy %>%
 ```
 
 
-
-
-
 ```{r country_gender_bias_map"}
 # overall effect size
 es_behavioral_iat_by_participant <- mean(iat_behavioral_tidy$overall_iat_D_score)/
@@ -198,7 +195,6 @@ gender_participant_d <- tes(t_test_gender$statistic[[1]], n1, n2, verbose = F)
 ```
 
 ```{r WPS_plot"}
-
 wps <- read_csv("analysis/study1/data/WPS_index.csv") %>%
     mutate(country_name = fct_recode(country_name, 
                                    "Republic of Korea" = "Korea, Republic of",
@@ -538,7 +534,6 @@ behavior_lang_cor_exp <- cor.test(language_means_career_explicit_language$es_han
 ```
   
 ```{r, all_corrs_by_language}
- 
 wps_lang <-  wps %>%
   left_join(countries_to_langs %>%
               select(language_name, country_name)) %>%
@@ -556,7 +551,7 @@ all_measures_df_by_language <- all_hand_es %>%
   left_join(wps_lang)  %>%
   select(es_behavioral_iat_weighted,
            exp_mean_diff_weighted,
-          mean_wps_index,
+           mean_wps_index,
            es_hand_translation) %>%
   rename(`Behavioral IAT` = "es_behavioral_iat_weighted",
          `Explicit Bias` = "exp_mean_diff_weighted",
