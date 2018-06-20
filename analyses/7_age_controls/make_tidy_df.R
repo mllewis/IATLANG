@@ -14,7 +14,7 @@ MIN_PARTICIPANTS_PER_COUNTRY <- 400
 RAW_IAT_PATH <- "../../writeup/cogsci2018/analysis/study1/data/Gender-Career IAT.public.2005-2016.feather"
 IAT_COUNTRY_CODES_PATH <- "../../writeup/cogsci2018/analysis/study1/data/project_implicit_country_codes.csv"
 LANGUAGE_PERCENT_PATH <- "../../writeup/cogsci2018/analysis/study2b/data/languages_with_percent.csv"
-LANGUAGE_ES_PATH <- "../../analyses/4_gender_measures/data/other/all_es_wide.csv"
+LANGUAGE_ES_PATH <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/writeup/cogsci2018/analysis/study2b/data/career_effect_sizes_hand_translations.csv"
 GENDER_MEASURE_PATH <- "../../analyses/4_gender_measures/data/gender_measures/all_gender_measures2.csv"
 SCIENCE_PATH <- "stoet_data.csv"
 
@@ -71,10 +71,10 @@ iat_behavioral_filtered <- raw_iat_behavioral_complete_dense_country %>%
          N_ERROR_7/N_7 <=.25)
 
 # add residuals
-mod1 <- lm(overall_iat_D_score ~ sex + age, data = iat_behavioral_filtered)
-mod2 <- lm(overall_iat_D_score ~ sex + age + religionid + explicit_dif , data = iat_behavioral_filtered)
-mod3 <- lm(explicit_dif ~ sex + age, data = iat_behavioral_filtered)
-mod4 <- lm(explicit_dif ~ sex + age + religionid + overall_iat_D_score , data = iat_behavioral_filtered)
+mod1 <- lm(overall_iat_D_score ~ as.factor(sex) + age, data = iat_behavioral_filtered)
+mod2 <- lm(overall_iat_D_score ~ as.factor(sex)  + age + religionid + explicit_dif , data = iat_behavioral_filtered)
+mod3 <- lm(explicit_dif ~ as.factor(sex)  + age, data = iat_behavioral_filtered)
+mod4 <- lm(explicit_dif ~ as.factor(sex)  + age + religionid + overall_iat_D_score , data = iat_behavioral_filtered)
 
 iat_behavioral_tidy  <- iat_behavioral_filtered %>%
   add_residuals(mod1, "es_iat_sex_age_resid") %>% 
@@ -150,8 +150,8 @@ behavioral_means_by_language <- behavioral_means_by_country %>%
   
   
 ### (3) LANGUAGE SEMANTICS EFFECT SIZE ###
-language_means_career_implicit_hand_by_language <- read_csv(LANGUAGE_ES_PATH) %>%
-    select(-career_behavioral_iat, -wps_index) 
+language_means_career_implicit_hand_by_language <- read_csv(LANGUAGE_ES_PATH, col_names = c("wiki_language_code", "x", "y", "career_hand" )) %>%
+    select(wiki_language_code, career_hand) 
   
 
 ### (4) OBJECTIVE GENDER MEASURES ### 

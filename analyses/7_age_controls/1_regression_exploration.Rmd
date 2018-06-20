@@ -86,8 +86,7 @@ country_df <- read_csv(COUNTRY_DF_PATH) %>%
    select(-ggi_stoet)
 
 language_df <- read_csv(LANGUAGE_DF_PATH) %>%
-    mutate_if(is.numeric, scale_this) %>%
-   select(-weapons_google, -career_google)
+    mutate_if(is.numeric, scale_this)
 ```
 
 ## Participant Level
@@ -96,7 +95,7 @@ language_df <- read_csv(LANGUAGE_DF_PATH) %>%
 participant_df_full <- participant_df %>%
   left_join(country_df %>% select(country_code:satisfaction, wiki_language_code), 
             by = c("countryres" = "country_code")) %>%
-  left_join(language_df %>% select(career_hand,flowers_google, wiki_language_code))
+  left_join(language_df %>% select(career_hand, wiki_language_code))
 
 ```
 
@@ -161,6 +160,22 @@ data = participant_df_full) %>%
 lm(es_iat_sex_age_resid ~  career_hand + wps,
 data = participant_df_full) %>%
   summary()
+
+k = participant_df_full %>%
+  mutate(subid = 1:n())
+lme4::lmer(es_iat_sex_age_resid ~ career_hand + ggi + es_explicit_sex_age_implicit_resid + (1|countryres),
+data = k) %>%
+  summary()
+
+lme4::lmer(overall_iat_D_score ~ career_hand   + (1|countryres),
+data = k) %>%
+  summary()
+
+ggplot(participant_df_full, aes(x = age_log, y = overall_iat_D_score, color = countryres )) +
+  geom_smooth(method = "lm", se = F) +
+  theme(legend.position = "none")
+  
+
 ```
 
 
@@ -266,11 +281,11 @@ data = country_df) %>%
   summary()
 ```
 
-```{r}
+```{r, eval = F}
 country_df_with_lang <- country_df %>%
-  left_join(language_df %>% select(wiki_language_code, career_hand, career_google))
+  left_join(language_df %>% select(wiki_language_code, career_hand))
 
-lm(per_women_stem ~ es_behavioral_iat_resid1  * es_behavioral_explicit_resid1  + ggi * intra_indv_diff * career_hand, 
+lm(per_women_stem ~  career_hand * wps +  wps*es_behavioral_explicit_resid1, 
 data = country_df_with_lang) %>%
   summary()
 
@@ -304,13 +319,10 @@ data = country_df_with_lang) %>%
 lm(per_women_stem ~   ggi +  es_behavioral_iat_resid1+  career_hand , 
 data = country_df_with_lang) %>%
   summary()
-
-```
-
-```{r}
 lm(self_efficacy_diff ~ career_google *   satisfaction  * es_behavioral_explicit_resid1, 
 data = country_df_with_lang) %>%
   summary()
+
 
 ```
 
@@ -324,10 +336,7 @@ language_df_with_ggi <- country_df %>%
   group_by(wiki_language_code)  %>%
   summarize_all(mean, na.rm = T) %>%
   left_join(language_df %>% select(-es_behavioral_iat_resid2, -es_behavioral_iat_resid1)) %>%
-  select(-contains("weighted"), -contains("stoet"))  %>%
-  mutate(hand_bias = ifelse(career_hand > 1,  "pos", "neg"),
-         google_bias = ifelse(career_hand > 1,  "pos", "neg"))
-
+  select(-contains("weighted"), -contains("stoet")) 
 language_df_corr <- language_df_with_ggi %>%
   select_if(is.numeric)
 corr_mat <- cor(language_df_corr, 
@@ -360,86 +369,27 @@ data = language_df_with_ggi) %>%
   summary()
 
 
+
 lm(es_behavioral_iat  ~  career_hand  * participant_age ,
 data = language_df_with_ggi) %>%
   summary()
 
 
-lm(es_behavioral_iat  ~  career_google  * wps ,
-data = language_df_with_ggi) %>%
-  summary()
-
-lm(es_behavioral_iat  ~  career_hand  * participant_age  + ggi,
-data = language_df_with_ggi) %>%
-  summary()
-
-lm(es_behavioral_iat ~  google_bias * participant_age,
+lm(es_behavioral_iat  ~  career_hand*es_behavioral_explicit + wps  + participant_age  * es_behavioral_explicit,
 data = language_df_with_ggi) %>%
   summary()
 ```
 
-###### Residuals
-
 ```{r}
-lm(es_behavioral_iat_resid1 ~  career_hand *participant_age,
+lm(es_behavioral_iat_resid1  ~  career_hand  + wps,
 data = language_df_with_ggi) %>%
   summary()
 
-lm(es_behavioral_iat_resid2 ~ career_hand, data = language_df_with_ggi) %>%
-  summary()
-
-lm(es_behavioral_iat_resid2  ~  career_hand*participant_age  + es_behavioral_explicit_resid2*participant_age  ,
-data = language_df_with_ggi) %>%
-  summary()
-
-lm(es_behavioral_iat_resid2  ~  career_hand + ggi   ,
-data = language_df_with_ggi) %>%
-  summary()
-
-m = language_df_with_ggi[!is.na(language_df_with_ggi$career_hand),]
-plot(m$participant_age, m$es_behavioral_iat)
-plot( m$career_hand, m$es_behavioral_iat)
-plot( m$career_hand, m$participant_age)
-
-ggplot(m, aes(x = career_hand, y = es_behavioral_iat )) +
-  geom_point(size = 3, aes(color = participant_age)) +
-  geom_text(aes(label= wiki_language_code, x = career_hand +.1)) +
+ggplot(language_df_with_ggi, aes(x = career_hand, y = es_behavioral_iat)) +
+  geom_point(aes(color =participant_age )) +
+  geom_text(aes(label = wiki_language_code, x = career_hand + .1 )) +
   theme_bw()
 
-hist( m$career_google)
-
 
 ```
 
-##### Flowers language
-Flowers not predictive.
-
-```{r}
-
-lm(es_behavioral_iat_resid1  ~  flowers_google  + es_behavioral_explicit_resid1 + ggi ,
-data = language_df_with_ggi) %>%
-  summary()
-
-```
-
-
-### Regressions Predicting Stoet measures{.tabset}
-
-#### women in stem
-```{r}
-lm(per_women_stem ~  ggi+  career_hand   , 
-data = language_df_with_ggi) %>%
-  summary()
-```
-
-#### satisfaction
-
-```{r}
-lm(satisfaction ~  ggi +  career_hand , 
-data = language_df_with_ggi) %>%
-  summary()
-
-lm(satisfaction ~  ggi+  flowers_google, 
-data = language_df_with_ggi) %>%
-  summary()
-```
