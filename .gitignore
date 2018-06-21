@@ -65,3 +65,4 @@ data/IAT/Gender-Genius/InternationalIAT_LanguageData.csv
 *.tdo
 .Rproj.user
 analyses/5_race/data/Race IAT.public.2002-2017.sav
+analyses/5_race/data/Race_IAT.public.2016.zip
