@@ -25,11 +25,10 @@ lang2s <- filter(langdat_tidy, language2 %in% freq_languages) %>%
   select(id, language2)
 
 langdat_tidy  %>%
+  mutate(lang_type = ifelse(language == "other", "secondary", "primary")) %>%
   mutate(language = ifelse(language == "other", language2, language))%>%
-  mutate(lang_type = ifelse(language == "other", "secondar", "primary")) %>%
-  #filter(id %in% c(lang1s$id, lang2s$id)) %>%
   select(id, language, language2, Country, lang_type) %>%
-  count(language, Country) %>%
+  count(language, Country, lang_type) %>%
   arrange(-n) %>%
   slice(1:30) %>%
   data.frame()
