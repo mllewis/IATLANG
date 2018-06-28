@@ -8,33 +8,17 @@ library(data.table)
 
 
 ####################### SET PARAMS ######################
-INPUT_PATH1 <- "gender_genius_translations.csv"
-INPUT_PATH2 <- "gender_genius_translations2.csv"
-INPUT_PATH3 <- "gender_genius_translations3.csv"
-
-OUTPUT_PATH <- "tidy_google_genius_translations.csv"
+INPUT_PATH1 <- "gender_genius_translations_root.csv"
+OUTPUT_PATH <- "tidy_google_genius_translations_roots.csv"
 
 ####################### READ DATA ######################
 #### Pre-process word list text ####
-translated_words1 <- read.csv(INPUT_PATH1, 
+translated_words <- read.csv(INPUT_PATH1, 
                              encoding ='UTF-8', header = F, 
                              col.names= c("language_name", 
                                           "target_word",
                                           "translation"))
 
-translated_words2 <- read.csv(INPUT_PATH2, 
-                              encoding ='UTF-8', header = F, 
-                              col.names= c("language_name", 
-                                           "target_word",
-                                           "translation"))
-translated_words3 <- read.csv(INPUT_PATH3, 
-                              encoding ='UTF-8', header = F, 
-                              col.names= c("language_name", 
-                                           "target_word",
-                                           "translation"))
-
-translated_words <- bind_rows(translated_words1, translated_words2) %>%
-  bind_rows(translated_words3)
 ####################### TIDY TRANSLATIONS ######################
 
 translated_clean <- translated_words %>%

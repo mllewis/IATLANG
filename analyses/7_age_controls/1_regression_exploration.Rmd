@@ -66,24 +66,19 @@ So, in sum:
 
 ```{r}
 PARTICIPANT_DF_PATH <- "by_participant_df.csv"
-COUNTRY_DF_PATH <- "by_country_df.csv"
 LANGUAGE_DF_PATH <- "by_language_df.csv"
+COUNTRY_DF_PATH <- "by_country_df.csv"
 
+```
 
+```{r}
 participant_df_raw <- read_csv(PARTICIPANT_DF_PATH) 
 participant_df <- participant_df_raw %>%
-  mutate(es_iat_sex_age_religion_explicit_resid = as.numeric(es_iat_sex_age_religion_explicit_resid),
-          es_explicit_sex_age_religion_iat_resid = as.numeric( es_explicit_sex_age_religion_iat_resid)) %>%
-  mutate_at(vars(education, religionid,), as.numeric) %>%
-  mutate(age_log = log(age)) %>%
-  mutate_at(vars(overall_iat_D_score, age, religionid, explicit_dif, es_iat_sex_age_resid, es_iat_sex_age_religion_explicit_resid, es_explicit_sex_age_implicit_resid, 
-                 es_explicit_sex_age_religion_iat_resid), scale_this)
-
-country_df <- read_csv(COUNTRY_DF_PATH) %>%
-    mutate(es_behavioral_iat_resid2 = as.numeric(es_behavioral_iat_resid2),
-          es_behavioral_iat_resid1 = as.numeric(es_behavioral_iat_resid1)) %>%
-    mutate_if(is.numeric, scale_this) %>%
-   select(-ggi_stoet)
+  mutate(es_iat_sex_age_order_explicit_resid = as.numeric(es_iat_sex_age_order_explicit_resid),
+         order = as.factor(order),
+          es_iat_sex_age_order_implicit_resid = as.numeric( es_iat_sex_age_order_implicit_resid)) %>%
+  mutate_at(vars(education, religionid), as.numeric) %>%
+  mutate_at(vars(overall_iat_D_score, log_age, religionid, explicit_dif, es_iat_sex_age_order_explicit_resid, es_iat_sex_age_order_implicit_resid, median_age), scale_this)
 
 language_df <- read_csv(LANGUAGE_DF_PATH) %>%
     mutate_if(is.numeric, scale_this)
@@ -92,17 +87,18 @@ language_df <- read_csv(LANGUAGE_DF_PATH) %>%
 ## Participant Level
 
 ```{r}
+country_df <- read_csv(COUNTRY_DF_PATH)
 participant_df_full <- participant_df %>%
   left_join(country_df %>% select(country_code:satisfaction, wiki_language_code), 
             by = c("countryres" = "country_code")) %>%
   left_join(language_df %>% select(career_hand, wiki_language_code))
-
 ```
 
 ### Raw correlations
-```{r, fig.width = 10, fig.height = 10}
+```{r, fig.width = 10, fig.height = 10, eval = F}
 participant_df_corr <- participant_df_full %>%
   select_if(is.numeric)
+
 corr_mat <- cor(participant_df_corr, 
                 use = "pairwise.complete.obs")
 
@@ -122,207 +118,34 @@ corrplot::corrplot(corr_mat, method = "color",  col = cols,
 
 #### ggi predicts iat score
 ```{r}
-lm(overall_iat_D_score ~  ggi  + age_log,
+lm(overall_iat_D_score ~  ggi  + log_age + median_age +  as.factor(sex)  + order,
 data = participant_df_full) %>%
   summary()
 
-lm(overall_iat_D_score ~  ggi  + age_log + religionid  + as.factor(sex) ,
+lm(overall_iat_D_score ~  wps  + log_age + median_age +  as.factor(sex)  + order,
 data = participant_df_full) %>%
   summary()
 
-lm(overall_iat_D_score ~  ggi  + age_log + religionid  + as.factor(sex) + explicit_dif ,
+lm(overall_iat_D_score ~  ggi  + log_age + median_age +  as.factor(sex)  + order + explicit_dif + religionid,
 data = participant_df_full) %>%
   summary()
 
-lm(es_iat_sex_age_resid ~  ggi   ,
+
+lm(overall_iat_D_score ~  wps  + log_age + median_age +  as.factor(sex)  + order + explicit_dif + religionid,
 data = participant_df_full) %>%
   summary()
 
-lm(es_iat_sex_age_resid ~  wps   ,
-data = participant_df_full) %>%
-  summary()
 ```
 
 #### language also iat predicts iat score
 ```{r}
-lm(overall_iat_D_score ~  career_hand + ggi  + age_log,
+lm(overall_iat_D_score ~  career_hand +  ggi + log_age + median_age +  religionid  +  explicit_dif + as.factor(sex) + order,
 data = participant_df_full) %>%
   summary()
 
-lm(es_iat_sex_age_resid ~  career_hand + ggi ,
+lm(overall_iat_D_score ~  career_hand + wps + log_age + median_age +   religionid  +  explicit_dif + as.factor(sex) + order,
 data = participant_df_full) %>%
   summary()
-
-lm(es_iat_sex_age_resid ~  career_hand + ggi + es_explicit_sex_age_implicit_resid,
-data = participant_df_full) %>%
-  summary()
-
-lm(es_iat_sex_age_resid ~  career_hand + wps,
-data = participant_df_full) %>%
-  summary()
-
-k = participant_df_full %>%
-  mutate(subid = 1:n())
-lme4::lmer(es_iat_sex_age_resid ~ career_hand + ggi + es_explicit_sex_age_implicit_resid + (1|countryres),
-data = k) %>%
-  summary()
-
-lme4::lmer(overall_iat_D_score ~ career_hand   + (1|countryres),
-data = k) %>%
-  summary()
-
-ggplot(participant_df_full, aes(x = age_log, y = overall_iat_D_score, color = countryres )) +
-  geom_smooth(method = "lm", se = F) +
-  theme(legend.position = "none")
-  
-
-```
-
-
-
-
-## Country Level
-
-### Raw correlations
-
-```{r, fig.width = 8, fig.height = 8}
-country_df_corr <- country_df %>%
-  select_if(is.numeric)
-
-corr_mat <- cor(country_df_corr, 
-                use = "pairwise.complete.obs")
-
-p.mat <- corrplot::cor.mtest(country_df_corr, 
-                  conf.level = (1-ALPHA),  
-                  use = "pairwise.complete.obs")$p
-corrplot::corrplot(corr_mat, method = "color",  col = cols,
-         order = "original", number.cex = .7,
-         addCoef.col = "black", 
-         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
-         tl.col = "black", tl.srt = 90,
-         diag = FALSE)
-```
-
-### Regressions
-
-#### Predicting IAT Scores{.tabset}
-
-Controling for stuff, objective measure ggi is correlated with iat in the predicted direction: more objectively equal, less bias. Wps is predictive in the same direction when you control for age etc. by residualizing it out.
-
-
-##### ggi
-```{r}
-lm(es_behavioral_iat ~ ggi + participant_sex + participant_age +   participant_religosity + es_behavioral_explicit, 
-data = country_df) %>%
-  summary()
-
-lm(es_behavioral_iat ~ ggi + es_behavioral_explicit , 
-data = country_df) %>%
-  summary()
-```
-
-##### ggi-residuals
-```{r}
-lm(es_behavioral_iat_resid1 ~ ggi +  es_behavioral_explicit_resid1, 
-data = country_df) %>%
-  summary()
-
-lm(es_behavioral_iat_resid2 ~ ggi +  es_behavioral_explicit_resid2, 
-data = country_df) %>%
-  summary()
-
-lm(es_behavioral_iat_resid1 ~ ggi  , 
-data = country_df) %>%
-  summary()
-```
-
-
-##### wps
-```{r}
-lm(es_behavioral_iat ~ wps + participant_sex + participant_age +   participant_religosity + es_behavioral_explicit, 
-data = country_df) %>%
-  summary()
-```
-
-##### wps-residuals
-```{r}
-lm(es_behavioral_iat_resid1 ~ wps +  es_behavioral_explicit_resid1, 
-data = country_df) %>%
-  summary()
-
-lm(es_behavioral_iat_resid1 ~ wps  , 
-data = country_df) %>%
-  summary()
-```
-
-
-#### Predicting women in stem{.tabset}
-Both iat and ggi are predictors of percentage women in stem. The ggi measure is in the same direction as Stoet. The IAT measure is in the predicted direction: more biased, few women in stem. Explicit judgement do not predict percentage of women in stem. It does not predict any of the other measures for Stoet paper. 
-
-##### model with controls 
-```{r}
-lm(per_women_stem ~  es_behavioral_iat + ggi+  es_behavioral_explicit + participant_sex + participant_age + participant_religosity  , 
-data = country_df) %>%
-  summary()
-```
-
-##### residuals
-```{r}
-lm(per_women_stem ~ es_behavioral_iat_resid2 * ggi *  es_behavioral_explicit_resid1*es_behavioral_iat_resid2 , 
-data = country_df) %>%
-  summary()
-
-lm(per_women_stem ~ es_behavioral_iat_resid1 + ggi, 
-data = country_df) %>%
-  summary()
-
-lm(per_women_stem ~ es_behavioral_iat_resid1 + wps +  es_behavioral_explicit_resid1, 
-data = country_df) %>%
-  summary()
-```
-
-```{r, eval = F}
-country_df_with_lang <- country_df %>%
-  left_join(language_df %>% select(wiki_language_code, career_hand))
-
-lm(per_women_stem ~  career_hand * wps +  wps*es_behavioral_explicit_resid1, 
-data = country_df_with_lang) %>%
-  summary()
-
-self_efficacy_diff
-lm(per_women_stem ~ es_behavioral_iat_resid2  *career_google* ggi  , 
-data = country_df_with_lang) %>%
-  summary()
-
-
-
-library(olsrr)
-model <- lm(per_women_stem ~ es_behavioral_iat_resid1  * es_behavioral_explicit_resid1   * career_hand * ggi + self_efficacy_diff + intra_indv_diff, 
-data = country_df_with_lang) 
-m = ols_step_all_possible(model)
-
-k = arrange(m, aic) %>%
-  slice(1:100) %>%
-  filter(str_detect(predictors, "career_hand"),
-         !str_detect(predictors, "career_google"))
-
-
-lm(self_efficacy_diff ~ es_behavioral_iat_resid1 + career_hand+ ggi  , 
-data = country_df_with_lang) %>%
-  summary()
-
-lm(science_literacy_diff ~ es_behavioral_iat_resid1 *career_google* ggi *  es_behavioral_explicit_resid1, 
-data = country_df_with_lang) %>%
-  summary()
-
-
-lm(per_women_stem ~   ggi +  es_behavioral_iat_resid1+  career_hand , 
-data = country_df_with_lang) %>%
-  summary()
-lm(self_efficacy_diff ~ career_google *   satisfaction  * es_behavioral_explicit_resid1, 
-data = country_df_with_lang) %>%
-  summary()
-
 
 ```
 
@@ -331,14 +154,13 @@ data = country_df_with_lang) %>%
 ### Raw correlations
 
 ```{r, fig.width = 8, fig.height = 8}
-language_df_with_ggi <- country_df %>%
-  select(ggi, wps, wiki_language_code,es_behavioral_iat_resid2, es_behavioral_iat_resid1) %>%
-  group_by(wiki_language_code)  %>%
-  summarize_all(mean, na.rm = T) %>%
-  left_join(language_df %>% select(-es_behavioral_iat_resid2, -es_behavioral_iat_resid1)) %>%
-  select(-contains("weighted"), -contains("stoet")) 
+language_df_with_ggi <- read_csv(LANGUAGE_DF_PATH)
 language_df_corr <- language_df_with_ggi %>%
-  select_if(is.numeric)
+  select(-country_name) %>%
+  select_if(is.numeric) %>%
+  select(-contains("weighted"), -contains("stoet"))  
+
+
 corr_mat <- cor(language_df_corr, 
                 use = "pairwise.complete.obs")
 
@@ -354,42 +176,110 @@ corrplot::corrplot(corr_mat, method = "color",  col = cols,
          diag = FALSE)
 ```
 
-### Regressions predicting  behavioral iat{.tabset}
+### Regressions predicting  behavioral data{.tabset}
 ##### Career language
 behvioral iat is correlated with language measure, but goes away when you control for mean age
 
-##### model with controls
-```{r}
-lm(es_behavioral_iat ~  career_hand,
-data = language_df_with_ggi) %>%
-  summary()
-
-lm(es_behavioral_iat  ~  career_hand + participant_age ,
-data = language_df_with_ggi) %>%
-  summary()
-
-
-
-lm(es_behavioral_iat  ~  career_hand  * participant_age ,
-data = language_df_with_ggi) %>%
-  summary()
-
-
-lm(es_behavioral_iat  ~  career_hand*es_behavioral_explicit + wps  + participant_age  * es_behavioral_explicit,
-data = language_df_with_ggi) %>%
-  summary()
-```
+# predicting implicit
 
 ```{r}
-lm(es_behavioral_iat_resid1  ~  career_hand  + wps,
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand,
 data = language_df_with_ggi) %>%
   summary()
 
-ggplot(language_df_with_ggi, aes(x = career_hand, y = es_behavioral_iat)) +
-  geom_point(aes(color =participant_age )) +
+lm(es_behavioral_iat_resid_simple  ~  career_hand  + median_country_age,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand  + wps  + median_country_age,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand  + wps  + median_country_age + es_behavioral_explicit_resid_simple,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand  + ggi,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand  + median_country_age +  ggi  ,
+data = language_df_with_ggi) %>%
+  summary()
+
+lm(es_behavioral_iat_resid_simple ~  career_hand  + median_country_age +  ggi + es_behavioral_explicit_resid,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+ggplot(language_df_with_ggi, aes(x = career_hand, y = es_behavioral_iat_resid_simple)) +
+  geom_point() +
+  geom_smooth(method = "lm") + 
   geom_text(aes(label = wiki_language_code, x = career_hand + .1 )) +
-  theme_bw()
+  theme_classic()
+```
+
+# predicting explicit
+```{r}
+lm(es_behavioral_explicit_resid_simple ~  career_hand  + median_country_age +  wps + es_behavioral_iat_resid_simple,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_explicit_resid_simple ~  es_behavioral_iat_resid_simple  ,
+data = language_df_with_ggi) %>%
+  summary()
+```
+
+# Correlation with flowers
+# flowers isn't predictive
+```{r}
+flowers <- read_csv("../6_flowers/data/flowers_effect_sizes_google.csv", 
+                    col_names = c("wiki_language_code", "x", "y", "flower_google")) %>%
+                      select(-x, -y)
+
+language_df_with_ggi_lang <- left_join(language_df_with_ggi, flowers)
+
+lm(es_behavioral_iat_resid_simple ~  flower_google  + median_country_age +  wps + es_behavioral_explicit_resid_simple,
+data = language_df_with_ggi_lang) %>%
+  summary()
+
+lm(career_hand ~  flower_google,
+data = language_df_with_ggi_lang) %>%
+  summary()
+
+lm(es_behavioral_explicit_resid_simple ~  flower_google   + median_country_age +  wps+ es_behavioral_iat_resid_simple,
+data = language_df_with_ggi_lang) %>%
+  summary()
+```
+
+Career google is correlated with career hand, but doesn't predict anything
+```{r}
+career_google <- read_csv("../2_pretrained_w2v_models/embedding_IAT/google_translate/career_effect_sizes_google.csv",  col_names = c("wiki_language_code", "x", "y", "career_google")) %>%
+       select(-x, -y)
+
+language_df_with_ggi_lang_cg<- left_join(language_df_with_ggi_lang, career_google)
+
+cor.test(language_df_with_ggi_lang_cg$career_google, language_df_with_ggi_lang_cg$career_hand)
+
+
+lm(es_behavioral_iat_resid_simple ~  career_google  + median_country_age +  wps ,
+data = language_df_with_ggi_lang_cg) %>%
+  summary()
+
+
+lm(es_behavioral_iat_resid_simple ~  career_google  + median_country_age +  ggi + es_behavioral_explicit_resid,
+data = language_df_with_ggi_lang_cg) %>%
+  summary()
+
+lm(es_behavioral_explicit_resid_simple ~  career_google  + median_country_age +  wps + es_behavioral_iat_resid_simple,
+data = language_df_with_ggi_lang_cg) %>%
+  summary()
 
 
 ```
-

@@ -17,6 +17,7 @@ LANGUAGE_PERCENT_PATH <- "../../writeup/cogsci2018/analysis/study2b/data/languag
 LANGUAGE_ES_PATH <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/writeup/cogsci2018/analysis/study2b/data/career_effect_sizes_hand_translations.csv"
 GENDER_MEASURE_PATH <- "../../analyses/4_gender_measures/data/gender_measures/all_gender_measures2.csv"
 SCIENCE_PATH <- "stoet_data.csv"
+AGE_DATA_PATH <- "median_country_age_world_factbook.csv"
 
 PARTICIPANT_DF_OUT <- "by_participant_df.csv"
 COUNTRY_DF_OUT <- "by_country_df.csv"
@@ -31,12 +32,14 @@ raw_iat_behavioral <- read_feather(RAW_IAT_PATH) %>%
   select(D_biep.Male_Career_all,sex, countryres, PCT_error_3467, 
          Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, 
          Mn_RT_all_7, assocareer, assofamily, N_ERROR_3, N_ERROR_4,
-         N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7,  age, edu_14, occupation, religionid) %>%
+         N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7,  age, edu_14, occupation, religionid, Order,) %>%
   rename(overall_iat_D_score = D_biep.Male_Career_all,
-         education = edu_14) %>%
+         education = edu_14, 
+         order = Order) %>%
   separate(occupation, c("occupation", "occupation2"), sep = "-") %>%
   mutate(explicit_dif = assocareer - assofamily,
-         sex = ifelse(sex == "m", 1, ifelse(sex == "f", 0, NA))) %>%
+         sex = ifelse(sex == "m", 1, ifelse(sex == "f", 0, NA)),
+         log_age = log(age)) %>%
   left_join(project_implicit_countries)  # merge in country codes
 # this file is "Gender-Career/Gender-Career IAT.public.2005-2016.sav" in feather form (taken from: https://osf.io/gmewy/); it is not in the repository because it is too big.
 
@@ -71,33 +74,48 @@ iat_behavioral_filtered <- raw_iat_behavioral_complete_dense_country %>%
          N_ERROR_7/N_7 <=.25)
 
 # add residuals
-mod1 <- lm(overall_iat_D_score ~ as.factor(sex) + age, data = iat_behavioral_filtered)
-mod2 <- lm(overall_iat_D_score ~ as.factor(sex)  + age + religionid + explicit_dif , data = iat_behavioral_filtered)
-mod3 <- lm(explicit_dif ~ as.factor(sex)  + age, data = iat_behavioral_filtered)
-mod4 <- lm(explicit_dif ~ as.factor(sex)  + age + religionid + overall_iat_D_score , data = iat_behavioral_filtered)
+mod1 <- lm(explicit_dif ~ as.factor(sex)  + log_age + as.factor(order), data = iat_behavioral_filtered)
+mod2 <- lm(overall_iat_D_score ~ as.factor(sex)  + log_age + as.factor(order) , data = iat_behavioral_filtered)
 
-iat_behavioral_tidy  <- iat_behavioral_filtered %>%
-  add_residuals(mod1, "es_iat_sex_age_resid") %>% 
-  add_residuals(mod2, "es_iat_sex_age_religion_explicit_resid")  %>%
-  add_residuals(mod3, "es_explicit_sex_age_implicit_resid") %>% 
-  add_residuals(mod4, "es_explicit_sex_age_religion_iat_resid")
-  
+iat_behavioral_with_resids  <- iat_behavioral_filtered %>%
+  add_residuals(mod1, "es_iat_sex_age_order_explicit_resid") %>% 
+  add_residuals(mod2, "es_iat_sex_age_order_implicit_resid") 
+
+# add median age data
+age_data <- read_csv(AGE_DATA_PATH)
+
+iat_behavioral_tidy <- iat_behavioral_with_resids %>%
+  left_join(age_data)
   
 ### (1) IAT IMPLICIT AND EXPLICIT BY COUNTRY ###
+
+# objective quality measures by country
+objective_country_measures_by_country <- read_csv(GENDER_MEASURE_PATH) %>%
+  select(-sigi, -sigi_physical,-contains("schooling"),  -contains("ggi_"), -sigi_son) 
+
+all_gender_measures_transformed_by_country <- objective_country_measures_by_country %>%
+  select(-sigi_fam,  -gii, -gdi) %>%
+  mutate(country_name = as.factor(country_name),
+    country_name = fct_recode(country_name,
+                                   "Vietnam"= "Viet Nam"))
 
 # mean scores by country
 behavioral_means_by_country <- iat_behavioral_tidy %>%
   group_by(country_name) %>%
-  summarise(es_behavioral_iat = mean(overall_iat_D_score)/sd(overall_iat_D_score),
-            es_behavioral_explicit = mean(explicit_dif, na.rm = T)/sd(explicit_dif, na.rm = T),
-            es_behavioral_iat_resid1 = mean(es_iat_sex_age_resid, na.rm = T)/sd(es_iat_sex_age_resid, na.rm = T),
-            es_behavioral_explicit_resid1 = mean(es_explicit_sex_age_implicit_resid, na.rm = T)/sd(es_explicit_sex_age_implicit_resid, na.rm = T),
-            es_behavioral_iat_resid2 = mean(es_iat_sex_age_religion_explicit_resid, na.rm = T)/sd(es_iat_sex_age_religion_explicit_resid, na.rm = T),
-            es_behavioral_explicit_resid2 = mean(es_explicit_sex_age_religion_iat_resid, na.rm = T)/sd(es_explicit_sex_age_religion_iat_resid, na.rm = T),
-            participant_age = mean(age, na.rm = T),
+  summarise(es_behavioral_iat_simple =  mean(overall_iat_D_score),
+            es_behavioral_iat = es_behavioral_iat_simple/sd(overall_iat_D_score),
+            es_behavioral_explicit_simple = mean(explicit_dif, na.rm = T),
+            es_behavioral_explicit = es_behavioral_explicit_simple/sd(explicit_dif, na.rm = T),
+            es_behavioral_iat_resid_simple =  mean(es_iat_sex_age_order_implicit_resid, na.rm = T),
+            es_behavioral_iat_resid = es_behavioral_iat_resid_simple/sd(es_iat_sex_age_order_implicit_resid, na.rm = T),
+            es_behavioral_explicit_resid_simple = mean(es_iat_sex_age_order_explicit_resid, na.rm = T),
+            es_behavioral_explicit_resid = es_behavioral_explicit_resid_simple/sd(es_iat_sex_age_order_explicit_resid, na.rm = T),
+            participant_age = mean(log_age, na.rm = T),
             participant_education = mean(education, na.rm = T),
             participant_religosity = mean(religionid, na.rm = T),
-            participant_sex = mean(sex, na.rm = T))
+            participant_sex = mean(sex, na.rm = T),
+            median_age = mean(median_age, na.rm = T)) %>%
+  left_join(all_gender_measures_transformed_by_country)
 
 # for weighted averages when averaging across country
 country_ns_final <- iat_behavioral_tidy %>%
@@ -138,31 +156,32 @@ behavioral_means_by_language <- behavioral_means_by_country %>%
               es_behavioral_explicit_weighted = weighted.mean(es_behavioral_explicit, 
                                                             normalized_n_explicit, na.rm = T),
               es_behavioral_explicit = mean(es_behavioral_explicit,na.rm = T),
-              es_behavioral_iat_resid1 = mean(es_behavioral_iat_resid1,na.rm = T),
-              es_behavioral_explicit_resid1 = mean(es_behavioral_explicit_resid1,na.rm = T),
-              es_behavioral_iat_resid2 = mean(es_behavioral_iat_resid2,na.rm = T),
-              es_behavioral_explicit_resid2 = mean(es_behavioral_explicit_resid2,na.rm = T),
+              es_behavioral_iat_resid = mean(es_behavioral_iat_resid,na.rm = T),
+              es_behavioral_explicit_resid = mean(es_behavioral_explicit_resid,na.rm = T),
+              es_behavioral_iat_simple = mean(es_behavioral_iat_simple, na.rm = T),
+              es_behavioral_explicit_simple = mean(es_behavioral_explicit_simple, na.rm = T),
+              es_behavioral_iat_resid_simple = mean(es_behavioral_iat_resid_simple, na.rm = T),
+              es_behavioral_explicit_resid_simple = mean(es_behavioral_explicit_resid_simple, na.rm = T),
+              ggi_weighted = weighted.mean(ggi,normalized_n_implicit, na.rm = T),
+              ggi = mean(ggi,na.rm = T),
+              wps_weighted = weighted.mean(wps, 
+                                           normalized_n_implicit, na.rm = T),
+              wps = mean(wps,na.rm = T),
               participant_age = mean(participant_age),
               participant_education = mean(participant_education),
               participant_religosity = mean(participant_religosity),
-              participant_sex = mean(participant_sex)) %>%
+              participant_sex = mean(participant_sex),
+              median_country_age = mean(median_age)) %>%
   filter(!is.na(es_behavioral_iat_weighted)) 
   
   
 ### (3) LANGUAGE SEMANTICS EFFECT SIZE ###
-language_means_career_implicit_hand_by_language <- read_csv(LANGUAGE_ES_PATH, col_names = c("wiki_language_code", "x", "y", "career_hand" )) %>%
+language_means_career_implicit_hand_by_language <- read_csv(LANGUAGE_ES_PATH, 
+                                                            col_names = c("wiki_language_code", "x", "y", "career_hand" )) %>%
     select(wiki_language_code, career_hand) 
   
 
-### (4) OBJECTIVE GENDER MEASURES ### 
-objective_country_measures_by_country <- read_csv(GENDER_MEASURE_PATH) %>%
- select(-sigi, -sigi_physical,-contains("schooling"),  -contains("ggi_"), -sigi_son) 
-
-all_gender_measures_transformed_by_country <- objective_country_measures_by_country %>%
-  select(-sigi_fam,  -gii, -gdi)
-
-
-### (5) SCIENCE MEASURES ### 
+### (4) SCIENCE MEASURES ### 
 stoet_data <- read_csv(SCIENCE_PATH) 
 tidy_science_by_country <- stoet_data %>% 
   mutate(country_code= countrycode::countrycode(country_name, 'country.name', 'iso2c')) %>%
@@ -171,7 +190,7 @@ tidy_science_by_country <- stoet_data %>%
   rename(ggi_stoet = ggi)
 
 tidy_science_by_language <- stoet_data %>%
-  mutate(country_code= countrycode::countrycode(country_name, 'country.name', 'iso2c')) %>%
+  mutate(country_code = countrycode::countrycode(country_name, 'country.name', 'iso2c')) %>%
   select(country_code, everything()) %>%
   select(-country_name) %>% 
   rename(ggi_stoet = ggi) %>%
@@ -182,15 +201,13 @@ tidy_science_by_language <- stoet_data %>%
 
 
 ### Make participant df
-
 participant_df <- iat_behavioral_tidy %>%
-    select(1,2,3,20:22, 24:25, 27:31)
+    select(1,2,3,21:22, 24:27, 29:32)
 
 write_csv(participant_df, PARTICIPANT_DF_OUT)
 
 ### Make country df
-country_df <- full_join(behavioral_means_by_country, 
-                        all_gender_measures_transformed_by_country) %>%
+country_df <- behavioral_means_by_country %>%
   left_join(unique_langs_per_country %>% select(country_name, wiki_language_code)) %>%
   left_join(tidy_science_by_country, by = "country_code")
 

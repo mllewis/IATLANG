@@ -8,20 +8,20 @@ source("essay_translation_helper.R")
 
 ####################### SET PARAMS ######################
 
-#TARGET_GOOGLE_LANGS <- c("en", "es", "hi", "ur", "fr", "pt", "ml", "ta", "it") 
+TARGET_GOOGLE_LANGS <- c("en", "es", "hi", "ur", "fr", "pt", "ml", "ta", "it", "ar", "el", "de", "ro", "tr", "ru", "zh-cn") 
 #TARGET_GOOGLE_LANGS <- c("ar", "el", "de", "ro", "tr")
-TARGET_GOOGLE_LANGS <- read_tsv("language_name_to_google.csv") %>%
-  filter(!is.na(language_code), !is.na(google_language_code)) %>% 
-  filter(is.na(complete)) %>%
-  pull(google_language_code)
+#TARGET_GOOGLE_LANGS <- read_tsv("language_name_to_google.csv") %>%
+#  filter(!is.na(language_code), !is.na(google_language_code)) %>% 
+#  filter(is.na(complete)) %>%
+#  pull(google_language_code)
 
 
-OUTPUT_PATH <- "gender_genius_translations3.csv"
-WORD_PATH <- "gender_genius_target_words.csv"
+OUTPUT_PATH <- "gender_genius_translations_root.csv"
+WORD_PATH <- "gender_genius_target_words_roots.csv"
 gl_auth("/Users/mollylewis/Documents/research/Projects/1_in_progress/L2ETS/studies/study2/analyses/8_tensor_factorization/A_preprocessing_R/wikipedia/L2ETS\ prompt\ translations-a8edd99b5aa9.json") # authenticate google api
 
 ################## GET ALL TRANSLATIONS ######################
-target_words <- read_csv(WORD_PATH) %>%
+target_words <- read_tsv(WORD_PATH) %>%
   pull(target_words)
 
 lw_combos <- expand.grid(TARGET_GOOGLE_LANGS, sort(target_words)) %>%

@@ -18,10 +18,20 @@ library(knitr)
 library(rmarkdown)
 library(tidyverse)
 library(langcog)
+library(modelr)
 
 opts_chunk$set(echo = T, message = F, warning = F, 
                error = F, tidy = F, cache = F)
 ```
+
+Study 2 data only. I'm controling for block order, and also including median country age as a covariate, because that seems to matter from other analyses we've done.
+
+Take aways:
+
+* when datasets are combined there's no effect
+* theres a trend when you look at only the turk data, controling for order
+* residualizing out order, age, and sex doesn't change much
+* ggi marginally predicts language iat
 
 ```{r}
 MINPARTICIPANTS <- 8
@@ -85,63 +95,143 @@ IAT_lang_full %>%
 
 ## Behavioral data
 ```{r}
-IAT_behavioral_path <-"../../data/IAT/Gender-Genius/InternationalIAT_LanguageData.csv"
+# Study 2
+IAT_behavioral_path1 <-"../../data/IAT/Gender-Genius/InternationalIAT_LanguageData.csv"
 
-IAT_behavioral_path_raw <- read_csv(IAT_behavioral_path)
+IAT_behavioral_path_raw1 <- read_csv(IAT_behavioral_path1)
 
-IAT_behavioral_tidy <- IAT_behavioral_path_raw %>%
+IAT_behavioral_tidy1 <- IAT_behavioral_path_raw1 %>%
   mutate(lang1 = tolower(PrimaryLanguage),
-         lang2 = tolower(lang_other_clean),
+         #lang2 = tolower(lang_other_clean),
          Gender = tolower(Gender),
          subid = as.factor(1:n()))  %>%
-  rename(iat_score = IATScore2, 
+  rename(iat_score = IATScore, 
          gender = Gender,
          age = Age,
-         country = Country) %>%
-  mutate(lang = ifelse(lang1 == "other", lang2, lang1),
-         region = as.factor(countrycode::countrycode(country, "country.name", "region"))) %>%
+         country = Country,
+        # ses = SES, 
+         condition = ConditionC,
+         conservatism = Conservatism,
+         status = Status, 
+         children = Children) %>%
+  mutate(lang = ifelse(lang1 == "other", lang2, lang1)) %>%
+       #  region = as.factor(countrycode::countrycode(country, "country.name", "region"))) %>%
   left_join(lang_key %>% select(language_code, lang)) %>%
   mutate_if(is.character, as.factor) %>%
-  select(subid, iat_score, lang, language_code, gender, age, country, region) 
+  mutate(condition = as.factor(condition), 
+         log_age = log(age)) %>%
+  select(subid, iat_score, lang, language_code, gender, condition, log_age, country, conservatism, status, children) 
+
+
+## Study1
+IAT_behavioral_path2 <- "../../data/IAT/Gender-Genius/IAT_Study1_Combined_Master_Dataset_LanguageData.csv"
+
+IAT_behavioral_path_raw2 <- read_csv(IAT_behavioral_path2)
+
+IAT_behavioral_tidy2 <- IAT_behavioral_path_raw2 %>%
+  mutate(lang = tolower(PrimaryLanguage),
+         Gender = tolower(Gender),
+         subid = as.factor(SubjectID))  %>%
+  rename(iat_score = IATScore, 
+         gender = Gender,
+         age = Age,
+         country = Country,
+         condition = Condition,
+         #sexism = Sexism,
+         #race = Race,
+         #politicalparty = PoliticalParty,
+         conservatism = Conservatism,
+         status = Status, 
+         children = Children)%>%
+         #income = Income) %>%
+  left_join(lang_key %>% select(language_code, lang)) %>%
+  mutate_if(is.character, as.factor) %>%
+  mutate(condition = as.factor(condition),
+         conservatism = as.factor(conservatism),
+         children = as.numeric(children),
+         log_age = log(age)) %>%
+  select(subid, iat_score, lang, language_code, gender, condition, log_age, country, conservatism, status, children) 
+
+IAT_behavioral_tidy <- bind_rows(IAT_behavioral_tidy1, IAT_behavioral_tidy2)
+IAT_behavioral_tidy <- IAT_behavioral_tidy1
 ```
+
+Let's residualize out order, age and gender, as in career, and add in mean country age, and objective bias measures
+
+```{r}
+# add residuals
+mod <- lm(iat_score ~ as.factor(gender)   + log_age + as.factor(condition), data = IAT_behavioral_tidy)
+
+AGE_DATA_PATH <- "../7_age_controls/median_country_age_world_factbook.csv"
+country_age <- read_csv(AGE_DATA_PATH) %>%
+  rename(country= country_name) %>%
+  mutate(country = fct_recode(country,
+                                     "United States"= "United States of America", 
+                                     "United Kingdom" = "UK",
+                                     "Czech Republic" = "Czechia",
+                                     "Tanzania, United Republic of" = "Tanzania",
+                                     "Moldova, Republic of" = "Moldova",
+                                     "Bahamas" = "Bahamas, The"))
+
+
+GENDER_MEASURE_PATH <- "../../analyses/4_gender_measures/data/gender_measures/all_gender_measures2.csv"
+
+objective_country_measures_by_country <- read_csv(GENDER_MEASURE_PATH) %>%
+  rename(country = country_name) %>%
+  select(ggi, wps, country)  %>%
+  mutate(country = fct_recode(country,
+                                   "Vietnam"= "Viet Nam",
+                                    "Macedonia" = "The former Yugoslav Republic of Macedonia",
+                                    "Tanzania, United Republic of" = "United Republic of Tanzania",
+                                    "United Kingdom" = "UK",
+                                    "Moldova, Republic of" = "Republic of Moldova",
+                                    "Venezuela" = "Venezuela, Bolivarian Republic of")) %>%
+  filter(!is.na(wps) & !is.na(ggi))
+
+IAT_behavioral_tidy_with_resids  <- IAT_behavioral_tidy %>%
+  add_residuals(mod, "iat_resid") %>%
+  left_join(country_age) %>%
+  left_join(objective_country_measures_by_country)
+```
+
 
 There are `r nrow(IAT_behavioral_tidy)` participants in the data, speaking `r length(unique(IAT_behavioral_tidy$language_code))` languages. 
 ```{r}
-lang_counts <- count(IAT_behavioral_tidy, lang)
+lang_counts <- count(IAT_behavioral_tidy_with_resids, lang)
 lang_counts %>%
   arrange(-n) %>%
   DT::datatable()
 ```
 
-Here are the scores. Are there protocols for exclusions on these?
+Here are the scores, raw and residualized. 
 
 ```{r}
-ggplot(IAT_behavioral_tidy, aes(x = iat_score)) +
+ggplot(IAT_behavioral_tidy_with_resids, aes(x = iat_score)) +
+  geom_histogram() +
+  ggtitle("Behavioral IAT score distribtions") +
+  theme_classic()
+
+ggplot(IAT_behavioral_tidy_with_resids, aes(x = iat_resid)) +
   geom_histogram() +
   ggtitle("Behavioral IAT score distribtions") +
   theme_classic()
 ```
 
-```{r, exclusions, include = F}
-NSDS <- 4
-IAT_behavioral_tidy <-  IAT_behavioral_tidy %>%
- filter(iat_score < mean(IAT_behavioral_tidy$iat_score) + (NSDS*sd(IAT_behavioral_tidy$iat_score)),
-         iat_score > mean(IAT_behavioral_tidy$iat_score) - (NSDS*sd(IAT_behavioral_tidy$iat_score))) 
-```
-
 ## Behavioral IAT vs. Language IAT
 
-### By language
+### By language{.tabset}
 
 I subset to only those languages that have sufficient speakers. Here the value is set to `r MINPARTICIPANTS`. Here are the mean behavioral IATs by language as a function of language IAT. The ranges are 95% CIs.
 
+
+#### Predicting raw IAT scores
 
 ```{r}
 targ_langs <- lang_counts %>%
   filter(n >= MINPARTICIPANTS) %>%
   pull(lang)
 
-behavioral_means_tidy <- IAT_behavioral_tidy %>%
+behavioral_means_tidy <- IAT_behavioral_tidy_with_resids %>%
   filter(lang %in% targ_langs) %>%
   group_by(lang) %>%
   multi_boot_standard(col = "iat_score") %>%
@@ -151,12 +241,25 @@ behavioral_means_tidy <- IAT_behavioral_tidy %>%
          behavioral_ci_upper = ci_upper)  %>%
   left_join(lang_key %>% select(language_code, lang))
 
-sample_sizes <- count(IAT_behavioral_tidy, lang) %>%
+sample_sizes <- count(IAT_behavioral_tidy_with_resids, lang) %>%
     left_join(lang_key %>% select(language_code, lang))
+
+median_age_by_lang <- IAT_behavioral_tidy_with_resids %>%
+  group_by(language_code) %>%
+  summarize(median_age = mean(median_age))
+
+mean_objectives_by_lang <- IAT_behavioral_tidy_with_resids %>%
+  distinct(language_code, country, .keep_all = T) %>%
+  select(country, language_code, wps, ggi) %>%
+  group_by(language_code) %>%
+  summarize(wps = mean(wps, na.rm = T),
+            ggi  = mean(ggi, na.rm = T))
 
 full_df <- behavioral_means_tidy %>%
   left_join(IAT_lang_restricted, by = "language_code") %>%
-  left_join(sample_sizes, by = "language_code") 
+  left_join(sample_sizes, by = "language_code")  %>%
+  left_join(median_age_by_lang, by = "language_code") %>%
+  left_join(mean_objectives_by_lang, by = "language_code") 
 ```
 
 
@@ -172,37 +275,84 @@ ggplot(full_df, aes(x = effect_size_restricted, y = behavioral_mean)) +
   theme(legend.position = "none")
 ```
 
-There's a trend in the predicted direction: languages with higher language IATscores  have higher behavioral IAT.
+Models
 ```{r}
 cor.test(full_df$behavioral_mean, 
                 full_df$effect_size_restricted)
+
+lm(behavioral_mean ~ effect_size_restricted + median_age, full_df %>% mutate_if(is.numeric, scale)) %>%
+  summary()
+
+lm(behavioral_mean ~ effect_size_restricted + median_age  + ggi,  full_df %>% mutate_if(is.numeric, scale)) %>%
+  summary()
 ```
+
+
+#### Predicting residualized IAT scores
+```{r}
+behavioral_means_tidy <- IAT_behavioral_tidy_with_resids %>%
+  filter(lang %in% targ_langs) %>%
+  group_by(lang) %>%
+  multi_boot_standard(col = "iat_resid") %>%
+  ungroup()  %>%
+  rename(behavioral_mean = mean,
+         behavioral_ci_lower = ci_lower,
+         behavioral_ci_upper = ci_upper)  %>%
+  left_join(lang_key %>% select(language_code, lang))
+
+full_df <- behavioral_means_tidy %>%
+  left_join(IAT_lang_restricted, by = "language_code") %>%
+  left_join(sample_sizes, by = "language_code")  %>%
+  left_join(median_age_by_lang, by = "language_code")  %>%
+  left_join(mean_objectives_by_lang, by = "language_code") 
+```
+
+
+```{r}
+ggplot(full_df, aes(x = effect_size_restricted, y = behavioral_mean)) +
+  geom_pointrange(aes(color = language_code, ymin = behavioral_ci_lower, ymax = behavioral_ci_upper)) +
+  geom_text(aes(label = language_code)) +
+  xlab("Language IAT effect size") +
+  ylab("Behavioral IAT effect size - residualized") +
+  geom_smooth(method = "lm") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+
+
+
+```{r}
+cor.test(full_df$behavioral_mean, 
+          full_df$effect_size_restricted)
+
+lm(behavioral_mean ~ effect_size_restricted + median_age  + ggi,  full_df %>% mutate_if(is.numeric, scale)) %>%
+  summary()
+```
+
+### Predicting IAT Language Variability
+
+```{r}
+cor.test(full_df$effect_size_restricted, full_df$ggi)
+cor.test(full_df$effect_size_restricted, full_df$wps)
+
+```
+
+
 
 ### By participant
 This is the same analysis as above, but at the participant level using mixed-effect models.
 
 ```{r}
-
-
-by_participant_df_none <-  IAT_behavioral_tidy  %>%
-  left_join(IAT_lang_restricted, by = "language_code") 
-
-by_participant_df_all <-  IAT_behavioral_tidy  %>%
-   left_join(IAT_lang_restricted, by = "language_code") %>%
-   mutate(effect_size_restricted = scale(effect_size_restricted, scale = F),
-          age = scale(age, scale = F))
-   
-   by_participant_df2 <-  IAT_behavioral_tidy  %>%
+by_participant_df <-  IAT_behavioral_tidy_with_resids  %>%
    left_join(IAT_lang_restricted, by = "language_code") %>%
    mutate(effect_size_restricted = scale(effect_size_restricted),
-          age = scale(age),
-          iat_score = scale(iat_score))
-   
-    
-by_participant_df <-  IAT_behavioral_tidy  %>%
-  left_join(IAT_lang_restricted, by = "language_code") %>%
-  mutate_if(is.numeric, scale)
-
+          log_age = scale(log_age),
+          iat_score = scale(iat_score),
+          iat_resid = scale(iat_resid),
+          condition = as.factor(condition),
+          median_age = scale(median_age)) 
 
 ggplot(by_participant_df, aes(x = effect_size_restricted, 
                      y = iat_score)) +
@@ -218,30 +368,27 @@ ggplot(by_participant_df, aes(x = effect_size_restricted,
 In a mixed-effect model with country and language as random intercepts and gender and age as fixed effect, here's no relationship between language IAT and behavioral IAT when you include all languages. All variables are scaled.
 
 ```{r}
-lme4::lmer(iat_score~effect_size_restricted*gender + age +  (1|country) + (1|lang), by_participant_df) %>%
+lme4::lmer(iat_score ~ effect_size_restricted+ gender + log_age + condition + (1|country)  + (1|lang), 
+           by_participant_df) %>%
+  summary()
+
+lme4::lmer(iat_score ~ effect_size_restricted* gender + log_age + condition + (1|country)  + (1|lang), 
+           by_participant_df) %>%
   summary()
 ```
 
-But if you exclude languages where we have fewer than `r MINPARTICIPANTS` participants, there's the predicted relationship, when you control for age and gender.
+This is true even when you exclude participants.
 ```{r}
 targ_langs <- lang_counts %>%
   filter(n >= MINPARTICIPANTS) %>%
   pull(lang)
 
-lme4::lmer(iat_score~effect_size_restricted+gender + age + (1|country)  + (1|lang), 
-           by_participant_df_none %>% filter(lang %in% targ_langs)) %>%
+lme4::lmer(iat_score ~ effect_size_restricted+ gender + log_age + condition + (1|country)  + (1|lang), 
+           by_participant_df %>% filter(lang %in% targ_langs)) %>%
   summary()
 
-lme4::lmer(iat_score~effect_size_restricted+gender + age + (1|country)  + (1|lang), 
-           by_participant_df_all %>% filter(lang %in% targ_langs)) %>%
-  summary()
-
-
-lme4::lmer(iat_score~effect_size_restricted * gender + age + (1|country)  + (1|lang), 
-           by_participant_df_none%>% filter(lang %in% targ_langs)) %>%
-  summary()
-
-lme4::lmer(iat_score~effect_size_restricted*gender + age + (1|country)  + (1|lang), 
-           by_participant_df_all%>% filter(lang %in% targ_langs)) %>%
+lme4::lmer(iat_score ~ effect_size_restricted*gender + log_age + condition + (1|country)  + (1|lang), 
+           by_participant_df %>% filter(lang %in% targ_langs)) %>%
   summary()
 ```
+
