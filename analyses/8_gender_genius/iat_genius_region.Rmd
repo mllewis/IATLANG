@@ -336,10 +336,7 @@ lm(behavioral_mean ~ effect_size_restricted + median_age  + ggi,  full_df %>% mu
 ```{r}
 cor.test(full_df$effect_size_restricted, full_df$ggi)
 cor.test(full_df$effect_size_restricted, full_df$wps)
-
 ```
-
-
 
 ### By participant
 This is the same analysis as above, but at the participant level using mixed-effect models.

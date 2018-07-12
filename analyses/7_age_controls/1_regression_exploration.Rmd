@@ -183,18 +183,22 @@ behvioral iat is correlated with language measure, but goes away when you contro
 # predicting implicit
 
 ```{r}
+df <- language_df_with_ggi %>%
+  select(language_name, wiki_language_code, es_behavioral_iat_resid_simple,
+         career_hand, wps, median_country_age) %>%
+  filter(is.na(career_hand))
 
 lm(es_behavioral_iat_resid_simple  ~  career_hand,
-data = language_df_with_ggi) %>%
+data = df) %>%
   summary()
 
 lm(es_behavioral_iat_resid_simple  ~  career_hand  + median_country_age,
-data = language_df_with_ggi) %>%
+data = df) %>%
   summary()
 
 
 lm(es_behavioral_iat_resid_simple  ~  career_hand  + wps  + median_country_age,
-data = language_df_with_ggi) %>%
+data = df) %>%
   summary()
 
 
