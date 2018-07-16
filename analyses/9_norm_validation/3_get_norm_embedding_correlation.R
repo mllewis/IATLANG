@@ -30,6 +30,13 @@ ggplot(all_ratings, aes(x = norm_maleness, y = male_score)) +
 
 cor.test(all_ratings$norm_maleness, all_ratings$male_score)
 
+cor.test(all_ratings$female_targets, all_ratings$male_targets)
+cor.test(all_ratings$female_targets, all_ratings$norm_maleness)
+cor.test(all_ratings$male_targets, all_ratings$norm_maleness)
+
+
+
+
 
 
 
