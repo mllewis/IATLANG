@@ -243,6 +243,46 @@ country_means_career_explicit_index <- cor.test(country_means_career_explicit_wi
                                                 country_means_career_explicit_with_index$wps_index)
 ```
 
+```{r, include = F, eval = F}
+
+ggplot(map_data, aes(x = long, y = lat, 
+                            group = group, 
+                            fill = es_behavioral_iat)) + 
+  #scale_fill_gradient2("",# breaks =  c(.9, 1, 1.1, 1.2),
+                       #limits=c(0, SCALE_MIDPOINT + .2), 
+                 #      low = "white", high = "blue") +
+  geom_polygon(color = "black", size = .1) +
+  ggtitle("Implicit psychological gender bias effect size ") +
+  scale_fill_viridis(option="viridis", limits=c(.85, 1.2), direction = -1, name="") +
+  theme(text = element_text(size = TEXT_SIZE),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(fill = "white"),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = c(.1, .35),
+        legend.background = element_rect(fill=alpha('white', 0)),
+        legend.key.size = unit(0.2, "in"))
+
+
+df  = filter(map_data, !is.na(es_behavioral_iat)) %>%
+  select(country_name, es_behavioral_iat) %>%
+  distinct() 
+
+ggplot(df, aes(es_behavioral_iat)) +
+  geom_density(fill = "black") +
+  geom_vline(aes(xintercept = 0), color = "red", linetype = 2) +
+  ylab("") +
+  xlab("IAT effect size") +
+  xlim(-.1, 1.5) +
+  theme_classic() +
+  theme(text = element_text(size = 14),
+        axis.line.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())
+```
+
 
 ```{r,  fig.env="figure*", fig.pos = "t", fig.align='center', fig.width=7, fig.height=2.7, set.cap.width=T, num.cols.cap=2, fig.cap = "(a) Effect size (Cohen's d) for the bias to associate men with career and women with family, as measured by the IAT.  All 48 countries with available data have a gender bias with red indicating above average and blue indicating below average bias. (b) Implicit gender bias predicted by an independent measure of gender equality, Women, Peace, and Security Index (WPS).  Each point corresponds to a country with notable points labeled. Contra intuitions, we find that countries with greater gender equality have larger implicit gender bias."}
 ggpubr::ggarrange(p1, p2,  
@@ -511,6 +551,31 @@ ggplot(all_hand_es, aes(x = es_hand_translation, y = es_behavioral_iat_weighted)
   theme(text = element_text(size = TEXT_SIZE)) 
 ```
 
+
+```{r, eval = F}
+
+es_with_gender <- all_hand_es %>% 
+  left_join(gender_data, by = c("wiki_language_code" = "language_code")) %>%
+  filter(!is.na(es_hand_translation))
+
+ggplot(es_with_gender, 
+       aes(x = es_hand_translation, y = es_behavioral_iat_weighted)) +
+  geom_smooth(method = "lm", alpha = .1, , size = .9, color = "black") +
+  geom_text_repel(aes(label = language_name.x, 
+                      color = as.factor(wikipedia_grammar_type2)), size = 2.4, box.padding = 0.4) + 
+  geom_point(size = .7, aes(color = as.factor(wikipedia_grammar_type2))) +
+    scale_color_manual(values = c("red", "blue")) +
+  theme_minimal() +
+  ggtitle("Behavioral and \nLanguage-Embedding IAT") +
+  ylab("Behavioral IAT Gender Bias\n (effect size)") +
+  xlab("Language-Embedding IAT Gender Bias\n (effect size)") +
+  theme_classic() +
+  theme(text = element_text(size = TEXT_SIZE),
+        legend.position = "none") 
+
+
+```
+
 For each country included in Study 1, we identified the most frequently spoken language in each country using the CIA factbook (2017). This included a total of `r length(unique(unique_langs_per_country$language_name))` unique languages. For a sample of 20 of these languages (see Fig.\ 3), we had native speakers translate the set of 32 words from the gender-career IAT with a slight modification.\footnote{The language sample was determined by accessibility to native speakers, but included languages from a variety of language families.} The original gender-career IAT task  [@nosek2002harvesting] used proper names to cue the male and female categories (e.g.\ "John," "Amy"). Because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting].
 
 We used these translations to calculate an effect size from the models trained on Wikipedia in each language, using the same method as in Study 2a. We then compared the effect size of the linguistic gender bias to  the  behavioral IAT gender bias from Study 1, averaging across countries that speak the same language and weighting by sample size.  
@@ -740,6 +805,14 @@ t_language <- t.test(mf$es_hand_translation,
 d_language_grammar <- tes(t_language$statistic[[1]], 
                         nrow(mf[!is.na(mf$es_hand_translation),]), 
                         nrow(none[!is.na(none$es_hand_translation),]), 
+                        verbose = F)
+
+d_language_grammar <- mes(mean(mf$es_hand_translation, na.rm = T), 
+                          mean(none$es_hand_translation, na.rm = T),
+                          sd(mf$es_hand_translation, na.rm = T), 
+                          sd(none$es_hand_translation, na.rm = T),
+                          nrow(mf[!is.na(mf$es_hand_translation),]), 
+                          nrow(none[!is.na(none$es_hand_translation),]), 
                         verbose = F)
 # Hindi and Hungarian not in hand-coded translations
 ```
