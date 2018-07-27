@@ -31,7 +31,7 @@ word_list <- list(test_name = "genius_gender",
 
 ####################### GET ES ######################
 get_wiki_es <- function(current_lang){
-  
+
   
   # read back in subsetted file
   subsetted_model <- read_csv(paste0(CALCULATED_VECTOR_PATH, 

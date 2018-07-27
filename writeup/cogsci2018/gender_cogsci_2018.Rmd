@@ -528,6 +528,8 @@ all_hand_es <- implicit_behavioral_means_by_country_with_language %>%
   left_join(language_means_career_implicit_hand, by = "wiki_language_code")  %>%
   filter(!is.na(es_behavioral_iat_weighted))  %>%
   ungroup()
+
+#write_csv(all_hand_es, "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/analyses/2_pretrained_w2v_models/embedding_IAT_v2/behavioral_by_language.csv")
 ```
 
 
