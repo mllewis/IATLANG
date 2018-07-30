@@ -68,7 +68,6 @@ So, in sum:
 PARTICIPANT_DF_PATH <- "by_participant_df.csv"
 LANGUAGE_DF_PATH <- "by_language_df.csv"
 COUNTRY_DF_PATH <- "by_country_df.csv"
-
 ```
 
 ```{r}
@@ -130,7 +129,6 @@ lm(overall_iat_D_score ~  ggi  + log_age + median_age +  as.factor(sex)  + order
 data = participant_df_full) %>%
   summary()
 
-
 lm(overall_iat_D_score ~  wps  + log_age + median_age +  as.factor(sex)  + order + explicit_dif + religionid,
 data = participant_df_full) %>%
   summary()
@@ -186,7 +184,7 @@ behvioral iat is correlated with language measure, but goes away when you contro
 df <- language_df_with_ggi %>%
   select(language_name, wiki_language_code, es_behavioral_iat_resid_simple,
          career_hand, wps, median_country_age) %>%
-  filter(is.na(career_hand))
+  filter(!is.na(career_hand))
 
 lm(es_behavioral_iat_resid_simple  ~  career_hand,
 data = df) %>%

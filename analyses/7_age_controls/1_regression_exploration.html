@@ -11,7 +11,7 @@
 
 <meta name="author" content="Molly Lewis" />
 
-<meta name="date" content="2018-06-28" />
+<meta name="date" content="2018-07-30" />
 
 <title>IAT regressions with Age</title>
 
@@ -141,7 +141,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">IAT regressions with Age</h1>
 <h4 class="author"><em>Molly Lewis</em></h4>
-<h4 class="date"><em>2018-06-28</em></h4>
+<h4 class="date"><em>2018-07-30</em></h4>
 
 </div>
 
@@ -452,12 +452,17 @@ corrplot::corrplot(corr_mat, method = &quot;color&quot;,  col = cols,
 </div>
 <div id="predicting-implicit" class="section level1">
 <h1>predicting implicit</h1>
-<pre class="r"><code>lm(es_behavioral_iat_resid_simple  ~  career_hand,
-data = language_df_with_ggi) %&gt;%
+<pre class="r"><code>df &lt;- language_df_with_ggi %&gt;%
+  select(language_name, wiki_language_code, es_behavioral_iat_resid_simple,
+         career_hand, wps, median_country_age) %&gt;%
+  filter(!is.na(career_hand))
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand,
+data = df) %&gt;%
   summary()</code></pre>
 <pre><code>## 
 ## Call:
-## lm(formula = es_behavioral_iat_resid_simple ~ career_hand, data = language_df_with_ggi)
+## lm(formula = es_behavioral_iat_resid_simple ~ career_hand, data = df)
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
@@ -469,16 +474,15 @@ data = language_df_with_ggi) %&gt;%
 ## career_hand  0.03019    0.01819   1.660    0.114
 ## 
 ## Residual standard error: 0.0219 on 18 degrees of freedom
-##   (14 observations deleted due to missingness)
 ## Multiple R-squared:  0.1328, Adjusted R-squared:  0.08462 
 ## F-statistic: 2.756 on 1 and 18 DF,  p-value: 0.1142</code></pre>
 <pre class="r"><code>lm(es_behavioral_iat_resid_simple  ~  career_hand  + median_country_age,
-data = language_df_with_ggi) %&gt;%
+data = df) %&gt;%
   summary()</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = es_behavioral_iat_resid_simple ~ career_hand + median_country_age, 
-##     data = language_df_with_ggi)
+##     data = df)
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
@@ -493,16 +497,15 @@ data = language_df_with_ggi) %&gt;%
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 0.01849 on 17 degrees of freedom
-##   (14 observations deleted due to missingness)
 ## Multiple R-squared:  0.416,  Adjusted R-squared:  0.3473 
 ## F-statistic: 6.056 on 2 and 17 DF,  p-value: 0.01033</code></pre>
 <pre class="r"><code>lm(es_behavioral_iat_resid_simple  ~  career_hand  + wps  + median_country_age,
-data = language_df_with_ggi) %&gt;%
+data = df) %&gt;%
   summary()</code></pre>
 <pre><code>## 
 ## Call:
 ## lm(formula = es_behavioral_iat_resid_simple ~ career_hand + wps + 
-##     median_country_age, data = language_df_with_ggi)
+##     median_country_age, data = df)
 ## 
 ## Residuals:
 ##       Min        1Q    Median        3Q       Max 
@@ -518,7 +521,6 @@ data = language_df_with_ggi) %&gt;%
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 0.01744 on 16 degrees of freedom
-##   (14 observations deleted due to missingness)
 ## Multiple R-squared:  0.5108, Adjusted R-squared:  0.4191 
 ## F-statistic:  5.57 on 3 and 16 DF,  p-value: 0.00822</code></pre>
 <pre class="r"><code>lm(es_behavioral_iat_resid_simple  ~  career_hand  + wps  + median_country_age + es_behavioral_explicit_resid_simple,

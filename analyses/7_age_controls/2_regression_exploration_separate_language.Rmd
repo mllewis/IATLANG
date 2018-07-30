@@ -1,0 +1,157 @@
+---
+title: IAT regressions with Age
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(feather)
+library(lme4)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+
+scale_this <- function(x) as.vector(scale(x))
+ALPHA <- .05
+cols <- rev(colorRampPalette(c("red", "white", "blue"))(100))
+
+```
+
+
+```{r}
+LANGUAGE_DF_PATH <- "by_language_df.csv"
+LANGUAGE_DF_PATH_NEW <-  "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/analyses/2_pretrained_w2v_models/embedding_IAT_v2/es_career_separate.csv"
+```
+
+## Language Level
+
+### Raw correlations
+
+```{r, fig.width = 8, fig.height = 8}
+language_df_new <- read_csv(LANGUAGE_DF_PATH_NEW) %>%
+  rename(career_hand_new = sYXab,
+         wiki_language_code = language_code) %>%
+  select(wiki_language_code, career_hand_new)
+
+language_df_with_ggi <- read_csv(LANGUAGE_DF_PATH) %>%
+  select(-career_hand) %>%
+  left_join(language_df_new)
+
+language_df_corr <- language_df_with_ggi %>%
+  select(-country_name) %>%
+  select_if(is.numeric) %>%
+  select(-contains("weighted"), -contains("stoet"))  
+
+
+corr_mat <- cor(language_df_corr, 
+                use = "pairwise.complete.obs")
+
+p.mat <- corrplot::cor.mtest(language_df_corr, 
+                  conf.level = (1-ALPHA),  
+                  use = "pairwise.complete.obs")$p
+
+corrplot::corrplot(corr_mat, method = "color",  col = cols,
+         order = "original", number.cex = .7,
+         addCoef.col = "black", 
+         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
+         tl.col = "black", tl.srt = 90,
+         diag = FALSE)
+```
+
+### Regressions predicting  behavioral data{.tabset}
+##### Career language
+behvioral iat is correlated with language measure, but goes away when you control for mean age
+
+# predicting implicit
+
+```{r}
+df <- language_df_with_ggi %>%
+  select(language_name, wiki_language_code, es_behavioral_iat_resid_simple,
+         career_hand_new, wps, median_country_age) %>%
+  filter(!is.na(career_hand_new))
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand_new,
+data = df) %>%
+  summary()
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand_new  + median_country_age,
+data = df) %>%
+  summary()
+
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand_new  + wps  + median_country_age,
+data = df) %>%
+  summary()
+
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand_new  + wps  + median_country_age + es_behavioral_explicit_resid_simple,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand_new  + ggi,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_iat_resid_simple  ~  career_hand_new  + median_country_age +  ggi  ,
+data = language_df_with_ggi) %>%
+  summary()
+
+lm(es_behavioral_iat_resid_simple ~  career_hand_new  + median_country_age +  ggi + es_behavioral_explicit_resid,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+ggplot(language_df_with_ggi, aes(x = career_hand_new, y = es_behavioral_iat_resid_simple)) +
+  geom_point() +
+  geom_smooth(method = "lm") + 
+  geom_text(aes(label = wiki_language_code, x = career_hand_new + .1 )) +
+  theme_classic()
+```
+
+# predicting explicit
+```{r}
+lm(es_behavioral_explicit_resid_simple ~  career_hand_new  + median_country_age +  wps + es_behavioral_iat_resid_simple,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+lm(es_behavioral_explicit_resid_simple ~  es_behavioral_iat_resid_simple  ,
+data = language_df_with_ggi) %>%
+  summary()
+```
+
+
+```{r, eval = F}
+
+lm(career_hand_new  ~  per_women_stem ,
+data = language_df_with_ggi) %>%
+  summary()
+
+
+m = select(language_df_with_ggi, es_behavioral_iat_resid_simple, career_hand_new, per_women_stem )
+
+m1 <- lm(per_women_stem ~ career_hand_new, language_df_with_ggi)
+m2 <- lm(es_behavioral_iat_resid_simple ~ career_hand_new, language_df_with_ggi)
+m3 <- lm(per_women_stem ~ career_hand_new  + es_behavioral_iat_resid_simple + median_country_age, language_df_with_ggi)
+
+m1 <- lm(career_hand_new ~ per_women_stem, language_df_with_ggi)
+m2 <- lm(ggi_stoet ~ per_women_stem, language_df_with_ggi)
+m3 <- lm(ggi_stoet ~ per_women_stem  + career_hand_new , language_df_with_ggi)
+
+
+
+```

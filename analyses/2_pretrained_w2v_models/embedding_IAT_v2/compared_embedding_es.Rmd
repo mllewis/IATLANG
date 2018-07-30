@@ -78,7 +78,7 @@ ggplot(career_behavioral, aes(x = es_behavioral_iat_weighted,
   ggtitle("language vs. behavior") +
   theme_classic()
 
-ggplot(career_behavioral, aes(x = es_behavioral_iat_weighted, 
+ggplot(career_behavioral %>% filter(!is.na(es_hand_translation_new)), aes(x = es_behavioral_iat_weighted, 
                               y = es_hand_translation_old,
                               label = wiki_language_code)) +
   geom_label(aes(fill = gender))  +
