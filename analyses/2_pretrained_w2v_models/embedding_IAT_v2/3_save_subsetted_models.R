@@ -5,7 +5,7 @@ library(data.table)
 
 INFILE <- "tidy_iat_translations2.csv"
 LANGKEY <- "../../../data/other/country_langiso_langwiki_key.csv"
-MODEL_PREFIX <- "/Volumes/wilbur/wiki_models/wiki."
+MODEL_PREFIX <- "/Volumes/wilbur_the_great/fasttext_models/wiki."
 
 lang_key <- read_csv(LANGKEY) %>%
   mutate(language = tolower(language_name))

@@ -91,16 +91,6 @@ data = df) %>%
   summary()
 
 
-lm(es_behavioral_iat_resid_simple  ~  career_hand_new  + wps  + median_country_age,
-data = df) %>%
-  summary()
-
-
-lm(es_behavioral_iat_resid_simple  ~  career_hand_new  + wps  + median_country_age + es_behavioral_explicit_resid_simple,
-data = language_df_with_ggi) %>%
-  summary()
-
-
 lm(es_behavioral_iat_resid_simple  ~  career_hand_new  + ggi,
 data = language_df_with_ggi) %>%
   summary()

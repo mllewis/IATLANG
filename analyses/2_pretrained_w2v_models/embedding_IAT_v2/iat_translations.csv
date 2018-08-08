@@ -731,3 +731,336 @@ super-imaginative,super-imaginativă,romanian,F
 genius,geniu,romanian,F
 brilliant,briliantă,romanian,F
 super-smart,foarte deșteaptă,romanian,F
+daughter,娘,japanese,N
+hers,彼女の,japanese,N
+her,彼女,japanese,N
+she,彼女,japanese,N
+sister,妹/姉,japanese,N
+girl,女の子/女子,japanese,N
+woman,女/女の人,japanese,N
+female,女性,japanese,N
+son,息子,japanese,N
+his,彼の,japanese,N
+him,彼,japanese,N
+he,彼,japanese,N
+brother,兄/弟,japanese,N
+boy,男の子/男子,japanese,N
+man,男/男の人,japanese,N
+male,男性,japanese,N
+relatives,親戚,japanese,N
+wedding,結婚式,japanese,N
+marriage,結婚,japanese,N
+cousins,いとこ/従兄弟/従姉妹,japanese,N
+family,家族,japanese,N
+children,子供,japanese,N
+parents,親/両親,japanese,N
+home,家,japanese,N
+career,キャリア,japanese,N
+business,営業,japanese,N
+office,オフィス,japanese,N
+salary,給料,japanese,N
+corporation,会社,japanese,N
+professional,職業,japanese,N
+management,経営,japanese,N
+executive,役員,japanese,N
+creative,クリエイティブ/創作的,japanese,N
+artistic,芸術的,japanese,N
+super-imaginative,超想像的,japanese,N
+genius,天才的,japanese,N
+brilliant,賢い,japanese,N
+super-smart,超賢い,japanese,N
+daughter,بنت,arabic,N
+hers,-ها,arabic,N
+her,-ها,arabic,N
+she,هي,arabic,N
+sister,أخت,arabic,N
+girl,فتاة,arabic,N
+woman,امرأة,arabic,N
+female,انثى,arabic,N
+son,"ابن
+",arabic,N
+his,-ه,arabic,N
+him,-ه,arabic,N
+he,هو,arabic,N
+brother,أخ,arabic,N
+boy,صبي,arabic,N
+man,رجل,arabic,N
+male,ذكر,arabic,N
+relatives,أقارب,arabic,M
+wedding,عرس,arabic,M
+marriage,زواج,arabic,M
+cousins,ابناء عم، ابناء خال، ابناء عمة، ابناء خالة,arabic,M
+family,أسرة,arabic,M
+children,أبناء,arabic,M
+parents,والدين/آباء,arabic,M
+home,بيت,arabic,M
+career,مهنة,arabic,M
+business,اعمال,arabic,M
+office,مكتب,arabic,M
+salary,راتب,arabic,M
+corporation,شركة,arabic,M
+professional,محترف,arabic,M
+management,إدارة,arabic,M
+executive,تنفيذي,arabic,M
+creative,خلاق,arabic,M
+artistic,فنان,arabic,M
+super-imaginative,واسع الخيال,arabic,M
+genius,عبقري,arabic,M
+brilliant,متألق,arabic,M
+super-smart,فائق الذكاء,arabic,M
+relatives,قريبات,arabic,F
+wedding,عرس,arabic,F
+marriage,زواج,arabic,F
+cousins,بنات عم، بنات خال، بنات عمة، بنات خالة,arabic,F
+family,أسرة,arabic,F
+children,بنات,arabic,F
+parents,أمهات,arabic,F
+home,بيت,arabic,F
+career,مهنة,arabic,F
+business,اعمال,arabic,F
+office,مكتب,arabic,F
+salary,راتب,arabic,F
+corporation,شركة,arabic,F
+professional,محترفة,arabic,F
+management,إدارة,arabic,F
+executive,تنفيذية,arabic,F
+creative,خلاقة,arabic,F
+artistic,فنانة,arabic,F
+super-imaginative,واسعة الخيال,arabic,F
+genius,عبقرية,arabic,F
+brilliant,متألقة,arabic,F
+super-smart,فائقة الذكاء,arabic,F
+daughter,tytär,finnish,N
+hers,hänen,finnish,N
+her,häntä/hänen,finnish,N
+she,hän,finnish,N
+sister,sisar/sisko,finnish,N
+girl,tyttö,finnish,N
+woman,nainen,finnish,N
+female,nainen/naaras,finnish,N
+son,poika,finnish,N
+his,hänen,finnish,N
+him,häntä,finnish,N
+he,hän,finnish,N
+brother,veli,finnish,N
+boy,poika,finnish,N
+man,mies,finnish,N
+male,mies/uros,finnish,N
+relatives,sukulaiset,finnish,N
+wedding,häät,finnish,N
+marriage,avioliitto,finnish,N
+cousins,serkut,finnish,N
+family,perhe,finnish,N
+children,lapset,finnish,N
+parents,vanhemmat,finnish,N
+home,koti,finnish,N
+career,ura,finnish,N
+business,yritys/firma/liiketoiminta/yritystoiminta,finnish,N
+office,toimisto,finnish,N
+salary,palkka,finnish,N
+corporation,yritys,finnish,N
+professional,ammattilainen/ammattimainen/ammatillinen,finnish,N
+management,johto/ liikkeenjohto,finnish,N
+executive,johtaja,finnish,N
+creative,luova,finnish,N
+artistic,taiteellinen,finnish,N
+super-imaginative,erittäin mielikuvituksellinen,finnish,N
+genius,nero,finnish,N
+brilliant,nerokas,finnish,N
+super-smart,erittäin älykäs,finnish,N
+daughter,fille,french,N
+hers,la sienne / le sien / les siennes / les siens,french,N
+her,sa / son / ses / la / lui / elle,french,N
+she,elle,french,N
+sister,la soeur,french,N
+girl,fille,french,N
+woman,la femme,french,N
+female,la femelle,french,N
+son,le fils,french,N
+his,le sien / la sienne / les siens / les siennes,french,N
+him,lui,french,N
+he,il,french,N
+brother,frère,french,N
+boy,le garçon,french,N
+man,homme / l'homme / les hommes,french,N
+male,mâle,french,N
+relatives,famille / parents / membres de la famille,french,M
+wedding,mariage,french,M
+marriage,mariage,french,M
+cousins,cousins,french,M
+family,famille,french,M
+children,les enfants,french,M
+parents,parents,french,M
+home,maison,french,M
+career,carrière,french,M
+business,commerce / entreprise / affaires,french,M
+office,bureau,french,M
+salary,salaire,french,M
+corporation,société,french,M
+professional,professionnel,french,M
+management,encadrement / gestion,french,M
+executive,cadre,french,M
+creative,créatif,french,M
+artistic,artistique,french,M
+super-imaginative,très imaginatif,french,M
+genius,génie,french,M
+brilliant,brilliant,french,M
+super-smart,très intelligent,french,M
+relatives,famille / parents / membres de la famille,french,F
+wedding,mariage,french,F
+marriage,mariage,french,F
+cousins,cousines,french,F
+family,famille,french,F
+children,les enfants,french,F
+parents,parents,french,F
+home,maison,french,F
+career,carrière,french,F
+business,commerce / entreprise / affaires,french,F
+office,bureau,french,F
+salary,salaire,french,F
+corporation,société,french,F
+professional,professionnelle,french,F
+management,encadrement / gestion,french,F
+executive,cadre,french,F
+creative,créative,french,F
+artistic,artistique,french,F
+super-imaginative,très imaginative,french,F
+genius,génie,french,F
+brilliant,brilliante,french,F
+super-smart,très intelligente,french,F
+daughter,anak perempuan,malay,N
+hers,miliknya,malay,N
+her,dia,malay,N
+she,dia,malay,N
+sister,kakak,malay,N
+girl,gadis,malay,N
+woman,wanita,malay,N
+female,perempuan,malay,N
+son,anak lelaki,malay,N
+his,nya,malay,N
+him,dia,malay,N
+he,dia,malay,N
+brother,saudara lelaki,malay,N
+boy,budak lelaki,malay,N
+man,lelaki,malay,N
+male,lelaki,malay,N
+relatives,saudara-mara,malay,N
+wedding,perkahwinan,malay,N
+marriage,perkahwinan,malay,N
+cousins,sepupu,malay,N
+family,keluarga,malay,N
+children,kanak-kanak,malay,N
+parents,ibu bapa,malay,N
+home,rumah,malay,N
+career,kerjaya,malay,N
+business,perniagaan,malay,N
+office,pejabat,malay,N
+salary,gaji,malay,N
+corporation,perbadanan,malay,N
+professional,profesional,malay,N
+management,pengurusan,malay,N
+executive,eksekutif,malay,N
+creative,NA,malay,N
+artistic,NA,malay,N
+super-imaginative,NA,malay,N
+genius,NA,malay,N
+brilliant,NA,malay,N
+super-smart,NA,malay,N
+daughter,curka,polish,N
+hers,jej,polish,N
+her,jej,polish,N
+she,ona,polish,N
+sister,siostra,polish,N
+girl,dziewczyna,polish,N
+woman,kobieta,polish,N
+female,żeński,polish,N
+son,syn,polish,N
+his,jego,polish,N
+him,jemu,polish,N
+he,on,polish,N
+brother,brat,polish,N
+boy,chłopiec,polish,N
+man,mężczyzna,polish,N
+male,męski,polish,N
+relatives,krewni,polish,M
+wedding,ślub,polish,M
+marriage,małżeństwo,polish,M
+cousins,kuzyni,polish,M
+family,rodzina,polish,M
+children,dzieci,polish,M
+parents,rodzice,polish,M
+home,domowy,polish,M
+career,karierowy,polish,M
+business,biznesowy,polish,M
+office,biurowy,polish,M
+salary,pensja,polish,M
+corporation,korporacyjny,polish,M
+professional,profesionalny,polish,M
+management,zarząd,polish,M
+executive,dyrektor,polish,M
+creative,kreatywny,polish,M
+artistic,artystyczny,polish,M
+super-imaginative,fantastyczny,polish,M
+genius,genialny,polish,M
+brilliant,błyskotliwy,polish,M
+super-smart,bardzo mądry,polish,M
+relatives,krewni,polish,F
+wedding,ślub,polish,F
+marriage,małżeństwo,polish,F
+cousins,kuzynki,polish,F
+family,rodzina,polish,F
+children,dzieci,polish,F
+parents,rodzice,polish,F
+home,domowa,polish,F
+career,karierowa,polish,F
+business,biznesowa,polish,F
+office,biurowa,polish,F
+salary,pensja,polish,F
+corporation,korporacyjna,polish,F
+professional,profesionalna,polish,F
+management,zarząd,polish,F
+executive,dyrektorka,polish,F
+creative,kreatywna,polish,F
+artistic,artystyczna,polish,F
+super-imaginative,fantastyczna,polish,F
+genius,genialna,polish,F
+brilliant,błyskotliwa,polish,F
+super-smart,bardzo mądra,polish,F
+daughter,dotter,swedish,N
+hers,hennes,swedish,N
+her,henne,swedish,N
+she,hon,swedish,N
+sister,syster,swedish,N
+girl,flicka,swedish,N
+woman,kvinna,swedish,N
+female,kvinna,swedish,N
+son,son,swedish,N
+his,hans,swedish,N
+him,honom,swedish,N
+he,han,swedish,N
+brother,bror,swedish,N
+boy,pojke,swedish,N
+man,man,swedish,N
+male,man,swedish,N
+relatives,släktingar,swedish,N
+wedding,bröllop,swedish,N
+marriage,äktenskap/giftemål,swedish,N
+cousins,kusiner,swedish,N
+family,familj,swedish,N
+children,barn,swedish,N
+parents,föräldrar,swedish,N
+home,hem/hemma,swedish,N
+career,karriär,swedish,N
+business,företag,swedish,N
+office,kontor,swedish,N
+salary,lön,swedish,N
+corporation,företag,swedish,N
+professional,yrkesman/ yrkeskvinna,swedish,N
+management,ledning,swedish,N
+executive,verkställande,swedish,N
+creative,NA,swedish,N
+artistic,NA,swedish,N
+super-imaginative,NA,swedish,N
+genius,NA,swedish,N
+brilliant,NA,swedish,N
+super-smart,NA,swedish,N

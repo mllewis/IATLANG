@@ -50,7 +50,7 @@ all_career_lang_es <- full_join(career_new, career_old) %>%
          "no gender", "gender"))
 
 ggplot(all_career_lang_es, aes(x = es_hand_translation_old, y = es_hand_translation_new, label = wiki_language_code)) +
-  geom_abline(aes(slope=1, intercept=0), linetype = 2)  +
+  geom_abline(aes(slope = 1, intercept=0), linetype = 2)  +
   geom_label(aes(fill = gender))  +
   geom_smooth(method = "lm") +
   xlim(0,1) +

@@ -2,7 +2,8 @@
 library(tidyverse)
 source("IAT_utils2.R")
 
-LANGS <- c("fa", "de", "nl", "pt", "zh", "es", "id", "da", "it", "ko", "ru", "tr", "he", "ro")
+LANGS <- c("fa", "de", "nl", "pt", "zh", "es", "id", "da", "it", "ko", "ru", "tr", "he", "ro", "ja", "ar", "fi", 
+           "fr", "ms", "pl", "sv")
 
 #### loop over langs and get effect sizes #### 
 get_wiki_es_separate_gender <- function(current_lang, word_list){
@@ -62,8 +63,8 @@ OUTFILE_CAREER <- "es_career_separate_no_pronouns.csv"
 
 word_list_career <- list(test_name = "WEAT_6", # not identical to caliskan (caliskan used proper names)
                     bias_type = "gender-bias-career-family",
-                    category_1 = c("male", "man", "boy", "brother", "he", "him", "his", "son"),
-                    category_2 = c("female", "woman", "girl", "sister", "she", "her", "hers", "daughter"),
+                    #category_1 = c("male", "man", "boy", "brother", "he", "him", "his", "son"),
+                    #category_2 = c("female", "woman", "girl", "sister", "she", "her", "hers", "daughter"),
                     category_1 = c("male", "man", "boy", "brother","son"),
                     category_2 = c("female", "woman", "girl", "sister",  "daughter"),
                     attribute_1 = c("executive", "management", "professional", "corporation", "salary", 
@@ -90,12 +91,14 @@ es_career_swabs_career <- swabs_career %>%
 write_csv(es_career_swabs_career, OUTFILE_CAREER)
 
 ### Genius ###
-OUTFILE_GENIUS<- "es_genius_separate.csv"
+OUTFILE_GENIUS <- "es_genius_separate_no_pronouns.csv"
 
 word_list_genius <- list(test_name = "genius_gender", 
                          bias_type = "genius_gender",
-                         category_1 = c("male", "man", "he", "him", "his"),
-                         category_2 = c("female", "woman",  "she", "her", "hers"),
+                         #category_1 = c("male", "man", "he", "him", "his"),
+                         #category_2 = c("female", "woman",  "she", "her", "hers"),
+                         category_1 = c("male", "man"),
+                         category_2 = c("female", "woman"),
                          attribute_1 = c("genius", "brilliant", "super smart"),
                          attribute_2 = c("creative", "artistic", "super imaginative"))
 
