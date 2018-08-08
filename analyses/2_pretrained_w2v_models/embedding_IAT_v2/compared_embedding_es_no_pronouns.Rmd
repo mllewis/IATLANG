@@ -1,0 +1,151 @@
+---
+title: Comparing revised embedding es with old
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+library(stringr)
+library(forcats)
+library(broom)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+
+```
+
+## Career
+
+### Previous language ES vs. new
+```{r}
+CAREER_NEW_ES <- "es_career_separate_no_pronouns.csv"
+career_new <- read_csv(CAREER_NEW_ES) %>%
+  select(-test, -bias_type) %>%
+  rename(wiki_language_code = language_code,
+         es_hand_translation_new = sYXab)
+
+CAREER_OLD_ES <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/writeup/cogsci2018/analysis/study2b/data/career_effect_sizes_hand_translations.csv"
+
+career_old <-  read.csv(CAREER_OLD_ES, 
+col.names = c("wiki_language_code", "test_id", "test_name", "es_hand_translation_old"), 
+header = F,
+                                                fill = TRUE)  %>%
+  select(-test_id, -test_name)
+
+no_gender_langs <- c("fa", "id", "ko", "zh", "tr")
+
+all_career_lang_es <- full_join(career_new, career_old) %>%
+  mutate(gender = ifelse(wiki_language_code %in% no_gender_langs,
+         "no gender", "gender"))
+
+ggplot(all_career_lang_es, aes(x = es_hand_translation_old, y = es_hand_translation_new, label = wiki_language_code)) +
+  geom_abline(aes(slope=1, intercept=0), linetype = 2)  +
+  geom_label(aes(fill = gender))  +
+  geom_smooth(method = "lm") +
+  xlim(0,1) +
+  ylim(0,1) +
+  ggtitle("language old vs. language new") +
+
+  theme_classic()
+```
+
+### Language ES vs. behavior
+```{r}
+CAREER_BEHAVIORAL_ES <- "behavioral_by_language.csv"
+
+career_behavioral <- read_csv(CAREER_BEHAVIORAL_ES) %>%
+  select(wiki_language_code, es_behavioral_iat_weighted, es_behavioral_iat) %>%
+  left_join(all_career_lang_es)
+
+ggplot(career_behavioral, aes(x = es_behavioral_iat_weighted, 
+                              y = es_hand_translation_new,
+                              label = wiki_language_code)) +
+  geom_label(aes(fill = gender))  +
+  geom_smooth(method = "lm") +
+  xlab("behavioral IAT") +
+  ylab("language IAT (new)") +
+  ggtitle("language vs. behavior") +
+  theme_classic()
+
+ggplot(career_behavioral %>% filter(!is.na(es_hand_translation_new)), aes(x = es_behavioral_iat_weighted, 
+                              y = es_hand_translation_old,
+                              label = wiki_language_code)) +
+  geom_label(aes(fill = gender))  +
+  geom_smooth(method = "lm") +
+  xlab("behavioral IAT") +
+  ylab("language IAT (old)") +
+  ggtitle("language vs. behavior") +
+  theme_classic()
+
+```
+
+
+## Genius
+
+### Previous language ES vs. new
+```{r}
+GENIUS_NEW_ES <- "es_genius_separate_no_pronouns.csv"
+
+
+GENIUS_OLD_ES1 <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/analyses/8_gender_genius/genius_effect_sizes_google_restricted.csv"
+
+GENIUS_OLD_ES2 <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/analyses/8_gender_genius/genius_effect_sizes_google_restricted2.csv"
+
+genius_new <- read_csv(GENIUS_NEW_ES) %>%
+    rename(wiki_language_code = language_code,
+         es_hand_translation_new = sYXab)
+
+## Restricted
+IAT_lang_raw1 <- read_csv(GENIUS_OLD_ES1,
+                                col_names = c("language_code", "test",
+                                              "bias_type",
+                                              "effect_size_restricted"))
+
+
+IAT_lang_raw2 <- read_csv(GENIUS_OLD_ES2, 
+                          col_names = c("language_code", "test",
+                                        "bias_type", "effect_size_restricted")) 
+
+IAT_lang_restricted_raw <- bind_rows(IAT_lang_raw1, IAT_lang_raw2)
+
+genius_old <- IAT_lang_restricted_raw %>%
+  add_row(language_code = "hiur", 
+          test = "genius_gender", 
+          bias_type = "genius_gender", 
+          effect_size_restricted = mean(filter(IAT_lang_restricted_raw,
+                                         language_code %in% c("hi", "ur")) %>% 
+                                    pull(effect_size_restricted))) %>%
+  filter(!(language_code %in% c("ur"))) %>%
+  select(language_code, effect_size_restricted) %>%
+  rename(wiki_language_code = language_code,
+         es_hand_translation_old = effect_size_restricted)
+
+
+all_gender_lang_es <- full_join(genius_old, genius_new) %>%
+  mutate(gender = ifelse(wiki_language_code %in% no_gender_langs,
+         "no gender", "gender"))
+
+ggplot(all_gender_lang_es, aes(x = es_hand_translation_old, y = es_hand_translation_new, label = wiki_language_code)) +
+  geom_abline(aes(slope=1, intercept=0), linetype = 2)  +
+  geom_label(aes(fill = gender))  +
+  geom_smooth(method = "lm") +
+  xlim(0,1) +
+  ylim(0,1) +
+  ggtitle("language old vs. language new") +
+
+  theme_classic()
+
+```
+
+We don't really have enought languages here to look at this et.

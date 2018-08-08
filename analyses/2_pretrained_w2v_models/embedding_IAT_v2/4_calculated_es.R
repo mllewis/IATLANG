@@ -58,12 +58,14 @@ get_wiki_es_separate_gender <- function(current_lang, word_list){
 
 
 ### Career ###
-OUTFILE_CAREER <- "es_career_separate.csv"
+OUTFILE_CAREER <- "es_career_separate_no_pronouns.csv"
 
 word_list_career <- list(test_name = "WEAT_6", # not identical to caliskan (caliskan used proper names)
                     bias_type = "gender-bias-career-family",
                     category_1 = c("male", "man", "boy", "brother", "he", "him", "his", "son"),
                     category_2 = c("female", "woman", "girl", "sister", "she", "her", "hers", "daughter"),
+                    category_1 = c("male", "man", "boy", "brother","son"),
+                    category_2 = c("female", "woman", "girl", "sister",  "daughter"),
                     attribute_1 = c("executive", "management", "professional", "corporation", "salary", 
                                     "office", "business", "career"),
                     attribute_2 = c("home", "parents", "children", "family", "cousins", "marriage", 

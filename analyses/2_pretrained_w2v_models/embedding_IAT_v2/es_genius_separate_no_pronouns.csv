@@ -1,0 +1,14 @@
+language_code,test,bias_type,sYXab
+da,genius_gender,genius_gender,0.40476247915291264
+de,genius_gender,genius_gender,1.3357586001659136
+es,genius_gender,genius_gender,2.2259011709910306
+fa,genius_gender,genius_gender,1.7320508075688772
+he,genius_gender,genius_gender,-0.6941508380273711
+id,genius_gender,genius_gender,0.7173873169337703
+it,genius_gender,genius_gender,1.4959075546265121
+ko,genius_gender,genius_gender,-0.349370279852208
+nl,genius_gender,genius_gender,0.878861260976262
+ro,genius_gender,genius_gender,-0.23573065084058029
+ru,genius_gender,genius_gender,-0.6539425684066785
+tr,genius_gender,genius_gender,0.9812187569658717
+zh,genius_gender,genius_gender,-0.4351017605959401

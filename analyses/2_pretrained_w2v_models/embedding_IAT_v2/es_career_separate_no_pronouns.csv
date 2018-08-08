@@ -1,0 +1,15 @@
+language_code,test,bias_type,sYXab
+da,WEAT_6,gender-bias-career-family,0.4131697862235228
+de,WEAT_6,gender-bias-career-family,0.6397396400769206
+es,WEAT_6,gender-bias-career-family,0.32414508768698247
+fa,WEAT_6,gender-bias-career-family,1.0678309915611877
+he,WEAT_6,gender-bias-career-family,0.1552273982912411
+id,WEAT_6,gender-bias-career-family,-0.39823966102702973
+it,WEAT_6,gender-bias-career-family,0.7119374760007744
+ko,WEAT_6,gender-bias-career-family,0.09586054232198749
+nl,WEAT_6,gender-bias-career-family,0.7111178624357966
+pt,WEAT_6,gender-bias-career-family,0.4563646420866898
+ro,WEAT_6,gender-bias-career-family,0.5515582171466181
+ru,WEAT_6,gender-bias-career-family,-0.23453771142952698
+tr,WEAT_6,gender-bias-career-family,0.1800094132715008
+zh,WEAT_6,gender-bias-career-family,0.5297190771561266

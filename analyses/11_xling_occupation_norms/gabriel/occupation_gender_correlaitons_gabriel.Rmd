@@ -1,0 +1,141 @@
+---
+title: Occupation gender correlation
+subtitle: Gabriel norms
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+
+Embedding scores:
+```{r}
+EMBEDDING_SCORE_PATH <- "embedding_gender_bias_occupations_gabriel.csv"
+
+embedding_scores <- read_csv(EMBEDDING_SCORE_PATH, 
+                             col_names = c("wiki_lang_code", "occupation", "female_targets",
+                                           "male_targets", "male_score")) %>%
+  filter(!(occupation %in% c("male_targets", "female_targets")))
+
+count(embedding_scores, wiki_lang_code) %>%
+  kable()
+
+embedding_scores %>%
+  ggplot(aes(x = male_score, fill = wiki_lang_code)) +
+  geom_histogram() +
+  facet_wrap(~wiki_lang_code) +
+  theme_classic() +
+  theme(legend.position = "none")
+```
+
+Human ratings:
+```{r}
+S1 <- read_csv("gabriel_norms_clean_S1.csv") %>%
+  mutate(type = "S1",
+         gender = "NA")
+
+S1g <- read_csv("gabriel_norms_clean_S1g.csv") %>%
+  mutate(type = "S1g")
+
+S2 <- read_csv("gabriel_norms_clean_S2.csv") %>%
+  mutate(type = "S2",
+          gender = "NA") %>%
+  filter(!is.na(occupation))
+
+S2g <- read_csv("gabriel_norms_clean_S2g.csv") %>%
+  mutate(type = "S2g")
+
+human_ratings <- bind_rows(list(S1, S1g, S2, S2g)) 
+
+count(human_ratings, wiki_lang_code, type) %>%
+  kable()
+
+human_ratings %>%
+  ggplot(aes(x = human_mean_rating, fill = type)) +
+  geom_density(alpha = .4) +
+  facet_wrap(~wiki_lang_code) +
+  theme_classic() +
+  theme(legend.position = "none")
+```
+
+```{r}
+all_scores <- embedding_scores %>%
+  select(-female_targets, -male_targets) %>%
+  full_join(human_ratings) %>%
+  filter(!is.na(human_mean_rating)) # fix aupairs!
+
+all_scores %>%
+  ggplot(aes(y = human_mean_rating, x = male_score, 
+             color = gender, group = gender)) +
+  geom_point(aes(color = wiki_lang_code)) +
+  xlab("embedding male score") +
+  ylab("human male score") +
+  geom_smooth(method = "lm") + 
+  facet_grid(type~wiki_lang_code, scale = "free") +
+  theme_classic() +
+  theme(legend.position = "none")
+
+
+```
+
+```{r}
+full_df <- human_ratings %>%
+  filter(type %in% c("S1", "S2")) %>%
+  rename(human_wiki_lang_code = wiki_lang_code) %>%
+  left_join(embedding_scores %>%
+  select(-female_targets, -male_targets)  %>%
+  rename(embedding_wiki_lang_code = wiki_lang_code)) %>%
+  mutate(same_lang = human_wiki_lang_code == embedding_wiki_lang_code)
+
+full_df %>%
+  ggplot(aes(y = human_mean_rating, 
+             x = male_score, 
+             group = embedding_wiki_lang_code,
+             color = embedding_wiki_lang_code)) +
+  xlab("embedding male score") +
+  ylab("human male score") +
+  geom_smooth(method = "lm", aes(linetype = same_lang)) + 
+  facet_grid(type~human_wiki_lang_code) +
+  theme_classic()
+
+```
+
+```{r}
+full_df <- human_ratings %>%
+  filter(type %in% c("S1g", "S2g")) %>%
+  rename(human_wiki_lang_code = wiki_lang_code) %>%
+  left_join(embedding_scores %>%
+  select(-female_targets, -male_targets)  %>%
+  rename(embedding_wiki_lang_code = wiki_lang_code)) %>%
+  mutate(same_lang = human_wiki_lang_code == embedding_wiki_lang_code)
+
+full_df %>%
+  ggplot(aes(y = human_mean_rating, 
+             x = male_score, 
+             group = embedding_wiki_lang_code,
+             color = embedding_wiki_lang_code)) +
+  xlab("embedding male score") +
+  ylab("human male score") +
+  geom_smooth(method = "lm", aes(linetype = same_lang)) + 
+  facet_grid(type +gender ~human_wiki_lang_code) +
+  theme_classic()
+
+```

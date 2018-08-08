@@ -1,0 +1,379 @@
+target_word,wiki_lang_code,translation
+actors,fr,acteurs
+adolescents,fr,adolescents
+apprentices,fr,apprentis
+archivists,fr,archivistes
+artists,fr,artistes
+assistant chefs,fr,aides-cuisine
+astrologers,fr,astrologues
+athletes,fr,athlètes
+au pairs,fr,jeunes hommes au pair
+authors,fr,auteurs
+auxiliary workers,fr,personnels auxiliaires
+bakers,fr,boulangers
+bank clerks,fr,employés de banque
+bankers,fr,banquiers
+bartenders,fr,barmans
+beauticians,fr,esthéticiens
+birth attendants,fr,assistants maternels
+bosses,fr,patrons
+boxers,fr,boxeurs
+bricklayers,fr,maçons
+butchers,fr,bouchers
+campers,fr,campeurs
+caretakers,fr,gardiens
+carpenters,fr,charpentiers
+cashiers,fr,caissiers
+chemists,fr,chimistes
+chocolate lovers,fr,amateurs de chocolat
+cinema goers,fr,spectateurs de cinéma
+cleaners,fr,personnels de ménage
+climbers,fr,grimpeurs
+comedians,fr,comédiens
+composers,fr,compositeurs
+computer specialists,fr,informaticiens
+concert goers,fr,auditeurs de concert
+cooks,fr,cuisiniers
+craftsmen,fr,artisans
+curators,fr,conservateurs
+customs officers,fr,inspecteurs des douanes
+cyclists,fr,cyclistes
+dancers,fr,danseurs
+deans,fr,doyens
+dentists,fr,dentistes
+dieticians,fr,diététiciens
+doctors,fr,docteurs
+dressmakers,fr,couturiers
+drivers,fr,automobilistes
+electricians,fr,electriciens
+engineers,fr,ingénieurs
+factory managers,fr,directeurs d’usine
+farmers,fr,fermiers
+fishers,fr,pêcheurs
+flight attendants,fr,stewards
+football coaches,fr,entraîneurs de football
+fortune tellers,fr,diseurs de bonne aventure
+gardeners,fr,jardiniers
+golfers,fr,golfeurs
+governors,fr,gouverneurs
+gynaecologists,fr,gynécologues
+hairdressers,fr,coiffeurs
+heads,fr,chefs
+historians,fr,historiens
+homeless people,fr,sans-logis
+hunters,fr,chasseurs
+ice skaters,fr,patineurs
+inventors,fr,inventeurs
+job seekers,fr,demandeurs d’emploi
+joggers,fr,joggers
+judges,fr,juges
+jugglers,fr,jongleurs
+lawyers,fr,avocats
+librarians,fr,bibliothécaires
+lorry drivers,fr,chauffeurs de camion
+magicians,fr,magiciens
+managers,fr,managers
+mathematicians,fr,mathématiciens
+mayors,fr,maires
+mechanics,fr,mécaniciens
+members of parliament,fr,parlementaires
+models,fr,mannequins
+murderers,fr,meurtriers
+musicians,fr,musiciens
+neighbours,fr,voisins
+nurses,fr,infirmiers
+office workers,fr,employés de bureau
+paediatricians,fr,pédiatres
+painting artists,fr,peintres artistes
+pedestrians,fr,promeneurs
+pharmacists,fr,pharmaciens
+physicians,fr,médecins
+physicists,fr,physiciens
+physics students,fr,etudiants en physique
+pilots,fr,aviateurs
+poets,fr,poètes
+police officers,fr,policiers
+politicians,fr,politiciens
+postmen,fr,facteurs
+presidents,fr,présidents
+prisoners,fr,prisonniers
+professors,fr,professeurs
+proofreaders,fr,correcteurs
+psychology students,fr,etudiants en psychologie
+publishers,fr,editeurs
+reception-class children,fr,ecoliers
+relatives,fr,proches
+sales assistants,fr,vendeurs
+schoolchildren,fr,elèves
+secretaries,fr,secrétaires
+shoemakers,fr,cordonniers
+singers,fr,chanteurs
+skiers,fr,skieurs
+social workers,fr,assistants sociaux
+solarium users,fr,bronzeurs
+spectators,fr,spectateurs
+spies,fr,espions
+statisticians,fr,statisticiens
+surgeons,fr,chirurgiens
+swimmers,fr,nageurs
+technicians,fr,techniciens
+tennis players,fr,joueurs de tennis
+trade unionists,fr,syndicalistes
+trainees,fr,stagiaires
+violonists,fr,violonistes
+waiters,fr,serveurs
+wine connoisseurs,fr,amateurs de vin
+workers,fr,ouvriers
+writers,fr,ecrivains
+actors,de,schauspieler
+adolescents,de,jugendliche
+apprentices,de,lehrlinge
+archivists,de,archivare
+artists,de,künstler
+assistant chefs,de,küchenhilfen
+astrologers,de,astrologen
+athletes,de,athleten
+au pairs,de,aupair-jungen
+authors,de,autoren
+auxiliary workers,de,hilfskräfte
+bakers,de,bäcker
+bank clerks,de,bankangestellte
+bankers,de,banker
+bartenders,de,barkeeper
+beauticians,de,kosmetiker
+birth attendants,de,geburtshelfer
+bosses,de,arbeitgeber
+boxers,de,boxer
+bricklayers,de,maurer
+butchers,de,metzger
+campers,de,camper
+caretakers,de,wärter
+carpenters,de,zimmerleute
+cashiers,de,kassierer
+chemists,de,chemiker
+chocolate lovers,de,schokoladenliebhaber
+cinema goers,de,kinobesucher
+cleaners,de,raumpfleger
+climbers,de,kletterer
+comedians,de,komödianten
+composers,de,komponisten
+computer specialists,de,informatiker
+concert goers,de,konzert-zuhörer
+cooks,de,köche
+craftsmen,de,handwerker
+curators,de,konservative
+customs officers,de,zöllner
+cyclists,de,fahrradfahrer
+dancers,de,tänzer
+deans,de,dekane
+dentists,de,zahnärzte
+dieticians,de,diätberater
+doctors,de,doktoren
+dressmakers,de,schneider/näher
+drivers,de,autofahrer
+electricians,de,elektriker
+engineers,de,ingenieure
+factory managers,de,fabrikdirektoren
+farmers,de,bauern
+fishers,de,fischer
+flight attendants,de,flugbegleiter
+football coaches,de,fussballtrainer
+fortune tellers,de,wahrsager
+gardeners,de,gärtner
+golfers,de,golfspieler
+governors,de,gouverneure
+gynaecologists,de,gynäkologen
+hairdressers,de,coiffeure
+heads,de,chefs
+historians,de,historiker
+homeless people,de,obdachlose
+hunters,de,jäger
+ice skaters,de,schlittschuhläufer
+inventors,de,erfinder
+job seekers,de,stellensuchende
+joggers,de,jogger
+judges,de,richter
+jugglers,de,jongleure
+lawyers,de,anwälte
+librarians,de,bibliothekare
+lorry drivers,de,lastwagenfahrer
+magicians,de,zauberer
+managers,de,manager
+mathematicians,de,mathematiker
+mayors,de,bürgermeister
+mechanics,de,mechaniker
+members of parliament,de,parlamentarier
+models,de,modelle
+murderers,de,mörder
+musicians,de,musiker
+neighbours,de,nachbarn
+nurses,de,krankenpfleger
+office workers,de,büroangestellte
+paediatricians,de,kinderärzte
+painting artists,de,kunstmaler
+pedestrians,de,spaziergänger
+pharmacists,de,apotheker
+physicians,de,mediziner
+physicists,de,physiker
+physics students,de,physikstudenten
+pilots,de,flieger
+poets,de,poeten
+police officers,de,polizisten
+politicians,de,politiker
+postmen,de,briefträger
+presidents,de,präsidenten
+prisoners,de,gefangene
+professors,de,professoren
+proofreaders,de,korrektoren
+psychology students,de,psychologiestudenten
+publishers,de,herausgeber
+reception-class children,de,schulanfänger
+relatives,de,verwandte
+sales assistants,de,verkäufer
+schoolchildren,de,schüler
+secretaries,de,sekretäre
+shoemakers,de,schuhmacher
+singers,de,sänger
+skiers,de,skifahrer
+social workers,de,sozialarbeiter
+solarium users,de,solariumbesucher
+spectators,de,zuschauer
+spies,de,spione
+statisticians,de,statistiker
+surgeons,de,chirurgen
+swimmers,de,schwimmer
+technicians,de,techniker
+tennis players,de,tennisspieler
+trade unionists,de,gewerkschafter
+trainees,de,praktikanten
+violonists,de,geiger
+waiters,de,kellner
+wine connoisseurs,de,weinliebhaber
+workers,de,arbeiter
+writers,de,schriftsteller
+actors,en,actors
+adolescents,en,adolescents
+apprentices,en,apprentices
+archivists,en,archivists
+artists,en,artists
+assistant chefs,en,assistant chefs
+astrologers,en,astrologers
+athletes,en,athletes
+au pairs,en,au pairs
+authors,en,authors
+auxiliary workers,en,auxiliary workers
+bakers,en,bakers
+bank clerks,en,bank clerks
+bankers,en,bankers
+bartenders,en,bartenders
+beauticians,en,beauticians
+birth attendants,en,birth attendants
+bosses,en,bosses
+boxers,en,boxers
+bricklayers,en,bricklayers
+butchers,en,butchers
+campers,en,campers
+caretakers,en,caretakers
+carpenters,en,carpenters
+cashiers,en,cashiers
+chemists,en,chemists
+chocolate lovers,en,chocolate lovers
+cinema goers,en,cinema goers
+cleaners,en,cleaners
+climbers,en,climbers
+comedians,en,comedians
+composers,en,composers
+computer specialists,en,computer specialists
+concert goers,en,concert goers
+cooks,en,cooks
+craftsmen,en,craftsmen
+curators,en,curators
+customs officers,en,customs officers
+cyclists,en,cyclists
+dancers,en,dancers
+deans,en,deans
+dentists,en,dentists
+dieticians,en,dieticians
+doctors,en,doctors
+dressmakers,en,dressmakers
+drivers,en,drivers
+electricians,en,electricians
+engineers,en,engineers
+factory managers,en,factory managers
+farmers,en,farmers
+fishers,en,fishers
+flight attendants,en,flight attendants
+football coaches,en,football coaches
+fortune tellers,en,fortune tellers
+gardeners,en,gardeners
+golfers,en,golfers
+governors,en,governors
+gynaecologists,en,gynaecologists
+hairdressers,en,hairdressers
+heads,en,heads
+historians,en,historians
+homeless people,en,homeless people
+hunters,en,hunters
+ice skaters,en,ice skaters
+inventors,en,inventors
+job seekers,en,job seekers
+joggers,en,joggers
+judges,en,judges
+jugglers,en,jugglers
+lawyers,en,lawyers
+librarians,en,librarians
+lorry drivers,en,lorry drivers
+magicians,en,magicians
+managers,en,managers
+mathematicians,en,mathematicians
+mayors,en,mayors
+mechanics,en,mechanics
+members of parliament,en,members of parliament
+models,en,models
+murderers,en,murderers
+musicians,en,musicians
+neighbours,en,neighbours
+nurses,en,nurses
+office workers,en,office workers
+paediatricians,en,paediatricians
+painting artists,en,painting artists
+pedestrians,en,pedestrians
+pharmacists,en,pharmacists
+physicians,en,physicians
+physicists,en,physicists
+physics students,en,physics students
+pilots,en,pilots
+poets,en,poets
+police officers,en,police officers
+politicians,en,politicians
+postmen,en,postmen
+presidents,en,presidents
+prisoners,en,prisoners
+professors,en,professors
+proofreaders,en,proofreaders
+psychology students,en,psychology students
+publishers,en,publishers
+reception-class children,en,reception-class children
+relatives,en,relatives
+sales assistants,en,sales assistants
+schoolchildren,en,schoolchildren
+secretaries,en,secretaries
+shoemakers,en,shoemakers
+singers,en,singers
+skiers,en,skiers
+social workers,en,social workers
+solarium users,en,solarium users
+spectators,en,spectators
+spies,en,spies
+statisticians,en,statisticians
+surgeons,en,surgeons
+swimmers,en,swimmers
+technicians,en,technicians
+tennis players,en,tennis players
+trade unionists,en,trade unionists
+trainees,en,trainees
+violonists,en,violonists
+waiters,en,waiters
+wine connoisseurs,en,wine connoisseurs
+workers,en,workers
+writers,en,writers

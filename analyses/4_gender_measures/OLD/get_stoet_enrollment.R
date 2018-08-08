@@ -3,10 +3,10 @@
 library("tabulizer")
 library("tidyverse")
 
-pdf_path  <- "../../resources/IAT/stoet_and_geary_2018_sm.pdf"
+pdf_path  <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/resources/language_social/Misersky2014_Article_NormsOnTheGenderPerceptionOfRo.pdf"
 OUTFILE <- "stoet_enrollment.csv"
 
-t = extract_areas(pdf_path, 1:3)
+t = extract_areas(pdf_path, 8)
 
 t_df <- map_df(t, ~as.data.frame(.) %>% select(1:3))
 
