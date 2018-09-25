@@ -1,0 +1,227 @@
+---
+title: IAT regressions with Age - Science
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(feather)
+library(lme4)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+
+scale_this <- function(x) as.vector(scale(x))
+ALPHA <- .05
+cols <- rev(colorRampPalette(c("red", "white", "blue"))(100))
+
+```
+
+Summary:
+
+* There's no relationship between new genius language es and cimpian data. Or anything else.
+* language measures that use sum to combine phrases seem to do a little better.
+* missing hi, ta which might help compare to storage data. 
+* correlates better wkth storange data than with science project implicit measure.
+
+```{r}
+LANGUAGE_DF_PATH1 <- "../2_language_wikipedia/data/es_genius_separate_mw_mean.csv" 
+LANGUAGE_DF_PATH2 <- "../2_language_wikipedia/data/es_genius_separate_mw_sum.csv" 
+LANGUAGE_DF_PATH3 <- "../2_language_wikipedia/data/es_genius_separate_pro_mean.csv" 
+LANGUAGE_DF_PATH4 <- "../2_language_wikipedia/data/es_genius_separate_pro_sum.csv" 
+
+BEHAVIORAL_LANGUAGE_DF <- "data/gender_science_by_language2.csv" 
+```
+
+## Language Level
+
+### Raw correlations
+
+```{r, fig.width = 8, fig.height = 8}
+language_df1 <- read_csv(LANGUAGE_DF_PATH1)  %>%
+  select(-test, -bias_type) %>%
+  rename(language_iat_mw_mean = sYXab)  
+
+language_df2 <- read_csv(LANGUAGE_DF_PATH2)  %>%
+  select(-test, -bias_type) %>%
+  rename(language_iat_mw_sum = sYXab)  
+
+language_df3 <- read_csv(LANGUAGE_DF_PATH3)  %>%
+  select(-test, -bias_type) %>%
+  rename(language_iat_pro_mean = sYXab)  
+
+language_df4 <- read_csv(LANGUAGE_DF_PATH4)  %>%
+  select(-test, -bias_type) %>%
+  rename(language_iat_pro_sum = sYXab)  
+
+language_df <- left_join(language_df1,language_df2) %>%
+  left_join(language_df3) %>%
+  left_join(language_df4)
+
+behavioral_df <- read_csv(BEHAVIORAL_LANGUAGE_DF)
+
+full_df  <- language_df %>%
+  full_join(behavioral_df, by = c("language_code" = "wiki_language_code"))  
+#%>%
+#  filter(!(language_code %in% c("ro", "zh", "es")))
+language_df_corr <- full_df %>%
+  select_if(is.numeric)
+
+
+corr_mat <- cor(language_df_corr, 
+                use = "pairwise.complete.obs")
+
+p.mat <- corrplot::cor.mtest(language_df_corr, 
+                  conf.level = (1-ALPHA),  
+                  use = "pairwise.complete.obs")$p
+
+corrplot::corrplot(corr_mat, method = "color",  col = cols,
+         order = "original", number.cex = .7,
+         addCoef.col = "black", 
+         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
+         tl.col = "black", tl.srt = 90,
+         diag = FALSE)
+```
+
+### Regressions predicting  behavioral data
+
+```{r}
+full_df %>%
+  select(language_code, es_behavioral_iat_resid_simple2, contains("language_iat")) %>%
+  gather("iat_measure", "iat_bias", -1:-2) %>%
+  ggplot(aes(x = iat_bias, y = es_behavioral_iat_resid_simple2)) +
+  geom_point() +
+  geom_smooth(method = "lm") + 
+  geom_text(aes(label = language_code, x = iat_bias + .1 )) +
+  facet_wrap(~iat_measure) +
+  theme_classic()
+
+full_df %>%
+  select(language_code, es_behavioral_iat_resid_simple, contains("language_iat")) %>%
+  gather("iat_measure", "iat_bias", -1:-2) %>%
+  ggplot(aes(x = iat_bias, y = es_behavioral_iat_resid_simple)) +
+  geom_point() +
+  geom_smooth(method = "lm") + 
+  geom_text(aes(label = language_code, x = iat_bias + .1 )) +
+  facet_wrap(~iat_measure) +
+  theme_classic()
+
+
+lm(es_behavioral_iat_resid_simple ~  language_iat_pro_sum* median_country_age ,
+data = full_df) %>%
+  summary()
+```
+
+## Compare to other storage data and wikpedia es
+```{r,  fig.width = 8, fig.height = 8}
+LANGUAGE_DF_PATH_NEW <-  "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/analyses/2_pretrained_w2v_models/embedding_IAT_v2/es_career_separate.csv"
+language_df_new <- read_csv(LANGUAGE_DF_PATH_NEW) %>%
+  rename(career_hand_new = sYXab,
+         wiki_language_code = language_code) %>%
+  select(wiki_language_code, career_hand_new)
+
+career_data <- read_csv("/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/analyses/7_age_controls/by_language_df.csv") %>%
+  select(wiki_language_code, es_behavioral_iat_resid_simple)%>%
+  left_join(language_df_new) %>%
+  rename(es_behavioral_iat_resid_simple_career = es_behavioral_iat_resid_simple)
+
+fulldf2<- left_join(full_df,career_data, 
+                    by = c("language_code" = "wiki_language_code")) %>% filter(!(language_code %in% c("zh")))
+language_df_corr <- fulldf2 %>%
+  select_if(is.numeric)
+
+
+corr_mat <- cor(language_df_corr, 
+                use = "pairwise.complete.obs")
+
+p.mat <- corrplot::cor.mtest(language_df_corr, 
+                  conf.level = (1-ALPHA),  
+                  use = "pairwise.complete.obs")$p
+
+corrplot::corrplot(corr_mat, method = "color",  col = cols,
+         order = "original", number.cex = .7,
+         addCoef.col = "black", 
+         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
+         tl.col = "black", tl.srt = 90,
+         diag = FALSE)
+  
+lm(es_behavioral_iat_resid_simple ~ career_hand_new + median_country_age ,
+data = fulldf2) %>%
+  summary()
+
+lm(es_behavioral_iat_resid_simple2 ~  career_hand_new + median_country_age ,
+data = fulldf2) %>%
+  summary()
+
+lm(es_behavioral_iat_resid_simple2 ~  career_hand_new + median_country_age ,
+data = fulldf2) %>%
+  summary()
+
+lm(es_behavioral_iat_resid_simple2 ~  es_behavioral_iat_resid_simple_career + median_country_age,
+data = fulldf2) %>%
+  summary()
+
+```
+
+```{r}
+google_lang_genius <- read_csv("/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/analyses/8_gender_genius/1_behavioral_storage_cimpian/data/genius_effect_sizes_google_restricted2.csv", 
+                          col_names = c("language_code", "test",
+                                        "bias_type", "google_lang_genius")) 
+
+cimpian_behavior <- read_csv("/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/analyses/8_gender_genius/1_behavioral_storage_cimpian/data/all_cimpian_behavioral.csv") %>%
+  mutate(language_code = ifelse(language_code == "hiur", "ur", language_code))
+
+tidy_df <- fulldf2 %>%
+  select(language_code, es_behavioral_iat_resid_simple_career, career_hand_new,
+         es_behavioral_iat_resid_simple2, language_iat_pro_sum,language_iat_pro_mean, median_country_age) %>%
+  full_join(google_lang_genius) %>%
+  full_join(cimpian_behavior) %>%
+  mutate(median_country_age = ifelse(is.na(median_country_age), 36.52464, median_country_age))
+  
+
+language_df_corr <- tidy_df %>%
+  select_if(is.numeric)
+
+ALPHA <- .05
+corr_mat <- cor(language_df_corr, 
+                use = "pairwise.complete.obs")
+
+#p.mat <- corrplot::cor.mtest(language_df_corr, 
+#                  conf.level = (1-ALPHA),  
+#                  use = "pairwise.complete.obs")$p
+
+corrplot::corrplot(corr_mat, method = "color",  col = cols,
+         order = "original", number.cex = .7,
+         addCoef.col = "black", sig.level = ALPHA, insig = "blank", 
+         tl.col = "black", tl.srt = 90,
+         diag = FALSE)
+  
+
+
+
+lm( es_behavioral_iat_resid_simple2 ~ google_lang_genius + median_country_age,tidy_df) %>%
+  summary()
+
+
+lm(iat_resid_storage_genius_12 ~ language_iat_pro_sum + median_country_age,  tidy_df ) %>%
+  summary()
+
+tidy_df  %>%
+ggplot(aes(x = iat_resid_storage_genius_12, y =language_iat_pro_mean )) +
+  geom_text(aes(label = language_code)) + 
+  geom_smooth(method = "lm")
+ 
+
+```

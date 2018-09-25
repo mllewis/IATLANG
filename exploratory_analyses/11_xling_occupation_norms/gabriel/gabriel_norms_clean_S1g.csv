@@ -1,0 +1,757 @@
+occupation,wiki_lang_code,gender,human_mean_rating
+actors,en,m,48.57
+adolescents,en,m,50
+apprentices,en,m,61.43
+archivists,en,m,51.43
+artists,en,m,52.86
+assistant chefs,en,m,58.57
+astrologers,en,m,47.14
+athletes,en,m,52.86
+aupairs,en,m,28.57
+authors,en,m,52.86
+auxiliary workers,en,m,61.43
+bakers,en,m,75.71
+bank clerks,en,m,50
+bankers,en,m,61.43
+bartenders,en,m,44.29
+beauticians,en,m,28.57
+birth attendants,en,m,21.43
+bosses,en,m,55.71
+boxers,en,m,52.86
+bricklayers,en,m,91.43
+butchers,en,m,64.29
+campers,en,m,42.86
+caretakers,en,m,78.57
+carpenters,en,m,78.57
+cashiers,en,m,48.57
+chemists,en,m,68.57
+chocolate lovers,en,m,34.29
+cinema goers,en,m,58.57
+cleaners,en,m,28.57
+climbers,en,m,62.86
+comedians,en,m,57.14
+composers,en,m,62.86
+computer specialists,en,m,61.43
+concert goers,en,m,52.86
+cooks,en,m,42.86
+craftsmen,en,m,72.86
+curators,en,m,57.14
+customs officers,en,m,57.14
+cyclists,en,m,58.57
+dancers,en,m,30
+deans,en,m,71.43
+dentists,en,m,70
+dieticians,en,m,41.43
+doctors,en,m,55.71
+dressmakers,en,m,35.71
+drivers,en,m,62.86
+electricians,en,m,82.86
+engineers,en,m,80
+factory managers,en,m,70
+farmers,en,m,75.71
+fishers,en,m,82.86
+flight attendants,en,m,25.71
+football coaches,en,m,78.57
+fortune tellers,en,m,28.57
+gardeners,en,m,44.29
+golfers,en,m,75.71
+governors,en,m,70
+gynaeco-logists,en,m,62.86
+hairdressers,en,m,62.86
+heads,en,m,55.71
+historians,en,m,60
+homeless people,en,m,61.43
+hunters,en,m,78.57
+iceskaters,en,m,47.14
+inventors,en,m,68.57
+job seekers,en,m,60
+joggers,en,m,38.57
+judges,en,m,70
+jugglers,en,m,61.43
+lawyers,en,m,64.29
+librarians,en,m,60
+lorrydrivers,en,m,77.14
+magicians,en,m,77.14
+managers,en,m,68.57
+mathema-ticians,en,m,57.14
+mayors,en,m,74.29
+mechanics,en,m,81.43
+members of parliament,en,m,72.86
+models,en,m,42.86
+murderers,en,m,74.29
+musicians,en,m,54.29
+neighbours,en,m,51.43
+nurses,en,m,32.86
+office workers,en,m,42.86
+paedia-tricians,en,m,67.14
+painting artists,en,m,55.71
+pedestrians,en,m,51.43
+pharmacists,en,m,40
+physicians,en,m,68.57
+physicists,en,m,67.14
+physics students,en,m,65.86
+pilots,en,m,68.57
+poets,en,m,57.14
+police officers,en,m,62.86
+politicians,en,m,67.14
+postmen,en,m,70
+presidents,en,m,85.71
+prisoners,en,m,74.29
+professors,en,m,61.43
+proofreaders,en,m,65.71
+psychology students,en,m,34.29
+publishers,en,m,60
+reception-class children,en,m,52.86
+relatives,en,m,55.71
+sales assistants,en,m,37.14
+school-children,en,m,57.14
+secretaries,en,m,31.43
+shoemakers,en,m,57.14
+singers,en,m,62.86
+skiers,en,m,60
+social workers,en,m,31.43
+solarium users,en,m,44.29
+spectators,en,m,58.57
+spies,en,m,70
+statisticians,en,m,64.29
+surgeons,en,m,51.43
+swimmers,en,m,54.29
+technicians,en,m,72.86
+tennis players,en,m,51.43
+trade unionists,en,m,71.43
+trainees,en,m,50
+violonists,en,m,44.29
+waiters,en,m,38.57
+wine connoisseurs,en,m,57.14
+workers,en,m,61.43
+writers,en,m,44.29
+actors,en,f,49.8
+adolescents,en,f,51.37
+apprentices,en,f,62.75
+archivists,en,f,52.86
+artists,en,f,50.78
+assistant chefs,en,f,57
+astrologers,en,f,62.55
+athletes,en,f,56.08
+aupairs,en,f,22.78
+authors,en,f,47.84
+auxiliary workers,en,f,52.65
+bakers,en,f,64.31
+bank clerks,en,f,50
+bankers,en,f,58.63
+bartenders,en,f,51.8
+beauticians,en,f,28.67
+birth attendants,en,f,22.98
+bosses,en,f,62.55
+boxers,en,f,73.53
+bricklayers,en,f,86.86
+butchers,en,f,65.1
+campers,en,f,50
+caretakers,en,f,76.08
+carpenters,en,f,73.92
+cashiers,en,f,37.2
+chemists,en,f,59.61
+chocolate lovers,en,f,30.8
+cinema goers,en,f,50.39
+cleaners,en,f,25.29
+climbers,en,f,64.51
+comedians,en,f,56.27
+composers,en,f,62.94
+computer specialists,en,f,71.37
+concert goers,en,f,46.47
+cooks,en,f,46.67
+craftsmen,en,f,58.65
+curators,en,f,56.27
+customs officers,en,f,63.8
+cyclists,en,f,55.1
+dancers,en,f,32.75
+deans,en,f,67.84
+dentists,en,f,64.51
+dieticians,en,f,39.02
+doctors,en,f,59.02
+dressmakers,en,f,43.55
+drivers,en,f,62.35
+electricians,en,f,75.49
+engineers,en,f,78.24
+factory managers,en,f,64.33
+farmers,en,f,77.6
+fishers,en,f,79.02
+flight attendants,en,f,27.84
+football coaches,en,f,80
+fortune tellers,en,f,32.57
+gardeners,en,f,57.45
+golfers,en,f,72.94
+governors,en,f,68.6
+gynaeco-logists,en,f,51.59
+hairdressers,en,f,46.47
+heads,en,f,64.58
+historians,en,f,56.67
+homeless people,en,f,63.14
+hunters,en,f,78.43
+iceskaters,en,f,42.2
+inventors,en,f,70.59
+job seekers,en,f,54
+joggers,en,f,48.04
+judges,en,f,71.37
+jugglers,en,f,66.47
+lawyers,en,f,65.29
+librarians,en,f,43.6
+lorrydrivers,en,f,81.96
+magicians,en,f,71.6
+managers,en,f,64.31
+mathema-ticians,en,f,68.63
+mayors,en,f,75.49
+mechanics,en,f,82.35
+members of parliament,en,f,74.31
+models,en,f,36.67
+murderers,en,f,72.35
+musicians,en,f,54.12
+neighbours,en,f,49.61
+nurses,en,f,29.41
+office workers,en,f,43.14
+paedia-tricians,en,f,54.9
+painting artists,en,f,50
+pedestrians,en,f,48.63
+pharmacists,en,f,53.16
+physicians,en,f,67.45
+physicists,en,f,69.6
+physics students,en,f,55.12
+pilots,en,f,70.2
+poets,en,f,51.96
+police officers,en,f,63.14
+politicians,en,f,71.18
+postmen,en,f,70.98
+presidents,en,f,86.86
+prisoners,en,f,69.61
+professors,en,f,65.4
+proofreaders,en,f,57.84
+psychology students,en,f,39.02
+publishers,en,f,51.18
+reception-class children,en,f,45.69
+relatives,en,f,50
+sales assistants,en,f,33.14
+school-children,en,f,56.2
+secretaries,en,f,25.88
+shoemakers,en,f,57.45
+singers,en,f,51.18
+skiers,en,f,54.71
+social workers,en,f,29.22
+solarium users,en,f,44.2
+spectators,en,f,54.71
+spies,en,f,73.33
+statisticians,en,f,70.39
+surgeons,en,f,63.4
+swimmers,en,f,49.02
+technicians,en,f,71.57
+tennis players,en,f,53.33
+trade unionists,en,f,59.22
+trainees,en,f,50
+violonists,en,f,41.96
+waiters,en,f,38.43
+wine connoisseurs,en,f,57.84
+workers,en,f,52.57
+writers,en,f,46.67
+actors,fr,m,49.35
+adolescents,fr,m,49.35
+apprentices,fr,m,53.71
+archivists,fr,m,53.71
+artists,fr,m,54.52
+assistant chefs,fr,m,53.23
+astrologers,fr,m,39.03
+athletes,fr,m,52.58
+aupairs,fr,m,19.03
+authors,fr,m,54.03
+auxiliary workers,fr,m,42.9
+bakers,fr,m,69.03
+bank clerks,fr,m,55.65
+bankers,fr,m,68.23
+bartenders,fr,m,58.06
+beauticians,fr,m,21.94
+birth attendants,fr,m,26.13
+bosses,fr,m,71.77
+boxers,fr,m,79.03
+bricklayers,fr,m,87.1
+butchers,fr,m,69.68
+campers,fr,m,49.03
+caretakers,fr,m,73.55
+carpenters,fr,m,77.33
+cashiers,fr,m,22.74
+chemists,fr,m,62.26
+chocolate lovers,fr,m,39.84
+cinema goers,fr,m,49.52
+cleaners,fr,m,22.74
+climbers,fr,m,64.52
+comedians,fr,m,44.52
+composers,fr,m,66.77
+computer specialists,fr,m,67.42
+concert goers,fr,m,50.48
+cooks,fr,m,52.5
+craftsmen,fr,m,60.65
+curators,fr,m,64.19
+customs officers,fr,m,76.29
+cyclists,fr,m,71.67
+dancers,fr,m,28.39
+deans,fr,m,69.19
+dentists,fr,m,69.35
+dieticians,fr,m,36.61
+doctors,fr,m,54.68
+dressmakers,fr,m,40.32
+drivers,fr,m,59.68
+electricians,fr,m,77.74
+engineers,fr,m,73.23
+factory managers,fr,m,74.84
+farmers,fr,m,66.45
+fishers,fr,m,79.84
+flight attendants,fr,m,28.39
+football coaches,fr,m,83.23
+fortune tellers,fr,m,27.74
+gardeners,fr,m,61.45
+golfers,fr,m,74.03
+governors,fr,m,78.5
+gynaeco-logists,fr,m,57.74
+hairdressers,fr,m,41.29
+heads,fr,m,73.23
+historians,fr,m,61.13
+homeless people,fr,m,70
+hunters,fr,m,89.03
+iceskaters,fr,m,43.55
+inventors,fr,m,68.06
+job seekers,fr,m,53.06
+joggers,fr,m,41.94
+judges,fr,m,67.42
+jugglers,fr,m,62.9
+lawyers,fr,m,67.5
+librarians,fr,m,40.32
+lorrydrivers,fr,m,83.55
+magicians,fr,m,76.94
+managers,fr,m,71.45
+mathema-ticians,fr,m,69.68
+mayors,fr,m,73.71
+mechanics,fr,m,82.1
+members of parliament,fr,m,68.39
+models,fr,m,34.19
+murderers,fr,m,71.29
+musicians,fr,m,60.48
+neighbours,fr,m,48.55
+nurses,fr,m,30
+office workers,fr,m,50
+paedia-tricians,fr,m,55.16
+painting artists,fr,m,56.45
+pedestrians,fr,m,52.26
+pharmacists,fr,m,49.35
+physicians,fr,m,64.84
+physicists,fr,m,75.16
+physics students,fr,m,61.29
+pilots,fr,m,74.68
+poets,fr,m,62.9
+police officers,fr,m,70.67
+politicians,fr,m,71.94
+postmen,fr,m,72.1
+presidents,fr,m,80
+prisoners,fr,m,70.97
+professors,fr,m,54.84
+proofreaders,fr,m,56.77
+psychology students,fr,m,30.97
+publishers,fr,m,63.23
+reception-class children,fr,m,49.84
+relatives,fr,m,49
+sales assistants,fr,m,36.13
+school-children,fr,m,53.06
+secretaries,fr,m,20.97
+shoemakers,fr,m,72.42
+singers,fr,m,49.68
+skiers,fr,m,55.32
+social workers,fr,m,33.23
+solarium users,fr,m,47.33
+spectators,fr,m,51.13
+spies,fr,m,74.19
+statisticians,fr,m,68.39
+surgeons,fr,m,74.52
+swimmers,fr,m,50.81
+technicians,fr,m,73.23
+tennis players,fr,m,53.06
+trade unionists,fr,m,62.1
+trainees,fr,m,47.74
+violonists,fr,m,52.26
+waiters,fr,m,35.81
+wine connoisseurs,fr,m,70
+workers,fr,m,73.06
+writers,fr,m,56.77
+actors,fr,f,45.17
+adolescents,fr,f,46.9
+apprentices,fr,f,53.1
+archivists,fr,f,47.24
+artists,fr,f,51.03
+assistant chefs,fr,f,44.83
+astrologers,fr,f,35.52
+athletes,fr,f,51.03
+aupairs,fr,f,16.21
+authors,fr,f,53.45
+auxiliary workers,fr,f,38.62
+bakers,fr,f,68.28
+bank clerks,fr,f,52.41
+bankers,fr,f,69.66
+bartenders,fr,f,56.9
+beauticians,fr,f,14.29
+birth attendants,fr,f,15.52
+bosses,fr,f,67.59
+boxers,fr,f,76.55
+bricklayers,fr,f,90.34
+butchers,fr,f,67.24
+campers,fr,f,48.62
+caretakers,fr,f,78.28
+carpenters,fr,f,80
+cashiers,fr,f,25.86
+chemists,fr,f,70
+chocolate lovers,fr,f,37.14
+cinema goers,fr,f,49.66
+cleaners,fr,f,21.72
+climbers,fr,f,70.34
+comedians,fr,f,44.48
+composers,fr,f,68.97
+computer specialists,fr,f,65.86
+concert goers,fr,f,50.69
+cooks,fr,f,45.86
+craftsmen,fr,f,60
+curators,fr,f,55.52
+customs officers,fr,f,82.07
+cyclists,fr,f,71.03
+dancers,fr,f,29.66
+deans,fr,f,71.21
+dentists,fr,f,70.34
+dieticians,fr,f,36.9
+doctors,fr,f,59.66
+dressmakers,fr,f,39.31
+drivers,fr,f,62.07
+electricians,fr,f,81.03
+engineers,fr,f,74.14
+factory managers,fr,f,77.93
+farmers,fr,f,70
+fishers,fr,f,80.34
+flight attendants,fr,f,23.79
+football coaches,fr,f,88.62
+fortune tellers,fr,f,28.97
+gardeners,fr,f,63.79
+golfers,fr,f,71.03
+governors,fr,f,81.79
+gynaeco-logists,fr,f,58.97
+hairdressers,fr,f,34.83
+heads,fr,f,74.14
+historians,fr,f,61.03
+homeless people,fr,f,64.14
+hunters,fr,f,91.38
+iceskaters,fr,f,46.9
+inventors,fr,f,66.55
+job seekers,fr,f,51.03
+joggers,fr,f,44.83
+judges,fr,f,67.59
+jugglers,fr,f,64.48
+lawyers,fr,f,67.93
+librarians,fr,f,39.66
+lorrydrivers,fr,f,85.86
+magicians,fr,f,74.48
+managers,fr,f,72.41
+mathema-ticians,fr,f,77.14
+mayors,fr,f,76.9
+mechanics,fr,f,88.28
+members of parliament,fr,f,71.72
+models,fr,f,36.9
+murderers,fr,f,77.59
+musicians,fr,f,57.59
+neighbours,fr,f,51.72
+nurses,fr,f,30.34
+office workers,fr,f,34.48
+paedia-tricians,fr,f,56.21
+painting artists,fr,f,55.17
+pedestrians,fr,f,51.72
+pharmacists,fr,f,51.72
+physicians,fr,f,64.83
+physicists,fr,f,83.1
+physics students,fr,f,73.45
+pilots,fr,f,73.45
+poets,fr,f,62.76
+police officers,fr,f,70
+politicians,fr,f,72.07
+postmen,fr,f,76.21
+presidents,fr,f,78.79
+prisoners,fr,f,64.48
+professors,fr,f,61.72
+proofreaders,fr,f,57.24
+psychology students,fr,f,35.86
+publishers,fr,f,63.45
+reception-class children,fr,f,54.48
+relatives,fr,f,49.66
+sales assistants,fr,f,38.62
+school-children,fr,f,53.1
+secretaries,fr,f,19.66
+shoemakers,fr,f,79.31
+singers,fr,f,45.17
+skiers,fr,f,55.52
+social workers,fr,f,33.45
+solarium users,fr,f,43.79
+spectators,fr,f,50.69
+spies,fr,f,73.1
+statisticians,fr,f,79.29
+surgeons,fr,f,74.83
+swimmers,fr,f,48.62
+technicians,fr,f,76.9
+tennis players,fr,f,54.14
+trade unionists,fr,f,63.79
+trainees,fr,f,45.86
+violonists,fr,f,46.55
+waiters,fr,f,31.38
+wine connoisseurs,fr,f,70
+workers,fr,f,66.55
+writers,fr,f,55.17
+actors,de,m,47.32
+adolescents,de,m,48.54
+apprentices,de,m,50.73
+archivists,de,m,58.54
+artists,de,m,50.98
+assistant chefs,de,m,50.98
+astrologers,de,m,44.15
+athletes,de,m,52.93
+aupairs,de,m,18.05
+authors,de,m,52.93
+auxiliary workers,de,m,51.46
+bakers,de,m,60.24
+bank clerks,de,m,55.12
+bankers,de,m,65.85
+bartenders,de,m,53.41
+beauticians,de,m,12.2
+birth attendants,de,m,17.56
+bosses,de,m,69.51
+boxers,de,m,82.93
+bricklayers,de,m,82.93
+butchers,de,m,80.24
+campers,de,m,57.8
+caretakers,de,m,72.93
+carpenters,de,m,75.75
+cashiers,de,m,29.51
+chemists,de,m,72.2
+chocolate lovers,de,m,40.25
+cinema goers,de,m,49.02
+cleaners,de,m,24.88
+climbers,de,m,60.73
+comedians,de,m,65.37
+composers,de,m,70.24
+computer specialists,de,m,78.29
+concert goers,de,m,48.29
+cooks,de,m,59.51
+craftsmen,de,m,74.39
+curators,de,m,62.93
+customs officers,de,m,75.12
+cyclists,de,m,52.93
+dancers,de,m,31.95
+deans,de,m,77.25
+dentists,de,m,67.32
+dieticians,de,m,31.95
+doctors,de,m,64.88
+dressmakers,de,m,21.95
+drivers,de,m,56.59
+electricians,de,m,78.54
+engineers,de,m,76.83
+factory managers,de,m,81.46
+farmers,de,m,63.66
+fishers,de,m,77.32
+flight attendants,de,m,24.39
+football coaches,de,m,88.29
+fortune tellers,de,m,27.32
+gardeners,de,m,61.71
+golfers,de,m,69.02
+governors,de,m,81.71
+gynaeco-logists,de,m,50.73
+hairdressers,de,m,22.44
+heads,de,m,71.71
+historians,de,m,64.88
+homeless people,de,m,70.24
+hunters,de,m,87.32
+iceskaters,de,m,38.05
+inventors,de,m,70.83
+job seekers,de,m,52.68
+joggers,de,m,49.27
+judges,de,m,73.41
+jugglers,de,m,61.22
+lawyers,de,m,63.41
+librarians,de,m,37.07
+lorrydrivers,de,m,82.93
+magicians,de,m,70.98
+managers,de,m,75.37
+mathema-ticians,de,m,79.76
+mayors,de,m,77.07
+mechanics,de,m,80.98
+members of parliament,de,m,66.59
+models,de,m,32.2
+murderers,de,m,75.12
+musicians,de,m,50.98
+neighbours,de,m,50
+nurses,de,m,24.39
+office workers,de,m,47.07
+paedia-tricians,de,m,53.17
+painting artists,de,m,53.9
+pedestrians,de,m,46.1
+pharmacists,de,m,49.27
+physicians,de,m,60.24
+physicists,de,m,83.17
+physics students,de,m,81.22
+pilots,de,m,74.88
+poets,de,m,57.32
+police officers,de,m,67.8
+politicians,de,m,68.78
+postmen,de,m,64.15
+presidents,de,m,86.59
+prisoners,de,m,73.9
+professors,de,m,73.17
+proofreaders,de,m,49.75
+psychology students,de,m,26.1
+publishers,de,m,65.12
+reception-class children,de,m,49.27
+relatives,de,m,50.24
+sales assistants,de,m,34.39
+school-children,de,m,47.56
+secretaries,de,m,18.05
+shoemakers,de,m,75.85
+singers,de,m,43.9
+skiers,de,m,51.95
+social workers,de,m,38.29
+solarium users,de,m,36.1
+spectators,de,m,52.68
+spies,de,m,66.83
+statisticians,de,m,70.98
+surgeons,de,m,76.34
+swimmers,de,m,47.8
+technicians,de,m,75.12
+tennis players,de,m,50.98
+trade unionists,de,m,63.17
+trainees,de,m,46.59
+violonists,de,m,40.98
+waiters,de,m,40.73
+wine connoisseurs,de,m,64.63
+workers,de,m,60.49
+writers,de,m,54.63
+actors,de,f,50.57
+adolescents,de,f,48.57
+apprentices,de,f,51.43
+archivists,de,f,58
+artists,de,f,48.86
+assistant chefs,de,f,55.14
+astrologers,de,f,43.71
+athletes,de,f,53.14
+aupairs,de,f,16
+authors,de,f,51.14
+auxiliary workers,de,f,50
+bakers,de,f,60
+bank clerks,de,f,54.29
+bankers,de,f,65.14
+bartenders,de,f,58.29
+beauticians,de,f,10.57
+birth attendants,de,f,19.71
+bosses,de,f,72
+boxers,de,f,80.86
+bricklayers,de,f,88
+butchers,de,f,83.43
+campers,de,f,57.43
+caretakers,de,f,75.71
+carpenters,de,f,77.14
+cashiers,de,f,24
+chemists,de,f,72.57
+chocolate lovers,de,f,35.43
+cinema goers,de,f,49.43
+cleaners,de,f,22.86
+climbers,de,f,62.86
+comedians,de,f,65.14
+composers,de,f,64.29
+computer specialists,de,f,78.86
+concert goers,de,f,45.71
+cooks,de,f,57.43
+craftsmen,de,f,77.43
+curators,de,f,57.14
+customs officers,de,f,77.43
+cyclists,de,f,51.14
+dancers,de,f,33.14
+deans,de,f,74.29
+dentists,de,f,64.57
+dieticians,de,f,20.29
+doctors,de,f,63.14
+dressmakers,de,f,24
+drivers,de,f,53.71
+electricians,de,f,83.71
+engineers,de,f,79.71
+factory managers,de,f,82.57
+farmers,de,f,61.71
+fishers,de,f,80
+flight attendants,de,f,25.71
+football coaches,de,f,87.14
+fortune tellers,de,f,20.29
+gardeners,de,f,62.86
+golfers,de,f,66.29
+governors,de,f,77.65
+gynaeco-logists,de,f,55.43
+hairdressers,de,f,19.71
+heads,de,f,72.86
+historians,de,f,62.57
+homeless people,de,f,65.59
+hunters,de,f,89.43
+iceskaters,de,f,35.14
+inventors,de,f,72.26
+job seekers,de,f,55.71
+joggers,de,f,49.43
+judges,de,f,72.29
+jugglers,de,f,64.86
+lawyers,de,f,64.57
+librarians,de,f,28
+lorrydrivers,de,f,86
+magicians,de,f,69.71
+managers,de,f,76
+mathema-ticians,de,f,80.57
+mayors,de,f,75.71
+mechanics,de,f,82.29
+members of parliament,de,f,70
+models,de,f,31.71
+murderers,de,f,72.29
+musicians,de,f,48.86
+neighbours,de,f,49.14
+nurses,de,f,23.14
+office workers,de,f,42.57
+paedia-tricians,de,f,57.14
+painting artists,de,f,55.43
+pedestrians,de,f,45.43
+pharmacists,de,f,46
+physicians,de,f,62.86
+physicists,de,f,81.71
+physics students,de,f,81.43
+pilots,de,f,77.43
+poets,de,f,55.14
+police officers,de,f,70.29
+politicians,de,f,70
+postmen,de,f,69.71
+presidents,de,f,86.57
+prisoners,de,f,74
+professors,de,f,73.71
+proofreaders,de,f,48.29
+psychology students,de,f,23.14
+publishers,de,f,63.43
+reception-class children,de,f,47.43
+relatives,de,f,47.14
+sales assistants,de,f,30.29
+school-children,de,f,48.57
+secretaries,de,f,18.86
+shoemakers,de,f,78.29
+singers,de,f,46.86
+skiers,de,f,54.86
+social workers,de,f,43.71
+solarium users,de,f,31.14
+spectators,de,f,48.29
+spies,de,f,67.71
+statisticians,de,f,72.86
+surgeons,de,f,73.14
+swimmers,de,f,52.86
+technicians,de,f,80.29
+tennis players,de,f,52.29
+trade unionists,de,f,63.14
+trainees,de,f,46.57
+violonists,de,f,42.29
+waiters,de,f,40
+wine connoisseurs,de,f,61.14
+workers,de,f,59.71
+writers,de,f,52.57

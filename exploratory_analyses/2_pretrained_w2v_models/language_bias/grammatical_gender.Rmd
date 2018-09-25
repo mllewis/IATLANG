@@ -1,0 +1,150 @@
+---
+title: Bias measures by 
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+```{r setup, include = F}
+rm(list = ls())
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+library(stringr)
+library(forcats)
+library(broom)
+library(lingtypology)
+library(knitr)
+library(dplacer)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+WALS:
+  - 30a: Number of Genders
+  - 31a: Sex-based and Non-sex-based Gender Systems
+  - 32a: Systems of Gender Assignment
+  - 44a: Gender Distinctions in Independent Personal Pronouns
+Autotype:
+  gender: Gender: Various aspects of gender distinctions and their reflexes. (https://github.com/autotyp/autotyp-data#the-autotyp-database)
+  
+  
+```{r}
+# codes <- read_csv( "../../data/wals/iso3_to_wals.csv")
+# 
+# d <- read_csv( "../../data/other/langs_for_study1.csv") %>%
+#   mutate(iso3 = iso.lang(language_name)) %>%
+#   mutate(language_name = tolower(language_name)) %>%
+#   left_join(codes %>% select(ascii_name, id), by = c("language_name" = "ascii_name")) %>%
+#   mutate(id = replace(id, iso3 == "rus", "rus"),
+#          id = replace(id, iso3 == "swe", "swe"),
+#          id = replace(id, iso3 == "tur", "tur"),
+#          id = replace(id, language_code == "zh", "mnd"),
+#          id = replace(id, language_code == "es", "spa"),
+#          id = replace(id, language_code == "nl", "dut"),
+#          id = replace(id, language_code == "ar", "arb"),
+#          iso3 = replace(iso3, language_code == "ar", "arb"),
+#          iso3 = replace(iso3, language_code == "nl", "nld"),
+#          iso3 = replace(iso3, language_code == "zh", "cmn"),
+#          iso3 = replace(iso3, language_code == "es", "spa"),
+#          iso3 = replace(iso3, language_code == "ms", "zsm"),
+#          iso3 = replace(iso3, language_code == "fa", "pes")) %>%
+#   rename(wals_id = "id") %>%
+#   mutate(glottocode = gltc.iso(iso3))
+#          
+# 
+# wals_data <- wals.feature(c("30a", "31a", "32a", "44a"))
+# autotyp_data <- autotyp.feature(c("Gender")) #, "Grammatical_markers", "Agreement"))
+# 
+# langs_with_features <- d %>%
+#   left_join(wals_data %>% select(-glottocode), by = c("wals_id" = "wals.code")) %>%
+#   left_join(autotyp_data, by = c("glottocode" = "Glottocode")) %>%
+#   select(-2, -4, -12, -15, -17, -LID, -longitude, -latitude)
+# 
+# kable(langs_with_features)
+# 
+# langs_with_features <- langs_with_features %>%
+#   mutate_if(is.character, as.factor) %>%
+#   mutate(source = "wals/autotype")
+# 
+# write_csv(langs_with_features, "gender_grammar.csv")
+```
+
+```{r}
+gender_data <- read_csv("gender_grammar.csv") %>%
+  rename(wikipedia_grammar_type = Wikipedia) %>%
+  select(language_code, language_name, wikipedia_grammar_type) %>%
+  filter(!is.na(wikipedia_grammar_type)) %>%
+  mutate(wikipedia_grammar_type2 = ifelse(wikipedia_grammar_type == "none", "none", "MF"))
+
+kable(arrange(gender_data, wikipedia_grammar_type2))
+count(gender_data, wikipedia_grammar_type2)  %>%
+  kable()
+
+count(gender_data, wikipedia_grammar_type)  %>%
+  kable()
+```
+
+
+```{r}
+IAT_behavior_measures <- read_csv("../embedding_IAT/IAT_behavior_measures.csv") %>%
+  left_join(countries_langs %>% select(country_name, language_name, language_code)) %>%
+  group_by(type, language_code, sex) %>%
+  summarize(iat_mean = mean(mean))  %>%
+  filter(type %in% c("country_means_D_score", "country_gender_D_score"))
+
+lang_bias <- read_csv("../embedding_IAT/career_effect_sizes.csv") %>%
+  rename(lang_bias_hand = lang_bias)
+
+lang_bias_google <- read_csv("../embedding_IAT/google_translate/career_effect_sizes_google.csv",
+                             col_names = c("language_code",   "test",  "test_name", "lang_bias")) %>%
+filter(language_code != "he", language_code != "zu", language_code != "th")   %>%
+  rename(lang_bias_google = lang_bias)
+```
+
+```{r}
+full_d <- IAT_behavior_measures %>%
+  full_join(lang_bias, by = "language_code") %>%
+  full_join(lang_bias_google, by = "language_code") %>%
+  full_join(gender_data, by = "language_code") %>%
+  select(-contains("test"))
+
+iat_means <-  full_d %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  mutate(sex = ifelse(is.na(sex), "all", sex)) %>%
+  group_by(type, sex, wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "iat_mean", na.rm = T)
+
+  ggplot(iat_means, aes(x = sex, 
+                                 y = mean, fill = wikipedia_grammar_type2)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~type, scales = "free") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper),  
+                 position = position_dodge(width = .9)) +
+  theme_bw() 
+```
+
+```{r}
+lang_hand_means <-  full_d %>%
+  filter(!is.na(wikipedia_grammar_type2)) %>%
+  mutate(sex = ifelse(is.na(sex), "all", sex)) %>%
+  filter(sex == "all") %>%
+  group_by(wikipedia_grammar_type2) %>%
+  multi_boot_standard(col = "lang_bias_hand", na.rm = T)
+
+  ggplot(lang_hand_means, aes(x = wikipedia_grammar_type2, 
+                                 y = mean, fill = wikipedia_grammar_type2)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper),  
+                 position = position_dodge(width = .9)) +
+  theme_bw() 
+```
+

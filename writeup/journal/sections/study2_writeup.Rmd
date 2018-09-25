@@ -1,0 +1,12 @@
+# Study 2: Gender bias and semantics
+
+## Study 2a: Validating word embeddings as a measure of psychological gender bias
+### Methods
+
+### Results
+### Discussion 
+
+## Study 2c: Cross-linguistic gender semantics
+### Methods
+### Results
+### Discussion 

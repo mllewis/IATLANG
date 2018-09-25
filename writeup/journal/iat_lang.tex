@@ -1,0 +1,439 @@
+\documentclass[man]{apa6}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Language use shapes cultural norms: Large scale evidence from gender},
+            pdfauthor={Molly Lewis~\& Gary Lupyan},
+            pdfkeywords={cultural norms, IAT, gender},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+
+  \title{Language use shapes cultural norms: Large scale evidence from gender}
+    \author{Molly Lewis\textsuperscript{1,2}~\& Gary Lupyan\textsuperscript{1}}
+    \date{}
+  
+\shorttitle{Language use shapes cultural norms}
+\affiliation{
+\vspace{0.5cm}
+\textsuperscript{1} University of Wisconsin-Madison\\\textsuperscript{2} University of Chicago}
+\keywords{cultural norms, IAT, gender\newline\indent Word count: X}
+\usepackage{csquotes}
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage[flushleft]{threeparttable}
+\usepackage{threeparttablex}
+
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+
+\DeclareDelayedFloatFlavor{ThreePartTable}{table}
+\DeclareDelayedFloatFlavor{lltable}{table}
+\DeclareDelayedFloatFlavor*{longtable}{table}
+\makeatletter
+\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
+\makeatother
+
+\authornote{\(^*\)To whom correspondence should be addressed.
+E-mail:
+\href{mailto:mollylewis@uchicago.edu}{\nolinkurl{mollylewis@uchicago.edu}}
+
+Correspondence concerning this article should be addressed to Molly
+Lewis, . E-mail:
+\href{mailto:mollyllewis@gmail.com}{\nolinkurl{mollyllewis@gmail.com}}}
+
+\abstract{
+
+}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\maketitle
+
+\section{Introduction}\label{introduction}
+
+The language we use to communicate a message shapes how our listener
+interprets that message (Loftus \& Palmer, 1974; Tversky \& Kahneman,
+1981; Fausey \& Boroditsky, 2010). A listener, for example, is more
+likely to infer that a person is at fault if the event is described
+actively (e.g., \enquote{she ignited the napkin}), as opposed to
+passively (e.g., \enquote{the napkin ignited}). The formative power of
+language is perhaps most potent in shaping meanings that necessarily
+must be learned from others: cultural norms. In the present paper, we
+consider one type of cultural norm---gender---and examine the extent to
+which differences in language use may lead to cross-cultural differences
+in understandings of gender.
+
+Gender provides a useful case study of the relationship between language
+and thought for several reasons. First, more abstract domains like
+gender may be more subject to the influence of language relative to more
+perceptually grounded domains like natural kinds (Boroditsky, 2001).
+Second, many languages encode the gender of speakers and addressees
+explicitly in their grammar. Third, a large body of evidence suggests
+that language plays a key role in transmitting social knowledge to
+children (e.g., Master, Markman, \& Dweck, 2012). And, fourth, gender
+norms are highly variable across cultures and have clear and important
+social implications.
+
+For our purposes, we define the hypothesis space of possible
+relationships between language and gender norms with two broad extremes:
+(1) language reflects a pre-existing gender bias in its speakers
+(\emph{language-as-reflection hypothesis}); (2) language causally
+influences gender biases (\emph{language-as-causal hypothesis}). We
+assume that the language-as-reflection hypothesis is true to some
+extent: some of the ways we talk about gender reflect our knowledge and
+biases acquired independently of language. For example, we may observe
+that most nurses are women, and therefore be more likely to use a female
+pronoun to refer to a nurse of an unknown gender. Our goal here is to
+understand the extent to which language may also exert a causal
+influence on conceptualizations of gender.
+
+In particular, we explore two possible mechanisms by which the way we
+speak may influence notions of
+gender\footnote{These mechanisms are what Whorf (1945) refers to as phenotypes (overt) and cryptotypes (covert).}.
+The first is through the overt grammatical marking of gender,
+particularly on nouns, which is obligatory in roughly one quarter of
+languages (e.g., in Spanish, ``nina'' (girl) and ``enfermera'' (nurse)
+both take the gender marker \emph{-a} to indicate grammatical
+femininity; Corbett, 1991). Because grammatical gender has a natural
+link to the real world, speakers may assume that grammatical markers are
+meaningful even when applied to inanimate objects that do not have a
+biological sex. In addition, the mere presence of obligatory marking of
+grammatical gender may promote bias by making the dimension of gender
+more salient to speakers.
+
+A second route by which language may shape gender norms is via word
+co-occurrences. Words that tend to occur in similar contexts in language
+may lead speakers to assume---either implicitly or explicitly---that
+they have similar meanings. For example, statistically, the word
+\enquote{nurse} occurs in many of the same contexts as the pronoun
+\enquote{her,} providing an implicit link between these two concepts
+that may lead to a bias to assume that nurses are female. This second
+route may be particularly influential because the bias is encoded in
+language in a way that is more implicit than grammatical markers of
+gender and thus more difficult to reject.
+
+An existing body of experimental work points to a link between language
+and psychological gender bias in both adults (e.g., Phillips \&
+Boroditsky, 2003) and children (e.g., Sera, Berge, \& Castillo Pintado,
+1994). For example, Phillips and Boroditsky (2003) asked Spanish-English
+and German-English adult bilinguals to make similarity judgements
+between pairs of pictures depicting an object with a natural gender
+(e.g., a bride) and one without (e.g., a toaster). They found that
+participants rated pairs as more similar when the pictures matched in
+grammatical gender in their native language. While these types of
+studies provide suggestive evidence for a causal link between language
+and psychological gender bias, they are limited by the fact that they
+typically only compare speakers of 2-3 different languages and measure
+bias in a way that is subject to demand characteristics.
+
+In what follows, we ask whether the way gender is encoded linguistically
+across 31 different languages predicts cross-cultural variability in a
+particular manifestation of a gender bias---the bias to associate men
+with careers and women with family. We begin in Study 1 by describing
+cross-cultural variability in psychological gender bias using an
+implicit measure. In Study 2, we use semantic-embedding models to
+examine whether variability in lexical semantics predicts variability in
+psychological gender biases. In Study 3, we ask whether the presence of
+grammatical gender in a language is associated with greater implicit
+gender bias. Together, our data suggest that both language statistics
+and language structure likely play a causal role in shaping
+culturally-specific notions of gender.
+
+\section{Study 1: Gender bias across
+cultures}\label{study-1-gender-bias-across-cultures}
+
+To quantify cross-cultural gender bias, we used data from a large-scale
+administration of an Implicit Association Task (IAT; Greenwald, McGhee,
+\& Schwartz, 1998) by Project Implicit (Nosek, Banaji, \& Greenwald,
+2002). The IAT measures the strength of respondents' implicit
+associations between two pairs of concepts (e.g.,
+male-career/female-family vs.~male-family/female-career) accessed via
+words (e.g., \enquote{man,} \enquote{business}). The underlying
+assumption of the IAT is that words denoting more similar meanings
+should be easier to pair together compared to more dissimilar pairs.
+
+Meanings are paired in the task by assigning them to the same response
+keys in a 2AFC categorization task. In the critical blocks of the task,
+meanings are assigned to keys in a way that is either bias-congruent
+(i.e.~Key A = male/career; Key B = female/family) or bias-incongruent
+(i.e.~Key A = male/family; Key B = female/career). Participants are then
+presented with a word related to one of the four concepts and asked to
+classify it as quickly as possible. Slower reaction times in the
+bias-incongruent blocks relative to the bias-congruent blocks are
+interpreted as indicating an implicit association between the
+corresponding concepts (i.e.~a bias to associate male with career and
+female with family).
+
+In Study 1, we use the IAT to measure the bias to associate women with
+family and men with careers across different cultures. We find a gender
+bias in all countries. Replicating previous work (Miller, Eagly, \&
+Linn, 2015), we also find that the magnitude of the bias is negatively
+correlated with percentage of female enrollment in STEM fields.
+
+\subsection{Methods}\label{methods}
+
+We analyzed an existing IAT dataset collected online by Project Implicit
+(\url{https://implicit.harvard.edu/implicit/}; Nosek et al., 2002). Our
+analysis included all gender-career IAT scores collected from
+respondents between 2005 and 2016 who had complete data and were located
+in countries with more than 400 total respondents (\emph{N} = 772,467).
+We further restricted our sample based on participants' reaction times
+and error rates using the same criteria described in Nosek, Banjai, and
+Greenwald (2002, pg.~104). Our final sample included 663,709
+participants from 47 countries, with a median of 965 participants per
+country. Note that although the respondents were from largely
+non-English speaking countries, the IAT was conducted in English. We do
+not have language background data from the participants, but we assume
+that most respondents from non-English speaking countries were native
+speakers of the dominant language of the country and L2 speakers of
+English.
+
+Several measures have been used in the literature to quantify the
+strength of the bias from participants' responses on congruent and
+incongruent blocks on the IAT. Here, we used the most robust measure,
+D-score, which measures the difference between critical blocks for each
+participant while controlling for individual differences in response
+time (Greenwald, Nosek, \& Banaji, 2003). In addition to the implicit
+measure, we also analyzed an explicit measure of gender bias. After
+completing the IAT, participants were asked, \enquote{How strongly do
+you associate the following with males and females?} for both the words
+\enquote{career} and \enquote{family.} Participants indicated their
+response on a Likert scale ranging from \emph{female} (1) to \emph{male}
+(7). We calculated an explicit gender bias score for each participant as
+the Career response minus the Family response, such that greater values
+indicate a greater bias to associate males with career.
+
+To obtain country-level gender bias estimates, we first calculated
+residual implicit and explicit bias scores for each participant,
+controling for variables that are independent predictors of bias size
+(block order, participant sex, and age), and then averaged across
+participants within the same country.
+
+We compared implicit and explicit gender biases to an objective measure
+gender equality that is measured for each country by the United Nations
+Educational, Scientific and Cultural Organization (UNESCO): the
+percentage of women among science, technology, engineering, and
+mathematics (STEM) graduates in tertiary education (Miller et al., 2015;
+Stoet \& Geary, 2018).
+
+\subsection{Results}\label{results}
+
+\begin{figure}[t]
+
+{\centering \includegraphics{iat_lang_files/figure-latex/mapplot-1} 
+
+}
+
+\caption{Study 1: Residualized gender bias by country. Larger values indicate a larger bias to associate women with family and men with career.}\label{fig:mapplot}
+\end{figure}
+
+Figure 1 shows residualized implicit gender bias by country (\emph{M} =
+-0.01; 0.03). Implicit gender biases were moderately correlated with
+explicit gender biases both at the level of participants (\emph{r} =
+0.16, \emph{p} \textless{} .0001) and countries (\emph{r} = 0.31,
+\emph{p} = 0.03). we also found that implicit gender bias was negatively
+correlated with percentage of women in STEM fields: Countries with a
+smaller gender bias tended to have more women in STEM fields (\emph{r} =
+-0.54, \emph{p} \textless{} .01). There was not a relationship between
+explicit gender bias and percentage of women in STEM fields (\emph{r} =
+0.09, \emph{p} = 0.63).
+
+\subsection{Discussion}\label{discussion}
+
+In Study 1, we replicate previously reported patterns of gender bias in
+the gender-career IAT literature, with roughly comparable effect sizes
+(c.f.~Nosek, et al., 2002). The weak correlation between explicit and
+implicit measures is consistent with claims that these two measures tap
+into different cognitive constructs (Forscher et al., 2016). In
+addition, consistent with previous research (Miller et al., 2015), we
+find that an objective
+
+\section{Study 2: Gender bias and
+semantics}\label{study-2-gender-bias-and-semantics}
+
+\subsection{Study 2a: Validating embedding measure of gender
+bias}\label{study-2a-validating-embedding-measure-of-gender-bias}
+
+\subsubsection{Methods}\label{methods-1}
+
+\subsubsection{Results}\label{results-1}
+
+\subsubsection{Discussion}\label{discussion-1}
+
+\subsection{Study 2b: Replication of Caliskan, et al.
+(2017)}\label{study-2b-replication-of-caliskan-et-al.-2017}
+
+\subsubsection{Methods}\label{methods-2}
+
+\subsubsection{Results}\label{results-2}
+
+\subsubsection{Discussion}\label{discussion-2}
+
+\subsection{Study 2c: Cross-linguistic gender
+semantics}\label{study-2c-cross-linguistic-gender-semantics}
+
+\subsubsection{Methods}\label{methods-3}
+
+\subsubsection{Results}\label{results-3}
+
+\subsubsection{Discussion}\label{discussion-3}
+
+\section{Study 3:}\label{study-3}
+
+\subsection{Methods}\label{methods-4}
+
+\subsection{Results}\label{results-4}
+
+\subsection{Discussion}\label{discussion-4}
+
+\section{General Discussion}\label{general-discussion}
+
+\newpage
+
+\section{References}\label{references}
+
+\begingroup
+\setlength{\parindent}{-0.5in} \setlength{\leftskip}{0.5in}
+
+\hypertarget{refs}{}
+\hypertarget{ref-boroditsky2001does}{}
+Boroditsky, L. (2001). Does language shape thought?: Mandarin and
+english speakers' conceptions of time. \emph{Cognitive Psychology},
+\emph{43}(1), 1--22.
+
+\hypertarget{ref-corbett1991}{}
+Corbett, G. G. (1991). \emph{Gender}. Cambridge: Cambridge University
+Press.
+
+\hypertarget{ref-forscher2016meta}{}
+Forscher, P. S., Lai, C., Axt, J., Ebersole, C. R., Herman, M., Devine,
+P. G., \& Nosek, B. A. (2016). A meta-analysis of change in implicit
+bias.
+
+\hypertarget{ref-greenwald1998measuring}{}
+Greenwald, A. G., McGhee, D. E., \& Schwartz, J. L. (1998). Measuring
+individual differences in implicit cognition: The implicit association
+test. \emph{Journal of Personality and Social Psychology}, \emph{74}(6),
+1464.
+
+\hypertarget{ref-greenwald2003understanding}{}
+Greenwald, A. G., Nosek, B. A., \& Banaji, M. R. (2003). Understanding
+and using the Implicit Association Test: An improved scoring algorithm.
+\emph{Journal of Personality and Social Psychology}, \emph{85}(2), 197.
+
+\hypertarget{ref-master2012thinking}{}
+Master, A., Markman, E., \& Dweck, C. (2012). Thinking in categories or
+along a continuum: Consequences for children's social judgments.
+\emph{Child Development}, \emph{83}(4).
+
+\hypertarget{ref-miller2015women}{}
+Miller, D. I., Eagly, A. H., \& Linn, M. C. (2015). Women's
+representation in science predicts national gender-science stereotypes:
+Evidence from 66 nations. \emph{Journal of Educational Psychology},
+\emph{107}(3), 631.
+
+\hypertarget{ref-nosek2002harvesting}{}
+Nosek, B. A., Banaji, M. R., \& Greenwald, A. G. (2002). Harvesting
+implicit group attitudes and beliefs from a demonstration web site.
+\emph{Group Dynamics: Theory, Research, and Practice}, \emph{6}(1), 101.
+
+\hypertarget{ref-phillips2003can}{}
+Phillips, W., \& Boroditsky, L. (2003). Can quirks of grammar affect the
+way you think? Grammatical gender and object concepts. In
+\emph{Proceedings of the 25th Annual Meeting of the Cognitive Science
+Society} (pp. 928--933).
+
+\hypertarget{ref-sera1994grammatical}{}
+Sera, M. D., Berge, C. A., \& Castillo Pintado, J. del. (1994).
+Grammatical and conceptual forces in the attribution of gender by
+English and Spanish speakers. \emph{Cognitive Development}, \emph{9}(3),
+261--292.
+
+\hypertarget{ref-stoet2018gender}{}
+Stoet, G., \& Geary, D. C. (2018). The gender-equality paradox in
+science, technology, engineering, and mathematics education.
+\emph{Psychological Science}, \emph{29}(4), 581--593.
+
+\endgroup
+
+
+\end{document}

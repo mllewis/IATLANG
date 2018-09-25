@@ -1,0 +1,206 @@
+---
+title: Comparing language IATs
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+rm(list = ls())
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(knitr)
+library(broom)
+library(corrplot)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+
+```{r}
+ALPHA <- .05
+PROP_MISSING_CUTOFF <- .2
+
+MEASURES <- c("career_google", 
+           "career_hand",
+           "flowers_google",
+           "career_behavioral_iat",
+           "wps_index",
+           "weapons_google")
+```
+
+Read in four sets of effect sizes: career (hand translations), career (google translations), flowers (google translations), and weapons (google translations). 
+
+We need to exclude some languages based on the mean proportion missing translations for each test. Here, the cutoff for proportion missing is `r PROP_MISSING_CUTOFF`. Note that correlations are starred/highlighted at the `r ALPHA` level.
+
+```{r read_in_language_data}
+career_hand <- read.csv("/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/analysis/study2b/data/career_effect_sizes_hand_translations.csv", col.names = c("wiki_language_code", "test_id", "test_name", "es"),  header = F, fill = TRUE) %>%
+  mutate(test_version = "career_hand")
+
+career_google <- read.csv("/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/analysis/study2b/google_translate_and_names_analysis/data/career_effect_sizes_google_translations.csv", col.names = c("wiki_language_code", "test_id", "test_name", "es"),  header = F, fill = TRUE) %>%
+  mutate(test_version = "career_google")
+
+flowers_google <- read.csv("../data/flowers_effect_sizes_google.csv", 
+                           col.names = c("wiki_language_code", "test_id", "test_name", "es"), header = F, fill = TRUE)  %>%
+  mutate(test_version = "flowers_google")
+
+weapons_google <- read.csv("../data/weapons_effect_sizes_google.csv", 
+                           col.names = c("wiki_language_code", "test_id", "test_name", "es"), header = F, fill = TRUE) %>%
+  mutate(test_version = "weapons_google")
+```
+
+```{r read_in_behavioral_data}
+lang_codes <- read_csv("/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/analysis/study2b/data/language_names_to_wiki_codes.csv")
+
+behavioral_wps <- read_csv("/Users/mollylewis/Documents/research/Projects/IATLANG/writeup/cogsci2018/analysis/all/all_measures_df.csv") %>%
+  left_join(lang_codes) %>%
+  group_by(wiki_language_code) %>%
+  summarise(career_behavioral_iat =
+            weighted.mean(es_behavioral_iat,
+                            normalized_n, na.rm = T),
+            wps_index = mean(wps_index)) 
+```
+
+
+### Distribution of proportion missing translations
+```{r, fig.width = 5, fig.height = 4}
+prop_missing_raw <- read_csv("../data/prop_google_translate_missing.csv")  %>%
+  filter(language_code != "zh_yue") %>%
+  rowwise() %>%
+  mutate(mean_prop_missing = mean(c(prop_missing_career, prop_missing_flowers, prop_missing_weapons))) %>%
+  arrange(-mean_prop_missing)
+
+ggplot(prop_missing_raw, aes(x = mean_prop_missing)) +
+  geom_histogram() +
+  theme_classic()
+```
+
+### Distribution of effect sizes by test.
+
+
+```{r filter_and_join}
+prop_missing <- prop_missing_raw %>%
+  #filter(mean_prop_missing < PROP_MISSING_CUTOFF)  %>%
+  filter((prop_missing_career < PROP_MISSING_CUTOFF) & 
+           (prop_missing_flowers < PROP_MISSING_CUTOFF) & 
+           (prop_missing_weapons < PROP_MISSING_CUTOFF)) 
+  #filter(!(language_code %in% c("vi"))
+
+all_es <- bind_rows(list(career_hand, career_google, 
+                        flowers_google, weapons_google))  %>%
+  select(-test_id, -test_name) %>%
+  filter(wiki_language_code %in% prop_missing$language_code)
+```
+
+```{r, fig.width = 5.5, fig.height = 5}
+ggplot(all_es, aes(x = es, fill = test_version)) +
+  geom_density(alpha = .5) +
+  theme_classic()
+```
+
+Weapons and flowers have much less spread that career.
+
+### Correlations between effect sizes 
+```{r, get_corrs}
+all_es_wide <- all_es %>%
+  spread(test_version, es) %>%
+  left_join(behavioral_wps)
+write_csv(all_es_wide, "data/all_es_wide.csv")
+
+unique_pairs <- tidyr::crossing(MEASURES, MEASURES) %>% 
+  magrittr::set_colnames(c("test1", "test2")) %>%
+  rowwise() %>%
+  mutate(test1 = sort(c(test1, test2))[1],       
+         test2 = sort(c(test1, test2))[2]) %>%
+  filter(test1 != test2) %>%                      
+  unique()  
+
+get_corr <- function(test1, test2, df){
+  df %>%
+    select(test1, test2) %>%
+    do(tidy(cor.test(.[,1], .[,2]))) %>%
+    mutate(test1 = test1, 
+           test2 = test2)
+}
+
+map2_df(unique_pairs$test1, unique_pairs$test2, get_corr, all_es_wide)  %>%
+  select(test1, test2, estimate, statistic, p.value, parameter) %>%
+  mutate(sig = ifelse(p.value < ALPHA, "*", "")) %>%
+  kable()
+```
+
+```{r big_corr_plot1}
+corr_plot <- function(data, mapping, z){
+  p <- ggplot(data = data, mapping = mapping) + 
+    geom_point(size = .4) + 
+    geom_smooth(method = lm,  color="blue", alpha = .3) +
+    theme_minimal()
+  p
+}
+
+GGally::ggpairs(all_es_wide, columns = 2:7, 
+                lower = list(continuous = corr_plot))
+```
+
+```{r point_plot, include = F}
+ggplot(all_es_wide, aes(x = weapons_google,
+                                  y = career_behavioral_iat, 
+                                  label = wiki_language_code)) +
+  geom_text() +
+  geom_smooth(method = "lm")
+
+``` 
+
+```{r small_corr_plot1}
+corr_mat <- cor(all_es_wide[,c(-1)], 
+                use = "pairwise.complete.obs")
+
+p.mat <- cor.mtest(all_es_wide[,c(-1)], 
+                  conf.level = (1-ALPHA),  
+                  use = "pairwise.complete.obs")$p
+
+cols = rev(colorRampPalette(c("red", "white", "blue"))(100))
+
+corrplot(corr_mat, method = "color",  col = cols,
+         type = "upper", order = "original", number.cex = .7,
+         addCoef.col = "black", 
+         p.mat = p.mat, sig.level = ALPHA, insig = "blank", 
+         tl.col = "black", tl.srt = 90,
+         diag = FALSE)
+```
+
+```{r}
+lm(career_behavioral_iat~ flowers_google + career_google, data = all_es_wide) %>%
+  summary()
+
+lm(career_hand ~ wps_index + flowers_google, data = all_es_wide) %>%
+  summary()
+
+lm(career_google ~ wps_index + flowers_google, data = all_es_wide) %>%
+  summary()
+
+lm(career_hand ~ wps_index + weapons_google, data = all_es_wide) %>%
+  summary()
+
+lm(career_google ~ wps_index + weapons_google, data = all_es_wide) %>%
+  summary()
+
+lm(career_hand ~ wps_index + weapons_google  + flowers_google, data = all_es_wide) %>%
+  summary()
+
+lm(career_google ~ wps_index + weapons_google  + flowers_google, data = all_es_wide) %>%
+  summary()
+
+
+
+```

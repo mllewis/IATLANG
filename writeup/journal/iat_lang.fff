@@ -1,0 +1,12 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[t]
+
+{\centering \includegraphics{iat_lang_files/figure-latex/mapplot-1}
+
+}
+
+\caption{Study 1: Residualized gender bias by country. Larger values indicate a larger bias to associate women with family and men with career.}\label{fig:mapplot}
+\end{figure*}
+\efloatseparator
+ 
