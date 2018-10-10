@@ -1,9 +1,22 @@
 # load packages
 library(tidyverse)
+library(para)
 source("IAT_utils2.R")
 
 LANGS <- c("fa", "de", "nl", "pt", "zh", "es", "id", "da", "it", "ko", "ru", "tr", "he", "ro", "ja", "ar", "fi", 
            "fr", "ms", "pl", "sv")
+
+WIKI_LANGS <- "../../data/study2b/wiki_subsetted_models/calculated/"
+wiki_langs <- list.files(WIKI_LANGS) %>%
+  str_split("\\.|_") %>%
+  map_chr(~.[2]) 
+
+SUBT_LANGS <- "../../data/study2b/subt_subsetted_models/calculated/"
+subt_langs <- list.files(SUBT_LANGS) %>%
+  str_split("\\.|_") %>%
+  map_chr(~.[2]) 
+
+all_langs <- unique(c(subt_langs, wiki_langs))
 
 #### loop over langs and get effect sizes #### 
 get_wiki_es_separate_gender <- function(current_lang, word_list){
@@ -65,8 +78,6 @@ word_list_career <- list(test_name = "WEAT_6", # not identical to caliskan (cali
                     bias_type = "gender-bias-career-family",
                     category_1 = c("male", "man", "boy", "brother", "he", "him", "his", "son"),
                     category_2 = c("female", "woman", "girl", "sister", "she", "her", "hers", "daughter"),
-                    #category_1 = c("male", "man", "boy", "brother","son"),
-                    #category_2 = c("female", "woman", "girl", "sister",  "daughter"),
                     attribute_1 = c("executive", "management", "professional", "corporation", "salary", 
                                     "office", "business", "career"),
                     attribute_2 = c("home", "parents", "children", "family", "cousins", "marriage", 

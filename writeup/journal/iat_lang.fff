@@ -6,7 +6,32 @@
 
 }
 
-\caption{Study 1: Residualized gender bias by country. Larger values indicate a larger bias to associate women with family and men with career.}\label{fig:mapplot}
+\caption{Residualized gender bias by country as measured by the IAT (Study 1). Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career.}\label{fig:mapplot}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[t]
+
+{\centering \includegraphics{iat_lang_files/figure-latex/unnamed-chunk-9-1}
+
+}
+
+\caption{Word embedding estimates of gender bias as a function of human judgements of gender bias (Study 2a).  Each point corresponds to a word. Larger numbers indicate stronger association with males. Orange line shows linear fit, and blue line shows third-order polynomial fit. Error bands correspond to standard errors. }\label{fig:unnamed-chunk-9}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{iat_lang_files/figure-latex/unnamed-chunk-10-1.pdf}
+\caption{\label{fig:unnamed-chunk-10}Residualized Behavioral IAT gender bias
+by language (Study 1) as a function of language-embedding IAT gender
+bias. Language-embedding biases are estimated from models trained on
+each language using a subtitle corpus (left) and a sample of Wikipedia
+(right).}
 \end{figure*}
 \efloatseparator
  

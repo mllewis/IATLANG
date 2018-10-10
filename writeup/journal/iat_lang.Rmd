@@ -18,7 +18,7 @@ affiliation:
     institution   : "University of Chicago"
 
 authornote: |
-    $^*$To whom correspondence should be addressed. E-mail: mollylewis@uchicago.edu
+    Portions of this manuscript appeared in Lewis & Lupyan, 2018, Cog. Sci Proceedings. 
 
 abstract: |
 
@@ -51,7 +51,6 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning = F)
 ```
 
-
 # Introduction
 The language we use to communicate a message shapes how our listener interprets that message  (Loftus \& Palmer, 1974; Tversky \& Kahneman, 1981; Fausey  \&  Boroditsky, 2010). A listener, for example, is more likely to infer that a person is at fault if the event is described actively (e.g., "she ignited the napkin"), as opposed to passively (e.g., "the napkin ignited"). The formative power of language is perhaps most potent in shaping meanings that necessarily must be learned from others: cultural norms. In the present paper, we consider one type of cultural norm---gender---and examine the extent to which differences in language use may lead to cross-cultural differences in understandings of gender. 
 
@@ -78,15 +77,15 @@ In what follows, we ask whether the way gender is encoded linguistically
 across 31 different languages predicts cross-cultural variability in a particular manifestation of a gender bias---the bias to associate men with careers and women with family. We begin in Study 1 by describing cross-cultural variability in psychological gender bias using an implicit measure. In Study 2, we use semantic-embedding models to examine whether variability in lexical semantics predicts variability in psychological gender biases. In Study 3, we ask whether the presence of grammatical gender in a language is associated with greater implicit gender bias. Together, our data suggest that both language statistics and language structure likely play a causal role in shaping culturally-specific notions of gender.
 
 
+```{r child = "sections/study0_writeup.Rmd"}
+```
+
+
 ```{r child = "sections/study1_writeup.Rmd"}
 ```
 
 
 ```{r child = "sections/study2_writeup.Rmd"}
-```
-
-
-```{r child = "sections/study3_writeup.Rmd"}
 ```
 
 
@@ -99,6 +98,20 @@ across 31 different languages predicts cross-cultural variability in a particula
 ```{r create_r-references}
 r_refs(file = "library.bib")
 ```
+
+---
+nocite: | 
+  @caliskan2017semantics
+  @wps
+  @epi
+  @whorf1945grammatical
+  @loftus1974reconstruction
+  @tversky1981framing
+  @fausey2010subtle
+  @ciafactbook
+
+...
+
 
 \begingroup
 \setlength{\parindent}{-0.5in}

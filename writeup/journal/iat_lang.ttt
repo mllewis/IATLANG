@@ -1,0 +1,24 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[tbp]
+\begin{center}
+\begin{threeparttable}
+\caption{\label{tab:coding-table}Correlation (Pearson's r) for all measures in Studies 1 and 2 at the level of languages. Asterisks indicate significance at the .05 level.}
+\tiny{
+\begin{tabular}{lllll}
+\toprule
+ & \multicolumn{1}{c}{Language IAT (Subtitles)} & \multicolumn{1}{c}{Language IAT (Wikipedia)} & \multicolumn{1}{c}{Residualized Explicit Bias} & \multicolumn{1}{c}{Residualized Behavioral IAT}\\
+\midrule
+Language IAT (Subtitles) &  &  &  & \\
+Language IAT (Wikipedia) & .59** &  &  & \\
+Residualized Explicit Bias & -.26 & .09 &  & \\
+Residualized Behavioral IAT & .41 & .48* & .28 & \\
+% Women in Stem & -.41 & -.29 & .25 & -.48*\\
+\bottomrule
+\end{tabular}
+}
+\end{threeparttable}
+\end{center}
+\end{table*}
+\efloatseparator
+ 

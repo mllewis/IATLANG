@@ -1,13 +1,14 @@
+# get gender bias score for each word using same method used in Caliskan
+
 library(tidyverse)
 library(data.table)
-
 
 MODEL_PATH <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/VOCAB_SEEDS/analyses/0_exploration/wiki.en.vec"
 MALE_WORDS <- c("son", "his","him","he", "brother","boy", "man", "male")
 FEMALE_WORDS <- c("daughter", "hers", "her", "she",  "sister", "girl", "woman", "female")
 
-GENDER_NORMS <- "GlasgowNorms.csv"
-OUTFILE  <- "embedding_gender_bias_average_method.csv"
+GENDER_NORMS <- "../../data/study2a/raw/GlasgowNorms.csv"
+OUTFILE  <- "../../data/study2a/processed/embedding_gender_bias_average_method.csv"
 
 model <- fread(
   MODEL_PATH,
@@ -22,7 +23,8 @@ model <- fread(
 glasgow_norms <- read_csv(GENDER_NORMS) %>%
   select(word) %>%
   rowwise() %>%
-  mutate(word =  str_split(word, " ", simplify = T)[1]) %>%
+  mutate(word =  str_split(word, " ", simplify = T)[1],
+         word = tolower(word)) %>%
   distinct()
 
 glasglow_word_coordinates <-  glasgow_norms %>%
