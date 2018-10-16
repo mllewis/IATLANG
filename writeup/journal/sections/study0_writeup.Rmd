@@ -3,6 +3,7 @@
 ```{r}
 library(tidyverse)
 library(broom)
+library(here)
 ```
 
 To quantify cross-cultural gender bias, we used data from a large-scale administration of an  Implicit  Association Task [IAT; @greenwald1998measuring] by Project Implicit [@nosek2002harvesting]. The IAT measures the strength of respondents' implicit associations between two pairs of concepts (e.g., male-career/female-family vs. male-family/female-career) accessed via words (e.g., “man," “business”). The underlying assumption of the IAT  is that words denoting more similar meanings should be easier to pair together compared to more dissimilar pairs. 
@@ -15,8 +16,8 @@ In Study 1, we use the IAT to measure the bias to associate women with family an
 ## Methods
 
 ```{r}
-BY_PARTICIPANT_DF <-  "../../../data/study0/processed/by_participant_df.csv"
-BY_COUNTRY_DF <- "../../../data/study0/processed/by_country_df.csv"
+BY_PARTICIPANT_DF <-  here("data/study0/processed/by_participant_df.csv")
+BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
 
 participant_iat <- read_csv(BY_PARTICIPANT_DF)
 country_ns_final <- count(participant_iat, country_code)

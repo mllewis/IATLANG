@@ -1,21 +1,24 @@
 # load packages
 library(tidyverse)
 library(data.table)
+library(here)
 
 
-INFILE <- "../../data/study2b/iat_translations_tidy.csv"
-LANGKEY <- "../../data/study2b/country_langiso_langwiki_key.csv"
+INFILE <- here("data/study1b/iat_translations_tidy.csv")
+LANGKEY <- here("data/study1b/country_langiso_langwiki_key.csv"_
 MODEL_PREFIX <- "/Volumes/wilbur_the_great/fasttext_models/wiki."
-OUTMODEL_PREFIX <- "../../data/study2b/wiki_subsetted_models/"
+OUTMODEL_PREFIX <- here("data/study1b/wiki_subsetted_models/")
 
 lang_key <- read_csv(LANGKEY) %>%
   mutate(language = tolower(language_name2)) %>%
   select(language, wiki_language_code) %>%
+  filter(!is.na(language)) %>%
   distinct()
 
 translations <- read_csv(INFILE)  %>%
     left_join(lang_key, by = "language") %>%
-    select(wiki_language_code, word, gender, word_id, translation_id, translation) 
+    select(wiki_language_code, word, gender, word_id, translation_id, 
+           translation) 
 
 #### loop over languages and get word vectors ####
 save_subsetted_model <- function(current_lang, trans_df, model_prefix, out_model_prefix){
@@ -57,7 +60,7 @@ save_subsetted_model <- function(current_lang, trans_df, model_prefix, out_model
 
 # get all subsetted models
 #unique(translations$wiki_language_code)
-walk("sk", 
+walk("vi", 
      save_subsetted_model, 
      translations, 
      MODEL_PREFIX,

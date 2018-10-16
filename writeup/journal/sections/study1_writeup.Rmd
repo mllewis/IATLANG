@@ -1,7 +1,6 @@
 ```{r}
 library(corrr)
 library(xtable)
-source("print_corr_table.R")
 ```
 
 # Study 1: Gender bias and semantics
@@ -31,7 +30,7 @@ To determine whether word embeddings encoded information about psychogical gende
 ### Methods
 
 ```{r}
-GENDER_NORMS <- "../../../data/study1a/raw/GlasgowNorms.csv"
+GENDER_NORMS <- here("data/study1a/raw/GlasgowNorms.csv")
 glasgow_norms <- read_csv(GENDER_NORMS) %>%
   select(word, GEND_M) %>%
   rename(maleness_norm = GEND_M)  %>% # take the mean across multiple sense of word 
@@ -42,7 +41,7 @@ glasgow_norms <- read_csv(GENDER_NORMS) %>%
   group_by(word)  %>%
   summarize(maleness_norm = mean(maleness_norm))
 
-EMBEDDING_BIAS  <- "../../../data/study1a/processed/embedding_gender_bias_average_method.csv"
+EMBEDDING_BIAS  <- here("data/study1a/processed/embedding_gender_bias_average_method.csv")
 embedding_ratings <- read_csv(EMBEDDING_BIAS) %>%
   select(word, male_score) %>%
   rename(maleness_embedding = male_score) %>%
@@ -100,90 +99,66 @@ We used these translations to calculate an effect size from the models trained o
 ### Results
 
 ```{r, fig.cap = "Residualized Behavioral IAT gender bias by language (Study 1) as a function of language-embedding IAT gender bias. Language-embedding biases are estimated from models trained on each language using a subtitle corpus (left) and a sample of Wikipedia (right)."}
-LANG_IAT_PATH <- "../../../data/study1b/iat_es_lang.csv"
-BEHAVIORAL_IAT_PATH <- "../../../data/study0/processed/by_language_df.csv"
-
+LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
 iat_lang_es <- read_csv(LANG_IAT_PATH)
 
-KEY_PATH <- "../../../data/study1b/country_langiso_langwiki_key.csv"
-lang_key <- read_csv(KEY_PATH) %>%
-  select(language_name2, wiki_language_code) %>%
-  filter(!is.na(language_name2)) %>%
-  rename(language_name = language_name2)%>%
-  distinct() 
+LANGKEY_PATH <- here("data/study1b/country_langiso_langwiki_key.csv")
+lang_key <- read_csv(LANGKEY_PATH) %>%
+  distinct(wiki_language_code, language_name2) %>%
+  rename(language_name = language_name2)
 
+BEHAVIORAL_IAT_PATH <- here("data/study0/processed/by_language_df.csv")
 iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
   left_join(lang_key) %>%
   rename(language_code = "wiki_language_code") %>%
-  select(language_code,language_name, median_country_age, prop_male,log_age,
-         es_iat_sex_age_order_explicit_resid, es_iat_sex_age_order_implicit_resid)
+  select(language_code,language_name, median_country_age, 
+         prop_male,log_age, es_iat_sex_age_order_explicit_resid,
+         es_iat_sex_age_order_implicit_resid, per_women_stem)
 
 all_es <- full_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
   filter(!is.na(es_iat_sex_age_order_implicit_resid)) # remove languages we don't have behavioral data for but do bave languages 
 
-# missing subtilte embeddings?
-
+# plot lang vs behavioral
 all_es %>%
-  select(language_code, lang_es_sub, lang_es_wiki, es_iat_sex_age_order_implicit_resid) %>%
+  select(language_code, lang_es_sub, lang_es_wiki,
+         es_iat_sex_age_order_implicit_resid) %>%
   gather("model", "lang_es", -language_code, -es_iat_sex_age_order_implicit_resid) %>%
   mutate(model = fct_recode(model, "Subtitle Embeddings" =  "lang_es_sub",
                             "Wikipedia Embeddings" =  "lang_es_wiki")) %>%
   ggplot(aes(x = lang_es, y = es_iat_sex_age_order_implicit_resid)) +
   facet_wrap(.~ model) +
   geom_smooth(method = "lm", alpha = .1, color = "black", size = .9) +
-  ggrepel::geom_text_repel(aes(label = language_code), size = 2.5, box.padding = 0.1) + 
+  ggrepel::geom_text_repel(aes(label = language_code), 
+                           size = 2.5, box.padding = 0.1) + 
   geom_point(size = .7) +
   theme_minimal() +
   ggtitle("Behavioral and \nLanguage-Embedding IAT") +
   ylab("Residualized Behavioral IAT Gender Bias\n (Study 1)") +
   xlab("Language-Embedding IAT Gender Bias\n (effect size)") +
   theme_classic() 
-
 ```
 
 ```{r coding-table, results="asis", tab.env = "table", cache = F}
-# get objective by language - move this to study 1 script?
-LANGUAGE_COUNTRY_IN <- "../../../data/study0/processed/top_lang_by_country.csv"
-unique_langs_per_country <- read_csv(LANGUAGE_COUNTRY_IN) %>% # this comes from get_top_lang_by_country.R
-  mutate(language_name = ifelse(language_name == "Chinese", "Mandarin", language_name)) %>%# collapse Mandarin and Chinese
-  left_join(lang_key) %>%
-  select(country_code, wiki_language_code) %>%
-  rename(language_code = wiki_language_code)
-
-# objective by country
-BY_COUNTRY_DF <- "../../../data/study0/processed/by_country_df.csv"
-country_df <- read_csv(BY_COUNTRY_DF) %>%
-  select(country_code, per_women_stem)  %>%
-  right_join(unique_langs_per_country)
-
-per_women_stem_by_lang <- country_df %>%
-  group_by(language_code) %>%
-  summarize(mean_per_women_stem = mean(per_women_stem, na.rm = T))
-  
 all_vars <- all_es %>%
-  left_join(per_women_stem_by_lang) %>%
   select(lang_es_sub, lang_es_wiki, es_iat_sex_age_order_explicit_resid, 
-         es_iat_sex_age_order_implicit_resid, mean_per_women_stem) %>%
+         es_iat_sex_age_order_implicit_resid, per_women_stem) %>%
   rename(`Residualized Behavioral IAT` = "es_iat_sex_age_order_implicit_resid",
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
-          `% Women in Stem` = "mean_per_women_stem",
           `Language IAT (Subtitles)` = "lang_es_sub",
-          `Language IAT (Wikipedia)` = "lang_es_wiki") 
+          `Language IAT (Wikipedia)` = "lang_es_wiki",
+         `Perecent Women in Stem` = "per_women_stem") 
 
 tidy_table <- glrstab(all_vars)
-
 apa_table(tidy_table
                 , escape  = FALSE
                 , caption = "Correlation (Pearson's r) for all measures in Studies 1 and 2 at the level of languages. Asterisks indicate significance at the .05 level.", font_size = "tiny")
 ```
 
 ```{r, eval  = F}
-
 r_vals <- all_vars %>%
          correlate(use = "pairwise.complete.obs")   %>%
          gather("colname", "r", -rowname)
      
-
 ALPHA <- .95
 p_mat <- corrplot::cor.mtest(all_vars, 
                   conf.level = (1-ALPHA),  
@@ -203,13 +178,11 @@ all_corrs_clean<- full_join(r_vals, p_vals) %>%
   spread(colname, r_string) %>%
   rename(`Residualized Behavioral IAT` = "es_iat_sex_age_order_implicit_resid",
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
-          `% Women in Stem` = "mean_per_women_stem",
           `Language IAT\n(Subtitles)` = "lang_es_sub",
           `Language IAT\n(Wikipedia)` = "lang_es_wiki") %>%
   mutate(rowname = fct_recode(rowname, 
                               `Residualized Behavioral IAT` = "es_iat_sex_age_order_implicit_resid",
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
-          `% Women in Stem` = "mean_per_women_stem",
           `Language IAT (Subtitles)` = "lang_es_sub",
           `Language IAT (Wikipedia)` = "lang_es_wiki"))
 
@@ -233,7 +206,7 @@ print.xtable(measure_corr_table,
 
 
 ### THESE LANGUAGES WE HAVE DONT HAVE TRANSLATIONS FOR BUT HAVE BEHAVIORAL DATA:
-# Croatian, Greek, Hindi, Hungaraian, Zulu, Tagalog, Thai, Vietnamese, Malaysian, Mandarin, Indonesian, Turkish
+# Croatian, Greekx, Hindi, Hungaraianx, Zulu, Tagalog, Thai, Vietnamese, Malaysian, Mandarin, Indonesianx, Turkishx
 
 ### OF THE ONES WE DON'T HAVE TRANSLATIONS FOR, WE DONT HAVE THESE SUBT MODELS:
 # Croatian, Greek, Hindi, Hugarian, Zulu, Tagalog, Thai, Vietnamese
@@ -242,18 +215,16 @@ print.xtable(measure_corr_table,
 # Malaysian, Mandarin, Indonesian, Turkish
 
 # Study 1: 
-- description of project implicit data
-- participant age correlation
-- and mean country age
-- percentage
+#- description of project implicit data
+#- participant age correlation
+#- mean country age
+#- percentage
 
 
 # Study 2: 
   # report mean human jugement of male association
   # label end points as mascule/fmeinine
   # ploynomial
-
-
 ```
 
 

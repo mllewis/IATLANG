@@ -43,6 +43,7 @@ output            : papaja::apa6_pdf
 
 ```{r setup, include = FALSE}
 library("papaja")
+source("helpers/print_corr_table.R")
 ```
 
 ```{r analysis-preferences}

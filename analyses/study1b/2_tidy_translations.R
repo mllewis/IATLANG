@@ -1,9 +1,10 @@
 # tidy raw iat word translations
 # load packages
 library(tidyverse)
+library(here)
 
-INFILE <- '../../data/study2b/iat_translations_raw.csv'
-OUTFILE <- '../../data/study2b/iat_translations_tidy.csv'
+INFILE <- here('data/study1b/iat_translations_raw.csv')
+OUTFILE <- here('data/study1b/iat_translations_tidy.csv')
 
 GENDERED_WORDS <- c("executive","management","professional", "parents",
                     "children", "family", "cousins", "relatives")

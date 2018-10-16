@@ -7,6 +7,7 @@ INFILE <- "data/tidy_iat_translations.csv"
 LANGKEY <- "../../../data/other/country_langiso_langwiki_key.csv"
 MODEL_PREFIX <- "/Volumes/wilbur_the_great/fasttext_models/wiki."
 
+
 lang_key <- read_csv(LANGKEY) %>%
   mutate(language = tolower(language_name)) %>%
   select(language, wiki_language_code)%>%

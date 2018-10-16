@@ -4,12 +4,13 @@
 # load packages
 library(tidyverse)
 library(parallel)
+library(here)
 source("0_IAT_utils.R")
 
-MODEL_PATH_WIKI <- "../../data/study2b/wiki_subsetted_models/calculated/"
-MODEL_PATH_SUB <- "../../data/study2b/subt_subsetted_models/calculated/"
-OUTFILE <- "../../data/study2b/iat_swabs.csv"
-NCLUSTERS <- 5
+MODEL_PATH_WIKI <- here("data/study1b/wiki_subsetted_models/calculated/")
+MODEL_PATH_SUB <- here("data/study1b/subt_subsetted_models/calculated/")
+OUTFILE <- here("data/study1b/iat_swabs.csv")
+NCLUSTERS <- 4
 CAREER_WORD_LIST <- list(test_name = "WEAT_6", # not identical to caliskan (caliskan used proper names)
                          bias_type = "gender-bias-career-family",
                          category_1 = c("male", "man", "boy", "brother", "he", "him", "his", "son"),
@@ -41,6 +42,7 @@ all_langs <- bind_rows(wiki_langs, subt_langs) %>%
   filter(!(lang %in% BAD_LANGS)) %>%
   mutate(id = 1:n()) %>%
   nest(-id)
+
 
 ####
 
@@ -93,4 +95,4 @@ parLapply(cluster,
 
 #es_out <- get_lang_es_separate_gender("ta",
 #                                      pluck(all_langs$data[[1]], "path"),
- #                                     CAREER_WORD_LIST)
+#                                     CAREER_WORD_LIST)

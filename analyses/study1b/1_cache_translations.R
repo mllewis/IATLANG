@@ -2,8 +2,9 @@
 
 library(googlesheets)
 library(tidyverse)
+library(here)
 
-OUTFILE <- '../../data/study2b/iat_translations_raw.csv'
+OUTFILE <- here('data/study1b/iat_translations_raw.csv')
 
 googlesheet_df <- gs_title("IATLANG STUDY 1 TRANSLATIONS - V2 - clean")
 translations <- gs_read(googlesheet_df)

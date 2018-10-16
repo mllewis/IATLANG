@@ -2,9 +2,10 @@
 
 # load packages
 library(tidyverse)
+library(here)
 
-INFILE <- "../../data/study2b/iat_swabs.csv"
-OUTFILE <- "../../data/study2b/iat_es_lang.csv"
+INFILE <- here("data/study1b/iat_swabs.csv")
+OUTFILE <- here("data/study1b/iat_es_lang.csv")
 
 # finish es calculation to account for gendered languages
 swabs_career <- read_csv(INFILE,

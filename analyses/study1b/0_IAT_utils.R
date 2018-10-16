@@ -85,10 +85,17 @@ get_lang_es_separate_gender <- function(current_lang,
   
   # read back in subsetted file
   file_path <- paste0(model_path, current_lang, "_calculated.csv")
+  
+  targ_words <- c(pluck(word_list$attribute_1), 
+                    pluck(word_list$attribute_2),
+                    pluck(word_list$category_1),
+                    pluck(word_list$category_2))
+  
   subsetted_model <- read_csv(file_path) %>%
     select(-language_code) %>%
     mutate(word = str_replace_all(word, "-", " ")) %>%
-    rename(target_word = word)
+    rename(target_word = word) %>%
+    filter(target_word %in% targ_words) # filter to only career words
   
   # check if it's a gendered langauge
   gendered_words <- c(pluck(word_list$attribute_1), pluck(word_list$attribute_2))
