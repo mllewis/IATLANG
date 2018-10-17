@@ -1,0 +1,930 @@
+{
+  "Introduction": {
+    "Background": {
+      "text": "The Maya civilization flourished in Guatemala and surrounding regions during the first millennium A.D. After almost three centuries as a Spanish colony, Guatemala won its independence in 1821. During the second half of the 20th century, it experienced a variety of military and civilian governments, as well as a 36-year guerrilla war. In 1996, the government signed a peace agreement formally ending the internal conflict, which had left more than 200,000 people dead and had created, by some estimates, about 1 million refugees."
+    }
+  },
+  "Geography": {
+    "Location": {
+      "text": "Central America, bordering the North Pacific Ocean, between El Salvador and Mexico, and bordering the Gulf of Honduras (Caribbean Sea) between Honduras and Belize"
+    },
+    "Geographic coordinates": {
+      "text": "15 30 N, 90 15 W"
+    },
+    "Map references": {
+      "text": "Central America and the Caribbean"
+    },
+    "Area": {
+      "total": {
+        "text": "108,889 sq km"
+      },
+      "land": {
+        "text": "107,159 sq km"
+      },
+      "water": {
+        "text": "1,730 sq km"
+      }
+    },
+    "Area - comparative": {
+      "text": "slightly smaller than Pennsylvania"
+    },
+    "Land boundaries": {
+      "total": {
+        "text": "1,667 km"
+      },
+      "border countries": {
+        "text": "Belize 266 km, El Salvador 199 km, Honduras 244 km, Mexico 958 km"
+      }
+    },
+    "Coastline": {
+      "text": "400 km"
+    },
+    "Maritime claims": {
+      "territorial sea": {
+        "text": "12 nm"
+      },
+      "exclusive economic zone": {
+        "text": "200 nm"
+      },
+      "continental shelf": {
+        "text": "200-m depth or to the depth of exploitation"
+      }
+    },
+    "Climate": {
+      "text": "tropical; hot, humid in lowlands; cooler in highlands"
+    },
+    "Terrain": {
+      "text": "mostly mountains with narrow coastal plains and rolling limestone plateau"
+    },
+    "Elevation": {
+      "mean elevation": {
+        "text": "759 m"
+      },
+      "elevation extremes": {
+        "text": "lowest point: Pacific Ocean 0 m ++ highest point: Volcan Tajumulco 4,211 m (highest point in Central America)"
+      }
+    },
+    "Natural resources": {
+      "text": "petroleum, nickel, rare woods, fish, chicle, hydropower"
+    },
+    "Land use": {
+      "agricultural land": {
+        "text": "41.2% ++ arable land 14.2%; permanent crops 8.8%; permanent pasture 18.2%"
+      },
+      "forest": {
+        "text": "33.6%"
+      },
+      "other": {
+        "text": "25.2% (2011 est.)"
+      }
+    },
+    "Irrigated land": {
+      "text": "3,375 sq km (2012)"
+    },
+    "Population - distribution": {
+      "text": "the vast majority of the populace resides in the southern half of the country, particularly in the mountainous regions; more than half of the population lives in rural areas"
+    },
+    "Natural hazards": {
+      "text": "numerous volcanoes in mountains, with occasional violent earthquakes; Caribbean coast extremely susceptible to hurricanes and other tropical storms",
+      "volcanism": {
+        "text": "significant volcanic activity in the Sierra Madre range; Santa Maria (elev. 3,772 m) has been deemed a Decade Volcano by the International Association of Volcanology and Chemistry of the Earth's Interior, worthy of study due to its explosive history and close proximity to human populations; Pacaya (elev. 2,552 m), which erupted in May 2010 causing an ashfall on Guatemala City and prompting evacuations, is one of the country's most active volcanoes with frequent eruptions since 1965; other historically active volcanoes include Acatenango, Almolonga, Atitlan, Fuego, and Tacana"
+      }
+    },
+    "Environment - current issues": {
+      "text": "deforestation in the Peten rainforest; soil erosion; water pollution"
+    },
+    "Environment - international agreements": {
+      "party to": {
+        "text": "Antarctic Treaty, Biodiversity, Climate Change, Climate Change-Kyoto Protocol, Desertification, Endangered Species, Environmental Modification, Hazardous Wastes, Law of the Sea, Marine Dumping, Ozone Layer Protection, Ship Pollution, Wetlands, Whaling"
+      },
+      "signed, but not ratified": {
+        "text": "none of the selected agreements"
+      }
+    },
+    "Geography - note": {
+      "text": "no natural harbors on west coast"
+    }
+  },
+  "People and Society": {
+    "Population": {
+      "text": "15,189,958 (July 2016 est.)"
+    },
+    "Nationality": {
+      "noun": {
+        "text": "Guatemalan(s)"
+      },
+      "adjective": {
+        "text": "Guatemalan"
+      }
+    },
+    "Ethnic groups": {
+      "text": "Mestizo (mixed Amerindian-Spanish - in local Spanish called Ladino) and European 59.4%, K'iche 9.1%, Kaqchikel 8.4%, Mam 7.9%, Q'eqchi 6.3%, other Mayan 8.6%, indigenous non-Mayan 0.2%, other 0.1% (2001 census)"
+    },
+    "Languages": {
+      "text": "Spanish (official) 60%, Amerindian languages 40%",
+      "note": {
+        "text": "there are 23 officially recognized Amerindian languages, including Quiche, Cakchiquel, Kekchi, Mam, Garifuna, and Xinca"
+      }
+    },
+    "Religions": {
+      "text": "Roman Catholic, Protestant, indigenous Mayan beliefs"
+    },
+    "Demographic profile": {
+      "text": "Guatemala is a predominantly poor country that struggles in several areas of health and development, including infant, child, and maternal mortality, malnutrition, literacy, and contraceptive awareness and use. The country's large indigenous population is disproportionately affected. Guatemala is the most populous country in Central America and has the highest fertility rate in Latin America. It also has the highest population growth rate in Latin America, which is likely to continue because of its large reproductive-age population and high birth rate. Almost half of Guatemala's population is under age 19, making it the youngest population in Latin America. Guatemala's total fertility rate has slowly declined during the last few decades due in part to limited government-funded health programs. However, the birth rate is still more than three children per woman and is markedly higher among its rural and indigenous populations. Guatemalans have a history of emigrating legally and illegally to Mexico, the United States, and Canada because of a lack of economic opportunity, political instability, and natural disasters. Emigration, primarily to the United States, escalated during the 1960 to 1996 civil war and accelerated after a peace agreement was signed. Thousands of Guatemalans who fled to Mexico returned after the war, but labor migration to southern Mexico continues."
+    },
+    "Age structure": {
+      "0-14 years": {
+        "text": "35.02% (male 2,711,683/female 2,608,295)"
+      },
+      "15-24 years": {
+        "text": "21.8% (male 1,663,484/female 1,647,749)"
+      },
+      "25-54 years": {
+        "text": "33.53% (male 2,425,931/female 2,666,790)"
+      },
+      "55-64 years": {
+        "text": "5.23% (male 377,642/female 416,939)"
+      },
+      "65 years and over": {
+        "text": "4.42% (male 311,165/female 360,280) (2016 est.)"
+      }
+    },
+    "Dependency ratios": {
+      "total dependency ratio": {
+        "text": "70.9%"
+      },
+      "youth dependency ratio": {
+        "text": "62.6%"
+      },
+      "elderly dependency ratio": {
+        "text": "8.3%"
+      },
+      "potential support ratio": {
+        "text": "12.1% (2015 est.)"
+      }
+    },
+    "Median age": {
+      "total": {
+        "text": "21.7 years"
+      },
+      "male": {
+        "text": "21 years"
+      },
+      "female": {
+        "text": "22.4 years (2016 est.)"
+      }
+    },
+    "Population growth rate": {
+      "text": "1.79% (2016 est.)"
+    },
+    "Birth rate": {
+      "text": "24.5 births/1,000 population (2016 est.)"
+    },
+    "Death rate": {
+      "text": "4.7 deaths/1,000 population (2016 est.)"
+    },
+    "Net migration rate": {
+      "text": "-1.9 migrant(s)/1,000 population (2016 est.)"
+    },
+    "Population distribution": {
+      "text": "the vast majority of the populace resides in the southern half of the country, particularly in the mountainous regions; more than half of the population lives in rural areas"
+    },
+    "Urbanization": {
+      "urban population": {
+        "text": "51.6% of total population (2015)"
+      },
+      "rate of urbanization": {
+        "text": "3.4% annual rate of change (2010-15 est.)"
+      }
+    },
+    "Major urban areas - population": {
+      "text": "GUATEMALA CITY (capital) 2.918 million (2015)"
+    },
+    "Sex ratio": {
+      "at birth": {
+        "text": "1.05 male(s)/female"
+      },
+      "0-14 years": {
+        "text": "1.04 male(s)/female"
+      },
+      "15-24 years": {
+        "text": "1.01 male(s)/female"
+      },
+      "25-54 years": {
+        "text": "0.91 male(s)/female"
+      },
+      "55-64 years": {
+        "text": "0.91 male(s)/female"
+      },
+      "65 years and over": {
+        "text": "0.87 male(s)/female"
+      },
+      "total population": {
+        "text": "0.97 male(s)/female (2016 est.)"
+      }
+    },
+    "Mother's mean age at first birth": {
+      "text": "20.3",
+      "note": {
+        "text": "median age at first birth among women 25-29 (2008/09 est.)"
+      }
+    },
+    "Maternal mortality rate": {
+      "text": "88 deaths/100,000 live births (2015 est.)"
+    },
+    "Infant mortality rate": {
+      "total": {
+        "text": "22 deaths/1,000 live births"
+      },
+      "male": {
+        "text": "23.9 deaths/1,000 live births"
+      },
+      "female": {
+        "text": "19.9 deaths/1,000 live births (2016 est.)"
+      }
+    },
+    "Life expectancy at birth": {
+      "total population": {
+        "text": "72.3 years"
+      },
+      "male": {
+        "text": "70.3 years"
+      },
+      "female": {
+        "text": "74.4 years (2016 est.)"
+      }
+    },
+    "Total fertility rate": {
+      "text": "2.83 children born/woman (2016 est.)"
+    },
+    "Health expenditures": {
+      "text": "6.2% of GDP (2014)"
+    },
+    "Physicians density": {
+      "text": "0.93 physicians/1,000 population (2009)"
+    },
+    "Hospital bed density": {
+      "text": "0.6 beds/1,000 population (2011)"
+    },
+    "Drinking water source": {
+      "improved": {
+        "text": " ++ urban: 98.4% of population ++ rural: 86.8% of population ++ total: 92.8% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 1.6% of population ++ rural: 13.2% of population ++ total: 7.2% of population (2015 est.)"
+      }
+    },
+    "Sanitation facility access": {
+      "improved": {
+        "text": " ++ urban: 77.5% of population ++ rural: 49.3% of population ++ total: 63.9% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 22.5% of population ++ rural: 50.7% of population ++ total: 36.1% of population (2015 est.)"
+      }
+    },
+    "HIV/AIDS - adult prevalence rate": {
+      "text": "0.57% (2015 est.)"
+    },
+    "HIV/AIDS - people living with HIV/AIDS": {
+      "text": "54,600 (2015 est.)"
+    },
+    "HIV/AIDS - deaths": {
+      "text": "1,700 (2015 est.)"
+    },
+    "Major infectious diseases": {
+      "degree of risk": {
+        "text": "high"
+      },
+      "food or waterborne diseases": {
+        "text": "bacterial diarrhea, hepatitis A, and typhoid fever"
+      },
+      "vectorborne diseases": {
+        "text": "dengue fever and malaria"
+      },
+      "note": {
+        "text": "active local transmission of Zika virus by Aedes species mosquitoes has been identified in this country (as of August 2016); it poses an important risk (a large number of cases possible) among US citizens if bitten by an infective mosquito; other less common ways to get Zika are through sex, via blood transfusion, or during pregnancy, in which the pregnant woman passes Zika virus to her fetus (2016)"
+      }
+    },
+    "Obesity - adult prevalence rate": {
+      "text": "16.4% (2014)"
+    },
+    "Children under the age of 5 years underweight": {
+      "text": "12.6% (2015)"
+    },
+    "Education expenditures": {
+      "text": "3% of GDP (2015)"
+    },
+    "Literacy": {
+      "definition": {
+        "text": "age 15 and over can read and write"
+      },
+      "total population": {
+        "text": "81.5%"
+      },
+      "male": {
+        "text": "87.4%"
+      },
+      "female": {
+        "text": "76.3% (2015 est.)"
+      }
+    },
+    "School life expectancy (primary to tertiary education)": {
+      "total": {
+        "text": "11 years"
+      },
+      "male": {
+        "text": "11 years"
+      },
+      "female": {
+        "text": "10 years (2013)"
+      }
+    },
+    "Child labor - children ages 5-14": {
+      "total number": {
+        "text": "929,852"
+      },
+      "percentage": {
+        "text": "21%"
+      },
+      "note": {
+        "text": "data represent children ages 5-17 (2006 est.)"
+      }
+    },
+    "Unemployment, youth ages 15-24": {
+      "total": {
+        "text": "6.3%"
+      },
+      "male": {
+        "text": "6.5%"
+      },
+      "female": {
+        "text": "5.8% (2013 est.)"
+      }
+    }
+  },
+  "Government": {
+    "Country name": {
+      "conventional long form": {
+        "text": "Republic of Guatemala"
+      },
+      "conventional short form": {
+        "text": "Guatemala"
+      },
+      "local long form": {
+        "text": "Republica de Guatemala"
+      },
+      "local short form": {
+        "text": "Guatemala"
+      },
+      "etymology": {
+        "text": "name derives from the Mayan word meaning \"land of trees\""
+      }
+    },
+    "Government type": {
+      "text": "presidential republic"
+    },
+    "Capital": {
+      "name": {
+        "text": "Guatemala City"
+      },
+      "geographic coordinates": {
+        "text": "14 37 N, 90 31 W"
+      },
+      "time difference": {
+        "text": "UTC-6 (1 hour behind Washington, DC, during Standard Time)"
+      }
+    },
+    "Administrative divisions": {
+      "text": "22 departments (departamentos, singular - departamento); Alta Verapaz, Baja Verapaz, Chimaltenango, Chiquimula, El Progreso, Escuintla, Guatemala, Huehuetenango, Izabal, Jalapa, Jutiapa, Peten, Quetzaltenango, Quiche, Retalhuleu, Sacatepequez, San Marcos, Santa Rosa, Solola, Suchitepequez, Totonicapan, Zacapa"
+    },
+    "Independence": {
+      "text": "15 September 1821 (from Spain)"
+    },
+    "National holiday": {
+      "text": "Independence Day, 15 September (1821)"
+    },
+    "Constitution": {
+      "text": "several previous; latest adopted 31 May 1985, effective 14 January 1986; suspended, reinstated, and amended in 1994 (2016)"
+    },
+    "Legal system": {
+      "text": "civil law system; judicial review of legislative acts"
+    },
+    "International law organization participation": {
+      "text": "has not submitted an ICJ jurisdiction declaration; accepts ICCt jurisdiction"
+    },
+    "Citizenship": {
+      "citizenship by birth": {
+        "text": "yes"
+      },
+      "citizenship by descent": {
+        "text": "yes"
+      },
+      "dual citizenship recognized": {
+        "text": "yes"
+      },
+      "residency requirement for naturalization": {
+        "text": "5 years with no absences of six consecutive months or longer or absences totaling more than a year"
+      }
+    },
+    "Suffrage": {
+      "text": "18 years of age; universal; note - active duty members of the armed forces and police by law cannot vote and are restricted to their barracks on election day"
+    },
+    "Executive branch": {
+      "chief of state": {
+        "text": "President Jimmy Ernesto MORALES Cabrera (since 14 January 2016); Vice President Jafeth CABRERA Franco (since 14 January 2016); note - the president is both chief of state and head of government"
+      },
+      "head of government": {
+        "text": "President Jimmy Ernesto MORALES Cabrera (since 14 January 2016); Vice President Jafeth CABRERA Franco (since 14 January 2016)"
+      },
+      "cabinet": {
+        "text": "Council of Ministers appointed by the president"
+      },
+      "elections/appointments": {
+        "text": "president and vice president directly elected on the same ballot by absolute majority popular vote in 2 rounds if needed for a 4-year term (not eligible for consecutive terms); election last held in 2 rounds on 6 September and 25 October 2015 (next to be held in September 2019)"
+      },
+      "election results": {
+        "text": "Jimmy Ernesto MORALES Cabrera (FNC) elected president; percent of vote in first round - Jimmy Ernesto MORALES Cabrera (FNC) 23.8%, Sandra TORRES (UNE) 19.8%, Manuel BALDIZON (LIDER) 19.6%; percent of vote in second round - Jimmy Ernesto MORALES Cabrera (FNC) 67.4%, Sandra TORRES (UNE) 32.6%"
+      }
+    },
+    "Legislative branch": {
+      "description": {
+        "text": "unicameral Congress of the Republic or Congreso de la Republica (158 seats; 127 members directly elected in multi-seat constituencies within each of the country's 22 departments by simple majority vote and 31 directly elected in a single nationwide constituency by proportional representation vote; members serve 4-year terms)"
+      },
+      "elections": {
+        "text": "last held on 6 September 2015 (next to be held in September 2019)"
+      },
+      "election results": {
+        "text": "percent of vote by party - LIDER 19.10%, UNE 14.83%, TODOS 9.74%, PP 9.43%, FCN 8.75%, EG 6.24%, PU 5.69%, UCN 5.43%, Winaq-URNG-MAIZ 4.32%, Convergence 3.84%, VIVA 3.66%, PAN 3.42, FUERZA 2.07%, other 3.48%; seats by party - LIDER 44, UNE 36, TODOS 18, PP 17, FCN 11, EG 7, UCN 6, PU 5, Winaq-URNG-MAIZ 3, Convergence 3, VIVA 3, PAN 3, FUERZA 2"
+      }
+    },
+    "Judicial branch": {
+      "highest court(s)": {
+        "text": "Supreme Court of Justice or Corte Suprema de Justicia (consists of 13 magistrates including the court president and organized into 3 chambers); note - the court president also supervises trial judges countrywide; Constitutional Court or Corte de Constitucionalidad (consists of 5 judges and 5 alternates)"
+      },
+      "judge selection and term of office": {
+        "text": "Supreme Court magistrates elected by the Congress of the Republic from candidates proposed by the Postulation Committee, an independent body of deans of the country's university law schools, representatives of the country's law associations, and representatives of the Courts of Appeal; magistrates elected for concurrent, renewable 5-year terms; Constitutional Court judges - 1 elected by the Congress of the Republic, 1 by the Supreme Court, 1 by the president of the republic, 1 by the (public) University of San Carlos, and 1 by the lawyers bar association; judges elected for concurrent, renewable 5-year terms; the presidency of the court rotates among the magistrates for a single 1-year term"
+      },
+      "subordinate courts": {
+        "text": "numerous first instance and appellate courts"
+      }
+    },
+    "Political parties and leaders": {
+      "text": "Commitment, Renewal, and Order or CREO [Roberto GONZALEZ Diaz-Duran] ++ Convergence ++ Democratic Union or UD [Edwin Armando MARTINEZ Herrera] ++ Encounter for Guatemala or EG [Nineth MONTENEGRO Cottom] ++ Everyone Together for Guatemala or TODOS [Felipe ALEJOS] ++ FUERZA [Maurico REDFORD] ++ Grand National Alliance or GANA [Jaime Antonio MARTINEZ Lohayza] ++ Guatemalan National Revolutionary Unity or Winaq-URNG [Angel SANCHEZ Viesca] ++ Institutional Republican Party (formerly the Guatemalan Republican Front) or PRI [Luis Fernando PEREZ] ++ National Advancement Party or PAN [Juan GUTIERREZ Strauss] ++ National Unity for Hope or UNE [Sandra TORRES] ++ Nationalist Change Union or UCN [Mario ESTRADA] ++ National Convergence Front or FCN [Edgar Justino OVALLE Maldonado] ++ New National Alternative or ANN [Pablo MONSANTO] ++ Patriot Party or PP [Ingrid Roxana BALDETTI Elias] ++ Renewed Democratic Liberty or LIDER [Manuel BALDIZON] ++ Unionista Party or PU [Alvaro ARZU Irigoyen] ++ Victoria (Victory) [Amilcar RIVERA] ++ Vision with Values or VIVA [Harold CABALLEROS] (part of a coalition with EG during the last legislative election)"
+    },
+    "Political pressure groups and leaders": {
+      "text": "Alliance Against Impunity or AI (includes among others Center for Legal Action on Human Rights (CALDH), Family and Friends of the Disappeared of Guatemala (FAMDEGUA)) ++ Civic and Political Convergence of Women ++ Committee for Campesino Unity or CUC ++ Coordinating Committee of Agricultural, Commercial, Industrial, and Financial Associations or CACIF ++ Foundation for the Development of Guatemala or FUNDESA ++ Guatemala Visible ++ Mutual Support Group or GAM ++ Movimiento PRO-Justicia ++ National Union of Agriculture Workers or UNAGRO"
+    },
+    "International organization participation": {
+      "text": "BCIE, CACM, CD, CELAC, EITI (compliant country), FAO, G-24, G-77, IADB, IAEA, IBRD, ICAO, ICC (national committees), ICCt (signatory), ICRM, IDA, IFAD, IFC, IFRCS, IHO, ILO, IMF, IMO, Interpol, IOC, IOM, IPU, ISO (correspondent), ITSO, ITU, ITUC (NGOs), LAES, LAIA (observer), MIGA, MINUSTAH, MONUSCO, NAM, OAS, OPANAL, OPCW, Pacific Alliance (observer), PCA, Petrocaribe, SICA, UN, UNCTAD, UNESCO, UNIDO, UNIFIL, Union Latina, UNISFA, UNITAR, UNMISS, UNOCI, UNWTO, UPU, WCO, WFTU (NGOs), WHO, WIPO, WMO, WTO"
+    },
+    "Diplomatic representation in the US": {
+      "chief of mission": {
+        "text": "Ambassador Gladys Marithza RUIZ SANCHEZ (since 2 June 2016)"
+      },
+      "chancery": {
+        "text": "2220 R Street NW, Washington, DC 20008"
+      },
+      "telephone": {
+        "text": "[1] (202) 745-4952"
+      },
+      "FAX": {
+        "text": "[1] (202) 745-1908"
+      },
+      "consulate(s)": {
+        "text": "Del Rio (TX), San Bernadino (CA), Silver Spring (MD), Tucson (AZ)"
+      },
+      "consulate(s) general": {
+        "text": "Atlanta, Chicago, Denver, Houston, Los Angeles, McAllen (TX), Miami, New York, Phoenix, Providence (RI), San Francisco, Silver Spring (MD), Tucson (AZ)"
+      }
+    },
+    "Diplomatic representation from the US": {
+      "chief of mission": {
+        "text": "Ambassador Todd D. ROBINSON (since 10 October 2014)"
+      },
+      "embassy": {
+        "text": "7-01 Avenida Reforma, Zone 10, Guatemala City"
+      },
+      "mailing address": {
+        "text": "DPO AA 34024"
+      },
+      "telephone": {
+        "text": "[502] 2326-4000"
+      },
+      "FAX": {
+        "text": "[502] 2326-4654"
+      }
+    },
+    "Flag description": {
+      "text": "three equal vertical bands of light blue (hoist side), white, and light blue, with the coat of arms centered in the white band; the coat of arms includes a green and red quetzal (the national bird) representing liberty and a scroll bearing the inscription LIBERTAD 15 DE SEPTIEMBRE DE 1821 (the original date of independence from Spain) all superimposed on a pair of crossed rifles signifying Guatemala's willingness to defend itself and a pair of crossed swords representing honor and framed by a laurel wreath symbolizing victory; the blue bands represent the Pacific Ocean and Caribbean Sea; the white band denotes peace and purity"
+    },
+    "National symbol(s)": {
+      "text": "quetzal (bird); national colors: blue, white"
+    },
+    "National anthem": {
+      "name": {
+        "text": "\"Himno Nacional de Guatemala\" (National Anthem of Guatemala)"
+      },
+      "lyrics/music": {
+        "text": "Jose Joaquin PALMA/Rafael Alvarez OVALLE"
+      },
+      "note": {
+        "text": "adopted 1897, modified lyrics adopted 1934; Cuban poet Jose Joaquin PALMA anonymously submitted lyrics to a public contest calling for a national anthem; his authorship was not discovered until 1911"
+      }
+    }
+  },
+  "Economy": {
+    "Economy - overview": {
+      "text": "Guatemala is the most populous country in Central America with a GDP per capita roughly half the average for Latin America and the Caribbean. The agricultural sector accounts for 13.6% of GDP and 31% of the labor force; key agricultural exports include sugar, coffee, bananas, and vegetables. Guatemala is the top remittance recipient in Central America as a result of Guatemala's large expatriate community in the US. These inflows are a primary source of foreign income, equivalent to over one-half of the country's exports or one-tenth of its GDP. ++  ++ The 1996 peace accords, which ended 36 years of civil war, removed a major obstacle to foreign investment, and since then Guatemala has pursued important reforms and macroeconomic stabilization. The Dominican Republic-Central America Free Trade Agreement (CAFTA-DR) entered into force in July 2006, spurring increased investment and diversification of exports, with the largest increases in ethanol and non-traditional agricultural exports. While CAFTA-DR has helped improve the investment climate, concerns over security, the lack of skilled workers, and poor infrastructure continue to hamper foreign direct investment. ++  ++ The distribution of income remains highly unequal with the richest 20% of the population accounting for more than 51% of Guatemala's overall consumption. More than half of the population is below the national poverty line, and 23% of the population lives in extreme poverty. Poverty among indigenous groups, which make up more than 40% of the population, averages 79%, with 39.8% of the indigenous population living in extreme poverty. Nearly one-half of Guatemala's children under age five are chronically malnourished, one of the highest malnutrition rates in the world. ++  ++ Guatemala is facing growing fiscal pressures exacerbated by multiple corruption scandals in 2015 that led to the resignation of the president, vice president, and numerous high-level economic officials."
+    },
+    "GDP (purchasing power parity)": {
+      "text": "$132.3 billion (2016 est.) ++ $127.9 billion (2015 est.) ++ $122.8 billion (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "GDP (official exchange rate)": {
+      "text": "$68.39 billion (2015 est.)"
+    },
+    "GDP - real growth rate": {
+      "text": "3.5% (2016 est.) ++ 4.1% (2015 est.) ++ 4.2% (2014 est.)"
+    },
+    "GDP - per capita (PPP)": {
+      "text": "$7,900 (2016 est.) ++ $7,900 (2015 est.) ++ $7,700 (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "Gross national saving": {
+      "text": "12.9% of GDP (2016 est.) ++ 13.1% of GDP (2015 est.) ++ 11.6% of GDP (2014 est.)"
+    },
+    "GDP - composition, by end use": {
+      "household consumption": {
+        "text": "84.4%"
+      },
+      "government consumption": {
+        "text": "10.4%"
+      },
+      "investment in fixed capital": {
+        "text": "13.3%"
+      },
+      "investment in inventories": {
+        "text": "0.5%"
+      },
+      "exports of goods and services": {
+        "text": "21.4%"
+      },
+      "imports of goods and services": {
+        "text": "-30% (2016 est.)"
+      }
+    },
+    "GDP - composition, by sector of origin": {
+      "agriculture": {
+        "text": "13.2%"
+      },
+      "industry": {
+        "text": "23.5%"
+      },
+      "services": {
+        "text": "63.3% (2016 est.)"
+      }
+    },
+    "Agriculture - products": {
+      "text": "sugarcane, corn, bananas, coffee, beans, cardamom; cattle, sheep, pigs, chickens"
+    },
+    "Industries": {
+      "text": "sugar, textiles and clothing, furniture, chemicals, petroleum, metals, rubber, tourism"
+    },
+    "Industrial production growth rate": {
+      "text": "3.2% (2016 est.)"
+    },
+    "Labor force": {
+      "text": "4.623 million (2016 est.)"
+    },
+    "Labor force - by occupation": {
+      "agriculture": {
+        "text": "31.2%"
+      },
+      "industry": {
+        "text": "14.4%"
+      },
+      "services": {
+        "text": "54.4% (2014 est.)"
+      }
+    },
+    "Unemployment rate": {
+      "text": "2.9% (2014 est.) ++ 3% (2013 est.)"
+    },
+    "Population below poverty line": {
+      "text": "59.3% (2014 est.)"
+    },
+    "Household income or consumption by percentage share": {
+      "lowest 10%": {
+        "text": "1.3%"
+      },
+      "highest 10%": {
+        "text": "42.4% (2006)"
+      }
+    },
+    "Distribution of family income - Gini index": {
+      "text": "53 (2014 est.) ++ 56 (2011)"
+    },
+    "Budget": {
+      "revenues": {
+        "text": "$7.39 billion"
+      },
+      "expenditures": {
+        "text": "$8.186 billion (2016 est.)"
+      }
+    },
+    "Taxes and other revenues": {
+      "text": "10.8% of GDP (2016 est.)"
+    },
+    "Budget surplus (+) or deficit (-)": {
+      "text": "-1.2% of GDP (2016 est.)"
+    },
+    "Public debt": {
+      "text": "27.4% of GDP (2016 est.) ++ 28.8% of GDP (2015 est.)"
+    },
+    "Fiscal year": {
+      "text": "calendar year"
+    },
+    "Inflation rate (consumer prices)": {
+      "text": "4.3% (2016 est.) ++ 2.4% (2015 est.)"
+    },
+    "Central bank discount rate": {
+      "text": "6.5% (31 December 2010)"
+    },
+    "Commercial bank prime lending rate": {
+      "text": "13.2% (31 December 2016 est.) ++ 13.23% (31 December 2015 est.)"
+    },
+    "Stock of narrow money": {
+      "text": "$10.95 billion (31 December 2016 est.) ++ $10.05 billion (31 December 2015 est.)"
+    },
+    "Stock of broad money": {
+      "text": "$25.3 billion (31 December 2016 est.) ++ $23.25 billion (31 December 2015 est.)"
+    },
+    "Stock of domestic credit": {
+      "text": "$32.41 billion (31 December 2016 est.) ++ $28.7 billion (31 December 2015 est.)"
+    },
+    "Market value of publicly traded shares": {
+      "text": "$NA"
+    },
+    "Current account balance": {
+      "text": "-$323 million (2016 est.) ++ -$202 million (2015 est.)"
+    },
+    "Exports": {
+      "text": "$11.43 billion (2016 est.) ++ $10.83 billion (2015 est.)"
+    },
+    "Exports - commodities": {
+      "text": "sugar, coffee, petroleum, apparel, bananas, fruits and vegetables, cardamom, manufacturing products, precious stones and metals, electricity"
+    },
+    "Exports - partners": {
+      "text": "US 34.9%, El Salvador 8.4%, Honduras 7.3%, Nicaragua 5%, Canada 4.6%, Mexico 4.3%, Costa Rica 4.1% (2015)"
+    },
+    "Imports": {
+      "text": "$16.76 billion (2016 est.) ++ $16.38 billion (2015 est.)"
+    },
+    "Imports - commodities": {
+      "text": "fuels, machinery and transport equipment, construction materials, grain, fertilizers, electricity, mineral products, chemical products, plastic materials and products"
+    },
+    "Imports - partners": {
+      "text": "US 38.3%, China 13.4%, Mexico 11.8%, El Salvador 4.9% (2015)"
+    },
+    "Reserves of foreign exchange and gold": {
+      "text": "$8.803 billion (31 December 2016 est.) ++ $7.746 billion (31 December 2015 est.)"
+    },
+    "Debt - external": {
+      "text": "$19.09 billion (31 December 2016 est.) ++ $18.6 billion (31 December 2015 est.)"
+    },
+    "Exchange rates": {
+      "text": "quetzales (GTQ) per US dollar - ++ 7.648 (2016 est.) ++ 7.6548 (2015 est.) ++ 7.6548 (2014 est.) ++ 7.7322 (2013 est.) ++ 7.83 (2012 est.)"
+    }
+  },
+  "Energy": {
+    "Electricity - production": {
+      "text": "10 billion kWh (2014 est.)"
+    },
+    "Electricity - consumption": {
+      "text": "8.915 billion kWh (2014 est.)"
+    },
+    "Electricity - exports": {
+      "text": "1.025 billion kWh (2014 est.)"
+    },
+    "Electricity - imports": {
+      "text": "664 million kWh (2014 est.)"
+    },
+    "Electricity - installed generating capacity": {
+      "text": "3.73 million kW (2015 est.)"
+    },
+    "Electricity - from fossil fuels": {
+      "text": "61.9% of total installed capacity (2015 est.)"
+    },
+    "Electricity - from nuclear fuels": {
+      "text": "0% of total installed capacity (2015 est.)"
+    },
+    "Electricity - from hydroelectric plants": {
+      "text": "29.1% of total installed capacity (2015 est.)"
+    },
+    "Electricity - from other renewable sources": {
+      "text": "8.9% of total installed capacity (2015 est.)"
+    },
+    "Crude oil - production": {
+      "text": "10,040 bbl/day (2015 est.)"
+    },
+    "Crude oil - exports": {
+      "text": "8,711 bbl/day (2015 est.)"
+    },
+    "Crude oil - imports": {
+      "text": "0 bbl/day (2013 est.)"
+    },
+    "Crude oil - proved reserves": {
+      "text": "83.07 million bbl (1 January 2016 es)"
+    },
+    "Refined petroleum products - production": {
+      "text": "1,228 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - consumption": {
+      "text": "87,840 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - exports": {
+      "text": "12,960 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - imports": {
+      "text": "100,400 bbl/day (2015 est.)"
+    },
+    "Natural gas - production": {
+      "text": "0 cu m (2013 est.)"
+    },
+    "Natural gas - consumption": {
+      "text": "0 cu m (2013 est.)"
+    },
+    "Natural gas - exports": {
+      "text": "0 cu m (2013 est.)"
+    },
+    "Natural gas - imports": {
+      "text": "0 cu m (2013 est.)"
+    },
+    "Natural gas - proved reserves": {
+      "text": "2.96 billion cu m (1 January 2006 es)"
+    },
+    "Carbon dioxide emissions from consumption of energy": {
+      "text": "13 million Mt (2013 est.)"
+    }
+  },
+  "Communications": {
+    "Telephones - fixed lines": {
+      "total subscriptions": {
+        "text": "1,718,851"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "12 (July 2015 est.)"
+      }
+    },
+    "Telephones - mobile cellular": {
+      "total": {
+        "text": "18.121 million"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "121 (July 2015 est.)"
+      }
+    },
+    "Telephone system": {
+      "general assessment": {
+        "text": "fairly modern network centered in the city of Guatemala"
+      },
+      "domestic": {
+        "text": "state-owned telecommunications company privatized in the late 1990s opened the way for competition; fixed-line teledensity roughly 10 per 100 persons; fixed-line investments are being concentrated on improving rural connectivity; mobile-cellular teledensi"
+      },
+      "international": {
+        "text": "country code - 502; landing point for both the Americas Region Caribbean Ring System (ARCOS-1) and the SAM-1 fiber-optic submarine cable system that, together, provide connectivity to South and Central America, parts of the Caribbean, and the US; connecte (2015)"
+      }
+    },
+    "Broadcast media": {
+      "text": "4 privately owned national terrestrial TV channels dominate TV broadcasting; multi-channel satellite and cable services are available; 1 government-owned radio station and hundreds of privately owned radio stations (2007)"
+    },
+    "Internet country code": {
+      "text": ".gt"
+    },
+    "Internet users": {
+      "total": {
+        "text": "4.043 million"
+      },
+      "percent of population": {
+        "text": "27.1% (July 2015 est.)"
+      }
+    }
+  },
+  "Transportation": {
+    "National air transport system": {
+      "number of registered air carriers": {
+        "text": "3"
+      },
+      "inventory of registered aircraft operated by air carriers": {
+        "text": "8"
+      },
+      "annual passenger traffic on registered air carriers": {
+        "text": "93,129"
+      },
+      "annual freight traffic on registered air carriers": {
+        "text": "455,520 mt-km (2015)"
+      }
+    },
+    "Civil aircraft registration country code prefix": {
+      "text": "TG (2016)"
+    },
+    "Airports": {
+      "text": "291 (2013)"
+    },
+    "Airports - with paved runways": {
+      "total": {
+        "text": "16"
+      },
+      "2,438 to 3,047 m": {
+        "text": "2"
+      },
+      "1,524 to 2,437 m": {
+        "text": "4"
+      },
+      "914 to 1,523 m": {
+        "text": "6"
+      },
+      "under 914 m": {
+        "text": "4 (2013)"
+      }
+    },
+    "Airports - with unpaved runways": {
+      "total": {
+        "text": "275"
+      },
+      "2,438 to 3,047 m": {
+        "text": "1"
+      },
+      "1,524 to 2,437 m": {
+        "text": "2"
+      },
+      "914 to 1,523 m": {
+        "text": "77"
+      },
+      "under 914 m": {
+        "text": "195 (2013)"
+      }
+    },
+    "Heliports": {
+      "text": "1 (2013)"
+    },
+    "Pipelines": {
+      "text": "oil 480 km (2013)"
+    },
+    "Railways": {
+      "total": {
+        "text": "800 km"
+      },
+      "narrow gauge": {
+        "text": "800 km 0.914-m gauge (2014)"
+      }
+    },
+    "Roadways": {
+      "total": {
+        "text": "17,332 km"
+      },
+      "paved": {
+        "text": "7,483 km"
+      },
+      "unpaved": {
+        "text": "9,849 km (includes 4,795 km of rural roads) (2015)"
+      }
+    },
+    "Waterways": {
+      "text": "990 km (260 km navigable year round; additional 730 km navigable during high-water season) (2012)"
+    },
+    "Ports and terminals": {
+      "major seaport(s)": {
+        "text": "Puerto Quetzal, Santo Tomas de Castilla"
+      }
+    }
+  },
+  "Military and Security": {
+    "Military branches": {
+      "text": "National Army of Guatemala (Ejercito Nacional de Guatemala, ENG; includes Guatemalan Navy (Fuerza de Mar, including Marines) and Guatemalan Air Force (Fuerza Aerea Guatemalteca, FAG)) (2013)"
+    },
+    "Military service age and obligation": {
+      "text": "all male citizens between the ages of 18 and 50 are eligible for military service; in practice, most of the force is volunteer, however, a selective draft system is employed, resulting in a small portion of 17-21 year-olds conscripted; conscript service obligation varies from 1 to 2 years; women can serve as officers (2013)"
+    },
+    "Military expenditures": {
+      "text": "0.42% of GDP (2014) ++ 0.46% of GDP (2013) ++ 0.44% of GDP (2012) ++ 0.41% of GDP (2011) ++ 0.42% of GDP (2010)"
+    }
+  },
+  "Transnational Issues": {
+    "Disputes - international": {
+      "text": "annual ministerial meetings under the Organization of American States-initiated Agreement on the Framework for Negotiations and Confidence Building Measures continue to address Guatemalan land and maritime claims in Belize and the Caribbean Sea; Guatemala persists in its territorial claim to half of Belize, but agrees to Line of Adjacency to keep Guatemalan squatters out of Belize's forested interior; both countries agreed in April 2012 to hold simultaneous referenda, scheduled for 6 October 2013, to decide whether to refer the dispute to the ICJ for binding resolution, but this vote was suspended indefinitely; Mexico must deal with thousands of impoverished Guatemalans and other Central Americans who cross the porous border looking for work in Mexico and the US"
+    },
+    "Refugees and internally displaced persons": {
+      "IDPs": {
+        "text": "251,000 (more than three decades of internal conflict that ended in 1996 displaced mainly the indigenous Maya population and rural peasants; ongoing drug cartel and gang violence) (2015)"
+      }
+    },
+    "Illicit drugs": {
+      "text": "major transit country for cocaine and heroin; in 2005, cultivated 100 hectares of opium poppy after reemerging as a potential source of opium in 2004; potential production of less than 1 metric ton of pure heroin; marijuana cultivation for mostly domestic consumption; proximity to Mexico makes Guatemala a major staging area for drugs (particularly for cocaine); money laundering is a serious problem; corruption is a major problem"
+    }
+  }
+}

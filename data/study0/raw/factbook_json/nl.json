@@ -1,0 +1,937 @@
+{
+  "Introduction": {
+    "Background": {
+      "text": "The Dutch United Provinces declared their independence from Spain in 1579; during the 17th century, they became a leading seafaring and commercial power, with settlements and colonies around the world. After a 20-year French occupation, a Kingdom of the Netherlands was formed in 1815. In 1830, Belgium seceded and formed a separate kingdom. The Netherlands remained neutral in World War I, but suffered German invasion and occupation in World War II. A modern, industrialized nation, the Netherlands is also a large exporter of agricultural products. The country was a founding member of NATO and the EEC (now the EU) and participated in the introduction of the euro in 1999. In October 2010, the former Netherlands Antilles was dissolved and the three smallest islands - Bonaire, Sint Eustatius, and Saba - became special municipalities in the Netherlands administrative structure. The larger islands of Sint Maarten and Curacao joined the Netherlands and Aruba as constituent countries forming the Kingdom of the Netherlands."
+    }
+  },
+  "Geography": {
+    "Location": {
+      "text": "Western Europe, bordering the North Sea, between Belgium and Germany"
+    },
+    "Geographic coordinates": {
+      "text": "52 30 N, 5 45 E"
+    },
+    "Map references": {
+      "text": "Europe"
+    },
+    "Area": {
+      "total": {
+        "text": "41,543 sq km"
+      },
+      "land": {
+        "text": "33,893 sq km"
+      },
+      "water": {
+        "text": "7,650 sq km"
+      }
+    },
+    "Area - comparative": {
+      "text": "slightly less than twice the size of New Jersey"
+    },
+    "Land boundaries": {
+      "total": {
+        "text": "1,053 km"
+      },
+      "border countries": {
+        "text": "Belgium 478 km, Germany 575 km"
+      }
+    },
+    "Coastline": {
+      "text": "451 km"
+    },
+    "Maritime claims": {
+      "territorial sea": {
+        "text": "12 nm"
+      },
+      "contiguous zone": {
+        "text": "24 nm"
+      },
+      "exclusive fishing zone": {
+        "text": "200 nm"
+      }
+    },
+    "Climate": {
+      "text": "temperate; marine; cool summers and mild winters"
+    },
+    "Terrain": {
+      "text": "mostly coastal lowland and reclaimed land (polders); some hills in southeast"
+    },
+    "Elevation": {
+      "mean elevation": {
+        "text": "30 m"
+      },
+      "elevation extremes": {
+        "text": "lowest point: Zuidplaspolder -7 m ++ highest point: Mount Scenery 862 m (on the island of Saba in the Caribbean, now considered an integral part of the Netherlands following the dissolution of the Netherlands Antilles)"
+      },
+      "note": {
+        "text": "the highest point on continental Netherlands is Vaalserberg at 322 m"
+      }
+    },
+    "Natural resources": {
+      "text": "natural gas, petroleum, peat, limestone, salt, sand and gravel, arable land"
+    },
+    "Land use": {
+      "agricultural land": {
+        "text": "55.1% ++ arable land 29.8%; permanent crops 1.1%; permanent pasture 24.2%"
+      },
+      "forest": {
+        "text": "10.8%"
+      },
+      "other": {
+        "text": "34.1% (2011 est.)"
+      }
+    },
+    "Irrigated land": {
+      "text": "4,860 sq km (2012)"
+    },
+    "Population - distribution": {
+      "text": "an area known as the Randstad, anchored by the cities of Amsterdam, Rotterdam, the Hague, and Utrecht, is the most densely populated region; the north tends to be less dense, though sizeable communities can be found throughout the entire country"
+    },
+    "Natural hazards": {
+      "text": "flooding"
+    },
+    "Environment - current issues": {
+      "text": "water pollution in the form of heavy metals, organic compounds, and nutrients such as nitrates and phosphates; air pollution from vehicles and refining activities; acid rain"
+    },
+    "Environment - international agreements": {
+      "party to": {
+        "text": "Air Pollution, Air Pollution-Nitrogen Oxides, Air Pollution-Persistent Organic Pollutants, Air Pollution-Sulfur 85, Air Pollution-Sulfur 94, Air Pollution-Volatile Organic Compounds, Antarctic-Environmental Protocol, Antarctic-Marine Living Resources, Antarctic Treaty, Biodiversity, Climate Change, Climate Change-Kyoto Protocol, Desertification, Endangered Species, Environmental Modification, Hazardous Wastes, Law of the Sea, Marine Dumping, Marine Life Conservation, Ozone Layer Protection, Ship Pollution, Tropical Timber 83, Tropical Timber 94, Wetlands, Whaling"
+      },
+      "signed, but not ratified": {
+        "text": "none of the selected agreements"
+      }
+    },
+    "Geography - note": {
+      "text": "located at mouths of three major European rivers (Rhine, Maas or Meuse, and Schelde)"
+    }
+  },
+  "People and Society": {
+    "Population": {
+      "text": "17,016,967 (July 2016 est.)"
+    },
+    "Nationality": {
+      "noun": {
+        "text": "Dutchman(men), Dutchwoman(women)"
+      },
+      "adjective": {
+        "text": "Dutch"
+      }
+    },
+    "Ethnic groups": {
+      "text": "Dutch 78.6%, EU 5.8%, Turkish 2.4%, Indonesian 2.2%, Moroccan 2.2%, Surinamese 2.1%, Bonairian, Saba Islander, Sint Eustatian 0.8%, other 5.9% (2014 est.)"
+    },
+    "Languages": {
+      "text": "Dutch (official)",
+      "note": {
+        "text": "Frisian is an official language in Fryslan province; Frisian, Low Saxon, Limburgish, Romani, and Yiddish have protected status under the European Charter for Regional or Minority Languages; Dutch is the official language of the three special municipalities of the Caribbean Netherlands, while English is a recognized regional language on Sint Eustatius and Saba and Papiamento is a recognized regional language on Bonaire"
+      }
+    },
+    "Religions": {
+      "text": "Roman Catholic 28%, Protestant 19% (includes Dutch Reformed 9%, Protestant Church of The Netherlands, 7%, Calvinist 3%), other 11% (includes about 5% Muslim and fewer numbers of Hindu, Buddhist, Jehovah's Witness, and Orthodox), none 42% (2009 est.)"
+    },
+    "Age structure": {
+      "0-14 years": {
+        "text": "16.56% (male 1,442,059/female 1,375,479)"
+      },
+      "15-24 years": {
+        "text": "12.11% (male 1,050,889/female 1,010,596)"
+      },
+      "25-54 years": {
+        "text": "39.83% (male 3,400,998/female 3,377,311)"
+      },
+      "55-64 years": {
+        "text": "13.14% (male 1,113,587/female 1,123,165)"
+      },
+      "65 years and over": {
+        "text": "18.35% (male 1,411,830/female 1,711,053) (2016 est.)"
+      }
+    },
+    "Dependency ratios": {
+      "total dependency ratio": {
+        "text": "53.3%"
+      },
+      "youth dependency ratio": {
+        "text": "25.3%"
+      },
+      "elderly dependency ratio": {
+        "text": "27.9%"
+      },
+      "potential support ratio": {
+        "text": "3.6% (2015 est.)"
+      }
+    },
+    "Median age": {
+      "total": {
+        "text": "42.5 years"
+      },
+      "male": {
+        "text": "41.4 years"
+      },
+      "female": {
+        "text": "43.4 years (2016 est.)"
+      }
+    },
+    "Population growth rate": {
+      "text": "0.4% (2016 est.)"
+    },
+    "Birth rate": {
+      "text": "10.9 births/1,000 population (2016 est.)"
+    },
+    "Death rate": {
+      "text": "8.8 deaths/1,000 population (2016 est.)"
+    },
+    "Net migration rate": {
+      "text": "1.9 migrant(s)/1,000 population (2016 est.)"
+    },
+    "Population distribution": {
+      "text": "an area known as the Randstad, anchored by the cities of Amsterdam, Rotterdam, the Hague, and Utrecht, is the most densely populated region; the north tends to be less dense, though sizeable communities can be found throughout the entire country"
+    },
+    "Urbanization": {
+      "urban population": {
+        "text": "90.5% of total population (2015)"
+      },
+      "rate of urbanization": {
+        "text": "1.05% annual rate of change (2010-15 est.)"
+      }
+    },
+    "Major urban areas - population": {
+      "text": "AMSTERDAM (capital) 1.091 million; Rotterdam 993,000; The Hague (seat of government) 650,000 (2015)"
+    },
+    "Sex ratio": {
+      "at birth": {
+        "text": "1.05 male(s)/female"
+      },
+      "0-14 years": {
+        "text": "1.05 male(s)/female"
+      },
+      "15-24 years": {
+        "text": "1.04 male(s)/female"
+      },
+      "25-54 years": {
+        "text": "1.01 male(s)/female"
+      },
+      "55-64 years": {
+        "text": "0.99 male(s)/female"
+      },
+      "65 years and over": {
+        "text": "0.82 male(s)/female"
+      },
+      "total population": {
+        "text": "0.98 male(s)/female (2016 est.)"
+      }
+    },
+    "Mother's mean age at first birth": {
+      "text": "29.4 (2011 est.)"
+    },
+    "Maternal mortality rate": {
+      "text": "7 deaths/100,000 live births (2015 est.)"
+    },
+    "Infant mortality rate": {
+      "total": {
+        "text": "3.6 deaths/1,000 live births"
+      },
+      "male": {
+        "text": "3.9 deaths/1,000 live births"
+      },
+      "female": {
+        "text": "3.3 deaths/1,000 live births (2016 est.)"
+      }
+    },
+    "Life expectancy at birth": {
+      "total population": {
+        "text": "81.3 years"
+      },
+      "male": {
+        "text": "79.2 years"
+      },
+      "female": {
+        "text": "83.6 years (2016 est.)"
+      }
+    },
+    "Total fertility rate": {
+      "text": "1.78 children born/woman (2016 est.)"
+    },
+    "Contraceptive prevalence rate": {
+      "text": "69%",
+      "note": {
+        "text": "percent of women aged 18-45 (2008)"
+      }
+    },
+    "Health expenditures": {
+      "text": "10.9% of GDP (2014)"
+    },
+    "Hospital bed density": {
+      "text": "4.7 beds/1,000 population (2009)"
+    },
+    "Drinking water source": {
+      "improved": {
+        "text": " ++ urban: 100% of population ++ rural: 100% of population ++ total: 100% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 0% of population ++ rural: 0% of population ++ total: 0% of population (2015 est.)"
+      }
+    },
+    "Sanitation facility access": {
+      "improved": {
+        "text": " ++ urban: 97.5% of population ++ rural: 99.9% of population ++ total: 97.7% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 2.5% of population ++ rural: 0.1% of population ++ total: 2.3% of population (2015 est.)"
+      }
+    },
+    "HIV/AIDS - adult prevalence rate": {
+      "text": "NA"
+    },
+    "HIV/AIDS - people living with HIV/AIDS": {
+      "text": "NA"
+    },
+    "HIV/AIDS - deaths": {
+      "text": "NA"
+    },
+    "Obesity - adult prevalence rate": {
+      "text": "21.9% (2014)"
+    },
+    "Education expenditures": {
+      "text": "5.6% of GDP (2013)"
+    },
+    "School life expectancy (primary to tertiary education)": {
+      "total": {
+        "text": "18 years"
+      },
+      "male": {
+        "text": "18 years"
+      },
+      "female": {
+        "text": "18 years (2012)"
+      }
+    },
+    "Unemployment, youth ages 15-24": {
+      "total": {
+        "text": "10.5%"
+      },
+      "male": {
+        "text": "9.7%"
+      },
+      "female": {
+        "text": "11.3% (2014 est.)"
+      }
+    }
+  },
+  "Government": {
+    "Country name": {
+      "conventional long form": {
+        "text": "Kingdom of the Netherlands"
+      },
+      "conventional short form": {
+        "text": "Netherlands"
+      },
+      "local long form": {
+        "text": "Koninkrijk der Nederlanden"
+      },
+      "local short form": {
+        "text": "Nederland"
+      },
+      "etymology": {
+        "text": "the country name literally means \"the lowlands\" and refers to the geographic features of the land being both flat and down river from higher areas (i.e., at the estuaries of the Scheldt, Meuse, and Rhine Rivers; only about half of the Netherlands is more than 1 meter above sea level)"
+      }
+    },
+    "Government type": {
+      "text": "parliamentary constitutional monarchy; part of the Kingdom of the Netherlands"
+    },
+    "Capital": {
+      "name": {
+        "text": "Amsterdam; note - The Hague is the seat of government"
+      },
+      "geographic coordinates": {
+        "text": "52 21 N, 4 55 E"
+      },
+      "time difference": {
+        "text": "UTC+1 (6 hours ahead of Washington, DC, during Standard Time)"
+      },
+      "daylight saving time": {
+        "text": "+1hr, begins last Sunday in March; ends last Sunday in October"
+      },
+      "note": {
+        "text": "time descriptions apply to the continental Netherlands only, not to the Caribbean components"
+      }
+    },
+    "Administrative divisions": {
+      "text": "12 provinces (provincies, singular - provincie); Drenthe, Flevoland, Fryslan (Friesland), Gelderland, Groningen, Limburg, Noord-Brabant (North Brabant), Noord-Holland (North Holland), Overijssel, Utrecht, Zeeland (Zealand), Zuid-Holland (South Holland)",
+      "note 1": {
+        "text": "the Netherlands is one of four constituent parts (countries) of the Kingdom of the Netherlands; the other three parts, Aruba, Curacao, and Sint Maarten, are all islands in the Caribbean; while all four parts are considered equal partners, in practice, most of the Kingdom's affairs are administered by the Netherlands, which makes up about 98% of the Kingdom's total land area and population"
+      },
+      "note 2": {
+        "text": "three other Caribbean islands, Bonaire, Saint Eustatius, and Saba, are considered to be special municipalities of the Netherlands proper"
+      }
+    },
+    "Dependent areas": {
+      "text": "Aruba, Curacao, Sint Maarten"
+    },
+    "Independence": {
+      "text": "23 January 1579 (the northern provinces of the Low Countries conclude the Union of Utrecht breaking with Spain; on 26 July 1581 they formally declared their independence with an Act of Abjuration; however, it was not until 30 January 1648 and the Peace of Westphalia that Spain recognized this independence)"
+    },
+    "National holiday": {
+      "text": "King's Day (the King's birthday of 27 April (1967); celebrated on 26 April if 27 April is a Sunday)"
+    },
+    "Constitution": {
+      "history": {
+        "text": "previous 1597, 1798; latest adopted 24 August 1815 (substantially revised in 1848)"
+      },
+      "amendments": {
+        "text": "proposed as an “Act of Parliament” by or on behalf of the king or by the Second Chamber of the States General; the Second Chamber is dissolved after its first reading of the “Act”; passage requires a second reading by both the First Chamber and newly elected Second Chamber, followed by at least two-thirds majority vote of both chambers, and ratification by the king; amended many times, last in 2010 (2016)"
+      }
+    },
+    "Legal system": {
+      "text": "civil law system based on the French system; constitution does not permit judicial review of acts of the States General"
+    },
+    "International law organization participation": {
+      "text": "accepts compulsory ICJ jurisdiction with reservations; accepts ICCt jurisdiction"
+    },
+    "Citizenship": {
+      "citizenship by birth": {
+        "text": "no"
+      },
+      "citizenship by descent only": {
+        "text": "at least one parent must be a citizen of the Netherlands"
+      },
+      "dual citizenship recognized": {
+        "text": "no"
+      },
+      "residency requirement for naturalization": {
+        "text": "5 years"
+      }
+    },
+    "Suffrage": {
+      "text": "18 years of age; universal"
+    },
+    "Executive branch": {
+      "chief of state": {
+        "text": "King WILLEM-ALEXANDER (since 30 April 2013); Heir Apparent Princess Catharina-Amalia (since 30 April 2013)"
+      },
+      "head of government": {
+        "text": "Prime Minister Mark RUTTE (since 14 October 2010); Deputy Prime Minister Lodewijk ASSCHER (since 5 November 2012); note - Mark RUTTE heads his second cabinet since 5 November 2012"
+      },
+      "cabinet": {
+        "text": "Council of Ministers appointed by the monarch; note -there is also a Council of State composed of the monarch, heir apparent, and councilors that provides advice to the cabinet on legislative and administrative policy"
+      },
+      "elections/appointments": {
+        "text": "the monarchy is hereditary; following Second Chamber elections, the leader of the majority party or majority coalition usually appointed prime minister by the monarch; deputy prime ministers appointed by the monarch"
+      }
+    },
+    "Legislative branch": {
+      "description": {
+        "text": "bicameral States General or Staten Generaal consists of the First Chamber or Eerste Kamer (75 seats; members indirectly elected by the country's 12 provincial council members by proportional representation vote; members serve 4-year terms) and the Second Chamber or Tweede Kamer (150 seats; members directly elected in multi-seat constituencies by proportional representation vote to serve up to 4-year terms)"
+      },
+      "elections": {
+        "text": "First Chamber - last held on 26 May 2015 (next to be held in May 2019); Second Chamber - last held on 12 September 2012 (next to be held no later than 15 March 2017)"
+      },
+      "election results": {
+        "text": "First Chamber - percent of vote by party - NA; seats by party - VVD 13, CDA 12, D66 10, PVV 9, SP 9, PvdA 8, GL 4, CU 3, other 7; Second Chamber - percent of vote by party - VVD 26.6%, PvdA 24.8%, PVV, 10.1%, SP 9.7%, CDA 8.5%, D66 8.0%, CU 3.1%, GL 2.3%, other 6.9%; seats by party - VVD 41, PvdA 38, PVV 15, SP 15, CDA 13, D66 12, CU 5, GL 4, other 7"
+      }
+    },
+    "Judicial branch": {
+      "highest court(s)": {
+        "text": "Supreme Court or Hoge Raad (consists of 41 judges: the president, 6 vice-presidents, 31 justices or raadsheren, and 3 justices in exceptional service, referred to as buitengewone dienst); the court is divided into criminal, civil, tax, and ombuds chambers"
+      },
+      "judge selection and term of office": {
+        "text": "justices appointed by the monarch from a list provided by the Second Chamber of the States General; justices appointed for life or until mandatory retirement at age 70"
+      },
+      "subordinate courts": {
+        "text": "courts of appeal; district courts, each with up to 5 subdistrict courts"
+      }
+    },
+    "Political parties and leaders": {
+      "text": "Christian Democratic Appeal or CDA [Sybrand VAN HAERSMA BUMA] ++ Christian Union or CU [Gert-Jan SEGERS] ++ Democrats 66 or D66 [Alexander PECHTOLD] ++ 50 Plus [Jan NAGEL] ++ Green Left or GL [Jesse KLAVER] ++ Labor Party or PvdA [Diederik SAMSOM] ++ Party for Freedom or PVV [Geert WILDERS] ++ Party for the Animals or PvdD [Marianne THIEME] ++ People's Party for Freedom and Democracy or VVD [Mark RUTTE] ++ Reformed Political Party or SGP [Kees VAN DER STAAIJ] ++ Socialist Party or SP [Emile ROEMER] ++ plus a few minor parties"
+    },
+    "Political pressure groups and leaders": {
+      "text": "Christian Trade Union Federation or CNV [Maurice LIMMEN] ++ Confederation of Netherlands Industry and Employers or VNO-NCW [Hans DE BOER] ++ Federation for Small and Medium-sized Businesses or MKB [Michael VAN STRAALEN] ++ Netherlands Trade Union Federation or FNV [Ton HEERTS] ++ Social Economic Council or SER [Mariette HAMER] ++ Trade Union Federation of Middle and High Personnel or MHP [Reginald VISSER]"
+    },
+    "International organization participation": {
+      "text": "ADB (nonregional member), AfDB (nonregional member), Arctic Council (observer), Australia Group, Benelux, BIS, CBSS (observer), CD, CE, CERN, EAPC, EBRD, ECB, EIB, EITI (implementing country), EMU, ESA, EU, FAO, FATF, G-10, IADB, IAEA, IBRD, ICAO, ICC (national committees), ICCt, ICRM, IDA, IEA, IFAD, IFC, IFRCS, IGAD (partners), IHO, ILO, IMF, IMO, IMSO, Interpol, IOC, IOM, IPU, ISO, ITSO, ITU, ITUC (NGOs), MIGA, MINUSMA, NATO, NEA, NSG, OAS (observer), OECD, OPCW, OSCE, Pacific Alliance (observer), Paris Club, PCA, Schengen Convention, SELEC (observer), UN, UNCTAD, UNDOF, UNESCO, UNHCR, UNIDO, UNMISS, UNRWA, UNTSO, UNWTO, UPU, WCO, WHO, WIPO, WMO, WTO, ZC"
+    },
+    "Diplomatic representation in the US": {
+      "chief of mission": {
+        "text": "Ambassador Hendrik SCHUWER (since 17 September 2015)"
+      },
+      "chancery": {
+        "text": "4200 Linnean Avenue NW, Washington, DC 20008"
+      },
+      "telephone": {
+        "text": "[1] (202) 244-5300, [1] 877-388-2443"
+      },
+      "FAX": {
+        "text": "[1] (202) 362-3430"
+      },
+      "consulate(s) general": {
+        "text": "Chicago, Miami, New York, San Francisco"
+      }
+    },
+    "Diplomatic representation from the US": {
+      "chief of mission": {
+        "text": "Ambassador (vacant); Charge d'Affaires Adam H. STERLING (since 12 February 2016)"
+      },
+      "embassy": {
+        "text": "Lange Voorhout 102, 2514 EJ, The Hague"
+      },
+      "mailing address": {
+        "text": "PSC 71, Box 1000, APO AE 09715"
+      },
+      "telephone": {
+        "text": "[31] (70) 310-2209"
+      },
+      "FAX": {
+        "text": "[31] (70) 310-2207"
+      },
+      "consulate(s) general": {
+        "text": "Amsterdam"
+      }
+    },
+    "Flag description": {
+      "text": "three equal horizontal bands of red (top), white, and blue; similar to the flag of Luxembourg, which uses a lighter blue and is longer; the colors were those of WILLIAM I, Prince of Orange, who led the Dutch Revolt against Spanish sovereignty in the latter half of the 16th century; originally the upper band was orange, but because it tended to fade to red over time, the red shade was eventually made the permanent color; the banner is perhaps the oldest tricolor in continuous use"
+    },
+    "National symbol(s)": {
+      "text": "lion, tulip; national color: orange"
+    },
+    "National anthem": {
+      "name": {
+        "text": "\"Het Wilhelmus\" (The William)"
+      },
+      "lyrics/music": {
+        "text": "Philips VAN MARNIX van Sint Aldegonde (presumed)/unknown"
+      },
+      "note": {
+        "text": "adopted 1932, in use since the 17th century, making it the oldest national anthem in the world; also known as \"Wilhelmus van Nassouwe\" (William of Nassau), it is in the form of an acrostic, where the first letter of each stanza spells the name of the leader of the Dutch Revolt"
+      }
+    }
+  },
+  "Economy": {
+    "Economy - overview": {
+      "text": "The Netherlands, the sixth-largest economy in the European Union, plays an important role as a European transportation hub, with a persistently high trade surplus, stable industrial relations, and moderate unemployment. Industry focuses on food processing, chemicals, petroleum refining, and electrical machinery. A highly mechanized agricultural sector employs only 2% of the labor force but provides large surpluses for food-processing and underpins the country’s status as the world’s second largest agricultural exporter. ++  ++ The Netherlands is part of the euro zone, and as such, its monetary policy is controlled by the European Central Bank. The Dutch financial sector is highly concentrated, with four commercial banks possessing over 90% of banking assets. The sector suffered as a result of the global financial crisis and required billions of dollars of government support, but the European Banking Authority completed stringent reviews in 2014 and deemed Dutch banks to be well-capitalized. To address the 2009 and 2010 economic downturns, the government sought to stimulate the domestic economy by accelerating infrastructure programs, offering corporate tax breaks for employers to retain workers, and expanding export credits. The stimulus programs and bank bailouts, however, resulted in a government budget deficit of 5.3% of GDP in 2010 that contrasted sharply with a surplus of 0.7% in 2008. ++  ++ The government of Prime Minister Mark RUTTE has since implemented significant austerity measures to improve public finances and has instituted broad structural reforms in key policy areas, including the labor market, the housing sector, the energy market, and the pension system. As a result, the government budget deficit at the end of 2015 dropped to 2% of GDP. Following a protracted recession during which unemployment doubled to 7.4% and household consumption contracted for nearly three consecutive years, 2014 saw fragile GDP growth of 1% and a rise in most economic indicators. Growth picked up in 2015 as households boosted purchases through reduced saving. Drivers of growth included increased exports and business investments, as well as newly invigorated household consumption."
+    },
+    "GDP (purchasing power parity)": {
+      "text": "$865.9 billion (2016 est.) ++ $851.5 billion (2015 est.) ++ $835.2 billion (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "GDP (official exchange rate)": {
+      "text": "$769.9 billion (2015 est.)"
+    },
+    "GDP - real growth rate": {
+      "text": "1.7% (2016 est.) ++ 2% (2015 est.) ++ 1.4% (2014 est.)"
+    },
+    "GDP - per capita (PPP)": {
+      "text": "$50,800 (2016 est.) ++ $50,300 (2015 est.) ++ $49,500 (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "Gross national saving": {
+      "text": "28.6% of GDP (2016 est.) ++ 27.9% of GDP (2015 est.) ++ 27.3% of GDP (2014 est.)"
+    },
+    "GDP - composition, by end use": {
+      "household consumption": {
+        "text": "44.4%"
+      },
+      "government consumption": {
+        "text": "24.9%"
+      },
+      "investment in fixed capital": {
+        "text": "20.3%"
+      },
+      "investment in inventories": {
+        "text": "-0.2%"
+      },
+      "exports of goods and services": {
+        "text": "81.6%"
+      },
+      "imports of goods and services": {
+        "text": "-71% (2016 est.)"
+      }
+    },
+    "GDP - composition, by sector of origin": {
+      "agriculture": {
+        "text": "1.6%"
+      },
+      "industry": {
+        "text": "17.8%"
+      },
+      "services": {
+        "text": "70.4% (2016 est.)"
+      }
+    },
+    "Agriculture - products": {
+      "text": "grains, potatoes, sugar beets, fruits, vegetables; livestock"
+    },
+    "Industries": {
+      "text": "agroindustries, metal and engineering products, electrical machinery and equipment, chemicals, petroleum, construction, microelectronics, fishing"
+    },
+    "Industrial production growth rate": {
+      "text": "1.1% (2016 est.)"
+    },
+    "Labor force": {
+      "text": "7.919 million (2016 est.)"
+    },
+    "Labor force - by occupation": {
+      "agriculture": {
+        "text": "1.8%"
+      },
+      "industry": {
+        "text": "17%"
+      },
+      "services": {
+        "text": "81.2% (2013 est.)"
+      }
+    },
+    "Unemployment rate": {
+      "text": "6.2% (2016 est.) ++ 6.9% (2015 est.)"
+    },
+    "Population below poverty line": {
+      "text": "9.1% (2013 est.)"
+    },
+    "Household income or consumption by percentage share": {
+      "lowest 10%": {
+        "text": "2.1%"
+      },
+      "highest 10%": {
+        "text": "24.5% (2012 est.)"
+      }
+    },
+    "Distribution of family income - Gini index": {
+      "text": "25.1 (2013 est.) ++ 32.6 (1994 est.)"
+    },
+    "Budget": {
+      "revenues": {
+        "text": "$322.6 billion"
+      },
+      "expenditures": {
+        "text": "$333.5 billion (2016 est.)"
+      }
+    },
+    "Taxes and other revenues": {
+      "text": "41.9% of GDP (2016 est.)"
+    },
+    "Budget surplus (+) or deficit (-)": {
+      "text": "-1.4% of GDP (2016 est.)"
+    },
+    "Public debt": {
+      "text": "63.7% of GDP (2016 est.) ++ 65.3% of GDP (2015 est.)",
+      "note": {
+        "text": "data cover general government debt, and includes debt instruments issued (or owned) by government entities other than the treasury; the data include treasury debt held by foreign entities; the data include debt issued by subnational entities, as well as i"
+      }
+    },
+    "Fiscal year": {
+      "text": "calendar year"
+    },
+    "Inflation rate (consumer prices)": {
+      "text": "0.2% (2016 est.) ++ 0.2% (2015 est.)"
+    },
+    "Central bank discount rate": {
+      "text": "0.05% (31 December 2013) ++ 0.3% (31 December 2010)",
+      "note": {
+        "text": "this is the European Central Bank's rate on the marginal lending facility, which offers overnight credit to banks in the euro area"
+      }
+    },
+    "Commercial bank prime lending rate": {
+      "text": "1.6% (31 December 2016 est.) ++ 1.85% (31 December 2015 est.)"
+    },
+    "Stock of narrow money": {
+      "text": "$404.1 billion (31 December 2016 est.) ++ $405.7 billion (31 December 2015 est.)",
+      "note": {
+        "text": "see entry for the European Union for money supply for the entire euro area; the European Central Bank (ECB) controls monetary policy for the 18 members of the Economic and Monetary Union (EMU); individual members of the EMU do not control the quantity of"
+      }
+    },
+    "Stock of broad money": {
+      "text": "$1.119 trillion (31 December 2014 est.) ++ $1.158 trillion (31 December 2013 est.)"
+    },
+    "Stock of domestic credit": {
+      "text": "$1.569 trillion (31 December 2016 est.) ++ $1.619 trillion (31 December 2015 est.)"
+    },
+    "Market value of publicly traded shares": {
+      "text": "$728.5 billion (31 December 2015 est.) ++ $786.6 billion (31 December 2014 est.) ++ $817.8 billion (31 December 2013 est.)"
+    },
+    "Current account balance": {
+      "text": "$69.82 billion (2016 est.) ++ $64.42 billion (2015 est.)"
+    },
+    "Exports": {
+      "text": "$460.1 billion (2016 est.) ++ $476.5 billion (2015 est.)"
+    },
+    "Exports - commodities": {
+      "text": "machinery and equipment, chemicals, fuels; foodstuffs"
+    },
+    "Exports - partners": {
+      "text": "Germany 24.5%, Belgium 11.1%, UK 9.3%, France 8.4%, Italy 4.2% (2015)"
+    },
+    "Imports": {
+      "text": "$376.3 billion (2016 est.) ++ $389.6 billion (2015 est.)"
+    },
+    "Imports - commodities": {
+      "text": "machinery and transport equipment, chemicals, fuels, foodstuffs, clothing"
+    },
+    "Imports - partners": {
+      "text": "Germany 14.7%, China 14.5%, Belgium 8.2%, US 8.1%, UK 5.1% (2015)"
+    },
+    "Reserves of foreign exchange and gold": {
+      "text": "$38.21 billion (31 December 2015 est.) ++ $42.92 billion (31 December 2014 est.)"
+    },
+    "Debt - external": {
+      "text": "$4.284 trillion (31 March 2016 est.) ++ $4.02 trillion (31 March 2015 est.)"
+    },
+    "Stock of direct foreign investment - at home": {
+      "text": "$844 billion (31 December 2016 est.) ++ $739.9 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - abroad": {
+      "text": "$1.207 trillion (31 December 2016 est.) ++ $1.102 trillion (31 December 2015 est.)"
+    },
+    "Exchange rates": {
+      "text": "euros (EUR) per US dollar - ++ 0.9214 (2016 est.) ++ 0.885 (2015 est.) ++ 0.885 (2014 est.) ++ 0.7634 (2013 est.) ++ 0.78 (2012 est.)"
+    }
+  },
+  "Energy": {
+    "Electricity - production": {
+      "text": "98 billion kWh (2014 est.)"
+    },
+    "Electricity - consumption": {
+      "text": "108 billion kWh (2014 est.)"
+    },
+    "Electricity - exports": {
+      "text": "18 billion kWh (2014 est.)"
+    },
+    "Electricity - imports": {
+      "text": "33 billion kWh (2014 est.)"
+    },
+    "Electricity - installed generating capacity": {
+      "text": "32 million kW (2014 est.)"
+    },
+    "Electricity - from fossil fuels": {
+      "text": "83.7% of total installed capacity (2012 est.)"
+    },
+    "Electricity - from nuclear fuels": {
+      "text": "1.6% of total installed capacity (2012 est.)"
+    },
+    "Electricity - from hydroelectric plants": {
+      "text": "0.1% of total installed capacity (2012 est.)"
+    },
+    "Electricity - from other renewable sources": {
+      "text": "14.5% of total installed capacity (2012 est.)"
+    },
+    "Crude oil - production": {
+      "text": "27,300 bbl/day (2015 est.)"
+    },
+    "Crude oil - exports": {
+      "text": "13,530 bbl/day (2015 est.)"
+    },
+    "Crude oil - imports": {
+      "text": "1.255 million bbl/day (2015 est.)"
+    },
+    "Crude oil - proved reserves": {
+      "text": "144.7 million bbl (1 January 2016 es)"
+    },
+    "Refined petroleum products - production": {
+      "text": "1.278 million bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - consumption": {
+      "text": "945,500 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - exports": {
+      "text": "2.257 million bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - imports": {
+      "text": "1.883 million bbl/day (2015 est.)"
+    },
+    "Natural gas - production": {
+      "text": "70.28 billion cu m",
+      "note": {
+        "text": "the Netherlands has curbed gas production due to seismic activity in the province of Groningen, largest source of gas reserves (2014 est.)"
+      }
+    },
+    "Natural gas - consumption": {
+      "text": "40.26 billion cu m (2014 est.)"
+    },
+    "Natural gas - exports": {
+      "text": "58.75 billion cu m (2014 est.)"
+    },
+    "Natural gas - imports": {
+      "text": "29.12 billion cu m (2014 est.)"
+    },
+    "Natural gas - proved reserves": {
+      "text": "760.9 billion cu m (1 January 2016 es)"
+    },
+    "Carbon dioxide emissions from consumption of energy": {
+      "text": "233 million Mt (2013 est.)"
+    }
+  },
+  "Communications": {
+    "Telephones - fixed lines": {
+      "total subscriptions": {
+        "text": "6,951,528"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "41 (July 2015 est.)"
+      }
+    },
+    "Telephones - mobile cellular": {
+      "total": {
+        "text": "20.809 million"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "123 (July 2015 est.)"
+      }
+    },
+    "Telephone system": {
+      "general assessment": {
+        "text": "highly developed and well maintained"
+      },
+      "domestic": {
+        "text": "extensive fixed-line, fiber-optic network; large cellular telephone system with 5 major operators utilizing the third generation of the Global System for Mobile Communications technology; one in five households now use Voice over the Internet Protocol ser"
+      },
+      "international": {
+        "text": "country code - 31; submarine cables provide links to the US and Europe; satellite earth stations - 5 (3 Intelsat - 1 Indian Ocean and 2 Atlantic Ocean, 1 Eutelsat, and 1 Inmarsat (2011)"
+      }
+    },
+    "Broadcast media": {
+      "text": "more than 90% of households are connected to cable or satellite TV systems that provide a wide range of domestic and foreign channels; public service broadcast system includes multiple broadcasters, 3 with a national reach and the remainder operating in r (2008)"
+    },
+    "Internet country code": {
+      "text": ".nl"
+    },
+    "Internet users": {
+      "total": {
+        "text": "15.778 million"
+      },
+      "percent of population": {
+        "text": "93.1% (July 2015 est.)"
+      }
+    }
+  },
+  "Transportation": {
+    "National air transport system": {
+      "number of registered air carriers": {
+        "text": "8"
+      },
+      "inventory of registered aircraft operated by air carriers": {
+        "text": "244"
+      },
+      "annual passenger traffic on registered air carriers": {
+        "text": "34,870,204"
+      },
+      "annual freight traffic on registered air carriers": {
+        "text": "5,292,794,685 mt-km (2015)"
+      }
+    },
+    "Civil aircraft registration country code prefix": {
+      "text": "PH (2016)"
+    },
+    "Airports": {
+      "text": "29 (2013)"
+    },
+    "Airports - with paved runways": {
+      "total": {
+        "text": "23"
+      },
+      "over 3,047 m": {
+        "text": "3"
+      },
+      "2,438 to 3,047 m": {
+        "text": "11"
+      },
+      "1,524 to 2,437 m": {
+        "text": "1"
+      },
+      "914 to 1,523 m": {
+        "text": "6"
+      },
+      "under 914 m": {
+        "text": "2 (2013)"
+      }
+    },
+    "Airports - with unpaved runways": {
+      "total": {
+        "text": "6"
+      },
+      "914 to 1,523 m": {
+        "text": "4"
+      },
+      "under 914 m": {
+        "text": "2 (2013)"
+      }
+    },
+    "Heliports": {
+      "text": "1 (2013)"
+    },
+    "Pipelines": {
+      "text": "condensate 81 km; gas 8,531 km; oil 578 km; refined products 716 km (2013)"
+    },
+    "Railways": {
+      "total": {
+        "text": "3,223 km"
+      },
+      "standard gauge": {
+        "text": "3,223 km 1.435-m gauge (2,321 km electrified) (2014)"
+      }
+    },
+    "Roadways": {
+      "total": {
+        "text": "138,641 km (includes 3,530 km of expressways) (2014)"
+      }
+    },
+    "Waterways": {
+      "text": "6,237 km (navigable by ships up to 50 tons) (2012)"
+    },
+    "Merchant marine": {
+      "total": {
+        "text": "744"
+      },
+      "by type": {
+        "text": "bulk carrier 4, cargo 514, carrier 15, chemical tanker 56, container 67, liquefied gas 21, passenger 17, passenger/cargo 14, petroleum tanker 4, refrigerated cargo 10, roll on/roll off 19, specialized tanker 3"
+      },
+      "foreign-owned": {
+        "text": "196 (Australia 1, Bermuda 1, Denmark 27, Finland 13, France 2, Germany 86, Ireland 8, Italy 6, Japan 1, Norway 19, Sweden 12, UAE 4, US 16)"
+      },
+      "registered in other countries": {
+        "text": "233 (Antigua and Barbuda 17, Bahamas 23, Belize 1, Canada 1, Curacao 43, Cyprus 23, Germany 1, Gibraltar 34, Italy 2, Liberia 31, Luxembourg 3, Malta 3, Marshall Islands 21, Panama 6, Paraguay 1, Philippines 17, Russia 2, Saint Vincent and the Grenadines 1, S (2010)"
+      }
+    },
+    "Ports and terminals": {
+      "major seaport(s)": {
+        "text": "IJmuiden, Vlissingen"
+      },
+      "river port(s)": {
+        "text": "Amsterdam (Nordsee Kanaal); Moerdijk (Hollands Diep River); Rotterdam (Rhine River); Terneuzen (Western Scheldt River)"
+      },
+      "container port(s) (TEUs)": {
+        "text": "Rotterdam (11,876,920)"
+      },
+      "LNG terminal(s) (import)": {
+        "text": "Rotterdam"
+      }
+    }
+  },
+  "Military and Security": {
+    "Military branches": {
+      "text": "Royal Netherlands Army, Royal Netherlands Navy (includes Naval Air Service and Marine Corps), Royal Netherlands Air Force (Koninklijke Luchtmacht, KLu), Royal Marechaussee (Military Police) (2015)"
+    },
+    "Military service age and obligation": {
+      "text": "17 years of age for an all-volunteer force (2014)"
+    },
+    "Military expenditures": {
+      "text": "1.17% of GDP (2016) ++ 1.16% of GDP (2015) ++ 1.15% of GDP (2014) ++ 1.16% of GDP (2013) ++ 1.23% of GDP (2012)"
+    }
+  },
+  "Transnational Issues": {
+    "Disputes - international": {
+      "text": "none"
+    },
+    "Refugees and internally displaced persons": {
+      "refugees (country of origin)": {
+        "text": "17,444 (Somalia); 16,184 (Syria); 12,397 (Iraq); 10,870 (Eritrea); 5,803 (Afghanistan) (2015)"
+      },
+      "stateless persons": {
+        "text": "1,951 (2015)"
+      }
+    },
+    "Illicit drugs": {
+      "text": "major European producer of synthetic drugs, including ecstasy, and cannabis cultivator; important gateway for cocaine, heroin, and hashish entering Europe; major source of US-bound ecstasy and a significant consumer of ecstasy; a large financial sector vulnerable to money laundering"
+    }
+  }
+}

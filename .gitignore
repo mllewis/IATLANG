@@ -10,7 +10,6 @@ stimuli/*
 *_cache/*
 *_files/*
 *resconnect/
-data/*
 .Rproj.user/*
 *4-Word-Embedding/*
 writeup/cogsci2018/data/study1/Gender-Career\ IAT.public.2005-2016.feather

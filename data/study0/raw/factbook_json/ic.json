@@ -1,0 +1,867 @@
+{
+  "Introduction": {
+    "Background": {
+      "text": "Settled by Norwegian and Celtic (Scottish and Irish) immigrants during the late 9th and 10th centuries A.D., Iceland boasts the world's oldest functioning legislative assembly, the Althingi, established in 930. Independent for over 300 years, Iceland was subsequently ruled by Norway and Denmark. Fallout from the Askja volcano of 1875 devastated the Icelandic economy and caused widespread famine. Over the next quarter century, 20% of the island's population emigrated, mostly to Canada and the US. Denmark granted limited home rule in 1874 and complete independence in 1944. The second half of the 20th century saw substantial economic growth driven primarily by the fishing industry. The economy diversified greatly after the country joined the European Economic Area in 1994, but Iceland was especially hard hit by the global financial crisis in the years following 2008. Literacy, longevity, and social cohesion are first rate by world standards."
+    }
+  },
+  "Geography": {
+    "Location": {
+      "text": "Northern Europe, island between the Greenland Sea and the North Atlantic Ocean, northwest of the United Kingdom"
+    },
+    "Geographic coordinates": {
+      "text": "65 00 N, 18 00 W"
+    },
+    "Map references": {
+      "text": "Arctic Region"
+    },
+    "Area": {
+      "total": {
+        "text": "103,000 sq km"
+      },
+      "land": {
+        "text": "100,250 sq km"
+      },
+      "water": {
+        "text": "2,750 sq km"
+      }
+    },
+    "Area - comparative": {
+      "text": "slightly smaller than Pennsylvania; about the same size as Kentucky"
+    },
+    "Land boundaries": {
+      "text": "0 km"
+    },
+    "Coastline": {
+      "text": "4,970 km"
+    },
+    "Maritime claims": {
+      "territorial sea": {
+        "text": "12 nm"
+      },
+      "exclusive economic zone": {
+        "text": "200 nm"
+      },
+      "continental shelf": {
+        "text": "200 nm or to the edge of the continental margin"
+      }
+    },
+    "Climate": {
+      "text": "temperate; moderated by North Atlantic Current; mild, windy winters; damp, cool summers"
+    },
+    "Terrain": {
+      "text": "mostly plateau interspersed with mountain peaks, icefields; coast deeply indented by bays and fiords"
+    },
+    "Elevation": {
+      "mean elevation": {
+        "text": "557 m"
+      },
+      "elevation extremes": {
+        "text": "lowest point: Atlantic Ocean 0 m ++ highest point: Hvannadalshnukur 2,110 m (at Vatnajokull Glacier)"
+      }
+    },
+    "Natural resources": {
+      "text": "fish, hydropower, geothermal power, diatomite"
+    },
+    "Land use": {
+      "agricultural land": {
+        "text": "18.7% ++ arable land 1.2%; permanent crops 0%; permanent pasture 17.5%"
+      },
+      "forest": {
+        "text": "0.3%"
+      },
+      "other": {
+        "text": "81% (2011 est.)"
+      }
+    },
+    "Irrigated land": {
+      "text": "NA"
+    },
+    "Population - distribution": {
+      "text": "Iceland is almost entirely urban with half of the population located in and around the capital of Reykjavik; smaller agglomerations are primarily found along the coast in the north and west"
+    },
+    "Natural hazards": {
+      "text": "earthquakes and volcanic activity",
+      "volcanism": {
+        "text": "Iceland, situated on top of a hotspot, experiences severe volcanic activity; Eyjafjallajokull (elev. 1,666 m) erupted in 2010, sending ash high into the atmosphere and seriously disrupting European air traffic; scientists continue to monitor nearby Katla (elev. 1,512 m), which has a high probability of eruption in the very near future, potentially disrupting air traffic; Grimsvoetn and Hekla are Iceland's most active volcanoes; other historically active volcanoes include Askja, Bardarbunga, Brennisteinsfjoll, Esjufjoll, Hengill, Krafla, Krisuvik, Kverkfjoll, Oraefajokull, Reykjanes, Torfajokull, and Vestmannaeyjar"
+      }
+    },
+    "Environment - current issues": {
+      "text": "water pollution from fertilizer runoff; inadequate wastewater treatment"
+    },
+    "Environment - international agreements": {
+      "party to": {
+        "text": "Air Pollution, Air Pollution-Persistent Organic Pollutants, Biodiversity, Climate Change, Climate Change-Kyoto Protocol, Desertification, Endangered Species, Hazardous Wastes, Kyoto Protocol, Law of the Sea, Marine Dumping, Ozone Layer Protection, Ship Pollution, Transboundary Air Pollution, Wetlands, Whaling"
+      },
+      "signed, but not ratified": {
+        "text": "Environmental Modification, Marine Life Conservation"
+      }
+    },
+    "Geography - note": {
+      "text": "strategic location between Greenland and Europe; westernmost European country; Reykjavik is the northernmost national capital in the world; more land covered by glaciers than in all of continental Europe"
+    }
+  },
+  "People and Society": {
+    "Population": {
+      "text": "335,878 (July 2016 est.)"
+    },
+    "Nationality": {
+      "noun": {
+        "text": "Icelander(s)"
+      },
+      "adjective": {
+        "text": "Icelandic"
+      }
+    },
+    "Ethnic groups": {
+      "text": "homogeneous mixture of descendants of Norse and Celts 94%, population of foreign origin 6%"
+    },
+    "Languages": {
+      "text": "Icelandic, English, Nordic languages, German widely spoken"
+    },
+    "Religions": {
+      "text": "Evangelical Lutheran Church of Iceland (official) 73.8%, Roman Catholic 3.6%, Reykjavik Free Church 2.9%, Hafnarfjorour Free Church 2%, The Independent Congregation 1%, other religions 3.9% (includes Pentecostal and Asatru Association), none 5.6%, other or unspecified 7.2% (2015 est.)"
+    },
+    "Age structure": {
+      "0-14 years": {
+        "text": "20.4% (male 35,009/female 33,495)"
+      },
+      "15-24 years": {
+        "text": "13.77% (male 23,452/female 22,789)"
+      },
+      "25-54 years": {
+        "text": "39.99% (male 67,878/female 66,428)"
+      },
+      "55-64 years": {
+        "text": "11.75% (male 19,848/female 19,622)"
+      },
+      "65 years and over": {
+        "text": "14.1% (male 22,130/female 25,227) (2016 est.)"
+      }
+    },
+    "Dependency ratios": {
+      "total dependency ratio": {
+        "text": "51.6%"
+      },
+      "youth dependency ratio": {
+        "text": "30.8%"
+      },
+      "elderly dependency ratio": {
+        "text": "20.8%"
+      },
+      "potential support ratio": {
+        "text": "4.8% (2015 est.)"
+      }
+    },
+    "Median age": {
+      "total": {
+        "text": "36.3 years"
+      },
+      "male": {
+        "text": "35.7 years"
+      },
+      "female": {
+        "text": "36.9 years (2016 est.)"
+      }
+    },
+    "Population growth rate": {
+      "text": "1.17% (2016 est.)"
+    },
+    "Birth rate": {
+      "text": "13.8 births/1,000 population (2016 est.)"
+    },
+    "Death rate": {
+      "text": "6.3 deaths/1,000 population (2016 est.)"
+    },
+    "Net migration rate": {
+      "text": "4.2 migrant(s)/1,000 population (2016 est.)"
+    },
+    "Population distribution": {
+      "text": "Iceland is almost entirely urban with half of the population located in and around the capital of Reykjavik; smaller agglomerations are primarily found along the coast in the north and west"
+    },
+    "Urbanization": {
+      "urban population": {
+        "text": "94.1% of total population (2015)"
+      },
+      "rate of urbanization": {
+        "text": "1.25% annual rate of change (2010-15 est.)"
+      }
+    },
+    "Major urban areas - population": {
+      "text": "REYKJAVIK (capital) 184,000 (2014)"
+    },
+    "Sex ratio": {
+      "at birth": {
+        "text": "1.05 male(s)/female"
+      },
+      "0-14 years": {
+        "text": "1.05 male(s)/female"
+      },
+      "15-24 years": {
+        "text": "1.03 male(s)/female"
+      },
+      "25-54 years": {
+        "text": "1.02 male(s)/female"
+      },
+      "55-64 years": {
+        "text": "1.01 male(s)/female"
+      },
+      "65 years and over": {
+        "text": "0.88 male(s)/female"
+      },
+      "total population": {
+        "text": "1.01 male(s)/female (2016 est.)"
+      }
+    },
+    "Mother's mean age at first birth": {
+      "text": "27 (2011 est.)"
+    },
+    "Maternal mortality rate": {
+      "text": "3 deaths/100,000 live births (2015 est.)"
+    },
+    "Infant mortality rate": {
+      "total": {
+        "text": "2.1 deaths/1,000 live births"
+      },
+      "male": {
+        "text": "2.2 deaths/1,000 live births"
+      },
+      "female": {
+        "text": "1.9 deaths/1,000 live births (2016 est.)"
+      }
+    },
+    "Life expectancy at birth": {
+      "total population": {
+        "text": "83 years"
+      },
+      "male": {
+        "text": "80.9 years"
+      },
+      "female": {
+        "text": "85.3 years (2016 est.)"
+      }
+    },
+    "Total fertility rate": {
+      "text": "2.01 children born/woman (2016 est.)"
+    },
+    "Health expenditures": {
+      "text": "8.9% of GDP (2014)"
+    },
+    "Physicians density": {
+      "text": "3.48 physicians/1,000 population (2012)"
+    },
+    "Hospital bed density": {
+      "text": "3.2 beds/1,000 population (2012)"
+    },
+    "Drinking water source": {
+      "improved": {
+        "text": " ++ urban: 100% of population ++ rural: 100% of population ++ total: 100% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 0% of population ++ rural: 0% of population ++ total: 0% of population (2015 est.)"
+      }
+    },
+    "Sanitation facility access": {
+      "mproved": {
+        "text": " ++ urban: 98.7% of population ++ rural: 100% of population ++ total: 98.8% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 1.3% of population ++ rural: 0% of population ++ total: 1.2% of population (2015 est.)"
+      }
+    },
+    "HIV/AIDS - adult prevalence rate": {
+      "text": "NA"
+    },
+    "HIV/AIDS - people living with HIV/AIDS": {
+      "text": "NA"
+    },
+    "HIV/AIDS - deaths": {
+      "text": "NA"
+    },
+    "Obesity - adult prevalence rate": {
+      "text": "23.9% (2014)"
+    },
+    "Education expenditures": {
+      "text": "7.8% of GDP (2013)"
+    },
+    "School life expectancy (primary to tertiary education)": {
+      "total": {
+        "text": "19 years"
+      },
+      "male": {
+        "text": "18 years"
+      },
+      "female": {
+        "text": "20 years (2012)"
+      }
+    },
+    "Unemployment, youth ages 15-24": {
+      "total": {
+        "text": "9.8%"
+      },
+      "male": {
+        "text": "12.9%"
+      },
+      "female": {
+        "text": "6.6% (2014 est.)"
+      }
+    }
+  },
+  "Government": {
+    "Country name": {
+      "conventional long form": {
+        "text": "Republic of Iceland"
+      },
+      "conventional short form": {
+        "text": "Iceland"
+      },
+      "local long form": {
+        "text": "Lydveldid Island"
+      },
+      "local short form": {
+        "text": "Island"
+      },
+      "etymology": {
+        "text": "Floki VILGERDARSON, an early explorer of the island (9th century), applied the name \"land of ice\" after spotting a fjord full of drift ice to the north and spending a bitter winter on the island; he eventually settled on the island, however, after he saw how it greened up in the summer and that it was in fact habitable"
+      }
+    },
+    "Government type": {
+      "text": "parliamentary republic"
+    },
+    "Capital": {
+      "name": {
+        "text": "Reykjavik"
+      },
+      "geographic coordinates": {
+        "text": "64 09 N, 21 57 W"
+      },
+      "time difference": {
+        "text": "UTC 0 (5 hours ahead of Washington, DC, during Standard Time)"
+      }
+    },
+    "Administrative divisions": {
+      "text": "8 regions; Austurland, Hofudhborgarsvaedhi, Nordhurland Eystra, Nordhurland Vestra, Sudhurland, Sudhurnes, Vestfirdhir, Vesturland"
+    },
+    "Independence": {
+      "text": "1 December 1918 (became a sovereign state under the Danish Crown); 17 June 1944 (from Denmark; birthday of Jon SIGURDSSON leader of Iceland's 19th Century independence movement)"
+    },
+    "National holiday": {
+      "text": "Independence Day, 17 June (1944)"
+    },
+    "Constitution": {
+      "history": {
+        "text": "several previous; latest ratified 16 June 1944, effective 17 June 1944 (at independence)"
+      },
+      "amendments": {
+        "text": "proposed by the Althingi; passage requires approval by the Althingi and by the next elected Althingi, and confirmation by the president of the republic; proposed amendments to Article 62 of the constitution – that the Evangelical Lutheran Church shall be the state church of Iceland – also require passage by referendum; amended many times, last in 2013 (2016)"
+      }
+    },
+    "Legal system": {
+      "text": "civil law system influenced by the Danish model"
+    },
+    "International law organization participation": {
+      "text": "has not submitted an ICJ jurisdiction declaration; accepts ICCt jurisdiction"
+    },
+    "Citizenship": {
+      "citizenship by birth": {
+        "text": "no"
+      },
+      "citizenship by descent only": {
+        "text": "at least one parent must be a citizen of Iceland"
+      },
+      "dual citizenship recognized": {
+        "text": "yes"
+      },
+      "residency requirement for naturalization": {
+        "text": "3 to 7 years"
+      }
+    },
+    "Suffrage": {
+      "text": "18 years of age; universal"
+    },
+    "Executive branch": {
+      "chief of state": {
+        "text": "President Gudni Thorlacius JOHANNESSON (since 1 August 2016)"
+      },
+      "head of government": {
+        "text": "Prime Minister Sigurdur Ingi JOHANNSSON (since 7 April 2016)"
+      },
+      "cabinet": {
+        "text": "Cabinet appointed by the prime minister"
+      },
+      "elections/appointments": {
+        "text": "president directly elected by simple majority popular vote for a 4-year term (no term limits); election last held on 25 June 2016 (next to be held in June 2020); following legislative elections, the leader of the majority party or majority coalition becomes prime minister"
+      },
+      "election results": {
+        "text": "Gudni Thorlacius JOHANNESSON elected president; percent of vote - Gudni Thorlacius JOHANNESSON (IP) 39.1%, Halla TOMASDOTTIR (independent) 27.9%, Andri Snaer MAGNASON (independent) 14.3%, Davio ODDSSON (IP) 13.7%, Sturla JONSSON (Sturla JONSSON Party) 3.5%, invalid 1.5%"
+      }
+    },
+    "Legislative branch": {
+      "description": {
+        "text": "unicameral Althingi or Parliament (63 seats; members directly elected in multi-seat constituencies by proportional representation vote to serve 4-year terms)"
+      },
+      "elections": {
+        "text": "last held on 29 October 2016 (next to be held in 2020)"
+      },
+      "election results": {
+        "text": "percent of vote by party - IP 29%, LGM 15.9%, Pirate Party 14.5%, PP 11.5%, Vioreisn 10.5%, BF 7.2%, SDA 5.7%, other 2.3%; seats by party - IP 21, LGM 10, Pirate Party 10, PP 8, Vioreisn 7, BF 4, SDA 3"
+      }
+    },
+    "Judicial branch": {
+      "highest court(s)": {
+        "text": "Supreme Court or Haestirettur (consists of 9 judges)"
+      },
+      "judge selection and term of office": {
+        "text": "judges proposed by Ministry of Interior selection committee and appointed by the president; judges appointed for an indefinite period"
+      },
+      "subordinate courts": {
+        "text": "8 district courts; Labor Court"
+      }
+    },
+    "Political parties and leaders": {
+      "text": "Bright Future (Bjort framtid) or BF [Ottarr PROPPE] ++ Independence Party (Sjalfstaedisflokkurinn) or IP [Bjarni BENEDIKTSSON] ++ Left-Green Movement (Vinstrihreyfingin-graent frambod) or LGM [Katrin JAKOBSDOTTIR] ++ Pirate Party (Piratar) or PIP [Birgitta JONSDOTTIR] ++ Progressive Party (Framsoknarflokkurinn) or PP [Sigmundur David GUNNLAUGSSON] ++ Social Democratic Alliance (Samfylkingin) or SDA [Arni Pall ARNASON]"
+    },
+    "International organization participation": {
+      "text": "Arctic Council, Australia Group, BIS, CBSS, CD, CE, EAPC, EBRD, EFTA, FAO, FATF, IAEA, IBRD, ICAO, ICC (national committees), ICCt, ICRM, IDA, IFAD, IFC, IFRCS, IHO, ILO, IMF, IMO, IMSO, Interpol, IOC, IOM, IPU, ISO, ITSO, ITU, ITUC (NGOs), MIGA, NATO, NC, NEA, NIB, NSG, OAS (observer), OECD, OPCW, OSCE, PCA, Schengen Convention, UN, UNCTAD, UNESCO, UPU, WCO, WHO, WIPO, WMO, WTO"
+    },
+    "Diplomatic representation in the US": {
+      "chief of mission": {
+        "text": "Ambassador Geir Hilmar HAARDE (since 23 February 2015)"
+      },
+      "chancery": {
+        "text": "House of Sweden, 2900 K Street NW "
+      },
+      "telephone": {
+        "text": "[1] (202) 265-6653"
+      },
+      "FAX": {
+        "text": "[1] (202) 265-6656"
+      },
+      "consulate(s) general": {
+        "text": "New York"
+      }
+    },
+    "Diplomatic representation from the US": {
+      "chief of mission": {
+        "text": "Ambassador Robert C. BARBER (since 23 January 2015)"
+      },
+      "embassy": {
+        "text": "Laufasvegur 21, 101 Reykjavik"
+      },
+      "mailing address": {
+        "text": "US Department of State, 5640 Reykjavik Place, Washington, D.C. 20521-5640"
+      },
+      "telephone": {
+        "text": "[354] 595-22-00"
+      },
+      "FAX": {
+        "text": "[354] 562-9118"
+      }
+    },
+    "Flag description": {
+      "text": "blue with a red cross outlined in white extending to the edges of the flag; the vertical part of the cross is shifted to the hoist side in the style of the Dannebrog (Danish flag); the colors represent three of the elements that make up the island: red is for the island's volcanic fires, white recalls the snow and ice fields of the island, and blue is for the surrounding ocean"
+    },
+    "National symbol(s)": {
+      "text": "gyrfalcon; national colors: blue, white, red"
+    },
+    "National anthem": {
+      "name": {
+        "text": "\"Lofsongur\" (Song of Praise)"
+      },
+      "lyrics/music": {
+        "text": "Matthias JOCHUMSSON/Sveinbjorn SVEINBJORNSSON"
+      },
+      "note": {
+        "text": "adopted 1944; also known as \"O, Gud vors lands\" (O, God of Our Land), the anthem was originally written and performed in 1874"
+      }
+    }
+  },
+  "Economy": {
+    "Economy - overview": {
+      "text": "Iceland's Scandinavian-type social-market economy combines a capitalist structure and free-market principles with an extensive welfare system. Except for a brief period during the 2008 crisis, Iceland has achieved high growth, low unemployment, and a remarkably even distribution of income. The economy depends heavily on the fishing industry, which provides 40% of merchandise export earnings, more than 12% of GDP, and employs nearly 5% of the work force. It remains sensitive to declining fish stocks as well as to fluctuations in world prices for its main exports: fish and fish products, aluminum, and ferrosilicon. Since 2010, tourism has become the main pillar of Icelandic economic growth, with the number of tourists expected to reach or exceed 4.5 times the Icelandic population in 2016. ++  ++ Iceland's economy has been diversifying into manufacturing and service industries in the last decade, particularly within the fields of tourism, software production, and biotechnology. In fall 2013, the Icelandic Government approved a joint application by Icelandic, Chinese, and Norwegian energy firms to conduct oil exploration off Iceland’s northeast coast, although no exploration has yet taken place. Abundant geothermal and hydropower sources have attracted substantial foreign investment in the aluminum sector, boosted economic growth, and sparked some interest from high-tech firms looking to establish data centers using cheap green energy, although the financial crisis has put several investment projects on hold. ++  ++ Following the privatization of the banking sector in the early 2000s, domestic banks expanded aggressively in foreign markets, and consumers and businesses borrowed heavily in foreign currencies. Worsening global financial conditions throughout 2008 resulted in a sharp depreciation of the krona vis-a-vis other major currencies. The foreign exposure of Icelandic banks, whose loans and other assets totaled more than 10 times the country's GDP, became unsustainable. Iceland's three largest banks collapsed in late 2008. The country secured over $10 billion in loans from the IMF and other countries to stabilize its currency and financial sector, and to back government guarantees for foreign deposits in Icelandic banks. GDP fell 6.8% in 2009, and unemployment peaked at 9.4% in February 2009. Three new banks were established to take over the domestic assets of the collapsed banks. Two of them have majority ownership by the State, which intends to re-privatize them. ++  ++ Since the collapse of Iceland's financial sector, government economic priorities have included stabilizing the krona, implementing capital controls, reducing Iceland's high budget deficit, containing inflation, addressing high household debt, restructuring the financial sector, and diversifying the economy. Iceland’s financial woes prompted an initial increase in public support to join the EU and the euro zone, with accession negotiations beginning in July 2010, but negotiations were suspended under the 2013 center-right government. Most macroeconomic indicators and employment have rebounded to pre-crisis levels, driven primarily by the unprecedented growth in tourism – averaging over 20% annually – following the well publicized volcanic eruption in 2010."
+    },
+    "GDP (purchasing power parity)": {
+      "text": "$16.15 billion (2016 est.) ++ $15.38 billion (2015 est.) ++ $14.8 billion (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "GDP (official exchange rate)": {
+      "text": "$19.44 billion (2015 est.)"
+    },
+    "GDP - real growth rate": {
+      "text": "4.9% (2016 est.) ++ 4% (2015 est.) ++ 2% (2014 est.)"
+    },
+    "GDP - per capita (PPP)": {
+      "text": "$48,100 (2016 est.) ++ $46,200 (2015 est.) ++ $45,000 (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "Gross national saving": {
+      "text": "23.5% of GDP (2016 est.) ++ 23.5% of GDP (2015 est.) ++ 21% of GDP (2014 est.)"
+    },
+    "GDP - composition, by end use": {
+      "household consumption": {
+        "text": "49.3%"
+      },
+      "government consumption": {
+        "text": "22.5%"
+      },
+      "investment in fixed capital": {
+        "text": "19.8%"
+      },
+      "investment in inventories": {
+        "text": "-0.1%"
+      },
+      "exports of goods and services": {
+        "text": "52.4%"
+      },
+      "imports of goods and services": {
+        "text": "-43.9% (2016 est.)"
+      }
+    },
+    "GDP - composition, by sector of origin": {
+      "agriculture": {
+        "text": "5.9%"
+      },
+      "industry": {
+        "text": "20.4%"
+      },
+      "services": {
+        "text": "73.7% (2016 est.)"
+      }
+    },
+    "Agriculture - products": {
+      "text": "potatoes, carrots, green vegetables; mutton, chicken, pork, beef, dairy products; fish"
+    },
+    "Industries": {
+      "text": "tourism, fish processing; aluminum smelting, ferrosilicon production; geothermal power, hydropower, tourism"
+    },
+    "Industrial production growth rate": {
+      "text": "1.4% (2016 est.)"
+    },
+    "Labor force": {
+      "text": "195,000 (2016 est.)"
+    },
+    "Labor force - by occupation": {
+      "agriculture": {
+        "text": "4.8%"
+      },
+      "industry": {
+        "text": "22.2%"
+      },
+      "services": {
+        "text": "73% (2008)"
+      }
+    },
+    "Unemployment rate": {
+      "text": "2.7% (2016 est.) ++ 4% (2015 est.)"
+    },
+    "Population below poverty line": {
+      "text": "NA%",
+      "note": {
+        "text": "332,100 families (2011 est.)"
+      }
+    },
+    "Household income or consumption by percentage share": {
+      "lowest 10%": {
+        "text": "NA%"
+      },
+      "highest 10%": {
+        "text": "NA%"
+      }
+    },
+    "Distribution of family income - Gini index": {
+      "text": "28 (2006) ++ 25 (2005)"
+    },
+    "Budget": {
+      "revenues": {
+        "text": "$10.35 billion"
+      },
+      "expenditures": {
+        "text": "$7.911 billion (2016 est.)"
+      }
+    },
+    "Taxes and other revenues": {
+      "text": "53.2% of GDP (2016 est.)"
+    },
+    "Budget surplus (+) or deficit (-)": {
+      "text": "12.5% of GDP (2016 est.)"
+    },
+    "Public debt": {
+      "text": "56.5% of GDP (2016 est.) ++ 67.6% of GDP (2015 est.)"
+    },
+    "Fiscal year": {
+      "text": "calendar year"
+    },
+    "Inflation rate (consumer prices)": {
+      "text": "1.9% (2016 est.) ++ 1.6% (2015 est.)"
+    },
+    "Central bank discount rate": {
+      "text": "5.4% (31 January 2012) ++ 5.75% (31 December 2010)"
+    },
+    "Commercial bank prime lending rate": {
+      "text": "7.6% (31 December 2016 est.) ++ 7.61% (31 December 2015 est.)"
+    },
+    "Stock of narrow money": {
+      "text": "$3.327 billion (31 December 2016 est.) ++ $3.314 billion (31 December 2015 est.)"
+    },
+    "Stock of broad money": {
+      "text": "$8.368 billion (31 December 2013 est.) ++ $8.12 billion (31 December 2013 est.)"
+    },
+    "Stock of domestic credit": {
+      "text": "$18.93 billion (31 December 2016 est.) ++ $18.25 billion (31 December 2015 est.)"
+    },
+    "Market value of publicly traded shares": {
+      "text": "$2.825 billion (31 December 2012 est.) ++ $2.021 billion (31 December 2011 est.) ++ $1.996 billion (31 December 2010 est.)"
+    },
+    "Current account balance": {
+      "text": "$567 million (2016 est.) ++ $710 million (2015 est.)"
+    },
+    "Exports": {
+      "text": "$4.6 billion (2016 est.) ++ $4.653 billion (2015 est.)"
+    },
+    "Exports - commodities": {
+      "text": "fish and fish products 40%, aluminum, animal products, ferrosilicon, diatomite (2010 est.)"
+    },
+    "Exports - partners": {
+      "text": "Netherlands 26.1%, UK 11.6%, Spain 11.5%, Germany 7.4%, France 5.7%, US 5.7%, Norway 4.7% (2015)"
+    },
+    "Imports": {
+      "text": "$5.024 billion (2016 est.) ++ $4.924 billion (2015 est.)"
+    },
+    "Imports - commodities": {
+      "text": "machinery and equipment, petroleum products, foodstuffs, textiles"
+    },
+    "Imports - partners": {
+      "text": "Norway 10.1%, Germany 8.6%, US 7.9%, China 7.9%, Denmark 7.1%, Netherlands 5.9%, Brazil 5.8%, UK 5% (2015)"
+    },
+    "Reserves of foreign exchange and gold": {
+      "text": "$4.412 billion (31 December 2016 est.) ++ $5.041 billion (31 December 2015 est.)"
+    },
+    "Debt - external": {
+      "text": "$27.3 billion (31 December 2016 est.) ++ $31.04 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - at home": {
+      "text": "$17.19 billion (31 December 2016 est.) ++ $16.72 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - abroad": {
+      "text": "$15.44 billion (31 December 2016 est.) ++ $15.59 billion (31 December 2015 est.)"
+    },
+    "Exchange rates": {
+      "text": "Icelandic kronur (ISK) per US dollar - ++ 129.3 (2016 est.) ++ 131.92 (2015 est.) ++ 131.92 (2014 est.) ++ 116.77 (2013 est.) ++ 125.08 (2012 est.)"
+    }
+  },
+  "Energy": {
+    "Electricity - production": {
+      "text": "18 billion kWh (2014 est.)"
+    },
+    "Electricity - consumption": {
+      "text": "17 billion kWh (2014 est.)"
+    },
+    "Electricity - exports": {
+      "text": "0 kWh (2013 est.)"
+    },
+    "Electricity - imports": {
+      "text": "0 kWh (2013 est.)"
+    },
+    "Electricity - installed generating capacity": {
+      "text": "2.8 million kW (2014 est.)"
+    },
+    "Electricity - from fossil fuels": {
+      "text": "4.3% of total installed capacity (2012 est.)"
+    },
+    "Electricity - from nuclear fuels": {
+      "text": "0% of total installed capacity (2012 est.)"
+    },
+    "Electricity - from hydroelectric plants": {
+      "text": "70.6% of total installed capacity (2012 est.)"
+    },
+    "Electricity - from other renewable sources": {
+      "text": "25.1% of total installed capacity (2012 est.)"
+    },
+    "Crude oil - production": {
+      "text": "0 bbl/day (2015 est.)"
+    },
+    "Crude oil - exports": {
+      "text": "0 bbl/day (2015 est.)"
+    },
+    "Crude oil - imports": {
+      "text": "0 bbl/day (2015 est.)"
+    },
+    "Crude oil - proved reserves": {
+      "text": "0 bbl (1 January 2016 es)"
+    },
+    "Refined petroleum products - production": {
+      "text": "0 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - consumption": {
+      "text": "16,250 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - exports": {
+      "text": "2,866 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - imports": {
+      "text": "17,550 bbl/day (2015 est.)"
+    },
+    "Natural gas - production": {
+      "text": "0 cu m (2014 est.)"
+    },
+    "Natural gas - consumption": {
+      "text": "0 cu m (2014 est.)"
+    },
+    "Natural gas - exports": {
+      "text": "0 cu m (2014 est.)"
+    },
+    "Natural gas - imports": {
+      "text": "0 cu m (2014 est.)"
+    },
+    "Natural gas - proved reserves": {
+      "text": "0 cu m (1 January 2014 es)"
+    },
+    "Carbon dioxide emissions from consumption of energy": {
+      "text": "3.3 million Mt (2013 est.)"
+    }
+  },
+  "Communications": {
+    "Telephones - fixed lines": {
+      "total subscriptions": {
+        "text": "168,149"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "51 (July 2015 est.)"
+      }
+    },
+    "Telephones - mobile cellular": {
+      "total": {
+        "text": "384,000"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "116 (July 2015 est.)"
+      }
+    },
+    "Telephone system": {
+      "general assessment": {
+        "text": "telecommunications infrastructure is modern and fully digitized, with satellite-earth stations, fiber-optic cables, and an extensive broadband network"
+      },
+      "domestic": {
+        "text": "liberalization of the telecommunications sector beginning in the late 1990s has led to increased competition especially in the mobile services segment of the market"
+      },
+      "international": {
+        "text": "country code - 354; the CANTAT-3 and FARICE-1 submarine cable systems provide connectivity to Canada, the Faroe Islands, UK, Denmark, and Germany; a planned new section of the Hibernia-Atlantic submarine cable will provide additional connectivity to Canad (2015)"
+      }
+    },
+    "Broadcast media": {
+      "text": "state-owned public TV broadcaster operates 1 TV channel nationally; several privately owned TV stations broadcast nationally and roughly another half-dozen operate locally; about one-half the households utilize multi-channel cable or satellite TV services (2007)"
+    },
+    "Internet country code": {
+      "text": ".is"
+    },
+    "Internet users": {
+      "total": {
+        "text": "326,000"
+      },
+      "percent of population": {
+        "text": "98.2% (July 2015 est.)"
+      }
+    }
+  },
+  "Transportation": {
+    "National air transport system": {
+      "number of registered air carriers": {
+        "text": "5"
+      },
+      "inventory of registered aircraft operated by air carriers": {
+        "text": "43"
+      },
+      "annual passenger traffic on registered air carriers": {
+        "text": "3,413,950"
+      },
+      "annual freight traffic on registered air carriers": {
+        "text": "102,356,809 mt-km (2015)"
+      }
+    },
+    "Civil aircraft registration country code prefix": {
+      "text": "TF (2016)"
+    },
+    "Airports": {
+      "text": "96 (2013)"
+    },
+    "Airports - with paved runways": {
+      "total": {
+        "text": "7"
+      },
+      "over 3,047 m": {
+        "text": "1"
+      },
+      "1,524 to 2,437 m": {
+        "text": "3"
+      },
+      "914 to 1,523 m": {
+        "text": "3 (2013)"
+      }
+    },
+    "Airports - with unpaved runways": {
+      "total": {
+        "text": "89"
+      },
+      "1,524 to 2,437 m": {
+        "text": "3"
+      },
+      "914 to 1,523 m": {
+        "text": "26"
+      },
+      "under 914 m": {
+        "text": "60 (2013)"
+      }
+    },
+    "Roadways": {
+      "total": {
+        "text": "12,890 km"
+      },
+      "paved/oiled gravel": {
+        "text": "4,782 km (excludes urban roads)"
+      },
+      "unpaved": {
+        "text": "8,108 km (2012)"
+      }
+    },
+    "Merchant marine": {
+      "total": {
+        "text": "2"
+      },
+      "by type": {
+        "text": "passenger/cargo 2"
+      },
+      "registered in other countries": {
+        "text": "19 (Antigua and Barbuda 10, Belize 1, Faroe Islands 4, Finland 1, Gibraltar 1, Norway 2) (2010)"
+      }
+    },
+    "Ports and terminals": {
+      "major seaport(s)": {
+        "text": "Grundartangi, Hafnarfjordur, Reykjavik"
+      }
+    }
+  },
+  "Military and Security": {
+    "Military branches": {
+      "text": "no regular military forces; Icelandic National Police; Icelandic Coast Guard (2013)"
+    },
+    "Military expenditures": {
+      "text": "0.13% of GDP (2012) ++ 0.14% of GDP (2011) ++ 0.13% of GDP (2010)"
+    },
+    "Military - note": {
+      "text": "Iceland is the only NATO member that has no standing military force; all US military forces in Iceland were withdrawn as of October 2006; defense of Iceland remains a NATO commitment and NATO maintains an air policing presence in Icelandic airspace; Iceland participates in international peacekeeping missions with the civilian-manned Icelandic Crisis Response Unit (ICRU)"
+    }
+  },
+  "Transnational Issues": {
+    "Disputes - international": {
+      "text": "Iceland, the UK, and Ireland dispute Denmark's claim that the Faroe Islands' continental shelf extends beyond 200 nm; the European Free Trade Association Surveillance Authority filed a suit against Iceland, claiming the country violated the Agreement on the European Economic Area in failing to pay minimum compensation to Icesave depositors"
+    },
+    "Refugees and internally displaced persons": {
+      "stateless persons": {
+        "text": "131 (2015)"
+      }
+    }
+  }
+}

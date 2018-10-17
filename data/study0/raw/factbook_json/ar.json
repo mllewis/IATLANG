@@ -1,0 +1,975 @@
+{
+  "Introduction": {
+    "Background": {
+      "text": "In 1816, the United Provinces of the Rio Plata declared their independence from Spain. After Bolivia, Paraguay, and Uruguay went their separate ways, the area that remained became Argentina. The country's population and culture were heavily shaped by immigrants from throughout Europe, with Italy and Spain providing the largest percentage of newcomers from 1860 to 1930. Up until about the mid-20th century, much of Argentina's history was dominated by periods of internal political conflict between Federalists and Unitarians and between civilian and military factions. ++ After World War II, an era of Peronist populism and direct and indirect military interference in subsequent governments was followed by a military junta that took power in 1976. Democracy returned in 1983 after a failed bid to seize the Falkland Islands (Islas Malvinas) by force, and has persisted despite numerous challenges, the most formidable of which was a severe economic crisis in 2001-02 that led to violent public protests and the successive resignations of several presidents."
+    }
+  },
+  "Geography": {
+    "Location": {
+      "text": "Southern South America, bordering the South Atlantic Ocean, between Chile and Uruguay"
+    },
+    "Geographic coordinates": {
+      "text": "34 00 S, 64 00 W"
+    },
+    "Map references": {
+      "text": "South America"
+    },
+    "Area": {
+      "total": {
+        "text": "2,780,400 sq km"
+      },
+      "land": {
+        "text": "2,736,690 sq km"
+      },
+      "water": {
+        "text": "43,710 sq km"
+      }
+    },
+    "Area - comparative": {
+      "text": "slightly less than three-tenths the size of the US"
+    },
+    "Land boundaries": {
+      "total": {
+        "text": "11,968 km"
+      },
+      "border countries": {
+        "text": "Bolivia 942 km, Brazil 1,263 km, Chile 6,691 km, Paraguay 2,531 km, Uruguay 541 km"
+      }
+    },
+    "Coastline": {
+      "text": "4,989 km"
+    },
+    "Maritime claims": {
+      "territorial sea": {
+        "text": "12 nm"
+      },
+      "contiguous zone": {
+        "text": "24 nm"
+      },
+      "exclusive economic zone": {
+        "text": "200 nm"
+      },
+      "continental shelf": {
+        "text": "200 nm or to the edge of the continental margin"
+      }
+    },
+    "Climate": {
+      "text": "mostly temperate; arid in southeast; subantarctic in southwest"
+    },
+    "Terrain": {
+      "text": "rich plains of the Pampas in northern half, flat to rolling plateau of Patagonia in south, rugged Andes along western border"
+    },
+    "Elevation": {
+      "mean elevation": {
+        "text": "595 m"
+      },
+      "elevation extremes": {
+        "text": "lowest point: Laguna del Carbon -105 m (located between Puerto San Julian and Comandante Luis Piedra Buena in the province of Santa Cruz) ++ highest point: Cerro Aconcagua 6,960 m (located in the northwestern corner of the province of Mendoza; highest point in South America)"
+      }
+    },
+    "Natural resources": {
+      "text": "fertile plains of the pampas, lead, zinc, tin, copper, iron ore, manganese, petroleum, uranium, arable land"
+    },
+    "Land use": {
+      "agricultural land": {
+        "text": "53.9% ++ arable land 13.9%; permanent crops 0.4%; permanent pasture 39.6%"
+      },
+      "forest": {
+        "text": "10.7%"
+      },
+      "other": {
+        "text": "35.4% (2011 est.)"
+      }
+    },
+    "Irrigated land": {
+      "text": "23,600 sq km (2012)"
+    },
+    "Population - distribution": {
+      "text": "one-third of the population lives in Buenos Aires; pockets of agglomeration occur throughout the northern and central parts of the country; Patagonia to the south remains sparsely populated"
+    },
+    "Natural hazards": {
+      "text": "San Miguel de Tucuman and Mendoza areas in the Andes subject to earthquakes; pamperos are violent windstorms that can strike the pampas and northeast; heavy flooding in some areas",
+      "volcanism": {
+        "text": "volcanic activity in the Andes Mountains along the Chilean border; Copahue (elev. 2,997 m) last erupted in 2000; other historically active volcanoes include Llullaillaco, Maipo, Planchon-Peteroa, San Jose, Tromen, Tupungatito, and Viedma"
+      }
+    },
+    "Environment - current issues": {
+      "text": "environmental problems (urban and rural) typical of an industrializing economy such as deforestation, soil degradation, desertification, air pollution, and water pollution",
+      "note": {
+        "text": "Argentina is a world leader in setting voluntary greenhouse gas targets"
+      }
+    },
+    "Environment - international agreements": {
+      "party to": {
+        "text": "Antarctic-Environmental Protocol, Antarctic-Marine Living Resources, Antarctic Seals, Antarctic Treaty, Biodiversity, Climate Change, Climate Change-Kyoto Protocol, Desertification, Endangered Species, Environmental Modification, Hazardous Wastes, Law of the Sea, Marine Dumping, Ozone Layer Protection, Ship Pollution, Wetlands, Whaling"
+      },
+      "signed, but not ratified": {
+        "text": "Marine Life Conservation"
+      }
+    },
+    "Geography - note": {
+      "text": "second-largest country in South America (after Brazil); strategic location relative to sea lanes between the South Atlantic and the South Pacific Oceans (Strait of Magellan, Beagle Channel, Drake Passage); diverse geophysical landscapes range from tropical climates in the north to tundra in the far south; Cerro Aconcagua is the Western Hemisphere's tallest mountain, while Laguna del Carbon is the lowest point in the Western Hemisphere"
+    }
+  },
+  "People and Society": {
+    "Population": {
+      "text": "43,886,748 (July 2016 est.)"
+    },
+    "Nationality": {
+      "noun": {
+        "text": "Argentine(s)"
+      },
+      "adjective": {
+        "text": "Argentine"
+      }
+    },
+    "Ethnic groups": {
+      "text": "white (mostly Spanish and Italian) 97%, mestizo (mixed white and Amerindian ancestry), Amerindian, or other non-white groups 3%"
+    },
+    "Languages": {
+      "text": "Spanish (official), Italian, English, German, French, indigenous (Mapudungun, Quechua)"
+    },
+    "Religions": {
+      "text": "nominally Roman Catholic 92% (less than 20% practicing), Protestant 2%, Jewish 2%, other 4%"
+    },
+    "Demographic profile": {
+      "text": "Argentina's population continues to grow but at a slower rate because of its steadily declining birth rate. Argentina's fertility decline began earlier than in the rest of Latin America, occurring most rapidly between the early 20th century and the 1950s and then becoming more gradual. Life expectancy has been improving, most notably among the young and the poor. While the population under age 15 is shrinking, the youth cohort - ages 15-24 - is the largest in Argentina's history and will continue to bolster the working-age population. If this large working-age population is well-educated and gainfully employed, Argentina is likely to experience an economic boost and possibly higher per capita savings and investment. Although literacy and primary school enrollment are nearly universal, grade repetition is problematic and secondary school completion is low. Both of these issues vary widely by region and socioeconomic group. Argentina has been primarily a country of immigration for most of its history, welcoming European immigrants after its independence in the 19th century and attracting especially large numbers from Spain and Italy. European immigration diminished in the 1950s, when Argentina's military dictatorships tightened immigration rules and European economies rebounded. Regional migration, however, continued to supply low-skilled workers and today it accounts for three-quarters of Argentina's immigrant population. The first waves of highly skilled Argentine emigrant workers headed mainly to the United States and Spain in the 1960s and 1970s. The 2008 European economic crisis drove the return migration of some Argentinean and other Latin American nationals, as well as the immigration of Europeans to South America, where Argentina was a key recipient."
+    },
+    "Age structure": {
+      "0-14 years": {
+        "text": "24.72% (male 5,590,165/female 5,259,163)"
+      },
+      "15-24 years": {
+        "text": "15.43% (male 3,461,288/female 3,312,056)"
+      },
+      "25-54 years": {
+        "text": "39.24% (male 8,593,500/female 8,627,846)"
+      },
+      "55-64 years": {
+        "text": "9.14% (male 1,948,179/female 2,064,463)"
+      },
+      "65 years and over": {
+        "text": "11.46% (male 2,104,830/female 2,925,258) (2016 est.)"
+      }
+    },
+    "Dependency ratios": {
+      "total dependency ratio": {
+        "text": "56.5%"
+      },
+      "youth dependency ratio": {
+        "text": "39.4%"
+      },
+      "elderly dependency ratio": {
+        "text": "17.1%"
+      },
+      "potential support ratio": {
+        "text": "5.8% (2015 est.)"
+      }
+    },
+    "Median age": {
+      "total": {
+        "text": "31.5 years"
+      },
+      "male": {
+        "text": "30.3 years"
+      },
+      "female": {
+        "text": "32.7 years (2016 est.)"
+      }
+    },
+    "Population growth rate": {
+      "text": "0.93% (2016 est.)"
+    },
+    "Birth rate": {
+      "text": "17 births/1,000 population (2016 est.)"
+    },
+    "Death rate": {
+      "text": "7.5 deaths/1,000 population (2016 est.)"
+    },
+    "Net migration rate": {
+      "text": "-0.1 migrant(s)/1,000 population (2016 est.)"
+    },
+    "Population distribution": {
+      "text": "one-third of the population lives in Buenos Aires; pockets of agglomeration occur throughout the northern and central parts of the country; Patagonia to the south remains sparsely populated"
+    },
+    "Urbanization": {
+      "urban population": {
+        "text": "91.8% of total population (2015)"
+      },
+      "rate of urbanization": {
+        "text": "1.04% annual rate of change (2010-15 est.)"
+      }
+    },
+    "Major urban areas - population": {
+      "text": "BUENOS AIRES (capital) 15.18 million; Cordoba 1.511 million; Rosario 1.381 million; Mendoza 1.009 million; San Miguel de Tucuman 910,000; La Plata 846,000 (2015)"
+    },
+    "Sex ratio": {
+      "at birth": {
+        "text": "1.05 male(s)/female"
+      },
+      "0-14 years": {
+        "text": "1.06 male(s)/female"
+      },
+      "15-24 years": {
+        "text": "1.05 male(s)/female"
+      },
+      "25-54 years": {
+        "text": "1 male(s)/female"
+      },
+      "55-64 years": {
+        "text": "0.94 male(s)/female"
+      },
+      "65 years and over": {
+        "text": "0.71 male(s)/female"
+      },
+      "total population": {
+        "text": "0.98 male(s)/female (2016 est.)"
+      }
+    },
+    "Maternal mortality rate": {
+      "text": "52 deaths/100,000 live births (2015 est.)"
+    },
+    "Infant mortality rate": {
+      "total": {
+        "text": "10.1 deaths/1,000 live births"
+      },
+      "male": {
+        "text": "11 deaths/1,000 live births"
+      },
+      "female": {
+        "text": "9 deaths/1,000 live births (2016 est.)"
+      }
+    },
+    "Life expectancy at birth": {
+      "total population": {
+        "text": "77.1 years"
+      },
+      "male": {
+        "text": "74 years"
+      },
+      "female": {
+        "text": "80.4 years (2016 est.)"
+      }
+    },
+    "Total fertility rate": {
+      "text": "2.28 children born/woman (2016 est.)"
+    },
+    "Contraceptive prevalence rate": {
+      "text": "78.9% (2004/05)"
+    },
+    "Health expenditures": {
+      "text": "4.8% of GDP (2014)"
+    },
+    "Physicians density": {
+      "text": "3.86 physicians/1,000 population (2013)"
+    },
+    "Hospital bed density": {
+      "text": "4.7 beds/1,000 population (2012)"
+    },
+    "Drinking water source": {
+      "improved": {
+        "text": " ++ urban: 99% of population ++ rural: 100% of population ++ total: 99.1% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 1% of population ++ rural: 0% of population ++ total: 0.9% of population (2015 est.)"
+      }
+    },
+    "Sanitation facility access": {
+      "improved": {
+        "text": " ++ urban: 96.2% of population ++ rural: 98.3% of population ++ total: 96.4% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 3.8% of population ++ rural: 1.7% of population ++ total: 3.6% of population (2015 est.)"
+      }
+    },
+    "HIV/AIDS - adult prevalence rate": {
+      "text": "0.39% (2015 est.)"
+    },
+    "HIV/AIDS - people living with HIV/AIDS": {
+      "text": "109,700 (2015 est.)"
+    },
+    "HIV/AIDS - deaths": {
+      "text": "2,300 (2015 est.)"
+    },
+    "Major infectious diseases": {
+      "note": {
+        "text": "active local transmission of Zika virus by Aedes species mosquitoes has been identified in this country (as of August 2016); it poses an important risk (a large number of cases possible) among US citizens if bitten by an infective mosquito; other less common ways to get Zika are through sex, via blood transfusion, or during pregnancy, in which the pregnant woman passes Zika virus to her fetus (2016)"
+      }
+    },
+    "Obesity - adult prevalence rate": {
+      "text": "26.5% (2014)"
+    },
+    "Children under the age of 5 years underweight": {
+      "text": "2.3% (2005)"
+    },
+    "Education expenditures": {
+      "text": "5.5% of GDP (2014)"
+    },
+    "Literacy": {
+      "definition": {
+        "text": "age 10 and over can read and write"
+      },
+      "total population": {
+        "text": "98.1%"
+      },
+      "male": {
+        "text": "98%"
+      },
+      "female": {
+        "text": "98.1% (2015 est.)"
+      }
+    },
+    "School life expectancy (primary to tertiary education)": {
+      "total": {
+        "text": "17 years"
+      },
+      "male": {
+        "text": "16 years"
+      },
+      "female": {
+        "text": "18 years (2013)"
+      }
+    },
+    "Child labor - children ages 5-14": {
+      "total number": {
+        "text": "435,252"
+      },
+      "percentage": {
+        "text": "7%"
+      },
+      "note": {
+        "text": "data represent children ages 5-13 (2003 est.)"
+      }
+    },
+    "Unemployment, youth ages 15-24": {
+      "total": {
+        "text": "18.8%"
+      },
+      "male": {
+        "text": "16.7%"
+      },
+      "female": {
+        "text": "22.4% (2014 est.)"
+      }
+    }
+  },
+  "Government": {
+    "Country name": {
+      "conventional long form": {
+        "text": "Argentine Republic"
+      },
+      "conventional short form": {
+        "text": "Argentina"
+      },
+      "local long form": {
+        "text": "Republica Argentina"
+      },
+      "local short form": {
+        "text": "Argentina"
+      },
+      "etymology": {
+        "text": "originally the area was referred to as Tierra Argentina, i.e., \"Land beside the Silvery River\" or \"silvery land,\" which referred to the massive estuary in the east of the country, the Rio de la Plata (River of Silver); over time the name shortened to simply Argentina or \"silvery\""
+      }
+    },
+    "Government type": {
+      "text": "presidential republic"
+    },
+    "Capital": {
+      "name": {
+        "text": "Buenos Aires"
+      },
+      "geographic coordinates": {
+        "text": "34 36 S, 58 22 W"
+      },
+      "time difference": {
+        "text": "UTC-3 (2 hours ahead of Washington, DC, during Standard Time)"
+      }
+    },
+    "Administrative divisions": {
+      "text": "23 provinces (provincias, singular - provincia) and 1 autonomous city*; Buenos Aires, Catamarca, Chaco, Chubut, Ciudad Autonoma de Buenos Aires*, Cordoba, Corrientes, Entre Rios, Formosa, Jujuy, La Pampa, La Rioja, Mendoza, Misiones, Neuquen, Rio Negro, Salta, San Juan, San Luis, Santa Cruz, Santa Fe, Santiago del Estero, Tierra del Fuego - Antartida e Islas del Atlantico Sur (Tierra del Fuego), Tucuman",
+      "note": {
+        "text": "the US does not recognize any claims to Antarctica"
+      }
+    },
+    "Independence": {
+      "text": "9 July 1816 (from Spain)"
+    },
+    "National holiday": {
+      "text": "Revolution Day, 25 May (1810)"
+    },
+    "Constitution": {
+      "text": "several previous; latest effective 11 May 1853; amended many times, last in 1994 (2016)"
+    },
+    "Legal system": {
+      "text": "civil law system based on West European legal systems; note - in 2014, Congress passed government-backed reform to the civil code that will go into effect in 2016"
+    },
+    "International law organization participation": {
+      "text": "has not submitted an ICJ jurisdiction declaration; accepts ICCt jurisdiction"
+    },
+    "Citizenship": {
+      "citizenship by birth": {
+        "text": "yes"
+      },
+      "citizenship by descent": {
+        "text": "yes"
+      },
+      "dual citizenship recognized": {
+        "text": "yes"
+      },
+      "residency requirement for naturalization": {
+        "text": "2 years"
+      }
+    },
+    "Suffrage": {
+      "text": "18-70 years of age; universal and compulsory; 16-17 years of age - optional for national elections"
+    },
+    "Executive branch": {
+      "chief of state": {
+        "text": "President Mauricio MACRI (since 10 December 2015); Vice President Gabriela MICHETTI (since 10 December 2015); note - the president is both chief of state and head of government"
+      },
+      "head of government": {
+        "text": "President Mauricio MACRI (since 10 December 2015); Vice President Gabriela MICHETTI (since 10 December 2015)"
+      },
+      "cabinet": {
+        "text": "Cabinet appointed by the president"
+      },
+      "elections/appointments": {
+        "text": "president and vice president directly elected on the same ballot by qualified majority popular vote for a 4-year term (eligible for a second consecutive term); election last held in 2 rounds on 25 October and 22 November 2015 (next to be held in October 2019)"
+      },
+      "election results": {
+        "text": "Mauricio MACRI elected president; percent of vote: first-round results - Daniel SCIOLI (PJ) 37.1%, Mauricio MACRI (PRO) 34.2%, Sergio MASSA (FR/PJ) 21.4%, other 7.3%; second-round results - Mauricio MACRI (PRO) 51.4%, Daniel SCIOLI (PJ) 48.6%"
+      }
+    },
+    "Legislative branch": {
+      "description": {
+        "text": "bicameral National Congress or Congreso Nacional consists of the Senate (72 seats; members directly elected in multi-seat constituencies by simple majority vote to serve 6-year terms with one-third of the membership elected every 2 years) and the Chamber of Deputies (257 seats; members directly elected in multi-seat constituencies by proportional representation vote; members serve 4-year terms with one-half of the membership renewed every 2 years)"
+      },
+      "elections": {
+        "text": "Senate - last held on 25 October 2015 (next to be held October 2017); Chamber of Deputies - last held on 25 October 2015 (next to be held October 2017)"
+      },
+      "election results": {
+        "text": "Senate - percent of vote by bloc or party - NA; seats by bloc or party - Cambiemos 12, FpV 8, PF 2, Progresistas 2; Chamber of Deputies - percent of vote by bloc or party - NA; seats by bloc or party - FpV 84, Cambiemos 21, FR and allies 8, Progresistas 9, Federal Peronism 3, PP 3, other 2; note - as of 1 February 2016, the total seats per party of bloc in the legislature is as follows: Senate - FpV 117, UCR/CC 50, Pro 41, PJ 36, PS/GEN 9, other 4; Chamber of Deputies - FpV 42, UCR/CC 11, PJ 10, Pro 4, PS/GEN 2, other 3"
+      }
+    },
+    "Judicial branch": {
+      "highest court(s)": {
+        "text": "Supreme Court or Corte Suprema (consists of the court president, vice-president, and 5 judges)"
+      },
+      "judge selection and term of office": {
+        "text": "judges nominated by the president and approved by the Senate; judges can serve until mandatory retirement at age 75"
+      },
+      "subordinate courts": {
+        "text": "federal level appellate, district, and territorial courts; provincial level supreme, appellate, and first instance courts"
+      }
+    },
+    "Political parties and leaders": {
+      "text": "Cambiemos (a coalition composed of CC, PRO, and UCR) [Mauricio MACRI] ++ Civic Coalition or CC (a coalition loosely affiliated with Elisa CARRIO) ++ Dissident Peronists (PJ Disidente) or Federal Peronism (a right-wing faction of the Justicialist Party opposed to the Kirchners) [Ramon PUERTA] ++ Front for Victory or FpV (left-wing faction of PJ) [Cristina FERNANDEZ DE KIRCHNER] ++ Peronist (or Justicialist) Party or PJ [Eduardo FELLNER] ++ Popular Path or PP ++ Progresistas [Margarita STOLBIZER] ++ Radical Civic Union or UCR [Ernesto SANZ] ++ Republican Proposal or PRO [Mauricio MACRI] ++ Socialist Party or PS [Hermes BINNER] ++ Renewal Front (Frente Renovador) or FR [Sergio MASSA] ++ numerous provincial parties"
+    },
+    "Political pressure groups and leaders": {
+      "text": "Argentine Association of Pharmaceutical Labs or CILFA ++ Argentine Industrial Union (manufacturers' association) ++ Argentine Rural Confederation or CRA (small to medium landowners' association) ++ Argentine Rural Society (large landowners' association) ++ Blue and White CGT (dissident CGT labor confederation) ++ Central of Argentine Workers or CTA (a union for employed and unemployed workers) ++ General Confederation of Labor or CGT (Peronist-leaning umbrella labor organization) ++ Roman Catholic Church",
+      "other": {
+        "text": "business organizations; Peronist-dominated labor movement; Piquetero groups (popular protest organizations that can be either pro or anti-government); students"
+      }
+    },
+    "International organization participation": {
+      "text": "AfDB (nonregional member), Australia Group, BCIE, BIS, CAN (associate), CD, CELAC, FAO, FATF, G-15, G-20, G-24, G-77, IADB, IAEA, IBRD, ICAO, ICC (national committees), ICCt, ICRM, IDA, IFAD, IFC, IFRCS, IHO, ILO, IMF, IMO, IMSO, Interpol, IOC, IOM, IPU, ISO, ITSO, ITU, ITUC (NGOs), LAES, LAIA, Mercosur, MIGA, MINURSO, MINUSTAH, NAM (observer), NSG, OAS, OPANAL, OPCW, Paris Club (associate), PCA, SICA (observer), UN, UN Security Council (temporary), UNASUR, UNCTAD, UNESCO, UNFICYP, UNHCR, UNIDO, Union Latina (observer), UNTSO, UNWTO, UPU, WCO, WFTU (NGOs), WHO, WIPO, WMO, WTO, ZC"
+    },
+    "Diplomatic representation in the US": {
+      "chief of mission": {
+        "text": "Ambassador Martin LOUSTEAU (since 28 January 2016)"
+      },
+      "chancery": {
+        "text": "1600 New Hampshire Avenue NW, Washington, DC 20009"
+      },
+      "telephone": {
+        "text": "[1] (202) 238-6400"
+      },
+      "FAX": {
+        "text": "[1] (202) 332-3171"
+      },
+      "consulate(s) general": {
+        "text": "Atlanta, Chicago, Houston, Los Angeles, Miami, New York, Washington, DC"
+      }
+    },
+    "Diplomatic representation from the US": {
+      "chief of mission": {
+        "text": "Ambassador Noah Bryson MAMET (since 16 January 2015)"
+      },
+      "embassy": {
+        "text": "Avenida Colombia 4300, C1425GMN Buenos Aires"
+      },
+      "mailing address": {
+        "text": "international mail: use embassy street address; APO address: US Embassy Buenos Aires, Unit 4334, APO AA 34034"
+      },
+      "telephone": {
+        "text": "[54] (11) 5777-4533"
+      },
+      "FAX": {
+        "text": "[54] (11) 5777-4240"
+      }
+    },
+    "Flag description": {
+      "text": "three equal horizontal bands of light blue (top), white, and light blue; centered in the white band is a radiant yellow sun with a human face known as the Sun of May; the colors represent the clear skies and snow of the Andes; the sun symbol commemorates the appearance of the sun through cloudy skies on 25 May 1810 during the first mass demonstration in favor of independence; the sun features are those of Inti, the Inca god of the sun"
+    },
+    "National symbol(s)": {
+      "text": "Sun of May (a sun-with-face symbol); national colors: light blue, white"
+    },
+    "National anthem": {
+      "name": {
+        "text": "\"Himno Nacional Argentino\" (Argentine National Anthem)"
+      },
+      "lyrics/music": {
+        "text": "Vicente LOPEZ y PLANES/Jose Blas PARERA"
+      },
+      "note": {
+        "text": "adopted 1813; Vicente LOPEZ was inspired to write the anthem after watching a play about the 1810 May Revolution against Spain"
+      }
+    }
+  },
+  "Economy": {
+    "Economy - overview": {
+      "text": "Argentina benefits from rich natural resources, a highly literate population, an export-oriented agricultural sector, and a diversified industrial base. Although one of the world's wealthiest countries 100 years ago, Argentina suffered during most of the 20th century from recurring economic crises, persistent fiscal and current account deficits, high inflation, mounting external debt, and capital flight. ++  ++ A severe depression, growing public and external indebtedness, and an unprecedented bank run culminated in 2001 in the most serious economic, social, and political crisis in the country's turbulent history. Interim President Adolfo RODRIGUEZ SAA declared a default - at the time the largest ever - on the government's foreign debt in December of that year, and abruptly resigned only a few days after taking office. His successor, Eduardo DUHALDE, announced an end to the peso's decade-long 1-to-1 peg to the US dollar in early 2002. The economy bottomed out that year, with real GDP 18% smaller than in 1998 and almost 60% of Argentines below the poverty line. Real GDP rebounded to grow by an average 8.5% annually over the subsequent six years, taking advantage of previously idled industrial capacity and labor, an audacious debt restructuring and reduced debt burden, excellent international financial conditions, and expansionary monetary and fiscal policies. Inflation also increased, however, during the administration of President Nestor KIRCHNER, which responded with price restraints on businesses, as well as export taxes and restraints, and beginning in 2007, with understating inflation data. ++  ++ Cristina FERNANDEZ DE KIRCHNER succeeded her husband as president in late 2007, and the rapid economic growth of previous years began to slow sharply the following year as government policies held back exports and the world economy fell into recession. The economy in 2010 rebounded strongly from the 2009 recession, but has slowed since late 2011 even as the government continued to rely on expansionary fiscal and monetary policies, which have kept inflation in the double digits. ++  ++ The government has taken multiple steps in recent years to deal with these problems. It expanded state intervention in the economy throughout 2012. In May 2012 the Congress approved the nationalization of the oil company YPF from Spain's Repsol. The government expanded formal and informal measures to restrict imports during the year, including a requirement for pre-registration and pre-approval of all imports. In July 2012, the government also further tightened currency controls in an effort to bolster foreign reserves and stem capital flight. In October 2013, the government settled long standing international arbitral disputes dating to before and following the 2001 Argentine financial crisis. During 2014, the government continued its expansionary fiscal and monetary policies and foreign exchange and imports controls. Between 2011 and 2013, Central Bank foreign reserves had dropped $21.3 billion from a high of $52.7 billion. In July 2014, Argentina and China agreed on an $11 billion currency swap; the Argentine Central Bank has received the equivalent of $3.2 billion in Chinese yuan, which it counts as international reserves. ++  ++ In 2014, the government also took some measures to mend ties with the international financial community, including engaging with the IMF to improve its economic data reporting, reaching a compensation agreement with Repsol for the expropriation of YPF, and agreeing to pay $9.7 billion in arrears to the Paris Club over five years, including $606 million owed to the US. In July 2014, Argentina made its first payment to Paris Club creditors. At the same time, the Argentine Government in July 2014 entered a technical default on its external debt after it failed to reach an agreement with holdout creditors in the US. The FERNANDEZ DE KIRCHNER government rejected repeated attempts by the court to encourage a negotiated solution with holdouts. Throughout much of 2015, negotiations to repay holdout creditors stalled. The government’s delay in reaching a settlement and the continuation of interventionist policies contributed to high inflation and a prolonged recession. ++  ++ After being elected into office on December 10, President MACRI has taken significant steps to liberalize the Argentine economy. His administration lifted capital controls; floated the peso, negotiated debt payments with holdout bond creditors, and removed export controls on some commodities."
+    },
+    "GDP (purchasing power parity)": {
+      "text": "$879.4 billion (2016 est.) ++ $895.2 billion (2015 est.) ++ $873.7 billion (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "GDP (official exchange rate)": {
+      "text": "$541.7 billion (2015 est.)"
+    },
+    "GDP - real growth rate": {
+      "text": "-1.8% (2016 est.) ++ 2.5% (2015 est.) ++ -2.5% (2014 est.)"
+    },
+    "GDP - per capita (PPP)": {
+      "text": "$20,200 (2016 est.) ++ $20,800 (2015 est.) ++ $20,500 (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "Gross national saving": {
+      "text": "14.2% of GDP (2016 est.) ++ 14.3% of GDP (2015 est.) ++ 15.8% of GDP (2014 est.)"
+    },
+    "GDP - composition, by end use": {
+      "household consumption": {
+        "text": "63.7%"
+      },
+      "government consumption": {
+        "text": "19.3%"
+      },
+      "investment in fixed capital": {
+        "text": "16%"
+      },
+      "investment in inventories": {
+        "text": "1.7%"
+      },
+      "exports of goods and services": {
+        "text": "13.2%"
+      },
+      "imports of goods and services": {
+        "text": "-13.9% (2016 est.)"
+      }
+    },
+    "GDP - composition, by sector of origin": {
+      "agriculture": {
+        "text": "11.4%"
+      },
+      "industry": {
+        "text": "30.2%"
+      },
+      "services": {
+        "text": "58.4% (2016 est.)"
+      }
+    },
+    "Agriculture - products": {
+      "text": "sunflower seeds, lemons, soybeans, grapes, corn, tobacco, peanuts, tea, wheat; livestock"
+    },
+    "Industries": {
+      "text": "food processing, motor vehicles, consumer durables, textiles, chemicals and petrochemicals, printing, metallurgy, steel"
+    },
+    "Industrial production growth rate": {
+      "text": "1.7%",
+      "note": {
+        "text": "based on private sector estimates (2016 est.)"
+      }
+    },
+    "Labor force": {
+      "text": "17.71 million",
+      "note": {
+        "text": "urban areas only (2016 est.)"
+      }
+    },
+    "Labor force - by occupation": {
+      "agriculture": {
+        "text": "5%"
+      },
+      "industry": {
+        "text": "23%"
+      },
+      "services": {
+        "text": "72% (2009 est.)"
+      }
+    },
+    "Unemployment rate": {
+      "text": "8% (2016 est.) ++ 7.6% (2015 est.)"
+    },
+    "Population below poverty line": {
+      "text": "30%",
+      "note": {
+        "text": "data are based on private estimates (2010 est.)"
+      }
+    },
+    "Household income or consumption by percentage share": {
+      "lowest 10%": {
+        "text": "1.5%"
+      },
+      "highest 10%": {
+        "text": "32.3% (2010 est.)"
+      }
+    },
+    "Distribution of family income - Gini index": {
+      "text": "45.8 (2009)"
+    },
+    "Budget": {
+      "revenues": {
+        "text": "$115.9 billion"
+      },
+      "expenditures": {
+        "text": "$141.7 billion (2016 est.)"
+      }
+    },
+    "Taxes and other revenues": {
+      "text": "21.4% of GDP (2016 est.)"
+    },
+    "Budget surplus (+) or deficit (-)": {
+      "text": "-4.8% of GDP (2016 est.)"
+    },
+    "Public debt": {
+      "text": "53.8% of GDP (2016 est.) ++ 50.1% of GDP (2015 est.)"
+    },
+    "Fiscal year": {
+      "text": "calendar year"
+    },
+    "Inflation rate (consumer prices)": {
+      "text": "42.8% (2016 est.) ++ 26.5% (2015 est.)",
+      "note": {
+        "text": "data are derived from private estimates"
+      }
+    },
+    "Central bank discount rate": {
+      "text": "NA%"
+    },
+    "Commercial bank prime lending rate": {
+      "text": "32.3% (31 December 2016 est.) ++ 24.92% (31 December 2015 est.)"
+    },
+    "Stock of narrow money": {
+      "text": "$54.2 billion (31 December 2016 est.) ++ $52.3 billion (31 December 2015 est.)"
+    },
+    "Stock of broad money": {
+      "text": "$150.3 billion (31 December 2015 est.) ++ $138.6 billion (31 December 2014 est.)"
+    },
+    "Stock of domestic credit": {
+      "text": "$200.8 billion (31 December 2016 est.) ++ $182.2 billion (31 December 2015 est.)"
+    },
+    "Market value of publicly traded shares": {
+      "text": "$56.13 billion (31 December 2015 est.) ++ $60.14 billion (31 December 2014 est.) ++ $53.1 billion (31 December 2013 est.)"
+    },
+    "Current account balance": {
+      "text": "-$12.72 billion (2016 est.) ++ -$15.94 billion (2015 est.)"
+    },
+    "Exports": {
+      "text": "$58.4 billion (2016 est.) ++ $56.76 billion (2015 est.)"
+    },
+    "Exports - commodities": {
+      "text": "soybeans and derivatives, petroleum and gas, vehicles, corn, wheat"
+    },
+    "Exports - partners": {
+      "text": "Brazil 17%, China 8.6%, US 5.9% (2015)"
+    },
+    "Imports": {
+      "text": "$57.23 billion (2016 est.) ++ $57.18 billion (2015 est.)"
+    },
+    "Imports - commodities": {
+      "text": "machinery, motor vehicles, petroleum and natural gas, organic chemicals, plastics"
+    },
+    "Imports - partners": {
+      "text": "Brazil 22.4%, US 16.3%, China 15.5%, Germany 5.1% (2015)"
+    },
+    "Reserves of foreign exchange and gold": {
+      "text": "$32.11 billion (31 December 2016 est.) ++ $25.52 billion (31 December 2015 est.)"
+    },
+    "Debt - external": {
+      "text": "$155.1 billion (31 December 2016 est.) ++ $136.1 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - at home": {
+      "text": "$103.7 billion (31 December 2016 est.) ++ $94.19 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - abroad": {
+      "text": "$37.97 billion (31 December 2016 est.) ++ $37.03 billion (31 December 2015 est.)"
+    },
+    "Exchange rates": {
+      "text": "Argentine pesos (ARS) per US dollar - ++ 14.92 (2016 est.) ++ 9.2332 (2015 est.) ++ 9.2332 (2014 est.) ++ 8.0753 (2013 est.) ++ 4.54 (2012 est.)"
+    }
+  },
+  "Energy": {
+    "Electricity - production": {
+      "text": "126 billion kWh (2014 est.)"
+    },
+    "Electricity - consumption": {
+      "text": "116 billion kWh (2014 est.)"
+    },
+    "Electricity - exports": {
+      "text": "200 million kWh (2014 est.)"
+    },
+    "Electricity - imports": {
+      "text": "10 billion kWh (2014 est.)"
+    },
+    "Electricity - installed generating capacity": {
+      "text": "36 million kW (2014 est.)"
+    },
+    "Electricity - from fossil fuels": {
+      "text": "68.1% of total installed capacity (2012 est.)"
+    },
+    "Electricity - from nuclear fuels": {
+      "text": "2.7% of total installed capacity (2012 est.)"
+    },
+    "Electricity - from hydroelectric plants": {
+      "text": "26% of total installed capacity (2012 est.)"
+    },
+    "Electricity - from other renewable sources": {
+      "text": "0.4% of total installed capacity (2012 est.)"
+    },
+    "Crude oil - production": {
+      "text": "532,200 bbl/day (2015 est.)"
+    },
+    "Crude oil - exports": {
+      "text": "37,690 bbl/day (2013 est.)"
+    },
+    "Crude oil - imports": {
+      "text": "7,460 bbl/day (2013 est.)"
+    },
+    "Crude oil - proved reserves": {
+      "text": "2.4 billion bbl (1 January 2016 es)"
+    },
+    "Refined petroleum products - production": {
+      "text": "670,900 bbl/day (2013 est.)"
+    },
+    "Refined petroleum products - consumption": {
+      "text": "751,000 bbl/day (2014 est.)"
+    },
+    "Refined petroleum products - exports": {
+      "text": "63,060 bbl/day (2013 est.)"
+    },
+    "Refined petroleum products - imports": {
+      "text": "109,900 bbl/day (2013 est.)"
+    },
+    "Natural gas - production": {
+      "text": "35.4 billion cu m (2014 est.)"
+    },
+    "Natural gas - consumption": {
+      "text": "47.23 billion cu m (2014 est.)"
+    },
+    "Natural gas - exports": {
+      "text": "70 million cu m (2014 est.)"
+    },
+    "Natural gas - imports": {
+      "text": "11.9 billion cu m (2014 est.)"
+    },
+    "Natural gas - proved reserves": {
+      "text": "332.1 billion cu m (1 January 2016 es)"
+    },
+    "Carbon dioxide emissions from consumption of energy": {
+      "text": "202 million Mt (2013 est.)"
+    }
+  },
+  "Communications": {
+    "Telephones - fixed lines": {
+      "total subscriptions": {
+        "text": "10,119,920"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "23 (July 2015 est.)"
+      }
+    },
+    "Telephones - mobile cellular": {
+      "total": {
+        "text": "60.664 million"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "140 (July 2015 est.)"
+      }
+    },
+    "Telephone system": {
+      "general assessment": {
+        "text": "in 1998 Argentina opened its telecommunications market to competition and foreign investment encouraging the growth of modern telecommunications technology; fiber-optic cable trunk lines are being installed between all major cities; major networks are ent"
+      },
+      "domestic": {
+        "text": "microwave radio relay, fiber-optic cable, and a domestic satellite system with 40 earth stations serve the trunk network; fixed-line teledensity is increasing gradually and mobile-cellular subscribership is increasing rapidly; broadband Internet services"
+      },
+      "international": {
+        "text": "country code - 54; landing point for the Atlantis-2, UNISUR, South America-1, and South American Crossing/Latin American Nautilus submarine cable systems that provide links to Europe, Africa, South and Central America, and US; satellite earth stations - 1 (2011)"
+      }
+    },
+    "Broadcast media": {
+      "text": "government owns a TV station and a radio network; more than 2 dozen TV stations and hundreds of privately owned radio stations; high rate of cable TV subscription usage (2007)"
+    },
+    "Internet country code": {
+      "text": ".ar"
+    },
+    "Internet users": {
+      "total": {
+        "text": "30.142 million"
+      },
+      "percent of population": {
+        "text": "69.4% (July 2015 est.)"
+      }
+    }
+  },
+  "Transportation": {
+    "National air transport system": {
+      "number of registered air carriers": {
+        "text": "6"
+      },
+      "inventory of registered aircraft operated by air carriers": {
+        "text": "107"
+      },
+      "annual passenger traffic on registered air carriers": {
+        "text": "14,245,183"
+      },
+      "annual freight traffic on registered air carriers": {
+        "text": "243,772,567 mt-km (2015)"
+      }
+    },
+    "Civil aircraft registration country code prefix": {
+      "text": "LV (2016)"
+    },
+    "Airports": {
+      "text": "1,138 (2013)"
+    },
+    "Airports - with paved runways": {
+      "total": {
+        "text": "161"
+      },
+      "over 3,047 m": {
+        "text": "4"
+      },
+      "2,438 to 3,047 m": {
+        "text": "29"
+      },
+      "1,524 to 2,437 m": {
+        "text": "65"
+      },
+      "914 to 1,523 m": {
+        "text": "53"
+      },
+      "under 914 m": {
+        "text": "10 (2013)"
+      }
+    },
+    "Airports - with unpaved runways": {
+      "total": {
+        "text": "977"
+      },
+      "over 3,047 m": {
+        "text": "1"
+      },
+      "2,438 to 3,047 m": {
+        "text": "1"
+      },
+      "1,524 to 2,437 m": {
+        "text": "43"
+      },
+      "914 to 1,523 m": {
+        "text": "484"
+      },
+      "under 914 m": {
+        "text": "448 (2013)"
+      }
+    },
+    "Heliports": {
+      "text": "2 (2013)"
+    },
+    "Pipelines": {
+      "text": "gas 29,930 km; liquid petroleum gas 41 km; oil 6,248 km; refined products 3,631 km (2013)"
+    },
+    "Railways": {
+      "total": {
+        "text": "36,917.4 km"
+      },
+      "broad gauge": {
+        "text": "26,391 km 1.676-m gauge (149 km electrified)"
+      },
+      "standard gauge": {
+        "text": "2,745.1 km 1.435-m gauge (41.1 km electrified)"
+      },
+      "narrow gauge": {
+        "text": "7,523.3 km 1.000-m gauge; 258 km 0.750-m gauge (2014)"
+      }
+    },
+    "Roadways": {
+      "total": {
+        "text": "231,374 km"
+      },
+      "paved": {
+        "text": "69,412 km (includes 734 km of expressways)"
+      },
+      "unpaved": {
+        "text": "161,962 km (2004)"
+      }
+    },
+    "Waterways": {
+      "text": "11,000 km (2012)"
+    },
+    "Merchant marine": {
+      "total": {
+        "text": "36"
+      },
+      "by type": {
+        "text": "bulk carrier 1, cargo 5, chemical tanker 6, container 1, passenger/cargo 1, petroleum tanker 18, refrigerated cargo 4"
+      },
+      "foreign-owned": {
+        "text": "14 (Brazil 1, Chile 6, Spain 3, Taiwan 2, UK 2)"
+      },
+      "registered in other countries": {
+        "text": "15 (Liberia 1, Panama 5, Paraguay 5, Uruguay 1, unknown 3) (2010)"
+      }
+    },
+    "Ports and terminals": {
+      "major seaport(s)": {
+        "text": "Bahia Blanca, Buenos Aires, La Plata, Punta Colorada, Ushuaia"
+      },
+      "river port(s)": {
+        "text": "Arroyo Seco, Rosario, San Lorenzo-San Martin (Parana)"
+      },
+      "container port(s) (TEUs)": {
+        "text": "Buenos Aires (1,851,701)"
+      },
+      "LNG terminal(s) (import)": {
+        "text": "Bahia Blanca"
+      }
+    }
+  },
+  "Military and Security": {
+    "Military branches": {
+      "text": "Argentine Army (Ejercito Argentino), Navy of the Argentine Republic (Armada Republica; includes naval aviation and naval infantry), Argentine Air Force (Fuerza Aerea Argentina, FAA) (2013)"
+    },
+    "Military service age and obligation": {
+      "text": "18-24 years of age for voluntary military service (18-21 requires parental consent); no conscription; if the number of volunteers fails to meet the quota of recruits for a particular year, Congress can authorize the conscription of citizens turning 18 that year for a period not exceeding one year (2012)"
+    },
+    "Military expenditures": {
+      "text": "0.91% of GDP (2012) ++ 0.9% of GDP (2011) ++ 0.91% of GDP (2010)"
+    },
+    "Military - note": {
+      "text": "the Argentine military is a well-organized force constrained by the country's prolonged economic hardship; the country has recently experienced a strong recovery, and the military is implementing a modernization plan aimed at making the ground forces lighter and more responsive (2008)"
+    }
+  },
+  "Transnational Issues": {
+    "Disputes - international": {
+      "text": "Argentina continues to assert its claims to the UK-administered Falkland Islands (Islas Malvinas), South Georgia, and the South Sandwich Islands in its constitution, forcibly occupying the Falklands in 1982, but in 1995 agreed to no longer seek settlement by force; UK continues to reject Argentine requests for sovereignty talks; territorial claim in Antarctica partially overlaps UK and Chilean claims; uncontested dispute between Brazil and Uruguay over Braziliera/Brasiliera Island in the Quarai/Cuareim River leaves the tripoint with Argentina in question; in 2010, the ICJ ruled in favor of Uruguay's operation of two paper mills on the Uruguay River, which forms the border with Argentina; the two countries formed a joint pollution monitoring regime; the joint boundary commission, established by Chile and Argentina in 2001 has yet to map and demarcate the delimited boundary in the inhospitable Andean Southern Ice Field (Campo de Hielo Sur); contraband smuggling, human trafficking, and illegal narcotic trafficking are problems in the porous areas of the border with Bolivia"
+    },
+    "Illicit drugs": {
+      "text": "a transshipment country for cocaine headed for Europe, heroin headed for the US, and ephedrine and pseudoephedrine headed for Mexico; some money-laundering activity, especially in the Tri-Border Area; law enforcement corruption; a source for precursor chemicals; increasing domestic consumption of drugs in urban centers, especially cocaine base and synthetic drugs (2008)"
+    }
+  }
+}

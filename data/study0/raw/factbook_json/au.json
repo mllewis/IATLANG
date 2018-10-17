@@ -1,0 +1,899 @@
+{
+  "Introduction": {
+    "Background": {
+      "text": "Once the center of power for the large Austro-Hungarian Empire, Austria was reduced to a small republic after its defeat in World War I. Following annexation by Nazi Germany in 1938 and subsequent occupation by the victorious Allies in 1945, Austria's status remained unclear for a decade. A State Treaty signed in 1955 ended the occupation, recognized Austria's independence, and forbade unification with Germany. A constitutional law that same year declared the country's \"perpetual neutrality\" as a condition for Soviet military withdrawal. The Soviet Union's collapse in 1991 and Austria's entry into the EU in 1995 have altered the meaning of this neutrality. A prosperous, democratic country, Austria entered the EU Economic and Monetary Union in 1999."
+    }
+  },
+  "Geography": {
+    "Location": {
+      "text": "Central Europe, north of Italy and Slovenia"
+    },
+    "Geographic coordinates": {
+      "text": "47 20 N, 13 20 E"
+    },
+    "Map references": {
+      "text": "Europe"
+    },
+    "Area": {
+      "total": {
+        "text": "83,871 sq km"
+      },
+      "land": {
+        "text": "82,445 sq km"
+      },
+      "water": {
+        "text": "1,426 sq km"
+      }
+    },
+    "Area - comparative": {
+      "text": "about the size of South Carolina; slightly more than two-thirds the size of Pennsylvania"
+    },
+    "Land boundaries": {
+      "total": {
+        "text": "2,524 km"
+      },
+      "border countries": {
+        "text": "Czech Republic 402 km, Germany 801 km, Hungary 321 km, Italy 404 km, Liechtenstein 34 km, Slovakia 105 km, Slovenia 299 km, Switzerland 158 km"
+      }
+    },
+    "Coastline": {
+      "text": "0 km (landlocked)"
+    },
+    "Maritime claims": {
+      "text": "none (landlocked)"
+    },
+    "Climate": {
+      "text": "temperate; continental, cloudy; cold winters with frequent rain and some snow in lowlands and snow in mountains; moderate summers with occasional showers"
+    },
+    "Terrain": {
+      "text": "mostly mountains (Alps) in the west and south; mostly flat or gently sloping along the eastern and northern margins"
+    },
+    "Elevation": {
+      "mean elevation": {
+        "text": "910 m"
+      },
+      "elevation extremes": {
+        "text": "lowest point: Neusiedler See 115 m ++ highest point: Grossglockner 3,798 m"
+      }
+    },
+    "Natural resources": {
+      "text": "oil, coal, lignite, timber, iron ore, copper, zinc, antimony, magnesite, tungsten, graphite, salt, hydropower"
+    },
+    "Land use": {
+      "agricultural land": {
+        "text": "38.4% ++ arable land 16.5%; permanent crops 0.8%; permanent pasture 21.1%"
+      },
+      "forest": {
+        "text": "47.2%"
+      },
+      "other": {
+        "text": "14.4% (2011 est.)"
+      }
+    },
+    "Irrigated land": {
+      "text": "1,170 sq km (2012)"
+    },
+    "Population - distribution": {
+      "text": "the northern and eastern portions of the country are more densely populated; nearly two-thirds of the populace lives in urban areas"
+    },
+    "Natural hazards": {
+      "text": "landslides; avalanches; earthquakes"
+    },
+    "Environment - current issues": {
+      "text": "some forest degradation caused by air and soil pollution; soil pollution results from the use of agricultural chemicals; air pollution results from emissions by coal- and oil-fired power stations and industrial plants and from trucks transiting Austria between northern and southern Europe"
+    },
+    "Environment - international agreements": {
+      "party to": {
+        "text": "Air Pollution, Air Pollution-Nitrogen Oxides, Air Pollution-Persistent Organic Pollutants, Air Pollution-Sulfur 85, Air Pollution-Sulphur 94, Air Pollution-Volatile Organic Compounds, Antarctic Treaty, Biodiversity, Climate Change, Climate Change-Kyoto Protocol, Desertification, Endangered Species, Environmental Modification, Hazardous Wastes, Law of the Sea, Ozone Layer Protection, Ship Pollution, Tropical Timber 83, Tropical Timber 94, Wetlands, Whaling"
+      },
+      "signed, but not ratified": {
+        "text": "none of the selected agreements"
+      }
+    },
+    "Geography - note": {
+      "text": "landlocked; strategic location at the crossroads of central Europe with many easily traversable Alpine passes and valleys; major river is the Danube; population is concentrated on eastern lowlands because of steep slopes, poor soils, and low temperatures elsewhere"
+    }
+  },
+  "People and Society": {
+    "Population": {
+      "text": "8,711,770 (July 2016 est.)"
+    },
+    "Nationality": {
+      "noun": {
+        "text": "Austrian(s)"
+      },
+      "adjective": {
+        "text": "Austrian"
+      }
+    },
+    "Ethnic groups": {
+      "text": "Austrians 91.1%, former Yugoslavs 4% (includes Croatians, Slovenes, Serbs, and Bosniaks), Turks 1.6%, Germans 0.9%, other or unspecified 2.4% (2001 census)"
+    },
+    "Languages": {
+      "text": "German (official nationwide) 88.6%, Turkish 2.3%, Serbian 2.2%, Croatian (official in Burgenland) 1.6%, other (includes Slovene, official in South Carinthia, and Hungarian, official in Burgenland) 5.3% (2001 est.)"
+    },
+    "Religions": {
+      "text": "Catholic 73.8% (includes Roman Catholic 73.6%, other Catholic 0.2%), Protestant 4.9%, Muslim 4.2%, Orthodox 2.2%, other 0.8% (includes other Christian), none 12%, unspecified 2% (2001 est.)"
+    },
+    "Age structure": {
+      "0-14 years": {
+        "text": "14.02% (male 625,391/female 596,310)"
+      },
+      "15-24 years": {
+        "text": "11.33% (male 503,333/female 483,748)"
+      },
+      "25-54 years": {
+        "text": "42.71% (male 1,859,985/female 1,860,641)"
+      },
+      "55-64 years": {
+        "text": "12.85% (male 554,191/female 565,189)"
+      },
+      "65 years and over": {
+        "text": "19.09% (male 719,012/female 943,970) (2016 est.)"
+      }
+    },
+    "Dependency ratios": {
+      "total dependency ratio": {
+        "text": "49.2%"
+      },
+      "youth dependency ratio": {
+        "text": "21.2%"
+      },
+      "elderly dependency ratio": {
+        "text": "28%"
+      },
+      "potential support ratio": {
+        "text": "3.6% (2015 est.)"
+      }
+    },
+    "Median age": {
+      "total": {
+        "text": "43.8 years"
+      },
+      "male": {
+        "text": "42.7 years"
+      },
+      "female": {
+        "text": "44.9 years (2016 est.)"
+      }
+    },
+    "Population growth rate": {
+      "text": "0.51% (2016 est.)"
+    },
+    "Birth rate": {
+      "text": "9.5 births/1,000 population (2016 est.)"
+    },
+    "Death rate": {
+      "text": "9.5 deaths/1,000 population (2016 est.)"
+    },
+    "Net migration rate": {
+      "text": "5.2 migrant(s)/1,000 population (2016 est.)"
+    },
+    "Population distribution": {
+      "text": "the northern and eastern portions of the country are more densely populated; nearly two-thirds of the populace lives in urban areas"
+    },
+    "Urbanization": {
+      "urban population": {
+        "text": "66% of total population (2015)"
+      },
+      "rate of urbanization": {
+        "text": "0.4% annual rate of change (2010-15 est.)"
+      }
+    },
+    "Major urban areas - population": {
+      "text": "VIENNA (capital) 1.753 million (2015)"
+    },
+    "Sex ratio": {
+      "at birth": {
+        "text": "1.05 male(s)/female"
+      },
+      "0-14 years": {
+        "text": "1.05 male(s)/female"
+      },
+      "15-24 years": {
+        "text": "1.04 male(s)/female"
+      },
+      "25-54 years": {
+        "text": "1 male(s)/female"
+      },
+      "55-64 years": {
+        "text": "0.98 male(s)/female"
+      },
+      "65 years and over": {
+        "text": "0.76 male(s)/female"
+      },
+      "total population": {
+        "text": "0.96 male(s)/female (2016 est.)"
+      }
+    },
+    "Mother's mean age at first birth": {
+      "text": "28.5 (2011 est.)"
+    },
+    "Maternal mortality rate": {
+      "text": "4 deaths/100,000 live births (2015 est.)"
+    },
+    "Infant mortality rate": {
+      "total": {
+        "text": "3.4 deaths/1,000 live births"
+      },
+      "male": {
+        "text": "3.8 deaths/1,000 live births"
+      },
+      "female": {
+        "text": "3.1 deaths/1,000 live births (2016 est.)"
+      }
+    },
+    "Life expectancy at birth": {
+      "total population": {
+        "text": "81.5 years"
+      },
+      "male": {
+        "text": "78.9 years"
+      },
+      "female": {
+        "text": "84.3 years (2016 est.)"
+      }
+    },
+    "Total fertility rate": {
+      "text": "1.47 children born/woman (2016 est.)"
+    },
+    "Contraceptive prevalence rate": {
+      "text": "69.6%",
+      "note": {
+        "text": "percent of women aged 18-46 (2008/09)"
+      }
+    },
+    "Health expenditures": {
+      "text": "11.2% of GDP (2014)"
+    },
+    "Physicians density": {
+      "text": "4.83 physicians/1,000 population (2011)"
+    },
+    "Hospital bed density": {
+      "text": "7.6 beds/1,000 population (2011)"
+    },
+    "Drinking water source": {
+      "improved": {
+        "text": " ++ urban: 100% of population ++ rural: 100% of population ++ total: 100% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 0% of population ++ rural: 0% of population ++ total: 0% of population (2015 est.)"
+      }
+    },
+    "Sanitation facility access": {
+      "improved": {
+        "text": " ++ urban: 100% of population ++ rural: 100% of population ++ total: 100% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 0% of population ++ rural: 0% of population ++ total: 0% of population (2015 est.)"
+      }
+    },
+    "HIV/AIDS - adult prevalence rate": {
+      "text": "NA"
+    },
+    "HIV/AIDS - people living with HIV/AIDS": {
+      "text": "NA"
+    },
+    "HIV/AIDS - deaths": {
+      "text": "NA"
+    },
+    "Obesity - adult prevalence rate": {
+      "text": "20.1% (2014)"
+    },
+    "Education expenditures": {
+      "text": "5.6% of GDP (2013)"
+    },
+    "School life expectancy (primary to tertiary education)": {
+      "total": {
+        "text": "16 years"
+      },
+      "male": {
+        "text": "16 years"
+      },
+      "female": {
+        "text": "16 years (2014)"
+      }
+    },
+    "Unemployment, youth ages 15-24": {
+      "total": {
+        "text": "10.3%"
+      },
+      "male": {
+        "text": "10.6%"
+      },
+      "female": {
+        "text": "9.9% (2014 est.)"
+      }
+    }
+  },
+  "Government": {
+    "Country name": {
+      "conventional long form": {
+        "text": "Republic of Austria"
+      },
+      "conventional short form": {
+        "text": "Austria"
+      },
+      "local long form": {
+        "text": "Republik Oesterreich"
+      },
+      "local short form": {
+        "text": "Oesterreich"
+      },
+      "etymology": {
+        "text": "the name Oesterreich means \"eastern realm\" or \"eastern march\" and dates to the 10th century; the designation refers to the fact that Austria was the easternmost extension of Bavaria, and in fact of all the Germans; the word Austria is a Latinization of the German name"
+      }
+    },
+    "Government type": {
+      "text": "federal parliamentary republic"
+    },
+    "Capital": {
+      "name": {
+        "text": "Vienna"
+      },
+      "geographic coordinates": {
+        "text": "48 12 N, 16 22 E"
+      },
+      "time difference": {
+        "text": "UTC+1 (6 hours ahead of Washington, DC, during Standard Time)"
+      },
+      "daylight saving time": {
+        "text": "+1hr, begins last Sunday in March; ends last Sunday in October"
+      }
+    },
+    "Administrative divisions": {
+      "text": "9 states (Bundeslaender, singular - Bundesland); Burgenland, Kaernten (Carinthia), Niederoesterreich (Lower Austria), Oberoesterreich (Upper Austria), Salzburg, Steiermark (Styria), Tirol (Tyrol), Vorarlberg, Wien (Vienna)"
+    },
+    "Independence": {
+      "text": "12 November 1918 (republic proclaimed); notable earlier dates: 976 (Margravate of Austria established); 17 September 1156 (Duchy of Austria founded); 11 August 1804 (Austrian Empire proclaimed)"
+    },
+    "National holiday": {
+      "text": "National Day, 26 October (1955); note - commemorates the passage of the law on permanent neutrality"
+    },
+    "Constitution": {
+      "history": {
+        "text": "several previous; latest adopted 1 October 1920, revised 1929, replaced May 1934 (authoritarian corporate state), replaced by German Weimar constitution in 1938 following German annexation, reinstated 1 May 1945"
+      },
+      "amendments": {
+        "text": "proposed through laws designated “constitutional laws” or through the constitutional process if the amendment is part of another law; approval required by at least two-thirds majority vote of the National Assembly if one-half of the members are present; a referendum is required only if requested by one-third of the National Council or Federal Council membership; passage by referendum requires absolute majority vote; amended many times, last in 2014 (2016)"
+      }
+    },
+    "Legal system": {
+      "text": "civil law system; judicial review of legislative acts by the Constitutional Court"
+    },
+    "International law organization participation": {
+      "text": "accepts compulsory ICJ jurisdiction; accepts ICCt jurisdiction"
+    },
+    "Citizenship": {
+      "citizenship by birth": {
+        "text": "no"
+      },
+      "citizenship by descent only": {
+        "text": "at least one parent must be a citizen of Austria"
+      },
+      "dual citizenship recognized": {
+        "text": "no"
+      },
+      "residency requirement for naturalization": {
+        "text": "10 years"
+      }
+    },
+    "Suffrage": {
+      "text": "16 years of age; universal"
+    },
+    "Executive branch": {
+      "chief of state": {
+        "text": "Presidents Doris BURES (SPOe), Karlheinz KOPF (OeVP), Norbert HOFER (FPOe) (since 8 July 2016); note - until Alexander VAN DER BELLEN is sworn into office on 26 January 2017"
+      },
+      "head of government": {
+        "text": "Chancellor Christian KERN (SPOe) (since 17 May 2016); Vice Chancellor Reinhold MITTERLEHNER (OeVP) (since 1 September 2014)"
+      },
+      "cabinet": {
+        "text": "Council of Ministers chosen by the president on the advice of the chancellor"
+      },
+      "elections/appointments": {
+        "text": "president directly elected by absolute majority popular vote in 2 rounds if needed for a 6-year term (eligible for a second term); elections last held on 24 April 2016 (first round), 22 May 2016 (second round, which was annulled), and 4 December 2016 (second round re-vote); next presidential elections to be held in April 2022; chancellor appointed by the president but determined by the majority coalition parties in the Federal Assembly; vice chancellor appointed by the president on the advice of the chancellor"
+      },
+      "election results": {
+        "text": "percent of vote: first-round results - Norbet HOFER (FPOe) 35.1%, Alexander VAN DER BELLEN (independent, allied with the Greens) 21.3%, Irmgard GRISS (independent) 18.9%, Rudolf HUNDSTORFER (SPOe) 11.3%, Andreas KHOL (OeVP) 11.1%, Richard LUGNER (independent) 2.3%; second round results - Alexander VAN DER BELLEN 53.8%, Norbet HOFER 46.2%; note - Alexander VAN DER BELLEN will probably be sworn into office 26 January 2017"
+      }
+    },
+    "Legislative branch": {
+      "description": {
+        "text": "bicameral Federal Assembly or Bundesversammlung consists of the Federal Council or Bundesrat (62 seats; members appointed by state parliaments with each state receiving 3 to 12 seats in proportion to its population; members serve 5- or 6-year terms) and the National Council or Nationalrat (183 seats; members directly elected in single-seat constituencies by proportional representation vote; members serve 5-year terms)"
+      },
+      "elections": {
+        "text": "National Council - last held on 29 September 2013 (next to be held by September 2018)"
+      },
+      "election results": {
+        "text": "National Council - percent of vote by party - SPOe 26.8%, OeVP 24.0%, FPOe 20.5%, Greens 12.4%, Team Stronach 5.7%, NEOS 5.0%, other 5.6%; seats by party - SPOe 52, OeVP 47, FPOe 40, Greens 24, Team Stronach 11, NEOS 9; note - currently: SPOe 52, OeVP 50, FPOe 38, Greens 24, NEOS 9, Team Stronach 6, without faction 4"
+      }
+    },
+    "Judicial branch": {
+      "highest court(s)": {
+        "text": "Supreme Court of Justice or Oberster Gerichtshof (consists of 85 judges organized into 17 senates or panels of 5 judges each); Constitutional Court or Verfassungsgerichtshof (consists of 20 judges including 6 substitutes; Administrative Court or Verwaltungsgerichtshof - 2 judges plus other members depending on the importance of the case)"
+      },
+      "judge selection and term of office": {
+        "text": "Supreme Court judges nominated by executive branch departments and appointed by the president; judges serve for life; Constitutional Court judges nominated by several executive branch departments and approved by the president; judges serve for life; Administrative Court judges recommended by executive branch departments and appointed by the president; terms of judges and members determined by the president"
+      },
+      "subordinate courts": {
+        "text": "Courts of Appeal (4); Regional Courts (20); district courts (120); county courts"
+      }
+    },
+    "Political parties and leaders": {
+      "text": "Austrian People's Party or OeVP [Reinhold MITTERLEHNER] ++ Communist Party of Austria or KPOe [Mirko MESSNER] ++ Freedom Party of Austria or FPOe [Heinz-Christian STRACHE] ++ The Greens [Eva GLAWISCHNIG] ++ NEOS - The New Austria [Matthias STROLZ] ++ Social Democratic Party of Austria or SPOe [Christian KERN] ++ \"Team Stronach\" [Frank STRONACH]"
+    },
+    "Political pressure groups and leaders": {
+      "text": "Austrian Trade Union Federation or OeGB (nominally independent but primarily Social Democratic) ++ Federal Agriculture Chamber (OeVP-dominated) ++ Federal Economic Chamber (OeVP-dominated) ++ Labor Chamber or AK (Social Democratic-leaning think tank) ++ OeVP-oriented Association of Austrian Industrialists or IV ++ Roman Catholic Church, including its chief lay organization, Catholic Action",
+      "other": {
+        "text": "three composite leagues of the Austrian People's Party or OeVP representing business, labor, farmers, and other nongovernment organizations in the areas of environment and human rights"
+      }
+    },
+    "International organization participation": {
+      "text": "ADB (nonregional member), AfDB (nonregional member), Australia Group, BIS, BSEC (observer), CD, CE, CEI, CERN, EAPC, EBRD, ECB, EIB, EMU, ESA, EU, FAO, FATF, G-9, IADB, IAEA, IBRD, ICAO, ICC (national committees), ICCt, ICRM, IDA, IEA, IFAD, IFC, IFRCS, IGAD (partners), ILO, IMF, IMO, Interpol, IOC, IOM, IPU, ISO, ITSO, ITU, ITUC (NGOs), MIGA, MINURSO, NEA, NSG, OAS (observer), OECD, OIF (observer), OPCW, OSCE, Paris Club, PCA, PFP, Schengen Convention, SELEC (observer), UN, UNCTAD, UNESCO, UNFICYP, UNHCR, UNIDO, UNIFIL, UNTSO, UNWTO, UPU, WCO, WFTU (NGOs), WHO, WIPO, WMO, WTO, ZC"
+    },
+    "Diplomatic representation in the US": {
+      "chief of mission": {
+        "text": "Ambassador Wolfgang WALDNER (since 28 January 2016)"
+      },
+      "chancery": {
+        "text": "3524 International Court NW, Washington, DC 20008-3035"
+      },
+      "telephone": {
+        "text": "[1] (202) 895-6700"
+      },
+      "FAX": {
+        "text": "[1] (202) 895-6750"
+      },
+      "consulate(s) general": {
+        "text": "Los Angeles, New York"
+      },
+      "consulate(s)": {
+        "text": "Chicago"
+      }
+    },
+    "Diplomatic representation from the US": {
+      "chief of mission": {
+        "text": "Ambassador Alexa Lange WESNER (since 22 October 2013)"
+      },
+      "embassy": {
+        "text": "Boltzmanngasse 16, A-1090, Vienna"
+      },
+      "mailing address": {
+        "text": "use embassy street address"
+      },
+      "telephone": {
+        "text": "[43] (1) 31339-0"
+      },
+      "FAX": {
+        "text": "[43] (1) 3100682"
+      }
+    },
+    "Flag description": {
+      "text": "three equal horizontal bands of red (top), white, and red; the flag design is certainly one of the oldest - if not the oldest - national banners in the world; according to tradition, in 1191, following a fierce battle in the Third Crusade, Duke Leopold V of Austria's white tunic became completely blood-spattered; upon removal of his wide belt or sash, a white band was revealed; the red-white-red color combination was subsequently adopted as his banner"
+    },
+    "National symbol(s)": {
+      "text": "golden eagle, edelweiss, Alpine gentian; national colors: red, white"
+    },
+    "National anthem": {
+      "name": {
+        "text": "\"Bundeshymne\" (Federal Hymn)"
+      },
+      "lyrics/music": {
+        "text": "Paula von PRERADOVIC/Wolfgang Amadeus MOZART or Johann HOLZER (disputed)"
+      },
+      "note": {
+        "text": "adopted 1947; the anthem is also known as \"Land der Berge, Land am Strome\" (Land of the Mountains, Land by the River); Austria adopted a new national anthem after World War II to replace the former imperial anthem composed by Franz Josef HAYDN, which had been appropriated by Germany in 1922 and was thereafter associated with the Nazi regime; a gendered version of the lyrics was adopted by the Austrian Federal Assembly in fall 2011 and became effective 1 January 2012"
+      }
+    }
+  },
+  "Economy": {
+    "Economy - overview": {
+      "text": "Austria, with its well-developed market economy, skilled labor force, and high standard of living, is closely tied to other EU economies, especially Germany's. Its economy features a large service sector, a relatively sound industrial sector, and a small, but highly developed agricultural sector. ++  ++ Economic growth has been relatively weak in recent years, approaching 0.9% in 2015. Austria's 5.8% unemployment rate, while low by European standards, is at its highest rate since the end of World War II, driven by an increased number of refugees and EU migrants entering the labor market. Without extensive vocational training programs and generous early retirement, the unemployment rate would be even higher. ++  ++ Although Austria's fiscal position compares favorably with other euro-zone countries, it faces several external risks, such as unexpectedly weak world economic growth threatening the export market, Austrian banks' continued exposure to Central and Eastern Europe, repercussions from the Hypo Alpe Adria bank collapse, political and economic uncertainties caused by the European sovereign debt crisis, the current refugee crisis, and continued unrest in Russia/Ukraine. Early signs point towards a slight improvement in 2016, driven by low interest rates on government debt. Currently, the budget deficit stands at 2.7% of GDP and public debt has reached a post-war high of 84.2% of the GDP."
+    },
+    "GDP (purchasing power parity)": {
+      "text": "$415.9 billion (2016 est.) ++ $410.4 billion (2015 est.) ++ $406.9 billion (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "GDP (official exchange rate)": {
+      "text": "$387.3 billion (2015 est.)"
+    },
+    "GDP - real growth rate": {
+      "text": "1.4% (2016 est.) ++ 0.9% (2015 est.) ++ 0.4% (2014 est.)"
+    },
+    "GDP - per capita (PPP)": {
+      "text": "$47,900 (2016 est.) ++ $47,600 (2015 est.) ++ $47,600 (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "Gross national saving": {
+      "text": "25.1% of GDP (2016 est.) ++ 25% of GDP (2015 est.) ++ 24.7% of GDP (2014 est.)"
+    },
+    "GDP - composition, by end use": {
+      "household consumption": {
+        "text": "52.7%"
+      },
+      "government consumption": {
+        "text": "20%"
+      },
+      "investment in fixed capital": {
+        "text": "22.8%"
+      },
+      "investment in inventories": {
+        "text": "0.4%"
+      },
+      "exports of goods and services": {
+        "text": "53.1%"
+      },
+      "imports of goods and services": {
+        "text": "-49% (2016 est.)"
+      }
+    },
+    "GDP - composition, by sector of origin": {
+      "agriculture": {
+        "text": "1.3%"
+      },
+      "industry": {
+        "text": "28.1%"
+      },
+      "services": {
+        "text": "70.6% (2016 est.)"
+      }
+    },
+    "Agriculture - products": {
+      "text": "grains, potatoes, wine, fruit; dairy products, cattle, pigs, poultry; lumber and other forestry products"
+    },
+    "Industries": {
+      "text": "construction, machinery, vehicles and parts, food, metals, chemicals, lumber, paper and paperboard, communications equipment, tourism"
+    },
+    "Industrial production growth rate": {
+      "text": "1.4% (2016 est.)"
+    },
+    "Labor force": {
+      "text": "3.944 million (2016 est.)"
+    },
+    "Labor force - by occupation": {
+      "agriculture": {
+        "text": "0.7%"
+      },
+      "industry": {
+        "text": "25.3%"
+      },
+      "services": {
+        "text": "74% (2015 est.)"
+      }
+    },
+    "Unemployment rate": {
+      "text": "6.1% (2016 est.) ++ 5.7% (2015 est.)"
+    },
+    "Population below poverty line": {
+      "text": "4% (2014 est.)"
+    },
+    "Household income or consumption by percentage share": {
+      "lowest 10%": {
+        "text": "2.8%"
+      },
+      "highest 10%": {
+        "text": "23.5% (2012 est.)"
+      }
+    },
+    "Distribution of family income - Gini index": {
+      "text": "29.2 (2013) ++ 26.3 (2007)"
+    },
+    "Budget": {
+      "revenues": {
+        "text": "$187.3 billion"
+      },
+      "expenditures": {
+        "text": "$192.6 billion (2016 est.)"
+      }
+    },
+    "Taxes and other revenues": {
+      "text": "48.4% of GDP (2016 est.)"
+    },
+    "Budget surplus (+) or deficit (-)": {
+      "text": "-1.4% of GDP (2016 est.)"
+    },
+    "Public debt": {
+      "text": "85.8% of GDP (2016 est.) ++ 86.2% of GDP (2015 est.)",
+      "note": {
+        "text": "this is general government gross debt, defined in the Maastricht Treaty as consolidated general government gross debt at nominal value, outstanding at the end of the year; it covers the following categories of government liabilities (as defined in ESA95):"
+      }
+    },
+    "Fiscal year": {
+      "text": "calendar year"
+    },
+    "Inflation rate (consumer prices)": {
+      "text": "0.9% (2016 est.) ++ 0.8% (2015 est.)"
+    },
+    "Commercial bank prime lending rate": {
+      "text": "1.8% (31 December 2016 est.) ++ 2% (31 December 2015 est.)"
+    },
+    "Stock of narrow money": {
+      "text": "$203.1 billion (31 December 2016 est.) ++ $193.9 billion (31 December 2015 est.)",
+      "note": {
+        "text": "see entry for the European Union for money supply for the entire euro area; the European Central Bank (ECB) controls monetary policy for the 18 members of the Economic and Monetary Union (EMU); individual members of the EMU do not control the quantity of"
+      }
+    },
+    "Stock of broad money": {
+      "text": "$319.3 billion (31 December 2016 est.) ++ $317.2 billion (31 December 2015 est.)"
+    },
+    "Stock of domestic credit": {
+      "text": "$467 billion (31 December 2016 est.) ++ $462.9 billion (31 December 2015 est.)"
+    },
+    "Market value of publicly traded shares": {
+      "text": "$96.08 billion (31 December 2015 est.) ++ $96.79 billion (31 December 2014 est.) ++ $117.7 billion (31 December 2013 est.)"
+    },
+    "Current account balance": {
+      "text": "$10.19 billion (2016 est.) ++ $9.583 billion (2015 est.)"
+    },
+    "Exports": {
+      "text": "$141.9 billion (2016 est.) ++ $142.9 billion (2015 est.)"
+    },
+    "Exports - commodities": {
+      "text": "machinery and equipment, motor vehicles and parts, paper and paperboard, metal goods, chemicals, iron and steel, textiles, foodstuffs"
+    },
+    "Exports - partners": {
+      "text": "Germany 29.4%, US 6.4%, Italy 6.1%, Switzerland 5.7%, France 4.4%, Slovakia 4.2% (2015)"
+    },
+    "Imports": {
+      "text": "$138.6 billion (2016 est.) ++ $140 billion (2015 est.)"
+    },
+    "Imports - commodities": {
+      "text": "machinery and equipment, motor vehicles, chemicals, metal goods, oil and oil products, natural gas; foodstuffs"
+    },
+    "Imports - partners": {
+      "text": "Germany 41.5%, Italy 6.3%, Switzerland 6%, Czech Republic 4.2% (2015)"
+    },
+    "Reserves of foreign exchange and gold": {
+      "text": "$22.24 billion (31 December 2015 est.) ++ $24.94 billion (31 December 2014 est.)"
+    },
+    "Debt - external": {
+      "text": "$689.1 billion (31 March 2016 est.) ++ $679.3 billion (31 March 2015 est.)"
+    },
+    "Stock of direct foreign investment - at home": {
+      "text": "$304.7 billion (31 December 2016 est.) ++ $294.9 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - abroad": {
+      "text": "$363.6 billion (31 December 2016 est.) ++ $349.3 billion (31 December 2015 est.)"
+    },
+    "Exchange rates": {
+      "text": "euros (EUR) per US dollar - ++ 0.9214 (2016 est.) ++ 0.885 (2015 est.) ++ 0.885 (2014 est.) ++ 0.7634 (2013 est.) ++ 0.78 (2012 est.)"
+    }
+  },
+  "Energy": {
+    "Electricity - production": {
+      "text": "59 billion kWh (2014 est.)"
+    },
+    "Electricity - consumption": {
+      "text": "69.75 billion kWh (2015 est.)"
+    },
+    "Electricity - exports": {
+      "text": "19.31 billion kWh (2015 est.)"
+    },
+    "Electricity - imports": {
+      "text": "29.37 billion kWh (2015 est.)"
+    },
+    "Electricity - installed generating capacity": {
+      "text": "24.22 million kW (2014 est.)"
+    },
+    "Electricity - from fossil fuels": {
+      "text": "32.8% of total installed capacity (2014 est.)"
+    },
+    "Electricity - from nuclear fuels": {
+      "text": "0% of total installed capacity (2014 est.)"
+    },
+    "Electricity - from hydroelectric plants": {
+      "text": "56% of total installed capacity (2014 est.)"
+    },
+    "Electricity - from other renewable sources": {
+      "text": "11.1% of total installed capacity (2014 est.)"
+    },
+    "Crude oil - production": {
+      "text": "16,500 bbl/day (2015 est.)"
+    },
+    "Crude oil - exports": {
+      "text": "0 bbl/day (2015 est.)"
+    },
+    "Crude oil - imports": {
+      "text": "165,300 bbl/day (2015 est.)"
+    },
+    "Crude oil - proved reserves": {
+      "text": "47.5 million bbl (1 January 2016 es)"
+    },
+    "Refined petroleum products - production": {
+      "text": "200,900 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - consumption": {
+      "text": "264,600 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - exports": {
+      "text": "50,640 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - imports": {
+      "text": "117,300 bbl/day (2015 est.)"
+    },
+    "Natural gas - production": {
+      "text": "1.321 billion cu m (2014 est.)"
+    },
+    "Natural gas - consumption": {
+      "text": "7.845 billion cu m (2014 est.)"
+    },
+    "Natural gas - exports": {
+      "text": "2.529 billion cu m (2014 est.)"
+    },
+    "Natural gas - imports": {
+      "text": "10.12 billion cu m (2014 est.)"
+    },
+    "Natural gas - proved reserves": {
+      "text": "7.9 billion cu m (1 January 2016 es)"
+    },
+    "Carbon dioxide emissions from consumption of energy": {
+      "text": "76.2 million Mt (2014 est.)"
+    }
+  },
+  "Communications": {
+    "Telephones - fixed lines": {
+      "total subscriptions": {
+        "text": "3,609,900"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "42 (July 2015 est.)"
+      }
+    },
+    "Telephones - mobile cellular": {
+      "total": {
+        "text": "13.471 million"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "155 (July 2015 est.)"
+      }
+    },
+    "Telephone system": {
+      "general assessment": {
+        "text": "highly developed and efficient"
+      },
+      "domestic": {
+        "text": "fixed-line subscribership has been in decline since the mid-1990s with mobile-cellular subscribership eclipsing it by the late 1990s; the fiber-optic net is very extensive; all telephone applications and Internet services are available; broadband is avail"
+      },
+      "international": {
+        "text": "country code - 43; earth stations available in the Intelsat, Eutelsat satellite systems (2016)"
+      }
+    },
+    "Broadcast media": {
+      "text": "worldwide cable and satellite TV are available; the public incumbent ORF competes with three other major, several regional domestic, and up to 400 international TV stations; TV coverage is in principle 100%, but only 90% use broadcast media; Internet stre (2016)"
+    },
+    "Internet country code": {
+      "text": ".at"
+    },
+    "Internet users": {
+      "total": {
+        "text": "7.273 million"
+      },
+      "percent of population": {
+        "text": "83.9% (July 2015 est.)"
+      }
+    }
+  },
+  "Transportation": {
+    "National air transport system": {
+      "number of registered air carriers": {
+        "text": "11"
+      },
+      "inventory of registered aircraft operated by air carriers": {
+        "text": "130"
+      },
+      "annual passenger traffic on registered air carriers": {
+        "text": "14,718,641"
+      },
+      "annual freight traffic on registered air carriers": {
+        "text": "351.379 million mt-km (2015)"
+      }
+    },
+    "Civil aircraft registration country code prefix": {
+      "text": "OE (2016)"
+    },
+    "Airports": {
+      "text": "52 (2013)"
+    },
+    "Airports - with paved runways": {
+      "total": {
+        "text": "24"
+      },
+      "over 3,047 m": {
+        "text": "1"
+      },
+      "2,438 to 3,047 m": {
+        "text": "5"
+      },
+      "1,524 to 2,437 m": {
+        "text": "1"
+      },
+      "914 to 1,523 m": {
+        "text": "4"
+      },
+      "under 914 m": {
+        "text": "13 (2013)"
+      }
+    },
+    "Airports - with unpaved runways": {
+      "total": {
+        "text": "28"
+      },
+      "1,524 to 2,437 m": {
+        "text": "1"
+      },
+      "914 to 1,523 m": {
+        "text": "3"
+      },
+      "under 914 m": {
+        "text": "24 (2013)"
+      }
+    },
+    "Heliports": {
+      "text": "1 (2013)"
+    },
+    "Pipelines": {
+      "text": "gas 4,736 km; oil 663 km; refined products 157 km (2013)"
+    },
+    "Railways": {
+      "total": {
+        "text": "5,267.7 km"
+      },
+      "standard gauge": {
+        "text": "5,267.7 km 1.435-m gauge (3,556.4 km electrified) (2014)"
+      }
+    },
+    "Roadways": {
+      "total": {
+        "text": "133,597 km"
+      },
+      "paved": {
+        "text": "133,597 km (includes 2,207 km of expressways) (2016)"
+      }
+    },
+    "Waterways": {
+      "text": "358 km (2011)"
+    },
+    "Merchant marine": {
+      "registered in other countries": {
+        "text": "3 (Cyprus 1, Kazakhstan 1, Saint Vincent and the Grenadines 1) (2010)"
+      }
+    },
+    "Ports and terminals": {
+      "river port(s)": {
+        "text": "Enns, Krems, Linz, Vienna (Danube)"
+      }
+    }
+  },
+  "Military and Security": {
+    "Military branches": {
+      "text": "Land Forces (KdoLdSK), Air Forces (KdoLuSK)"
+    },
+    "Military service age and obligation": {
+      "text": "registration requirement at age 17, the legal minimum age for voluntary military service; 18 is the legal minimum age for compulsory military service (6 months), or optionally, alternative civil/community service (9 months); males 18 to 50 years old in the militia or inactive reserve are subject to compulsory service; in a January 2012 referendum, a majority of Austrians voted in favor of retaining the system of compulsory military service (with the option of alternative/non-military service) instead of switching to a professional army system (2015)"
+    },
+    "Military expenditures": {
+      "text": "0.55% of GDP (2015 est.) ++ 0.62% of GDP (2014) ++ 0.63% of GDP (2013) ++ 0.68% of GDP (2012) ++ 0.7% of GDP (2011)"
+    }
+  },
+  "Transnational Issues": {
+    "Disputes - international": {
+      "text": "none"
+    },
+    "Refugees and internally displaced persons": {
+      "refugees (country of origin)": {
+        "text": "17,458 (Afghanistan); 15,526 (Russia); 14,894 (Syria) (2015)"
+      },
+      "stateless persons": {
+        "text": "828 (2015)"
+      }
+    },
+    "Illicit drugs": {
+      "text": "transshipment point for Southwest Asian heroin and South American cocaine destined for Western Europe; increasing consumption of European-produced synthetic drugs"
+    }
+  }
+}

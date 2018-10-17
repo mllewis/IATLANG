@@ -1,0 +1,243 @@
+countryres,country_name,language_name,language_name2,language_iso,wiki_language_code
+NA,NA,Abkhaz,Abkhaz,abk,ab
+AF,Afghanistan,Pashto,Pashto,pus,ps
+AL,Albania,Northern Tosk Albanian,Northern Tosk Albanian,als,sq
+DZ,Algeria,Arabic,Arabic,ara,ar
+AS,American Samoa,English,English,eng,en
+AD,Andorra,Catalan,Catalan,cat,ca
+AO,Angola,Portuguese,Portuguese,por,pt
+AI,Anguilla,English,English,eng,en
+AQ,Antarctica,NA,NA,NA,NA
+AG,Antigua and Barbuda,English,English,eng,en
+AR,Argentina,Spanish,Spanish,spa,es
+AM,Armenia,Armenian,Armenian,hye,hy
+AW,Aruba,Dutch,Dutch,nld,nl
+AU,Australia,English,English,eng,en
+AT,Austria,German,German,deu,de
+AZ,Azerbaijan,Azerbaijani,Azerbaijani,aze,az
+BS,Bahamas,English,English,eng,en
+BH,Bahrain,Arabic,Arabic,ara,ar
+BD,Bangladesh,Bengali,Bengali,ben,bn
+BB,Barbados,English,English,eng,en
+BY,Belarus,Belarusian,Belarusian,bel,be
+BE,Belgium,Dutch,Dutch,nld,nl
+BZ,Belize,English,English,eng,en
+BJ,Benin,French,French,fra,fr
+BM,Bermuda,English,English,eng,en
+BT,Bhutan,Dzongkha,Dzongkha,dzo,dz
+BO,Bolivia (Plurinational State of),Castellano,Castellano,NA,es
+BA,Bosnia and Herzegovina,Bosnian,Bosnian,bos,bs
+BW,Botswana,English,English,eng,en
+BV,Bouvet Island,NA,NA,NA,NA
+BR,Brazil,Portuguese,Portuguese,por,pt
+IO,British Indian Ocean Territory,English,English,eng,en
+BN,Brunei Darussalam,Malay,Malay,may,ms
+BG,Bulgaria,Bulgarian,Bulgarian,bul,bg
+BF,Burkina Faso,French,French,fra,fr
+BI,Burundi,Rundi,Rundi,run,NA
+KH,Cambodia,Central Khmer,Central Khmer,khm,km
+CM,Cameroon,English,English,eng,en
+CA,Canada,English,English,eng,en
+CV,Cabo Verde,Portuguese,Portuguese,por,pt
+KY,Cayman Islands,English,English,eng,en
+CF,Central African Republic,French,French,fra,fr
+TD,Chad,Chadian Arabic,Chadian Arabic,shu,ar
+CL,Chile,Spanish,Spanish,spa,es
+CN,China,Mandarin Chinese,Mandarin,cmn,zh
+CX,Christmas Island,NA,NA,NA,NA
+CC,Cocos (Keeling) Islands,NA,NA,NA,NA
+CO,Colombia,Spanish,Spanish,spa,es
+KM,Comoros,French,French,fra,fr
+CG,Congo,French,French,fra,fr
+CD,Democratic Republic of the Congo,French,French,fra,fr
+CR,Costa Rica,Spanish,Spanish,spa,es
+CI,CÌ«te D'Ivoire,French,French,fra,fr
+HR,Croatia,Croatian,Croatian,hrv,hr
+CU,Cuba,Spanish,Spanish,spa,es
+CY,Cyprus,Modern Greek,Greek,ell,el
+CZ,Czech Republic,Czech,Czech,ces,cs
+DK,Denmark,Danish,Danish,dan,da
+DJ,Djibouti,Arabic,Arabic,ara,ar
+DM,Dominica,English,English,eng,en
+DO,Dominican Republic,Spanish,Spanish,spa,es
+TP,East Timor,Portuguese,Portuguese,por,pt
+EC,Ecuador,Spanish,Spanish,spa,es
+EG,Egypt,Egyptian Arabic,Egyptian Arabic,arz,arz
+SV,El Salvador,Spanish,Spanish,spa,es
+GQ,Equatorial Guinea,Spanish,Spanish,spa,es
+ER,Eritrea,Arabic,Arabic,ara,ar
+EE,Estonia,Estonian,Estonian,ekk,et
+ET,Ethiopia,Amharic,Amharic,amh,am
+FK,Falkland Islands (Malvinas),English,English,eng,en
+FO,Faroe Islands,Faroese,Faroese,fao,fo
+FJ,Fiji,English,English,eng,en
+FI,Finland,Finnish,Finnish,fin,fi
+FR,France,French,French,fra,fr
+GF,French Guiana,French,French,fra,fr
+PF,French Polynesia,French,French,fra,fr
+TF,French Southern Territories,French,French,fra,fr
+GA,Gabon,French,French,fra,fr
+GM,Gambia (Islamic Republic of the),English,English,eng,en
+GE,Georgia,Georgian,Georgian,kat,ka
+DE,Germany,German,German,deu,de
+GH,Ghana,English,English,eng,en
+GI,Gibraltar,English,English,eng,en
+GR,Greece,Modern Greek,Modern Greek,ell,el
+GL,Greenland,Greenlandic,Greenlandic,kay,kl
+GD,Grenada,English,English,eng,en
+GP,Guadeloupe,French,French,fra,fr
+GU,Guam,Chamorro,Chamorro,cha,ch
+GT,Guatemala,Spanish,Spanish,spa,es
+GN,Guinea,French,French,fra,fr
+GY,Guyana,English,English,eng,en
+HT,Haiti,Haitian,Haitian,hat,ht
+HM,Heard Island and McDonald Islands,NA,NA,NA,NA
+HN,Honduras,Spanish,Spanish,spa,es
+HK,Hong Kong,Yue Chinese,Mandarin,yue,zh
+HU,Hungary,Hungarian,Hungarian,hun,hu
+IS,Iceland,Icelandic,Icelandic,isl,is
+IN,India,English,English,eng,en
+ID,Indonesia,Indonesian,Indonesian,ind,id
+IR,Iran (Islamic Republic of),Persian,Persian,fas,fa
+IQ,Iraq,Arabic,Arabic,ara,ar
+IE,Ireland,Irish,Irish,gle,ga
+IL,Israel,Hebrew,Hebrew,heb,he
+IT,Italy,Italian,Italian,ita,it
+JM,Jamaica,English,English,eng,en
+JP,Japan,Japanese,Japanese,jpn,ja
+JO,Jordan,Arabic,Arabic,ara,ar
+KZ,Kazakhstan,Kazakh,Kazakh,kaz,kk
+KE,Kenya,English,English,eng,en
+KR,Republic of Korea,Korean,Korean,kor,ko
+KP,Democratic People's Republic of Korea,Korean,Korean,kor,ko
+KW,Kuwait,Arabic,Arabic,ara,ar
+KG,Kyrgyzstan,Kirghiz,Kirghiz,kir,ky
+LA,Lao People's Democratic Republic,Lao,Lao,lao,lo
+LV,Latvia,Latvian,Latvian,lav,lv
+LB,Lebanon,Arabic,Arabic,ara,ar
+LS,Lesotho,Southern Sotho,Southern Sotho,sot,st
+LR,Liberia,English,English,eng,en
+LY,Libya,Libyan Arabic,Libyan Arabic,ayl,ar
+LI,Liechtenstein,German,German,deu,de
+LT,Lithuania,Lithuanian,Lithuanian,lit,lt
+LU,Luxembourg,French,French,fra,fr
+MO,Macao,Cantonese,Cantonese,chi,zh_yue
+MK,The former Yugoslav Republic of Macedonia,Macedonian,Macedonian,mkd,mk
+MG,Madagascar,Plateau Malagasy,Plateau Malagasy,plt,mg
+MW,Malawi,English,English,eng,en
+MY,Malaysia,Standard Malay,Malaysian,zsm,ms
+MV,Maldives,Dhivehi,Dhivehi,div,NA
+ML,Mali,French,French,fra,fr
+MT,Malta,English,English,eng,en
+MH,Marshall Islands,English,English,eng,en
+MQ,Martinique,French,French,fra,fr
+MR,Mauritania,Arabic,Arabic,ara,ar
+MU,Mauritius,English,English,eng,en
+YT,Mayotte,Shimaore,Shimaore,NA,NA
+MX,Mexico,Spanish,Spanish,spa,es
+FM,Micronesia (Federated States of),English,English,eng,en
+MD,Republic of Moldova,Romanian,Romanian,ron,ro
+MC,Monaco,French,French,fra,fr
+MN,Mongolia,Mongolian,Mongolian,mon,mn
+ME,Montenegro,Albanian,Albanian,alb,sq
+MS,Montserrat,English,English,eng,en
+MA,Morocco,Arabic,Arabic,ara,ar
+MZ,Mozambique,Portuguese,Portuguese,por,pt
+MM,Myanmar,Central Moroccan Berber,Central Moroccan Berber,tzm,NA
+NR,Nauru,English,English,eng,en
+NP,Nepal,Nepali,Nepali,npi,ne
+AN,Netherlands Antilles,Dutch,Dutch,nld,nl
+NL,Netherlands,Dutch,Dutch,nld,nl
+NC,New Caledonia,French,French,fra,fr
+NZ,New Zealand,English,English,eng,en
+NI,Nicaragua,Spanish,Spanish,spa,es
+NE,Niger,French,French,fra,fr
+NG,Nigeria,English,English,eng,en
+NU,Niue,Niuean,Niuean,niu,NA
+NF,Norfolk Island,NA,NA,NA,NA
+MP,Northern Mariana Islands,Chamorro,Chamorro,cha,ch
+NO,Norway,Norwegian,Norwegian,nor,no
+OM,Oman,Arabic,Arabic,ara,ar
+PK,Pakistan,Urdu,Urdu,urd,ur
+PW,Palau,English,English,eng,en
+PA,Panama,Spanish,Spanish,spa,es
+PG,Papua New Guinea,English,English,eng,en
+PY,Paraguay,Spanish,Spanish,spa,es
+PE,Peru,Spanish,Spanish,spa,es
+PH,Philippines,Filipino,Filipino,fil,NA
+PL,Poland,Polish,Polish,pol,pl
+PT,Portugal,Portuguese,Portuguese,por,pt
+PR,Puerto Rico,Spanish,Spanish,spa,es
+QA,Qatar,Arabic,Arabic,ara,ar
+RE,Reunion,French,French,fra,fr
+RO,Romania,Romanian,Romanian,ron,ro
+RU,Russian Federation,Russian,Russian,rus,ru
+RW,Rwanda,Kinyarwanda,Kinyarwanda,kin,rw
+SH,"Saint Helena, Ascension and Tristan da Cunha",English,English,eng,en
+KN,Saint Kitts and Nevis,English,English,eng,en
+LC,Saint Lucia,English,English,eng,en
+VC,Saint Vincent and the Grenadines,English,English,eng,en
+WS,Samoa,English,English,eng,en
+SM,San Marino,Italian,Italian,ita,it
+ST,Sao Tome and Principe,Portuguese,Portuguese,por,pt
+SA,Saudi Arabia,Arabic,Arabic,ara,ar
+SN,Senegal,French,French,fra,fr
+RS,Serbia,Serbian,Serbian,srp,sr
+SC,Seychelles,English,English,eng,en
+SL,Sierra Leone,English,English,eng,en
+SG,Singapore,English,English,eng,en
+SK,Slovakia,Slovak,Slovak,slk,sk
+SI,Slovenia,Slovene,Slovene,slv,sl
+SB,Solomon Islands,English,English,eng,en
+SO,Somalia,Arabic,Arabic,ara,ar
+ZA,South Africa,Afrikaans,Afrikaans,afr,af
+GS,South Georgia and the South Sandwich Islands,Georgian,Georgian,kat,ka
+ES,Spain,Spanish,Spanish,spa,es
+LK,Sri Lanka,Sinhala,Sinhala,sin,NA
+SD,Sudan,Arabic,Arabic,ara,ar
+SR,Suriname,Dutch,Dutch,nld,nl
+SJ,Svalbard and Jan Mayen,Norwegian,Norwegian,nor,no
+SZ,Swaziland,English,English,eng,en
+SE,Sweden,Swedish,Swedish,swe,sv
+CH,Switzerland,German,German,deu,de
+SY,Syrian Arab Republic,Arabic,Arabic,ara,ar
+TW,"Taiwan, Province of China",Chinese,Mandarin,chi,zh
+TJ,Tajikistan,Tajik,Tajik,tgk,tg
+TZ,United Republic of Tanzania,Swahili,Swahili,swh,sw
+TH,Thailand,Thai,Thai,tha,th
+TG,Togo,French,French,fra,fr
+TK,Tokelau,Tokelauan,Tokelauan,NA,NA
+TO,Tonga,English,English,eng,en
+TT,Trinidad and Tobago,English,English,eng,en
+TN,Tunisia,Arabic,Arabic,ara,ar
+TR,Turkey,Turkish,Turkish,tur,tr
+TM,Turkmenistan,Turkmen,Turkmen,tuk,tk
+TC,Turks and Caicos Islands,English,English,eng,en
+TV,Tuvalu,English,English,eng,en
+US,United States of America,English,English,eng,en
+UG,Uganda,English,English,eng,en
+UA,Ukraine,Ukrainian,Ukrainian,ukr,uk
+AE,United Arab Emirates,Arabic,Arabic,ara,ar
+UK,UK,English,English,eng,en
+UM,United States Minor Outlying Islands,English,English,eng,en
+UY,Uruguay,Spanish,Spanish,spa,es
+UZ,Uzbekistan,Uzbek,Uzbek,uzb,uz
+VU,Vanuatu,English,English,eng,en
+VA,Holy See (Vatican City State),Italian,Italian,ita,it
+VE,"Venezuela, Bolivarian Republic of",Spanish,Spanish,spa,es
+VN,Viet Nam,Vietnamese,Vietnamese,vie,vi
+VG,"Virgin Islands, British",English,English,eng,en
+VI,"Virgin Islands, U.S.",English,English,eng,en
+WF,Wallis and Futuna,Wallisian,Wallisian,wls,NA
+YE,Yemen,Arabic,Arabic,ara,ar
+YU,Yugoslavia,Bosnian,Bosnian,bos,bs
+ZM,Zambia,English,English,eng,en
+ZW,Zimbabwe,English,English,eng,en
+,,,Malayalam,,ml
+,,,IsiZulu,,zu
+,,,Urdu,,ur
+,,,Tamil,,ta
+,,,Hindi,,hi
+,,,Tagalog,,tl
+,,,mandarin,,zh
+,,,greek,,el

@@ -1,0 +1,904 @@
+{
+  "Introduction": {
+    "Background": {
+      "text": "Formerly part of the Ottoman Empire, Iraq was occupied by the United Kingdom during the course of World War I; in 1920, it was declared a League of Nations mandate under UK administration. In stages over the next dozen years, Iraq attained its independence as a kingdom in 1932. A \"republic\" was proclaimed in 1958, but in actuality a series of strongmen ruled the country until 2003. The last was SADDAM Husayn. Territorial disputes with Iran led to an inconclusive and costly eight-year war (1980-88). In August 1990, Iraq seized Kuwait but was expelled by US-led UN coalition forces during the Gulf War of January-February 1991. Following Kuwait's liberation, the UN Security Council (UNSC) required Iraq to scrap all weapons of mass destruction and long-range missiles and to allow UN verification inspections. Continued Iraqi noncompliance with UNSC resolutions over a period of 12 years led to the US-led invasion of Iraq in March 2003 and the ouster of the SADDAM Husayn regime. US forces remained in Iraq under a UNSC mandate through 2009 and under a bilateral security agreement thereafter, helping to provide security and to train and mentor Iraqi security forces. ++ In October 2005, Iraqis approved a constitution in a national referendum and, pursuant to this document, elected a 275-member Council of Representatives (COR) in December 2005. The COR approved most cabinet ministers in May 2006, marking the transition to Iraq's first constitutional government in nearly a half century. Nearly nine years after the start of the Second Gulf War in Iraq, US military operations there ended in mid-December 2011. In January 2009 and April 2013, Iraq held elections for provincial councils in all governorates except for the three comprising the Kurdistan Regional Government and Kirkuk Governorate. Iraq held a national legislative election in March 2010 - choosing 325 legislators in an expanded COR - and, after nine months of deadlock the COR approved the new government in December 2010. In April 2014, Iraq held a national legislative election and expanded the COR to 328 legislators. Prime Minister Nuri al-MALIKI dropped his bid for a third term in office, enabling new Prime Minister Haydar al-ABADI, a Shia Muslim from Baghdad, to win legislative approval of his new cabinet in September 2014. Since 2014, Iraq has been engaged in a military campaign against the Islamic State of Iraq and the Levant (ISIL) to recapture territory lost in the western and northern portion of the country."
+    }
+  },
+  "Geography": {
+    "Location": {
+      "text": "Middle East, bordering the Persian Gulf, between Iran and Kuwait"
+    },
+    "Geographic coordinates": {
+      "text": "33 00 N, 44 00 E"
+    },
+    "Map references": {
+      "text": "Middle East"
+    },
+    "Area": {
+      "total": {
+        "text": "438,317 sq km"
+      },
+      "land": {
+        "text": "437,367 sq km"
+      },
+      "water": {
+        "text": "950 sq km"
+      }
+    },
+    "Area - comparative": {
+      "text": "slightly more than three times the size of New York state"
+    },
+    "Land boundaries": {
+      "total": {
+        "text": "3,809 km"
+      },
+      "border countries": {
+        "text": "Iran 1,599 km, Jordan 179 km, Kuwait 254 km, Saudi Arabia 811 km, Syria 599 km, Turkey 367 km"
+      }
+    },
+    "Coastline": {
+      "text": "58 km"
+    },
+    "Maritime claims": {
+      "territorial sea": {
+        "text": "12 nm"
+      },
+      "continental shelf": {
+        "text": "not specified"
+      }
+    },
+    "Climate": {
+      "text": "mostly desert; mild to cool winters with dry, hot, cloudless summers; northern mountainous regions along Iranian and Turkish borders experience cold winters with occasionally heavy snows that melt in early spring, sometimes causing extensive flooding in central and southern Iraq"
+    },
+    "Terrain": {
+      "text": "mostly broad plains; reedy marshes along Iranian border in south with large flooded areas; mountains along borders with Iran and Turkey"
+    },
+    "Elevation": {
+      "mean elevation": {
+        "text": "312 m"
+      },
+      "elevation extremes": {
+        "text": "lowest point: Persian Gulf 0 m ++ highest point: Cheekha Dar (Kurdish for \"Black Tent\") 3,611 m"
+      }
+    },
+    "Natural resources": {
+      "text": "petroleum, natural gas, phosphates, sulfur"
+    },
+    "Land use": {
+      "agricultural land": {
+        "text": "18.1% ++ arable land 8.4%; permanent crops 0.5%; permanent pasture 9.2%"
+      },
+      "forest": {
+        "text": "1.9%"
+      },
+      "other": {
+        "text": "80% (2011 est.)"
+      }
+    },
+    "Irrigated land": {
+      "text": "35,250 sq km (2012)"
+    },
+    "Population - distribution": {
+      "text": "population is concentrated in the north, center, and eastern parts of the country, with many of the larger agglomerations found along extensive parts of the Tigris and Euphrates Rivers; much of the western and southern areas are either lightly populated or uninhabited"
+    },
+    "Natural hazards": {
+      "text": "dust storms; sandstorms; floods"
+    },
+    "Environment - current issues": {
+      "text": "government water control projects drained most of the inhabited marsh areas east of An Nasiriyah by drying up or diverting the feeder streams and rivers; a once sizable population of Marsh Arabs, who inhabited these areas for thousands of years, has been displaced; furthermore, the destruction of the natural habitat poses serious threats to the area's wildlife populations; inadequate supplies of potable water; development of the Tigris and Euphrates rivers system contingent upon agreements with upstream riparian Turkey; air and water pollution; soil degradation (salination) and erosion; desertification"
+    },
+    "Environment - international agreements": {
+      "party to": {
+        "text": "Biodiversity, Law of the Sea, Ozone Layer Protection"
+      },
+      "signed, but not ratified": {
+        "text": "Environmental Modification"
+      }
+    },
+    "Geography - note": {
+      "text": "strategic location on Shatt al Arab waterway and at the head of the Persian Gulf"
+    }
+  },
+  "People and Society": {
+    "Population": {
+      "text": "38,146,025 (July 2016 est.)"
+    },
+    "Nationality": {
+      "noun": {
+        "text": "Iraqi(s)"
+      },
+      "adjective": {
+        "text": "Iraqi"
+      }
+    },
+    "Ethnic groups": {
+      "text": "Arab 75%-80%, Kurdish 15%-20%, Turkoman, Assyrian, other 5%"
+    },
+    "Languages": {
+      "text": "Arabic (official), Kurdish (official), Turkmen (a Turkish dialect) and Assyrian (Neo-Aramaic) are official in areas where they constitute a majority of the population), Armenian"
+    },
+    "Religions": {
+      "text": "Muslim (official) 99% (Shia 60%-65%, Sunni 32%-37%), Christian 0.8%, Hindu <0.1, Buddhist <0.1, Jewish <0.1, folk religion <0.1, unafilliated 0.1, other <0.1",
+      "note": {
+        "text": "while there has been voluntary relocation of many Christian families to northern Iraq, recent reporting indicates that the overall Christian population may have dropped by as much as 50 percent since the fall of the SADDAM Husayn regime in 2003, with many fleeing to Syria, Jordan, and Lebanon (2010 est.)"
+      }
+    },
+    "Age structure": {
+      "0-14 years": {
+        "text": "39.88% (male 7,766,832/female 7,445,633)"
+      },
+      "15-24 years": {
+        "text": "19.07% (male 3,703,302/female 3,572,702)"
+      },
+      "25-54 years": {
+        "text": "33.7% (male 6,499,345/female 6,354,506)"
+      },
+      "55-64 years": {
+        "text": "3.96% (male 720,976/female 790,301)"
+      },
+      "65 years and over": {
+        "text": "3.39% (male 574,521/female 717,907) (2016 est.)"
+      }
+    },
+    "Dependency ratios": {
+      "total dependency ratio": {
+        "text": "78.7%"
+      },
+      "youth dependency ratio": {
+        "text": "73.2%"
+      },
+      "elderly dependency ratio": {
+        "text": "5.5%"
+      },
+      "potential support ratio": {
+        "text": "18.3% (2015 est.)"
+      }
+    },
+    "Median age": {
+      "total": {
+        "text": "19.9 years"
+      },
+      "male": {
+        "text": "19.6 years"
+      },
+      "female": {
+        "text": "20.2 years (2016 est.)"
+      }
+    },
+    "Population growth rate": {
+      "text": "2.87% (2016 est.)"
+    },
+    "Birth rate": {
+      "text": "30.9 births/1,000 population (2016 est.)"
+    },
+    "Death rate": {
+      "text": "3.8 deaths/1,000 population (2016 est.)"
+    },
+    "Net migration rate": {
+      "text": "1.5 migrant(s)/1,000 population (2016 est.)"
+    },
+    "Population distribution": {
+      "text": "population is concentrated in the north, center, and eastern parts of the country, with many of the larger agglomerations found along extensive parts of the Tigris and Euphrates Rivers; much of the western and southern areas are either lightly populated or uninhabited"
+    },
+    "Urbanization": {
+      "urban population": {
+        "text": "69.5% of total population (2015)"
+      },
+      "rate of urbanization": {
+        "text": "3.01% annual rate of change (2010-15 est.)"
+      }
+    },
+    "Major urban areas - population": {
+      "text": "BAGHDAD (capital) 6.643 million; Mosul 1.694 million; Erbil 1.166 million; Basra 1.019 million; As Sulaymaniyah 1.004 million; Najaf 889,000 (2015)"
+    },
+    "Sex ratio": {
+      "at birth": {
+        "text": "1.05 male(s)/female"
+      },
+      "0-14 years": {
+        "text": "1.04 male(s)/female"
+      },
+      "15-24 years": {
+        "text": "1.04 male(s)/female"
+      },
+      "25-54 years": {
+        "text": "1.02 male(s)/female"
+      },
+      "55-64 years": {
+        "text": "0.91 male(s)/female"
+      },
+      "65 years and over": {
+        "text": "0.8 male(s)/female"
+      },
+      "total population": {
+        "text": "1.02 male(s)/female (2016 est.)"
+      }
+    },
+    "Maternal mortality rate": {
+      "text": "50 deaths/100,000 live births (2015 est.)"
+    },
+    "Infant mortality rate": {
+      "total": {
+        "text": "37.5 deaths/1,000 live births"
+      },
+      "male": {
+        "text": "40.6 deaths/1,000 live births"
+      },
+      "female": {
+        "text": "34.2 deaths/1,000 live births (2016 est.)"
+      }
+    },
+    "Life expectancy at birth": {
+      "total population": {
+        "text": "74.9 years"
+      },
+      "male": {
+        "text": "72.6 years"
+      },
+      "female": {
+        "text": "77.2 years (2016 est.)"
+      }
+    },
+    "Total fertility rate": {
+      "text": "4.06 children born/woman (2016 est.)"
+    },
+    "Contraceptive prevalence rate": {
+      "text": "52.5% (2011)"
+    },
+    "Health expenditures": {
+      "text": "5.5% of GDP (2014)"
+    },
+    "Physicians density": {
+      "text": "0.61 physicians/1,000 population (2010)"
+    },
+    "Hospital bed density": {
+      "text": "1.3 beds/1,000 population (2012)"
+    },
+    "Drinking water source": {
+      "improved": {
+        "text": " ++ urban: 93.8% of population ++ rural: 70.1% of population ++ total: 86.6% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 6.1% of population ++ rural: 31.5% of population ++ total: 14.6% of population (2015 est.)"
+      }
+    },
+    "Sanitation facility access": {
+      "improved": {
+        "text": " ++ urban: 86.4% of population ++ rural: 83.8% of population ++ total: 85.6% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 13.6% of population ++ rural: 16.2% of population ++ total: 14.4% of population (2015 est.)"
+      }
+    },
+    "HIV/AIDS - adult prevalence rate": {
+      "text": "NA"
+    },
+    "HIV/AIDS - people living with HIV/AIDS": {
+      "text": "NA"
+    },
+    "HIV/AIDS - deaths": {
+      "text": "NA"
+    },
+    "Major infectious diseases": {
+      "degree of risk": {
+        "text": "intermediate"
+      },
+      "food or waterborne diseases": {
+        "text": "bacterial diarrhea, hepatitis A, and typhoid fever (2016)"
+      }
+    },
+    "Obesity - adult prevalence rate": {
+      "text": "21.2% (2014)"
+    },
+    "Children under the age of 5 years underweight": {
+      "text": "8.5% (2011)"
+    },
+    "Education expenditures": {
+      "text": "NA"
+    },
+    "Literacy": {
+      "definition": {
+        "text": "age 15 and over can read and write"
+      },
+      "total population": {
+        "text": "79.7%"
+      },
+      "male": {
+        "text": "85.7%"
+      },
+      "female": {
+        "text": "73.7% (2015 est.)"
+      }
+    },
+    "Child labor - children ages 5-14": {
+      "total number": {
+        "text": "715,737"
+      },
+      "percentage": {
+        "text": "11% (2006 est.)"
+      }
+    }
+  },
+  "Government": {
+    "Country name": {
+      "conventional long form": {
+        "text": "Republic of Iraq"
+      },
+      "conventional short form": {
+        "text": "Iraq"
+      },
+      "local long form": {
+        "text": "Jumhuriyat al-Iraq/Komar-i Eraq"
+      },
+      "local short form": {
+        "text": "Al Iraq/Eraq"
+      },
+      "etymology": {
+        "text": "the name probably derives from \"Uruk\" (Biblical \"Erech\"), the ancient Sumerian and Babylonian city on the Euphrates River"
+      }
+    },
+    "Government type": {
+      "text": "federal parliamentary republic"
+    },
+    "Capital": {
+      "name": {
+        "text": "Baghdad"
+      },
+      "geographic coordinates": {
+        "text": "33 20 N, 44 24 E"
+      },
+      "time difference": {
+        "text": "UTC+3 (8 hours ahead of Washington, DC, during Standard Time)"
+      }
+    },
+    "Administrative divisions": {
+      "text": "18 governorates (muhafazat, singular - muhafazah (Arabic); parezgakan, singular - parezga (Kurdish)) and 1 region*; Al Anbar; Al Basrah; Al Muthanna; Al Qadisiyah (Ad Diwaniyah); An Najaf; Arbil (Erbil) (Arabic), Hewler (Kurdish); As Sulaymaniyah (Arabic), Slemani (Kurdish); Babil; Baghdad; Dahuk (Arabic), Dihok (Kurdish); Dhi Qar; Diyala; Karbala'; Kirkuk; Kurdistan Regional Government*; Maysan; Ninawa; Salah ad Din; Wasit"
+    },
+    "Independence": {
+      "text": "3 October 1932 (from League of Nations mandate under British administration); note - on 28 June 2004 the Coalition Provisional Authority transferred sovereignty to the Iraqi Interim Government"
+    },
+    "National holiday": {
+      "text": "Republic Day, July 14 (1958); note - the Government of Iraq has yet to declare an official national holiday but still observes Republic Day"
+    },
+    "Constitution": {
+      "text": "several previous; latest adopted by referendum 15 October 2005 (2016)"
+    },
+    "Legal system": {
+      "text": "mixed legal system of civil and Islamic law"
+    },
+    "International law organization participation": {
+      "text": "has not submitted an ICJ jurisdiction declaration; non-party state to the ICCt"
+    },
+    "Citizenship": {
+      "citizenship by birth": {
+        "text": "no"
+      },
+      "citizenship by descent only": {
+        "text": "at least one parent must be a citizen of Iraq"
+      },
+      "dual citizenship recognized": {
+        "text": "yes"
+      },
+      "residency requirement for naturalization": {
+        "text": "10 years"
+      }
+    },
+    "Suffrage": {
+      "text": "18 years of age; universal"
+    },
+    "Executive branch": {
+      "chief of state": {
+        "text": "President Fuad MASUM (since 24 July 2014); Vice Presidents Ayad ALLAWI (since 9 September 2014), Nuri al-MALIKI (since 8 September 2014), Usama al-NUJAYFI (since 8 September 2014)"
+      },
+      "head of government": {
+        "text": "Prime Minister Haydar al-ABADI (since 8 September 2014)"
+      },
+      "cabinet": {
+        "text": "Council of Ministers proposed by the prime minister, approved by Council of Representatives"
+      },
+      "elections/appointments": {
+        "text": "president indirectly elected by Council of Representatives to serve a 4-year term (eligible for a second term); election last held on 30 April 2014 (next to be held in 2018); prime minister nominated by the president, approved by Council of Representatives"
+      },
+      "election results": {
+        "text": "Fuad MASUM elected president; Council of Representatives vote - Fuad MASUM (PUK) 211, Barham SALIH (PUK) 17; Haydar al-ABADI (Da'wa Party) approved as prime minister"
+      }
+    },
+    "Legislative branch": {
+      "description": {
+        "text": "unicameral Council of Representatives or Majlis an-Nuwwab al-Iraqiyy (328 seats; 320 members directly elected in multi-seat constituencies by proportional representation vote and 8 seats reserved for minorities; members serve 4-year terms); note - Iraq's constitution calls for the establishment of an upper house, the Federation Council, but it has not been instituted"
+      },
+      "elections": {
+        "text": "last held on 30 April 2014 (next to be held in 2018)"
+      },
+      "election results": {
+        "text": "Council of Representatives - percent of vote by party/coalition - NA; seats by coalition/party – State of Law Coalition 95, Ahrar Bloc/Sadrist Trend 34, ISCI/Muwatin 30, KDP 25, United for Reform Coalition/Muttahidun 23, PUK 21, Nationalism Coalition/Wataniyah 19, other Sunni coalitions/parties 15, Al-Arabiyah Coalition 10, Goran 9, other Shia parties/coalitions 9, Fadilah 6, National Reform Trend 6, Iraq Coalition 5, KIU 4, other 17"
+      }
+    },
+    "Judicial branch": {
+      "highest court(s)": {
+        "text": "Federal Supreme Court or FSC (consists of 9 judges); note - court jurisdiction limited to constitutional issues and disputes between regions or governorates and the central government; Court of Cassation (consists of a court president, 5 vice-presidents, and at least 24 judges)"
+      },
+      "judge selection and term of office": {
+        "text": "Federal Supreme Court and Court of Cassation judges appointed by the Higher Juridical Council, a 25-member committee of judicial officials that manage the judiciary and prosecutors; FSC members appointed for life; Court of Cassation judges appointed for 1-year probationary period and upon satisfactory performance may be confirmed for permanent tenure until retirement nominally at age 63"
+      },
+      "subordinate courts": {
+        "text": "Courts of Appeal (governorate level); courts of first instance; personal status, labor, criminal, juvenile, and religious courts"
+      }
+    },
+    "Political parties and leaders": {
+      "text": "Al-Arabiyah Coalition [Salih al-MUTLAQ] ++ Badr Organization [Hadi al-AMIRI] ++ Da`wa Party [Vice President Nuri al-MALIKI] ++ Da`wa Tanzim [Hashim al-MUSAWI] ++ Fadilah Party [Muhammad al-YAQUBI] ++ Goran Party [Nawhirwan MUSTAFA] ++ Iraq Coalition [Abd al-Salam al-HAMMUDI] ++ Iraqi Front for National Dialogue [Salih al-MUTLAQ] ++ Iraqi Justice and Reform Movement [Shaykh Abdallah al-YAWR] ++ Islamic Supreme Council of Iraq or ISCI/Muwatin Coalition [Ammar al-HAKIM] ++ Kurdistan Democratic Party or KDP [Masud BARZANI] ++ Kurdistan Islamic Union or KIU [Mohammed FARA] ++ Nationalism Coalition/Wataniyah [Vice President Ayad ALLAWI] ++ National Movement for Reform and Development [Muhammad al-KARBULI] ++ National Reform Trend [Foreign Minister Ibrahim al-JAFARI] ++ Patriotic Union of Kurdistan or PUK [former President Jalal TALABANI] ++ Sadrist Movement or Ahrar Bloc [Muqtada al-SADR] ++ State of Law Coalition [Vice President Nuri al MALIKI] ++ Unites for Reform Coalition/Muttahidun [Vice President Usama al-NUJAYFI]",
+      "note": {
+        "text": "numerous smaller local, tribal, and minority parties"
+      }
+    },
+    "Political pressure groups and leaders": {
+      "text": "Sunni militias; Shia militias, some associated with political parties"
+    },
+    "International organization participation": {
+      "text": "ABEDA, AFESD, AMF, CAEU, CICA, EITI (compliant country), FAO, G-77, IAEA, IBRD, ICAO, ICRM, IDA, IDB, IFAD, IFC, IFRCS, ILO, IMF, IMO, IMSO, Interpol, IOC, IPU, ISO, ITSO, ITU, LAS, MIGA, NAM, OAPEC, OIC, OPCW, OPEC, PCA, UN, UNCTAD, UNESCO, UNIDO, UNWTO, UPU, WCO, WFTU (NGOs), WHO, WIPO, WMO, WTO (observer)"
+    },
+    "Diplomatic representation in the US": {
+      "chief of mission": {
+        "text": "Ambassador (vacant); Charge d'Affaires Mohamad Jawad Mahdi Jawad ALQURAISHY (since 1 July 2016)"
+      },
+      "chancery": {
+        "text": "3421 Massachusetts Avenue, NW, Washington, DC 20007"
+      },
+      "telephone": {
+        "text": "[1] (202) 742-1600"
+      },
+      "FAX": {
+        "text": "[1] (202) 333-1129"
+      },
+      "consulate(s) general": {
+        "text": "Detroit, Los Angeles"
+      }
+    },
+    "Diplomatic representation from the US": {
+      "chief of mission": {
+        "text": "Ambassador Douglas A. SILLIMAN (since 1 September 2016)"
+      },
+      "embassy": {
+        "text": "Al-Kindi Street, International Zone, Baghdad"
+      },
+      "mailing address": {
+        "text": "APO AE 09316"
+      },
+      "telephone": {
+        "text": "0760-030-3000"
+      },
+      "FAX": {
+        "text": "NA"
+      }
+    },
+    "Flag description": {
+      "text": "three equal horizontal bands of red (top), white, and black; the Takbir (Arabic expression meaning \"God is great\") in green Arabic script is centered in the white band; the band colors derive from the Arab Liberation flag and represent oppression (black), overcome through bloody struggle (red), to be replaced by a bright future (white); the Council of Representatives approved this flag in 2008 as a compromise temporary replacement for the Ba'athist SADDAM-era flag",
+      "note": {
+        "text": "similar to the flag of Syria, which has two stars but no script; Yemen, which has a plain white band; and that of Egypt, which has a golden Eagle of Saladin centered in the white band"
+      }
+    },
+    "National symbol(s)": {
+      "text": "golden eagle; national colors: red, white, black"
+    },
+    "National anthem": {
+      "name": {
+        "text": "\"Mawtini\" (My Homeland)"
+      },
+      "lyrics/music": {
+        "text": "Ibrahim TOUQAN/Mohammad FLAYFEL"
+      },
+      "note": {
+        "text": "adopted 2004; following the ouster of SADDAM Husayn, Iraq adopted \"Mawtini,\" a popular folk song throughout the Arab world; also serves as an unofficial anthem of the Palestinian people"
+      }
+    }
+  },
+  "Economy": {
+    "Economy - overview": {
+      "text": "During 2015, worsening security and financial stability throughout Iraq - driven by an ongoing insurgency, decreasing oil prices, and political upheaval - decreased prospects for improving the country's economic environment and securing much-needed foreign investment. Long-term fiscal health, a strengthened investment climate, and sustained improvements in the overall standard of living still depend on a rebound in global oil prices, the central government passing major policy reforms, and finishing the conflict with ISIL. ++  ++ Iraq's largely state-run economy is dominated by the oil sector, which provides more than 90% of government revenue and 80% of foreign exchange earnings. Oil exports in 2015 averaged 3.0 million barrels per day, up from 2014, but a failed revenue- and oil-sharing agreement with the Iraqi Kurdistan Region's (IKR) autonomous Kurdistan Regional Government (KRG) resulted in a loss of exports from northern oil fields. Moreover, falling global oil prices resulted in declining export revenues. Iraq's contracts with major oil companies have the potential to further expand oil exports and revenues, but Iraq will need to make significant upgrades to its oil processing, pipeline, and export infrastructure to enable these deals to reach their economic potential. The IKR's autonomous KRG passed its own oil law in 2007, and has directly signed about 50 contracts to develop IKR energy reserves. The federal government has disputed the legal authority of the KRG to conclude most of these contracts, some of which are also in areas with unresolved administrative boundaries in dispute between the federal and regional government. In December 2014, the federal government and the KRG agreed to sell oil exports from Kurdish-controlled oilfields under the federal oil ministry, in exchange for the central government paying $1 billion to the Kurdish Peshmerga forces and resuming budget transfers to the KRG that amount to 17% of Iraq's national budget. However, that deal fell apart in 2015. ++  ++ Iraq is making slow progress enacting laws and developing the institutions needed to implement economic policy, and political reforms are still needed to assuage investors' concerns regarding the uncertain business climate. The Government of Iraq is eager to attract additional foreign direct investment, but it faces a number of obstacles, including a tenuous political system and concerns about security and societal stability. Rampant corruption, outdated infrastructure, insufficient essential services, skilled labor shortages, and antiquated commercial laws stifle investment and continue to constrain growth of private, nonoil sectors. Under the Iraqi constitution, some competencies relevant to the overall investment climate are either shared by the federal government and the regions or are devolved entirely to local governments. Investment in the IKR operates within the framework of the Kurdistan Region Investment Law (Law 4 of 2006) and the Kurdistan Board of Investment, which is designed to provide incentives to help economic development in areas under the authority of the KRG. ++  ++ Inflation has remained under control since 2006. However, Iraqi leaders remain hard-pressed to translate macroeconomic gains into an improved standard of living for the Iraqi populace. Unemployment remains a problem throughout the country despite a bloated public sector. Encouraging private enterprise through deregulation would make it easier for Iraqi citizens and foreign investors to start new businesses. Rooting out corruption and implementing reforms - such as restructuring banks and developing the private sector - would be important steps in this direction."
+    },
+    "GDP (purchasing power parity)": {
+      "text": "$596.7 billion (2016 est.) ++ $541 billion (2015 est.) ++ $554.1 billion (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "GDP (official exchange rate)": {
+      "text": "$156.3 billion (2015 est.)"
+    },
+    "GDP - real growth rate": {
+      "text": "10.3% (2016 est.) ++ -2.4% (2015 est.) ++ -0.4% (2014 est.)"
+    },
+    "GDP - per capita (PPP)": {
+      "text": "$16,500 (2016 est.) ++ $15,400 (2015 est.) ++ $16,200 (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "Gross national saving": {
+      "text": "10.8% of GDP (2016 est.) ++ 19.8% of GDP (2015 est.) ++ 26.2% of GDP (2014 est.)"
+    },
+    "GDP - composition, by end use": {
+      "household consumption": {
+        "text": "50.4%"
+      },
+      "government consumption": {
+        "text": "18.8%"
+      },
+      "investment in fixed capital": {
+        "text": "23.5%"
+      },
+      "investment in inventories": {
+        "text": "-4.5%"
+      },
+      "exports of goods and services": {
+        "text": "39.7%"
+      },
+      "imports of goods and services": {
+        "text": "-27.9%"
+      }
+    },
+    "GDP - composition, by sector of origin": {
+      "agriculture": {
+        "text": "5.7%"
+      },
+      "industry": {
+        "text": "45.1%"
+      },
+      "services": {
+        "text": "49.3% (2016 est.)"
+      }
+    },
+    "Agriculture - products": {
+      "text": "wheat, barley, rice, vegetables, dates, cotton; cattle, sheep, poultry"
+    },
+    "Industries": {
+      "text": "petroleum, chemicals, textiles, leather, construction materials, food processing, fertilizer, metal fabrication/processing"
+    },
+    "Industrial production growth rate": {
+      "text": "7% (2016 est.)"
+    },
+    "Labor force": {
+      "text": "8.9 million (2010 est.)"
+    },
+    "Labor force - by occupation": {
+      "agriculture": {
+        "text": "21.6%"
+      },
+      "industry": {
+        "text": "18.7%"
+      },
+      "services": {
+        "text": "59.8% (2008 est.)"
+      }
+    },
+    "Unemployment rate": {
+      "text": "16% (2012 est.) ++ 15% (2010 est.)"
+    },
+    "Population below poverty line": {
+      "text": "25% (2008 est.)"
+    },
+    "Household income or consumption by percentage share": {
+      "lowest 10%": {
+        "text": "3.6%"
+      },
+      "highest 10%": {
+        "text": "25.7% (2007 est.)"
+      }
+    },
+    "Budget": {
+      "revenues": {
+        "text": "$52.43 billion"
+      },
+      "expenditures": {
+        "text": "$77.87 billion (2016 est.)"
+      }
+    },
+    "Taxes and other revenues": {
+      "text": "33.5% of GDP (2016 est.)"
+    },
+    "Budget surplus (+) or deficit (-)": {
+      "text": "-16.3% of GDP (2016 est.)"
+    },
+    "Fiscal year": {
+      "text": "calendar year"
+    },
+    "Inflation rate (consumer prices)": {
+      "text": "2.4% (2016 est.) ++ 1.4% (2015 est.)"
+    },
+    "Central bank discount rate": {
+      "text": "6% (December 2012) ++ 6% (December 2011)"
+    },
+    "Commercial bank prime lending rate": {
+      "text": "4.5% (31 December 2016 est.) ++ 6% (31 December 2015 est.)"
+    },
+    "Stock of narrow money": {
+      "text": "$54.53 billion (31 December 2016 est.) ++ $55.36 billion (31 December 2015 est.)"
+    },
+    "Stock of broad money": {
+      "text": "$80.83 billion (31 December 2015 est.) ++ $78.65 billion (31 December 2014 est.)"
+    },
+    "Stock of domestic credit": {
+      "text": "$3.191 million (31 December 2016 est.) ++ $1.773 million (31 December 2015 est.)"
+    },
+    "Market value of publicly traded shares": {
+      "text": "$4 billion (9 December 2011) ++ $2.6 billion (31 July 2010) ++ $2 billion (31 July 2009 est.)"
+    },
+    "Current account balance": {
+      "text": "-$16.87 billion (2016 est.) ++ -$11.84 billion (2015 est.)"
+    },
+    "Exports": {
+      "text": "$44.67 billion (2016 est.) ++ $54.67 billion (2015 est.)"
+    },
+    "Exports - commodities": {
+      "text": "crude oil 99%, crude materials excluding fuels, food, live animals"
+    },
+    "Exports - partners": {
+      "text": "China 22.6%, India 21.1%, South Korea 11.2%, US 7.8%, Italy 6.7%, Greece 6% (2015)"
+    },
+    "Imports": {
+      "text": "$43.27 billion (2016 est.) ++ $43.84 billion (2015 est.)"
+    },
+    "Imports - commodities": {
+      "text": "food, medicine, manufactures"
+    },
+    "Imports - partners": {
+      "text": "Turkey 20.7%, Syria 19.6%, China 19.2%, US 4.8%, Russia 4.4% (2015)"
+    },
+    "Reserves of foreign exchange and gold": {
+      "text": "$44.15 billion (31 December 2016 est.) ++ $54.06 billion (31 December 2015 est.)"
+    },
+    "Debt - external": {
+      "text": "$68.01 billion (31 December 2016 est.) ++ $60.28 billion (31 December 2015 est.)"
+    },
+    "Exchange rates": {
+      "text": "Iraqi dinars (IQD) per US dollar - ++ 1,179.3 (2016 est.) ++ 1,167.63 (2015 est.) ++ 1,167.63 (2014 est.) ++ 1,213.72 (2013 est.) ++ 1,166.17 (2012 est.)"
+    }
+  },
+  "Energy": {
+    "Electricity - production": {
+      "text": "64 billion kWh (2014 est.)"
+    },
+    "Electricity - consumption": {
+      "text": "42 billion kWh (2014 est.)"
+    },
+    "Electricity - exports": {
+      "text": "0 kWh (2013 est.)"
+    },
+    "Electricity - imports": {
+      "text": "12 billion kWh (2014 est.)"
+    },
+    "Electricity - installed generating capacity": {
+      "text": "19 million kW (2014 est.)"
+    },
+    "Electricity - from fossil fuels": {
+      "text": "92% of total installed capacity (2013 est.)"
+    },
+    "Electricity - from nuclear fuels": {
+      "text": "0% of total installed capacity (2013 est.)"
+    },
+    "Electricity - from hydroelectric plants": {
+      "text": "7.6% of total installed capacity (2013 est.)"
+    },
+    "Electricity - from other renewable sources": {
+      "text": "0% of total installed capacity (2013 est.)"
+    },
+    "Crude oil - production": {
+      "text": "4.054 million bbl/day (2015 est.)"
+    },
+    "Crude oil - exports": {
+      "text": "2.462 million bbl/day (2013 est.)"
+    },
+    "Crude oil - imports": {
+      "text": "0 bbl/day (2013 est.)"
+    },
+    "Crude oil - proved reserves": {
+      "text": "143 billion bbl (1 January 2016 es)"
+    },
+    "Refined petroleum products - production": {
+      "text": "599,200 bbl/day (2013 est.)"
+    },
+    "Refined petroleum products - consumption": {
+      "text": "807,000 bbl/day (2014 est.)"
+    },
+    "Refined petroleum products - exports": {
+      "text": "10,240 bbl/day (2013 est.)"
+    },
+    "Refined petroleum products - imports": {
+      "text": "256,400 bbl/day (2013 est.)"
+    },
+    "Natural gas - production": {
+      "text": "905 million cu m (2014 est.)"
+    },
+    "Natural gas - consumption": {
+      "text": "905 million cu m (2014 est.)"
+    },
+    "Natural gas - exports": {
+      "text": "0 cu m (2013 est.)"
+    },
+    "Natural gas - imports": {
+      "text": "0 cu m (2013 est.)"
+    },
+    "Natural gas - proved reserves": {
+      "text": "3.158 trillion cu m (1 January 2016 es)"
+    },
+    "Carbon dioxide emissions from consumption of energy": {
+      "text": "137 million Mt (2013 est.)"
+    }
+  },
+  "Communications": {
+    "Telephones - fixed lines": {
+      "total subscriptions": {
+        "text": "1.997 million"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "5 (July 2015 est.)"
+      }
+    },
+    "Telephones - mobile cellular": {
+      "total": {
+        "text": "33.559 million"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "91 (July 2015 est.)"
+      }
+    },
+    "Telephone system": {
+      "general assessment": {
+        "text": "the 2003 liberation of Iraq severely disrupted telecommunications throughout Iraq; widespread government efforts to rebuild domestic and international communications have slowed due to the ongoing conflict with ISIL"
+      },
+      "domestic": {
+        "text": "the mobile cellular market continues to expand (cell phones were banned prior to 2003 under the SADDAM regime); 3G services offered by three major mobile operators in 2015; ongoing conflict has destroyed infrastructure in areas"
+      },
+      "international": {
+        "text": "country code - 964; satellite earth stations - 4 (2 Intelsat - 1 Atlantic Ocean and 1 Indian Ocean, 1 Intersputnik - Atlantic Ocean region, and 1 Arabsat (inoperative)); local microwave radio relay connects border regions to Jordan, Kuwait, Syria, and Tur (2015)"
+      }
+    },
+    "Broadcast media": {
+      "text": "the number of private radio and TV stations has increased rapidly since 2003; government-owned TV and radio stations are operated by the publicly funded Iraqi Media Network; private broadcast media are mostly linked to political, ethnic, or religious grou (2015)"
+    },
+    "Internet country code": {
+      "text": ".iq"
+    },
+    "Internet users": {
+      "total": {
+        "text": "6.381 million"
+      },
+      "percent of population": {
+        "text": "17.2% (July 2015 est.)"
+      }
+    }
+  },
+  "Transportation": {
+    "National air transport system": {
+      "number of registered air carriers": {
+        "text": "4"
+      },
+      "inventory of registered aircraft operated by air carriers": {
+        "text": "39"
+      },
+      "annual passenger traffic on registered air carriers": {
+        "text": "484,803"
+      },
+      "annual freight traffic on registered air carriers": {
+        "text": "10,758,230 mt-km (2015)"
+      }
+    },
+    "Civil aircraft registration country code prefix": {
+      "text": "YI (2016)"
+    },
+    "Airports": {
+      "text": "102 (2013)"
+    },
+    "Airports - with paved runways": {
+      "total": {
+        "text": "72"
+      },
+      "over 3,047 m": {
+        "text": "20"
+      },
+      "2,438 to 3,047 m": {
+        "text": "34"
+      },
+      "1,524 to 2,437 m": {
+        "text": "4"
+      },
+      "914 to 1,523 m": {
+        "text": "7"
+      },
+      "under 914 m": {
+        "text": "7 (2013)"
+      }
+    },
+    "Airports - with unpaved runways": {
+      "total": {
+        "text": "30"
+      },
+      "over 3,047 m": {
+        "text": "3"
+      },
+      "2,438 to 3,047 m": {
+        "text": "5"
+      },
+      "1,524 to 2,437 m": {
+        "text": "3"
+      },
+      "914 to 1,523 m": {
+        "text": "13"
+      },
+      "under 914 m": {
+        "text": "6 (2013)"
+      }
+    },
+    "Heliports": {
+      "text": "16 (2013)"
+    },
+    "Pipelines": {
+      "text": "gas 2,455 km; liquid petroleum gas 913 km; oil 5,432 km; refined products 1,637 km (2013)"
+    },
+    "Railways": {
+      "total": {
+        "text": "2,272 km"
+      },
+      "standard gauge": {
+        "text": "2,272 km 1.435-m gauge (2014)"
+      }
+    },
+    "Roadways": {
+      "total": {
+        "text": "59,623 km"
+      },
+      "paved": {
+        "text": "59,623 km (includes Kurdistan Region) (2012)"
+      }
+    },
+    "Waterways": {
+      "text": "5,279 km (the Euphrates River (2,815 km), Tigris River (1,899 km), and Third River (565 km) are the principal waterways) (2012)"
+    },
+    "Merchant marine": {
+      "total": {
+        "text": "2"
+      },
+      "by type": {
+        "text": "petroleum tanker 2"
+      },
+      "registered in other countries": {
+        "text": "2 (Marshall Islands 2) (2010)"
+      }
+    },
+    "Ports and terminals": {
+      "river port(s)": {
+        "text": "Al Basrah (Shatt al-'Arab); Khawr az Zubayr, Umm Qasr (Khawr az Zubayr waterway)"
+      }
+    }
+  },
+  "Military and Security": {
+    "Military branches": {
+      "text": "Ministry of Defense: Iraqi Army (includes Army Aviation Directorate), Iraqi Navy, Iraqi Air Force; Counterterrorism Service (2015)"
+    },
+    "Military service age and obligation": {
+      "text": "18-40 years of age for voluntary military service; no conscription (2013)"
+    },
+    "Military expenditures": {
+      "text": "8.7% of GDP (2014) ++ 3.4% of GDP (2013) ++ 2.88% of GDP (2012) ++ 3.27% of GDP (2011) ++ 2.88% of GDP (2010)"
+    }
+  },
+  "Transnational Issues": {
+    "Disputes - international": {
+      "text": "Iraq's lack of a maritime boundary with Iran prompts jurisdiction disputes beyond the mouth of the Shatt al Arab in the Persian Gulf; Turkey has expressed concern over the autonomous status of Kurds in Iraq"
+    },
+    "Refugees and internally displaced persons": {
+      "refugees (country of origin)": {
+        "text": "15,557 (Turkey); 9,250 (West Bank and Gaza Strip); 8,231 (Iran) (2015); 230,836 (Syria) (2016)"
+      },
+      "IDPs": {
+        "text": "4,018,274 (since 2006 due to ethno-sectarian violence; includes 3,064,146 displaced in central and northern Iraq since January 2014) (2016)"
+      },
+      "stateless persons": {
+        "text": "50,000 (2015); note - in the 1970s and 1980s under SADDAM Husayn's regime, thousands of Iraq's Faili Kurds, followers of Shia Islam, were stripped of their Iraqi citizenship, had their property seized by the government, and many were deported; some Faili Kurds had their citizenship reinstated under the 2006 Iraqi Nationality Law, but others lack the documentation to prove their Iraqi origins; some Palestinian refugees persecuted by the SADDAM regime remain stateless"
+      },
+      "note": {
+        "text": "estimate revised to reflect the reduction of statelessness in line with Law 26 of 2006, which allows stateless persons to apply for nationality in certain circumstances; more accurate studies of statelessness in Iraq are pending (2015)"
+      }
+    }
+  }
+}

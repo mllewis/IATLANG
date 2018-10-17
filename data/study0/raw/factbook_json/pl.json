@@ -1,0 +1,947 @@
+{
+  "Introduction": {
+    "Background": {
+      "text": "Poland's history as a state began near the middle of the 10th century. By the mid-16th century, the Polish-Lithuanian Commonwealth ruled a vast tract of land in Central and Eastern Europe. During the 18th century, internal disorders weakened the nation, and in a series of agreements between 1772 and 1795, Russia, Prussia, and Austria partitioned Poland among themselves. Poland regained its independence in 1918 only to be overrun by Germany and the Soviet Union in World War II. It became a Soviet satellite state following the war, but its government was comparatively tolerant and progressive. Labor turmoil in 1980 led to the formation of the independent trade union \"Solidarity\" that over time became a political force with over 10 million members. Free elections in 1989 and 1990 won Solidarity control of the parliament and the presidency, bringing the communist era to a close. A \"shock therapy\" program during the early 1990s enabled the country to transform its economy into one of the most robust in Central Europe. Poland joined NATO in 1999 and the EU in 2004. With its transformation to a democratic, market-oriented country largely completed and with large investments in defense, energy, and other infrastructure, Poland is an increasingly active member of Euro-Atlantic organizations."
+    }
+  },
+  "Geography": {
+    "Location": {
+      "text": "Central Europe, east of Germany"
+    },
+    "Geographic coordinates": {
+      "text": "52 00 N, 20 00 E"
+    },
+    "Map references": {
+      "text": "Europe"
+    },
+    "Area": {
+      "total": {
+        "text": "312,685 sq km"
+      },
+      "land": {
+        "text": "304,255 sq km"
+      },
+      "water": {
+        "text": "8,430 sq km"
+      }
+    },
+    "Area - comparative": {
+      "text": "about twice the size of Georgia; slightly smaller than New Mexico"
+    },
+    "Land boundaries": {
+      "total": {
+        "text": "3,071 km"
+      },
+      "border countries": {
+        "text": "Belarus 418 km, Czech Republic 796 km, Germany 467 km, Lithuania 104 km, Russia (Kaliningrad Oblast) 210 km, Slovakia 541 km, Ukraine 535 km"
+      }
+    },
+    "Coastline": {
+      "text": "440 km"
+    },
+    "Maritime claims": {
+      "territorial sea": {
+        "text": "12 nm"
+      },
+      "exclusive economic zone": {
+        "text": "defined by international treaties"
+      }
+    },
+    "Climate": {
+      "text": "temperate with cold, cloudy, moderately severe winters with frequent precipitation; mild summers with frequent showers and thundershowers"
+    },
+    "Terrain": {
+      "text": "mostly flat plain; mountains along southern border"
+    },
+    "Elevation": {
+      "mean elevation": {
+        "text": "173 m"
+      },
+      "elevation extremes": {
+        "text": "lowest point: near Raczki Elblaskie -2 m ++ highest point: Rysy 2,499 m"
+      }
+    },
+    "Natural resources": {
+      "text": "coal, sulfur, copper, natural gas, silver, lead, salt, amber, arable land"
+    },
+    "Land use": {
+      "agricultural land": {
+        "text": "48.2% ++ arable land 36.2%; permanent crops 1.3%; permanent pasture 10.7%"
+      },
+      "forest": {
+        "text": "30.6%"
+      },
+      "other": {
+        "text": "21.2% (2011 est.)"
+      }
+    },
+    "Irrigated land": {
+      "text": "970 sq km (2012)"
+    },
+    "Population - distribution": {
+      "text": "population concentrated in the southern (Krakow) and central (Warsaw, Lodz) areas, with an extension to the northern coastal city of Gdansk"
+    },
+    "Natural hazards": {
+      "text": "flooding"
+    },
+    "Environment - current issues": {
+      "text": "decreased emphasis on heavy industry and increased environmental concern by post-communist governments has improved environment; air pollution remains serious because of emissions from coal-fired power plants and the resulting acid rain has caused forest damage; water pollution from industrial and municipal sources is also a problem, as is disposal of hazardous wastes"
+    },
+    "Environment - international agreements": {
+      "party to": {
+        "text": "Air Pollution, Antarctic-Environmental Protocol, Antarctic-Marine Living Resources, Antarctic Seals, Antarctic Treaty, Biodiversity, Climate Change, Climate Change-Kyoto Protocol, Desertification, Endangered Species, Environmental Modification, Hazardous Wastes, Law of the Sea, Marine Dumping, Ozone Layer Protection, Ship Pollution, Wetlands"
+      },
+      "signed, but not ratified": {
+        "text": "Air Pollution-Nitrogen Oxides, Air Pollution-Persistent Organic Pollutants, Air Pollution-Sulfur 94"
+      }
+    },
+    "Geography - note": {
+      "text": "historically, an area of conflict because of flat terrain and the lack of natural barriers on the North European Plain"
+    }
+  },
+  "People and Society": {
+    "Population": {
+      "text": "38,523,261 (July 2016 est.)"
+    },
+    "Nationality": {
+      "noun": {
+        "text": "Pole(s)"
+      },
+      "adjective": {
+        "text": "Polish"
+      }
+    },
+    "Ethnic groups": {
+      "text": "Polish 96.9%, Silesian 1.1%, German 0.2%, Ukrainian 0.1%, other and unspecified 1.7%",
+      "note": {
+        "text": "represents ethnicity declared first (2011 est.)"
+      }
+    },
+    "Languages": {
+      "text": "Polish (official) 98.2%, Silesian 1.4%, other 1.1%, unspecified 1.3%",
+      "note": {
+        "text": "data represents the language spoken at home; shares sum to more than 100% because some respondents gave more than one answer on the census; Poland ratified the European Charter for Regional or Minority Languages in 2009 recognizing Kashub as a regional language, Czech, Hebrew, Yiddish, Belarusian, Lithuanian, German, Armenian, Russian, Slovak, and Ukrainian as national minority languages, and Karaim, Lemko, Romani (Polska Roma and Bergitka Roma), and Tatar as ethnic minority languages (2011 est.)"
+      }
+    },
+    "Religions": {
+      "text": "Catholic 87.2% (includes Roman Catholic 86.9% and Greek Catholic, Armenian Catholic, and Byzantine-Slavic Catholic .3%), Orthodox 1.3% (almost all are Polish Autocephalous Orthodox), Protestant 0.4% (mainly Augsburg Evangelical and Pentacostal), other 0.4% (includes Jehovah's Witness, Buddhist, Hare Krishna, Gaudiya Vaishnavism, Muslim, Jewish, Mormon), unspecified 10.8% (2012 est.)"
+    },
+    "Age structure": {
+      "0-14 years": {
+        "text": "14.72% (male 2,915,840/female 2,754,098)"
+      },
+      "15-24 years": {
+        "text": "11.11% (male 2,195,587/female 2,082,634)"
+      },
+      "25-54 years": {
+        "text": "43.5% (male 8,456,789/female 8,301,167)"
+      },
+      "55-64 years": {
+        "text": "14.42% (male 2,623,838/female 2,931,215)"
+      },
+      "65 years and over": {
+        "text": "16.26% (male 2,460,648/female 3,801,445) (2016 est.)"
+      }
+    },
+    "Dependency ratios": {
+      "total dependency ratio": {
+        "text": "43.8%"
+      },
+      "youth dependency ratio": {
+        "text": "21.5%"
+      },
+      "elderly dependency ratio": {
+        "text": "22.3%"
+      },
+      "potential support ratio": {
+        "text": "4.5% (2015 est.)"
+      }
+    },
+    "Median age": {
+      "total": {
+        "text": "40.3 years"
+      },
+      "male": {
+        "text": "38.6 years"
+      },
+      "female": {
+        "text": "42 years (2016 est.)"
+      }
+    },
+    "Population growth rate": {
+      "text": "-0.11% (2016 est.)"
+    },
+    "Birth rate": {
+      "text": "9.6 births/1,000 population (2016 est.)"
+    },
+    "Death rate": {
+      "text": "10.3 deaths/1,000 population (2016 est.)"
+    },
+    "Net migration rate": {
+      "text": "-0.4 migrant(s)/1,000 population (2016 est.)"
+    },
+    "Population distribution": {
+      "text": "population concentrated in the southern (Krakow) and central (Warsaw, Lodz) areas, with an extension to the northern coastal city of Gdansk"
+    },
+    "Urbanization": {
+      "urban population": {
+        "text": "60.5% of total population (2015)"
+      },
+      "rate of urbanization": {
+        "text": "-0.1% annual rate of change (2010-15 est.)"
+      }
+    },
+    "Major urban areas - population": {
+      "text": "WARSAW (capital) 1.722 million; Krakow 760,000 (2015)"
+    },
+    "Sex ratio": {
+      "at birth": {
+        "text": "1.06 male(s)/female"
+      },
+      "0-14 years": {
+        "text": "1.06 male(s)/female"
+      },
+      "15-24 years": {
+        "text": "1.05 male(s)/female"
+      },
+      "25-54 years": {
+        "text": "1.02 male(s)/female"
+      },
+      "55-64 years": {
+        "text": "0.9 male(s)/female"
+      },
+      "65 years and over": {
+        "text": "0.64 male(s)/female"
+      },
+      "total population": {
+        "text": "0.94 male(s)/female (2016 est.)"
+      }
+    },
+    "Mother's mean age at first birth": {
+      "text": "27.2 (2013 est.)"
+    },
+    "Maternal mortality rate": {
+      "text": "3 deaths/100,000 live births (2015 est.)"
+    },
+    "Infant mortality rate": {
+      "total": {
+        "text": "4.5 deaths/1,000 live births"
+      },
+      "male": {
+        "text": "4.8 deaths/1,000 live births"
+      },
+      "female": {
+        "text": "4 deaths/1,000 live births (2016 est.)"
+      }
+    },
+    "Life expectancy at birth": {
+      "total population": {
+        "text": "77.6 years"
+      },
+      "male": {
+        "text": "73.7 years"
+      },
+      "female": {
+        "text": "81.7 years (2016 est.)"
+      }
+    },
+    "Total fertility rate": {
+      "text": "1.34 children born/woman (2016 est.)"
+    },
+    "Health expenditures": {
+      "text": "6.4% of GDP (2014)"
+    },
+    "Physicians density": {
+      "text": "2.22 physicians/1,000 population (2012)"
+    },
+    "Hospital bed density": {
+      "text": "6.5 beds/1,000 population (2011)"
+    },
+    "Drinking water source": {
+      "improved": {
+        "text": " ++ urban: 99.3% of population ++ rural: 96.9% of population ++ total: 98.3% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 0.7% of population ++ rural: 3.1% of population ++ total: 1.7% of population (2015 est.)"
+      }
+    },
+    "Sanitation facility access": {
+      "improved": {
+        "text": " ++ urban: 97.5% of population ++ rural: 96.7% of population ++ total: 97.2% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 2.5% of population ++ rural: 3.3% of population ++ total: 2.8% of population (2015 est.)"
+      }
+    },
+    "HIV/AIDS - adult prevalence rate": {
+      "text": "0.07% (2014 est.)"
+    },
+    "HIV/AIDS - people living with HIV/AIDS": {
+      "text": "NA"
+    },
+    "HIV/AIDS - deaths": {
+      "text": "NA"
+    },
+    "Major infectious diseases": {
+      "degree of risk": {
+        "text": "intermediate"
+      },
+      "vectorborne diseases": {
+        "text": "tickborne encephalitis (2016)"
+      }
+    },
+    "Obesity - adult prevalence rate": {
+      "text": "27% (2014)"
+    },
+    "Education expenditures": {
+      "text": "4.9% of GDP (2013)"
+    },
+    "Literacy": {
+      "definition": {
+        "text": "age 15 and over can read and write"
+      },
+      "total population": {
+        "text": "99.8%"
+      },
+      "male": {
+        "text": "99.9%"
+      },
+      "female": {
+        "text": "99.7% (2015 est.)"
+      }
+    },
+    "School life expectancy (primary to tertiary education)": {
+      "total": {
+        "text": "16 years"
+      },
+      "male": {
+        "text": "16 years"
+      },
+      "female": {
+        "text": "17 years (2013)"
+      }
+    },
+    "Unemployment, youth ages 15-24": {
+      "total": {
+        "text": "23.9%"
+      },
+      "male": {
+        "text": "22.7%"
+      },
+      "female": {
+        "text": "25.5% (2014 est.)"
+      }
+    }
+  },
+  "Government": {
+    "Country name": {
+      "conventional long form": {
+        "text": "Republic of Poland"
+      },
+      "conventional short form": {
+        "text": "Poland"
+      },
+      "local long form": {
+        "text": "Rzeczpospolita Polska"
+      },
+      "local short form": {
+        "text": "Polska"
+      },
+      "etymology": {
+        "text": "name derives from the Polanians, a west Slavic tribe that united several surrounding Slavic groups (9th-10th centuries A.D.) and who passed on their name to the country; the name of the tribe likely comes from the Slavic \"pole\" (field or plain), indicating the flat nature of their country"
+      }
+    },
+    "Government type": {
+      "text": "parliamentary republic"
+    },
+    "Capital": {
+      "name": {
+        "text": "Warsaw"
+      },
+      "geographic coordinates": {
+        "text": "52 15 N, 21 00 E"
+      },
+      "time difference": {
+        "text": "UTC+1 (6 hours ahead of Washington, DC, during Standard Time)"
+      },
+      "daylight saving time": {
+        "text": "+1hr, begins last Sunday in March; ends last Sunday in October"
+      }
+    },
+    "Administrative divisions": {
+      "text": "16 provinces (wojewodztwa, singular - wojewodztwo); Dolnoslaskie (Lower Silesia), Kujawsko-Pomorskie (Kuyavia-Pomerania), Lodzkie (Lodz), Lubelskie (Lublin), Lubuskie (Lubusz), Malopolskie (Lesser Poland), Mazowieckie (Masovia), Opolskie (Opole), Podkarpackie (Subcarpathia), Podlaskie, Pomorskie (Pomerania), Slaskie (Silesia), Swietokrzyskie (Holy Cross), Warminsko-Mazurskie (Warmia-Masuria), Wielkopolskie (Greater Poland), Zachodniopomorskie (West Pomerania)"
+    },
+    "Independence": {
+      "text": "11 November 1918 (republic proclaimed); notable earlier dates: 966 (adoption of Christianity, traditional founding date), 1 July 1569 (Polish-Lithuanian Commonwealth created)"
+    },
+    "National holiday": {
+      "text": "Constitution Day, 3 May (1791)"
+    },
+    "Constitution": {
+      "history": {
+        "text": "several previous; latest adopted 2 April 1997, approved by referendum 25 May 1997, effective 17 October 1997"
+      },
+      "amendments": {
+        "text": "proposed by at least one-fifth of Sejm deputies, by the Senate, or by the president of the republic; passage requires at least two-thirds majority vote in the Sejm and absolute majority vote in the Senate; amendments to articles relating to sovereignty, personal freedoms, and constitutional amendment procedures also require passage by majority vote in a referendum; amended 2006, 2009, 2015 (2016)"
+      }
+    },
+    "Legal system": {
+      "text": "civil law system; judicial review of legislative, administrative, and other governmental acts; constitutional law rulings of the Constitutional Tribunal are final"
+    },
+    "International law organization participation": {
+      "text": "accepts compulsory ICJ jurisdiction with reservations; accepts ICCt jurisdiction"
+    },
+    "Citizenship": {
+      "citizenship by birth": {
+        "text": "no"
+      },
+      "citizenship by descent only": {
+        "text": "both parents must be citizens of Poland"
+      },
+      "dual citizenship recognized": {
+        "text": "no"
+      },
+      "residency requirement for naturalization": {
+        "text": "5 years"
+      }
+    },
+    "Suffrage": {
+      "text": "18 years of age; universal"
+    },
+    "Executive branch": {
+      "chief of state": {
+        "text": "President Andrzej DUDA (since 6 August 2015)"
+      },
+      "head of government": {
+        "text": "Prime Minister Beata SZYDLO (since 16 November 2015); Deputy Prime Minister and Minister of Culture and National Heritage Piotr GLINSKI (since 16 November 2015), Deputy Prime Minister and Minister of Science and Higher Education Jaroslaw GOWIN (since 16 November 2015), and Deputy Prime Minister and Minister of Development Mateusz MORAWIECKI (since 16 November 2015)"
+      },
+      "cabinet": {
+        "text": "Council of Ministers proposed by the prime minister, appointed by the president, and approved by the Sejm"
+      },
+      "elections/appointments": {
+        "text": "president directly elected by absolute majority popular vote in 2 rounds if needed for a 5-year term (eligible for a second term); election last held on 10 and 24 May 2015 (next to be held in 2020); prime minister, deputy prime ministers, and Council of Ministers appointed by the president and confirmed by the Sejm"
+      },
+      "election results": {
+        "text": "Andrzej DUDA elected president; percent of vote in runoff - Andrzej DUDA 51.5%, Bronislaw KOMOROWSKI (independent) 48.5%"
+      }
+    },
+    "Legislative branch": {
+      "description": {
+        "text": "bicameral legislature consists of the Senate or Senat (100 seats; members directly elected in single-seat constituencies by simple majority vote to serve 4-year terms) and the Sejm (460 seats; members directly elected in multi-seat constituencies by proportional representation vote to serve 4-year terms); note - the designation National Assembly or Zgromadzenie Narodowe is only used on those rare occasions when the two houses meet jointly"
+      },
+      "note": {
+        "text": "the German minority is exempt from the 5% threshold requirement for seats to the Sejm"
+      },
+      "elections": {
+        "text": "Senate - last held on 25 October 2015 (next to be held in October 2019); Sejm - last held on 25 October 2015 (next to be held in October 2019)"
+      },
+      "election results": {
+        "text": "Senate - percent of vote by party - NA; seats by party - PiS 62, PO 33, PSL 1, independents 4; Sejm - percent of vote by party - PiS 37.6%, PO 24.1%, K15 8.8%, N 7.6%, PSL 5.1% other 16.8%; seats by party - PiS 234, PO 138, K15 40, N 29, PSL 16, independent 2, German minority 1"
+      }
+    },
+    "Judicial branch": {
+      "highest court(s)": {
+        "text": "Supreme Court or Sad Najwyzszy (consists of the president of the Supreme Court and 116 judges organized in criminal, civil, labor and social insurance, and military chambers)"
+      },
+      "judge selection and term of office": {
+        "text": "president of the Supreme Court nominated by the General Assembly of the Supreme Court and selected by the president of Poland; other judges nominated by the 25-member National Judiciary Council, and appointed by the president of Poland; judges appointed until retirement, usually at age 65, but tenure can be extended"
+      },
+      "subordinate courts": {
+        "text": "Constitutional Tribunal; regional and appellate courts subdivided into military, civil, criminal, labor, and family courts"
+      }
+    },
+    "Political parties and leaders": {
+      "text": "Civic Platform or PO [Grzegorz SCHETYNA, chairperson; Slawomir NEUMANN, parliamentary caucus leader] ++ Congress of the New Right or KNP [Michal MARUSIK, chairman] ++ Democratic Left Alliance or SLD [Wlodzimierz CZARZASTY, chairman] ++ German Minority of Lower Silesia or MNSO [Ryszard GALLA, representative] ++ Kukiz 15 [Pawel KUKIZ; chairman, parliamentary caucus leader] ++ Law and Justice or PiS [Jaroslaw KACZYNSKI, chairman; Ryszard TERLECKI, parliamentary caucus leader] ++ Nowoczesna (\"Modern\") or N [Ryszard PETRU; chairman, parliamentary caucus leader] ++ Polish People's Party or PSL [Wladyslaw KOSINIAK-KAMYSZ; chairman, parliamentary caucus leader] ++ Razem (Together) [no party chair, led by nine-member management board]"
+    },
+    "Political pressure groups and leaders": {
+      "text": "All Poland Trade Union Alliance or OPZZ [Jan GUZ] (trade union) ++ Independent Self-Governing Trade Union \"Solidarity\" [Piotr DUDA] ++ Roman Catholic Church [Archbishop Wojciech POLAK, Archbishop Stanislaw GADECKI]"
+    },
+    "International organization participation": {
+      "text": "Arctic Council (observer), Australia Group, BIS, BSEC (observer), CBSS, CD, CE, CEI, CERN, EAPC, EBRD, ECB, EIB, ESA, EU, FAO, IAEA, IBRD, ICAO, ICC (national committees), ICCt, ICRM, IDA, IEA, IFC, IFRCS, IHO, ILO, IMF, IMO, IMSO, Interpol, IOC, IOM, IPU, ISO, ITSO, ITU, ITUC (NGOs), MIGA, MONUSCO, NATO, NEA, NSG, OAS (observer), OECD, OIF (observer), OPCW, OSCE, PCA, Schengen Convention, UN, UNCTAD, UNESCO, UNHCR, UNIDO, UNMIL, UNMISS, UNOCI, UNWTO, UPU, WCO, WFTU (NGOs), WHO, WIPO, WMO, WTO, ZC"
+    },
+    "Diplomatic representation in the US": {
+      "chief of mission": {
+        "text": "Ambassador Ryszard SCHNEPF (since 28 September 2012)"
+      },
+      "chancery": {
+        "text": "2640 16th Street NW, Washington, DC 20009"
+      },
+      "telephone": {
+        "text": "[1] (202) 234-3800 through 3802"
+      },
+      "FAX": {
+        "text": "[1] (202) 328-6271"
+      },
+      "consulate(s) general": {
+        "text": "Chicago, Los Angeles, New York"
+      }
+    },
+    "Diplomatic representation from the US": {
+      "chief of mission": {
+        "text": "Ambassador Paul JONES (since 7 October 2015)"
+      },
+      "embassy": {
+        "text": "Aleje Ujazdowskie 29/31 00-540 Warsaw"
+      },
+      "mailing address": {
+        "text": "American Embassy Warsaw, US Department of State, Washington, DC 20521-5010 (pouch)"
+      },
+      "telephone": {
+        "text": "[48] (22) 504-2000"
+      },
+      "FAX": {
+        "text": "[48] (22) 504-2688"
+      },
+      "consulate(s) general": {
+        "text": "Krakow"
+      }
+    },
+    "Flag description": {
+      "text": "two equal horizontal bands of white (top) and red; colors derive from the Polish emblem - a white eagle on a red field",
+      "note": {
+        "text": "similar to the flags of Indonesia and Monaco which are red (top) and white"
+      }
+    },
+    "National symbol(s)": {
+      "text": "white eagle; national colors: white, red"
+    },
+    "National anthem": {
+      "name": {
+        "text": "\"Mazurek Dabrowskiego\" (Dabrowski's Mazurka)"
+      },
+      "lyrics/music": {
+        "text": "Jozef WYBICKI/traditional"
+      },
+      "note": {
+        "text": "adopted 1927; the anthem, commonly known as \"Jeszcze Polska nie zginela\" (Poland Has Not Yet Perished), was written in 1797; the lyrics resonate strongly with Poles because they reflect the numerous occasions in which the nation's lands have been occupied"
+      }
+    }
+  },
+  "Economy": {
+    "Economy - overview": {
+      "text": "Poland has pursued a policy of economic liberalization since 1990 and Poland's economy was the only EU country to avoid a recession through the 2008-09 economic downturn. Although EU membership and access to EU structural funds have provided a major boost to the economy since 2004, GDP per capita remains significantly below the EU average and the unemployment rate is now below the EU average. ++  ++ The government of Prime Minister Donald TUSK steered the Polish economy through the economic downturn by skillfully managing public finances and adopting controversial pension and tax reforms to further shore up public finances. While the Polish economy has performed well over the past five years, growth slowed in 2013 and picked back up in 2014-15. Poland’s new center-right Law and Justice government plans to introduce expansionary economic policies to spur long-term growth, but social spending programs are expected to lead to increased deficit spending over the medium term. ++  ++ Poland faces several challenges, which include addressing some of the remaining deficiencies in its road and rail infrastructure, business environment, rigid labor code, commercial court system, government red tape, and burdensome tax system, especially for entrepreneurs. Additional long-term challenges include diversifying Poland’s energy mix and sources of supply, strengthening investments in innovation, research, and development, and as well as stemming the outflow of educated young Poles to other EU member states, especially in light of a coming demographic contraction due to emigration, persistently low fertility rates, and the aging of the Solidarity-era baby boom generation."
+    },
+    "GDP (purchasing power parity)": {
+      "text": "$1.052 trillion (2016 est.) ++ $1.02 trillion (2015 est.) ++ $984.4 billion (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "GDP (official exchange rate)": {
+      "text": "$467.4 billion (2015 est.)"
+    },
+    "GDP - real growth rate": {
+      "text": "3.1% (2016 est.) ++ 3.7% (2015 est.) ++ 3.3% (2014 est.)"
+    },
+    "GDP - per capita (PPP)": {
+      "text": "$27,700 (2016 est.) ++ $26,800 (2015 est.) ++ $25,900 (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "Gross national saving": {
+      "text": "20.3% of GDP (2016 est.) ++ 20.3% of GDP (2015 est.) ++ 18.3% of GDP (2014 est.)"
+    },
+    "GDP - composition, by end use": {
+      "household consumption": {
+        "text": "57.4%"
+      },
+      "government consumption": {
+        "text": "17.8%"
+      },
+      "investment in fixed capital": {
+        "text": "19.8%"
+      },
+      "investment in inventories": {
+        "text": "0.8%"
+      },
+      "exports of goods and services": {
+        "text": "50.5%"
+      },
+      "imports of goods and services": {
+        "text": "-46.3% (2016 est.)"
+      }
+    },
+    "GDP - composition, by sector of origin": {
+      "agriculture": {
+        "text": "2.7%"
+      },
+      "industry": {
+        "text": "38.5%"
+      },
+      "services": {
+        "text": "58.9% (2016 est.)"
+      }
+    },
+    "Agriculture - products": {
+      "text": "potatoes, fruits, vegetables, wheat; poultry, eggs, pork, dairy"
+    },
+    "Industries": {
+      "text": "machine building, iron and steel, coal mining, chemicals, shipbuilding, food processing, glass, beverages, textiles"
+    },
+    "Industrial production growth rate": {
+      "text": "4.2% (2016 est.)"
+    },
+    "Labor force": {
+      "text": "17.78 million (2016 est.)"
+    },
+    "Labor force - by occupation": {
+      "agriculture": {
+        "text": "12.6%"
+      },
+      "industry": {
+        "text": "30.4%"
+      },
+      "services": {
+        "text": "57% (2012)"
+      }
+    },
+    "Unemployment rate": {
+      "text": "9.6% (2016 est.) ++ 10.5% (2015 est.)"
+    },
+    "Population below poverty line": {
+      "text": "17.3% (2012 est.)"
+    },
+    "Household income or consumption by percentage share": {
+      "lowest 10%": {
+        "text": "3.3%"
+      },
+      "highest 10%": {
+        "text": "25.6% (2012 est.)"
+      }
+    },
+    "Distribution of family income - Gini index": {
+      "text": "32.4 (2012) ++ 33.7 (2008)"
+    },
+    "Budget": {
+      "revenues": {
+        "text": "$73.4 billion"
+      },
+      "expenditures": {
+        "text": "$86.56 billion (2016 est.)"
+      }
+    },
+    "Taxes and other revenues": {
+      "text": "15.7% of GDP (2016 est.)"
+    },
+    "Budget surplus (+) or deficit (-)": {
+      "text": "-2.8% of GDP (2016 est.)"
+    },
+    "Public debt": {
+      "text": "44.7% of GDP (2016 est.) ++ 45% of GDP (2015 est.)",
+      "note": {
+        "text": "data cover general government debt, and includes debt instruments issued (or owned) by government entities other than the treasury; the data include treasury debt held by foreign entities, the data include subnational entities, as well as intra-government"
+      }
+    },
+    "Fiscal year": {
+      "text": "calendar year"
+    },
+    "Inflation rate (consumer prices)": {
+      "text": "-0.8% (2016 est.) ++ -1% (2015 est.)"
+    },
+    "Central bank discount rate": {
+      "text": "2.5% (31 December 2014) ++ 1.5% (31 December 2013)"
+    },
+    "Commercial bank prime lending rate": {
+      "text": "5.1% (31 December 2016 est.) ++ 4.92% (31 December 2015 est.)"
+    },
+    "Stock of narrow money": {
+      "text": "$186.6 billion (31 December 2016 est.) ++ $177.4 billion (31 December 2015 est.)"
+    },
+    "Stock of broad money": {
+      "text": "$306.7 billion (31 December 2014 est.) ++ $318.8 billion (31 December 2013 est.)"
+    },
+    "Stock of domestic credit": {
+      "text": "$344.8 billion (31 December 2016 est.) ++ $337.4 billion (31 December 2015 est.)"
+    },
+    "Market value of publicly traded shares": {
+      "text": "$137.8 billion (31 December 2015 est.) ++ $168.9 billion (31 December 2014 est.) ++ $204.5 billion (31 December 2013 est.)"
+    },
+    "Current account balance": {
+      "text": "-$250 million (2016 est.) ++ -$1.117 billion (2015 est.)"
+    },
+    "Exports": {
+      "text": "$188.3 billion (2016 est.) ++ $190.8 billion (2015 est.)"
+    },
+    "Exports - commodities": {
+      "text": "machinery and transport equipment 37.8%, intermediate manufactured goods 23.7%, miscellaneous manufactured goods 17.1%, food and live animals 7.6% (2012 est.)"
+    },
+    "Exports - partners": {
+      "text": "Germany 27.1%, UK 6.8%, Czech Republic 6.6%, France 5.5%, Italy 4.8%, Netherlands 4.4% (2015)"
+    },
+    "Imports": {
+      "text": "$189.5 billion (2016 est.) ++ $188.4 billion (2015 est.)"
+    },
+    "Imports - commodities": {
+      "text": "machinery and transport equipment 38%, intermediate manufactured goods 21%, chemicals 15%, minerals, fuels, lubricants, and related materials 9% (2011 est.)"
+    },
+    "Imports - partners": {
+      "text": "Germany 27.6%, China 7.5%, Russia 7.2%, Netherlands 5.9%, Italy 5.2%, France 4.1% (2015)"
+    },
+    "Reserves of foreign exchange and gold": {
+      "text": "$90.21 billion (31 December 2016 est.) ++ $94.91 billion (31 December 2015 est.)"
+    },
+    "Debt - external": {
+      "text": "$344.8 billion (31 December 2016 est.) ++ $332.2 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - at home": {
+      "text": "$228.8 billion (31 December 2016 est.) ++ $221.8 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - abroad": {
+      "text": "$64.62 billion (31 December 2016 est.) ++ $62.12 billion (31 December 2015 est.)"
+    },
+    "Exchange rates": {
+      "text": "zlotych (PLN) per US dollar - ++ 4.056 (2016 est.) ++ 3.7721 (2015 est.) ++ 3.7721 (2014 est.) ++ 3.1538 (2013 est.) ++ 3.26 (2012 est.)"
+    }
+  },
+  "Energy": {
+    "Electricity - production": {
+      "text": "150 billion kWh (2014 est.)"
+    },
+    "Electricity - consumption": {
+      "text": "142 billion kWh (2014 est.)"
+    },
+    "Electricity - exports": {
+      "text": "11 billion kWh (2014)"
+    },
+    "Electricity - imports": {
+      "text": "14 billion kWh (2014 est.)"
+    },
+    "Electricity - installed generating capacity": {
+      "text": "36 million kW (2014 est.)"
+    },
+    "Electricity - from fossil fuels": {
+      "text": "89.5% of total installed capacity (2013 est.)"
+    },
+    "Electricity - from nuclear fuels": {
+      "text": "0% of total installed capacity (2013 est.)"
+    },
+    "Electricity - from hydroelectric plants": {
+      "text": "1.5% of total installed capacity (2013 est.)"
+    },
+    "Electricity - from other renewable sources": {
+      "text": "8.5% of total installed capacity (2013 est.)"
+    },
+    "Crude oil - production": {
+      "text": "18,420 bbl/day (2015 est.)"
+    },
+    "Crude oil - exports": {
+      "text": "5,162 bbl/day (2015 est.)"
+    },
+    "Crude oil - imports": {
+      "text": "532,300 bbl/day (2015 est.)"
+    },
+    "Crude oil - proved reserves": {
+      "text": "100 million bbl (1 January 2010 es)"
+    },
+    "Refined petroleum products - production": {
+      "text": "568,200 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - consumption": {
+      "text": "536,700 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - exports": {
+      "text": "160,100 bbl/day (2015 est.)"
+    },
+    "Refined petroleum products - imports": {
+      "text": "128,800 bbl/day (2015 est.)"
+    },
+    "Natural gas - production": {
+      "text": "6.08 billion cu m (2014 est.)"
+    },
+    "Natural gas - consumption": {
+      "text": "17.66 billion cu m (2014 est.)"
+    },
+    "Natural gas - exports": {
+      "text": "76 million cu m (2014 est.)"
+    },
+    "Natural gas - imports": {
+      "text": "11.82 billion cu m (2014 est.)"
+    },
+    "Natural gas - proved reserves": {
+      "text": "81.66 billion cu m (1 January 2016 es)"
+    },
+    "Carbon dioxide emissions from consumption of energy": {
+      "text": "322 million Mt (2013 est.)"
+    }
+  },
+  "Communications": {
+    "Telephones - fixed lines": {
+      "total subscriptions": {
+        "text": "4.245 million"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "11 (July 2015 est.)"
+      }
+    },
+    "Telephones - mobile cellular": {
+      "total": {
+        "text": "56.838 million"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "147 (July 2015 est.)"
+      }
+    },
+    "Telephone system": {
+      "general assessment": {
+        "text": "modernization of the telecommunications network has accelerated with market-based competition; fixed-line service, dominated by the former state-owned company, is dwarfed by the growth in mobile-cellular services"
+      },
+      "domestic": {
+        "text": "several nation-wide networks provide mobile-cellular service; coverage is generally good; fixed-line service lags in rural areas"
+      },
+      "international": {
+        "text": "country code - 48; international direct dialing with automated exchanges; satellite earth station - 1 with access to Intelsat, Eutelsat, Inmarsat, and Intersputnik (2015)"
+      }
+    },
+    "Broadcast media": {
+      "text": "state-run public TV operates 2 national channels supplemented by 16 regional channels and several niche channels; privately owned entities operate several national TV networks and a number of special interest channels; many privately owned channels broadc (2007)"
+    },
+    "Internet country code": {
+      "text": ".pl"
+    },
+    "Internet users": {
+      "total": {
+        "text": "26.221 million"
+      },
+      "percent of population": {
+        "text": "68% (July 2015 est.)"
+      }
+    }
+  },
+  "Transportation": {
+    "National air transport system": {
+      "number of registered air carriers": {
+        "text": "6"
+      },
+      "inventory of registered aircraft operated by air carriers": {
+        "text": "92"
+      },
+      "annual passenger traffic on registered air carriers": {
+        "text": "4,841,128"
+      },
+      "annual freight traffic on registered air carriers": {
+        "text": "120,016,466 mt-km (2015)"
+      }
+    },
+    "Civil aircraft registration country code prefix": {
+      "text": "SP (2016)"
+    },
+    "Airports": {
+      "text": "126 (2013)"
+    },
+    "Airports - with paved runways": {
+      "total": {
+        "text": "87"
+      },
+      "over 3,047 m": {
+        "text": "5"
+      },
+      "2,438 to 3,047 m": {
+        "text": "30"
+      },
+      "1,524 to 2,437 m": {
+        "text": "36"
+      },
+      "914 to 1,523 m": {
+        "text": "10"
+      },
+      "under 914 m": {
+        "text": "6 (2013)"
+      }
+    },
+    "Airports - with unpaved runways": {
+      "total": {
+        "text": "39"
+      },
+      "1,524 to 2,437 m": {
+        "text": "1"
+      },
+      "914 to 1,523 m": {
+        "text": "17"
+      },
+      "under 914 m": {
+        "text": "21 (2013)"
+      }
+    },
+    "Heliports": {
+      "text": "6 (2013)"
+    },
+    "Pipelines": {
+      "text": "gas 14,198 km; oil 1,374 km; refined products 777 km (2013)"
+    },
+    "Railways": {
+      "total": {
+        "text": "19,837 km"
+      },
+      "broad gauge": {
+        "text": "395 km 1.524-m gauge"
+      },
+      "standard gauge": {
+        "text": "19,442 km 1.435-m gauge (11,899 km electrified) (2014)"
+      }
+    },
+    "Roadways": {
+      "total": {
+        "text": "412,035 km"
+      },
+      "paved": {
+        "text": "280,719 km (includes 2,418 km of expressways)"
+      },
+      "unpaved": {
+        "text": "131,316 km (2012)"
+      }
+    },
+    "Waterways": {
+      "text": "3,997 km (navigable rivers and canals) (2009)"
+    },
+    "Merchant marine": {
+      "total": {
+        "text": "9"
+      },
+      "by type": {
+        "text": "cargo 7, chemical tanker 1, passenger/cargo 1"
+      },
+      "registered in other countries": {
+        "text": "106 (Antigua and Barbuda 2, Bahamas 34, Cyprus 24, Liberia 13, Malta 21, Saint Vincent and the Grenadines 3, Vanuatu 9) (2010)"
+      }
+    },
+    "Ports and terminals": {
+      "major seaport(s)": {
+        "text": "Gdansk, Gdynia, Swinoujscie"
+      },
+      "river port(s)": {
+        "text": "Szczecin (River Oder)"
+      },
+      "LNG terminal(s) (import)": {
+        "text": "Swinoujscie"
+      }
+    }
+  },
+  "Military and Security": {
+    "Military branches": {
+      "text": "Polish Armed Forces: Land Forces, Navy, Air and Air Defense Aviation Forces, Special Forces (2013)"
+    },
+    "Military service age and obligation": {
+      "text": "18-28 years of age for male and female voluntary military service; conscription phased out in 2009-12; service obligation shortened from 12 to 9 months in 2005; women only allowed to serve as officers and noncommissioned officers (2013)"
+    },
+    "Military expenditures": {
+      "text": "2% of GDP (2016) ++ 2.27% of GDP (2015) ++ 1.95% of GDP (2014) ++ 1.95% of GDP (2013) ++ 1.91% of GDP (2012) ++ 1.83% of GDP (2011)"
+    }
+  },
+  "Transnational Issues": {
+    "Disputes - international": {
+      "text": "as a member state that forms part of the EU's external border, Poland has implemented the strict Schengen border rules to restrict illegal immigration and trade along its eastern borders with Belarus and Ukraine"
+    },
+    "Refugees and internally displaced persons": {
+      "refugees (country of origin)": {
+        "text": "12,304 (Russia) (2015); 71,302 applicants for forms of legal stay other than asylum (Ukraine) (2015)"
+      },
+      "stateless persons": {
+        "text": "10,825 (2015)"
+      }
+    },
+    "Illicit drugs": {
+      "text": "despite diligent counternarcotics measures and international information sharing on cross-border crimes, a major illicit producer of synthetic drugs for the international market; minor transshipment point for Southwest Asian heroin and Latin American cocaine to Western Europe"
+    }
+  }
+}

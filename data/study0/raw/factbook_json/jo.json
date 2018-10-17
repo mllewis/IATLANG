@@ -1,0 +1,901 @@
+{
+  "Introduction": {
+    "Background": {
+      "text": "Following World War I and the dissolution of the Ottoman Empire, the League of Nations awarded Britain the mandate to govern much of the Middle East. Britain demarcated a semi-autonomous region of Transjordan from Palestine in the early 1920s. The area gained its independence in 1946 and thereafter became The Hashemite Kingdom of Jordan. The country's long-time ruler, King HUSSEIN (1953-99), successfully navigated competing pressures from the major powers (US, USSR, and UK), various Arab states, Israel, and a large internal Palestinian population. Jordan lost the West Bank to Israel in the 1967 Six-Day War. King HUSSEIN in 1988 permanently relinquished Jordanian claims to the West Bank; in 1994 he signed a peace treaty with Israel. King ABDALLAH II, King HUSSEIN's eldest son, assumed the throne following his father's death in 1999. He has implemented modest political and economic reforms, including the passage of a new electoral law in early 2016 ahead of legislative elections held in September. The Islamic Action Front, which is the political arm of the Jordanian Muslim Brotherhood, returned to parliament with 15 seats after boycotting the previous two elections in 2010 and 2013."
+    }
+  },
+  "Geography": {
+    "Location": {
+      "text": "Middle East, northwest of Saudi Arabia, between Israel (to the west) and Iraq"
+    },
+    "Geographic coordinates": {
+      "text": "31 00 N, 36 00 E"
+    },
+    "Map references": {
+      "text": "Middle East"
+    },
+    "Area": {
+      "total": {
+        "text": "89,342 sq km"
+      },
+      "land": {
+        "text": "88,802 sq km"
+      },
+      "water": {
+        "text": "540 sq km"
+      }
+    },
+    "Area - comparative": {
+      "text": "about three-quarters the size of Pennsylvania; slightly smaller than Indiana"
+    },
+    "Land boundaries": {
+      "total": {
+        "text": "1,744 km"
+      },
+      "border countries": {
+        "text": "Iraq 179 km, Israel 307 km, Saudi Arabia 731 km, Syria 379 km, West Bank 148 km"
+      }
+    },
+    "Coastline": {
+      "text": "26 km"
+    },
+    "Maritime claims": {
+      "territorial sea": {
+        "text": "3 nm"
+      }
+    },
+    "Climate": {
+      "text": "mostly arid desert; rainy season in west (November to April)"
+    },
+    "Terrain": {
+      "text": "mostly desert plateau in east, highland area in west; Great Rift Valley separates eastern and western banks of the Jordan River"
+    },
+    "Elevation": {
+      "mean elevation": {
+        "text": "812 m"
+      },
+      "elevation extremes": {
+        "text": "lowest point: Dead Sea -408 m ++ highest point: Jabal Umm ad Dami 1,854 m"
+      }
+    },
+    "Natural resources": {
+      "text": "phosphates, potash, shale oil"
+    },
+    "Land use": {
+      "agricultural land": {
+        "text": "11.4% ++ arable land 2%; permanent crops 1%; permanent pasture 8.4%"
+      },
+      "forest": {
+        "text": "1.1%"
+      },
+      "other": {
+        "text": "87.5% (2011 est.)"
+      }
+    },
+    "Irrigated land": {
+      "text": "964 sq km (2012)"
+    },
+    "Population - distribution": {
+      "text": "population heavily concentrated in the west, and particularly the northwest, in and around the capital of Amman; a sizeable, but smaller population is located in the southwest along the shore of the Gulf of Aqaba"
+    },
+    "Natural hazards": {
+      "text": "droughts; periodic earthquakes"
+    },
+    "Environment - current issues": {
+      "text": "limited natural freshwater resources; deforestation; overgrazing; soil erosion; desertification"
+    },
+    "Environment - international agreements": {
+      "party to": {
+        "text": "Biodiversity, Climate Change, Climate Change-Kyoto Protocol, Desertification, Endangered Species, Hazardous Wastes, Law of the Sea, Marine Dumping, Ozone Layer Protection, Wetlands"
+      },
+      "signed, but not ratified": {
+        "text": "none of the selected agreements"
+      }
+    },
+    "Geography - note": {
+      "text": "strategic location at the head of the Gulf of Aqaba and as the Arab country that shares the longest border with Israel and the occupied West Bank"
+    }
+  },
+  "People and Society": {
+    "Population": {
+      "text": "8,185,384",
+      "note": {
+        "text": "increased estimate reflects revised assumptions about the net migration rate due to the increased flow of Syrian refugees (July 2016 est.)"
+      }
+    },
+    "Nationality": {
+      "noun": {
+        "text": "Jordanian(s)"
+      },
+      "adjective": {
+        "text": "Jordanian"
+      }
+    },
+    "Ethnic groups": {
+      "text": "Arab 98%, Circassian 1%, Armenian 1%"
+    },
+    "Languages": {
+      "text": "Arabic (official), English (widely understood among upper and middle classes)"
+    },
+    "Religions": {
+      "text": "Muslim 97.2% (official; predominantly Sunni), Christian 2.2% (majority Greek Orthodox, but some Greek and Roman Catholics, Syrian Orthodox, Coptic Orthodox, Armenian Orthodox, and Protestant denominations), Buddhist 0.4%, Hindu 0.1%, Jewish <0.1, folk religionist <0.1, unaffiliated <0.1, other <0.1 (2010 est.)"
+    },
+    "Age structure": {
+      "0-14 years": {
+        "text": "35.04% (male 1,470,865/female 1,397,057)"
+      },
+      "15-24 years": {
+        "text": "20.12% (male 842,202/female 804,557)"
+      },
+      "25-54 years": {
+        "text": "36.44% (male 1,491,855/female 1,491,302)"
+      },
+      "55-64 years": {
+        "text": "4.46% (male 177,720/female 187,181)"
+      },
+      "65 years and over": {
+        "text": "3.94% (male 151,071/female 171,574) (2016 est.)"
+      }
+    },
+    "Dependency ratios": {
+      "total dependency ratio": {
+        "text": "64.8%"
+      },
+      "youth dependency ratio": {
+        "text": "58.5%"
+      },
+      "elderly dependency ratio": {
+        "text": "6.2%"
+      },
+      "potential support ratio": {
+        "text": "16% (2015 est.)"
+      }
+    },
+    "Median age": {
+      "total": {
+        "text": "22.3 years"
+      },
+      "male": {
+        "text": "21.9 years"
+      },
+      "female": {
+        "text": "22.7 years (2016 est.)"
+      }
+    },
+    "Population growth rate": {
+      "text": "0.83% (2016 est.)"
+    },
+    "Birth rate": {
+      "text": "25.5 births/1,000 population (2016 est.)"
+    },
+    "Death rate": {
+      "text": "3.8 deaths/1,000 population (2016 est.)"
+    },
+    "Net migration rate": {
+      "text": "-13.4 migrant(s)/1,000 population (2016 est.)"
+    },
+    "Population distribution": {
+      "text": "population heavily concentrated in the west, and particularly the northwest, in and around the capital of Amman; a sizeable, but smaller population is located in the southwest along the shore of the Gulf of Aqaba"
+    },
+    "Urbanization": {
+      "urban population": {
+        "text": "83.7% of total population (2015)"
+      },
+      "rate of urbanization": {
+        "text": "3.79% annual rate of change (2010-15 est.)"
+      }
+    },
+    "Major urban areas - population": {
+      "text": "AMMAN (capital) 1.155 million (2015)"
+    },
+    "Sex ratio": {
+      "at birth": {
+        "text": "1.06 male(s)/female"
+      },
+      "0-14 years": {
+        "text": "1.05 male(s)/female"
+      },
+      "15-24 years": {
+        "text": "1.05 male(s)/female"
+      },
+      "25-54 years": {
+        "text": "1 male(s)/female"
+      },
+      "55-64 years": {
+        "text": "0.95 male(s)/female"
+      },
+      "65 years and over": {
+        "text": "0.89 male(s)/female"
+      },
+      "total population": {
+        "text": "1.02 male(s)/female (2016 est.)"
+      }
+    },
+    "Mother's mean age at first birth": {
+      "text": "24.7",
+      "note": {
+        "text": "median age at first birth among women 25-29 (2012 est.)"
+      }
+    },
+    "Maternal mortality rate": {
+      "text": "58 deaths/100,000 live births (2015 est.)"
+    },
+    "Infant mortality rate": {
+      "total": {
+        "text": "14.7 deaths/1,000 live births"
+      },
+      "male": {
+        "text": "15.5 deaths/1,000 live births"
+      },
+      "female": {
+        "text": "13.8 deaths/1,000 live births (2016 est.)"
+      }
+    },
+    "Life expectancy at birth": {
+      "total population": {
+        "text": "74.6 years"
+      },
+      "male": {
+        "text": "73.2 years"
+      },
+      "female": {
+        "text": "76.1 years (2016 est.)"
+      }
+    },
+    "Total fertility rate": {
+      "text": "3.18 children born/woman (2016 est.)"
+    },
+    "Contraceptive prevalence rate": {
+      "text": "61.2% (2012)"
+    },
+    "Health expenditures": {
+      "text": "7.5% of GDP (2014)"
+    },
+    "Physicians density": {
+      "text": "2.56 physicians/1,000 population (2010)"
+    },
+    "Hospital bed density": {
+      "text": "1.8 beds/1,000 population (2012)"
+    },
+    "Drinking water source": {
+      "improved": {
+        "text": " ++ urban: 97.8% of population ++ rural: 92.3% of population ++ total: 96.9% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 2.2% of population ++ rural: 7.7% of population ++ total: 3.1% of population (2015 est.)"
+      }
+    },
+    "Sanitation facility access": {
+      "improved": {
+        "text": " ++ urban: 98.6% of population ++ rural: 98.9% of population ++ total: 98.6% of population"
+      },
+      "unimproved": {
+        "text": " ++ urban: 1.4% of population ++ rural: 1.1% of population ++ total: 1.4% of population (2015 est.)"
+      }
+    },
+    "HIV/AIDS - adult prevalence rate": {
+      "text": "NA"
+    },
+    "HIV/AIDS - people living with HIV/AIDS": {
+      "text": "NA"
+    },
+    "HIV/AIDS - deaths": {
+      "text": "NA"
+    },
+    "Obesity - adult prevalence rate": {
+      "text": "28.1% (2014)"
+    },
+    "Children under the age of 5 years underweight": {
+      "text": "3% (2012)"
+    },
+    "Education expenditures": {
+      "text": "NA"
+    },
+    "Literacy": {
+      "definition": {
+        "text": "age 15 and over can read and write"
+      },
+      "total population": {
+        "text": "95.4%"
+      },
+      "male": {
+        "text": "97.7%"
+      },
+      "female": {
+        "text": "92.9% (2015 est.)"
+      }
+    },
+    "School life expectancy (primary to tertiary education)": {
+      "total": {
+        "text": "13 years"
+      },
+      "male": {
+        "text": "12 years"
+      },
+      "female": {
+        "text": "13 years (2012)"
+      }
+    },
+    "Unemployment, youth ages 15-24": {
+      "total": {
+        "text": "29.3%"
+      },
+      "male": {
+        "text": "25.2%"
+      },
+      "female": {
+        "text": "48.8% (2012 est.)"
+      }
+    }
+  },
+  "Government": {
+    "Country name": {
+      "conventional long form": {
+        "text": "Hashemite Kingdom of Jordan"
+      },
+      "conventional short form": {
+        "text": "Jordan"
+      },
+      "local long form": {
+        "text": "Al Mamlakah al Urduniyah al Hashimiyah"
+      },
+      "local short form": {
+        "text": "Al Urdun"
+      },
+      "former": {
+        "text": "Transjordan"
+      },
+      "etymology": {
+        "text": "named for the Jordan River, which makes up part of Jordan's northwest border"
+      }
+    },
+    "Government type": {
+      "text": "parliamentary constitutional monarchy"
+    },
+    "Capital": {
+      "name": {
+        "text": "Amman"
+      },
+      "geographic coordinates": {
+        "text": "31 57 N, 35 56 E"
+      },
+      "time difference": {
+        "text": "UTC+2 (7 hours ahead of Washington, DC, during Standard Time)"
+      },
+      "daylight saving time": {
+        "text": "+1hr, begins last Friday in March; ends last Friday in October"
+      }
+    },
+    "Administrative divisions": {
+      "text": "12 governorates (muhafazat, singular - muhafazah); 'Ajlun, Al 'Aqabah, Al Balqa', Al Karak, Al Mafraq, Al'Asimah, At Tafilah, Az Zarqa', Irbid, Jarash, Ma'an, Ma'daba"
+    },
+    "Independence": {
+      "text": "25 May 1946 (from League of Nations mandate under British administration)"
+    },
+    "National holiday": {
+      "text": "Independence Day, 25 May (1946)"
+    },
+    "Constitution": {
+      "text": "previous 1928 (preindependence); latest initially adopted 28 November 1947, revised and ratified 1 January 1952; amended several times, last in 2016 (2016)"
+    },
+    "Legal system": {
+      "text": "mixed system developed from codes instituted by the Ottoman Empire (based on French law), British common law, and Islamic law"
+    },
+    "International law organization participation": {
+      "text": "has not submitted an ICJ jurisdiction declaration; accepts ICCt jurisdiction"
+    },
+    "Citizenship": {
+      "citizenship by birth": {
+        "text": "no"
+      },
+      "citizenship by descent only": {
+        "text": "the father must be a citizen of Jordan"
+      },
+      "dual citizenship recognized": {
+        "text": "yes"
+      },
+      "residency requirement for naturalization": {
+        "text": "15 years ++ Citizenship"
+      }
+    },
+    "Suffrage": {
+      "text": "18 years of age; universal"
+    },
+    "Executive branch": {
+      "chief of state": {
+        "text": "King ABDALLAH II (since 7 February 1999); Crown Prince HUSSEIN (born 28 June 1994), eldest son of King ABDALLAH II"
+      },
+      "head of government": {
+        "text": "Prime Minister Hani MULKI (since 1 June 2016)"
+      },
+      "cabinet": {
+        "text": "Cabinet appointed by the prime minister in consultation with the monarch"
+      },
+      "elections/appointments": {
+        "text": "the monarchy is hereditary; prime minister appointed by the monarch"
+      }
+    },
+    "Legislative branch": {
+      "description": {
+        "text": "bicameral National Assembly or Majlis al-'Umma consists of the Senate, or the House of Notables or Majlis al-Ayan (65 seats; members appointed by the monarch to serve 4-year terms) and the Chamber of Deputies or House of Representatives or Majlis al-Nuwaab (130 seats; 115 members directly elected in single- and multi-seat constituencies by open-list proportional representation vote and 15 seats for women; 12 of the 115 seats reserved for Christian, Chechen, and Circassian candidates; members serve 4-year terms)"
+      },
+      "elections": {
+        "text": "Chamber of Deputies - last held on 20 September 2016 (next to be held in 2020)"
+      },
+      "election results": {
+        "text": "Chamber of Deputies - percent of vote by party - NA; seats by party - NA"
+      }
+    },
+    "Judicial branch": {
+      "highest court(s)": {
+        "text": "Court of Cassation or Supreme Court (consists of 15 judges including the chief justice; 7-judge panels for important cases and 5 judge panels for most appeals cases); Constitutional Court (consists of 9 members including the court chairman)"
+      },
+      "judge selection and term of office": {
+        "text": "Supreme Court chief justice appointed by the king; other judges nominated by the Judicial Council, an 11-member judicial policy-making body consisting of high-level judicial officials and judges, and approved by the king; judge tenure NA; Constitutional Court members appointed by the king for 6-year non-renewable terms with one-third of the membership renewed every 2 years"
+      },
+      "subordinate courts": {
+        "text": "Courts of Appeal; Major Felonies Court; Courts of First Instance; Magistrate Courts;  religious courts; state security courts"
+      }
+    },
+    "Political parties and leaders": {
+      "text": "Ahl al-Himma ++ Al-Bayyan ++ Al-Hayah Jordanian Party [Zahier AMR] ++ Arab Ba'ath Socialist Party [Akram al-HIMSI] ++ Ba'ath Arab Progressive Party [Fuad DABBOUR] ++ Citizenship ++ Construction ++ Cooperation ++ Dawn ++ Democratic People's Party [Ablah ABU ULBAH] ++ Democratic Popular Unity Party [Sa'id DIAB] ++ Dignity ++ Du'a Party [Muhammed ABU BAKR] ++ Free Voice ++ Islamic Action Front or IAF [Hamzah MANSOUR] ++ Islamic Centrist Party [Muhammad al-HAJ] ++ Jordanian Communist Party [Munir HAMARNAH] ++ Jordanian National Party [Muna ABU BAKR] ++ Jordanian United Front [Amjad al-MAJALI] ++ Labor and Trade ++ Muslim Center Party [Haitham ALAMAERAH] ++ Nation ++ National Congress Party [Raheeh GHARAYBEH, general secretary] ++ National Accord Youth Block ++ National Action ++ National Constitution Party [Ahmad al-SHUNAQ] ++ National Current Party [Abd al-Hadi al-MAJALI] ++ National Movement for Direct Democracy [Muhammad al-QAQ] ++ National Union ++ National Unity ++ Nobel Jerusalem ++ Risalah Party [Hazem QASHOU] ++ Salvation ++ Stronger Jordan ++ The Direct Democratic Nationalists Movement Party [Nash'at KHALIFAH] ++ The Homeland (Hizb Al-Watan) ++ The People ++ Unified Front ++ United Front ++ Voice of the Nation; qtgan"
+    },
+    "Political pressure groups and leaders": {
+      "text": "15 April Movement [Mohammad SUNEID, chairman] ++ 24 March Movement [Mu'az al-KHAWALIDAH, Abdel Rahman HASANEIN, spokespersons] ++ 1952 Constitution Movement ++ Anti-Normalization Committee [Hamzah MANSOUR, chairman] ++ Economic and Social Association of Retired Servicemen and Veterans or ESARSV [Abdulsalam al-HASSANAT, chairman] ++ Group of 36 ++ Higher Coordination Committee of Opposition Parties [Said DIAB] ++ Higher National Committee for Military Retirees or HNCMR [Ali al-HABASHNEH, chairman] ++ Hirak ++ Jordan Bar Association [Saleh al-ARMUTI, chairman] ++ Jordanian Campaign for Change or Jayin ++ Jordanian Muslim Brotherhood [Dr. Hamam SAID, controller general] ++ Jordanian Press Association [Sayf al-SHARIF, president] ++ National Front for Reform or NFR [Ahmad OBEIDAT, chairman] ++ Popular Gathering for Reform ++ Professional Associations Council [Abd al-Hadi al-FALAHAT, chairman] ++ Sons of Jordan"
+    },
+    "International organization participation": {
+      "text": "ABEDA, AFESD, AMF, CAEU, CD, CICA, EBRD, FAO, G-11, G-77, IAEA, IBRD, ICAO, ICC (national committees), ICCt, ICRM, IDA, IDB, IFAD, IFC, IFRCS, ILO, IMF, IMO, IMSO, Interpol, IOC, IOM, IPU, ISO, ITSO, ITU, ITUC (NGOs), LAS, MIGA, MINUSTAH, MINUSMA, MONUSCO, NAM, OIC, OPCW, OSCE (partner), PCA, UN, UN Security Council (temporary), UNAMID, UNCTAD, UNESCO, UNHCR, UNIDO, UNMIL, UNMISS, UNOCI, UNRWA, UNWTO, UPU, WCO, WFTU (NGOs), WHO, WIPO, WMO, WTO"
+    },
+    "Diplomatic representation in the US": {
+      "chief of mission": {
+        "text": "Ambassador Dina Khalil Tawiq KAWAR (since 27 June 2016)"
+      },
+      "chancery": {
+        "text": "3504 International Drive NW, Washington, DC 20008"
+      },
+      "telephone": {
+        "text": "[1] (202) 966-2664"
+      },
+      "FAX": {
+        "text": "[1] (202) 966-3110"
+      }
+    },
+    "Diplomatic representation from the US": {
+      "chief of mission": {
+        "text": "Ambassador Alice G. WELLS (since 31 August 2014)"
+      },
+      "embassy": {
+        "text": "Abdoun, Al-Umawyeen St., Amman"
+      },
+      "mailing address": {
+        "text": "P. O. Box 354, Amman 11118 Jordan; Unit 70200, Box 5, DPO AE 09892-0200"
+      },
+      "telephone": {
+        "text": "[962] (6) 590-6000"
+      },
+      "FAX": {
+        "text": "[962] (6) 592-0163"
+      }
+    },
+    "Flag description": {
+      "text": "three equal horizontal bands of black (top), representing the Abbassid Caliphate, white, representing the Ummayyad Caliphate, and green, representing the Fatimid Caliphate; a red isosceles triangle on the hoist side, representing the Great Arab Revolt of 1916, and bearing a small white seven-pointed star symbolizing the seven verses of the opening Sura (Al-Fatiha) of the Holy Koran; the seven points on the star represent faith in One God, humanity, national spirit, humility, social justice, virtue, and aspirations; design is based on the Arab Revolt flag of World War I"
+    },
+    "National symbol(s)": {
+      "text": "eagle; national colors: black, white, green, red"
+    },
+    "National anthem": {
+      "name": {
+        "text": "\"As-salam al-malaki al-urdoni\" (Long Live the King of Jordan)"
+      },
+      "lyrics/music": {
+        "text": "Abdul-Mone'm al-RIFAI'/Abdul-Qader al-TANEER"
+      },
+      "note": {
+        "text": "adopted 1946; the shortened version of the anthem is used most commonly, while the full version is reserved for special occasions"
+      }
+    }
+  },
+  "Economy": {
+    "Economy - overview": {
+      "text": "Jordan's economy is among the smallest in the Middle East, with insufficient supplies of water, oil, and other natural resources, underlying the government's heavy reliance on foreign assistance. Other economic challenges for the government include chronic high rates of poverty, unemployment and underemployment, budget and current account deficits, and government debt. ++  ++ King ABDALLAH, during the first decade of the 2000s, implemented significant economic reforms, such as expanding foreign trade and privatizing state-owned companies that attracted foreign investment and contributed to average annual economic growth of 8% for 2004 through 2008. The global economic slowdown and regional turmoil contributed to slower growth from 2010 to 2014 - with growth averaging 2.8% per year - and hurt export-oriented sectors, construction, and tourism. Through 2014, Jordan's finances were strained by a series of natural gas pipeline attacks in Egypt, disrupting natural gas exports to Jordan, and led Jordan to rely on more expensive diesel imports, primarily from Saudi Arabia, to generate electricity. ++  ++ To diversify its energy mix, Jordan has secured several contracts for liquefied natural gas and is currently exploring nuclear power generation, exploitation of abundant oil shale reserves and renewable technologies, as well as the import of Israeli offshore gas. In August 2015, Jordan completed a $2.1 billion, three-year IMF Stand-By Arrangement, which the government had entered to help correct budgetary and balance of payments imbalances. Jordan plans to expand on its fiscal reform measures enacted over the previous few years with a follow-on IMF agreement in 2016 to boost government revenues, reduce the budget deficit, and manage its burgeoning debt, brought on in part by an influx of over 650,000 Syrian refugees since 2011, which put additional pressure on expenditures."
+    },
+    "GDP (purchasing power parity)": {
+      "text": "$86.19 billion (2016 est.) ++ $83.89 billion (2015 est.) ++ $81.93 billion (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "GDP (official exchange rate)": {
+      "text": "$39.45 billion (2015 est.)"
+    },
+    "GDP - real growth rate": {
+      "text": "2.8% (2016 est.) ++ 2.4% (2015 est.) ++ 3.1% (2014 est.)"
+    },
+    "GDP - per capita (PPP)": {
+      "text": "$11,100 (2016 est.) ++ $11,000 (2015 est.) ++ $11,000 (2014 est.)",
+      "note": {
+        "text": "data are in 2016 dollars"
+      }
+    },
+    "Gross national saving": {
+      "text": "10.4% of GDP (2016 est.) ++ 10.2% of GDP (2015 est.) ++ 14.4% of GDP (2014 est.)"
+    },
+    "GDP - composition, by end use": {
+      "household consumption": {
+        "text": "81.1%"
+      },
+      "government consumption": {
+        "text": "19.8%"
+      },
+      "investment in fixed capital": {
+        "text": "22.6%"
+      },
+      "investment in inventories": {
+        "text": "3.1%"
+      },
+      "exports of goods and services": {
+        "text": "32.7%"
+      },
+      "imports of goods and services": {
+        "text": "-59.3% (2016 est.)"
+      }
+    },
+    "GDP - composition, by sector of origin": {
+      "agriculture": {
+        "text": "4.2%"
+      },
+      "industry": {
+        "text": "29.6%"
+      },
+      "services": {
+        "text": "66.2% (2016 est.)"
+      }
+    },
+    "Agriculture - products": {
+      "text": "citrus, tomatoes, cucumbers, olives, strawberries, stone fruits; sheep, poultry, dairy"
+    },
+    "Industries": {
+      "text": "tourism, information technology, clothing, fertilizers, potash, phosphate mining, pharmaceuticals, petroleum refining, cement, inorganic chemicals, light manufacturing"
+    },
+    "Industrial production growth rate": {
+      "text": "1.8% (2016 est.)"
+    },
+    "Labor force": {
+      "text": "2.205 million (2016 est.)"
+    },
+    "Labor force - by occupation": {
+      "agriculture": {
+        "text": "2%"
+      },
+      "industry": {
+        "text": "20%"
+      },
+      "services": {
+        "text": "78% (2013 est.)"
+      }
+    },
+    "Unemployment rate": {
+      "text": "14.8% (2016 est.) ++ 13.1% (2015 est.)",
+      "note": {
+        "text": "official rate; unofficial rate is approximately 30%"
+      }
+    },
+    "Population below poverty line": {
+      "text": "14.2% (2002 est.)"
+    },
+    "Household income or consumption by percentage share": {
+      "lowest 10%": {
+        "text": "3.4%"
+      },
+      "highest 10%": {
+        "text": "28.7% (2010 est.)"
+      }
+    },
+    "Distribution of family income - Gini index": {
+      "text": "39.7 (2007) ++ 36.4 (1997)"
+    },
+    "Budget": {
+      "revenues": {
+        "text": "$8.649 billion"
+      },
+      "expenditures": {
+        "text": "$11.22 billion (2016 est.)"
+      }
+    },
+    "Taxes and other revenues": {
+      "text": "21.9% of GDP (2016 est.)"
+    },
+    "Budget surplus (+) or deficit (-)": {
+      "text": "-6.5% of GDP (2016 est.)"
+    },
+    "Public debt": {
+      "text": "90.6% of GDP (2016 est.) ++ 85.5% of GDP (2015 est.)",
+      "note": {
+        "text": "data cover central government debt and include debt instruments issued (or owned) by government entities other than the treasury, and treasury debt held by foreign entities; the data exclude debt issued by subnational entities, as well as intra-government"
+      }
+    },
+    "Fiscal year": {
+      "text": "calendar year"
+    },
+    "Inflation rate (consumer prices)": {
+      "text": "-0.8% (2016 est.) ++ -0.9% (2015 est.)"
+    },
+    "Central bank discount rate": {
+      "text": "0.3% (31 December 2010) ++ 4.75% (31 December 2009)"
+    },
+    "Commercial bank prime lending rate": {
+      "text": "8% (31 December 2016 est.) ++ 8.24% (31 December 2015 est.)"
+    },
+    "Stock of narrow money": {
+      "text": "$14.68 billion (31 December 2016 est.) ++ $13.92 billion (31 December 2015 est.)"
+    },
+    "Stock of broad money": {
+      "text": "$46.78 billion (31 December 2016 est.) ++ $44.52 billion (31 December 2015 est.)"
+    },
+    "Stock of domestic credit": {
+      "text": "$41.95 billion (31 December 2016 est.) ++ $39.57 billion (31 December 2015 est.)"
+    },
+    "Market value of publicly traded shares": {
+      "text": "$25.45 billion (31 December 2015 est.) ++ $25.55 billion (31 December 2014 est.) ++ $25.76 billion (31 December 2013 est.)"
+    },
+    "Current account balance": {
+      "text": "-$3.566 billion (2016 est.) ++ -$3.392 billion (2015 est.)"
+    },
+    "Exports": {
+      "text": "$7.124 billion (2016 est.) ++ $7.829 billion (2015 est.)"
+    },
+    "Exports - commodities": {
+      "text": "textiles, fertilizers, potash, phosphates, vegetables, pharmaceuticals"
+    },
+    "Exports - partners": {
+      "text": "US 21%, Saudi Arabia 16.5%, Iraq 10.3%, India 8.7%, UAE 4.8%, Kuwait 4.4% (2015)"
+    },
+    "Imports": {
+      "text": "$17.86 billion (2016 est.) ++ $18.04 billion (2015 est.)"
+    },
+    "Imports - commodities": {
+      "text": "crude oil, refined petroleum products, machinery, transport equipment, iron, cereals"
+    },
+    "Imports - partners": {
+      "text": "Saudi Arabia 15.4%, China 12.8%, US 6.2%, Germany 4.7%, UAE 4.2% (2015)"
+    },
+    "Reserves of foreign exchange and gold": {
+      "text": "$15.18 billion (31 December 2016 est.) ++ $16.57 billion (31 December 2015 est.)"
+    },
+    "Debt - external": {
+      "text": "$26.66 billion (31 December 2016 est.) ++ $25.16 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - at home": {
+      "text": "$31.2 billion (31 December 2016 est.) ++ $29.96 billion (31 December 2015 est.)"
+    },
+    "Stock of direct foreign investment - abroad": {
+      "text": "$629.3 million (31 December 2016 est.) ++ $609.3 million (31 December 2015 est.)"
+    },
+    "Exchange rates": {
+      "text": "Jordanian dinars (JOD) per US dollar - ++ 0.71 (2016 est.) ++ 0.71 (2015 est.) ++ 0.71 (2014 est.) ++ 0.71 (2013 est.) ++ 0.709 (2012 est.)"
+    }
+  },
+  "Energy": {
+    "Electricity - production": {
+      "text": "17 billion kWh (2014 est.)"
+    },
+    "Electricity - consumption": {
+      "text": "16 billion kWh (2014 est.)"
+    },
+    "Electricity - exports": {
+      "text": "64 million kWh (2014 est.)"
+    },
+    "Electricity - imports": {
+      "text": "400 million kWh (2014 est.)"
+    },
+    "Electricity - installed generating capacity": {
+      "text": "4.2 million kW (2014 est.)"
+    },
+    "Electricity - from fossil fuels": {
+      "text": "99.6% of total installed capacity (2013 est.)"
+    },
+    "Electricity - from nuclear fuels": {
+      "text": "0% of total installed capacity (2013 est.)"
+    },
+    "Electricity - from hydroelectric plants": {
+      "text": "0.3% of total installed capacity (2013 est.)"
+    },
+    "Electricity - from other renewable sources": {
+      "text": "0.1% of total installed capacity (2013 est.)"
+    },
+    "Crude oil - production": {
+      "text": "22 bbl/day (2015 est.)"
+    },
+    "Crude oil - exports": {
+      "text": "0 bbl/day (2013 est.)"
+    },
+    "Crude oil - imports": {
+      "text": "62,220 bbl/day (2013 est.)"
+    },
+    "Crude oil - proved reserves": {
+      "text": "1 million bbl (1 January 2016 es)"
+    },
+    "Refined petroleum products - production": {
+      "text": "67,760 bbl/day (2013 est.)"
+    },
+    "Refined petroleum products - consumption": {
+      "text": "146,000 bbl/day (2014 est.)"
+    },
+    "Refined petroleum products - exports": {
+      "text": "0 bbl/day (2013 est.)"
+    },
+    "Refined petroleum products - imports": {
+      "text": "70,890 bbl/day (2013 est.)"
+    },
+    "Natural gas - production": {
+      "text": "199 million cu m (2014 est.)"
+    },
+    "Natural gas - consumption": {
+      "text": "499 million cu m (2014 est.)"
+    },
+    "Natural gas - exports": {
+      "text": "0 cu m (2013 est.)"
+    },
+    "Natural gas - imports": {
+      "text": "300 million cu m (2014 est.)"
+    },
+    "Natural gas - proved reserves": {
+      "text": "6.031 billion cu m (1 January 2016 es)"
+    },
+    "Carbon dioxide emissions from consumption of energy": {
+      "text": "19 million Mt (2013 est.)"
+    }
+  },
+  "Communications": {
+    "Telephones - fixed lines": {
+      "total subscriptions": {
+        "text": "368,938"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "5 (July 2015 est.)"
+      }
+    },
+    "Telephones - mobile cellular": {
+      "total": {
+        "text": "13.798 million"
+      },
+      "subscriptions per 100 inhabitants": {
+        "text": "170 (July 2015 est.)"
+      }
+    },
+    "Telephone system": {
+      "general assessment": {
+        "text": "service has improved recently with increased use of digital switching equipment; microwave radio relay transmission and coaxial and fiber-optic cable are employed on trunk lines; growing mobile-cellular usage in both urban and rural areas is reducing use"
+      },
+      "domestic": {
+        "text": "1995 telecommunications law opened all non-fixed-line services to private competition; in 2005, monopoly over fixed-line services terminated and the entire telecommunications sector was opened to competition; currently multiple mobile-cellular providers w"
+      },
+      "international": {
+        "text": "country code - 962; landing point for the Fiber-Optic Link Around the Globe (FLAG) FEA and FLAG Falcon submarine cable networks; satellite earth stations - 33 (3 Intelsat, 1 Arabsat, and 29 land and maritime Inmarsat terminals); fiber-optic cable to Saudi (2015)"
+      }
+    },
+    "Broadcast media": {
+      "text": "radio and TV dominated by the government-owned Jordan Radio and Television Corporation (JRTV) that operates a main network, a sports network, a film network, and a satellite channel; first independent TV broadcaster aired in 2007; international satellite (2007)"
+    },
+    "Internet country code": {
+      "text": ".jo"
+    },
+    "Internet users": {
+      "total": {
+        "text": "4.335 million"
+      },
+      "percent of population": {
+        "text": "53.4% (July 2015 est.)"
+      }
+    }
+  },
+  "Transportation": {
+    "National air transport system": {
+      "number of registered air carriers": {
+        "text": "7"
+      },
+      "inventory of registered aircraft operated by air carriers": {
+        "text": "40"
+      },
+      "annual passenger traffic on registered air carriers": {
+        "text": "3,065,145"
+      },
+      "annual freight traffic on registered air carriers": {
+        "text": "169.105 million mt-km (2015)"
+      }
+    },
+    "Civil aircraft registration country code prefix": {
+      "text": "JY (2016)"
+    },
+    "Airports": {
+      "text": "18 (2013)"
+    },
+    "Airports - with paved runways": {
+      "total": {
+        "text": "16"
+      },
+      "over 3,047 m": {
+        "text": "8"
+      },
+      "2,438 to 3,047 m": {
+        "text": "5"
+      },
+      "1,524 to 2,437 m": {
+        "text": "2"
+      },
+      "914 to 1,523 m": {
+        "text": "1 (2013)"
+      }
+    },
+    "Airports - with unpaved runways": {
+      "total": {
+        "text": "2"
+      },
+      "under 914 m": {
+        "text": "2 (2013)"
+      }
+    },
+    "Heliports": {
+      "text": "1 (2012)"
+    },
+    "Pipelines": {
+      "text": "gas 473 km; oil 49 km (2013)"
+    },
+    "Railways": {
+      "total": {
+        "text": "507 km"
+      },
+      "narrow gauge": {
+        "text": "507 km 1.050-m gauge (2008)"
+      }
+    },
+    "Roadways": {
+      "total": {
+        "text": "7,203 km"
+      },
+      "paved": {
+        "text": "7,203 km (2011)"
+      }
+    },
+    "Merchant marine": {
+      "total": {
+        "text": "12"
+      },
+      "by type": {
+        "text": "cargo 4, passenger/cargo 6, petroleum tanker 1, roll on/roll off 1"
+      },
+      "foreign-owned": {
+        "text": "2 (UAE 2)"
+      },
+      "registered in other countries": {
+        "text": "16 (Bahamas 2, Egypt 2, Indonesia 1, Panama 11) (2010)"
+      }
+    },
+    "Ports and terminals": {
+      "major seaport(s)": {
+        "text": "Al 'Aqabah"
+      }
+    }
+  },
+  "Military and Security": {
+    "Military branches": {
+      "text": "Jordanian Armed Forces (JAF): Royal Jordanian Land Force (RJLF), Royal Jordanian Navy, Royal Jordanian Air Force (Al-Quwwat al-Jawwiya al-Malakiya al-Urduniya, RJAF), Special Operations Command (Socom); Public Security Directorate (normally falls under Ministry of Interior, but comes under JAF in wartime or crisis) (2013)"
+    },
+    "Military service age and obligation": {
+      "text": "17 years of age for voluntary male military service; initial service term 2 years, with option to reenlist for 18 years; conscription at age 18 suspended in 1999; women not subject to conscription, but can volunteer to serve in noncombat military positions in the Royal Jordanian Arab Army Women's Corps and RJAF (2013)"
+    },
+    "Military expenditures": {
+      "text": "4.65% of GDP (2012) ++ 4.64% of GDP (2011) ++ 4.65% of GDP (2010)"
+    }
+  },
+  "Transnational Issues": {
+    "Disputes - international": {
+      "text": "2004 Agreement settles border dispute with Syria pending demarcation"
+    },
+    "Refugees and internally displaced persons": {
+      "refugees (country of origin)": {
+        "text": "2,117,361 (Palestinian refugees) (2015); 59,196 (Iraq) (2016); 655,399 (Syria) (2017)"
+      }
+    }
+  }
+}
