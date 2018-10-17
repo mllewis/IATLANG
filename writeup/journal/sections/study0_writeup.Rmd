@@ -6,50 +6,61 @@ library(broom)
 library(here)
 ```
 
-To quantify cross-cultural gender bias, we used data from a large-scale administration of an  Implicit  Association Task [IAT; @greenwald1998measuring] by Project Implicit [@nosek2002harvesting]. The IAT measures the strength of respondents' implicit associations between two pairs of concepts (e.g., male-career/female-family vs. male-family/female-career) accessed via words (e.g., “man," “business”). The underlying assumption of the IAT  is that words denoting more similar meanings should be easier to pair together compared to more dissimilar pairs. 
+To quantify cross-cultural gender bias, we used data from a large-scale administration of an  Implicit  Association Task [IAT; @greenwald1998measuring] by Project Implicit [https://implicit.harvard.edu/implicit/; @nosek2002harvesting]. The IAT measures the strength of respondents' implicit associations between two pairs of concepts (e.g., male-career/female-family vs. male-family/female-career) accessed via words (e.g., “man," “business”). The underlying assumption of the IAT  is that words denoting more similar meanings should be easier to pair together compared to more dissimilar pairs. 
 
 Meanings are paired in the task by assigning them to the same response keys in a 2AFC categorization task. In the critical blocks of the task, meanings are assigned to keys in a way that is either bias-congruent (i.e.\ Key A = male/career; Key B = female/family) or bias-incongruent (i.e.\ Key A = male/family; Key B = female/career). Participants are then presented with a word related to one of the four concepts and asked to classify it as quickly as possible. Slower reaction times in the bias-incongruent blocks relative to the bias-congruent blocks are interpreted as indicating an implicit association between the corresponding concepts (i.e.\ a bias to associate male with career and female with family).
 
-In Study 1, we use the IAT to measure the bias to associate women with family and men with careers  across different cultures. We find a gender bias in all countries. Replicating previous work [@miller2015women], we also find that the magnitude of the bias is negatively correlated with percentage of female enrollment in STEM fields.
- 
-
-## Methods
-
 ```{r}
 BY_PARTICIPANT_DF <-  here("data/study0/processed/by_participant_df.csv")
-BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
-
 participant_iat <- read_csv(BY_PARTICIPANT_DF)
 country_ns_final <- count(participant_iat, country_code)
 ```
 
-We analyzed an existing IAT dataset collected online by Project Implicit [https://implicit.harvard.edu/implicit/; @nosek2002harvesting]. Our analysis included all gender-career IAT scores collected from respondents between 2005 and 2016 who had complete data and  were located in countries with more than 400 total respondents (_N_ = 772,467). We further restricted our sample based on participants' reaction times and error rates using the same criteria described in Nosek, Banjai, and Greenwald (2002, pg.\ 104). Our final sample included `r format(nrow(participant_iat), big.mark=",")` participants from `r nrow(country_ns_final)` countries, with a median of `r format(round(median(country_ns_final$n)), big.mark = ",")` participants per country. Note that although the respondents were from largely non-English speaking countries, the IAT was conducted in English. We do not have language background data from the participants, but we assume that most respondents from non-English speaking countries were native speakers of the dominant language of the country and L2 speakers of English. 
+In the present study, we analyzed a dataset of gender-career IAT scores collected by Project Implicit between 2005 and 2016. We restricted our sample based on participants' reaction times and error rates using the same criteria described in Nosek, Banjai, and Greenwald (2002, pg.\ 104). We only analyzed data for countries that had at least 400 participants. Our final sample included `r format(nrow(participant_iat), big.mark=",")` participants from `r nrow(country_ns_final)` countries, with a median of `r format(round(median(country_ns_final$n)), big.mark = ",")` participants per country. Note that although the respondents were from largely non-English speaking countries, the IAT was conducted in English. We do not have language background data from the participants, but we assume that most respondents from non-English speaking countries were native speakers of the dominant language of the country and L2 speakers of English. 
 
 Several measures have been used in the literature to quantify the strength of the bias from participants’ responses on congruent and incongruent blocks on the IAT. Here, we used the most robust measure, D-score, which measures the difference between critical blocks for each participant while controlling for  individual differences in response time [@greenwald2003understanding]. In addition to the implicit measure, we also analyzed an explicit measure of gender bias. After completing the IAT, participants were asked, "How strongly do you associate the following with males and females?" for both the words "career" and "family." Participants indicated their response on a Likert scale ranging from _female_ (1) to _male_ (7). We calculated an explicit gender bias score for each participant as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with career. 
 
-To obtain country-level gender bias estimates, we first calculated residual implicit and explicit bias scores for each participant, controling for variables that are independent predictors of bias size (block order, participant sex, and age), and then averaged across participants within the same country. 
+```{r}
+# age
+participant_age_correlation <- cor.test(participant_iat$overall_iat_D_score, participant_iat$log_age) %>%
+  tidy()
 
-We compared implicit and explicit gender biases to an  objective measure gender equality that is measured for each country by the United Nations Educational, Scientific and Cultural Organization (UNESCO): the percentage of women among  science, technology, engineering, and mathematics (STEM) graduates in tertiary education [@stoet2018gender; @miller2015women].
+# sex
+sex_summaries <- participant_iat %>%
+  group_by(sex) %>%
+  summarize(mean_D = mean(overall_iat_D_score),
+            sd_D = sd(overall_iat_D_score))
 
-## Results
-```{r mapplot, fig.env="figure", fig.pos = "t", fig.align='center', fig.cap = "Residualized gender bias by country as measured by the IAT (Study 1). Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career."}
+participant_sex_t_test <- t.test(overall_iat_D_score ~ sex, participant_iat) %>%
+  tidy()
+
+# block order
+participant_order_t_test <- t.test(overall_iat_D_score ~ order, participant_iat) %>%
+  tidy()
+```
+
+ 
+
+```{r mapplot, fig.env="figure", fig.pos = "t", fig.align='center', fig.height = 3.5, fig.cap = "Residualized gender bias by country as measured by the IAT. Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career. Countries in grey correspond to countries for which there was insufficient data to extimate the country-level gender bias."}
+
+BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
 country_iat <- read_csv(BY_COUNTRY_DF)
-
-#TEXT_SIZE <- 6
 
 map_world <- map_data(map = "world") %>%
     mutate(country_code = countrycode::countrycode(region, 'country.name', 'iso2c'))
 
 map_data <- country_iat %>%
-  full_join(map_world) %>%
+  full_join(map_world, by = "country_code") %>%
   filter(lat > -57, 
          long > -165) 
 
 ggplot(map_data, aes(x = long, y = lat, 
                             group = group, 
                             fill = es_iat_sex_age_order_implicit_resid)) + 
-  scale_fill_gradient2(low = "blue", mid = "white", high = "red", 
-                       midpoint = 0, name = "Gender bias") +
+  #scale_fill_gradient2(low = "blue", mid = "white", high = "red", 
+  #                     midpoint = 0, name = "Gender bias") +
+  
+  viridis::scale_fill_viridis(direction = -1)  +
   geom_polygon(color = "black", size = .1) +
   ggtitle("Implicit psychological gender bias by country ") +
   theme(
@@ -61,11 +72,12 @@ ggplot(map_data, aes(x = long, y = lat,
         axis.text = element_blank(),
         axis.ticks = element_blank(),
         legend.position = c(.13, .35),
-        legend.background = element_rect(fill = alpha('white', 0)),
+        legend.title = element_blank(),
+       # legend.background = element_rect(fill = alpha('white', 0)),
         legend.key.size = unit(0.2, "in"))
 ```
 
-```{r implicit-explicit-corrs}
+```{r implicit-explicit_corrs}
 imp_exp_cor_participant <- cor.test(participant_iat$es_iat_sex_age_order_implicit_resid,
          participant_iat$es_iat_sex_age_order_explicit_resid) %>%
   tidy()
@@ -75,16 +87,22 @@ imp_exp_cor_country <- cor.test(country_iat$es_iat_sex_age_order_implicit_resid,
   tidy()
 ```
 
-```{r objective_measures}
+
+At the participant level, implicit bias scores were correlated with participant age such that older participants tended to have a large gender bias compared to younger participants (_r_ = `r round(pull(participant_age_correlation, estimate), 2)`, _p_ < .0001). We also found that implicit bias scores varied as a function of participant sex with males (_M_ = `r round(pull(filter(sex_summaries, sex == 1), mean_D), 2)`, _SD_ = `r round(pull(filter(sex_summaries, sex == 1), sd_D), 2)`) showing a smaller implicit gender bias than females (_M_ = `r  round(pull(filter(sex_summaries, sex == 0), mean_D), 2)`, _SD_ = `r round(pull(filter(sex_summaries, sex == 0), sd_D), 2)`; _t_ = `r participant_sex_t_test$statistic`, _p_ < .0001), a pattern consistent with previous findings [@nosek2002harvesting]. Finally, implicit bias scores varied as a function of block order on the IAT task (_t_ = `r participant_order_t_test$statistic`, _p_ < .0001). To account for these covariates,  we calculated a residual impicit and residual explicit bias score for each participant, controling for participant age, participant sex, and block order. We then averaged across participants to estimate the country-level gender bias. Figure 1 shows residualized implicit gender bias by country (_M_ = `r mean(country_iat$es_iat_sex_age_order_implicit_resid)`; _SD_ = `r sd(country_iat$es_iat_sex_age_order_implicit_resid)`). Implicit gender biases were moderately correlated with explicit gender biases at the level of participants (_r_ = `r round(pull(imp_exp_cor_participant, estimate), 2)`, _p_ < .0001) but not countries (_r_ = `r round(pull(imp_exp_cor_country, estimate), 2)`, _p_ = `r round(pull(imp_exp_cor_country, p.value), 2)`). 
+
+```{r country_measures}
 imp_objective <- cor.test(country_iat$es_iat_sex_age_order_implicit_resid, country_iat$per_women_stem) %>%
   tidy()
 
 exp_objective <- cor.test(country_iat$es_iat_sex_age_order_explicit_resid, country_iat$per_women_stem) %>%
   tidy()
+
+country_age <- cor.test(country_iat$es_iat_sex_age_order_implicit_resid,
+                          country_iat$median_country_age) %>%
+  tidy()
 ```
 
-Figure 1 shows residualized implicit gender bias by country (_M_ = `r mean(country_iat$es_iat_sex_age_order_implicit_resid)`; _SD_`r sd(country_iat$es_iat_sex_age_order_implicit_resid)`). Implicit gender biases were moderately correlated with explicit gender biases both at the level of participants (_r_ = `r round(pull(imp_exp_cor_participant, estimate), 2)`, _p_ < .0001) and countries (_r_ = `r round(pull(imp_exp_cor_country, estimate), 2)`, _p_ = `r round(pull(imp_exp_cor_country, p.value), 2)`).   We also found that implicit gender bias was negatively correlated with percentage of women in STEM fields: Countries with a smaller gender bias tended to have more women in STEM fields (_r_ = `r round(pull(imp_objective, estimate), 2)`, _p_ < .01). There was not a relationship between explicit gender bias and percentage of women in STEM fields  (_r_ = `r round(pull(exp_objective, estimate), 2)`, _p_ = `r round(pull(exp_objective, p.value), 2)`).
+We compared our residual country-level implicit and explicit gender biases to an  objective measure of gender equality that is measured for each country by the United Nations Educational, Scientific and Cultural Organization (UNESCO): the percentage of women among  science, technology, engineering, and mathematics (STEM) graduates in tertiary education [@stoet2018gender; @miller2015women]. We found that implicit gender bias was negatively correlated with percentage of women in STEM fields: Countries with a smaller gender bias tended to have more women in STEM fields (_r_ = `r round(pull(imp_objective, estimate), 2)`, _p_ = `r round(pull(imp_objective, p.value), 2)`). There was not a relationship between explicit gender bias and percentage of women in STEM fields  (_r_ = `r round(pull(exp_objective, estimate), 2)`, _p_ = `r round(pull(exp_objective, p.value), 2)`). In addition, we found a strong correlation between the median age of a country, as measured by the CIA factbook (2017), and residual implicit bias: Countries with older populations tended to have larger gender biases (_r_ = `r round(pull(country_age, estimate), 2)`, _p_ < .0001).
 
-## Discussion 
 
-In Study 1, we replicate previously reported patterns of gender bias in the gender-career IAT literature, with roughly comparable effect sizes (c.f.\ Nosek, et al., 2002). The weak correlation between explicit and implicit measures is consistent with claims that these two measures tap into different cognitive constructs [@forscher2016meta]. In addition, consistent with previous research [@miller2015women], we find that an objective measure of gender equality---female enrollment in STEM fields---is predictive of psychological gender bias.
+In sum, we replicate previously-reported patterns of gender bias in the gender-career IAT literature, with roughly comparable effect sizes (c.f.\ Nosek, et al., 2002). The weak correlation between explicit and implicit measures is consistent with claims that these two measures tap into different cognitive constructs [@forscher2016meta]. In addition, consistent with previous research [@miller2015women], we find that an objective measure of gender equality---female enrollment in STEM fields---is predictive of psychological gender bias.

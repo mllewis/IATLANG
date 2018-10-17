@@ -5,7 +5,7 @@ library(here)
 
 
 INFILE <- here("data/study1b/iat_translations_tidy.csv")
-LANGKEY <- here("data/study1b/country_langiso_langwiki_key.csv"_
+LANGKEY <- here("data/study1b/country_langiso_langwiki_key.csv")
 MODEL_PREFIX <- "/Volumes/wilbur_the_great/fasttext_models/wiki."
 OUTMODEL_PREFIX <- here("data/study1b/wiki_subsetted_models/")
 

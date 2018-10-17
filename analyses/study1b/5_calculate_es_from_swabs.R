@@ -13,8 +13,9 @@ swabs_career <- read_csv(INFILE,
                                        "category_type", "mean_swab", "attribute",
                                        "sd", "gender"))
 
+swabs_career <- filter(swabs_career, language_code == "en", model_source == "wiki")
 es_career_swabs_career <- swabs_career %>%
-  filter(!(category_type == "category_1" & attribute == "F"),
+  filter(!(category_type == "category_1" & attribute == "F"), # we don't care about category type M and to female-gendered attributes (we only care about within-category comparisions)
          !(category_type == "category_2" & attribute == "M")) %>%
   select(-attribute, -gender) %>%
   group_by(language_code, model_source) %>%

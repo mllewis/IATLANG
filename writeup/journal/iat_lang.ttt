@@ -3,17 +3,17 @@
 [tbp]
 \begin{center}
 \begin{threeparttable}
-\caption{\label{tab:coding-table}Correlation (Pearson's r) for all measures in Studies 1 and 2 at the level of languages. Asterisks indicate significance at the .05 level.}
+\caption{\label{tab:corr_table}Correlation (Pearson's r) for all measures in Studies 1 and 2 at the level of languages. Asterisks indicate significance at the .05 level.}
 \tiny{
 \begin{tabular}{lllll}
 \toprule
  & \multicolumn{1}{c}{Language IAT (Subtitles)} & \multicolumn{1}{c}{Language IAT (Wikipedia)} & \multicolumn{1}{c}{Residualized Explicit Bias} & \multicolumn{1}{c}{Residualized Behavioral IAT}\\
 \midrule
 Language IAT (Subtitles) &  &  &  & \\
-Language IAT (Wikipedia) & .59** &  &  & \\
-Residualized Explicit Bias & -.26 & .06 &  & \\
-Residualized Behavioral IAT & .41 & .28 & .28 & \\
-Perecent Women in Stem & -.41 & -.18 & .25 & -.48*\\
+Language IAT (Wikipedia) & .51* &  &  & \\
+Residualized Explicit Bias & -.18 & .14 &  & \\
+Residualized Behavioral IAT & .47 & .51* & .10 & \\
+Perecent Women in Stem & -.43 & -.29 & .34 & -.42\\
 \bottomrule
 \end{tabular}
 }

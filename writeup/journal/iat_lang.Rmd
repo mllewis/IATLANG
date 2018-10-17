@@ -23,12 +23,13 @@ authornote: |
 abstract: |
 
   
-keywords          : "cultural norms, IAT, gender"
+keywords          : "cultural norms, implicit association task (IAT), gender"
 wordcount         : "X"
 
 bibliography      : ["library.bib"]
 
-floatsintext      : no
+floatsintext      : yes
+figsintext        : yes
 figurelist        : no
 tablelist         : no
 footnotelist      : no
@@ -42,18 +43,18 @@ output            : papaja::apa6_pdf
 ---
 
 ```{r setup, include = FALSE}
-library("papaja")
+library(papaja)
+library(kableExtra)
 source("helpers/print_corr_table.R")
 ```
 
 ```{r analysis-preferences}
-# Seed for random number generation
-set.seed(42)
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning = F)
+set.seed(42) # Seed for random number generation
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning = F, cache = F)
 ```
 
 # Introduction
-The language we use to communicate a message shapes how our listener interprets that message  (Loftus \& Palmer, 1974; Tversky \& Kahneman, 1981; Fausey  \&  Boroditsky, 2010). A listener, for example, is more likely to infer that a person is at fault if the event is described actively (e.g., "she ignited the napkin"), as opposed to passively (e.g., "the napkin ignited"). The formative power of language is perhaps most potent in shaping meanings that necessarily must be learned from others: cultural norms. In the present paper, we consider one type of cultural norm---gender---and examine the extent to which differences in language use may lead to cross-cultural differences in understandings of gender. 
+The language we use to communicate a message shapes how our listener interprets that message  [@loftus1974reconstruction;@fausey2010subtle;@tversky1981framing]. A listener, for example, is more likely to infer that a person is at fault if the event is described actively (e.g., "she ignited the napkin"), as opposed to passively (e.g., "the napkin ignited"). The formative power of language is perhaps most potent in shaping meanings that necessarily must be learned from others: cultural norms. In the present paper, we consider one type of cultural norm---gender---and examine the extent to which differences in language use may lead to cross-cultural differences in understandings of gender. 
 
 Gender provides a useful case study of the relationship between
 language and thought for several reasons. First, more abstract domains like gender may be more subject to the influence of language relative to more perceptually grounded domains like natural kinds [@boroditsky2001does].  Second, many languages encode the gender of speakers and addressees explicitly in their grammar. Third, a large body of evidence suggests that language plays a key role in transmitting social knowledge to children [e.g., @master2012thinking]. And, fourth, gender norms are highly variable across cultures and have clear and important social implications.
@@ -75,23 +76,19 @@ gender and thus more difficult to reject.
 An existing body of experimental work points to a link between language and psychological gender bias in both adults [e.g.,@phillips2003can] and children [e.g., @sera1994grammatical]. For example, Phillips and Boroditsky (2003) asked Spanish-English and German-English adult bilinguals to make similarity judgements between pairs of pictures depicting an object with a natural gender (e.g., a bride) and one without (e.g., a toaster). They found that participants rated pairs as more similar when the pictures matched in grammatical gender in their native language. While these types of studies provide suggestive evidence for a causal link between language and psychological gender bias, they are limited by the fact that they typically only compare speakers of  2-3 different languages and measure bias in a way that is subject to demand characteristics.
 
 In what follows, we ask whether the way gender is encoded linguistically
-across 31 different languages predicts cross-cultural variability in a particular manifestation of a gender bias---the bias to associate men with careers and women with family. We begin in Study 1 by describing cross-cultural variability in psychological gender bias using an implicit measure. In Study 2, we use semantic-embedding models to examine whether variability in lexical semantics predicts variability in psychological gender biases. In Study 3, we ask whether the presence of grammatical gender in a language is associated with greater implicit gender bias. Together, our data suggest that both language statistics and language structure likely play a causal role in shaping culturally-specific notions of gender.
+across 31 different languages predicts cross-cultural variability in a particular manifestation of a gender bias---the bias to associate men with careers and women with family. We begin in Study 1 by describing cross-cultural variability in psychological gender bias using an implicit measure. In Study 1, we use semantic-embedding models to examine whether variability in lexical semantics predicts variability in psychological gender biases. In Study 2, we ask whether the presence of grammatical gender in a language is associated with greater implicit gender bias. Together, our data suggest that both language statistics and language structure likely play a causal role in shaping culturally-specific notions of gender.
 
 
 ```{r child = "sections/study0_writeup.Rmd"}
 ```
 
-
 ```{r child = "sections/study1_writeup.Rmd"}
 ```
-
 
 ```{r child = "sections/study2_writeup.Rmd"}
 ```
 
-
 # General Discussion
-
 
 \newpage
 
@@ -106,11 +103,7 @@ nocite: |
   @wps
   @epi
   @whorf1945grammatical
-  @loftus1974reconstruction
-  @tversky1981framing
-  @fausey2010subtle
   @ciafactbook
-
 ...
 
 

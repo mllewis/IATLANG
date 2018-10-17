@@ -1,15 +1,16 @@
 # IAT utility functions
 
-
-# gets df with each unique pairing of category and attribute
-prep_word_list <- function(word_list) {
-  if (length(word_list) > 4) {
-    word_list <- word_list[-1:-2]
-  }
-  cross_df(word_list) %>%
-    gather(key = "category_type", value = "category_value", category_1:category_2) %>%
-    gather(key = "attribute_type", value = "attribute_value", attribute_1:attribute_2) %>%
-    distinct(category_value, attribute_value, .keep_all = TRUE) 
+# effect size function on Caliskan pg 2 (top right)
+get_sYXab <- function(df){
+  sYXab_denom <- sd(df$swab, na.rm = TRUE)
+  
+  df %>%
+    group_by(category_type) %>%
+    summarize(mean_swab = mean(swab, na.rm = TRUE)) %>%
+    spread(category_type, mean_swab) %>%
+    summarize(sYXab_num = category_1 - category_2) %>%
+    transmute(sYXab = sYXab_num/sYXab_denom) %>%
+    unlist(use.names = FALSE)
 }
 
 # gets cosine distance 
@@ -34,34 +35,20 @@ get_swabs <- function(df, model){
 }
 
 
-# effect size function on Caliskan pg 2 (top right)
-get_sYXab <- function(df){
-  sYXab_denom <- sd(df$swab, na.rm = TRUE)
-  
-  df %>%
-    group_by(category_type) %>%
-    summarize(mean_swab = mean(swab, na.rm = TRUE)) %>%
-    spread(category_type, mean_swab) %>%
-    summarize(sYXab_num = category_1 - category_2) %>%
-    transmute(sYXab = sYXab_num/sYXab_denom) %>%
-    unlist(use.names = FALSE)
-}
-
-# wrapper for ES function
-get_ES <- function(df, model) {
-
-    es <- prep_word_list(df[-1:-2]) %>%
-      get_swabs(., model) %>%
-      get_sYXab()
-  
-  data.frame(test = pluck(df, "test_name"), 
-             bias_type = pluck(df, "bias_type"),
-             effect_size = es)
+# gets df with each unique pairing of category and attribute values
+prep_word_list <- function(word_list) {
+  if (length(word_list) > 4) {
+    word_list <- word_list[-1:-2]
+  }
+  cross_df(word_list) %>%
+    gather(key = "category_type", value = "category_value", category_1:category_2) %>%
+    gather(key = "attribute_type", value = "attribute_value", attribute_1:attribute_2) %>%
+    distinct(category_value, attribute_value, .keep_all = TRUE) 
 }
 
 get_swabs_only <- function(df, model, att_type) {
   
-  df <- prep_word_list(df[-1:-2]) %>%
+  df <- prep_word_list(df[-1:-2]) %>% 
     get_swabs(., model)
   
   sYXab_denom <- sd(df$swab, na.rm = TRUE)
@@ -122,7 +109,7 @@ get_lang_es_separate_gender <- function(current_lang,
     ES_M <- get_swabs_only(word_list, subsetted_model_m, "M") %>%
       mutate(gender = "M")
     
-    bind_rows(ES_F, ES_M) %>%
+   bind_rows(ES_F, ES_M) %>%
       mutate(model_source = current_model,
              language = current_lang) %>%
       select(language, model_source,  everything()) 

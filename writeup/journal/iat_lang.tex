@@ -1,4 +1,4 @@
-\documentclass[man]{apa6}
+\documentclass[man,floatsintext]{apa6}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -25,7 +25,7 @@
 \hypersetup{unicode=true,
             pdftitle={Language use shapes cultural norms: Large scale evidence from gender},
             pdfauthor={Molly Lewis~\& Gary Lupyan},
-            pdfkeywords={cultural norms, IAT, gender},
+            pdfkeywords={cultural norms, implicit association task (IAT), gender},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -71,7 +71,7 @@
 \affiliation{
 \vspace{0.5cm}
 \textsuperscript{1} University of Wisconsin-Madison\\\textsuperscript{2} University of Chicago}
-\keywords{cultural norms, IAT, gender\newline\indent Word count: X}
+\keywords{cultural norms, implicit association task (IAT), gender\newline\indent Word count: X}
 \usepackage{csquotes}
 \usepackage{upgreek}
 \captionsetup{font=singlespacing,justification=justified}
@@ -92,12 +92,6 @@
 \newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
 
 
-\DeclareDelayedFloatFlavor{ThreePartTable}{table}
-\DeclareDelayedFloatFlavor{lltable}{table}
-\DeclareDelayedFloatFlavor*{longtable}{table}
-\makeatletter
-\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
-\makeatother
 
 \authornote{Portions of this manuscript appeared in Lewis \&
 Lupyan, 2018, Cog. Sci Proceedings.
@@ -130,8 +124,8 @@ Lewis, . E-mail:
 \section{Introduction}\label{introduction}
 
 The language we use to communicate a message shapes how our listener
-interprets that message (Loftus \& Palmer, 1974; Tversky \& Kahneman,
-1981; Fausey \& Boroditsky, 2010). A listener, for example, is more
+interprets that message (Fausey \& Boroditsky, 2010; Loftus \& Palmer,
+1974; Tversky \& Kahneman, 1981). A listener, for example, is more
 likely to infer that a person is at fault if the event is described
 actively (e.g., \enquote{she ignited the napkin}), as opposed to
 passively (e.g., \enquote{the napkin ignited}). The formative power of
@@ -209,9 +203,9 @@ across 31 different languages predicts cross-cultural variability in a
 particular manifestation of a gender bias---the bias to associate men
 with careers and women with family. We begin in Study 1 by describing
 cross-cultural variability in psychological gender bias using an
-implicit measure. In Study 2, we use semantic-embedding models to
+implicit measure. In Study 1, we use semantic-embedding models to
 examine whether variability in lexical semantics predicts variability in
-psychological gender biases. In Study 3, we ask whether the presence of
+psychological gender biases. In Study 2, we ask whether the presence of
 grammatical gender in a language is associated with greater implicit
 gender bias. Together, our data suggest that both language statistics
 and language structure likely play a causal role in shaping
@@ -222,8 +216,9 @@ data}\label{description-of-cross-cultural-iat-data}
 
 To quantify cross-cultural gender bias, we used data from a large-scale
 administration of an Implicit Association Task (IAT; Greenwald, McGhee,
-\& Schwartz, 1998) by Project Implicit (Nosek, Banaji, \& Greenwald,
-2002). The IAT measures the strength of respondents' implicit
+\& Schwartz, 1998) by Project Implicit
+(\url{https://implicit.harvard.edu/implicit/}; Nosek, Banaji, \&
+Greenwald, 2002). The IAT measures the strength of respondents' implicit
 associations between two pairs of concepts (e.g.,
 male-career/female-family vs.~male-family/female-career) accessed via
 words (e.g., \enquote{man,} \enquote{business}). The underlying
@@ -242,29 +237,18 @@ interpreted as indicating an implicit association between the
 corresponding concepts (i.e.~a bias to associate male with career and
 female with family).
 
-In Study 1, we use the IAT to measure the bias to associate women with
-family and men with careers across different cultures. We find a gender
-bias in all countries. Replicating previous work (Miller, Eagly, \&
-Linn, 2015), we also find that the magnitude of the bias is negatively
-correlated with percentage of female enrollment in STEM fields.
-
-\subsection{Methods}\label{methods}
-
-We analyzed an existing IAT dataset collected online by Project Implicit
-(\url{https://implicit.harvard.edu/implicit/}; Nosek et al., 2002). Our
-analysis included all gender-career IAT scores collected from
-respondents between 2005 and 2016 who had complete data and were located
-in countries with more than 400 total respondents (\emph{N} = 772,467).
-We further restricted our sample based on participants' reaction times
-and error rates using the same criteria described in Nosek, Banjai, and
-Greenwald (2002, pg.~104). Our final sample included 663,709
-participants from 47 countries, with a median of 965 participants per
-country. Note that although the respondents were from largely
-non-English speaking countries, the IAT was conducted in English. We do
-not have language background data from the participants, but we assume
-that most respondents from non-English speaking countries were native
-speakers of the dominant language of the country and L2 speakers of
-English.
+In the present study, we analyzed a dataset of gender-career IAT scores
+collected by Project Implicit between 2005 and 2016. We restricted our
+sample based on participants' reaction times and error rates using the
+same criteria described in Nosek, Banjai, and Greenwald (2002, pg.~104).
+We only analyzed data for countries that had at least 400 participants.
+Our final sample included 769,353 participants from 40 countries, with a
+median of 1,302 participants per country. Note that although the
+respondents were from largely non-English speaking countries, the IAT
+was conducted in English. We do not have language background data from
+the participants, but we assume that most respondents from non-English
+speaking countries were native speakers of the dominant language of the
+country and L2 speakers of English.
 
 Several measures have been used in the literature to quantify the
 strength of the bias from participants' responses on congruent and
@@ -281,45 +265,53 @@ response on a Likert scale ranging from \emph{female} (1) to \emph{male}
 the Career response minus the Family response, such that greater values
 indicate a greater bias to associate males with career.
 
-To obtain country-level gender bias estimates, we first calculated
-residual implicit and explicit bias scores for each participant,
-controling for variables that are independent predictors of bias size
-(block order, participant sex, and age), and then averaged across
-participants within the same country.
-
-We compared implicit and explicit gender biases to an objective measure
-gender equality that is measured for each country by the United Nations
-Educational, Scientific and Cultural Organization (UNESCO): the
-percentage of women among science, technology, engineering, and
-mathematics (STEM) graduates in tertiary education (Miller et al., 2015;
-Stoet \& Geary, 2018).
-
-\subsection{Results}\label{results}
-
 \begin{figure}[t]
 
 {\centering \includegraphics{iat_lang_files/figure-latex/mapplot-1} 
 
 }
 
-\caption{Residualized gender bias by country as measured by the IAT (Study 1). Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career.}\label{fig:mapplot}
+\caption{Residualized gender bias by country as measured by the IAT. Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career. Countries in grey correspond to countries for which there was insufficient data to extimate the country-level gender bias.}\label{fig:mapplot}
 \end{figure}
 
-Figure 1 shows residualized implicit gender bias by country (\emph{M} =
--0.01; \_SD\_0.03). Implicit gender biases were moderately correlated
-with explicit gender biases both at the level of participants (\emph{r}
-= 0.16, \emph{p} \textless{} .0001) and countries (\emph{r} = 0.31,
-\emph{p} = 0.03). We also found that implicit gender bias was negatively
-correlated with percentage of women in STEM fields: Countries with a
-smaller gender bias tended to have more women in STEM fields (\emph{r} =
--0.54, \emph{p} \textless{} .01). There was not a relationship between
-explicit gender bias and percentage of women in STEM fields (\emph{r} =
-0.09, \emph{p} = 0.63).
+At the participant level, implicit bias scores were correlated with
+participant age such that older participants tended to have a large
+gender bias compared to younger participants (\emph{r} = 0.06, \emph{p}
+\textless{} .0001). We also found that implicit bias scores varied as a
+function of participant sex with males (\emph{M} = 0.32, \emph{SD} =
+0.39) showing a smaller implicit gender bias than females (\emph{M} =
+0.42, \emph{SD} = 0.36; \emph{t} = 105.97, \emph{p} \textless{} .0001),
+a pattern consistent with previous findings (Nosek et al., 2002).
+Finally, implicit bias scores varied as a function of block order on the
+IAT task (\emph{t} = -114.59, \emph{p} \textless{} .0001). To account
+for these covariates, we calculated a residual impicit and residual
+explicit bias score for each participant, controling for participant
+age, participant sex, and block order. We then averaged across
+participants to estimate the country-level gender bias. Figure 1 shows
+residualized implicit gender bias by country (\emph{M} = -0.01;
+\emph{SD} = 0.03). Implicit gender biases were moderately correlated
+with explicit gender biases at the level of participants (\emph{r} =
+0.16, \emph{p} \textless{} .0001) but not countries (\emph{r} = 0.27,
+\emph{p} = 0.09).
 
-\subsection{Discussion}\label{discussion}
+We compared our residual country-level implicit and explicit gender
+biases to an objective measure of gender equality that is measured for
+each country by the United Nations Educational, Scientific and Cultural
+Organization (UNESCO): the percentage of women among science,
+technology, engineering, and mathematics (STEM) graduates in tertiary
+education (Miller, Eagly, \& Linn, 2015; Stoet \& Geary, 2018). We found
+that implicit gender bias was negatively correlated with percentage of
+women in STEM fields: Countries with a smaller gender bias tended to
+have more women in STEM fields (\emph{r} = -0.47, \emph{p} = 0.01).
+There was not a relationship between explicit gender bias and percentage
+of women in STEM fields (\emph{r} = 0.16, \emph{p} = 0.43). In addition,
+we found a strong correlation between the median age of a country, as
+measured by the CIA factbook (2017), and residual implicit bias:
+Countries with older populations tended to have larger gender biases
+(\emph{r} = 0.60, \emph{p} \textless{} .0001).
 
-In Study 1, we replicate previously reported patterns of gender bias in
-the gender-career IAT literature, with roughly comparable effect sizes
+In sum, we replicate previously-reported patterns of gender bias in the
+gender-career IAT literature, with roughly comparable effect sizes
 (c.f.~Nosek, et al., 2002). The weak correlation between explicit and
 implicit measures is consistent with claims that these two measures tap
 into different cognitive constructs (Forscher et al., 2016). In
@@ -336,10 +328,7 @@ native languages. For example, are the semantics of the words
 \enquote{woman} and \enquote{family} more similar in Hungarian than in
 English? Both the language-as-reflection and language-as-causal
 hypotheses predict a positive correlation between psychological and
-semantic gender biases. Importantly, we expect psychological and
-semantic gender biases to be correlated regardless of the direction of
-the relationship between psychological and objective gender bias (WPS)
-found in Study 1.
+semantic gender biases.
 
 As a model of word meanings, we use large-scale distributional semantics
 models derived from auto-encoding neural networks trained on large
@@ -372,31 +361,28 @@ CBN find a bias to associate males with career and females with family
 in the career-gender IAT, suggesting that the biases measured by the IAT
 are also found in the lexical semantics of natural language.
 
-CBN only measured semantic biases in English, however. In Study 2, we
+CBN only measured semantic biases in English, however. In Study 1, we
 use the method described by CBN to measure gender bias in the range of
-first languages spoken by participants in Study 1 by using models
-trained on those languages. To do this, we take advantage of a set of
-models pre-trained on corpora of Wikipedia text in different
-languages---a different corpus than that used by CBN (Bojanowski, Grave,
-Joulin, \& Mikolov, 2016). In Study 2a, we first validate word emebdding
-measures of gender bias by comparing them to explicit human judgements
-of gender bias. In Study 2b, we apply this method to models trained on
-Wikipedia in other languages. We find that the implicit gender biases
-reported in Study 1 for individual countries are correlated with the
-biases found in the semantics of the natural language spoken by those
-participants.
+first languages spoken by participants in the Project Implicit dataset
+by using models trained on those languages. In Study 1a, we first
+validate word emebdding measures of gender bias by comparing them to
+explicit human judgements of gender bias. In Study1b, we apply this
+method to models trained on text in other languages. We find that the
+implicit gender biases reported in Study 1 for individual countries are
+correlated with the biases found in the semantics of the natural
+language spoken by those participants.
 
-\subsection{Study 1a: Validating word embeddings as a measure of
-psychological gender
-bias}\label{study-1a-validating-word-embeddings-as-a-measure-of-psychological-gender-bias}
+\subsection{Study 1a: Word embeddings as a measure of psychological
+gender
+bias}\label{study-1a-word-embeddings-as-a-measure-of-psychological-gender-bias}
 
-To determine whether word embeddings encoded information about
-psychogical gender bias, we asked whether words that were closely
-associated with males in the word embedding models tended to be rated by
-human participants as being more male biased. We found human and
-word-embedding estimates of gender bias to be highly correlated.
+To validate word embeddings as a measure of psychological gender bias,
+we asked whether words that were closely associated with males in the
+word embedding models tended to be rated by human participants as being
+more male biased. We found human and word-embedding estimates of gender
+bias to be highly correlated.
 
-\subsubsection{Methods}\label{methods-1}
+\subsubsection{Methods}\label{methods}
 
 We used an existing set of word norms in which participants were asked
 to rate \enquote{the gender associated with each word} on a Likert scale
@@ -404,104 +390,167 @@ ranging from \emph{very feminine} (1) to \emph{very masculine} (7;
 Scott, Keitel, Becirspahic, Yao, \& Sereno, 2018). We compared these
 gender norms to estimates of gender bias from a word embedding model
 pre-trained on the corpus of English Wikipedia using the fastText
-algorithm (a variant of word2vec; Bojanowski et al., 2016; Joulin,
-Grave, Bojanowski, \& Mikolov, 2016). The model contains 2,519,370 words
-with each word represented by a 300 dimensional vector. To calculate a
-gender scores from the word embeddings, for each word we calculated the
-average cosine distance to a set of male words (\enquote{male},
-\enquote{man}, \enquote{he}, \enquote{boy}, \enquote{his},
-\enquote{him}, \enquote{son}, \enquote{brother}) and the average cosine
-similarity to a set of female words (\enquote{female}, \enquote{woman},
-\enquote{she}, \enquote{girl}, \enquote{hers}, \enquote{her},
-\enquote{daughter}, \enquote{sister}). A gender score for each word was
-then obtained by taking the difference of the similarity estimates (mean
-male similarity - mean female similarity), such that larger values
-indicated a stronger association with males. There were 4671 words in
-total that overlapped between the two data sources.
+algorithm (a variant of word2vec; Bojanowski, Grave, Joulin, \& Mikolov,
+2016; Joulin, Grave, Bojanowski, \& Mikolov, 2016). The model contains
+2,519,370 words with each word represented by a 300 dimensional vector.
+To calculate a gender scores from the word embeddings, for each word we
+calculated the average cosine distance to a set of male words
+(\enquote{male}, \enquote{man}, \enquote{he}, \enquote{boy},
+\enquote{his}, \enquote{him}, \enquote{son}, \enquote{brother}) and the
+average cosine similarity to a set of female words (\enquote{female},
+\enquote{woman}, \enquote{she}, \enquote{girl}, \enquote{hers},
+\enquote{her}, \enquote{daughter}, \enquote{sister}). A gender score for
+each word was then obtained by taking the difference of the similarity
+estimates (mean male similarity - mean female similarity), such that
+larger values indicated a stronger association with males. There were
+4671 words in total that overlapped between the two data sources.
 
-\subsubsection{Results}\label{results-1}
+\subsubsection{Results and Discussion}\label{results-and-discussion}
 
 Estimates of gender bias from word embeddings (\emph{M} = 0; \emph{SD} =
 0.03) and human judgements (\emph{M} = 4.10; \emph{SD} = 0.92) were
 highly correlated (\emph{r} = 0.59; \emph{p} \textless{} .0001; Fig. 2).
 
-\begin{figure}[t]
-
-{\centering \includegraphics{iat_lang_files/figure-latex/unnamed-chunk-9-1} 
-
-}
-
-\caption{Word embedding estimates of gender bias as a function of human judgements of gender bias (Study 2a).  Each point corresponds to a word. Larger numbers indicate stronger association with males. Orange line shows linear fit, and blue line shows third-order polynomial fit. Error bands correspond to standard errors. }\label{fig:unnamed-chunk-9}
-\end{figure}
-
-\subsubsection{Discussion}\label{discussion-1}
-
-\subsection{Study 1b: Cross-linguistic gender
-semantics}\label{study-1b-cross-linguistic-gender-semantics}
-
-With our corpus validated, we next turn toward examining the
-relationship between psychological and linguistic gender biases. In
-Study 2b, we estimate the magnitude of the gender-career bias in each of
-the languages spoken in the countries described in Study 1 and compare
-it with estimates of behavioral gender bias from Study 1. We predict
-these two measures should be positively correlated.
-
-\subsubsection{Methods}\label{methods-2}
-
-For each country included in Study 1, we identified the most frequently
-spoken language in each country using the CIA factbook (2017). This
-included a total of XX unique languages. For a sample of 20 of these
-languages (see Fig.~3), we had native speakers translate the set of 32
-words from the gender-career IAT with a slight
-modification.\footnote{The language sample was determined by accessibility to native speakers, but included languages from a variety of language families.}
-The original gender-career IAT task (Nosek et al., 2002) used proper
-names to cue the male and female categories (e.g.~\enquote{John,}
-\enquote{Amy}). Because there are not direct translation equivalents of
-proper names, we instead used a set of generic gendered words which had
-been previously used for a different version of the gender IAT (e.g.,
-``man,'' ``woman;'' Nosek et al., 2002).
-
-We used these translations to calculate an effect size from the models
-trained on Wikipedia in each language, using the same method as CBN (see
-SM for replication of CBN with the Wikipedia embedding model). We then
-compared the effect size of the linguistic gender bias to the behavioral
-IAT gender bias from Study 1, averaging across countries that speak the
-same language.
-
-\subsubsection{Results}\label{results-2}
-
 \begin{figure}
 \centering
 \includegraphics{iat_lang_files/figure-latex/unnamed-chunk-10-1.pdf}
-\caption{\label{fig:unnamed-chunk-10}Residualized Behavioral IAT gender bias
-by language (Study 1) as a function of language-embedding IAT gender
-bias. Language-embedding biases are estimated from models trained on
-each language using a subtitle corpus (left) and a sample of Wikipedia
-(right).}
+\caption{\label{fig:unnamed-chunk-10}Word embedding estimates of gender bias
+as a function of human judgements of gender bias (Study 1a). Each point
+corresponds to a word. Larger numbers indicate stronger association with
+males. Blue line shows linear fit and the error band corresponds to a
+standard error (too small to be visible).}
 \end{figure}
 
-\begin{table}[tbp]
-\begin{center}
-\begin{threeparttable}
-\caption{\label{tab:coding-table}Correlation (Pearson's r) for all measures in Studies 1 and 2 at the level of languages. Asterisks indicate significance at the .05 level.}
-\tiny{
-\begin{tabular}{lllll}
+\subsection{Study 1b: Cross-linguistic gender bias
+semantics}\label{study-1b-cross-linguistic-gender-bias-semantics}
+
+With our corpus validated, we next turn toward examining the
+relationship between psychological and linguistic gender biases. In
+Study 1b, we estimate the magnitude of the gender-career bias in each of
+the languages spoken in the countries described in the Project Implicit
+dataset and compare it with estimates of behavioral gender bias from the
+Project Implicit data set. If language plays a causal role in shaping
+psychological gender biases, we predicted that participants who speak a
+language with larger gender bias will tend to have a larger
+psychological gender bias.
+
+\subsubsection{Methods}\label{methods-1}
+
+For each country reprsented in our analysis of the Project Implicit, we
+identified the most frequently spoken language in each country using the
+CIA factbook (2017). This included a total of 27 unique languages. For a
+sample of 23 of these languages, we had native speakers translate a set
+of 8 female and 8 male target words into each language (identical to
+Study 1a). Native speakers also translated a set of 8 attributes words
+associated with the concept \enquote{career} (\enquote{career},
+\enquote{executive}, \enquote{management}, \enquote{professional},
+\enquote{corporation}, \enquote{salary} ,\enquote{office},
+\enquote{business) and 8 attribute words associated with the
+concept}family" (\enquote{family}, \enquote{home}, \enquote{parents},
+\enquote{children}, \enquote{cousins}, \enquote{marriage},
+\enquote{wedding},\enquote{relatives}). Our word lists are identical to
+the stimuli in the Project Implicit gender-career IAT behavioral task
+(Nosek et al., 2002) with one slight modification. In the behavioral
+task, proper names were used to cue the male and female categories
+(e.g.~\enquote{John,} \enquote{Amy}). Because there are not direct
+translation equivalents of proper names, we instead used a set of
+generic gendered words which had been previously used for a different
+version of the gender IAT (e.g., ``man,'' ``woman;'' Nosek et al.,
+2002).
+
+We used these translations to calculate a gender bias effect size from
+word embedding models trained on text in each language. Our effect size
+measure is a standardized difference score of the relative similarity of
+the target words to the target attributes (i.e.~relative similarity of
+male to career vs.~relative similarity of female to career). Our effect
+size measure is identical to the we used the the measure used in CBN
+with one excpetion (see SM for replication of CBN on our corpora).
+Namely, for languages with grammatically gendered attribute words (e.g.,
+ninas for female children in Spanish), we calculated the relationship
+between target words and attribute words of the same gender (i.e.
+\enquote{man} to \enquote{ninos} and \enquote{woman} to
+\enquote{ninas}). Our effect size measure is analogous to the to the
+behavioral effect size measure obtained from the IAT task in Project
+Implicit, where larger values indicate larger gender bias.
+
+We calculated gender bias estimates based on models trained on two
+different corpora: Wikipedia (Bojanowski et al., 2016) and Subtitles.
+These two models capture different types of XX. We then compared the
+effect size of the linguistic gender bias to the behavioral IAT gender
+bias estimated from Project Implicit, averaging across countries that
+speak whose participants speak the same language.
+
+\subsubsection{Results}\label{results}
+
+\begin{figure}
+\centering
+\includegraphics{iat_lang_files/figure-latex/unnamed-chunk-12-1.pdf}
+\caption{\label{fig:unnamed-chunk-12}Residualized behavioral IAT gender bias
+as a function of semantic IAT gender bias by language (Study 1b).
+Semantic biases are estimated from models trained on each language using
+a subtitle corpus (left) and a sample of Wikipedia (right). Larger
+values indicate a larger bias to associate men with the concept of
+career and women with the concept of family. Error bands correspond to
+standard errors.}
+\end{figure}
+
+At the level of languages, our estimate of gender bias in the semantics
+of each language was positively correlated the implicit gender bias of
+participants who spoke that language (\emph{r} = 0.51; \emph{p} = 0.01;
+Fig. 3). Importantly, this relationship held when controling for median
+country age in a linear model (\(\beta\)= 0.03; \emph{SE} = 0.01,
+\emph{p} = 0.03). Semantic IAT gender bias was not correlated with
+explicit gender bias (\emph{r} = 0.14; \emph{p} = 0.53). Table 1 shows
+the language-level correlations between all variables.
+
+\begin{table}
+
+\caption{\label{tab:corrtable}Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Asterisks indicate significance at the .05 level.}
+\centering
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{l>{\raggedleft\arraybackslash}p{2.5cm}>{\raggedleft\arraybackslash}p{2.5cm}>{\raggedleft\arraybackslash}p{2.5cm}>{\raggedleft\arraybackslash}p{2.5cm}lrrrrlrrrrlrrrrlrrrr}
 \toprule
- & \multicolumn{1}{c}{Language IAT (Subtitles)} & \multicolumn{1}{c}{Language IAT (Wikipedia)} & \multicolumn{1}{c}{Residualized Explicit Bias} & \multicolumn{1}{c}{Residualized Behavioral IAT}\\
+ & Language IAT
+(Subtitles) & Language IAT 
+ (Wikipedia) & Residualized 
+Explicit Bias & Residualized 
+Behavioral IAT\\
 \midrule
 Language IAT (Subtitles) &  &  &  & \\
-Language IAT (Wikipedia) & .59** &  &  & \\
-Residualized Explicit Bias & -.26 & .06 &  & \\
-Residualized Behavioral IAT & .41 & .28 & .28 & \\
-Perecent Women in Stem & -.41 & -.18 & .25 & -.48*\\
+Language IAT (Wikipedia) & .51* &  &  & \\
+Residualized Explicit Bias & -.18 & .14 &  & \\
+Residualized Behavioral IAT & .47 & .51* & .10 & \\
+Perecent Women in Stem & -.43 & -.29 & .34 & -.42\\
 \bottomrule
 \end{tabular}
-}
-\end{threeparttable}
-\end{center}
 \end{table}
 
-\subsubsection{Discussion}\label{discussion-2}
+\subsubsection{Discussion}\label{discussion}
+
+\section{Study 2: Gender bias and
+grammar}\label{study-2-gender-bias-and-grammar}
+
+The findings in Study 1 are consistent with both the language-as-causal
+and language-as-reflection hypotheses. In Study 2, we try to distinguish
+between the two hypotheses by asking whether there is a relationship
+between psychological gender bias and language along a linguistic
+dimension that is unlikely to be a subject of rapid change---namely,
+grammatical gender. While of course grammars do change over time, they
+are less malleable than the meanings of individual words, and thus less
+likely to be affected by psychological biases. We predict, therefore,
+that if language causally influences psychological gender biases,
+languages that encode gender grammatically will tend to have larger
+psychological gender biases.
+
+\subsubsection{Method}\label{method}
+
+We coded each of the languages in our sample (Study 1) for grammatical
+gender. We used a coarse binary coding scheme, categorizing a language
+as encoding grammatical gender if it made any gender distinction on noun
+classes (masculine, feminine, common or neuter), and as not encoding
+gender grammatically otherwise.
+
+\subsubsection{Results and Discussion}\label{results-and-discussion-1}
 
 \section{General Discussion}\label{general-discussion}
 

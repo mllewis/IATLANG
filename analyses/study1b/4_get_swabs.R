@@ -91,8 +91,3 @@ parLapply(cluster,
           all_langs, 
           OUTFILE, 
           CAREER_WORD_LIST)
-
-
-#es_out <- get_lang_es_separate_gender("ta",
-#                                      pluck(all_langs$data[[1]], "path"),
-#                                     CAREER_WORD_LIST)

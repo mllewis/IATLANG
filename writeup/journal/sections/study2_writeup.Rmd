@@ -1,0 +1,94 @@
+```{r}
+
+```
+
+# Study 2: Gender bias and grammar
+
+The findings in Study 1 are consistent with both the language-as-causal and
+language-as-reflection hypotheses. In Study 2, we try to distinguish between the two hypotheses by asking whether there is a relationship between psychological gender bias and language along a linguistic dimension that is unlikely to be a subject of rapid change---namely, grammatical gender. While of course grammars do change over time, they are
+less malleable than the meanings of individual words, and thus less likely to be
+affected by psychological biases. We predict, therefore, that if
+language causally influences psychological gender biases, languages that
+encode gender grammatically will tend to have larger psychological
+gender biases.
+
+### Method
+
+We coded each of the  languages in our sample (Study 1) for grammatical gender. We used a coarse binary coding scheme, categorizing a language as encoding
+grammatical gender if it made any gender distinction on noun classes
+(masculine, feminine, common or neuter), and as not encoding gender
+grammatically otherwise. 
+
+
+### Results and Discussion
+
+```{r}
+
+LANGKEY_PATH <- here("data/study1b/country_langiso_langwiki_key.csv")
+lang_key <- read_csv(LANGKEY_PATH) %>%
+  distinct(wiki_language_code, language_name2) %>%
+  rename(language_name = language_name2) %>%
+  mutate(language_name = tolower(language_name))
+
+GRAMMAR_PATH <- here("data/study2/continuous_gender_by_lang.csv")
+grammar_data <- read_csv(GRAMMAR_PATH) %>%
+  rename(language_name = language) %>%
+  left_join(lang_key) %>%
+  rename(language_code = "wiki_language_code") %>%
+  mutate(empirical_binary_grammatical_gender = ifelse(empirical_grammatical_gender_score > 0, "empirically_gendered", "empirically_not_gendered"))
+
+LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
+iat_lang_es <- read_csv(LANG_IAT_PATH)
+
+BEHAVIORAL_IAT_PATH <- here("data/study0/processed/by_language_df.csv")
+iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
+  rename(language_code = "wiki_language_code") %>%
+  select(language_code, median_country_age, 
+         prop_male,log_age, es_iat_sex_age_order_explicit_resid,
+         es_iat_sex_age_order_implicit_resid, per_women_stem, n_participants)
+
+theoretical_gender <- read_csv("/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/exploratory_analyses/10_grammatical_gender/gender_grammar.csv") %>%
+  select(language_code, wikipedia_grammar_type)
+
+all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
+  left_join(grammar_data) %>%
+  left_join(theoretical_gender) 
+
+```
+
+```{r, eval = F}
+ggplot(all_es , aes(y = es_iat_sex_age_order_implicit_resid, 
+                    x = empirical_grammatical_gender_score)) +
+  geom_label(aes(label= language_code)) +
+  geom_smooth(method = "lm") +
+  theme_classic()
+
+ggplot(all_es , aes(y = lang_es_wiki, 
+                    x = empirical_grammatical_gender_score)) +
+  geom_label(aes(label= language_code)) +
+  geom_smooth(method = "lm") +
+  theme_classic()
+
+t.test(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender + , 
+       data = all_es,
+       paired = F)
+
+t.test(lang_es_wiki ~ empirical_binary_grammatical_gender, 
+       data = all_es,
+       paired = F)
+
+lm(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender + median_country_age, 
+       data = all_es) %>%
+  summary()
+
+lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + median_country_age, 
+       data = all_es) %>%
+  summary()
+
+
+```
+
+
+
+
+ 
