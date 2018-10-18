@@ -11,9 +11,9 @@ OUTFILE <- here("data/study1b/iat_es_lang.csv")
 swabs_career <- read_csv(INFILE,
                          col_names = c("language_code", "model_source",
                                        "category_type", "mean_swab", "attribute",
-                                       "sd", "gender"))
+                                       "sd", "gender")) %>%
+  distinct()
 
-swabs_career <- filter(swabs_career, language_code == "en", model_source == "wiki")
 es_career_swabs_career <- swabs_career %>%
   filter(!(category_type == "category_1" & attribute == "F"), # we don't care about category type M and to female-gendered attributes (we only care about within-category comparisions)
          !(category_type == "category_2" & attribute == "M")) %>%

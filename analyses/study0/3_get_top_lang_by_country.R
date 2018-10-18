@@ -4,19 +4,20 @@
 library(tidyverse)
 library(jsonlite)
 library(lingtypology)
+library(here)
 
 # infile
-COUNTRY_DF_IN <- "../../data/study1/processed/by_country_df.csv"
+COUNTRY_DF_IN <- here("data/study0/processed/by_country_df.csv")
 MIN_PROP <- .2 # min percentage of country speaking langauge
 
 # outfile
-OUTFILE <- "../../data/study1/processed/top_lang_by_country.csv"
+OUTFILE <- here("data/study0/processed/top_lang_by_country.csv")
 
 ############
 
 # these data are from https://github.com/opendatajson/factbook.json
 get_language_info <- function(country_code){
-  d <- read_json(paste0("../../data/study1/raw/factbook_json/", country_code, ".json"))
+  d <- read_json(here(paste0("data/study0/raw/factbook_json/", country_code, ".json")))
   lang_info <- d$`People and Society`$Languages$text
   name <- d$Government$`Country name`$`conventional short form`$text
   
@@ -27,6 +28,8 @@ get_language_info <- function(country_code){
 
 iso_country_codes <- read_csv(COUNTRY_DF_IN)  %>%
   filter(country_code != "GB")
+
+distinct(iso_country_codes$country_code)
 
 fips_country_codes <- tolower(countrycode::countrycode(pull(iso_country_codes, country_code),
                                                        "iso2c", "fips"))
@@ -92,5 +95,26 @@ unique_langs_per_country <- filtered_percent_language_tidy %>%
   slice(1) %>%
   select(country_code, language_name) 
 
+
 write_csv(unique_langs_per_country, OUTFILE)
+
+
+get_lang <- function(cn){
+  lang = lang.country(cn, official = T)[1] 
+  
+  data.frame(country_name = cn,
+             lang= lang)
+  
+}
+
+wals <- map_df(iso_country_codes$country_name, 
+               get_lang) %>%
+  rename(language_nameWALS= lang)
+
+unique_langs_per_country %>%
+  select(country_name, language_name) %>%
+  rename(language_nameCIA = language_name) %>%
+  full_join(wals) %>%
+  filter(language_nameCIA != language_nameWALS)
+
 

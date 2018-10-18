@@ -31,7 +31,8 @@ save_subsetted_model <- function(current_lang, trans_df, model_prefix, out_model
                  key = "V1",
                  encoding = "UTF-8",
                  data.table = TRUE,
-                 verbose = F)
+                 verbose = F,
+                 quote = "")
   
   # get model of the words we care about 
   translated_word_list <- trans_df %>%
@@ -47,8 +48,8 @@ save_subsetted_model <- function(current_lang, trans_df, model_prefix, out_model
   
   calculated_vectors <- relevant_vectors %>%
     select(-translation) %>%
-    group_by(language_code, word, gender, translation_id) %>% # sum across word ids
-    summarise_at(vars(V2:V301), sum, na.rm = TRUE) %>%
+    group_by(language_code, word, gender, translation_id) %>% # mean across word ids
+    summarise_at(vars(V2:V301), mean, na.rm = TRUE) %>%
     group_by(language_code, word, gender) %>% 
     summarize_at(vars(V2:V301), mean, na.rm = TRUE) # mean across words
   
@@ -59,8 +60,7 @@ save_subsetted_model <- function(current_lang, trans_df, model_prefix, out_model
 }
 
 # get all subsetted models
-#unique(translations$wiki_language_code)
-walk("vi", 
+walk(unique(translations$wiki_language_code), 
      save_subsetted_model, 
      translations, 
      MODEL_PREFIX,

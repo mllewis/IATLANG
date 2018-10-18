@@ -4,7 +4,7 @@ library(corrr)
 
 # Study 1: Gender bias and semantics
 
-In Study 1, we ask whether participants' implicit and explicit gender biases are correlated with the biases in the semantic structure of their native languages. For example, are the semantics of the words “woman” and “family” more similar in Hungarian than in English? Both the language-as-reflection and language-as-causal hypotheses predict  a  positive correlation between psychological and semantic gender biases. 
+In Study 1, we ask whether participants' implicit and explicit gender biases are correlated with the biases in the semantic structure of their native languages. For example, are the semantics of the words “woman” and “family” more similar in Spanish than in English? Both the language-as-reflection and language-as-causal hypotheses predict  a  positive correlation between psychological and semantic gender biases. 
 
 As a model of word meanings, we use large-scale distributional semantics models derived from auto-encoding neural networks trained on large corpora of text. The underlying assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with---an approach known as distributional semantics 
 [@firth1957synopsis]. Under this approach, a word like "dog" is represented as more similar to "hound" than to "banana" because "dog" co-occurs with words more in common with "hound" than "banana."
@@ -20,7 +20,7 @@ predicted from distributional semantics models like word2vec using materials ide
 measures were highly correlated with reaction times in the behavioral IAT
 task. For example,  CBN find a bias to associate males with career and females with family in the career-gender IAT, suggesting that the biases measured by the IAT are also found in the lexical semantics of natural language.
 
-CBN only measured semantic biases in English, however. In Study 1, we use the method described by CBN to measure gender bias in the range of first languages spoken by  participants in the Project Implicit dataset by using models trained on those languages.  In Study 1a, we first validate word emebdding measures of gender bias by comparing them to explicit human judgements of gender bias. In Study1b, we apply this method to models trained on text in other languages. We find that the implicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the semantics of the natural language spoken by those participants.
+CBN only measured semantic biases in English, however. In Study 1, we use the method described by CBN to measure gender bias in the range of first languages spoken by  participants in the Project Implicit dataset by using models trained on those languages.  In Study 1a, we first validate word embedding measures of gender bias by comparing them to explicit human judgements of gender bias. In Study1b, we apply this method to models trained on text in other languages. We find that the implicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the semantics of the natural language spoken by those participants.
 
 ## Study 1a: Word embeddings as a measure of psychological gender bias
 
@@ -88,7 +88,7 @@ ggplot(all_ratings, aes(x = maleness_norm, y = maleness_embedding)) +
 ```
 
 ## Study 1b: Cross-linguistic gender bias semantics
-With our corpus validated, we next turn toward examining the relationship between psychological and linguistic gender biases. In Study 1b, we estimate the magnitude of the gender-career bias in each of the languages spoken in the countries described in the Project Implicit dataset and compare it with estimates of behavioral gender bias from the Project Implicit data set.  If language plays a causal role in shaping psychological gender biases, we predicted that participants who speak a language with larger gender bias will tend to have a larger psychological gender bias. 
+With our corpus validated, we next turn toward examining the relationship between psychological and linguistic gender biases. In Study 1b, we estimate the magnitude of the gender-career bias in each of the languages spoken in the countries described in the Project Implicit dataset and compare it with estimates of behavioral gender bias from the Project Implicit data set.  If language plays a causal role in shaping psychological gender biases, we predict that participants who speak a language with larger gender bias will tend to have a larger psychological gender bias. 
 
 ### Methods
 
@@ -112,11 +112,39 @@ all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code")
 
 # missing: hi (hindi), hr (Croation), tl (Tagalog; small, can't find speaker?), zu (zulu: small?; can't find speaker)
 ```
-For each country reprsented in our analysis of the Project Implicit, we identified the most frequently spoken language in each country using the CIA factbook (2017). This included a total of `r nrow(all_es)` unique languages. For a sample of `r nrow(filter(all_es, !is.na(lang_es_wiki)))` of these languages, we had native speakers translate a set of 8 female and 8 male target words into each language (identical to Study 1a). Native speakers also translated a set of 8 attributes words associated with the concept "career" ("career", "executive",    "management",   "professional", "corporation",  "salary" ,"office", "business) and 8 attribute words associated with the concept "family" ("family", "home",      "parents",   "children",  "cousins",   "marriage",  "wedding","relatives"). Our word lists are identical to the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"). Because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting].
 
-We used these translations to calculate a gender bias effect size from word embedding models trained on text in each language. Our effect size measure is a standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). Our effect size measure is identical to that used by CBN with one excpetion (see SM for replication of CBN on our corpora). Namely, for languages with grammatically gendered attribute words (e.g., ninas for female children in Spanish), we calculated the relationship between target words and attribute words of the same gender (i.e. "man" to "ninos" and "woman" to "ninas"). Our effect size measure is  analogous to the to the behavioral effect size measure obtained from the IAT task in Project Implicit, where larger values indicate larger gender bias.
+```{r, eval = F}
 
-We calculated gender bias estimates based on models trained on two different corpora: Wikipedia [@bojanowski2016enriching] and Subtitles. These two models capture different types of XX. We then compared the effect size of the linguistic gender bias to  the  behavioral IAT gender bias estimated from Project Implicit, averaging across countries that speak whose participants speak the same language.
+# move this to get_top_lang_by_country
+LANG_TO_COUNTRY_PATH <- here("data/study0/processed/top_lang_by_country.csv")
+
+lang_to_country <- read_csv(LANG_TO_COUNTRY_PATH) %>%
+  distinct(language_name) %>%
+  filter(!(language_name %in% c("IsiZulu", "Tagalog"))) %>%
+  mutate(language_name = fct_recode(language_name, 
+                                    "Standard Arabic" = "Arabic",
+                                    "Western Farsi" = "Persian",
+                                    "Mandarin Chinese" = "Chinese",
+                                    "Modern Greek" = "Greek",
+                                    "Modern Hebrew"= "Hebrew",
+                                    "Mandarin Chinese" = "Mandarin",
+                                    "Standard Malay" = "Malaysian")) %>%
+  pull(language_name)
+
+lingtypology::aff.lang(lang_to_country) %>%
+  str_split(", ") %>%
+  map(~.[1]) %>%
+  unlist()
+```
+
+
+For each country represented in our analysis of the Project Implicit, we identified the most frequently spoken language in each country using the CIA factbook (2017). This included a total of `r nrow(all_es)` unique languages. For two languages, Zulu and Tagalog, the corpora that the models were trained on (see below) was insufficiently large to be reliable, and so we excluded these languages from our analysis. Our final sample included `r nrow(all_es)-2` languages, representing XX different language families..
+
+We obtained translations from native speakers into each these languages for a set of 8 female and 8 male target words (identical to Study 1a), a set of 8 attribute words associated with the concept "career" ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 attribute words associated with the concept "family" ("family," "home,"      "parents,"   "children,"  "cousins,"   "marriage,"  "wedding," "relatives"). Our word lists are identical to the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting].
+
+We used these translations to calculate a gender bias effect size from word embedding models trained on text in each language. Our effect size measure is a standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). Our effect size measure is identical to that used by CBN with one exception (see SM for replication of CBN on our corpora). Namely, for languages with grammatically gendered attribute words (e.g., ninas for female children in Spanish), we calculated the relationship between target words and attribute words of the same gender (i.e. "man" to "ninos" and "woman" to "ninas"). In cases where there were multiple translations for a word, or the translation contained multiple words, we averaged across words such that each of our target words was associated with a single vector in each language. Our effect size measure is  analogous to the to the behavioral effect size measure obtained from the IAT task in Project Implicit, where larger values indicate larger gender bias.
+
+We calculated gender bias estimates based on models trained on two different corpora: Wikipedia [@bojanowski2016enriching] and Subtitles [where are these from?]. These two models capture different types of XX. We then compared the effect size of the linguistic gender bias to  the  behavioral IAT gender bias estimated from Project Implicit, averaging across countries that speak whose participants speak the same language.
 
 ### Results
 

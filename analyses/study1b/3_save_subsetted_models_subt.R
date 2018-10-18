@@ -54,8 +54,8 @@ save_subsetted_model <- function(current_lang,
   
   calculated_vectors <- relevant_vectors %>%
     select(-translation) %>%
-    group_by(language_code, word, gender, translation_id) %>% # sum across word ids
-    summarise_at(vars(V2:V301), sum, na.rm = TRUE) %>%
+    group_by(language_code, word, gender, translation_id) %>% # mean across word ids
+    summarise_at(vars(V2:V301), mean, na.rm = TRUE) %>%
     group_by(language_code, word, gender) %>% 
     summarize_at(vars(V2:V301), mean, na.rm = TRUE) # mean across words
   

@@ -69,7 +69,7 @@ ggplot(all_es , aes(y = lang_es_wiki,
   geom_smooth(method = "lm") +
   theme_classic()
 
-t.test(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender + , 
+t.test(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender , 
        data = all_es,
        paired = F)
 
@@ -84,8 +84,38 @@ lm(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender + m
 lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + median_country_age, 
        data = all_es) %>%
   summary()
+```
 
 
+```{r, fig.pos = "!t!", fig.height = 3, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes grammatical gender. Each label code corresponds to a language. The  bold vertical line corresponds to the group median, and the box width indicates the first and third quartile."}
+
+
+all_es %>%
+  ungroup() %>%
+  filter(!(language_code %in% c('zu', "tl"))) %>%
+  mutate(empirical_binary_grammatical_gender = fct_rev(empirical_binary_grammatical_gender),
+         empirical_binary_grammatical_gender = fct_recode(empirical_binary_grammatical_gender, 
+             "Gendered" = "empirically_gendered", 
+             "Not Gendered" = "empirically_not_gendered")) %>%
+  distinct(language_code, .keep_all = T) %>%
+  filter(!is.na(empirical_binary_grammatical_gender)) %>%
+  ggplot(aes(x = empirical_binary_grammatical_gender,  
+             y = es_iat_sex_age_order_implicit_resid,
+             color = empirical_binary_grammatical_gender)) +
+  geom_boxplot(outlier.alpha = 0) +
+  scale_color_manual(values = c("blue", "red")) +
+ # geom_point(color = "black", alpha = .4,
+ #            aes(x = jitter(as.numeric(as.factor(empirical_binary_grammatical_gender)), .5)), 
+ #            size = 2) +
+  geom_text(aes(label = language_code, x = jitter(as.numeric(as.factor(empirical_binary_grammatical_gender)), .5)), color = "black", size = 3) +
+  coord_flip() +
+  theme_classic() +
+  ggtitle("Behavioral Gender Bias and Grammar Type") +
+  ylab("Residualized Behavioral IAT Gender Bias") +
+  xlab("Grammar Type") +
+  theme(legend.position = "none",
+        text = element_text(size = 12),
+        axis.text.y = element_text(angle = 90, hjust=0.5, size = 12))
 ```
 
 

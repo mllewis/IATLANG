@@ -20,7 +20,7 @@ CAREER_WORD_LIST <- list(test_name = "WEAT_6", # not identical to caliskan (cali
                          attribute_2 = c("home", "parents", "children", "family", "cousins", "marriage", 
                                          "wedding", "relatives"))
  
-BAD_LANGS <- c("hi", "tl", "ta") # these languages we don't have translations for or the models are too small
+BAD_LANGS <- c("hi", "tl", "ta", "cs", "ml") # these languages we don't have translations for or the models are too small
 
 ### prep lists to loop over
 # get model-language pairs to loop over
@@ -46,27 +46,28 @@ all_langs <- bind_rows(wiki_langs, subt_langs) %>%
 
 ####
 
-# complete <- read_csv(OUTFILE) %>%
-#   rename(lang = id,
-#          model = wiki) %>%
-#   distinct(lang, model) %>%
-#   mutate(status = "complete")
-# 
-# all_combos <- bind_rows(wiki_langs %>% mutate(model = "wiki"), 
-#                         subt_langs %>% mutate(model = "sub")) %>%
-#   select(-path) %>%
-#   mutate(status = "all")
-# 
-# missing_combos = bind_rows(all_combos, complete) %>%
-#   count(lang, model) %>%
-#   filter(n == 1)
-# 
-# all_langs <- bind_rows(wiki_langs %>% mutate(model = "wiki"), 
-#                        subt_langs %>% mutate(model = "sub")) %>%
-#   right_join(missing_combos) %>%
-#   select(-model, -n) %>%
-#   mutate(id = 1:n()) %>%
-#   nest(-id)
+complete <- read_csv(OUTFILE, col_names = c("lang", "model", "category", "x", "y", "z", "w")) %>%
+  distinct(lang, model) %>%
+  mutate(status = "complete")
+
+all_combos <- bind_rows(wiki_langs %>% mutate(model = "wiki"),
+                        subt_langs %>% mutate(model = "sub")) %>%
+  select(-path) %>%
+  mutate(status = "all")
+
+missing_combos = bind_rows(all_combos, complete) %>%
+  count(lang, model) %>%
+  filter(n == 1)
+
+all_langs <- bind_rows(wiki_langs %>% mutate(model = "wiki"),
+                       subt_langs %>% mutate(model = "sub")) %>%
+  right_join(missing_combos) %>%
+  select(-model, -n) %>%
+  filter(!(lang %in% BAD_LANGS)) %>%
+  
+  mutate(id = 1:n()) %>%
+  nest(-id) 
+  
 
  ####
  
