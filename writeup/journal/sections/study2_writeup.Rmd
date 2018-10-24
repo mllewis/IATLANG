@@ -24,16 +24,13 @@ grammatically otherwise.
 
 ```{r}
 
-LANGKEY_PATH <- here("data/study1b/country_langiso_langwiki_key.csv")
-lang_key <- read_csv(LANGKEY_PATH) %>%
-  distinct(wiki_language_code, language_name2) %>%
-  rename(language_name = language_name2) %>%
-  mutate(language_name = tolower(language_name))
+LANGKEY_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
+lang_key <- read_csv(LANGKEY_PATH)
 
 GRAMMAR_PATH <- here("data/study2/continuous_gender_by_lang.csv")
 grammar_data <- read_csv(GRAMMAR_PATH) %>%
   rename(language_name = language) %>%
-  left_join(lang_key) %>%
+  left_join(lang_key %>% mutate(language_name = tolower(language_name))) %>%
   rename(language_code = "wiki_language_code") %>%
   mutate(empirical_binary_grammatical_gender = ifelse(empirical_grammatical_gender_score > 0, "empirically_gendered", "empirically_not_gendered"))
 
@@ -53,7 +50,6 @@ theoretical_gender <- read_csv("/Users/mollylewis/Documents/research/Projects/1_
 all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
   left_join(grammar_data) %>%
   left_join(theoretical_gender) 
-
 ```
 
 ```{r, eval = F}

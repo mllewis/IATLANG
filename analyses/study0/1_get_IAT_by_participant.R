@@ -39,6 +39,8 @@ raw_iat_behavioral <- read_feather(RAW_IAT_PATH) %>%
 # get complete observations
 raw_iat_behavioral_complete <- raw_iat_behavioral %>%
   filter(!is.na(sex),
+         !is.na(age),
+         !is.na(order),
          !is.na(country_code), 
          !is.na(overall_iat_D_score))
 

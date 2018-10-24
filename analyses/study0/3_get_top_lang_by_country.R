@@ -109,7 +109,8 @@ get_lang <- function(cn){
 
 wals <- map_df(iso_country_codes$country_name, 
                get_lang) %>%
-  rename(language_nameWALS= lang)
+  rename(language_nameWALS= lang) %>%
+  mutate(language_nameWALS = ifelse(is.na(language_nameWALS, ))
 
 unique_langs_per_country %>%
   select(country_name, language_name) %>%

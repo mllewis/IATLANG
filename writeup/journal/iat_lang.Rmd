@@ -50,7 +50,8 @@ source("helpers/print_corr_table.R")
 
 ```{r analysis-preferences}
 set.seed(42) # Seed for random number generation
-knitr::opts_chunk$set(cache.extra = knitr::rand_seed, warning = F, cache = F)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed, 
+                      warning = F, cache = F)
 ```
 
 # Introduction
@@ -104,6 +105,7 @@ nocite: |
   @epi
   @whorf1945grammatical
   @ciafactbook
+  @nosek
 ...
 
 

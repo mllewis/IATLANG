@@ -96,10 +96,8 @@ With our corpus validated, we next turn toward examining the relationship betwee
 LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
 iat_lang_es <- read_csv(LANG_IAT_PATH)
 
-LANGKEY_PATH <- here("data/study1b/country_langiso_langwiki_key.csv")
-lang_key <- read_csv(LANGKEY_PATH) %>%
-  distinct(wiki_language_code, language_name2) %>%
-  rename(language_name = language_name2)
+LANGKEY_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
+lang_key <- read_csv(LANGKEY_PATH)
 
 BEHAVIORAL_IAT_PATH <- here("data/study0/processed/by_language_df.csv")
 iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%

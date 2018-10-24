@@ -1,4 +1,5 @@
 # IAT utility functions
+require(lsa)
 
 # effect size function on Caliskan pg 2 (top right)
 get_sYXab <- function(df){
@@ -17,8 +18,7 @@ get_sYXab <- function(df){
 get_word_distance_cos = function(model, w1 , w2){
   w1_vec <- filter(model, target_word == w1) %>% select(-1) %>% as.matrix()
   w2_vec <- filter(model, target_word == w2) %>% select(-1) %>% as.matrix()
-  #(crossprod(w1_vec[1,], w2_vec[1,])/sqrt(crossprod(w1_vec[1,]) * crossprod(w2_vec[1,])))[1]
-  lsa::cosine(w1_vec[1,], w2_vec[1,])
+  cosine(w1_vec[1,], w2_vec[1,]) # this comes from lsa package
 }
 
 
@@ -41,6 +41,7 @@ prep_word_list <- function(word_list) {
     word_list <- word_list[-1:-2]
   }
   cross_df(word_list) %>%
+    mutate_all(tolower) %>%
     gather(key = "category_type", value = "category_value", category_1:category_2) %>%
     gather(key = "attribute_type", value = "attribute_value", attribute_1:attribute_2) %>%
     distinct(category_value, attribute_value, .keep_all = TRUE) 
@@ -63,7 +64,7 @@ get_swabs_only <- function(df, model, att_type) {
              
 }
 
-# function to loop over languages and get es
+# function to loop over languages and get es for gendered languages
 get_lang_es_separate_gender <- function(current_lang, 
                                         model_path, 
                                         word_list){
@@ -123,4 +124,18 @@ get_lang_es_separate_gender <- function(current_lang,
       select(language, model_source, everything()) 
     ES_N
   }
+}
+
+# this is used for gender-free languages. This function is used in the Caliskan replication.
+get_ES <- function(df, model) {
+  
+  print(pluck(df, "test_name"))
+  
+  es <- prep_word_list(df[-1:-2]) %>%
+    get_swabs(., model) %>%
+    get_sYXab()
+  
+  data.frame(test = pluck(df, "test_name"), 
+             bias_type = pluck(df, "bias_type"),
+             effect_size = es)
 }
