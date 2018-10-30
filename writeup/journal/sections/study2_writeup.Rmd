@@ -4,13 +4,9 @@
 
 # Study 2: Gender bias and grammar
 
-The findings in Study 1 are consistent with both the language-as-causal and
-language-as-reflection hypotheses. In Study 2, we try to distinguish between the two hypotheses by asking whether there is a relationship between psychological gender bias and language along a linguistic dimension that is unlikely to be a subject of rapid change---namely, grammatical gender. While of course grammars do change over time, they are
-less malleable than the meanings of individual words, and thus less likely to be
-affected by psychological biases. We predict, therefore, that if
-language causally influences psychological gender biases, languages that
-encode gender grammatically will tend to have larger psychological
-gender biases.
+The findings in Study 1 are consistent with the possibility that people's implicit biases are in part caused by input from language (language-as-causal) and that the linguistic biases simply reflect existing biases (language-as-reflection). In Study 2, we try to distinguish
+between the two possibilities by examining whether linguistic biases are associated with grammatical gender, a structural aspect of language that is clearly not caused by people's gender biases. [Describe what grammatical gender is]. We predicted that grammatical gender would act to exaggerate the linguistic biases present in the language. To the extent that these are causally related to people's implicit biases, these languages may be providing their speakers with additional exposure to gender biases thereby increasing their speakers' implicit biases.
+
 
 ### Method
 

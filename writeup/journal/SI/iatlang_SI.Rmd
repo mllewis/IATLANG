@@ -9,6 +9,7 @@ output:
     theme: paper
     toc: yes
     toc_float: no
+runtime: shiny
 subtitle: Supplementary Information
 ---
 
@@ -23,9 +24,10 @@ library(here)
 library(langcog)
 library(DT)
 library(ggrepel)
+library(shiny)
 
 opts_chunk$set(echo = T, message = F, warning = F, 
-               error = F, cache = F, tidy = F, fig.height = 4.5)
+               error = F, cache = T, tidy = F, fig.height = 4.5)
 theme_set(theme_classic())
 ```  
 
@@ -33,24 +35,23 @@ This document was created from an R markdown file. The manuscript itself was als
 
 # Description of IAT data
 
-```{r}
-PARTICIPANT_DF<- here("data/study0/processed/by_participant_df.csv")
-participant_df <- read_csv(PARTICIPANT_DF)
-```
 ## Demographics{.tabset}
 ### N by country
 
 ```{r}
+PARTICIPANT_DF <- here("data/study0/processed/by_participant_df.csv")
+participant_df <- read_csv(PARTICIPANT_DF)
+
 country_ns_final <- participant_df %>%
   mutate(country_name = ifelse(country_name == "Hong Kong", "China", country_name)) %>%
   count(country_name) 
 ```
 Number of participants by country after exclusions. Our final sample `r format(nrow(participant_df), big.mark=",")` participants from `r nrow(country_ns_final)` countries. Participants were exclude who:
 
-* did not have complete gender, country, age, and implicit iat measures
+* did not have complete gender, country, age, and implicit IAT measures (PERCENT)
 * were from countries with less than 400 participants
-* had average latencies for either critical block were over 1,800 ms or whose average overall latency was above 1,500 ms (as in Nosek, Banaji, & Greenwald, 2002)
-* made excess of 25% errors in any single critical block (as in Nosek, Banaji, & Greenwald, 2002). 
+* had average latencies for either critical block were over 1,800 ms or whose average overall latency was above 1,500 ms (as in Nosek, Banaji, & Greenwald, 2002; PERCENT)
+* made excess of 25% errors in any single critical block (as in Nosek, Banaji, & Greenwald, 2002; PERCENT). 
 
 ```{r, fig.cap = "Note: Data from the US are excluded from this plot because of the large number of participants (N =  638,082)."}
 country_ns_final %>%
@@ -99,7 +100,7 @@ MEDIAN_AGE_PATH <- here("data/study0/raw/median_country_age_world_factbook.csv")
 median_age <- read_csv(MEDIAN_AGE_PATH)
 
 country_ages <- participant_df %>%
-  mutate(country_name = ifelse(country_name == "Hong Kong", "China", country_name)) %>% 
+  mutate(country_name = if_else(country_name == "Hong Kong", "China", country_name)) %>% 
   mutate(age = exp(log_age)) %>%
   group_by(country_name) %>%
   multi_boot_standard(col = "age")
@@ -134,51 +135,97 @@ country_to_lang <- read_csv(COUNTRY_TO_LANG) %>%
 country_to_lang_tidy <- country_to_lang %>%
   mutate(language_name = case_when(language_name == "Zulu" ~ "Zulu*",
                                    TRUE ~ language_name))
+
 datatable(country_to_lang_tidy, colnames = c("Country", "Language"),
-          caption = "Asterisks correspond to languages that were excluded from our analysis because native speakers were not available.",
           options = list(
   autoWidth = TRUE,
-  columnDefs = list(list(width = '100px'))
+  columnDefs = list(list(width = '200px'))
 ))
 ```
+Asterisks correspond to languages that were excluded from our analysis because native speakers were not available.
 
 ## Dependent Measures{.tabset}
 
+Below are histograms for the implicit and explicit measures in the IAT Project Implicit data presented for each country separately. The implicit raw scores are the D-score values (estimate of gender bias, with postive values indicating strong bias to associate men with career), and the residualized values are the D-scores with participant age, sex and trial order residualized out. For the explicit measure, the raw score is the difference between participants answer to the question,  “How strongly do you associate the following with males and females?” for the words “career” and for the word "family". Participants indicated their response on a Likert scale ranging from female (1) to male (7). For each participant, a single explicit score was calculated as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family. The residualized explicit value is the difference score with participant age, sex and trial order residualized out (we had no a priori reason for residualizing out trial order for explicit responses but did so to remain consistent with the residualized implicit measure).
+
 ### Implicit
-```{r, fig.width = 9}
-participant_df %>%
-  filter(country_name == "UK") %>%
-  select(overall_iat_D_score, es_iat_sex_age_order_implicit_resid) %>%
-  mutate(id = 1:n()) %>%
-  gather("measure", "value", -id) %>%
-  mutate(measure = fct_recode(measure, 
-                              Residualized = "es_iat_sex_age_order_implicit_resid",
-                              Raw = "overall_iat_D_score"),
-         measure = fct_rev(measure)) %>%
-  ggplot(aes(x = value)) +
-           geom_histogram() +
-  facet_grid(.~measure) +
-  ggtitle("IAT Scores") +
-  xlab("Score")
+
+```{r, echo = FALSE, cache = F}
+shinyApp(
+  ui = fluidPage(
+    selectInput("this_country_name", "Select Country:", 
+                choices = unique(participant_df$country_name), width = '50%'),
+  plotOutput("by_language_plot")
+
+  ),
+  
+  server = function(input, output) {
+    
+     output$by_language_plot <- renderPlot({
+       participant_df %>%
+        filter(country_name == input$this_country_name) %>%
+        select(overall_iat_D_score, es_iat_sex_age_order_implicit_resid) %>%
+        mutate(id = 1:n()) %>%
+        gather("measure", "value", -id) %>%
+        mutate(measure = fct_recode(measure, 
+                                    Residualized = "es_iat_sex_age_order_implicit_resid",
+                                    Raw = "overall_iat_D_score"),
+               measure = fct_rev(measure)) %>%
+        ggplot(aes(x = value)) +
+        geom_histogram() +
+        facet_grid(.~measure)  +
+        xlab("Score") +
+        ggtitle(paste0("\nImplicit IAT data for: ", input$this_country_name)) + 
+        theme(
+          strip.text = element_text(size = 16, face = "bold"),
+          text = element_text(size = 17),
+          legend.position = "none")
+    })
+  },
+  
+  options = list(height = 600)
+)
 ```
 
 
 ### Explicit
-```{r, fig.width = 9}
-participant_df %>%
-  filter(country_name == "France") %>%
-  select(explicit_dif, es_iat_sex_age_order_explicit_resid) %>%
-  mutate(id = 1:n()) %>%
-  gather("measure", "value", -id) %>%
-  mutate(measure = fct_recode(measure, 
+
+```{r, echo = FALSE, cache = F}
+shinyApp(
+  ui = fluidPage(
+    selectInput("this_country_name", "Select Country:", 
+                choices = unique(participant_df$country_name), width = '50%'),
+
+  plotOutput("by_language_plot")
+
+  ),
+  
+  server = function(input, output) {
+    
+     output$by_language_plot <- renderPlot({
+       participant_df %>%
+         filter(country_name == input$this_country_name) %>%
+         select(explicit_dif, es_iat_sex_age_order_explicit_resid) %>%
+         mutate(id = 1:n()) %>%
+         gather("measure", "value", -id) %>%
+         mutate(measure = fct_recode(measure, 
                               Residualized = "es_iat_sex_age_order_explicit_resid",
                               Raw = "explicit_dif"),
          measure = fct_rev(measure)) %>%
-  ggplot(aes(x = value)) +
+        ggplot(aes(x = value)) +
            geom_histogram(binwidth = 1) +
-  facet_grid(.~measure) +
-  ggtitle("Explicit Scores") +
-  xlab("Score")
+        facet_grid(.~measure)  +
+        xlab("Score") +
+        ggtitle(paste0("\nExplicit bias data for: ", input$this_country_name)) + 
+        theme(
+          strip.text = element_text(size = 16, face = "bold"),
+          text = element_text(size = 17),
+          legend.position = "none")
+    })
+  },
+  
+  options = list(height = 600)
+)
 ```
 
 # Replication of Caliskan et al. (2017) 
@@ -277,12 +324,7 @@ ggplot(all_es, aes(x = wiki,
 # Language IAT weighted by speaker population size
 
 
-
-
 **References**
 
-AC Del Re (2013). compute.es: Compute Effect Sizes. R package version 0.2-2. URL http://cran.r-project.org/web/packages/compute.es.
-
-Cohen, J. (1988). Statistical Power Analysis for the Behavioral Sciences (2nd ed.).
-Hillsdale, NJ: Lawrence Earlbaum Associates.
+Nosek, B. A., Banaji, M. R., & Greenwald, A. G. (2002). Harvesting implicit group attitudes and beliefs from a demonstration web site. _Group Dynamics: Theory, Research, and Practice_, _6_(1), 101.
 

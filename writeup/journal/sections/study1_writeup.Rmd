@@ -4,23 +4,29 @@ library(corrr)
 
 # Study 1: Gender bias and semantics
 
-In Study 1, we ask whether participants' implicit and explicit gender biases are correlated with the biases in the semantic structure of their native languages. For example, are the semantics of the words “woman” and “family” more similar in Spanish than in English? Both the language-as-reflection and language-as-causal hypotheses predict  a  positive correlation between psychological and semantic gender biases. 
 
-As a model of word meanings, we use large-scale distributional semantics models derived from auto-encoding neural networks trained on large corpora of text. The underlying assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with---an approach known as distributional semantics 
-[@firth1957synopsis]. Under this approach, a word like "dog" is represented as more similar to "hound" than to "banana" because "dog" co-occurs with words more in common with "hound" than "banana."
+Are participants' implicit and explicit gender biases predictable from biases found in the semantic structure of their native languages? For example, are the semantics of the words  “woman” and “family” more similar in Spanish than in English? Both the language-as-reflection and language-as-causal hypotheses predict a positive correlation between the measured biases and biases present in language.
+ 
 
-Recent developments in machine learning allow the idea of distributional
-semantics to be implemented in a way that takes into account many
-features of local language structure while remaining computationally
+ 
+As a model of word meanings, we use large-scale distributional semantics
+models derived from auto-encoding neural networks trained on large
+text corpora. The underlying assumption of these models is that the
+meaning of a word can be described by the words it tends to co-occur
+with---words occurring in similar contexts, tend to have similar meanings [@firth1957synopsis]. The word like "dog", for example is represented as more similar to "hound" than to "banana" because
+"dog" co-occurs with words more in common with "hound"
+than "banana."Recent developments in machine learning allow the idea of distributional semantics to be implemented in a way that takes into account many
+features of language structure while remaining computationally
 tractable. The best known of these word embedding models is
 _word2vec_ [@mikolov2013efficient]. The model takes as input a corpus of text and outputs a vector for each word corresponding to its semantics. From these vectors, we can derive a measure of the semantic similarity between two words by taking the distance between their vectors (e.g., cosine distance). 
 
-As it turns out, the biases previously reported using IAT tests can be
-predicted from distributional semantics models like word2vec using materials identical to those used in the IAT experiments. Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) measured the distance in vector space between the words presented to participants in the IAT task. CBN found that these distance
+As it turns out, many of the biases previously reported using implicit association tests can be predicted from distributional semantics models like word2vec. Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) measured the distance in vector space between the words presented to participants in the IAT task. CBN found that these distance
 measures were highly correlated with reaction times in the behavioral IAT
 task. For example,  CBN find a bias to associate males with career and females with family in the career-gender IAT, suggesting that the biases measured by the IAT are also found in the lexical semantics of natural language.
 
-CBN only measured semantic biases in English, however. In Study 1, we use the method described by CBN to measure gender bias in the range of first languages spoken by  participants in the Project Implicit dataset by using models trained on those languages.  In Study 1a, we first validate word embedding measures of gender bias by comparing them to explicit human judgements of gender bias. In Study1b, we apply this method to models trained on text in other languages. We find that the implicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the semantics of the natural language spoken by those participants.
+CBN only measured semantic biases in English, however. In Study 1, we
+use the method described by CBN to examine whether the gender bias of the participants in the Project Implicit dataset is correlated with the gender bias measured in the dominant languages spoken in the countries of these participants. We begin by validating word embedding measures of gender bias by comparing them to explicit human judgements of word genderness (Study 1a). We then apply this method to models trained on text in other languages (Study 1b). To foreshadow the results, we find that the implicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the distributional semantics of the language spoken in the countries of the participants.
+
 
 ## Study 1a: Word embeddings as a measure of psychological gender bias
 
@@ -54,7 +60,7 @@ all_ratings <- embedding_ratings %>%
   filter(!(word %in% c(MALE_WORDS, FEMALE_WORDS)))
 ```
 
-We used an existing set of word norms in which participants were asked to rate "the gender associated with each word" on a Likert scale ranging from _very feminine_ (1) to _very masculine_  [7; @scott2018glasgow]. We compared these gender norms to estimates of gender bias from a word embedding model pre-trained on the corpus of English Wikipedia using the fastText algorithm [a variant of word2vec; @bojanowski2016enriching;@joulin2016bag]. The model contains 2,519,370 words with each word represented by a 300 dimensional vector. To calculate a gender scores from the word embeddings, for each word we calculated the average cosine distance to a set of male words ("male", "man", "he", "boy", "his", "him", "son",  "brother") and the average cosine similarity to a set of female words ("female",  "woman", "she", "girl", "hers", "her", "daughter", "sister"). A gender score for each word was then obtained by taking the difference of the similarity estimates (mean male similarity - mean female similarity), such that larger values indicated a stronger association with males. There were `r nrow(all_ratings)` words in total that overlapped between the two data sources.
+We used an existing set of word norms in which participants were asked to rate "the gender associated with each word" on a Likert scale ranging from _very feminine_ (1) to _very masculine_  [7; @scott2018glasgow]. We compared these gender norms to estimates of gender bias from a word embedding model pre-trained on the corpus of English Wikipedia using the fastText algorithm [a variant of word2vec; @bojanowski2016enriching;@joulin2016bag]. Each word in the model is represented by a 300 dimensional vector. To calculate a gender score from the word embeddings, for each word we calculated the average cosine distance to a standard set of male "anchor" words: ("male", "man", "he", "boy", "his", "him", "son",  "brother") and the average cosine similarity to a set of female words ("female",  "woman", "she", "girl", "hers", "her", "daughter", "sister"). A gender score for each word was then obtained by taking the difference of the similarity estimates (mean male similarity - mean female similarity), such that larger values indicated a stronger association with males. There were `r nrow(all_ratings)` words in total that overlapped between the two data sources.
 
 
 ### Results and Discussion
@@ -67,14 +73,14 @@ poly_model <- lm(maleness_embedding ~ poly(maleness_norm,3), all_ratings) %>%
   summary()
 ```
 
-Estimates of gender bias from word embeddings (_M_ = `r round(mean(all_ratings$maleness_embedding),2)`; _SD_ =  `r round(sd(all_ratings$maleness_embedding),2)`) and human judgements (_M_ = `r round(mean(all_ratings$maleness_norm),2)`; _SD_ =  `r round(sd(all_ratings$maleness_norm),2)`) were highly correlated (_r_ = `r round(gender_score_corr$estimate, 2)`; _p_ <  .0001; Fig. 2). 
+Estimates of gender bias from word embeddings (_M_ = `r round(mean(all_ratings$maleness_embedding),2)`; _SD_ =  `r round(sd(all_ratings$maleness_embedding),2)`) and human judgements (_M_ = `r round(mean(all_ratings$maleness_norm),2)`; _SD_ =  `r round(sd(all_ratings$maleness_norm),2)`) were highly correlated (_r_ = `r round(gender_score_corr$estimate, 2)`; _p_ <  .0001; Fig. 1). This suggests that the psychological gender bias of a word can be reasonably estimated from word embeddings. 
 
-```{r, fig.pos = "!t", fig.height = 4, fig.width = 4.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Word embedding estimates of gender bias as a function of human judgements of gender bias (Study 1a).  Each point corresponds to a word. Larger numbers indicate stronger association with males. Blue line shows linear fit and the error band corresponds to a standard error (too small to be visible)."}
+```{r, fig.pos = "!t", fig.height = 4, fig.width = 4.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Word embedding estimates of gender bias as a function of human judgments of gender bias (Study 1a).  Each point corresponds to a word. Larger numbers indicate stronger association with males. Blue line shows linear fit and the error band corresponds to a standard error (too small to be visible)."}
 ggplot(all_ratings, aes(x = maleness_norm, y = maleness_embedding)) +
   geom_point(size = .2, alpha = .3) +
   ggtitle("Word Gender Association") +
   xlab("Human judgement of gender association") +
-  ylab("Semantic gender associaiton") +
+  ylab("Word embedding estimate of gender association") +
   scale_x_continuous(breaks = 1:7, 
                      label = c("1\n(female)", "2", "3", "4", "5", "6", "7\n(male)   ")) +
   scale_y_continuous(breaks = c(-.2, -.1, -0, .1), 
@@ -87,8 +93,9 @@ ggplot(all_ratings, aes(x = maleness_norm, y = maleness_embedding)) +
   theme_classic()
 ```
 
-## Study 1b: Cross-linguistic gender bias semantics
-With our corpus validated, we next turn toward examining the relationship between psychological and linguistic gender biases. In Study 1b, we estimate the magnitude of the gender-career bias in each of the languages spoken in the countries described in the Project Implicit dataset and compare it with estimates of behavioral gender bias from the Project Implicit data set.  If language plays a causal role in shaping psychological gender biases, we predict that participants who speak a language with larger gender bias will tend to have a larger psychological gender bias. 
+## Study 1b: Gender bias across languages
+Having validated our method, we next turn toward examining the relationship between psychological and linguistic gender biases. In Study 1b, we estimate the magnitude of the gender-career bias in the dominant language spoken in the countries of the Project Implicit participants and compare it with estimates of behavioral gender bias from the Project Implicit data set. 
+
 
 ### Methods
 
@@ -136,17 +143,17 @@ lingtypology::aff.lang(lang_to_country) %>%
 ```
 
 
-For each country represented in our analysis of the Project Implicit, we identified the most frequently spoken language in each country using the CIA factbook (2017). This included a total of `r nrow(all_es)` unique languages. For two languages, Zulu and Tagalog, the corpora that the models were trained on (see below) was insufficiently large to be reliable, and so we excluded these languages from our analysis. Our final sample included `r nrow(all_es)-2` languages, representing XX different language families..
+For each country represented in our analysis of the Project Implicit, we identified the most frequently spoken language in each country using Ethnologue [@simons2018]. This included a total of `r nrow(all_es)` unique languages. For two languages, Zulu and Tagalog, the corpora that the models were trained on (see below) were too small to be reliable, and so we excluded these languages from our analysis. Our final sample included `r nrow(all_es)-2` languages, representing XX different language families.
 
-We obtained translations from native speakers into each these languages for a set of 8 female and 8 male target words (identical to Study 1a), a set of 8 attribute words associated with the concept "career" ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 attribute words associated with the concept "family" ("family," "home,"      "parents,"   "children,"  "cousins,"   "marriage,"  "wedding," "relatives"). Our word lists are identical to the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting].
+For each language, we then obtained translations from native speakers for the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting]. Our linguistic stimuli were therefore a set of 8 female and 8 male Target Words (identical to Study 1a), a set of 8 Attribute Words associated with the concept "career" ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 Attribute Words associated with the concept "family" ("family," "home,"      "parents,"   "children,"  "cousins,"   "marriage,"  "wedding," "relatives"). 
 
-We used these translations to calculate a gender bias effect size from word embedding models trained on text in each language. Our effect size measure is a standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). Our effect size measure is identical to that used by CBN with one exception (see SM for replication of CBN on our corpora). Namely, for languages with grammatically gendered attribute words (e.g., ninas for female children in Spanish), we calculated the relationship between target words and attribute words of the same gender (i.e. "man" to "ninos" and "woman" to "ninas"). In cases where there were multiple translations for a word, or the translation contained multiple words, we averaged across words such that each of our target words was associated with a single vector in each language. Our effect size measure is  analogous to the to the behavioral effect size measure obtained from the IAT task in Project Implicit, where larger values indicate larger gender bias.
+We used these translations to calculate a gender bias effect size from word embedding models trained on text in each language. Our effect size measure is a standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). Our effect size measure is identical to that used by CBN with one exception (see SM for replication of CBN on our corpora). Namely, for languages with grammatically gendered Attribute Words (e.g., ninas for female children in Spanish), we calculated the relationship between target words and attribute words of the same gender (i.e. "hombre" (man) to "ninos" and "mujer" (woman) to "ninas"). In cases where there were multiple translations for a word, or the translation contained multiple words, we averaged across words such that each of our target words was associated with a single vector in each language. Our effect size measure is  analogous to the to the behavioral effect size measure obtained from the IAT task in Project Implicit, where larger values indicate larger gender bias.
 
 We calculated gender bias estimates based on models trained on two different corpora: Wikipedia [@bojanowski2016enriching] and Subtitles [where are these from?]. These two models capture different types of XX. We then compared the effect size of the linguistic gender bias to  the  behavioral IAT gender bias estimated from Project Implicit, averaging across countries that speak whose participants speak the same language.
 
 ### Results
 
-```{r, fig.pos = "!t!", fig.height = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of semantic IAT gender bias by language (Study 1b). Semantic biases are estimated from models trained on each language using a subtitle corpus (left) and a sample of Wikipedia (right). Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands correspond to standard errors. "}
+```{r, fig.pos = "!t!", fig.height = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of linguistic gender bias, with each point corresponding to a language (Study 1b). Linguistic biases are estimated from models trained on each language using a subtitle corpus (left) and a sample of Wikipedia (right). Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the model estimate."}
 
 # plot lang vs behavioral
 all_es %>%
@@ -162,9 +169,9 @@ all_es %>%
                            size = 3, box.padding = 0.1) + 
   geom_point(size = .7) + #aes(size  = log(n_participants))) + #
   theme_minimal() +
-  ggtitle("Behavioral and Semantic Gender Bias") +
+  ggtitle("Behavioral and Linguistic Gender Biases") +
   ylab("Residualized Behavioral IAT Gender Bias") +
-  xlab("Semantic IAT Gender Bias\n (effect size)") +
+  xlab("Linguistic Gender Bias\n (effect size)") +
   theme_classic() 
 ```
 
@@ -197,7 +204,8 @@ explicit_corr <- cor.test(all_es$es_iat_sex_age_order_explicit_resid,
   tidy()
 ```
 
-At the level of languages, our estimate of gender bias in the semantics of each language was positively correlated the implicit gender bias of participants who spoke that language (_r_ = `r round(implicit_corr$estimate, 2)`; _p_ =  `r round(implicit_corr$p.value, 2)`; Fig. 3). Importantly, this relationship held when controling for median country age in a linear model ($\beta$= `r lang_beta`; _SE_ = `r lang_se`, _p_ = `r lang_p`). Semantic IAT gender bias was not correlated with explicit gender bias (_r_ = `r round(explicit_corr$estimate, 2)`; _p_ =  `r round(explicit_corr$p.value, 2)`). [Percentage women in stem and language are marginal p = .06]. Table 1 shows the language-level correlations between all variables.
+The estimate of gender bias for each language was positively correlated the implicit gender bias of participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals; _r_ = `r round(implicit_corr$estimate, 2)`; _p_ =  `r round(implicit_corr$p.value, 2)`; Fig. 2). This relationship held when controlling for median country age in a linear model ($\beta$= `r lang_beta`; _SE_ = `r lang_se`, _p_ = `r lang_p`). Linguistic gender bias was not correlated with explicit gender bias (_r_ = `r round(explicit_corr$estimate, 2)`; _p_ =  `r round(explicit_corr$p.value, 2)`). [Percentage women in stem and language are marginal p = .06]. Table 1 shows the language-level correlations between all variables.
+
 
 ```{r corrtable, results="asis", tab.env = "table", cache = F}
 # corr of lanng, behavioral, etc.
@@ -208,16 +216,16 @@ all_vars <- all_es %>%
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
           `Language IAT (Subtitles)` = "lang_es_sub",
           `Language IAT (Wikipedia)` = "lang_es_wiki",
-          `Perecent Women in Stem` = "per_women_stem") 
+          `Percent Women in Stem` = "per_women_stem") 
 
 tidy_table <- glrstab(all_vars)
 
 kable(tidy_table, "latex", booktabs = T, escape = F,
       caption = "Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Asterisks indicate significance at the .05 level.",
-      col.names = c("", "Language IAT\n(Subtitles)",
-              "Language IAT \n (Wikipedia)",
-              "Residualized \nExplicit Bias",
-              "Residualized \nBehavioral IAT"),
+      col.names = c("", "Linguistic Gender Bias \n(Subtitles)",
+              "Linguistic Gender Bias \n (Wikipedia)",
+              "Explicit Gender Bias \n (residualized)",
+              "Behavioral Gender Bias (residualized IAT score)"),
       align = "lrrrr") %>%
   column_spec(2:5, width = "2.5cm") %>%
   kable_styling(bootstrap_options = "condensed", 

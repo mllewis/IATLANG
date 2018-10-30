@@ -70,7 +70,7 @@ iat_behavioral_filtered_dense_country <- raw_iat_behavioral_complete %>%
 
 # add residuals - residualizing out sex, order, and age
 mod1 <- lm(explicit_dif ~ as.factor(sex) + log_age + as.factor(order), data = iat_behavioral_filtered_dense_country)
-mod2 <- lm(overall_iat_D_score ~ as.factor(sex)  + log_age + as.factor(order) , data = iat_behavioral_filtered_dense_country)
+mod2 <- lm(overall_iat_D_score ~ as.factor(sex)  + log_age + as.factor(order), data = iat_behavioral_filtered_dense_country)
 
 participant_df  <- iat_behavioral_filtered_dense_country %>%
   add_residuals(mod1, "es_iat_sex_age_order_explicit_resid") %>% 

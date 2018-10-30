@@ -1,0 +1,17 @@
+base
+shiny
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+knitr
+here
+langcog
+DT
+ggrepel
+bindrcpp
