@@ -66,9 +66,4 @@ walk(all_langs, #unique(translations$wiki_language_code),
      MODEL_PREFIX,
      OUTMODEL_PREFIX)
 
-# get all subsetted models
-walk(, 
-     save_subsetted_model, 
-     translations, 
-     MODEL_PREFIX,
-     OUTMODEL_PREFIX)
+

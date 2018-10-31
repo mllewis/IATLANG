@@ -20,8 +20,6 @@ translations <- read_csv(INFILE)  %>%
 all_langs <- list.files(MODEL_PREFIX) %>%
   str_split("\\.") %>%
   map_chr(~.[2]) 
-# missing: "zh" "id" "tr" "ms" "el" "hu" "vi"
-
 
 concats <- filter(model, str_detect(V1, "_")) %>% 
   filter(!str_detect(V1, "[:digit:]")) %>%

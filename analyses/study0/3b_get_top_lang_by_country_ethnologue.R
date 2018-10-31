@@ -19,9 +19,9 @@ OUTFILE <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
 iso_country_codes <- read_csv(COUNTRY_DF_IN) 
 langs <- read_tsv(LANG_IN) %>%
   clean_names() %>%
-  select(country_code, language_name, is_primary, all_users)  %>%
+  select(country_code, language_name, is_primary, l1_users)  %>%
   group_by(country_code) %>%
-  top_n(1, all_users)
+  top_n(1, l1_users)
 
 unique_langs_per_country <- iso_country_codes %>%
   left_join(langs, by = "country_code") %>%
@@ -29,8 +29,9 @@ unique_langs_per_country <- iso_country_codes %>%
   select(country_code, country_name, language_name)
 
 unique_langs_per_country_tidy <- unique_langs_per_country %>%
-  mutate(language_name =  case_when( language_name == "Dari" ~ "Persian",
+  mutate(language_name =  case_when( language_name == "Javanese" ~ "Indonesian",
                                      language_name == "Bavarian" ~ "German",
+                                     language_name == "Dari"~ "Persian",
                                      TRUE ~ language_name)) %>%
   rowwise() %>%
   mutate(language_name = str_split(language_name, ",")[[1]][1])

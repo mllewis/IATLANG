@@ -255,7 +255,7 @@ kable(tidy_table, "latex", booktabs = T, escape = F,
       col.names = c("", "Linguistic Gender Bias \n(Subtitles)",
               "Linguistic Gender Bias \n (Wikipedia)",
               "Explicit Gender Bias \n (residualized)",
-              "Behavioral Gender Bias (residualized IAT score)"),
+              "Behavioral Gender Bias \n(residualized IAT score)"),
       align = "lrrrr") %>%
   column_spec(2:5, width = "2.5cm") %>%
   kable_styling(bootstrap_options = "condensed", 
@@ -263,4 +263,73 @@ kable(tidy_table, "latex", booktabs = T, escape = F,
 
 ```
 
+
+```{r}
+# exploreing weighting by file size
+tidy_language <- all_es %>%
+  select(language_code, lang_es_sub, lang_es_wiki,
+         es_iat_sex_age_order_implicit_resid,
+         es_iat_sex_age_order_explicit_resid,
+         median_country_age,
+         per_women_stem) %>%
+  gather("source", "lang_bias", c(-1, -4:-7)) %>%
+  rowwise() %>%
+  mutate(source = str_split(source, "es_")[[1]][2]) %>%
+  filter(!is.na(lang_bias)) %>%
+  rename(wiki_language_code = language_code)
+
+SIZE_FILE <- here("data/study1b/language_weights.csv") 
+
+sizes <- read_csv(SIZE_FILE)
+
+all_df <- tidy_language %>%
+  left_join(sizes) 
+
+#%>%
+#  select_if(is.numeric)
+
+#glrstab(all_df)
+
+all_df %>%
+  filter(wiki_language_code != "en") %>%
+ggplot(aes(es_iat_sex_age_order_implicit_resid, n_participants_scaled)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+sub = all_df %>%
+  filter(source == "sub")
+
+
+lm(es_iat_sex_age_order_explicit_resid ~ lang_bias + median_country_age, data = sub, weights = file_size_scaled) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias + median_country_age, data = wiki, weights = mean_weight) %>%
+  summary()
+
+
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias + median_country_age, data = sub) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias , data = sub,  weights = file_size_scaled) %>%
+  summary()
+
+
+wiki = all_df %>%
+  filter(source == "wiki")
+
+wtd.cor(x = wiki$es_iat_sex_age_order_implicit_resid, 
+        y = wiki$lang_bias, 
+        weight = wiki$file_size_scaled)
+
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias + median_country_age, data = wiki, weights = file_size_scaled) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias + median_country_age, data = wiki) %>%
+  summary()
+
+
+
+
+
+```
 ### Discussion 
