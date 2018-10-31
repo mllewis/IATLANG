@@ -204,6 +204,36 @@ explicit_corr <- cor.test(all_es$es_iat_sex_age_order_explicit_resid,
   tidy()
 ```
 
+```{r, eval = F, include = F}
+all_es2 <- all_es %>%
+  filter(!(language_code %in% c( "id", "el", "ro", "ru", "ar", "pl", "zu", "he", "tr", "es")))
+implicit_corr <- cor.test(all_es2$es_iat_sex_age_order_implicit_resid,
+                              all_es2$lang_es_wiki) %>%
+  tidy()
+
+implicit_controlled <- lm(es_iat_sex_age_order_implicit_resid ~ lang_es_sub+ median_country_age, data = all_es2) %>%
+  tidy()
+
+lang_beta <- implicit_controlled %>%
+  filter(term == "lang_es_wiki") %>%
+  pull(estimate) %>%
+  round(2)
+
+lang_se <- implicit_controlled %>%
+  filter(term == "lang_es_wiki") %>%
+  pull(std.error) %>%
+  round(2)
+
+lang_p <- implicit_controlled %>%
+  filter(term == "lang_es_wiki") %>%
+  pull(p.value) %>%
+  round(2)
+
+explicit_corr <- cor.test(all_es$es_iat_sex_age_order_explicit_resid,
+                              all_es$lang_es_wiki) %>%
+  tidy()
+```
+
 The estimate of gender bias for each language was positively correlated the implicit gender bias of participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals; _r_ = `r round(implicit_corr$estimate, 2)`; _p_ =  `r round(implicit_corr$p.value, 2)`; Fig. 2). This relationship held when controlling for median country age in a linear model ($\beta$= `r lang_beta`; _SE_ = `r lang_se`, _p_ = `r lang_p`). Linguistic gender bias was not correlated with explicit gender bias (_r_ = `r round(explicit_corr$estimate, 2)`; _p_ =  `r round(explicit_corr$p.value, 2)`). [Percentage women in stem and language are marginal p = .06]. Table 1 shows the language-level correlations between all variables.
 
 

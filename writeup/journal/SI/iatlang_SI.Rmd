@@ -1,5 +1,5 @@
 ---
-title: 'Language use shapes cultural norms: Large scale evidence from gender'
+title: 'Language use shapes cultural stereotypes: Large scale evidence from gender'
 author: "Molly Lewis and Gary Lupyan"
 date: "`r Sys.Date()`"
 output:
@@ -185,6 +185,78 @@ shinyApp(
   
   options = list(height = 600)
 )
+```
+
+```{r, fig.cap = "Residualized gender bias by country as measured by the IAT. Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias."}
+BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
+country_iat <- read_csv(BY_COUNTRY_DF)
+
+
+map_world <- map_data(map = "world") %>%
+    mutate(country_code = countrycode::countrycode(region, 'country.name', 'iso2c'))
+
+map_data <- country_iat %>%
+  full_join(map_world, by = "country_code") %>%
+  filter(lat > -57,
+         long > -165)
+
+full_world <- ggplot(map_data, aes(x = long, y = lat,
+                            group = group,
+                            fill = es_iat_sex_age_order_implicit_resid)) +
+  #scale_fill_gradient2(low = "blue", mid = "white", high = "red",
+  #                     midpoint = 0, name = "Gender bias") +
+
+  viridis::scale_fill_viridis(direction = -1,  limits=c(-.065, .045))  +
+  geom_polygon(color = "black", size = .1) +
+  ggtitle("Implicit psychological gender bias by country ") +
+  theme(
+    #text = element_text(size = TEXT_SIZE),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(fill = "white"),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = c(.13, .35),
+        plot.margin = margin(t = 60, r= 30, 0, 0, "pt"),
+
+        legend.title = element_blank(),
+       # legend.background = element_rect(fill = alpha('white', 0)),
+        legend.key.size = unit(0.3, "in"))
+
+
+### Europe
+euro_countries <- c("Austria","Belgium","Bulgaria","Croatia",
+                   "Czech Republic", "France", "Denmark", "Switzerland",
+                   "Germany","Greece","Hungary","Ireland","Italy",
+                   "Luxembourg","Malta","Netherlands","Poland", "UK",
+                   "Portugal","Romania","Slovakia","Slovenia","Spain")
+
+map_europe <- map_data %>%
+  filter(region %in% euro_countries)
+
+europe_inset <- ggplot(map_europe, aes(x = long, y = lat,
+                            group = group,
+                            fill = es_iat_sex_age_order_implicit_resid)) +
+  viridis::scale_fill_viridis(direction = -1, limits=c(-.065, .045))  +
+  #scale_fill_continuous()
+  geom_polygon(color = "black", size = .1) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        plot.margin = margin(.5,.5,0,0, "cm"),
+        panel.background = element_rect(fill = "white"),
+        plot.background = element_rect(
+            fill = "white",
+            colour = "black",
+            size = 2),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = "none")
+
+full_world +
+  annotation_custom(grob = ggplotGrob(europe_inset),
+                    xmin = 40, xmax =160, ymin = 50, ymax = 130)
 ```
 
 

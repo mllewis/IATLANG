@@ -20,7 +20,7 @@ CAREER_WORD_LIST <- list(test_name = "WEAT_6", # not identical to caliskan (cali
                          attribute_2 = c("home", "parents", "children", "family", "cousins", "marriage", 
                                          "wedding", "relatives"))
  
-BAD_LANGS <- c("hi", "tl", "ta", "cs", "ml") # these languages we don't have translations for or the models are too small
+BAD_LANGS <- c("ta", "cs", "ml") # these languages we don't have translations for or the models are too small
 
 ### prep lists to loop over
 # get model-language pairs to loop over

@@ -1,6 +1,3 @@
-```{r}
-
-```
 
 # Study 2: Gender bias and grammar
 
@@ -69,7 +66,20 @@ t.test(lang_es_wiki ~ empirical_binary_grammatical_gender,
        data = all_es,
        paired = F)
 
-lm(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender + median_country_age, 
+lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + median_country_age, 
+       data = all_es) %>%
+  summary()
+
+lm(es_iat_sex_age_order_explicit_resid ~ empirical_grammatical_gender_score + median_country_age, 
+       data = all_es) %>%
+  summary()
+
+lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender, 
+       data = all_es) %>%
+  summary()
+
+
+lm(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender, 
        data = all_es) %>%
   summary()
 
@@ -84,7 +94,6 @@ lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + m
 
 all_es %>%
   ungroup() %>%
-  filter(!(language_code %in% c('zu', "tl"))) %>%
   mutate(empirical_binary_grammatical_gender = fct_rev(empirical_binary_grammatical_gender),
          empirical_binary_grammatical_gender = fct_recode(empirical_binary_grammatical_gender, 
              "Gendered" = "empirically_gendered", 

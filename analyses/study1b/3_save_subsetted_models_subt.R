@@ -9,7 +9,8 @@ MODEL_PREFIX <- "/Volumes/wilbur_the_great/subtitle_models/"
 OUTMODEL_PREFIX <- here("data/study1b/subt_subsetted_models/")
 
 lang_key <- read_csv(LANGKEY)  %>%
-  rename(language = language_name)
+  rename(language = language_name) %>%
+  mutate(language = tolower(language))
 
 translations <- read_csv(INFILE)  %>%
     left_join(lang_key, by = "language") %>%
@@ -20,6 +21,7 @@ all_langs <- list.files(MODEL_PREFIX) %>%
   str_split("\\.") %>%
   map_chr(~.[2]) 
 # missing: "zh" "id" "tr" "ms" "el" "hu" "vi"
+
 
 concats <- filter(model, str_detect(V1, "_")) %>% 
   filter(!str_detect(V1, "[:digit:]")) %>%

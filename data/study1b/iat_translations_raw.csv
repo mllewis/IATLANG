@@ -966,7 +966,7 @@ super-imaginative,NA,malay,N
 genius,NA,malay,N
 brilliant,NA,malay,N
 super-smart,NA,malay,N
-daughter,curka,polish,N
+daughter,córka,polish,N
 hers,jej,polish,N
 her,jej,polish,N
 she,ona,polish,N
@@ -995,7 +995,7 @@ business,biznesowy,polish,M
 office,biurowy,polish,M
 salary,pensja,polish,M
 corporation,korporacyjny,polish,M
-professional,profesionalny,polish,M
+professional,profesjonalny,polish,M
 management,zarząd,polish,M
 executive,dyrektor,polish,M
 creative,kreatywny,polish,M
@@ -1017,7 +1017,7 @@ business,biznesowa,polish,F
 office,biurowa,polish,F
 salary,pensja,polish,F
 corporation,korporacyjna,polish,F
-professional,profesionalna,polish,F
+professional,profesjonalna,polish,F
 management,zarząd,polish,F
 executive,dyrektorka,polish,F
 creative,kreatywna,polish,F
@@ -1426,11 +1426,107 @@ office,văn phòng,vietnamese,N
 salary,tiền lương,vietnamese,N
 corporation,công ty,vietnamese,N
 professional,chuyên nghiệp,vietnamese,N
-management,--,vietnamese,N
-executive,--,vietnamese,N
+management,NA,vietnamese,N
+executive,NA,vietnamese,N
 creative,NA,vietnamese,N
 artistic,nghệ thuật,vietnamese,N
 super-imaginative,NA,vietnamese,N
 genius,NA,vietnamese,N
 brilliant,NA,vietnamese,N
 super-smart,thông minh,vietnamese,N
+daughter,बेटी/पुत्री,hindi,N
+hers,उसकी,hindi,N
+her,उसे,hindi,N
+she,वहस्त्री,hindi,N
+sister,बहन,hindi,N
+girl,लड़की,hindi,N
+woman,औरत/स्त्री,hindi,N
+female,मादा/स्त्री,hindi,N
+son,बेटा/पुत्र,hindi,N
+his,उसका,hindi,N
+him,उसे,hindi,N
+he,वह/यह,hindi,N
+brother,भाई/अनुज,hindi,N
+boy,लडका/लड़का/बालक,hindi,N
+man,आदमी,hindi,N
+male,नर,hindi,N
+relatives,रिश्तेदार,hindi,N
+wedding,विवाह,hindi,N
+marriage,शादी/विवाह,hindi,N
+cousins,भाई/अग्रज अनुज/बहन,hindi,N
+family,परिवार,hindi,N
+children,बच्चे/बालक,hindi,N
+parents,माता-पिता,hindi,N
+home,घर,hindi,N
+career,पेशा/विकास,hindi,N
+business,व्यापार,hindi,N
+office,दफ्तर/कार्यालय/पद/ऑफिस/दफ़्तर,hindi,N
+salary,वेतन,hindi,N
+corporation,निगम/महापालिका,hindi,N
+professional,व्यवसायी/पेशेवर,hindi,N
+management,प्रबंध,hindi,N
+executive,कार्यकारिणी/मंहगी/विशेष/अधिशासी,hindi,N
+daughter,indodakazi,zulu,N
+hers,yakhe,zulu,N
+her,yena,zulu,N
+she,yena,zulu,N
+sister,udade/usisi,zulu,N
+girl,intombazane/intombi,zulu,N
+woman,umfazi,zulu,N
+female,umfazi,zulu,N
+son,indodana,zulu,N
+his,yakhe,zulu,N
+him,yena,zulu,N
+he,yena,zulu,N
+brother,ubhuti,zulu,N
+boy,umfana,zulu,N
+man,umuntu/indoda,zulu,N
+male,indoda/umuntu/umlisa,zulu,N
+relatives,usapho/umndeni,zulu,N
+wedding,umshado,zulu,N
+marriage,umshado,zulu,N
+cousins,udade,zulu,N
+family,umndeni/usapho,zulu,N
+children,abantwana/izingane,zulu,N
+parents,umama/ubaba,zulu,N
+home,ikhaya/indlu,zulu,N
+career,umsebenzi,zulu,N
+business,indaba/into,zulu,N
+office,ihhovisi/ilihhovisi/indawo,zulu,N
+salary,-khokha,zulu,N
+corporation,indlu,zulu,N
+professional,umfundisi/uthisha,zulu,N
+management,ukuzuza,zulu,N
+executive,ilimeniyu/imeniyu,zulu,N
+daughter,anak na babae/anak,tagalog,N
+hers,siya/kaniya/kanya,tagalog,N
+her,siya/kaniya/kanya,tagalog,N
+she,siya/kaniya/niya,tagalog,N
+sister,kapatíd na babáe/kapatid na babae,tagalog,N
+girl,dalaga/babae,tagalog,N
+woman,babae,tagalog,N
+female,babae,tagalog,N
+son,anak/anak na laláki,tagalog,N
+his,kaniya/kanya,tagalog,N
+him,siya,tagalog,N
+he,siya,tagalog,N
+brother,kapatid na lalaki/kuya/totoy,tagalog,N
+boy,batang lalaki/lalaki/katúlong/alilà/bátang laláki,tagalog,N
+man,tao/lalaki,tagalog,N
+male,lalaki,tagalog,N
+relatives,pamilya,tagalog,N
+wedding,kasal,tagalog,N
+marriage,kasal,tagalog,N
+cousins,pinsan,tagalog,N
+family,pamilya,tagalog,N
+children,anak/bata,tagalog,N
+parents,magulang,tagalog,N
+home,bahay/tahanan,tagalog,N
+career,karera/tungkulin,tagalog,N
+business,negosyo/bagay/negósyo,tagalog,N
+office,trabaho/gawa/katungkulan/opisina/tungkulin,tagalog,N
+salary,gana/kita/sahod/suweldo,tagalog,N
+corporation,negosyo/klub/lipunan/samahan,tagalog,N
+professional,dalubhasa,tagalog,N
+management,bahala,tagalog,N
+executive,puno,tagalog,N
