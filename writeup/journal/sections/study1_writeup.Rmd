@@ -114,34 +114,7 @@ iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
          es_iat_sex_age_order_implicit_resid, per_women_stem, n_participants)
 
 all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code")
-
-# missing: hi (hindi), hr (Croation), tl (Tagalog; small, can't find speaker?), zu (zulu: small?; can't find speaker)
 ```
-
-```{r, eval = F}
-
-# move this to get_top_lang_by_country
-LANG_TO_COUNTRY_PATH <- here("data/study0/processed/top_lang_by_country.csv")
-
-lang_to_country <- read_csv(LANG_TO_COUNTRY_PATH) %>%
-  distinct(language_name) %>%
-  filter(!(language_name %in% c("IsiZulu", "Tagalog"))) %>%
-  mutate(language_name = fct_recode(language_name, 
-                                    "Standard Arabic" = "Arabic",
-                                    "Western Farsi" = "Persian",
-                                    "Mandarin Chinese" = "Chinese",
-                                    "Modern Greek" = "Greek",
-                                    "Modern Hebrew"= "Hebrew",
-                                    "Mandarin Chinese" = "Mandarin",
-                                    "Standard Malay" = "Malaysian")) %>%
-  pull(language_name)
-
-lingtypology::aff.lang(lang_to_country) %>%
-  str_split(", ") %>%
-  map(~.[1]) %>%
-  unlist()
-```
-
 
 For each country represented in our analysis of the Project Implicit, we identified the most frequently spoken language in each country using Ethnologue [@simons2018]. This included a total of `r nrow(all_es)` unique languages. For two languages, Zulu and Tagalog, the corpora that the models were trained on (see below) were too small to be reliable, and so we excluded these languages from our analysis. Our final sample included `r nrow(all_es)-2` languages, representing XX different language families.
 
@@ -264,7 +237,7 @@ kable(tidy_table, "latex", booktabs = T, escape = F,
 ```
 
 
-```{r}
+```{r, eval = F}
 # exploreing weighting by file size
 tidy_language <- all_es %>%
   select(language_code, lang_es_sub, lang_es_wiki,
@@ -279,52 +252,67 @@ tidy_language <- all_es %>%
   rename(wiki_language_code = language_code)
 
 SIZE_FILE <- here("data/study1b/language_weights.csv") 
-
 sizes <- read_csv(SIZE_FILE)
-
 all_df <- tidy_language %>%
   left_join(sizes) 
-
-#%>%
-#  select_if(is.numeric)
-
-#glrstab(all_df)
-
-all_df %>%
-  filter(wiki_language_code != "en") %>%
-ggplot(aes(es_iat_sex_age_order_implicit_resid, n_participants_scaled)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-sub = all_df %>%
-  filter(source == "sub")
-
-
-lm(es_iat_sex_age_order_explicit_resid ~ lang_bias + median_country_age, data = sub, weights = file_size_scaled) %>%
-  summary()
-
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias + median_country_age, data = wiki, weights = mean_weight) %>%
-  summary()
-
-
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias + median_country_age, data = sub) %>%
-  summary()
-
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias , data = sub,  weights = file_size_scaled) %>%
-  summary()
 
 
 wiki = all_df %>%
   filter(source == "wiki")
 
-wtd.cor(x = wiki$es_iat_sex_age_order_implicit_resid, 
-        y = wiki$lang_bias, 
-        weight = wiki$file_size_scaled)
+wiki2 = all_df %>%
+  filter(source == "wiki") %>%
+  filter(!(wiki_language_code %in% c("hi", "tl", "zh" , "zu")))
 
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias + median_country_age, data = wiki, weights = file_size_scaled) %>%
+sub = all_df %>%
+  filter(source == "sub")
+
+
+# sub
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = sub) %>%
   summary()
 
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias + median_country_age, data = wiki) %>%
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = sub,
+   weights = file_size) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = sub, weights = file_size) %>%
+  summary()
+
+# wiki
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = wiki) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = wiki,
+   weights = file_size) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = wiki, weights = file_size) %>%
+  summary()
+
+# per_women_stem
+
+lm(per_women_stem ~ lang_bias, data = sub) %>%
+  summary()
+
+lm(per_women_stem ~ lang_bias, data = sub, weights = file_size) %>%
+  summary()
+
+lm(per_women_stem ~ lang_bias + median_country_age, data = sub, weights = file_size) %>%
+  summary()
+
+lm(per_women_stem ~ lang_bias, data = wiki) %>%
+  summary()
+
+lm(per_women_stem ~ lang_bias, data = wiki, weights = file_size) %>%
+  summary()
+
+
+# median_country_age
+lm(median_country_age ~ lang_bias, data = sub, weights = file_size) %>%
+  summary()
+
+lm(median_country_age ~ lang_bias, data = wiki, weights = file_size) %>%
   summary()
 
 

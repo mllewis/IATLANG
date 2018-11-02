@@ -9,6 +9,10 @@ MODEL_PREFIX_SUB <- "/Volumes/wilbur_the_great/subtitle_models/sub."
 MODEL_PREFIX_WIKI <- "/Volumes/wilbur_the_great/fasttext_models/wiki."
 FILEOUT <- here("data/study1b/language_weights.csv") 
 
+langs <- read_csv(LANGS) %>%
+  distinct(wiki_language_code) %>%
+  pull(wiki_language_code)
+
 num_participants <- read_csv(LANGS_NUM_PARICIPANTS) %>%
   select(wiki_language_code, n_participants )
 

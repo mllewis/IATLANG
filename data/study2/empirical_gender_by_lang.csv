@@ -1,5 +1,6 @@
 language,empirical_grammatical_gender_score
 arabic,0.625
+croatian,0.5
 danish,0.125
 dutch,0.125
 french,0.25
@@ -11,6 +12,7 @@ polish,0.375
 portuguese,0.3125
 romanian,0
 russian,0.375
+serbian,0.5
 slovak,0.375
 spanish,0.375
 urdu,0.375

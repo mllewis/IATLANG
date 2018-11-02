@@ -87,7 +87,7 @@ parallel_wrapper <- function(id, this_df, outfile, word_list){
 }
 
 parLapply(cluster,
-          1:nrow(all_langs), 
+          2:nrow(all_langs), 
           parallel_wrapper, 
           all_langs, 
           OUTFILE, 

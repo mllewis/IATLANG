@@ -41,6 +41,8 @@ save_subsetted_model <- function(current_lang,
                  data.table = TRUE,
                  verbose = F)
   
+  print(nrow(model))
+  
   # get model of the words we care about 
   translated_word_list <- trans_df %>%
     filter(wiki_language_code == current_lang)  %>%
@@ -60,16 +62,20 @@ save_subsetted_model <- function(current_lang,
     group_by(language_code, word, gender) %>% 
     summarize_at(vars(V2:V301), mean, na.rm = TRUE) # mean across words
   
+
+  
   # write calculated vectors
   write_csv(calculated_vectors, paste0(out_model_prefix, "calculated/sub.", 
                                        current_lang, "_calculated.csv"))
   
 }
-
- 
+#all_langs <- "hr"
 # get all subsetted models
 walk(all_langs, 
      save_subsetted_model, 
      translations, 
      MODEL_PREFIX,
      OUTMODEL_PREFIX)
+
+
+

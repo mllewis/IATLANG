@@ -18,7 +18,7 @@ translations <- read_csv(INFILE)  %>%
     select(wiki_language_code, word, gender, word_id, translation_id, 
            translation) 
 
-all_langs <- c( "tl")
+all_langs <- unique(translations$wiki_language_code)
 
 #### loop over languages and get word vectors ####
 save_subsetted_model <- function(current_lang, trans_df, model_prefix, out_model_prefix){
