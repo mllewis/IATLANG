@@ -101,10 +101,13 @@ Having validated our method, we next turn toward examining the relationship betw
 
 ```{r}
 LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
-iat_lang_es <- read_csv(LANG_IAT_PATH)
+iat_lang_es <- read_csv(LANG_IAT_PATH) 
 
 LANGKEY_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
 lang_key <- read_csv(LANGKEY_PATH)
+
+LANG_FAMILY_PATH <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
+lang_family <- read_csv(LANG_FAMILY_PATH)
 
 BEHAVIORAL_IAT_PATH <- here("data/study0/processed/by_language_df.csv")
 iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
@@ -113,24 +116,37 @@ iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
          prop_male,log_age, es_iat_sex_age_order_explicit_resid,
          es_iat_sex_age_order_implicit_resid, per_women_stem, n_participants)
 
-
-# fix croatian
+# fix croatian to be mean of hr and sr and exclude zulu
 hr_new <- mean(c(filter(iat_lang_es, language_code == "hr") %>%  pull(lang_es_wiki),
        filter(iat_lang_es, language_code == "sr") %>%  pull(lang_es_wiki)))
 all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
   mutate(lang_es_wiki = case_when(language_code == "hr" ~ hr_new,
-                                  TRUE ~ lang_es_wiki))
+                                  TRUE ~ lang_es_wiki)) %>%
+  filter(language_code != "zu") # too many missing words from model (12/32)
+
+lang_family_tidy <- lang_family %>%
+  filter(wiki_language_code != "zu") 
 ```
 
-For each country represented in our analysis of the Project Implicit, we identified the most frequently spoken language in each country using Ethnologue [@simons2018]. This included a total of `r nrow(all_es)` unique languages. For two languages, Zulu and Tagalog, the corpora that the models were trained on (see below) were too small to be reliable, and so we excluded these languages from our analysis. Our final sample included `r nrow(all_es)-2` languages, representing XX different language families.
+For each country represented in our analysis of the Project Implicit, we identified the most frequently spoken language in each country using Ethnologue [@simons2018]. This included a total of `r nrow(all_es) + 1` unique languages. For one language, Zulu, over a third of the target words (12 out of 32) were missing from the model (see below), and so we excluded this language from our analysis. Our final sample included `r nrow(all_es)` languages, representing `r  length(unique(lang_family_tidy$family))` different language families.
 
-For each language, we then obtained translations from native speakers for the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting]. Our linguistic stimuli were therefore a set of 8 female and 8 male Target Words (identical to Study 1a), a set of 8 Attribute Words associated with the concept "career" ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 Attribute Words associated with the concept "family" ("family," "home,"      "parents,"   "children,"  "cousins,"   "marriage,"  "wedding," "relatives"). 
+For each language, we then obtained translations from native speakers for the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting]. Our linguistic stimuli were therefore a set of 8 female and 8 male Target Words (identical to Study 1a), a set of 8 Attribute Words associated with the concept "career" ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 Attribute Words associated with the concept "family" ("family," "home,"      "parents,"   "children,"  "cousins,"   "marriage,"  "wedding," "relatives"). For one language, Tagalog, we were unable to obtain translations from a native speaker, and so translations were gathered from several translations sources. All analyses remain the same when this language is excluded [check this]. 
 
 We used these translations to calculate a gender bias effect size from word embedding models trained on text in each language. Our effect size measure is a standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). Our effect size measure is identical to that used by CBN with one exception (see SM for replication of CBN on our corpora). Namely, for languages with grammatically gendered Attribute Words (e.g., ninas for female children in Spanish), we calculated the relationship between target words and attribute words of the same gender (i.e. "hombre" (man) to "ninos" and "mujer" (woman) to "ninas"). In cases where there were multiple translations for a word, or the translation contained multiple words, we averaged across words such that each of our target words was associated with a single vector in each language. Our effect size measure is  analogous to the to the behavioral effect size measure obtained from the IAT task in Project Implicit, where larger values indicate larger gender bias.
 
 We calculated gender bias estimates based on models trained on two different corpora: Wikipedia [@bojanowski2016enriching] and Subtitles [where are these from?]. These two models capture different types of XX. We then compared the effect size of the linguistic gender bias to  the  behavioral IAT gender bias estimated from Project Implicit, averaging across countries that speak whose participants speak the same language.
 
 ### Results
+
+```{r, overall_lang_bias_by_source}
+
+t_test_data_corpus_effect <- all_es %>%
+  filter(!is.na(lang_es_sub), !is.na(lang_es_wiki))
+
+corpus_effect_t_test <- t.test(t_test_data_corpus_effect$lang_es_sub, 
+       t_test_data_corpus_effect$lang_es_wiki, paired = T)
+```
+
 
 ```{r, fig.pos = "!t!", fig.height = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of linguistic gender bias, with each point corresponding to a language (Study 1b). Linguistic biases are estimated from models trained on each language using a subtitle corpus (left) and a sample of Wikipedia (right). Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the model estimate."}
 
@@ -183,8 +199,7 @@ explicit_corr <- cor.test(all_es$es_iat_sex_age_order_explicit_resid,
   tidy()
 ```
 
-
-The estimate of gender bias for each language was positively correlated the implicit gender bias of participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals; _r_ = `r round(implicit_corr$estimate, 2)`; _p_ =  `r round(implicit_corr$p.value, 2)`; Fig. 2). This relationship held when controlling for median country age in a linear model ($\beta$= `r lang_beta`; _SE_ = `r lang_se`, _p_ = `r lang_p`). Linguistic gender bias was not correlated with explicit gender bias (_r_ = `r round(explicit_corr$estimate, 2)`; _p_ =  `r round(explicit_corr$p.value, 2)`). [Percentage women in stem and language are marginal p = .06]. Table 1 shows the language-level correlations between all variables.
+There was no overall difference in the estimates of gender bias between models trained on the subtitle corpora versus the Wikipedia corpora (_t_(`r pluck(corpus_effect_t_test$parameter, "df")`) =  `r pluck(corpus_effect_t_test$statistic, "t")`, _p_ =  `r corpus_effect_t_test$p.value`). Next, we asked about the relationship between  estimate of gender bias for each language and implicit gender bias of participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals. Language gender bias and implicit gender bias were positively correlated (_r_ = `r round(implicit_corr$estimate, 2)`, _p_ =  `r round(implicit_corr$p.value, 2)`; Fig. 2). This relationship held when controlling for median country age in a linear model ($\beta$= `r lang_beta`; _SE_ = `r lang_se`, _p_ = `r lang_p`). Linguistic gender bias was not correlated with explicit gender bias (_r_ = `r round(explicit_corr$estimate, 2)`; _p_ =  `r round(explicit_corr$p.value, 2)`). Table 1 shows the language-level correlations between all variables. [do we want to weight by model size?]
 
 
 ```{r corrtable, results="asis", tab.env = "table", cache = F}
@@ -256,6 +271,10 @@ lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = sub,
 lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = sub, weights = file_size) %>%
   summary()
 
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = sub) %>%
+  summary()
+
+
 # wiki
 lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = wiki) %>%
   summary()
@@ -266,6 +285,10 @@ lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = wiki,
 
 lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = wiki, weights = file_size) %>%
   summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = wiki) %>%
+  summary()
+
 
 # per_women_stem
 
@@ -283,6 +306,10 @@ lm(per_women_stem ~ lang_bias, data = wiki) %>%
 
 lm(per_women_stem ~ lang_bias, data = wiki, weights = file_size) %>%
   summary()
+
+lm(per_women_stem ~ lang_bias, data = wiki) %>%
+  summary()
+
 
 
 # median_country_age

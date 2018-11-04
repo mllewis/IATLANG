@@ -19,14 +19,14 @@ OUTFILE <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
 iso_country_codes <- read_csv(COUNTRY_DF_IN) 
 langs <- read_tsv(LANG_IN) %>%
   clean_names() %>%
-  select(country_code, language_name, is_primary, l1_users)  %>%
+  select(country_code, language_name, is_primary, l1_users, family)  %>%
   group_by(country_code) %>%
   top_n(1, l1_users)
 
 unique_langs_per_country <- iso_country_codes %>%
   left_join(langs, by = "country_code") %>%
   data.frame() %>%
-  select(country_code, country_name, language_name)
+  select(country_code, country_name, language_name, family)
 
 unique_langs_per_country_tidy <- unique_langs_per_country %>%
   mutate(language_name =  case_when( language_name == "Javanese" ~ "Indonesian",

@@ -5,7 +5,7 @@
 library(tidyverse)
 library(parallel)
 library(here)
-source("0_IAT_utils.R")
+source(here("analyses/study1b/0_IAT_utils.R"))
 
 MODEL_PATH_WIKI <- here("data/study1b/wiki_subsetted_models/calculated/")
 MODEL_PATH_SUB <- here("data/study1b/subt_subsetted_models/calculated/")

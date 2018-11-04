@@ -1,41 +1,41 @@
-country_code,country_name,language_name,wiki_language_code
-AE,United Arab Emirates,Arabic,ar
-AF,Afghanistan,Persian,fa
-AR,Argentina,Spanish,es
-AT,Austria,German,de
-AU,Australia,English,en
-BE,Belgium,Dutch,nl
-BR,Brazil,Portuguese,pt
-CA,Canada,English,en
-CH,Switzerland,German,de
-CN,China,Chinese,zh
-CN,Hong Kong,Chinese,zh
-CO,Colombia,Spanish,es
-DE,Germany,German,de
-DK,Denmark,Danish,da
-ES,Spain,Spanish,es
-FI,Finland,Finnish,fi
-FR,France,French,fr
-GB,UK,English,en
-HR,Croatia,Croatian,hr
-ID,Indonesia,Indonesian,id
-IE,Ireland,English,en
-IL,Israel,Hebrew,he
-IN,India,Hindi,hi
-IT,Italy,Italian,it
-JP,Japan,Japanese,ja
-KR,Republic of Korea,Korean,ko
-MX,Mexico,Spanish,es
-MY,Malaysia,Malay,ms
-NL,Netherlands,Dutch,nl
-NO,Norway,Norwegian,no
-NZ,New Zealand,English,en
-PH,Philippines,Tagalog,tl
-PL,Poland,Polish,pl
-RO,Romania,Romanian,ro
-SE,Sweden,Swedish,sv
-SG,Singapore,Chinese,zh
-TR,Turkey,Turkish,tr
-TW,Taiwan,Chinese,zh
-US,United States of America,English,en
-ZA,South Africa,Zulu,zu
+country_code,country_name,language_name,family,wiki_language_code
+AE,United Arab Emirates,Arabic,Afro-Asiatic,ar
+AF,Afghanistan,Persian,Indo-European,fa
+AR,Argentina,Spanish,Indo-European,es
+AT,Austria,German,Indo-European,de
+AU,Australia,English,Indo-European,en
+BE,Belgium,Dutch,Indo-European,nl
+BR,Brazil,Portuguese,Indo-European,pt
+CA,Canada,English,Indo-European,en
+CH,Switzerland,German,Indo-European,de
+CN,China,Chinese,Sino-Tibetan,zh
+CN,Hong Kong,Chinese,Sino-Tibetan,zh
+CO,Colombia,Spanish,Indo-European,es
+DE,Germany,German,Indo-European,de
+DK,Denmark,Danish,Indo-European,da
+ES,Spain,Spanish,Indo-European,es
+FI,Finland,Finnish,Uralic,fi
+FR,France,French,Indo-European,fr
+GB,UK,English,Indo-European,en
+HR,Croatia,Croatian,Indo-European,hr
+ID,Indonesia,Indonesian,Austronesian,id
+IE,Ireland,English,Indo-European,en
+IL,Israel,Hebrew,Afro-Asiatic,he
+IN,India,Hindi,Indo-European,hi
+IT,Italy,Italian,Indo-European,it
+JP,Japan,Japanese,Japonic,ja
+KR,Republic of Korea,Korean,Koreanic,ko
+MX,Mexico,Spanish,Indo-European,es
+MY,Malaysia,Malay,Austronesian,ms
+NL,Netherlands,Dutch,Indo-European,nl
+NO,Norway,Norwegian,Indo-European,no
+NZ,New Zealand,English,Indo-European,en
+PH,Philippines,Tagalog,Austronesian,tl
+PL,Poland,Polish,Indo-European,pl
+RO,Romania,Romanian,Indo-European,ro
+SE,Sweden,Swedish,Indo-European,sv
+SG,Singapore,Chinese,Sino-Tibetan,zh
+TR,Turkey,Turkish,Turkic,tr
+TW,Taiwan,Chinese,Sino-Tibetan,zh
+US,United States of America,English,Indo-European,en
+ZA,South Africa,Zulu,Niger-Congo,zu
