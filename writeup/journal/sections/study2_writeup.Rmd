@@ -27,7 +27,9 @@ grammar_data <- read_csv(EMPIRICAL_GRAMMAR_PATH) %>%
   rename(language_name = language) %>%
   left_join(lang_key %>% mutate(language_name = tolower(language_name))) %>%
   rename(language_code = "wiki_language_code") %>%
-  mutate(empirical_binary_grammatical_gender = ifelse(empirical_grammatical_gender_score > 0, "empirically_gendered", "empirically_not_gendered"))
+  mutate(empirical_binary_grammatical_gender = ifelse(empirical_grammatical_gender_score > 0,
+                                                      "empirically_gendered",
+                                                      "empirically_not_gendered"))
 
 LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
 iat_lang_es <- read_csv(LANG_IAT_PATH)
@@ -65,9 +67,7 @@ lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + w
 ```
 
 
-```{r, fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes grammatical gender. Each label code corresponds to a language. The  bold vertical line corresponds to the group median, and the box width indicates the first and third quartile."}
-
-source(here("writeup/journal/helpers/geom_flat_violin.R"))
+```{r, fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes grammatical gender. Each label code corresponds to a language. The vertical line corresponds to the group median."}
 
 ci_df <- all_es %>%
   group_by(empirical_binary_grammatical_gender) %>%
@@ -78,33 +78,54 @@ ci_df <- all_es %>%
              "Gendered" = "empirically_gendered", 
              "Not Gendered" = "empirically_not_gendered"))
 
-all_es %>%
+ridge_df <- all_es %>%
   ungroup() %>%
   mutate(empirical_binary_grammatical_gender = fct_rev(empirical_binary_grammatical_gender),
          empirical_binary_grammatical_gender = fct_recode(empirical_binary_grammatical_gender, 
              "Gendered" = "empirically_gendered", 
              "Not Gendered" = "empirically_not_gendered")) %>%
   distinct(language_code, .keep_all = T) %>%
-  filter(!is.na(empirical_binary_grammatical_gender)) %>%
-  ggplot(aes(x = empirical_binary_grammatical_gender,  
-             y = es_iat_sex_age_order_implicit_resid,
+  filter(!is.na(empirical_binary_grammatical_gender)) 
+
+ggplot(ridge_df, aes(y = empirical_binary_grammatical_gender,  
+             x = es_iat_sex_age_order_implicit_resid,
              color = empirical_binary_grammatical_gender,
              fill = empirical_binary_grammatical_gender)) +
-  geom_pointrange(aes(y = mean, 
-                      ymin = ci_lower,
-                      ymax = ci_upper, 
-                      x = empirical_binary_grammatical_gender), data = ci_df, size = 1) +
-  #geom_boxplot(outlier.alpha = 0) +
-  geom_flat_violin(alpha = .3, trim = F) +
-  scale_color_manual(values = c("blue", "red", "blue", "red")) +
-  scale_fill_manual(values = c("blue", "red", "blue", "red")) +
-  geom_text(aes(label = language_code, as.numeric(as.factor(empirical_binary_grammatical_gender))-.05), 
-color = "black", size = 4) +
-  coord_flip() +
+  ggridges::geom_density_ridges(alpha = .4, scale = .9, quantile_lines = TRUE, quantiles = 2)  +
+  scale_color_manual(values = c("blue", "red")) +
+  scale_fill_manual(values = c("blue", "red")) +
+  #geom_pointrange(ci_df, aes(y = empirical_binary_grammatical_gender, x= mean, 
+  #                           xmin = ci_lower, xmax= ci_upper)) +
+  geom_text(aes(label = language_code, 
+                y = jitter(as.numeric(as.factor(empirical_binary_grammatical_gender))+ .2, 1.1)
+                ), 
+        color = "black", size = 4) +
   theme_classic() +
   ggtitle("Behavioral Gender Bias and Grammar Type") +
-  ylab("Residualized Behavioral IAT Gender Bias") +
-  xlab("Grammar Type") +
+  xlab("Residualized Behavioral IAT Gender Bias") +
+  ylab("Empirical Grammar Type \n(gender marking of IAT person words)") +
+  theme(legend.position = "none",
+        text = element_text(size = 12),
+        axis.text.y = element_text(angle = 90, hjust=0.5, size = 12))
+  
+ggplot(ridge_df, aes(y = wikipedia_grammar_type2,  
+             x = es_iat_sex_age_order_implicit_resid,
+             color = wikipedia_grammar_type2,
+             fill = wikipedia_grammar_type2)) +
+  ggridges::geom_density_ridges(alpha = .4, scale = .9, 
+                                quantile_lines = TRUE, quantiles = 2) + 
+  scale_color_manual(values = c("blue", "red")) +
+  scale_fill_manual(values = c("blue", "red")) +
+  #geom_pointrange(ci_df, aes(y = empirical_binary_grammatical_gender, x= mean, 
+  #                           xmin = ci_lower, xmax= ci_upper)) +
+  geom_text(aes(label = language_code, 
+                y = jitter(as.numeric(as.factor(wikipedia_grammar_type2))+ .2, 1.1)
+                ), 
+        color = "black", size = 4) +
+  theme_classic() +
+  ggtitle("Behavioral Gender Bias and Grammar Type") +
+  xlab("Residualized Behavioral IAT Gender Bias") +
+  ylab("Theoretical Grammar Type \n(all morphosyntax)") +
   theme(legend.position = "none",
         text = element_text(size = 12),
         axis.text.y = element_text(angle = 90, hjust=0.5, size = 12))
