@@ -20,7 +20,7 @@ CAREER_WORD_LIST <- list(test_name = "WEAT_6", # not identical to caliskan (cali
                          attribute_2 = c("home", "parents", "children", "family", "cousins", "marriage", 
                                          "wedding", "relatives"))
  
-BAD_LANGS <- c("ta", "cs", "ml") # these languages we don't have translations for or the models are too small
+BAD_LANGS <- c("ta", "cs", "ml", "vi") # these languages we don't have translations for or the models are too small
 
 ### prep lists to loop over
 # get model-language pairs to loop over
@@ -33,10 +33,10 @@ wiki_langs <- list.files(MODEL_PATH_WIKI) %>%
 
 subt_langs <- list.files(MODEL_PATH_SUB) %>%
   str_split("\\.|_") %>%
-  map_chr(~.[2]) %>%
+  map_chr(~.[3]) %>%
   data.frame() %>%
   rename(lang = ".") %>%
-  mutate(path = paste0(MODEL_PATH_SUB, "sub."))
+  mutate(path = paste0(MODEL_PATH_SUB, "sub.multiword."))
 
 all_langs <- bind_rows(wiki_langs, subt_langs) %>%
   filter(!(lang %in% BAD_LANGS)) %>%
@@ -64,7 +64,6 @@ all_langs <- bind_rows(wiki_langs %>% mutate(model = "wiki"),
   right_join(missing_combos) %>%
   select(-model, -n) %>%
   filter(!(lang %in% BAD_LANGS)) %>%
-  
   mutate(id = 1:n()) %>%
   nest(-id) 
   
@@ -87,7 +86,7 @@ parallel_wrapper <- function(id, this_df, outfile, word_list){
 }
 
 parLapply(cluster,
-          2:nrow(all_langs), 
+          1:nrow(all_langs), 
           parallel_wrapper, 
           all_langs, 
           OUTFILE, 

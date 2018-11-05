@@ -4,7 +4,7 @@ library(data.table)
 library(here)
 
 
-INFILE <- here("data/study1b/iat_translations_tidy.csv")
+INFILE <- here("data/study1b/iat_translations_tidy_wiki.csv")
 LANGKEY <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
 MODEL_PREFIX <- "/Volumes/wilbur_the_great/fasttext_models/wiki."
 OUTMODEL_PREFIX <- here("data/study1b/wiki_subsetted_models/")
@@ -60,7 +60,8 @@ save_subsetted_model <- function(current_lang, trans_df, model_prefix, out_model
 }
 
 # get all subsetted models
-walk(all_langs, #unique(translations$wiki_language_code), 
+walk("zu",
+  #all_langs, #unique(translations$wiki_language_code), 
      save_subsetted_model, 
      translations, 
      MODEL_PREFIX,

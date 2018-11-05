@@ -4,7 +4,7 @@ library(tidyverse)
 library(here)
 
 INFILE <- here('data/study1b/iat_translations_raw.csv')
-OUTFILE <- here('data/study1b/iat_translations_tidy.csv')
+OUTFILE <- here('data/study1b/iat_translations_tidy_wiki.csv')
 
 GENDERED_WORDS <- c("executive","management","professional", "parents",
                     "children", "family", "cousins", "relatives")
