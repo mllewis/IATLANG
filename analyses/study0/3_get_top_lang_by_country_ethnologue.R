@@ -1,5 +1,5 @@
 ## (3) Get percentage language spoken in each count from Ethnologue (from Gary)
-# then top lang (top_lang_by_country.csv) 
+# then top lang (top_lang_by_country_ethnologue.csv) 
 
 library(tidyverse)
 library(lingtypology)

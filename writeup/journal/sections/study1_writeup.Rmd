@@ -37,20 +37,27 @@ To validate word embeddings as a measure of psychological gender bias, we asked 
 ```{r}
 GENDER_NORMS <- here("data/study1a/raw/GlasgowNorms.csv")
 glasgow_norms <- read_csv(GENDER_NORMS) %>%
-  select(word, GEND_M) %>%
-  rename(maleness_norm = GEND_M)  %>% # take the mean across multiple sense of word 
+  rename(maleness_norm = GEND_M)  %>%
+  select(word, maleness_norm) %>%
   rowwise() %>%
   mutate(word =  str_split(word, " ", simplify = T)[1],
          word = tolower(word)) %>%
-  distinct() %>%
   group_by(word)  %>%
-  summarize(maleness_norm = mean(maleness_norm))
+  summarize(maleness_norm = mean(maleness_norm))  # take the mean across multiple sense of word
 
-EMBEDDING_BIAS  <- here("data/study1a/processed/embedding_gender_bias_average_method.csv")
-embedding_ratings <- read_csv(EMBEDDING_BIAS) %>%
-  select(word, male_score) %>%
-  rename(maleness_embedding = male_score) %>%
-  filter(!is.na(maleness_embedding))
+EMBEDDING_BIAS_SUB  <- here("data/study1a/processed/gender_bias_by_word_english_sub.csv")
+EMBEDDING_BIAS_WIKI <- here("data/study1a/processed/gender_bias_by_word_english_wiki.csv")
+
+sub_male_bias <- read_csv(EMBEDDING_BIAS_SUB) %>%
+  rename(maleness_embedding_sub = male_score)
+
+wiki_male_bias <- read_csv(EMBEDDING_BIAS_WIKI) %>%
+  rename(maleness_embedding_wiki = male_score)
+
+embedding_ratings <- sub_male_bias %>%
+  full_join(wiki_male_bias, by = "word") %>%
+  select(word, contains("embedding")) %>%
+  filter_at(vars(contains("embedding")), any_vars(!is.na(.)))
 
 MALE_WORDS <- c("son", "his","him","he", "brother","boy", "man", "male")
 FEMALE_WORDS <- c("daughter", "hers", "her", "she",  "sister", "girl", "woman", "female")
@@ -60,35 +67,45 @@ all_ratings <- embedding_ratings %>%
   filter(!(word %in% c(MALE_WORDS, FEMALE_WORDS)))
 ```
 
-We used an existing set of word norms in which participants were asked to rate "the gender associated with each word" on a Likert scale ranging from _very feminine_ (1) to _very masculine_  [7; @scott2018glasgow]. We compared these gender norms to estimates of gender bias from a word embedding model pre-trained on the corpus of English Wikipedia using the fastText algorithm [a variant of word2vec; @bojanowski2016enriching;@joulin2016bag]. Each word in the model is represented by a 300 dimensional vector. To calculate a gender score from the word embeddings, for each word we calculated the average cosine distance to a standard set of male "anchor" words: ("male", "man", "he", "boy", "his", "him", "son",  "brother") and the average cosine similarity to a set of female words ("female",  "woman", "she", "girl", "hers", "her", "daughter", "sister"). A gender score for each word was then obtained by taking the difference of the similarity estimates (mean male similarity - mean female similarity), such that larger values indicated a stronger association with males. There were `r nrow(all_ratings)` words in total that overlapped between the two data sources.
+We used an existing set of word norms in which participants were asked to rate "the gender associated with each word" on a Likert scale ranging from _very feminine_ (1) to _very masculine_  [7; @scott2018glasgow]. We compared these gender norms to estimates of gender bias  obtained from embedding models pre-trained on two different corpora of English text: Wikipedia [@bojanowski2016enriching] and subtitles from movies and TV shows [@vanparidon;@lison].  The Wikipedia corpus is a large, naturalistic corpus of written language trained using the fastText algorithm [a variant of word2vec; @bojanowski2016enriching;@joulin2016bag]; The subtitle corpus is a smaller corpus of spoken language, trained using the XX algorithm.
 
+To calculate a gender score from the word embeddings, for each word we calculated the average cosine distance to a standard set of male "anchor" words: ("male", "man", "he", "boy", "his", "him", "son", "brother") and the average cosine similarity to a set of female words ("female",  "woman", "she", "girl", "hers", "her", "daughter", "sister"). A gender score for each word was then obtained by taking the difference of the similarity estimates (mean male similarity - mean female similarity), such that larger values indicated a stronger association with males. There were `r format(nrow(all_ratings), big.mark = ",")` words in total that overlapped between the word-embedding models and human ratings.
 
 ### Results and Discussion
 ```{r}
-gender_score_corr <- cor.test(all_ratings$maleness_embedding,
+model_gender_score_corr <- cor.test(all_ratings$maleness_embedding_sub,
+                              all_ratings$maleness_embedding_wiki) %>%
+  tidy()
+
+sub_gender_score_corr <- cor.test(all_ratings$maleness_embedding_sub,
                               all_ratings$maleness_norm) %>%
   tidy()
 
-poly_model <- lm(maleness_embedding ~ poly(maleness_norm,3), all_ratings) %>%
-  summary()
+wiki_gender_score_corr <- cor.test(all_ratings$maleness_embedding_wiki,
+                              all_ratings$maleness_norm) %>%
+  tidy()
+
+#poly_model <- lm(maleness_embedding ~ poly(maleness_norm,3), all_ratings) %>%
+#  summary()
 ```
 
-Estimates of gender bias from word embeddings (_M_ = `r round(mean(all_ratings$maleness_embedding),2)`; _SD_ =  `r round(sd(all_ratings$maleness_embedding),2)`) and human judgements (_M_ = `r round(mean(all_ratings$maleness_norm),2)`; _SD_ =  `r round(sd(all_ratings$maleness_norm),2)`) were highly correlated (_r_ = `r round(gender_score_corr$estimate, 2)`; _p_ <  .0001; Fig. 1). This suggests that the psychological gender bias of a word can be reasonably estimated from word embeddings. 
+Estimates of gender bias from the Subtitle corpus (_M_ = `r round(mean(all_ratings$maleness_embedding_sub),2)`; _SD_=  `r round(sd(all_ratings$maleness_embedding_sub),2)`) and  the Wikipedia corpus (_M_ = `r round(mean(all_ratings$maleness_embedding_wiki),2)`; _SD_ =  `r round(sd(all_ratings$maleness_embedding_wiki),2)`) were highly correlated with each other (_r_ = `r round(model_gender_score_corr$estimate, 2)`; _p_ <  .0001). Critically, bias estimates from both word embedding models were also highly correlated with human judgements (_M_ = `r round(mean(all_ratings$maleness_norm),2)`; _SD_ =  `r round(sd(all_ratings$maleness_norm),2)`; _r_~subtitles~ = `r round(sub_gender_score_corr$estimate, 2)`; _p_ <  .0001; _r_~Wikipedia~ = `r round(wiki_gender_score_corr$estimate, 2)`; _p_ <  .0001; Fig. 1). This suggests that the psychological gender bias of a word can be reasonably estimated from word embeddings. 
 
-```{r, fig.pos = "!t", fig.height = 4, fig.width = 4.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Word embedding estimates of gender bias as a function of human judgments of gender bias (Study 1a).  Each point corresponds to a word. Larger numbers indicate stronger association with males. Blue line shows linear fit and the error band corresponds to a standard error (too small to be visible)."}
-ggplot(all_ratings, aes(x = maleness_norm, y = maleness_embedding)) +
+```{r, fig.pos = "!t", fig.height = 4, fig.width = 4.5, set.cap.width=T, num.cols.cap=1, fig.cap = "Word estimates of gender bias from the Subtitle-trained embedding model as a function of human judgments of gender bias (Study 1a).  Each point corresponds to a word. Larger numbers indicate stronger association with males. Blue line shows linear fit and the error band corresponds to a standard error (too small to be visible)."}
+ggplot(all_ratings, aes(x = maleness_norm, y = maleness_embedding_sub)) +
   geom_point(size = .2, alpha = .3) +
-  ggtitle("Word Gender Association") +
+  ggtitle("Gender Association of English Words") +
   xlab("Human judgement of gender association") +
   ylab("Word embedding estimate of gender association") +
   scale_x_continuous(breaks = 1:7, 
                      label = c("1\n(female)", "2", "3", "4", "5", "6", "7\n(male)   ")) +
-  scale_y_continuous(breaks = c(-.2, -.1, -0, .1), 
-                     label = c("-0.2\n(female)", "-0.1", "0.0"," -0.1\n(male)")) +
+  scale_y_continuous(breaks = c(-.15, -.1,-.05,  -0, .05, .1, .15), 
+                     label = c("-0.15\n(female)","-.1", "-.05" , "0.0", ".05", ".1", ".15\n(male)")) +
  # geom_smooth(method = "lm", 
   #            formula=y ~ poly(x, 3, raw=TRUE)) + #third-order polynomial fit
   geom_smooth(method = "lm", color = "blue") +
-  annotate("text", x = 5, y = -.15, label = paste0("r = ", round(gender_score_corr$estimate, 2)), 
+  annotate("text", x = 5, y = -.12, label = 
+             paste0("r = ", round(sub_gender_score_corr$estimate, 2)), 
            color = "red", size = 4) +
   theme_classic()
 ```
@@ -98,16 +115,15 @@ Having validated our method, we next turn toward examining the relationship betw
 
 
 ### Methods
-
-```{r}
+```{r read_in_es_data}
 LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
 iat_lang_es <- read_csv(LANG_IAT_PATH) 
 
-LANGKEY_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
-lang_key <- read_csv(LANGKEY_PATH)
-
 LANG_FAMILY_PATH <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
-lang_family <- read_csv(LANG_FAMILY_PATH)
+lang_family <- read_csv(LANG_FAMILY_PATH) %>%
+  select(wiki_language_code, family) %>%
+  rename(language_code = "wiki_language_code") %>%
+  distinct()
 
 BEHAVIORAL_IAT_PATH <- here("data/study0/processed/by_language_df.csv")
 iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
@@ -116,67 +132,82 @@ iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
          prop_male,log_age, es_iat_sex_age_order_explicit_resid,
          es_iat_sex_age_order_implicit_resid, per_women_stem, n_participants)
 
-# fix croatian to be mean of hr and sr and exclude zulu
-hr_new <- mean(c(filter(iat_lang_es, language_code == "hr") %>%  pull(lang_es_wiki),
-       filter(iat_lang_es, language_code == "sr") %>%  pull(lang_es_wiki)))
+# combine lang and behavioral and family info
 all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
-  mutate(lang_es_wiki = case_when(language_code == "hr" ~ hr_new,
-                                  TRUE ~ lang_es_wiki)) %>%
-  filter(language_code != "zu") # too many missing words from model (12/32)
-
-lang_family_tidy <- lang_family %>%
-  filter(wiki_language_code != "zu") 
+  left_join(lang_family)
 ```
 
-For each country represented in our analysis of the Project Implicit, we identified the most frequently spoken language in each country using Ethnologue [@simons2018]. This included a total of `r nrow(all_es) + 1` unique languages. For one language, Zulu, over a third of the target words (12 out of 32) were missing from the model (see below), and so we excluded this language from our analysis. Our final sample included `r nrow(all_es)` languages, representing `r  length(unique(lang_family_tidy$family))` different language families.
+```{r deal_with_exclusions}
+# remove exclusions and fix croatian to be mean of hr and sr (only in wiki)
+EXCLUSIONS_PATH <- here("data/study1b/language_exclusions.csv") 
+exclusions <- read_csv(EXCLUSIONS_PATH)
 
-For each language, we then obtained translations from native speakers for the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting]. Our linguistic stimuli were therefore a set of 8 female and 8 male Target Words (identical to Study 1a), a set of 8 Attribute Words associated with the concept "career" ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 Attribute Words associated with the concept "family" ("family," "home,"      "parents,"   "children,"  "cousins,"   "marriage,"  "wedding," "relatives"). For one language, Tagalog, we were unable to obtain translations from a native speaker, and so translations were gathered from several translations sources. All analyses remain the same when this language is excluded [check this]. 
+hr_new_wiki <- mean(c(filter(iat_lang_es, language_code == "hr") %>%  pull(lang_es_wiki),
+         filter(iat_lang_es, language_code == "sr") %>%  pull(lang_es_wiki)))
 
-We used these translations to calculate a gender bias effect size from word embedding models trained on text in each language. Our effect size measure is a standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). Our effect size measure is identical to that used by CBN with one exception (see SM for replication of CBN on our corpora). Namely, for languages with grammatically gendered Attribute Words (e.g., ninas for female children in Spanish), we calculated the relationship between target words and attribute words of the same gender (i.e. "hombre" (man) to "ninos" and "mujer" (woman) to "ninas"). In cases where there were multiple translations for a word, or the translation contained multiple words, we averaged across words such that each of our target words was associated with a single vector in each language. Our effect size measure is  analogous to the to the behavioral effect size measure obtained from the IAT task in Project Implicit, where larger values indicate larger gender bias.
+all_es_tidy <- all_es %>%
+  left_join(exclusions) %>%
+  mutate(lang_es_wiki = case_when(exclude_wiki == TRUE ~ NA_real_,
+                                  TRUE ~ lang_es_wiki),
+         lang_es_sub = case_when(exclude_sub == TRUE ~ NA_real_,
+                                  TRUE ~ lang_es_sub)) %>%
+  select(-exclude_wiki, -exclude_sub) %>%
+  mutate(lang_es_wiki = case_when(language_code == "hr" ~ hr_new_wiki,
+                                  TRUE ~ lang_es_wiki),
+         lang_es_sub = case_when(language_code == "hr" ~ NA_real_, # sr is missing from sub
+                                  TRUE ~ lang_es_sub)) 
 
-We calculated gender bias estimates based on models trained on two different corpora: Wikipedia [@bojanowski2016enriching] and Subtitles [where are these from?]. These two models capture different types of XX. We then compared the effect size of the linguistic gender bias to  the  behavioral IAT gender bias estimated from Project Implicit, averaging across countries that speak whose participants speak the same language.
+```
+
+For each country represented in our analysis of the Project Implicit, we identified the most frequently spoken language in each country using Ethnologue [@simons2018]. This included a total of `r nrow(all_es)` unique languages. For each language, we then obtained translations from native speakers for the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting]. Our linguistic stimuli were therefore a set of 8 female and 8 male Target Words (identical to Study 1a), a set of 8 Attribute Words associated with the concept "career" ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 Attribute Words associated with the concept "family" ("family," "home,"      "parents,"   "children,"  "cousins,"   "marriage,"  "wedding," "relatives"). For one language, Tagalog, we were unable to obtain translations from a native speaker, and so translations were gathered from several translations sources. All analyses remain the same when this language is excluded [check this]. 
+
+We used these translations to calculate a gender bias effect size from word embedding models trained on text in each language. Our effect size measure is a standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). Our effect size measure is identical to that used by CBN with an exception for grammatically gendered languages (see SM for replication of CBN on our corpora). Namely, for languages with grammatically gendered Attribute Words (e.g., ninas for female children in Spanish), we calculated the relationship between target words and attribute words of the same gender (i.e.\ "hombre" (man) to "ninos" and "mujer" (woman) to "ninas"). In cases where there were multiple translations for a word, we averaged across words such that each of our target words was associated with a single vector in each language. In cases where the translation contained multiple words, we used the entry for the multiword phrase in the model, when present, and averaged across words otherwise. Like the behavioral effect size from the Project Implicit data, larger values indicate larger gender bias.
+
+We calculated gender bias estimates from word-embedding models that had been trained on texts Wikipedia [@bojanowski2016enriching] and subtitles from movies and TV shows [@vanparidon, as in Study 1a;@lison] in each of our target languages.  We excluded languages from the analysis for which 20% or more of the target words were missing from the model or the model did not exist (see SM for more details). This lead us to exclude one language (Zulu) from the analysis of the Wikipedia corpus and six languages from the analysis of the Subtitle corpus (Chinese, Croatian, Hindi, Japanese, Tagalog, and Zulu).  Our final sample included `r all_es_tidy %>% filter(!is.na(lang_es_wiki)|  !is.na(lang_es_sub)) %>% nrow()` languages in total (_N_~Wikipedia~ = `r filter(all_es_tidy, !is.na(lang_es_wiki)) %>% nrow()`; _N_~Subtitle~ = `r filter(all_es_tidy, !is.na(lang_es_sub)) %>% nrow()`), representing `r  length(unique(all_es_tidy$family))` different language families. We then compared estimates of linguistic gender bias for each language from each model to  the  behavioral IAT gender bias estimated from Project Implicit, averaging across countries whose participants speak the same language.
 
 ### Results
 
 ```{r, overall_lang_bias_by_source}
-
-t_test_data_corpus_effect <- all_es %>%
-  filter(!is.na(lang_es_sub), !is.na(lang_es_wiki))
-
-corpus_effect_t_test <- t.test(t_test_data_corpus_effect$lang_es_sub, 
-       t_test_data_corpus_effect$lang_es_wiki, paired = T)
+corpus_effect_t_test <- t.test(all_es_tidy$lang_es_sub, 
+                               all_es_tidy$lang_es_wiki, 
+                               paired = T)
 ```
 
 
-```{r, fig.pos = "!t!", fig.height = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of linguistic gender bias, with each point corresponding to a language (Study 1b). Linguistic biases are estimated from models trained on each language using a subtitle corpus (left) and a sample of Wikipedia (right). Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the model estimate."}
+```{r, fig.pos = "!t!", fig.height = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of linguistic gender bias, with each point corresponding to a language (Study 1b). Linguistic biases are estimated from models trained on text in each language from a subtitle corpus (left) and a Wikipedia corpus (right). Larger values indicate a larger bias to associate men with the concept of career and men with the concept of family. Error bands indicate standard error of the model estimate."}
 
 # plot lang vs behavioral
-all_es %>%
+all_es_tidy %>%
   select(language_code, lang_es_sub, lang_es_wiki,
          es_iat_sex_age_order_implicit_resid, n_participants) %>%
-  gather("model", "lang_es", -language_code, -es_iat_sex_age_order_implicit_resid, -n_participants) %>%
-  mutate(model = fct_recode(model, "Subtitle Embeddings" =  "lang_es_sub",
-                                   "Wikipedia Embeddings" =  "lang_es_wiki")) %>%
+  gather("model", "lang_es", -language_code,
+         -es_iat_sex_age_order_implicit_resid, -n_participants) %>%
+  mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
+                                   "Wikipedia Embeddings" = "lang_es_wiki")) %>%
   ggplot(aes(x = lang_es, y = es_iat_sex_age_order_implicit_resid)) +
-  facet_wrap(.~ model) +
+  facet_wrap( . ~ model) +
+  scale_x_continuous(breaks = c( -.5, -0, .5, 1), 
+                     label = c("-.5\n(male-\nfamily)", "0", ".5","1\n(male-\ncareer)") , limits = c(-.6, 1.1)) +
+  scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
+                     label = c("-.075\n(male-\nfamily)", "-.05", "-.025", "0", ".025", ".05\n(male-\ncareer)") , limits = c(-.08, .06) ) +
   geom_smooth(method = "lm", alpha = .1, size = .9) +
   ggrepel::geom_text_repel(aes(label = language_code), 
                            size = 3, box.padding = 0.1) + 
   geom_point(size = .7) + #aes(size  = log(n_participants))) + #
   theme_minimal() +
   ggtitle("Behavioral and Linguistic Gender Biases") +
-  ylab("Residualized Behavioral IAT Gender Bias") +
-  xlab("Linguistic Gender Bias\n (effect size)") +
+  ylab("Behavioral IAT Gender Bias (residualized)\n") +
+  xlab("\nLinguistic Gender Bias\n (effect size)") +
   theme_classic() 
 ```
 
 
 ```{r}
-implicit_corr <- cor.test(all_es$es_iat_sex_age_order_implicit_resid,
-                              all_es$lang_es_wiki) %>%
+implicit_corr <- cor.test(all_es_tidy$es_iat_sex_age_order_implicit_resid,
+                              all_es_tidy$lang_es_wiki) %>%
   tidy()
 
-implicit_controlled <- lm(es_iat_sex_age_order_implicit_resid ~ lang_es_wiki + median_country_age, data = all_es) %>%
+implicit_controlled <- lm(es_iat_sex_age_order_implicit_resid ~ lang_es_wiki + median_country_age, data = all_es_tidy) %>%
   tidy()
 
 lang_beta <- implicit_controlled %>%
@@ -194,17 +225,17 @@ lang_p <- implicit_controlled %>%
   pull(p.value) %>%
   round(2)
 
-explicit_corr <- cor.test(all_es$es_iat_sex_age_order_explicit_resid,
-                              all_es$lang_es_wiki) %>%
+explicit_corr <- cor.test(all_es_tidy$es_iat_sex_age_order_explicit_resid,
+                              all_es_tidy$lang_es_wiki) %>%
   tidy()
 ```
 
-There was no overall difference in the estimates of gender bias between models trained on the subtitle corpora versus the Wikipedia corpora (_t_(`r pluck(corpus_effect_t_test$parameter, "df")`) =  `r pluck(corpus_effect_t_test$statistic, "t")`, _p_ =  `r corpus_effect_t_test$p.value`). Next, we asked about the relationship between  estimate of gender bias for each language and implicit gender bias of participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals. Language gender bias and implicit gender bias were positively correlated (_r_ = `r round(implicit_corr$estimate, 2)`, _p_ =  `r round(implicit_corr$p.value, 2)`; Fig. 2). This relationship held when controlling for median country age in a linear model ($\beta$= `r lang_beta`; _SE_ = `r lang_se`, _p_ = `r lang_p`). Linguistic gender bias was not correlated with explicit gender bias (_r_ = `r round(explicit_corr$estimate, 2)`; _p_ =  `r round(explicit_corr$p.value, 2)`). Table 1 shows the language-level correlations between all variables. [do we want to weight by model size?]
+There was no overall difference in the estimates of gender bias between models trained on the subtitle corpora versus the Wikipedia corpora (_t_(`r pluck(corpus_effect_t_test$parameter, "df")`) =  `r pluck(corpus_effect_t_test$statistic, "t")`, _p_ =  `r corpus_effect_t_test$p.value`). We next asked about the relationship between  estimates of gender bias for each language and implicit gender bias of participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals). Language gender bias and implicit gender bias were positively correlated (_r_ = `r round(implicit_corr$estimate, 2)`, _p_ =  `r round(implicit_corr$p.value, 2)`; Fig. 2). This relationship held when controlling for median country age in a linear model ($\beta$= `r lang_beta`; _SE_ = `r lang_se`, _p_ = `r lang_p`). Linguistic gender bias was not correlated with explicit gender bias (_r_ = `r round(explicit_corr$estimate, 2)`; _p_ =  `r round(explicit_corr$p.value, 2)`). Table 1 shows the language-level correlations between all variables. [do we want to weight by model size?]
 
 
 ```{r corrtable, results="asis", tab.env = "table", cache = F}
 # corr of lanng, behavioral, etc.
-all_vars <- all_es %>%
+all_vars <- all_es_tidy %>%
   select(lang_es_sub, lang_es_wiki, es_iat_sex_age_order_explicit_resid, 
          es_iat_sex_age_order_implicit_resid, per_women_stem) %>%
   rename(`Residualized Behavioral IAT` = "es_iat_sex_age_order_implicit_resid",
@@ -228,10 +259,9 @@ kable(tidy_table, "latex", booktabs = T, escape = F,
 
 ```
 
-
 ```{r, eval = F}
-# exploreing weighting by file size
-tidy_language <- all_es %>%
+# exploring weighting by file size
+tidy_language <- all_es_tidy %>%
   select(language_code, lang_es_sub, lang_es_wiki,
          es_iat_sex_age_order_implicit_resid,
          es_iat_sex_age_order_explicit_resid,
@@ -324,4 +354,5 @@ lm(median_country_age ~ lang_bias, data = wiki, weights = file_size) %>%
 
 
 ```
+
 ### Discussion 

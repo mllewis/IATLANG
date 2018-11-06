@@ -2,11 +2,11 @@
 # Study 2: Gender bias and grammar
 
 The findings in Study 1 are consistent with the possibility that people's implicit biases are in part caused by input from language (language-as-causal) and that the linguistic biases simply reflect existing biases (language-as-reflection). In Study 2, we try to distinguish
-between the two possibilities by examining whether linguistic biases are associated with grammatical gender, a structural aspect of language that is clearly not caused by people's gender biases. [Describe what grammatical gender is]. We predicted that grammatical gender would act to exaggerate the linguistic biases present in the language. To the extent that these are causally related to people's implicit biases, these languages may be providing their speakers with additional exposure to gender biases thereby increasing their speakers' implicit biases.
+between the two possibilities by examining whether linguistic biases are associated with grammatical gender, a structural aspect of language that is clearly not caused by people's gender biases.
 
-not talk about it as grammatical gender
-look at psycholinguistic stuff - mcdonald
+We predicted that grammatical gender would act to exaggerate the linguistic biases present in the language. To the extent that these are causally related to people's implicit biases, these languages may be providing their speakers with additional exposure to gender biases thereby increasing their speakers' implicit biases.
 
+Discuss distinction between grammatical gender and gender marking on persons. 
 
 ### Method
 
@@ -27,9 +27,9 @@ grammar_data <- read_csv(EMPIRICAL_GRAMMAR_PATH) %>%
   rename(language_name = language) %>%
   left_join(lang_key %>% mutate(language_name = tolower(language_name))) %>%
   rename(language_code = "wiki_language_code") %>%
-  mutate(empirical_binary_grammatical_gender = ifelse(empirical_grammatical_gender_score > 0,
-                                                      "empirically_gendered",
-                                                      "empirically_not_gendered"))
+  mutate(empirical_binary_grammatical_gender = 
+           ifelse(empirical_grammatical_gender_score > 0,
+                                                      "Gender", "No Gender"))
 
 LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
 iat_lang_es <- read_csv(LANG_IAT_PATH)
@@ -80,55 +80,37 @@ ci_df <- all_es %>%
 
 ridge_df <- all_es %>%
   ungroup() %>%
-  mutate(empirical_binary_grammatical_gender = fct_rev(empirical_binary_grammatical_gender),
-         empirical_binary_grammatical_gender = fct_recode(empirical_binary_grammatical_gender, 
-             "Gendered" = "empirically_gendered", 
-             "Not Gendered" = "empirically_not_gendered")) %>%
   distinct(language_code, .keep_all = T) %>%
-  filter(!is.na(empirical_binary_grammatical_gender)) 
+  filter(!is.na(empirical_binary_grammatical_gender))  %>%
+  select(language_code, empirical_binary_grammatical_gender,
+         es_iat_sex_age_order_implicit_resid, wikipedia_grammar_type2) %>%
+  gather("grammatical_gender_measure", 
+         "grammatical_gender_value", c(-1,-3)) %>%
+  mutate(grammatical_gender_measure = fct_recode(grammatical_gender_measure, 
+                                                 "Grammatical gender marking type" =
+                                                   "wikipedia_grammar_type2",
+                                                 "Empirical person gender marking type" 
+                                                 = "empirical_binary_grammatical_gender"))
 
-ggplot(ridge_df, aes(y = empirical_binary_grammatical_gender,  
-             x = es_iat_sex_age_order_implicit_resid,
-             color = empirical_binary_grammatical_gender,
-             fill = empirical_binary_grammatical_gender)) +
-  ggridges::geom_density_ridges(alpha = .4, scale = .9, quantile_lines = TRUE, quantiles = 2)  +
+ggplot(ridge_df, aes(x = es_iat_sex_age_order_implicit_resid,  
+             y = grammatical_gender_value,
+             color = grammatical_gender_value,
+             fill = grammatical_gender_value)) +
   scale_color_manual(values = c("blue", "red")) +
   scale_fill_manual(values = c("blue", "red")) +
-  #geom_pointrange(ci_df, aes(y = empirical_binary_grammatical_gender, x= mean, 
-  #                           xmin = ci_lower, xmax= ci_upper)) +
-  geom_text(aes(label = language_code, 
-                y = jitter(as.numeric(as.factor(empirical_binary_grammatical_gender))+ .2, 1.1)
-                ), 
-        color = "black", size = 4) +
-  theme_classic() +
-  ggtitle("Behavioral Gender Bias and Grammar Type") +
-  xlab("Residualized Behavioral IAT Gender Bias") +
-  ylab("Empirical Grammar Type \n(gender marking of IAT person words)") +
-  theme(legend.position = "none",
-        text = element_text(size = 12),
-        axis.text.y = element_text(angle = 90, hjust=0.5, size = 12))
-  
-ggplot(ridge_df, aes(y = wikipedia_grammar_type2,  
-             x = es_iat_sex_age_order_implicit_resid,
-             color = wikipedia_grammar_type2,
-             fill = wikipedia_grammar_type2)) +
+  facet_wrap( . ~grammatical_gender_measure) +
   ggridges::geom_density_ridges(alpha = .4, scale = .9, 
-                                quantile_lines = TRUE, quantiles = 2) + 
-  scale_color_manual(values = c("blue", "red")) +
-  scale_fill_manual(values = c("blue", "red")) +
-  #geom_pointrange(ci_df, aes(y = empirical_binary_grammatical_gender, x= mean, 
-  #                           xmin = ci_lower, xmax= ci_upper)) +
+                                quantile_lines = TRUE, quantiles = 2)  +
   geom_text(aes(label = language_code, 
-                y = jitter(as.numeric(as.factor(wikipedia_grammar_type2))+ .2, 1.1)
-                ), 
+                y = jitter(as.numeric(as.factor(grammatical_gender_value)) + .2, 1.1)), 
         color = "black", size = 4) +
   theme_classic() +
   ggtitle("Behavioral Gender Bias and Grammar Type") +
-  xlab("Residualized Behavioral IAT Gender Bias") +
-  ylab("Theoretical Grammar Type \n(all morphosyntax)") +
+  xlab("Behavioral IAT Gender Bias (residualized)") +
+  ylab("Grammar Type") +
   theme(legend.position = "none",
         text = element_text(size = 12),
-        axis.text.y = element_text(angle = 90, hjust=0.5, size = 12))
+        axis.text.y = element_text(angle = 90, hjust = 0.5, size = 12))
 ```
 
 

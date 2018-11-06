@@ -43,7 +43,6 @@ all_langs <- bind_rows(wiki_langs, subt_langs) %>%
   mutate(id = 1:n()) %>%
   nest(-id)
 
-
 ####
 
 complete <- read_csv(OUTFILE, col_names = c("lang", "model", "category", "x", "y", "z", "w")) %>%

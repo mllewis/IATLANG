@@ -395,6 +395,13 @@ ggplot(all_es, aes(x = wiki,
 
 # Language IAT weighted by speaker population size
 
+# Language Exclusions
+
+* 20 percent from *calculated* vectors
+* averaged across multiple translations
+* what does it look like when you change this criteria
+
+
 
 **References**
 

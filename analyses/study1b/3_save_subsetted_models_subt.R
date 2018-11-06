@@ -75,7 +75,7 @@ save_subsetted_model <- function(current_lang,
     mutate(x =  map(data, get_multi)) %>%
     unnest(x)
   
-  # combine multi and invidual word cases
+  # combine multi and invidual word cases (if multi exists)
   if(nrow(multi_cases) > 0){
     
    processed_vectors <-  single_cases %>%
@@ -84,6 +84,7 @@ save_subsetted_model <- function(current_lang,
       select(-translation_type)
   
   } else {
+    
     processed_vectors <-  single_cases %>%
       arrange(language_code, word, translation_id)  %>%
       select(-translation_type)
