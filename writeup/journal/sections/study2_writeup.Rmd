@@ -67,7 +67,7 @@ lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + w
 ```
 
 
-```{r, fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes grammatical gender. Each label code corresponds to a language. The vertical line corresponds to the group median."}
+```{r, fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes gender. Left panel shows person-marking grammatical gender and right panel shows theoretical global gender marking type. Each label code corresponds to a language. The vertical line corresponds to the group median."}
 
 ci_df <- all_es %>%
   group_by(empirical_binary_grammatical_gender) %>%

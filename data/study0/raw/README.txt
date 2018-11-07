@@ -1,0 +1,4 @@
+EDULIT_DS_06112018192722395.csv is from the same place described in Stoet paper but with more recent years
+
+The United Nations Educational, Scientific and Cultural Organization (UNESCO) reports national statistics on, among other things, education. We used the UNESCO graduation data (http://data.uis.unesco.org) labeled “Dis- tribution of tertiary graduates” in the years 2012 to 2015 in natural sciences, mathematics, statistics, information and communication technologies, engineering, manufacturing,
+and construction (Table S1). The percentage of women among STEM graduates ranged from 12.4% in Macao to 40.7% in Algeria; the median was 25.4%.
