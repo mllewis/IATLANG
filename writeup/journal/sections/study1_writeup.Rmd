@@ -235,7 +235,7 @@ There was no overall difference in the estimates of gender bias between models t
 # corr of lanng, behavioral, etc.
 all_corr_vars <- all_es_tidy %>%
   select(lang_es_sub, lang_es_wiki, es_iat_sex_age_order_explicit_resid, 
-         es_iat_sex_age_order_implicit_resid, per_women_stem, median_country_age, ggi_stoet) %>%
+         es_iat_sex_age_order_implicit_resid, per_women_stem, median_country_age) %>%
   rename(`Residualized Behavioral IAT` = "es_iat_sex_age_order_implicit_resid",
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
           `Language IAT (Subtitles)` = "lang_es_sub",
@@ -301,7 +301,7 @@ tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(1,2,5,6,4,3),]
 
 ```{r}
 kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
-      caption = "Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01.",
+      caption = "Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01. ",
       align = "lrrrrrr") %>%
   column_spec(2:7, width = "1.6cm") %>%
   kable_styling(bootstrap_options = "condensed", 
