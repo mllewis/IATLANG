@@ -5,7 +5,7 @@ library(here)
 # infile 
 PARTICIPANT_DF_IN <- here("data/study0/processed/by_participant_df.csv")
 AGE_DATA_PATH <- here("data/study0/raw/median_country_age_world_factbook.csv") #https://www.cia.gov/library/publications/the-world-factbook/rankorder/2177rank.html
-OBJECTIVE_MEASURES_DF <- here("data/study0/raw/stoet_data.csv") #http://journals.sagepub.com/doi/10.1177/0956797617741719
+OBJECTIVE_MEASURES_DF <- here("data/study0/processed/per_women_stem_by_country.csv") 
 
 # outfile
 COUNTRY_DF_OUT <- here("data/study0/processed/by_country_df.csv")
@@ -35,17 +35,11 @@ behavioral_Ns_by_country <- iat_behavioral_tidy %>%
   rename(n_participants = n)
 
 # objective measures by country
-stoet_data <- read_csv(OBJECTIVE_MEASURES_DF) 
-
-tidy_objective_by_country <- stoet_data %>% 
-  mutate(country_code = countrycode::countrycode(country_name, 'country.name', 'iso2c')) %>%
-  select(country_code, everything()) %>%
-  select(country_code, ggi, per_women_stem) %>% 
-  rename(ggi_stoet = ggi)
+stem_data <- read_csv(OBJECTIVE_MEASURES_DF) 
 
 # make country df
 country_df <- behavioral_means_by_country %>%
-  left_join(tidy_objective_by_country) %>% # note that 10 countries are missing from stoet data
-  left_join(behavioral_Ns_by_country)
+  left_join(stem_data) %>% # note that 10 countries are missing from stoet data
+  left_join(behavioral_Ns_by_country, by = c("country_code", "country_name"))  # hong kong has same code as china
 
 write_csv(country_df, COUNTRY_DF_OUT)

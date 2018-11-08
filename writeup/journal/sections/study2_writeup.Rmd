@@ -39,7 +39,7 @@ iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
   rename(language_code = "wiki_language_code") %>%
   select(language_code, median_country_age, 
          prop_male,log_age, es_iat_sex_age_order_explicit_resid,
-         es_iat_sex_age_order_implicit_resid, per_women_stem, n_participants)
+         es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017, n_participants)
 
 THEORETICAL_GRAMMAR_PATH <- here("data/study2/theoretical_gender_by_lang.csv")
 theoretical_gender <- read_csv(THEORETICAL_GRAMMAR_PATH)  %>%
@@ -67,7 +67,7 @@ lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + w
 ```
 
 
-```{r, fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes gender. Left panel shows person-marking grammatical gender and right panel shows theoretical global gender marking type. Each label code corresponds to a language. The vertical line corresponds to the group median."}
+```{r, fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes gender. Left panel shows person-marking grammatical gender and right panel shows theoretical global gender marking type. Each label code corresponds to a language. The vertical line corresponds to the group median. "}
 
 ci_df <- all_es %>%
   group_by(empirical_binary_grammatical_gender) %>%
@@ -103,7 +103,7 @@ ggplot(ridge_df, aes(x = es_iat_sex_age_order_implicit_resid,
                                 quantile_lines = TRUE, quantiles = 2)  +
   geom_text(aes(label = language_code, 
                 y = jitter(as.numeric(as.factor(grammatical_gender_value)) + .2, 1.1)), 
-        color = "black", size = 4) +
+        color = "black", size = 2) +
   theme_classic() +
   ggtitle("Behavioral Gender Bias and Grammar Type") +
   xlab("Behavioral IAT Gender Bias (residualized)") +
