@@ -4,6 +4,9 @@
 library(tidyverse)
 library(here)
 
+print("calculate es")
+
+
 INFILE <- here("data/study1b/iat_swabs.csv")
 OUTFILE <- here("data/study1b/iat_es_lang.csv")
 

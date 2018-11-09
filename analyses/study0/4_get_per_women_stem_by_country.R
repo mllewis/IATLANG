@@ -4,6 +4,9 @@ library(tidyverse)
 library(here)
 library(janitor)
 
+print("Get prop women STEM by country")
+
+
 RAW_PATH <- here("data/study0/raw/EDULIT_DS_08112018110754920.csv") 
 # from: http://data.uis.unesco.org labeled “Distribution of tertiary graduates by field of study” (same as Stoet & Geary 2018 paper)
 

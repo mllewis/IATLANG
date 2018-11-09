@@ -3,6 +3,7 @@ library(tidyverse)
 library(data.table)
 library(here)
 
+print("save subsetted models")
 
 INFILE <- here("data/study1b/iat_translations_tidy_wiki.csv")
 LANGKEY <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
@@ -60,7 +61,7 @@ save_subsetted_model <- function(current_lang, trans_df, model_prefix, out_model
 }
 
 # get all subsetted models
-walk("zu",
+walk("hi",
   #all_langs, #unique(translations$wiki_language_code), 
      save_subsetted_model, 
      translations, 

@@ -6,6 +6,9 @@ library(lingtypology)
 library(here)
 library(janitor)
 
+print("Get primary language by country")
+
+
 # infile
 COUNTRY_DF_IN <- here("data/study0/processed/by_country_df.csv")
 LANGKEY_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")

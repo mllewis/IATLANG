@@ -4,6 +4,8 @@ library(feather)
 library(modelr)
 library(here)
 
+print("Get by participant DF")
+
 # set params
 MIN_PARTICIPANTS_PER_COUNTRY <- 400 # after all exclusions
 

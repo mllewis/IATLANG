@@ -2,8 +2,8 @@
 
 library(tidyverse)
 library(here)
-INFILE <- here("data/study1b/iat_translations_tidy.csv")
-OUTFILE <- here("data/study2/continuous_gender_by_lang.csv")
+INFILE <- here("data/study1b/iat_translations_tidy_wiki.csv")
+OUTFILE <- here("data/study2/empirical_gender_by_lang.csv")
 
 translations <- read_csv(INFILE) %>%
   filter(!(word %in% c("super-smart", "genius", "super-imaginative", "brilliant", "artistic", "creative")))

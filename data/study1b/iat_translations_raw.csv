@@ -1434,38 +1434,6 @@ super-imaginative,NA,vietnamese,N
 genius,NA,vietnamese,N
 brilliant,NA,vietnamese,N
 super-smart,thông minh,vietnamese,N
-daughter,बेटी/पुत्री,hindi,N
-hers,इसकी/उसकी,hindi,N
-her,उसे/इसे,hindi,N
-she,यह/वह,hindi,N
-sister,बहन,hindi,N
-girl,लड़की,hindi,N
-woman,औरत/स्त्री,hindi,N
-female,मादा/स्त्री,hindi,N
-son,बेटा/पुत्र,hindi,N
-his,उसका/इसका,hindi,N
-him,उसे/इसे,hindi,N
-he,यह/वह,hindi,N
-brother,भाई/अनुज,hindi,N
-boy,लडका/लड़का/बालक,hindi,N
-man,आदमी,hindi,N
-male,नर,hindi,N
-relatives,रिश्तेदार,hindi,N
-wedding,विवाह,hindi,N
-marriage,शादी/विवाह,hindi,N
-cousins,भाई/अग्रज अनुज/बहन,hindi,N
-family,परिवार,hindi,N
-children,बच्चे/बालक,hindi,N
-parents,माता-पिता,hindi,N
-home,घर,hindi,N
-career,पेशा/विकास,hindi,N
-business,व्यापार,hindi,N
-office,दफ्तर/कार्यालय/पद/ऑफिस/दफ़्तर,hindi,N
-salary,वेतन,hindi,N
-corporation,निगम/महापालिका,hindi,N
-professional,व्यवसायी/पेशेवर,hindi,N
-management,प्रबंध,hindi,N
-executive,कार्यकारिणी/मंहगी/विशेष/अधिशासी,hindi,N
 daughter,indodakazi,zulu_panlex,N
 hers,yakhe,zulu_panlex,N
 her,yena,zulu_panlex,N
@@ -1662,3 +1630,63 @@ professional,umfundisi/uthisha,zulu,N
 management,"ukuzuza/ukuphathwa/
 ubuphathi/ukuphatha",zulu,N
 executive,ilimeniyu/imeniyu/isikhulu,zulu,N
+daughter,बेटी,hindi,N
+hers,उसकी/ उसके/ उसका/ इसका/ इसके/ इसकी/ उनका/ उनकी/ उनके/ इनका/ इनकी/ इनके,hindi,N
+her,उस/ उन/ इस/ इन,hindi,N
+she,वह/ यह/ वे/ ये,hindi,N
+sister,बहन,hindi,N
+girl,लड़की,hindi,N
+woman,महिला/ औरत,hindi,N
+female,मादी/ नारी,hindi,N
+son,बेटा,hindi,N
+his,उसकी/ उसके/ उसका/ इसका/ इसके/ इसकी/ उनका/ उनकी/ उनके/ इनका/ इनकी/ इनके,hindi,N
+him,उस/ उन/ इस/ इन,hindi,N
+he,वह/ यह/ वे/ ये,hindi,N
+brother,भैया/ भै,hindi,N
+boy,लड़का,hindi,N
+man,अादमी,hindi,N
+male,नर,hindi,N
+relatives,रिश्तेदार,hindi,M
+wedding,"शादी, विवाह",hindi,M
+marriage,"शादी, विवाह",hindi,M
+cousins,चचेरा भाई/ममेरा भाई/फुफेरा भाई/मौसेरा भाई,hindi,M
+family,परिवार/ ख़ानदान /खानदान,hindi,M
+children,बच्चे,hindi,M
+parents,मा-बाप/ माता पिता,hindi,M
+home,घर,hindi,M
+career,पेशा/ कैरियर,hindi,M
+business,व्यापार,hindi,M
+office,दफ़्तर/दफ्तर,hindi,M
+salary,वेतन/ तनख़्वाह / तनख्वाह,hindi,M
+corporation,महापालिका,hindi,M
+professional,पेशेवर,hindi,M
+management,संचालन/ प्रभंदन/ व्यवस्थापन,hindi,M
+executive,प्रभंदक,hindi,M
+creative,सृजनात्मक/ रचनात्मक,hindi,M
+artistic,कलात्मक,hindi,M
+super-imaginative,कल्पनाशील/अति कल्पनाशील,hindi,M
+genius,प्रतिभा/ प्रतिभाशाली,hindi,M
+brilliant,प्रतिभाशाली/ अति प्रतिभाशाली/अत्यंत प्रतिभावन/ प्रभावशाी,hindi,M
+super-smart,चतुर/ आकर्षक,hindi,M
+relatives,रिश्तेदार,hindi,F
+wedding,शादी/ विवाह,hindi,F
+marriage,शादी/ विवाह,hindi,F
+cousins,चचेरी बहन/ममेरी बहन/फुफेरी बहन/मौसेरी बहन,hindi,F
+family,परिवार/ ख़ानदान /खानदान,hindi,F
+children,बच्चे,hindi,F
+parents,मा-बाप/ माता पिता,hindi,F
+home,घर,hindi,F
+career,पेशा/ कैरियर,hindi,F
+business,व्यापार,hindi,F
+office,दफ़्तर/दफ्तर,hindi,F
+salary,वेतन/ तनख़्वाह / तनख्वाह,hindi,F
+corporation,महापालिका,hindi,F
+professional,पेशेवर,hindi,F
+management,संचालन/ प्रभंदन/ व्यवस्थापन,hindi,F
+executive,प्रभंदक,hindi,F
+creative,सृजनात्मक/ रचनात्मक,hindi,F
+artistic,कलात्मक,hindi,F
+super-imaginative,कल्पनाशील/अति कल्पनाशील,hindi,F
+genius,प्रतिभा/ प्रतिभाशाली,hindi,F
+brilliant,प्रतिभाशाली/ अति प्रतिभाशाली/अत्यंत प्रतिभावन/ प्रभावशाी,hindi,F
+super-smart,चतुर/ आकर्षक,hindi,F

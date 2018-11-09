@@ -3,6 +3,8 @@
 library(tidyverse)
 library(here)
 
+print("tidy translations")
+
 INFILE <- here('data/study1b/iat_translations_raw.csv')
 OUTFILE <- here('data/study1b/iat_translations_tidy_wiki.csv')
 

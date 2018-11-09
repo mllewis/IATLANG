@@ -3,6 +3,8 @@ library(tidyverse)
 library(data.table)
 library(here)
 
+print("save subsetted models")
+
 INFILE <- here("data/study1b/iat_translations_tidy_subt.csv")
 LANGKEY <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
 MODEL_PREFIX <- "/Volumes/wilbur_the_great/subtitle_models/"

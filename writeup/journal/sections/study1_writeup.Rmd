@@ -163,6 +163,8 @@ We used these translations to calculate a gender bias effect size from word embe
 
 We calculated gender bias estimates from word-embedding models that had been trained on texts Wikipedia [@bojanowski2016enriching] and subtitles from movies and TV shows [@vanparidon;@lison, as in Study 1a] in each of our target languages.  We excluded languages from the analysis for which 20% or more of the target words were missing from the model or the model did not exist (see SM for more details). This lead us to exclude one language (Zulu) from the analysis of the Wikipedia corpus and six languages from the analysis of the Subtitle corpus (Chinese, Croatian, Hindi, Japanese, Tagalog, and Zulu).  Our final sample included `r all_es_tidy %>% filter(!is.na(lang_es_wiki)|  !is.na(lang_es_sub)) %>% nrow()` languages in total (_N_~Wikipedia~ = `r filter(all_es_tidy, !is.na(lang_es_wiki)) %>% nrow()`; _N_~Subtitle~ = `r filter(all_es_tidy, !is.na(lang_es_sub)) %>% nrow()`), representing `r  length(unique(all_es_tidy$family))` different language families. We then compared estimates of linguistic gender bias for each language from each model to  the  behavioral IAT gender bias estimated from Project Implicit, averaging across countries whose participants speak the same language.
 
+As before, we included two country level variables in our analysis, percentage of women in STEM fields and median country age. To obtain language-level estimates of these variables, we took the mean across countries whose participants speak the same primary language.
+
 ### Results
 
 ```{r, overall_lang_bias_by_source}
@@ -199,39 +201,7 @@ all_es_tidy %>%
   theme_classic() 
 ```
 
-
-```{r}
-implicit_corr <- cor.test(all_es_tidy$es_iat_sex_age_order_implicit_resid,
-                              all_es_tidy$lang_es_wiki) %>%
-  tidy()
-
-implicit_controlled <- lm(es_iat_sex_age_order_implicit_resid ~ lang_es_wiki + median_country_age, data = all_es_tidy) %>%
-  tidy()
-
-lang_beta <- implicit_controlled %>%
-  filter(term == "lang_es_wiki") %>%
-  pull(estimate) %>%
-  round(2)
-
-lang_se <- implicit_controlled %>%
-  filter(term == "lang_es_wiki") %>%
-  pull(std.error) %>%
-  round(2)
-
-lang_p <- implicit_controlled %>%
-  filter(term == "lang_es_wiki") %>%
-  pull(p.value) %>%
-  round(2)
-
-explicit_corr <- cor.test(all_es_tidy$es_iat_sex_age_order_explicit_resid,
-                              all_es_tidy$lang_es_wiki) %>%
-  tidy()
-```
-
-There was no overall difference in the estimates of gender bias between models trained on the subtitle corpora versus the Wikipedia corpora (_t_(`r pluck(corpus_effect_t_test$parameter, "df")`) =  `r pluck(corpus_effect_t_test$statistic, "t")`, _p_ =  `r corpus_effect_t_test$p.value`). We next asked about the relationship between  estimates of gender bias for each language and implicit gender bias of participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals). Language gender bias and implicit gender bias were positively correlated (_r_ = `r round(implicit_corr$estimate, 2)`, _p_ =  `r round(implicit_corr$p.value, 2)`; Fig. 2). This relationship held when controlling for median country age in a linear model ($\beta$= `r lang_beta`; _SE_ = `r lang_se`, _p_ = `r lang_p`). Linguistic gender bias was not correlated with explicit gender bias (_r_ = `r round(explicit_corr$estimate, 2)`; _p_ =  `r round(explicit_corr$p.value, 2)`). Table 1 shows the language-level correlations between all variables. [do we want to weight by model size?]
-
-
-```{r corrtable, results="asis", tab.env = "table", cache = F}
+```{r get_corrs}
 # corr of lanng, behavioral, etc.
 all_corr_vars <- all_es_tidy %>%
   select(lang_es_sub, lang_es_wiki, es_iat_sex_age_order_explicit_resid, 
@@ -240,19 +210,9 @@ all_corr_vars <- all_es_tidy %>%
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
           `Language IAT (Subtitles)` = "lang_es_sub",
           `Language IAT (Wikipedia)` = "lang_es_wiki",
-          `Percent Women in Stem` = "per_women_stem_2012_2017",
+          `Percent Women in STEM` = "per_women_stem_2012_2017",
           `Median Country Age` = "median_country_age") 
 
-psych_to_mat <- function(psych_thing){
-    new_mat <- matrix(nrow = dim(psych_thing)[1],
-                      ncol = dim(psych_thing)[1],
-                      dimnames = list(rownames(psych_thing),
-                                      colnames(psych_thing)))
-  for (i in 1:dim(psych_thing)[1]){
-    new_mat[i,] = psych_thing[i,]
-  }
-    new_mat
-}
 simple_corr <- psych::corr.test(all_corr_vars, adjust = "none")$r %>%
   as_tibble(rownames = "rowname") %>%
   gather("var2", "simple_r", -rowname)
@@ -279,9 +239,61 @@ tidy_corrs <- simple_corr %>%
                 left_join(partial_corr) %>%
                 left_join(partial_corr_p) 
 
+```
+
+```{r tidy_corrs_for_text}
+
+text_tidy_corrs <- tidy_corrs %>%
+  filter(rowname != var2) %>%
+  mutate_at(vars(simple_r, partial_r, simple_p, partial_p), ~ round(.,2)) %>%
+  rowwise() %>%
+  mutate(r_equality_sign = case_when(simple_p < .01 ~ ", _p_ < .01", 
+                                     TRUE ~ paste0(", _p_ = ", simple_p)),
+          partial_equality_sign = case_when(partial_p < .01 ~  ", _p_ < .01", 
+                                     TRUE ~ paste0(", _p_ = ", partial_p)),
+          r_print_text = paste0("_r_ = ", simple_r , r_equality_sign),
+          partial_print_text = paste0("_r_ = ", partial_r , partial_equality_sign)) %>%
+    mutate_if(is.numeric, ~str_remove(as.character(.), "^0+|^-0+")) 
+
+L_B_sub <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Residualized Behavioral IAT") %>%
+  pull(r_print_text)
+
+L_B_wiki <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Behavioral IAT") %>%
+  pull(r_print_text)
+
+L_B_sub_partial <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Residualized Behavioral IAT") %>%
+  pull(partial_print_text)
+
+L_B_wiki_partial <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Behavioral IAT") %>%
+  pull(partial_print_text)
+
+L_E_sub <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Residualized Explicit Bias") %>%
+  pull(r_print_text)
+
+L_E_wiki <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Explicit Bias") %>%
+  pull(r_print_text)
+
+L_S_sub <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Percent Women in STEM") %>%
+  pull(r_print_text)
+
+L_S_wiki <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Percent Women in STEM") %>%
+  pull(r_print_text)
+```
+
+There was no overall difference in the estimates of gender bias between models trained on the subtitle corpora versus the Wikipedia corpora (_t_(`r pluck(corpus_effect_t_test$parameter, "df")`) =  `r pluck(corpus_effect_t_test$statistic, "t")`, _p_ =  `r corpus_effect_t_test$p.value`). We next asked about the relationship between  estimates of gender bias for each language and implicit gender bias of participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals). Implicit gender bias were positively correlated with estimates of language bias from both Subtitles (`r L_B_sub`) and Wikipedia (`r L_B_wiki`; Fig. 2, Table 1 shows the language-level correlations between all variables). The relationship between behavioral bias and language bias remained reliable after partialling out the effect of median country age  (Subtitles: `r L_B_sub_partial`; Wikipedia: `r L_B_wiki_partial`). Linguistic gender bias was not correlated with explicit gender bias (Subtitles: `r L_E_sub`; Wikipedia: `r L_E_wiki`). Finally, estimates of language bias from the Subtitles corpus were correlated with the objective measure of gender equality, percentage of women in STEM fields (`r L_S_sub`), though this relationship was not reliable for the Wikipedia corpus (`r L_S_wiki`). <!-- do we want to weight by model size, see repo history for analyses in this file -->
+
+```{r}
 print_tidy_corrs <- tidy_corrs %>%
   filter(rowname != var2) %>%
-  mutate_at(vars(simple_p,partial_p), ~ case_when(
+  mutate_at(vars(simple_p, partial_p), ~ case_when(
     . < .01 ~ "**", . < .05 ~ "*",  TRUE ~ "")) %>%
   mutate_at(vars(simple_r, partial_r), ~ round(.,2)) %>%
   mutate_if(is.numeric, ~str_remove(as.character(.), "^0+|^-0+")) %>%
@@ -299,11 +311,9 @@ tidy_corrs_to_print <- print_tidy_corrs %>%
   rename(" " = "rowname")
 
 tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(1,2,5,6,4,3),]
-```
 
-```{r}
 kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
-      caption = "Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01. ",
+      caption = "Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01.",
       align = "lrrrrrr") %>%
   column_spec(2:7, width = "1.6cm") %>%
   kable_styling(bootstrap_options = "condensed", 
@@ -311,100 +321,6 @@ kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
 
 ```
 
-```{r, eval = F}
-# exploring weighting by file size
-tidy_language <- all_es_tidy %>%
-  select(language_code, lang_es_sub, lang_es_wiki,
-         es_iat_sex_age_order_implicit_resid,
-         es_iat_sex_age_order_explicit_resid,
-         median_country_age,
-         per_women_stem_2012_2017) %>%
-  gather("source", "lang_bias", c(-1, -4:-7)) %>%
-  rowwise() %>%
-  mutate(source = str_split(source, "es_")[[1]][2]) %>%
-  filter(!is.na(lang_bias)) %>%
-  rename(wiki_language_code = language_code)
-
-SIZE_FILE <- here("data/study1b/language_weights.csv") 
-sizes <- read_csv(SIZE_FILE)
-all_df <- tidy_language %>%
-  left_join(sizes) 
-
-
-wiki = all_df %>%
-  filter(source == "wiki")
-
-wiki2 = all_df %>%
-  filter(source == "wiki") %>%
-  filter(!(wiki_language_code %in% c("hi", "tl", "zh" , "zu")))
-
-sub = all_df %>%
-  filter(source == "sub")
-
-
-# sub
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = sub) %>%
-  summary()
-
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = sub,
-   weights = file_size) %>%
-  summary()
-
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = sub, weights = file_size) %>%
-  summary()
-
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = sub) %>%
-  summary()
-
-
-# wiki
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = wiki) %>%
-  summary()
-
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias, data = wiki,
-   weights = file_size) %>%
-  summary()
-
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = wiki, weights = file_size) %>%
-  summary()
-
-lm(es_iat_sex_age_order_implicit_resid ~ lang_bias  + median_country_age, data = wiki) %>%
-  summary()
-
-
-# per_women_stem_2012_2017
-
-lm(per_women_stem_2012_2017 ~ lang_bias, data = sub) %>%
-  summary()
-
-lm(per_women_stem_2012_2017 ~ lang_bias, data = sub, weights = file_size) %>%
-  summary()
-
-lm(per_women_stem_2012_2017 ~ lang_bias + median_country_age, data = sub, weights = file_size) %>%
-  summary()
-
-lm(per_women_stem_2012_2017 ~ lang_bias, data = wiki) %>%
-  summary()
-
-lm(per_women_stem_2012_2017 ~ lang_bias, data = wiki, weights = file_size) %>%
-  summary()
-
-lm(per_women_stem_2012_2017 ~ lang_bias, data = wiki) %>%
-  summary()
-
-
-
-# median_country_age
-lm(median_country_age ~ lang_bias, data = sub, weights = file_size) %>%
-  summary()
-
-lm(median_country_age ~ lang_bias, data = wiki, weights = file_size) %>%
-  summary()
-
-
-
-
-
-```
-
 ### Discussion 
+
+Study 1 suggests that t

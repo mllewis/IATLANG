@@ -3,6 +3,9 @@
 library(tidyverse)
 library(here)
 
+print("get weights")
+
+
 LANGS_NUM_PARICIPANTS <- here("data/study0/processed/by_language_df.csv") 
 LANGS <- here("data/study0/processed/top_lang_by_country_ethnologue.csv") 
 MODEL_PREFIX_SUB <- "/Volumes/wilbur_the_great/subtitle_models/sub."
@@ -60,8 +63,4 @@ all_sizes <- full_join(model_sizes, num_participants) %>%
         
 write_csv(all_sizes, FILEOUT)
 
-all_sizes %>%
-  filter(wiki_language_code != "en") %>%
-ggplot(aes(x = file_size, y = n_participants)) +
-  geom_text(aes(label = wiki_language_code)) +
-  facet_wrap(.~source)
+

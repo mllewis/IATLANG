@@ -7,6 +7,9 @@ library(parallel)
 library(here)
 source(here("analyses/study1b/0_IAT_utils.R"))
 
+print("get swabs (this is slow)")
+
+
 MODEL_PATH_WIKI <- here("data/study1b/wiki_subsetted_models/calculated/")
 MODEL_PATH_SUB <- here("data/study1b/subt_subsetted_models/calculated/")
 OUTFILE <- here("data/study1b/iat_swabs.csv")

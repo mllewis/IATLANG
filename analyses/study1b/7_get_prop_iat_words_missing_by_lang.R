@@ -3,6 +3,8 @@
 library(tidyverse)
 library(here)
 
+print("get exclusions")
+
 CUTOFF <- .2 # maximum prop missing from calculated vectors
 FILEOUT <- here("data/study1b/language_exclusions.csv") 
 

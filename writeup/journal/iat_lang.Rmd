@@ -24,7 +24,7 @@ abstract: |
   this is an abstract
 
   
-keywords          : "cultural norms, implicit association task (IAT), gender"
+keywords          : "cultural stereotypes, implicit association task (IAT), gender"
 wordcount         : "X"
 
 bibliography      : ["library.bib"]
@@ -46,7 +46,7 @@ output            : papaja::apa6_pdf
 ```{r setup, include = FALSE}
 library(papaja)
 library(kableExtra)
-source("helpers/print_corr_table.R")
+source("helpers/psych_to_mat.R")
 ```
 
 ```{r analysis-preferences}
@@ -93,9 +93,6 @@ r_refs(file = "library.bib")
 ---
 nocite: | 
   @caliskan2017semantics
-  @wps
-  @epi
-  @whorf1945grammatical
   @ciafactbook
   @nosek
 ...

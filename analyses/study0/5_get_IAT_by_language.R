@@ -1,6 +1,8 @@
-## (4) Get behavioral IAT scores by language
+## (5) Get behavioral IAT scores by language
 library(tidyverse)
 library(here)
+
+print("get IAT by language")
 
 # infile
 COUNTRY_DF_IN <- here("data/study0/processed/by_country_df.csv")

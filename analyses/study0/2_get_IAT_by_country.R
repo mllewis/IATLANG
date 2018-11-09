@@ -2,6 +2,9 @@
 library(tidyverse)
 library(here)
 
+
+print("Get by country DF")
+
 # infile 
 PARTICIPANT_DF_IN <- here("data/study0/processed/by_participant_df.csv")
 AGE_DATA_PATH <- here("data/study0/raw/median_country_age_world_factbook.csv") #https://www.cia.gov/library/publications/the-world-factbook/rankorder/2177rank.html

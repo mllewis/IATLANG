@@ -2,19 +2,16 @@
 # Study 2: Gender bias and grammar
 
 The findings in Study 1 are consistent with the possibility that people's implicit biases are in part caused by input from language (language-as-causal) and that the linguistic biases simply reflect existing biases (language-as-reflection). In Study 2, we try to distinguish
-between the two possibilities by examining whether linguistic biases are associated with grammatical gender, a structural aspect of language that is clearly not caused by people's gender biases.
+between these two possibilities by examining whether linguistic biases are associated with grammatical gender, a structural aspect of language that is clearly not caused by people's gender biases. 
 
-We predicted that grammatical gender would act to exaggerate the linguistic biases present in the language. To the extent that these are causally related to people's implicit biases, these languages may be providing their speakers with additional exposure to gender biases thereby increasing their speakers' implicit biases.
+Languages can indicate gender in their grammar using a variety of different strategies [@corbett1991]. One way languages grammatically indicate gender is by marking the biological sex of a person in a referential noun phrase (“el ni&ntilde;o alto” (the tall boy) versus “la ni&ntilde;a alta” (the tall girl)). Many languages also extend this strategy beyond biological sex by assinging inantimate objects a "gender" and marking that assigned gender on referring phrases ("el arbol alto" (the tall tree) versus "la casa alta" (the tall house)). 
 
-Discuss distinction between grammatical gender and gender marking on persons. 
+We hypothesize that grammatical gender might influence cultural stereotypes specifically in cases when it marks biological sex when refering to people. In this cases, grammatical gender highlights the gender of the person and thereby might exaggerate the gender biases present in the language. To the extent that these are causally related to people's implicit biases, languages that mark grammatical mark gender on people may be providing their speakers with additional exposure to gender biases thereby increasing their speakers' implicit biases. In Study 2, we test this hypothesis by asking whether languages that have grammatical marking of gender on people tend to have speakers with larger implicit biases, as measured by the IAT.
 
 ### Method
 
-We coded each of the  languages in our sample (Study 1) for grammatical gender. We used a coarse binary coding scheme, categorizing a language as encoding
-grammatical gender if it made any gender distinction on noun classes
-(masculine, feminine, common or neuter), and as not encoding gender
-grammatically otherwise. 
-
+We coded the 26 languages in our sample for two variables: whether or not the grammar made any morphosyntactic gender distinction ("Grammatical General Gender") and whether or not the grammar marked gender on persons specifically ("Grammatical General Gender"). We coded Grammatical General Gender by consulting the WALS typological database [Feature 32a;
+@wals] where available and additional resources as necessary. A language was coded as marking General Grammatical Gender if it made a male-female distinction in the grammar. We coded Grammatical Person Gender on the basis of our translations of the 32 IAT words from Study 1b. A language was coded as marking Person Grammatical Gender if it made a gender distinction for any of the target person words. 
 
 ### Results and Discussion
 
@@ -22,7 +19,7 @@ grammatically otherwise.
 LANGKEY_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
 lang_key <- read_csv(LANGKEY_PATH)
 
-EMPIRICAL_GRAMMAR_PATH <- here("data/study2/empirical_gender_by_lang.csv")
+EMPIRICAL_GRAMMAR_PATH <- here("data/study2/person_gender_by_lang.csv")
 grammar_data <- read_csv(EMPIRICAL_GRAMMAR_PATH) %>%
   rename(language_name = language) %>%
   left_join(lang_key %>% mutate(language_name = tolower(language_name))) %>%
@@ -41,42 +38,50 @@ iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
          prop_male,log_age, es_iat_sex_age_order_explicit_resid,
          es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017, n_participants)
 
-THEORETICAL_GRAMMAR_PATH <- here("data/study2/theoretical_gender_by_lang.csv")
+THEORETICAL_GRAMMAR_PATH <- here("data/study2/general_gender_by_lang.csv")
 theoretical_gender <- read_csv(THEORETICAL_GRAMMAR_PATH)  %>%
   select(language_code, wikipedia_grammar_type) %>%
     mutate(wikipedia_grammar_type2 = ifelse(wikipedia_grammar_type %in%  c("none", "CN"),
                                           "No Gender", 
                                           "Gender")) 
 
+weights <- read_csv("/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/data/study1b/language_weights.csv") %>%
+  select(wiki_language_code, n_participants) %>%
+  rename(language_code = wiki_language_code)
+
 all_es <- left_join(iat_behavioral_es, iat_lang_es, 
                     by = "language_code") %>%
   left_join(grammar_data) %>%
-  left_join(theoretical_gender) 
+  left_join(theoretical_gender)  %>%
+  mutate_if(is.character, as.factor) %>%
+  left_join(weights)
 ```
 
-```{r, eval = F}
+```{r}
 # implicit
-lm(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender + wikipedia_grammar_type2 + median_country_age, 
+lm(es_iat_sex_age_order_implicit_resid ~ wikipedia_grammar_type2 + median_country_age,weights = n_participants,
        data = all_es) %>%
   summary()
+
+# implicit
+#lm(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender + wikipedia_grammar_type2 + median_country_age, weights = n_participants,
+ #      data = all_es) %>%
+#  summary()
 
 # explicit
-lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + wikipedia_grammar_type2 + median_country_age, 
-       data = all_es) %>%
+lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + wikipedia_grammar_type2 + median_country_age, data = all_es) %>%
   summary()
+
+
 ```
 
 
-```{r, fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes gender. Left panel shows person-marking grammatical gender and right panel shows theoretical global gender marking type. Each label code corresponds to a language. The vertical line corresponds to the group median. "}
+```{r, fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes gender. Left panel shows person-marking grammatical gender and right panel shows theoretical global gender marking type. Each label code corresponds to a language. The vertical line corresponds to the group median."}
 
 ci_df <- all_es %>%
   group_by(empirical_binary_grammatical_gender) %>%
   langcog::multi_boot_standard(col = "es_iat_sex_age_order_implicit_resid") %>%
-  ungroup()%>%
-    mutate(empirical_binary_grammatical_gender = fct_rev(empirical_binary_grammatical_gender),
-         empirical_binary_grammatical_gender = fct_recode(empirical_binary_grammatical_gender, 
-             "Gendered" = "empirically_gendered", 
-             "Not Gendered" = "empirically_not_gendered"))
+  ungroup()
 
 ridge_df <- all_es %>%
   ungroup() %>%
@@ -87,7 +92,7 @@ ridge_df <- all_es %>%
   gather("grammatical_gender_measure", 
          "grammatical_gender_value", c(-1,-3)) %>%
   mutate(grammatical_gender_measure = fct_recode(grammatical_gender_measure, 
-                                                 "Grammatical gender marking type" =
+                                                 "General gender marking type" =
                                                    "wikipedia_grammar_type2",
                                                  "Empirical person gender marking type" 
                                                  = "empirical_binary_grammatical_gender"))
@@ -113,7 +118,3 @@ ggplot(ridge_df, aes(x = es_iat_sex_age_order_implicit_resid,
         axis.text.y = element_text(angle = 90, hjust = 0.5, size = 12))
 ```
 
-
-
-
- 
