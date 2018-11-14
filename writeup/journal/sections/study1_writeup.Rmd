@@ -238,11 +238,9 @@ tidy_corrs <- simple_corr %>%
                 left_join(simple_corr_p) %>%
                 left_join(partial_corr) %>%
                 left_join(partial_corr_p) 
-
 ```
 
 ```{r tidy_corrs_for_text}
-
 text_tidy_corrs <- tidy_corrs %>%
   filter(rowname != var2) %>%
   mutate_at(vars(simple_r, partial_r, simple_p, partial_p), ~ round(.,2)) %>%
