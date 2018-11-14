@@ -1,3 +1,7 @@
+```{r}
+library(tidyverse)
+library(here)
+```
 
 # Study 2: Gender bias and grammar
 
@@ -16,6 +20,7 @@ We coded the 26 languages in our sample for two variables: whether or not the gr
 ### Results and Discussion
 
 ```{r}
+
 LANGKEY_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
 lang_key <- read_csv(LANGKEY_PATH)
 
@@ -57,10 +62,10 @@ all_es <- left_join(iat_behavioral_es, iat_lang_es,
   left_join(weights)
 ```
 
-```{r}
+```{r, eval = F}
 # implicit
-lm(es_iat_sex_age_order_implicit_resid ~ wikipedia_grammar_type2 + median_country_age,weights = n_participants,
-       data = all_es) %>%
+lm(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender +  median_country_age, weights = n_participants,
+       data = all_es %>% filter(language_code != "hi") ) %>%
   summary()
 
 # implicit
@@ -69,10 +74,12 @@ lm(es_iat_sex_age_order_implicit_resid ~ wikipedia_grammar_type2 + median_countr
 #  summary()
 
 # explicit
-lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + wikipedia_grammar_type2 + median_country_age, data = all_es) %>%
+lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + wikipedia_grammar_type2 + median_country_age, weights = n_participants, data = all_es) %>%
+  car::vif()
   summary()
 
-
+  
+count(all_es, empirical_binary_grammatical_gender, wikipedia_grammar_type2)
 ```
 
 
