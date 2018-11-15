@@ -25,31 +25,8 @@ misersky_norms <- read_csv(MISERSKYPATH) %>%
 
 all_norms <- full_join(gabriel_norms, misersky_norms) %>%
   filter(!is.na(human_english_male_rating_m)) %>%
-  mutate(quartile = ntile(human_english_male_rating_m, 4)) %>%
+  mutate(quartile = ntile(human_english_male_rating_m,4)) %>%
   arrange(quartile)
 
 cor.test(all_norms$human_english_male_rating_g, 
          all_norms$human_english_male_rating_m)
-
-
-##Selected items and human rating quantile:
-#dancers	1
-#nurses	1
-#singers	1
-#cleaners	1
-#secretaries	1
-#waiters	2
-#journalists	2
-#bakers	2
-#authors	2
-#athletes	2
-#lawyers	3
-#doctors/physicians	3
-#professors	3
-#governors	3
-#judges	3
-#sailors	4
-#postmen	4
-#mechanics	4
-#hunters	4
-#firefighters	4

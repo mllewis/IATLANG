@@ -49,7 +49,7 @@ country_ns_final <- participant_df %>%
 Number of participants by country after exclusions. Our final sample `r format(nrow(participant_df), big.mark=",")` participants from `r nrow(country_ns_final)` countries. Participants were exclude who:
 
 * did not have complete gender, country, age, and implicit IAT measures (PERCENT)
-* were from countries with less than 400 participants
+* were from countries with less than 400 participants (in the  "Correlations by language exclusion threshold" section below we show analyses with a range of threshold values)
 * had average latencies for either critical block were over 1,800 ms or whose average overall latency was above 1,500 ms (as in Nosek, Banaji, & Greenwald, 2002; PERCENT)
 * made excess of 25% errors in any single critical block (as in Nosek, Banaji, & Greenwald, 2002; PERCENT). 
 
@@ -395,11 +395,63 @@ ggplot(all_es, aes(x = wiki,
 
 # Language IAT weighted by speaker population size
 
-# Language Exclusions
+# Language exclusions
 
 * 20 percent from *calculated* vectors
 * averaged across multiple translations
 * what does it look like when you change this criteria
+
+
+# Correlations by language exclusion threshold
+In the main text, we report behavioral IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the main text remains broadly the same when larger thresholds of minimum number of participants per country are used. The plot below shows pairwise correlations between the language bias measures and three behavioral/objective measures: Residualized behavorial IAT, residualized explicit IAT, and percent women in STEM. As in the main text, the residualized values are participant age, sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the p-value of the pairwise Pearson's _r_ coefficient.
+
+```{r, fig.width = 9, fig.height = 5}
+exclusions_df <- here("data/SI/corrs_by_exclusions.csv")
+
+corr_exclusions <- read_csv(exclusions_df,
+                             col_names = c("var1", "var2", "simple_corr", "simple_p",
+                                           "partial_corr", "partial_p", "min_per_country",
+                                           "complete_explicit", "n_language_sub",
+                                           "n_languages_wiki")) %>%
+         filter(min_per_country >= 400)
+
+corr_exclusions_tidy <- corr_exclusions %>%
+  rowwise()%>%
+  mutate(var1 = sort(c(var1, var2))[1],
+         var2 = sort(c(var1, var2))[2]) %>%
+  distinct(var1, var2, min_per_country, complete_explicit, .keep_all = T) %>%
+  filter(var1 != var2) %>%
+  filter(!(var1 %in%  c("Median Country Age", "Residualized Behavioral IAT")) ) %>%
+  mutate(simple_p_cat = case_when(simple_p < .05 ~ "p < .05",
+                              simple_p < .1 ~ "p < .1",
+                              TRUE ~ "p > .1"),
+         n = case_when(var1 == "Language IAT (Subtitles)" ~ n_language_sub, 
+                       TRUE ~ n_languages_wiki))
+
+women_stem_df <- corr_exclusions_tidy %>%
+ filter(var1 == "Percent Women in STEM") %>%
+ mutate(var1 = var2,
+        var2 = "Percent Women in STEM") %>%
+ distinct(var1, var2)
+
+corr_exclusions_tidy %>%
+  filter(var1 != "Percent Women in STEM",
+         !complete_explicit,) %>%
+  bind_rows(women_stem_df) %>%
+  filter(!is.na(complete_explicit)) %>%
+  ggplot(aes(x = min_per_country, y = simple_corr, 
+             group = complete_explicit)) +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  geom_line() +
+  ggtitle("Language IAT correlations with range \nof minimum participants per country thresholds") +
+  #geom_line(aes(linetype = complete_explicit)) +
+  geom_point(aes(color = simple_p_cat, size = n)) +
+  facet_grid(var1 ~ var2) +
+  labs(color = "p-value", size = "# of languages") +
+  ylab("Pairwise Correlation (Pearson's r)") +
+  xlab("Minimum number of participants per country") +
+  theme_bw()
+```
 
 
 

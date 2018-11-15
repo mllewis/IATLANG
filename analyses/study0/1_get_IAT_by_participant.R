@@ -44,7 +44,8 @@ raw_iat_behavioral_complete <- raw_iat_behavioral %>%
          !is.na(age),
          !is.na(order),
          !is.na(country_code), 
-         !is.na(overall_iat_D_score))
+         !is.na(overall_iat_D_score)) 
+         #!is.na(explicit_dif))
 
 # do behavioral_exclusions
 # same exclusions as Nosek, Banjali, & Greenwald (2002), pg. 104. 
@@ -63,8 +64,7 @@ iat_behavioral_filtered <- raw_iat_behavioral_complete %>%
 country_ns <- iat_behavioral_filtered %>%
   count(country_code)  %>%
   filter(n >= MIN_PARTICIPANTS_PER_COUNTRY) %>%
-  arrange(-n)
-
+  arrange(n) 
 iat_behavioral_filtered_dense_country <- raw_iat_behavioral_complete %>%
   select(overall_iat_D_score, sex, log_age, education, order, 
          explicit_dif, explicit_dif, country_name, country_code) %>%

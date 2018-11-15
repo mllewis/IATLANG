@@ -115,7 +115,7 @@ Having validated our method, we next turn toward examining the relationship betw
 ### Methods
 ```{r read_in_es_data}
 LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
-iat_lang_es <- read_csv(LANG_IAT_PATH) 
+iat_lang_es <- read_csv(LANG_IAT_PATH)
 
 LANG_FAMILY_PATH <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
 lang_family <- read_csv(LANG_FAMILY_PATH) %>%
@@ -292,7 +292,7 @@ There was no overall difference in the estimates of gender bias between models t
 print_tidy_corrs <- tidy_corrs %>%
   filter(rowname != var2) %>%
   mutate_at(vars(simple_p, partial_p), ~ case_when(
-    . < .01 ~ "**", . < .05 ~ "*",  TRUE ~ "")) %>%
+    . < .01 ~ "**", . < .05 ~ "*",  . < .1 ~ "+", TRUE ~ "")) %>%
   mutate_at(vars(simple_r, partial_r), ~ round(.,2)) %>%
   mutate_if(is.numeric, ~str_remove(as.character(.), "^0+|^-0+")) %>%
   mutate(partial_print = case_when(
@@ -311,7 +311,7 @@ tidy_corrs_to_print <- print_tidy_corrs %>%
 tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(1,2,5,6,4,3),]
 
 kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
-      caption = "Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01.",
+      caption = "Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.",
       align = "lrrrrrr") %>%
   column_spec(2:7, width = "1.6cm") %>%
   kable_styling(bootstrap_options = "condensed", 
