@@ -300,16 +300,15 @@ shinyApp(
 )
 ```
 
-# Replication of Caliskan et al. (2017) 
+# Replication of Caliskan et al. (2017){.tabset}
 
-```{r english_language_career_es}
+```{r english_language_caliskan_es_wiki}
 CALISKAN_WIKI_PATH <- here("data/SI/caliskan_wiki_es.csv")
 wiki_es <- read_csv(CALISKAN_WIKI_PATH,
                             col_names = c("test", "study_name", "wiki"))
 
-CALISKAN_PATH <- here("data/SI/caliskan_es.csv")
+CALISKAN_PATH <- here("data/SI/caliskan_paper_es.csv")
 caliskan_es <- read_csv(CALISKAN_PATH)
-
 all_es <- wiki_es %>%
   left_join(caliskan_es) %>%
   gather("es_source", "d", 4:6)  %>%
@@ -350,21 +349,72 @@ all_es <- wiki_es %>%
          es_source = fct_recode(es_source,
                                 `Common Crawl (GloVe)` = "AC_glove",
                                 `Google News (word2vec)` = "AC_w2v"))
-
 gender_bias_es_wiki <- filter(all_es, study_name == "gender-bias-career-family")$wiki[1]
-
 gender_bias_es_cc <- filter(all_es, study_name == "gender-bias-career-family" & es_source == "Common Crawl (GloVe)" )$d[1]
-
 gender_bias_es_gn <- filter(all_es, study_name == "gender-bias-career-family" & es_source == "Google News (word2vec)")$d[1]
+
 ```
 
-Here we replicate the original set of Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) findings using the model trained on English Wikipedia. The embedding been pre-trained model on the corpus of English Wikipedia using the fastText algorithm (a variant of word2vec; @bojanowski2016enriching; available here: https://github.com/facebookresearch/fastText/). The model contains 2,519,370 words with each word represented by a 300 dimensional vector. 
+```{r english_language_caliskan_es_sub}
+CALISKAN_SUB_PATH <- here("data/SI/caliskan_sub_es.csv")
+sub_es <- read_csv(CALISKAN_SUB_PATH,
+                            col_names = c("test", "study_name", "sub")) 
 
-Using the Wikipedia-trained model, we calculate an effect size for each of the 10 biases reported in CBN which correspond to behavioral IAT results existing in the literature:   flowers/insects--pleasant/unpleasant, instruments/weapons--pleasant/unpleasant, European-American/Afro-American--pleasant/unpleasant, males/females--career/family, math/arts--male/female, science/arts--male/female, mental-disease/physical-disease--permanent/temporary, and young/old--pleasant/unpleasant (labeled as Word-Embedding Association Test (WEAT) 1-10 in CBN). Note that CBN test three versions of race bias. We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous to the behavioral effect size measure  where larger values indicate larger gender bias.
+all_es_sub <- sub_es %>%
+  left_join(caliskan_es) %>%
+  gather("es_source", "d", 4:6)  %>%
+  filter(es_source != "original") %>%
+  mutate(study_name2 = case_when(test == "WEAT_1" ~ "flowers-insects",
+                                  test == "WEAT_2" ~  "instruments-weapons",
+                                  test == "WEAT_3" ~  "race", 
+                                  test == "WEAT_4" ~  "race",
+                                  test == "WEAT_5" ~  "race", 
+                                  test == "WEAT_6" ~  "gender-career",
+                                  test == "WEAT_7" ~  "gender-math",
+                                  test == "WEAT_8" ~  "gender-science",
+                                  test == "WEAT_9" ~  "mental-physical",
+                                  test == "WEAT_10" ~  "age"),
+         WEAT_name = case_when(test == "WEAT_1" ~ "(WEAT 1)",
+                                  test == "WEAT_2" ~  "(WEAT 2)",
+                                  test == "WEAT_3" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_4" ~  "(WEAT 3-5)",
+                                  test == "WEAT_5" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_6" ~  "(WEAT 6)",
+                                  test == "WEAT_7" ~  "(WEAT 7)",
+                                  test == "WEAT_8" ~  "(WEAT 8)",
+                                  test == "WEAT_9" ~  "(WEAT 9)",
+                                  test == "WEAT_10" ~  "(WEAT 10)"),
+         point_color = study_name2,
+         study_name2 = paste0(as.character(study_name2),
+                              "\n", WEAT_name),
+         study_name2 = ifelse(es_source == "AC_w2v" & 
+                                test %in% c("WEAT_1", 
+                                            "WEAT_2",
+                                            "WEAT_3",
+                                            "WEAT_7", 
+                                            "WEAT_8", 
+                                            "WEAT_9", 
+                                            "WEAT_10", 
+                                            "WEAT_6"),
+                              study_name2, ""), 
+         es_source = fct_recode(es_source,
+                                `Common Crawl (GloVe)` = "AC_glove",
+                                `Google News (word2vec)` = "AC_w2v"))
 
-The figure below shows the effect size measures derived from the English Wikipedia corpus plotted against effect size estimates reported by CBN from two different models (trained on the Common Crawl and  Google News corpora). With the exception of biases related to race and age, effect sizes from the Wikipedia corpus are comparable to those reported by CBN. In particular, for the gender-career IAT---the bias relevant to our current purposes---we estimate the effect size to be  `r round(gender_bias_es_wiki,2)`, while CBN estimates it as approximately  `r round(mean(c(gender_bias_es_cc,gender_bias_es_gn)),2)`.
+gender_bias_es_sub <- filter(all_es_sub, study_name == "gender-bias-career-family")$sub[1]
+gender_bias_es_cc_sub <- filter(all_es_sub, study_name == "gender-bias-career-family" & es_source == "Common Crawl (GloVe)" )$d[1]
+gender_bias_es_gn_sub <- filter(all_es_sub, study_name == "gender-bias-career-family" & es_source == "Google News (word2vec)")$d[1]
 
-```{r, fig.width = 5, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia corpus.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
+```
+
+Here we replicate the original set of Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) findings using the models trained on the corpora used in our paper, English Wikipedia and Subtitles.
+
+For both the Wikipedia and Subtitle trained models, we calculate an effect size for each of the 10 biases reported in CBN which correspond to behavioral IAT results existing in the literature:   flowers/insects--pleasant/unpleasant, instruments/weapons--pleasant/unpleasant, European-American/Afro-American--pleasant/unpleasant, males/females--career/family, math/arts--male/female, science/arts--male/female, mental-disease/physical-disease--permanent/temporary, and young/old--pleasant/unpleasant (labeled as Word-Embedding Association Test (WEAT) 1-10 in CBN). Note that CBN test three versions of race bias. We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous to the behavioral effect size measure  where larger values indicate larger gender bias.
+
+The figure below shows the effect size measures derived from the English Wikipedia corpus and the English Subtitle corpus plotted against effect size estimates reported by CBN from two different models (trained on the Common Crawl and  Google News corpora). With the exception of biases related to race and age, effect sizes from our corpora are comparable to those reported by CBN. In particular, for the gender-career IAT---the bias relevant to our current purposes---we estimate the effect size to be  `r round(gender_bias_es_wiki,2)`, while CBN estimates it as approximately  `r round(mean(c(gender_bias_es_cc,gender_bias_es_gn)),2)`.
+
+## Wikipedia
+```{r, fig.width = 5, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right corpora).  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
 
 ggplot(all_es, aes(x = wiki, 
                    y = d, 
@@ -376,6 +426,36 @@ ggplot(all_es, aes(x = wiki,
   xlim(-.6, 2.2) +
   ggtitle("Language-Embedding IAT biases") +
   xlab("Effect size (Wikipedia corpus)") +
+  ylab("Effect size (Caliskan, et al., 2017)") +
+  geom_text_repel(aes(label = study_name2), 
+                             force = 5, 
+                             color = "black", 
+                             size = 2.3, 
+                             fontface = 'bold', 
+                             point.padding = 1) +
+  theme_minimal() +
+  scale_shape_discrete(name = "Caliskan et al. model") +
+  scale_color_discrete(guide = FALSE) +
+  theme(text = element_text(size = 9),
+        legend.position = c(.75, 0.15),
+        legend.background = element_rect(fill = "white"),
+        legend.text = element_text(size = 9-1),
+        legend.margin = margin(3, 3, 0, 3, unit = 'pt'))
+```
+
+## Subtitles
+```{r, fig.width = 5, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right corpora).  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
+
+ggplot(all_es_sub, aes(x = sub, 
+                   y = d, 
+                   shape = es_source, 
+                   color = point_color)) +
+  geom_abline(intercept = 0, slope = 1, linetype = 2, color = "darkgrey") +
+  geom_point(size = 2.5) +
+  ylim(-.6, 2.2) +
+  xlim(-.6, 2.2) +
+  ggtitle("Language-Embedding IAT biases") +
+  xlab("Effect size (Subtitle corpus)") +
   ylab("Effect size (Caliskan, et al., 2017)") +
   geom_text_repel(aes(label = study_name2), 
                              force = 5, 
@@ -450,6 +530,7 @@ corr_exclusions_tidy %>%
   labs(color = "p-value", size = "# of languages") +
   ylab("Pairwise Correlation (Pearson's r)") +
   xlab("Minimum number of participants per country") +
+  ylim(-.8, .8) +
   theme_bw()
 ```
 

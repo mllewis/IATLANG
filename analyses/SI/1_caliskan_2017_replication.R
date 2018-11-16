@@ -10,8 +10,11 @@ UTILS_PATH <- here("analyses/study1b/0_IAT_utils.R")
 source(UTILS_PATH)
 
 ####### Parameters #########
-MODEL_PATH <- "/Volumes/wilbur_the_great/fasttext_models/wiki.en.vec"
-OUTPUT_FILE <- here("data/SI/caliskan_wiki_es.csv")
+MODEL_PATH_WIKI <- "/Volumes/wilbur_the_great/fasttext_models/wiki.en.vec"
+#MODEL_PATH_SUB <- "/Volumes/wilbur_the_great/subtitle_models/sub.en.vec"
+OUTPUT_FILE_WIKI <- here("data/SI/caliskan_wiki_es.csv")
+#OUTPUT_FILE_SUB <- here("data/SI/caliskan_sub_es.csv")
+
 
 ####### All WEAT words from Calliskan 2017 #########
 # words taken from: WordEmbeddingAssociationTest.java Caliskan et al. 2017 file
@@ -189,7 +192,7 @@ test_list <- list(W1, W2, W3, W4, W5, W6, W7, W8, W9, W10)
 
 ####### Get wikipedia effect sizes for all tests in English #########
 model <- fread( 
-  MODEL_PATH,
+  MODEL_PATH_SUB,
   header = FALSE,
   skip = 1,
   quote = "",
@@ -205,4 +208,4 @@ get_wiki_es_caliskan_replication <- function(word_list, model, output_file){
   }
 
 # Do the thing (slow)
-walk(test_list, get_wiki_es_caliskan_replication, model, OUTPUT_FILE) 
+walk(test_list, get_wiki_es_caliskan_replication, model, OUTPUT_FILE_SUB) 
