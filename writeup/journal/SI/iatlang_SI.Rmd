@@ -535,7 +535,6 @@ corr_exclusions_tidy %>%
 ```
 
 
-
 **References**
 
 Nosek, B. A., Banaji, M. R., & Greenwald, A. G. (2002). Harvesting implicit group attitudes and beliefs from a demonstration web site. _Group Dynamics: Theory, Research, and Practice_, _6_(1), 101.

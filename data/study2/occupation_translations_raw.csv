@@ -1,0 +1,541 @@
+OCCUPATION,male form,typically_used?,female form,typically_used?_1,language,NOTES,Notes,X7,Status,Name,notes
+dancer,dancer,yes,dancer,yes,english,NA,NA,NA,NA,NA,NA
+nurse,nurse,yes,nurse,yes,english,NA,NA,NA,NA,NA,NA
+singer,singer,yes,singer,yes,english,NA,NA,NA,NA,NA,NA
+cleaner,cleaner,yes,cleaner,yes,english,NA,NA,NA,NA,NA,NA
+secretary,secretary,yes,secretary,yes,english,NA,NA,NA,NA,NA,NA
+waiter,waiter,yes,waitress,yes,english,NA,NA,NA,NA,NA,NA
+journalist,journalist,yes,journalist,yes,english,NA,NA,NA,NA,NA,NA
+baker,baker,yes,baker,yes,english,NA,NA,NA,NA,NA,NA
+author,author,yes,author,yes,english,NA,NA,NA,NA,NA,NA
+athlete,athlete,yes,athlete,yes,english,NA,NA,NA,NA,NA,NA
+lawyer,lawyer,yes,lawyer,yes,english,NA,NA,NA,NA,NA,NA
+doctor/physician,doctor,yes,doctor,yes,english,NA,NA,NA,NA,NA,NA
+professor,professor,yes,professor,yes,english,NA,NA,NA,NA,NA,NA
+governor,governor,yes,governor,yes,english,NA,NA,NA,NA,NA,NA
+judge,judge,yes,judge,yes,english,NA,NA,NA,NA,NA,NA
+sailor,sailor,yes,sailor,yes,english,NA,NA,NA,NA,NA,NA
+postman/postwoman,postman,yes,postwoman,no,english,NA,NA,NA,NA,NA,NA
+mechanic,mechanic,yes,mechanic,yes,english,NA,NA,NA,NA,NA,NA
+hunter,hunter,yes,hunter,yes,english,NA,NA,NA,NA,NA,NA
+firefighter,firefighter,yes,firefighter,yes,english,NA,NA,NA,NA,NA,NA
+dancer,راقصة,don't know,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+nurse,ممرضة,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+singer,مطرب,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+cleaner,منظف,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+secretary,سكرتير,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+waiter,نادل,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+journalist,صحافي,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+baker,خباز,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+author,مؤلف,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+athlete,رياضي,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+lawyer,المحامية,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+doctor/physician,طبيب,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+professor,دكتور جامعى,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+governor,محافظ حاكم,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+judge,القاضي,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+sailor,بحار,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+postman/postwoman,ساعي البريد,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+mechanic,الميكانيكي,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+hunter,صياد,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+firefighter,رجال الاطفاء,NA,NA,NA,arabic,NA,NA,NA,NA,NA,NA
+dancer,danser,yes,danserinde,no,danish,NA,NA,NA,NA,NA,NA
+nurse,sygeplejer,no,sygeplejerske,yes,danish,NA,NA,NA,NA,NA,NA
+singer,sanger,yes,sangerinde,no,danish,NA,NA,NA,NA,NA,NA
+cleaner,rengøringsdame,yes,rengøringsdame,yes,danish,NA,NA,NA,NA,NA,NA
+secretary,Sektratær,yes,Sekratær,yes,danish,NA,NA,NA,NA,NA,NA
+waiter,Tjener,yes,Tjenerinde,no,danish,NA,NA,NA,NA,NA,NA
+journalist,Journalist,yes,Journalist,yes,danish,NA,NA,NA,NA,NA,NA
+baker,Bager,yes,Bager,yes,danish,NA,NA,NA,NA,NA,NA
+author,Forfatter,yes,Forfatterinde,no,danish,NA,NA,NA,NA,NA,NA
+athlete,Atlet,yes,Atlet,yes,danish,NA,NA,NA,NA,NA,NA
+lawyer,Advokat,yes,Advokat,yes,danish,NA,NA,NA,NA,NA,NA
+doctor/physician,Læge,yes,Læge,yes,danish,NA,NA,NA,NA,NA,NA
+professor,Professor,yes,Porfessor,yes,danish,NA,NA,NA,NA,NA,NA
+governor,Guvernør,yes,Guvernør,yes,danish,NA,NA,NA,NA,NA,NA
+judge,Dommer,yes,Dommer,yes,danish,NA,NA,NA,NA,NA,NA
+sailor,Sejler,yes,Sejler,yes,danish,NA,NA,NA,NA,NA,NA
+postman/postwoman,Postbud/postmand,yes,Postbud,yes,danish,NA,NA,NA,NA,NA,NA
+mechanic,Mekaniker,yes,Mekaniker,yes,danish,NA,NA,NA,NA,NA,NA
+hunter,Jæger,yes,Jæger,yes,danish,NA,NA,NA,NA,NA,NA
+firefighter,Brandmand,yes,Brandmand,yes,danish,NA,NA,NA,NA,NA,NA
+dancer,el bailarín(ina),yes,la bailarín(ina),yes,spanish,NA,NA,NA,NA,NA,NA
+nurse,el enfermero,yes,la enfermera,yes,spanish,NA,NA,NA,NA,NA,NA
+singer,el cantante,yes,la cantante,yes,spanish,NA,NA,NA,NA,NA,NA
+cleaner,el limpiador,yes,la limpiadora,no,spanish,NA,NA,NA,NA,NA,NA
+secretary,el secretario,yes,la secretaria,yes,spanish,NA,NA,NA,NA,NA,NA
+waiter,el camarero,yes,la camarera,yes,spanish,NA,NA,NA,NA,NA,NA
+journalist,el periodista,yes,la periodista,yes,spanish,NA,NA,NA,NA,NA,NA
+baker,el panadero,yes,la panadera,no,spanish,NA,NA,NA,NA,NA,NA
+author,el autor,yes,la autora,yes,spanish,NA,NA,NA,NA,NA,NA
+athlete,el atleta,yes,la atleta,yes,spanish,NA,NA,NA,NA,NA,NA
+lawyer,el abogado,yes,la abogada,yes,spanish,NA,NA,NA,NA,NA,NA
+doctor/physician,el doctor,yes,la doctora,yes,spanish,NA,NA,NA,NA,NA,NA
+professor,el profesor,yes,la profesora,yes,spanish,NA,NA,NA,NA,NA,NA
+governor,el gobernador,yes,la gobernadora,yes,spanish,NA,NA,NA,NA,NA,NA
+judge,el juez,yes,la jueza,no,spanish,NA,NA,NA,NA,NA,NA
+sailor,el marinero,yes,la marinera,no,spanish,NA,NA,NA,NA,NA,NA
+postman/postwoman,el cartero,yes,la cartera,no,spanish,NA,NA,NA,NA,NA,NA
+mechanic,el mecánico,yes,la mecánica,yes,spanish,NA,NA,NA,NA,NA,NA
+hunter,el cazador,yes,la cazadora,yes,spanish,NA,NA,NA,NA,NA,NA
+firefighter,el bombero,yes,la bombera,yes,spanish,NA,NA,NA,NA,NA,NA
+dancer,raghs-e mard,NA,raghs-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+nurse,parastâr- e mard,NA,parastâr-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+singer,khânande-e mard,NA,khânande-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+cleaner,nezâfatchi-e mard,NA,nezâfatchi-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+secretary,sânavi-e mard,NA,sânavi-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+waiter,pishkhedmat,NA,pishkhedmate zan,NA,farsi,NA,NA,NA,NA,NA,NA
+journalist,ruzhâme negâr-e mard,NA,ruzhâme negâr- zan,NA,farsi,NA,NA,NA,NA,NA,NA
+baker,nânvâ- e mard,NA,nânvâ-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+author,nevisande- e mard,NA,nevisande-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+athlete,varzeshkâr- e mard,NA,varzeshkâr-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+lawyer,vakil- e mard,NA,vakil-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+doctor/physician,pezeshk-e mard,NA,pezeshk-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+professor,NA,NA,NA,NA,farsi,NA,NA,NA,NA,NA,NA
+governor,farmândâr-e mard,NA,farmândâr-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+judge,ghâzi-e mard,NA,ghâzi-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+sailor,malavân-e mard,NA,malavân-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+postman/postwoman,post-e mard,NA,post-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+mechanic,mekâniki-e mard,NA,mekâniki-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+hunter,shekârchi-e mard,NA,shekârchi-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+firefighter,mamure âtash neshani-e mard,NA,mamure âtash neshani-e zan,NA,farsi,NA,NA,NA,NA,NA,NA
+dancer,tanssija,don't know,tanssija,don't know,finnish,NA,NA,NA,NA,NA,NA
+nurse,sairaanhoitaja,no,sairaanhoitaja,yes,finnish,NA,NA,NA,NA,NA,NA
+singer,laulaja,don't know,laulaja,don't know,finnish,NA,NA,NA,NA,NA,NA
+cleaner,puhdistusaine,don't know,puhdistusaine,don't know,finnish,NA,NA,NA,NA,NA,NA
+secretary,ministeri,don't know,ministeri,don't know,finnish,NA,NA,NA,NA,NA,NA
+waiter,tarjoilija,don't know,tarjoilijatar,don't know,finnish,NA,NA,NA,NA,NA,NA
+journalist,toimittaja,don't know,toimittaja,don't know,finnish,NA,NA,NA,NA,NA,NA
+baker,leipuri,don't know,leipuri,don't know,finnish,NA,NA,NA,NA,NA,NA
+author,tekijä,don't know,tekijä,don't know,finnish,NA,NA,NA,NA,NA,NA
+athlete,atleetti,don't know,atleetti,don't know,finnish,NA,NA,NA,NA,NA,NA
+lawyer,asianajaja,don't know,asianajaja,don't know,finnish,NA,NA,NA,NA,NA,NA
+doctor/physician,lääkäri,don't know,lääkäri,don't know,finnish,NA,NA,NA,NA,NA,NA
+professor,opettaja,don't know,opettaja,don't know,finnish,NA,NA,NA,NA,NA,NA
+governor,kuvernööri,don't know,kuvernööri,don't know,finnish,NA,NA,NA,NA,NA,NA
+judge,tuomari,don't know,tuomari,don't know,finnish,NA,NA,NA,NA,NA,NA
+sailor,merimies,don't know,merimies,don't know,finnish,NA,NA,NA,NA,NA,NA
+postman/postwoman,postinjakaja,don't know,postinjakaja,don't know,finnish,NA,NA,NA,NA,NA,NA
+mechanic,mekaanikko,don't know,mekaanikko,don't know,finnish,NA,NA,NA,NA,NA,NA
+hunter,metsästäjä,don't know,metsästäjä,don't know,finnish,NA,NA,NA,NA,NA,NA
+firefighter,palomies,don't know,palomies,don't know,finnish,NA,NA,NA,NA,NA,NA
+dancer,danseur,yes,danseuse,yes,french,NA,NA,NA,NA,NA,NA
+nurse,infirmier,yes,infirmière,yes,french,NA,NA,NA,NA,NA,NA
+singer,chanteur,yes,chanteuse,yes,french,NA,NA,NA,NA,NA,NA
+cleaner,homme de ménage,no,femme de ménage,yes,french,NA,NA,NA,NA,NA,NA
+secretary,secrétaire,no,secrétaire,yes,french,NA,NA,NA,NA,NA,NA
+waiter,serveur,yes,serveuse,yes,french,NA,NA,NA,NA,NA,NA
+journalist,journaliste,yes,journaliste,yes,french,NA,NA,NA,NA,NA,NA
+baker,boulanger,yes,boulangère,yes,french,NA,NA,NA,NA,NA,NA
+author,auteur,yes,auteur,yes,french,NA,NA,NA,NA,NA,NA
+athlete,athlète,yes,athlète,yes,french,NA,NA,NA,NA,NA,NA
+lawyer,avocat,yes,avocate,yes,french,NA,NA,NA,NA,NA,NA
+doctor/physician,docteur / médecin,yes,docteur / médecin,yes,french,NA,NA,NA,NA,NA,NA
+professor,professeur,yes,professeur,yes,french,NA,NA,NA,NA,NA,NA
+governor,directeur,yes,directrice,yes,french,NA,NA,NA,NA,NA,NA
+judge,juge,yes,juge,yes,french,NA,NA,NA,NA,NA,NA
+sailor,pêcheur,yes,pêcheur,yes,french,NA,NA,NA,NA,NA,NA
+postman/postwoman,facteur,yes,facteur,yes,french,NA,NA,NA,NA,NA,NA
+mechanic,mécanicien,yes,mécanicienne,no,french,NA,NA,NA,NA,NA,NA
+hunter,chasseur,yes,chasseuse,no,french,NA,NA,NA,NA,NA,NA
+firefighter,pompier,yes,pompier,yes,french,NA,NA,NA,NA,NA,NA
+dancer,רקדן,yes,רקדנית,yes,hebrew,NA,NA,NA,NA,NA,NA
+nurse,אח,yes,אחות,yes,hebrew,"these words can also mean brother and sister, respectively. contextual. same pronoucniation",NA,NA,NA,NA,NA
+singer,זמר,yes,זמרת,yes,hebrew,NA,NA,NA,NA,NA,NA
+cleaner,מנקה,yes,מנקה,yes,hebrew,"While these are spelled similarliy, they are pronounced differently - like Read and Read aren't the same. מנקה can also refer to the action of cleaning. contextual.",NA,NA,NA,NA,NA
+secretary,מזכיר,no,מזכירה,yes,hebrew,these words can also refer to the action of 'reminding [someone]' - gendered as well,NA,NA,NA,NA,NA
+waiter,מלצר,yes,מלצרית,yes,hebrew,NA,NA,NA,NA,NA,NA
+journalist,עיתונאי,yes,עיתונאית,yes,hebrew,NA,NA,NA,NA,NA,NA
+baker,אופה,yes,אופה,yes,hebrew,"While these are spelled similarliy, they are pronounced differently - like Read and Read aren't the same. can also refer to the action of baking. varies in pronounciation. contextual.",NA,NA,NA,NA,NA
+author,סופר,yes,סופרת,yes,hebrew,"these can also mean 'counting' , also gendered. contextual. pronounced the same.",NA,NA,NA,NA,NA
+athlete,ספורטאי,yes,ספורטאית,yes,hebrew,NA,NA,NA,NA,NA,NA
+lawyer,עורך דין,yes,עורכת דין,yes,hebrew,NA,NA,NA,NA,NA,NA
+doctor/physician,רופא,yes,רופאה,yes,hebrew,NA,NA,NA,NA,NA,NA
+professor,פרופסור,yes,פרופסורית,yes,hebrew,NA,NA,NA,NA,NA,NA
+governor,מושל,yes,מושלת,no,hebrew,also refers to the act of governing - also gendered - male/female respectively.,NA,NA,NA,NA,NA
+judge,שופט,yes,שופטת,yes,hebrew,"also refers to the act of judging - also gendered - male/female respectively. Also, the male form withiut niqqud also means ‘salt’",NA,NA,NA,NA,NA
+sailor,מלח,yes,מלח,no,hebrew,literally never heard of a 'female sailor' - waiting for my mom to help out :|,NA,NA,NA,NA,NA
+postman/postwoman,דור,yes,דורית,yes,hebrew,"the male form spelling is also contextual, but not against female form - and varies only in pronounciation. דור means 'postman' but it can also means '[a] generation'",NA,NA,NA,NA,NA
+mechanic,מכונאי,yes,מכונאית,no,hebrew,NA,NA,NA,NA,NA,NA
+hunter,צייד,yes,ציידת,yes,hebrew,NA,NA,NA,NA,NA,NA
+firefighter,כבאי,yes,כבאית,no,hebrew,the female form here can also mean 'firetruck'. contextual.,NA,NA,NA,NA,NA
+dancer,नर्तकी,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+nurse,नर्स,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+singer,गायक[गायिका],NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+cleaner,सफाईकर्मी,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+secretary,सहायक[सहायिका],NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+waiter,वेटर,NA,महिला बैरा,NA,hindi,NA,NA,NA,NA,NA,NA
+journalist,पत्रकार,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+baker,बेकर,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+author,लेखक[लेखिका],NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+athlete,खिलाड़ी,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+lawyer,वकील,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+doctor/physician,चिकित्सक,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+professor,प्राध्यापक,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+governor,राज्यपाल,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+judge,न्यायाधीश,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+sailor,नाविक,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+postman/postwoman,डाकिया,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+mechanic,मिस्त्री,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+hunter,शिकारी,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+firefighter,अग्निशमन कर्मचारी,NA,NA,NA,hindi,NA,NA,NA,NA,NA,NA
+dancer,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+nurse,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+singer,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+cleaner,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+secretary,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+waiter,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+journalist,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+baker,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+author,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+athlete,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+lawyer,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+doctor/physician,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+professor,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+governor,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+judge,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+sailor,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+postman/postwoman,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+mechanic,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+hunter,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+firefighter,NA,NA,NA,NA,croatian (latin),NA,NA,NA,NA,NA,NA
+dancer,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+nurse,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+singer,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+cleaner,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+secretary,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+waiter,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+journalist,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+baker,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+author,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+athlete,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+lawyer,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+doctor/physician,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+professor,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+governor,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+judge,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+sailor,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+postman/postwoman,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+mechanic,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+hunter,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+firefighter,NA,NA,NA,NA,serbian (cyrillic),NA,NA,NA,NA,NA,NA
+dancer,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+nurse,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+singer,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+cleaner,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+secretary,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+waiter,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+journalist,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+baker,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+author,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+athlete,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+lawyer,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+doctor/physician,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+professor,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+governor,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+judge,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+sailor,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+postman/postwoman,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+mechanic,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+hunter,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+firefighter,NA,NA,NA,NA,indonesian,NA,NA,NA,NA,NA,NA
+dancer,ballerino,yes,ballerina,yes,italian,NA,NA,NA,NA,NA,NA
+nurse,infermiere,yes,infermiera,yes,italian,NA,NA,NA,NA,NA,NA
+singer,cantante,yes,cantante,yes,italian,NA,NA,NA,NA,NA,NA
+cleaner,inserviente/adetto alle pulizie,yes,inserviente/addetta alle pulizie,yes,italian,NA,NA,NA,NA,NA,NA
+secretary,segretario,yes,segretaria,yes,italian,NA,NA,NA,NA,NA,NA
+waiter,cameriere,yes,cameriera,yes,italian,NA,NA,NA,NA,NA,NA
+journalist,giornalista,yes,giornalista,yes,italian,NA,"While I couldn't find any difference between the genders for the singular noun in the dictionary, a brief google search seems to suggest that the plural forms of jounalist for the two genders differ from each other (The sigular one is as I have entered in this sheet)",NA,NA,NA,NA
+baker,fornaio/panettiere,yes,fornaia/panettiera,yes,italian,NA,NA,NA,NA,NA,NA
+author,autore,yes,autrice,yes,italian,NA,NA,NA,NA,NA,NA
+athlete,atleta,yes,atleta,yes,italian,NA,NA,NA,NA,NA,NA
+lawyer,avvocato,yes,avvocatessa,no,italian,NA,"lawyer down I used Harper Collins Italian Concise Dictionary from 2000, third edition -Megan",NA,NA,NA,NA
+doctor/physician,dottore/medico,yes,dottoressa/medico,yes,italian,NA,NA,NA,NA,NA,NA
+professor,professore,yes,professoressa,yes,italian,NA,NA,NA,NA,NA,NA
+governor,governatore/direttore,no,governatrice/direttrice,no,italian,NA,NA,NA,NA,NA,NA
+judge,giudice,yes,giudice,yes,italian,NA,NA,NA,NA,NA,NA
+sailor,marinaio,yes,marinaio,yes,italian,NA,NA,NA,NA,NA,NA
+postman/postwoman,postino,yes,postina,no,italian,NA,The female translation here translates to postmistress,NA,NA,NA,NA
+mechanic,meccanico,yes,meccanico,yes,italian,NA,NA,NA,NA,NA,NA
+hunter,cacciatore,yes,cacciatrice,yes,italian,NA,NA,NA,NA,NA,NA
+firefighter,pompiere,yes,pompiere,yes,italian,NA,NA,NA,NA,NA,NA
+dancer,ダンサー dansaa,yes,ダンサー dansaa,yes,japanese,NA,NA,NA,NA,NA,NA
+nurse,看護師 kangoshi,yes,看護婦 kangofu,no,japanese,NA,NA,NA,NA,NA,NA
+singer,歌手 kashu,yes,歌手 kashu,yes,japanese,NA,NA,NA,NA,NA,NA
+cleaner,清掃員 seisouin,yes,清掃員 seisouin,yes,japanese,NA,NA,NA,NA,NA,NA
+secretary,秘書 hisho,yes,秘書 hisho,yes,japanese,NA,NA,NA,NA,NA,NA
+waiter,ウェイター ueitaa,yes,ウェイタレス ueitaresu,yes,japanese,NA,NA,NA,NA,NA,NA
+journalist,記者 kisha,yes,記者 kisha,yes,japanese,NA,NA,NA,NA,NA,NA
+baker,パン屋 panya,yes,パン屋 panya,yes,japanese,NA,NA,NA,NA,NA,NA
+author,作者 sakusha,yes,作者 sakusha,yes,japanese,NA,NA,NA,NA,NA,NA
+athlete,選手 senshu,yes,選手 senshu,yes,japanese,NA,NA,NA,NA,NA,NA
+lawyer,弁護士 bengoshi,yes,弁護士 bengoshi,yes,japanese,NA,NA,NA,NA,NA,NA
+doctor/physician,医者 isha,yes,医者 isha,yes,japanese,NA,NA,NA,NA,NA,NA
+professor,教授 kyoujyu,yes,教授 kyoujyu,yes,japanese,NA,NA,NA,NA,NA,NA
+governor,知事 chiji,yes,知事 chiji,yes,japanese,NA,NA,NA,NA,NA,NA
+judge,裁判官 saibankan,yes,裁判官 saibankan,yes,japanese,NA,NA,NA,NA,NA,NA
+sailor,船員 senin,yes,船員 senin,yes,japanese,NA,NA,NA,NA,NA,NA
+postman/postwoman,郵便配達員 yuubin haitasuin,yes,郵便配達員 yuubin haitasuin,yes,japanese,NA,NA,NA,NA,NA,NA
+mechanic,メカニック mekanikku,yes,メカニック mekanikku,yes,japanese,NA,NA,NA,NA,NA,NA
+hunter,猟師 ryoushi,yes,猟師 ryoushi,yes,japanese,NA,NA,NA,NA,NA,NA
+firefighter,消防士 shouboushi,yes,消防士 shouboushi,yes,japanese,NA,NA,NA,NA,NA,NA
+dancer,danser,yes,danseres,yes,dutch,NA,NA,"the male form, danser, can also be used as gender-neutral. Plural for a group of dancers of both genders would always be the plural of the male form: dansers.",NA,NA,NA
+nurse,broeder/verpleger,no/yes,zuster/verpleegster,yes/yes,dutch,NA,NA,NA,NA,NA,NA
+singer,zanger,yes,zangeres,yes,dutch,NA,NA,NA,NA,NA,NA
+cleaner,schoonmaker,yes,schoonmaakster,yes,dutch,NA,NA,NA,NA,NA,NA
+secretary,secretaris,no,secretaresse,yes,dutch,NA,NA,"the male and female words almost mean different things. The female word secretaresse is a job, e.g. office assistant or front desk receptionist. The male word is mostly only used to refer to a certain role on committees (held by a person of either gender), rather than the occupation of being a secretary for a living",NA,NA,NA
+waiter,ober,yes,serveerster,yes,dutch,NA,NA,NA,NA,NA,NA
+journalist,journalist,yes,journalist/journaliste,yes/no,dutch,NA,NA,"the same form 'journalist' can be used for both genders, it only implies male gender when used in specific contrast with 'journaliste' but I've hardly ever seen that used.",NA,NA,NA
+baker,bakker,yes,bakker,yes,dutch,NA,NA,NA,NA,NA,NA
+author,schrijver/auteur,yes/yes,schrijfster/auteur,yes/yes,dutch,NA,NA,NA,NA,NA,NA
+athlete,atleet/sporter,yes/yes,atlete/sportster/atleet/sporter,yes/yes/yes/yes,dutch,NA,NA,"again the male form is also the neutral form and can be used for either gender, it only really strictly means male athlete if used in the context of the female-only forms",NA,NA,NA
+lawyer,advocaat,yes,advocaat/advocate,yes/yes,dutch,NA,NA,"same as journalist, you could technically use a female-only form but I don't think I've ever seen that used",NA,NA,NA
+doctor/physician,arts/dokter,yes/yes,arts/dokter,yes/yes,dutch,NA,NA,NA,NA,NA,NA
+professor,professor/leraar/meester,yes/yes/yes,professor/lerares/juf,yes/yes/yes,dutch,NA,NA,"the middle form means 'teacher' and the third form also means 'teacher' but in an elementary school context. The first form is used strictly only for full professors at the 12 universities our country has, so it's a somewhat more limited word than how i've heard 'professor' used here in the US",NA,NA,NA
+governor,gouverneur,no,gouverneur,no,dutch,NA,NA,not a function we have in our political system so this word sounds archaic and just isn't relevant in our language.,NA,NA,NA
+judge,rechter,yes,rechter,yes,dutch,NA,NA,NA,NA,NA,NA
+sailor,zeiler/schipper/matroos,yes/yes/yes,zeilster/schipper/matroos,yes/no/no,dutch,NA,NA,NA,NA,NA,NA
+postman/postwoman,postbode,yes,postbode,yes,dutch,NA,NA,NA,NA,NA,NA
+mechanic,monteur,yes,monteur,no,dutch,NA,NA,no different word for female one but the word connotates that it's a male.,NA,NA,NA
+hunter,jager,yes,jager,no,dutch,NA,NA,NA,NA,NA,NA
+firefighter,brandweerman,yes,brandweervrouw,no,dutch,NA,NA,NA,NA,NA,NA
+dancer,penari,yes,NA,NA,malay,NA,NA,**Malay does not have different forms for male and female**,NA,NA,NA
+nurse,jururawat,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+singer,penyanyi,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+cleaner,pembersih,don't know,NA,NA,malay,NA,NA,NA,NA,NA,NA
+secretary,setiausaha,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+waiter,pelayan,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+journalist,wartawan,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+baker,pembakar roti,don't know,NA,NA,malay,NA,NA,NA,NA,NA,NA
+author,penulis,don't know,NA,NA,malay,NA,NA,NA,NA,NA,NA
+athlete,atlet,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+lawyer,peguam,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+doctor/physician,doktor,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+professor,profesor,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+governor,pemerintah,no,NA,NA,malay,NA,NA,NA,NA,NA,NA
+judge,hakim,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+sailor,pelayar,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+postman/postwoman,posmen,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+mechanic,mekanik,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+hunter,pemburu,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+firefighter,ahli bomba,yes,NA,NA,malay,NA,NA,NA,NA,NA,NA
+dancer,댄서,yes,댄서,yes,korean,NA,NA,NA,NA,NA,NA
+nurse,간호사,yes,간호사,yes,korean,NA,NA,NA,NA,NA,NA
+singer,가수,yes,가수,yes,korean,NA,NA,NA,NA,NA,NA
+cleaner,청소부,don't know,청소부,don't know,korean,NA,NA,NA,NA,NA,NA
+secretary,비서,yes,비서,yes,korean,NA,NA,NA,NA,NA,NA
+waiter,종업원,yes,웨이트리스,no,korean,NA,NA,NA,NA,NA,NA
+journalist,NA,NA,NA,NA,korean,NA,NA,NA,NA,NA,NA
+baker,제빵사,yes,제빵사,yes,korean,NA,NA,NA,NA,NA,NA
+author,작가,yes,작가,yes,korean,NA,NA,NA,NA,NA,NA
+athlete,선수,yes,선수,yes,korean,NA,NA,NA,NA,NA,NA
+lawyer,변호사,yes,변호사,yes,korean,NA,NA,NA,NA,NA,NA
+doctor/physician,의사,yes,의사,yes,korean,NA,NA,NA,NA,NA,NA
+professor,교수님,yes,교수님,yes,korean,NA,NA,NA,NA,NA,NA
+governor,지배자,yes,지배자,yes,korean,NA,NA,NA,NA,NA,NA
+judge,판사,yes,판사,yes,korean,NA,NA,NA,NA,NA,NA
+sailor,선원,yes,선원,yes,korean,NA,NA,NA,NA,NA,NA
+postman/postwoman,우편집배원,yes,우편집배원,yes,korean,NA,NA,NA,NA,NA,NA
+mechanic,정비공,yes,정비공,yes,korean,NA,NA,NA,NA,NA,NA
+hunter,사냥꾼,yes,사냥꾼,yes,korean,NA,NA,NA,NA,NA,NA
+firefighter,소방관,yes,소방관,yes,korean,NA,NA,NA,NA,NA,NA
+dancer,danser,yes,danserinne,no,norwegian,NA,NA,NA,NA,NA,NA
+nurse,skyepleier/barnepleier,yes,skyepleier/barnepleier,yes,norwegian,NA,NA,"These words are gender neutral, even though it has the male form of the occupational affix.",NA,NA,NA
+singer,sanger,yes,sangerinne,no,norwegian,NA,NA,NA,NA,NA,NA
+cleaner,hushjelp,yes,hushjelp,yes,norwegian,NA,NA,NA,NA,NA,NA
+secretary,sekretær,yes,sekretær,yes,norwegian,NA,NA,NA,NA,NA,NA
+waiter,oppvarter/servitør/kelner,yes,oppvartningspike/servitør/kelner,no,norwegian,NA,NA,"""oppvartningspike"" is not used now- has salacious connotations",NA,NA,NA
+journalist,journalist,yes,journalist,yes,norwegian,NA,NA,NA,NA,NA,NA
+baker,baker,yes,baker,yes,norwegian,NA,NA,NA,NA,NA,NA
+author,forfatter/opphavsmann,yes,forfatterinne,no,norwegian,NA,NA,"""opphavsmann"" more accurately means 'copyright holder'",NA,NA,NA
+athlete,atlet,yes,atlet,yes,norwegian,NA,NA,NA,NA,NA,NA
+lawyer,jurist/sakfører/advokat,yes,jurist/sakfører/advokat,yes,norwegian,NA,NA,NA,NA,NA,NA
+doctor/physician,doktor/lege,yes,doktor/lege,yes,norwegian,NA,NA,NA,NA,NA,NA
+professor,professor/universitetslærer,yes,professor/universitetslærer,yes,norwegian,NA,NA,NA,NA,NA,NA
+governor,guvernør/stattholder,yes,guvernør/stattholder,yes,norwegian,NA,NA,NA,NA,NA,NA
+judge,dommer,yes,dommer,yes,norwegian,NA,NA,NA,NA,NA,NA
+sailor,sjømann/matros,yes,sjømann/matros,yes,norwegian,NA,NA,NA,NA,NA,NA
+postman/postwoman,postbud/postmann,yes,postbud,yes,norwegian,NA,NA,NA,NA,NA,NA
+mechanic,mekaniker,yes,mekaniker,yes,norwegian,NA,NA,NA,NA,NA,NA
+hunter,jeger,yes,jeger,yes,norwegian,NA,NA,NA,NA,NA,NA
+firefighter,brannmann/fyrbøter,yes,fyrbøter,yes,norwegian,NA,NA,NA,NA,NA,NA
+dancer,Tańcerz,yes,Tańcerka,yes,polish,NA,NA,NA,NA,NA,NA
+nurse,pielęgniarz,no,pielęgniarka,yes,polish,NA,NA,NA,NA,NA,NA
+singer,śpiewasz,yes,śpiewarka,yes,polish,NA,NA,NA,NA,NA,NA
+cleaner,sprzątacz,no,sprzątarka,yes,polish,NA,NA,NA,NA,NA,NA
+secretary,sekretarz,no,sekretarka,yes,polish,NA,NA,NA,NA,NA,NA
+waiter,kelner,yes,kelnerka,yes,polish,NA,NA,NA,NA,NA,NA
+journalist,dziennikarz,yes,dziennikarka,yes,polish,NA,NA,NA,NA,NA,NA
+baker,piekarz,yes,piekarka,no,polish,NA,NA,NA,NA,NA,NA
+author,pisarz,yes,pisarka,yes,polish,NA,NA,NA,NA,NA,NA
+athlete,atleta,yes,atletka,yes,polish,NA,NA,NA,NA,NA,NA
+lawyer,prawnik,yes,prawniczka,no,polish,NA,NA,NA,NA,NA,NA
+doctor/physician,doktor,yes,doktorka,yes,polish,NA,NA,NA,NA,NA,NA
+professor,profesor,yes,profesorka,yes,polish,NA,NA,NA,NA,NA,NA
+governor,wojewoda,yes,wojewoda,no,polish,NA,NA,NA,NA,NA,NA
+judge,sędzia,yes,sędzina,no,polish,NA,NA,NA,NA,NA,NA
+sailor,żeglarz,yes,żeglarka,yes,polish,NA,NA,NA,NA,NA,NA
+postman/postwoman,listonosz,yes,listonoszka,no,polish,NA,NA,NA,NA,NA,NA
+mechanic,mechanik,yes,mechanik,yes,polish,NA,NA,NA,NA,NA,NA
+hunter,myśliwy,yes,myśliwy,yes,polish,NA,NA,NA,NA,NA,NA
+firefighter,strażak,yes,strażak,yes,polish,NA,NA,NA,NA,NA,NA
+dancer,dançarino,yes,dançarina,yes,portuguese,NA,NA,NA,Done,Ricardo B Lourenço (Brazilian portuguese native speaker),NA
+nurse,enfermeiro,yes,enfermeira,yes,portuguese,NA,NA,NA,"Notes: Mecânica has also a homonym for the shop where mechanics work; Carteira has a homonym which stands for small desks which students use at school, as well for someone's wallet .",NA,NA
+singer,cantor,yes,cantora,yes,portuguese,NA,NA,NA,NA,NA,NA
+cleaner,faxineiro,yes,faxineira,yes,portuguese,NA,NA,NA,NA,NA,NA
+secretary,secretário,yes,secretária,yes,portuguese,NA,NA,NA,NA,NA,NA
+waiter,garçom,yes,garçonete,yes,portuguese,NA,NA,NA,NA,NA,NA
+journalist,jornalista,yes,jornalista,yes,portuguese,NA,NA,NA,NA,NA,NA
+baker,padeiro,yes,padeira,no,portuguese,NA,NA,NA,NA,NA,NA
+author,autor,yes,autora,yes,portuguese,NA,NA,NA,NA,NA,NA
+athlete,atleta,yes,atleta,yes,portuguese,NA,NA,NA,NA,NA,NA
+lawyer,advogado,yes,advogada,yes,portuguese,NA,NA,NA,NA,NA,NA
+doctor/physician,médico,yes,médica,yes,portuguese,NA,NA,NA,NA,NA,NA
+professor,professor,yes,professora,yes,portuguese,NA,NA,NA,NA,NA,NA
+governor,governador,yes,governadora,yes,portuguese,NA,NA,NA,NA,NA,NA
+judge,juiz,yes,juíza,yes,portuguese,NA,NA,NA,NA,NA,NA
+sailor,marinheiro,yes,marinheira,yes,portuguese,NA,NA,NA,NA,NA,NA
+postman/postwoman,carteiro,yes,carteira,no,portuguese,NA,NA,NA,NA,NA,NA
+mechanic,mecânico,yes,mecânica,yes,portuguese,NA,NA,NA,NA,NA,NA
+hunter,caçador,yes,caçadora,yes,portuguese,NA,NA,NA,NA,NA,NA
+firefighter,bombeiro,yes,bombeira,no,portuguese,NA,NA,NA,NA,NA,NA
+dancer,dansator,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+nurse,infirmieră,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+singer,cântăreţ,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+cleaner,NA,NA,femeie de serviciu,NA,romanian,NA,NA,NA,NA,NA,NA
+secretary,secretar,NA,secretară,NA,romanian,NA,NA,NA,NA,NA,NA
+waiter,chelner,NA,chelneriţă,NA,romanian,NA,NA,NA,NA,NA,NA
+journalist,jurnalist,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+baker,brutar,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+author,autor,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+athlete,atlet,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+lawyer,avocat,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+doctor/physician,medic,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+professor,profesor,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+governor,guvernator,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+judge,judecător,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+sailor,marinar,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+postman/postwoman,factor,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+mechanic,maşinist,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+hunter,vânător,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+firefighter,pompier,NA,NA,NA,romanian,NA,NA,NA,NA,NA,NA
+dancer,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+nurse,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+singer,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+cleaner,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+secretary,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+waiter,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+journalist,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+baker,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+author,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+athlete,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+lawyer,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+doctor/physician,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+professor,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+governor,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+judge,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+sailor,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+postman/postwoman,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+mechanic,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+hunter,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+firefighter,NA,NA,NA,NA,swedish,NA,NA,NA,NA,NA,NA
+dancer,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+nurse,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+singer,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+cleaner,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+secretary,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+waiter,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+journalist,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+baker,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+author,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+athlete,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+lawyer,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+doctor/physician,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+professor,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+governor,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+judge,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+sailor,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+postman/postwoman,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+mechanic,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+hunter,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+firefighter,NA,NA,NA,NA,telugu,NA,NA,NA,NA,NA,NA
+dancer,dansçi,yes,dansçi,yes,turkish,NA,NA,NA,NA,NA,NA
+nurse,hemşire,yes,hemşire/hastabakici,yes,turkish,NA,NA,NA,NA,NA,NA
+singer,şarkıcı,yes,şarkıcı,yes,turkish,NA,NA,NA,NA,NA,NA
+cleaner,temizleyici,yes,temizleyici,yes,turkish,NA,NA,NA,NA,NA,NA
+secretary,sekreter/yazman,yes,sekreter/yazman,yes,turkish,NA,NA,NA,NA,NA,NA
+waiter,garson,yes,(bayan) garson,no,turkish,NA,NA,NA,NA,NA,NA
+journalist,gazeteci,yes,gazeteci,yes,turkish,NA,NA,NA,NA,NA,NA
+baker,fırıncı,yes,fırıncı,yes,turkish,NA,NA,NA,NA,NA,NA
+author,yazar,yes,(bayan) yazar,no,turkish,NA,NA,NA,NA,NA,NA
+athlete,atlet,yes,atlet,yes,turkish,NA,NA,NA,NA,NA,NA
+lawyer,avukat,yes,avukat,yes,turkish,NA,NA,NA,NA,NA,NA
+doctor/physician,doktor/hekim,yes,doktor/hekim,yes,turkish,NA,NA,NA,NA,NA,NA
+professor,profesör,yes,profesör,yes,turkish,NA,NA,NA,NA,NA,NA
+governor,Vali,yes,Vali,yes,turkish,NA,NA,NA,NA,NA,NA
+judge,hâkim,yes,hâkim,yes,turkish,NA,NA,NA,NA,NA,NA
+sailor,denizci/gemici,yes,denizci/gemici,yes,turkish,NA,NA,NA,NA,NA,NA
+postman/postwoman,postacı,yes,postacı,yes,turkish,NA,NA,NA,NA,NA,NA
+mechanic,makinist,yes,makinist,yes,turkish,NA,NA,NA,NA,NA,NA
+hunter,avcı,yes,avcı,yes,turkish,NA,NA,NA,NA,NA,NA
+firefighter,itfaiyeci,yes,itfaiyeci,yes,turkish,NA,NA,NA,NA,NA,NA
+dancer,舞者/舞蹈演员,don't know,舞者/舞蹈演员,don't know,chinese,NA,NA,NA,NA,NA,NA
+nurse,护士,yes,护士,yes,chinese,NA,NA,NA,NA,NA,NA
+singer,歌手/歌唱家,yes,歌手/歌唱家,yes,chinese,NA,NA,NA,NA,NA,NA
+cleaner,保洁员/环卫工,yes,保洁员/环卫工,yes,chinese,NA,NA,NA,NA,NA,NA
+secretary,秘书,yes,秘书,yes,chinese,NA,NA,NA,NA,NA,NA
+waiter,服务员,yes,服务员,yes,chinese,NA,NA,NA,NA,NA,NA
+journalist,记者,yes,记者,yes,chinese,NA,NA,NA,NA,NA,NA
+baker,糕点师,yes,糕点师,yes,chinese,NA,NA,NA,NA,NA,NA
+author,作家/作者,yes,作家/作者,yes,chinese,NA,NA,NA,NA,NA,NA
+athlete,运动员,yes,远动员,yes,chinese,NA,NA,NA,NA,NA,NA
+lawyer,律师,yes,律师,yes,chinese,NA,NA,NA,NA,NA,NA
+doctor/physician,医生,yes,医生,yes,chinese,NA,NA,NA,NA,NA,NA
+professor,教授,yes,教授,yes,chinese,NA,NA,NA,NA,NA,NA
+governor,NA,NA,NA,NA,chinese,NA,NA,NA,NA,NA,NA
+judge,法官,yes,法官,yes,chinese,NA,NA,NA,NA,NA,NA
+sailor,船员,yes,船员,yes,chinese,NA,NA,NA,NA,NA,NA
+postman/postwoman,邮递员,yes,邮递员,yes,chinese,NA,NA,NA,NA,NA,NA
+mechanic,技工,yes,技工,yes,chinese,NA,NA,NA,NA,NA,NA
+hunter,猎人,yes,猎人,yes,chinese,NA,NA,NA,NA,NA,NA
+firefighter,消防员,yes,消防员,yes,chinese,NA,NA,NA,NA,NA,NA
+dancer,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+nurse,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+singer,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+cleaner,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+secretary,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+waiter,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+journalist,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+baker,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+author,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+athlete,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+lawyer,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+doctor/physician,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+professor,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+governor,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+judge,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+sailor,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+postman/postwoman,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+mechanic,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+hunter,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+firefighter,NA,NA,NA,NA,zulu,NA,NA,NA,NA,NA,NA
+dancer,Tänzer,yes,Tänzerin,yes,german,NA,NA,NA,NA,NA,NA
+nurse,Pfleger/Krankenpfleger,yes,Pflegerin/Krankenschwester,yes,german,NA,NA,NA,NA,NA,NA
+singer,Sänger,yes,Sängerin,yes,german,NA,NA,NA,NA,NA,NA
+cleaner,Reinigungskraft,yes,Putzfrau/Reinigungskraft,yes,german,NA,NA,NA,NA,NA,"this is somewhat similar to the ""waiter"" case below. People still use ""Putzfrau"" (for a female cleaner), but it is beginning to get a derogatory connotation. ""Reinigungskraft"" is grammatically feminine because Kraft (=power) is grammatically feminine, but is used for both genders and doesn't carry explicit gender associations"
+secretary,Sekretär/Geschäftsführer,yes,Sekretärin/Geschäftsführerin,yes,german,NA,NA,NA,NA,NA,NA
+waiter,Bedienung/Kellner,yes,Bedienung/Kellnerin,yes,german,NA,NA,NA,NA,NA,"waiter can be ""Bedienung"" (which is grammatically gendered - female - but can be used for men and women - it's kind of like using a plural form, i.e. servers); a sort of more traditional word is ""Kellner"" (for men) and Kellnerin (for women); I would guess that Kellner/Kellnerin is slowly becoming less frequent compared to the word that doesn't require different uses for different genders. Both terms are still used, but one is being overtaken (I would guess),"
+journalist,Journalist,yes,Journalistin,yes,german,NA,NA,NA,NA,NA,NA
+baker,Bäcker,yes,Bäckerin,yes,german,NA,NA,NA,NA,NA,NA
+author,Schriftsteller/ Autor,yes,Schriftstellerin/ Autorin,yes,german,NA,NA,NA,NA,NA,NA
+athlete,Sportler/ Athlet,yes,Sportlerin/ Athletin,yes,german,NA,NA,NA,NA,NA,NA
+lawyer,Rechtsanwalt/Jurist/Anwalt,yes,Rechtsanwältin/Juristin/Anwältin,yes,german,NA,NA,NA,NA,NA,NA
+doctor/physician,Arzt,yes,Ärztin,yes,german,NA,NA,NA,NA,NA,NA
+professor,Professor,yes,Professorin,yes,german,NA,NA,NA,NA,NA,NA
+governor,Gouverneur,yes,Gouverneur,yes,german,NA,NA,NA,NA,NA,"grammatically masculine. This would be the translation in a German newspaper talking about the political position in America. There is also the term ""Landeshauptmann (men)/ Landeshauptfrau (women)"" for a similar political position, but that is only really a thing in Austria, to my knowledge."
+judge,Richter,yes,Richterin,yes,german,NA,NA,NA,NA,NA,NA
+sailor,Seemann/Matrose/ Segler/ Seefahrer,yes,Matrosin/ Seglerin/ Seefahrerin,no,german,NA,NA,NA,NA,NA,"I'm not sure the forms that are woman-specific are actually used very frequently. ""Seemann"" feels like the most frequent term, which is male (""mann""), but there isn't really a female equivalent (i.e., ""Seefrau"" isn't really a thing...)"
+postman/postwoman,Briefträger/Postbote,yes,Briefträgerin/Postbotin,yes,german,NA,NA,NA,NA,NA,NA
+mechanic,Mechaniker,yes,Mechanikerin,yes,german,NA,NA,NA,NA,NA,NA
+hunter,Jäger,yes,Jägerin,yes,german,NA,NA,NA,NA,NA,NA
+firefighter,Feuerwehrmann,no,Feuerwehrfrau,no,german,NA,NA,NA,NA,NA,"""Feuerwehrfrau"" is - I think - a new coinage to refer to a female firefighter that is not typically used - which is why I put ""no"" in that column"
