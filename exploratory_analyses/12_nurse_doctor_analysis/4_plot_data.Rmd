@@ -1,0 +1,90 @@
+---
+title: Occupations gender comparision xling
+subtitle: subtitle corpus
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+  toc_float: no
+number_sections: no
+toc: yes
+---
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+
+```
+
+```{r}
+INFILE <- "data/gender_bias_by_word_occupation_sub.csv"
+distances <- read_csv(INFILE)
+
+few_forms <- c("fa", "es", "ja", "ko", "ms", "fi", "en", "tr")
+
+tidy_dists <- distances %>%
+  filter(!is.na(male_score)) %>%
+  mutate(num_forms = case_when(language_code %in% few_forms ~ "few",
+                               TRUE ~ "many"))
+```
+
+```{r}
+tidy_dists %>%
+  ggplot(aes(x = male_score)) +
+  geom_density(fill = "grey") +
+  geom_vline(aes(xintercept =0), linetype = 2) +
+  facet_wrap(~word) +
+  theme_classic()
+
+tidy_dists %>%
+  group_by(word) %>%
+  multi_boot_standard(col  = "male_score") %>%
+  ggplot(aes(x = reorder(word, mean), y = mean)) +
+  geom_pointrange( aes(ymin = ci_lower, ymax = ci_upper)) +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  ylab("Male Embedding Score") +
+  xlab("Occupation Name") +
+  theme_classic(base_size = 15) +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+tidy_dists %>%
+  group_by(num_forms,word) %>%
+  multi_boot_standard(col  = "male_score") %>%
+  ggplot(aes(x = reorder(word, mean), y = mean, 
+             group = num_forms, color = num_forms)) +
+  geom_pointrange( aes(ymin = ci_lower, ymax = ci_upper)) +
+  geom_smooth(method = "lm") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  ylab("Male Embedding Score") +
+  xlab("Occupation Name") +
+  theme_classic(base_size = 15) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## Nurse vs. Doctors
+```{r}
+doc_nurse <- tidy_dists %>%
+  filter(word %in% c("doctor/physician", "nurse"))
+
+
+ggplot(doc_nurse, aes(x = word, y = male_score, group = language_code, color = word)) +
+  geom_line(color = "black") +
+  geom_point(size = 2.4) +
+  geom_text(data = doc_nurse %>% filter(word == "nurse"), 
+                                 aes(x = 2.05, y = male_score, label = language_code), 
+            color = "black") +
+  ylab("Male Embedding Score") +
+  xlab("Occupation Name") +
+  theme_classic(base_size = 15) +
+  theme(legend.position = "none")
+```
+

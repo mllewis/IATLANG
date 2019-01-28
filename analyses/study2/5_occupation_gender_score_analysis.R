@@ -2,6 +2,7 @@
 # explore occupation gender scores
 
 library(tidyverse)
+library(here)
 
 # get gender score 
 INFILE <- here('data/study2/occupation_gender_scores.csv')
@@ -48,12 +49,17 @@ lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_overlap_occs +  median_countr
   summary()
 
 
-lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_overlap_occs +  median_country_age, 
-   weights = n_participants,
+lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_overlap_occs *  median_country_age,
    data = full_df) %>%
   summary()
 
 
+lm(es_iat_sex_age_order_explicit_resid ~ mean_prop_overlap_occs + lang_es_wiki +  median_country_age,
+   data = full_df) %>%
+  summary()
+
+
+cor.test(full_df$lang_es_wiki, full_df$es_iat_sex_age_order_explicit_resid)
 
 lm(es_iat_sex_age_order_explicit_resid ~ mean_prop_overlap_occs +  median_country_age, weights = n_participants,
    data = full_df) %>%
@@ -62,6 +68,8 @@ lm(es_iat_sex_age_order_explicit_resid ~ mean_prop_overlap_occs +  median_countr
 lm(lang_es_wiki ~ mean_prop_overlap_occs +  median_country_age, weights = n_participants,
    data = full_df) %>%
   summary()
+
+-> mention difference 
 
 
 ### by gender score

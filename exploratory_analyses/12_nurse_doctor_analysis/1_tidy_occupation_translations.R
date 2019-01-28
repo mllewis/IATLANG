@@ -6,16 +6,17 @@ library(here)
 print("tidy translations")
 
 INFILE <- here('data/study2/occupation_translations_raw.csv')
-OUTFILE <- here('data/study2/occupation_translations_tidy.csv')
+OUTFILE <- "data/tidy_occupations_subt.csv"
 
-INCOMPLETE_LANGS <- c("telugu", "zulu",
+INCOMPLETE_LANGS <- c("romanian","telugu", "zulu",
                     "indonesian", "hindi", "swedish", "arabic",
                     "croatian (latin)", "serbian (cyrillic)")
 
 translated_words <- read_csv(INFILE) %>%
   select(1,2,4,6) %>% # exclude typically used columns for now
   janitor::clean_names() %>%
-  filter(!(language %in% INCOMPLETE_LANGS))  # exclude missing languages
+  filter(!(language %in% INCOMPLETE_LANGS))  %>% # exclude missing languages %>%
+rename(word = occupation)
   
 
 long_form_translations <- translated_words %>%
@@ -39,12 +40,35 @@ translated_clean <- long_form_translations %>%
          translation = str_replace_all(translation, " ", "^")) # denote spacevs in multiword utterances with ^
 
 #### gather multiple translations for each translation ####
-tidy_translations <- translated_clean %>%
+tidy_translations1 <- translated_clean %>%
   separate(translation, 
            c("t1", "t2", "t3", "t4", "t5", "t6", "t7"), "/") %>%
   gather("translation_id", "translation", -1:-3) %>%
+  mutate(translation = str_replace_all(translation, " ", "_"),
+         translation = case_when(str_detect(translation, "_") ~ paste(translation, toupper(translation)), # capitalize and add underscores to multiword phrases
+                                 TRUE ~ translation )) %>%
+  separate(translation, 
+           c("w1", "w2"), " ") %>%
+  gather("word_id", "translation", -1:-4) %>% # some concatenations seem to be capiltaized, others not. This takes the average acrosss both forms (though presumably only one exists)
+  mutate(translation_type = case_when(str_detect(translation, "_") ~ "concatenated_multi", # capitalize and add underscores to multiword phrases
+                                      TRUE ~ "single" )) %>%
+  mutate_at(vars(word, language, word_id, translation_id), as.factor)  %>%
+  filter(!is.na(translation))
+
+tidy_translations2 <- translated_clean %>%
+  separate(translation, 
+           c("t1", "t2", "t3", "t4", "t5", "t6", "t7"), "/") %>%
+  gather("translation_id", "translation", -1:-3) %>%
+  filter(str_detect(translation, " ") ) %>%
+  separate(translation, 
+           c("w1", "w2", "w3", "w4", "w5", "w6", "w7", "w8", "w9"), " ") %>%
+  gather("word_id", "translation", -1:-4) %>%
+  mutate_at(vars(word, language, word_id, translation_id), as.factor)  %>%
   filter(!is.na(translation)) %>%
-  mutate_all( as.factor) 
+  mutate(translation_type = "separate_multi")
+
+tidy_translations <- bind_rows(tidy_translations1, tidy_translations2)
+
 
 write_csv(tidy_translations, OUTFILE)
  
