@@ -1,0 +1,344 @@
+cat_id,stim_name,domain,stim_id
+bad,abuse,Valenced_1,A1
+bad,angry,Valenced_3,A1
+bad,animosity,Valenced_4,A1
+bad,annoy,Valenced_5,A1
+bad,awful,Valenced_6,A1
+bad,bomb,Valenced_1,A6
+bad,dirty,Valenced_4,A2
+bad,disaster,Valenced_5,A2
+bad,disgust,Valenced_6,A2
+bad,evil,Valenced_4,A4
+bad,failure,Valenced_2,A3
+bad,ghastly,Valenced_3,A3
+bad,grief,Valenced_1,A2
+bad,gross,Valenced_4,A3
+bad,grotesque,Valenced_5,A3
+bad,hate,Valenced_6,A3
+bad,hatred,Valenced_7,A2
+bad,horrendous,Valenced_2,A4
+bad,horrible,Valenced_3,A4
+bad,horrific,Valenced_5,A4
+bad,hurtful,Valenced_7,A3
+bad,nasty,Valenced_2,A5
+bad,negative,Valenced_3,A5
+bad,neglected,Valenced_4,A5
+bad,pain,Valenced_1,A5
+bad,poison,Valenced_1,A3
+bad,repulsive,Valenced_2,A6
+bad,rotten,Valenced_4,A6
+bad,sadness,Valenced_1,A4
+bad,selfish,Valenced_6,A5
+bad,sickening,Valenced_7,A5
+bad,tragic,Valenced_6,A6
+bad,ugly,Valenced_3,A6
+good,adore,Valenced_2,A1
+good,appealing,Valenced_4,A1
+good,attractive,Valenced_5,A1
+good,beautiful,Valenced_6,A1
+good,celebrate,Valenced_7,A1
+good,cheer,Valenced_1,A2
+good,cheerful,Valenced_2,A2
+good,cherish,Valenced_3,A2
+good,delight,Valenced_4,A2
+good,delightful,Valenced_5,A2
+good,enjoy,Valenced_7,A2
+good,excellent,Valenced_3,A3
+good,excitement,Valenced_4,A3
+good,fabulous,Valenced_5,A3
+good,fantastic,Valenced_6,A2
+good,favorable,Valenced_7,A3
+good,friend,Valenced_1,A3
+good,friendship,Valenced_2,A4
+good,glad,Valenced_3,A4
+good,glee,Valenced_4,A4
+good,glorious,Valenced_5,A4
+good,gorgeous,Valenced_7,A4
+good,happy,Valenced_6,A3
+good,joyful,Valenced_2,A5
+good,laughing,Valenced_4,A5
+good,love,Valenced_1,A1
+good,lovely,Valenced_6,A4
+good,magnificent,Valenced_7,A5
+good,paradise,Valenced_1,A5
+good,pleasing,Valenced_5,A6
+good,pleasure,Valenced_1,A4
+good,pleasure,Valenced_6,A5
+good,smiling,Valenced_2,A6
+good,spectacular,Valenced_3,A6
+good,splendid,Valenced_1,A6
+good,splendid,Valenced_4,A6
+good,terrific,Valenced_6,A6
+good,triumph,Valenced_7,A6
+X,fit,Athletic People - Intelligent People,S1
+X,active,Athletic People - Intelligent People,S4
+X,nimble,Athletic People - Intelligent People,S5
+X,energetic,Athletic People - Intelligent People,S6
+X,muscular,Athletic People - Intelligent People,S7
+Y,clever,Athletic People - Intelligent People,S1
+Y,bright,Athletic People - Intelligent People,S2
+Y,smart,Athletic People - Intelligent People,S3
+Y,brilliant,Athletic People - Intelligent People,S4
+Y,intellectual,Athletic People - Intelligent People,S6
+Y,academic,Athletic People - Intelligent People,S7
+Y,toward,Avoiding - Approaching,S1
+Y,closer,Avoiding - Approaching,S2
+Y,advance,Avoiding - Approaching,S3
+Y,forward,Avoiding - Approaching,S4
+Y,near,Avoiding - Approaching,S5
+X,back,Avoiding - Approaching,S1
+X,withdraw,Avoiding - Approaching,S2
+X,retreat,Avoiding - Approaching,S4
+X,away,Avoiding - Approaching,S5
+X,work,Career - Family,S1
+X,business,Career - Family,S2
+X,job,Career - Family,S3
+X,profession,Career - Family,S4
+X,office,Career - Family,S5
+Y,home,Career - Family,S1
+Y,household,Career - Family,S2
+Y,children,Career - Family,S3
+Y,domestic,Career - Family,S4
+Y,kitchen,Career - Family,S5
+X,anarchy,Chaos - Order,S1
+X,scattered,Chaos - Order,S2
+X,disarray,Chaos - Order,S3
+X,random,Chaos - Order,S4
+Y,control,Chaos - Order,S1
+Y,predictable,Chaos - Order,S2
+Y,discipline,Chaos - Order,S3
+Y,structure,Chaos - Order,S4
+X,cool,Cold - Hot,S1
+X,freeze,Cold - Hot,S2
+X,frozen,Cold - Hot,S3
+X,ice,Cold - Hot,S4
+X,chill,Cold - Hot,S5
+Y,warm,Cold - Hot,S1
+Y,boil,Cold - Hot,S2
+Y,heat,Cold - Hot,S3
+Y,steam,Cold - Hot,S4
+Y,burn,Cold - Hot,S5
+X,arranged,Determinism - Free Will,S1
+X,destined,Determinism - Free Will,S2
+X,fixed,Determinism - Free Will,S3
+Y,choice,Determinism - Free Will,S1
+Y,intention,Determinism - Free Will,S2
+Y,freedom,Determinism - Free Will,S3
+Y,mother,Friends - Family,S1
+Y,father,Friends - Family,S2
+Y,siblings,Friends - Family,S3
+Y,child,Friends - Family,S5
+X,chum,Friends - Family,S1
+X,buddy,Friends - Family,S2
+X,pal,Friends - Family,S3
+X,peers,Friends - Family,S4
+X,companion,Friends - Family,S5
+X,assistant,Helpers - Leaders,S1
+X,worker,Helpers - Leaders,S2
+X,attendant,Helpers - Leaders,S3
+X,employee,Helpers - Leaders,S4
+Y,president,Helpers - Leaders,S2
+Y,boss,Helpers - Leaders,S3
+Y,manage,Helpers - Leaders,S4
+Y,senator,Helpers - Leaders,S5
+X,simple,Innocence - Wisdom,S1
+X,pure,Innocence - Wisdom,S2
+X,naive,Innocence - Wisdom,S3
+X,inexperience,Innocence - Wisdom,S4
+X,youthful,Innocence - Wisdom,S5
+Y,mature,Innocence - Wisdom,S1
+Y,knowledge,Innocence - Wisdom,S2
+Y,enlightened,Innocence - Wisdom,S3
+Y,sophisticated,Innocence - Wisdom,S5
+X,sports,Jocks - Nerds,S1
+X,strong,Jocks - Nerds,S2
+X,athletic,Jocks - Nerds,S3
+X,exercise,Jocks - Nerds,S4
+X,football,Jocks - Nerds,S5
+X,muscles,Jocks - Nerds,S6
+Y,intelligent,Jocks - Nerds,S2
+Y,smart,Jocks - Nerds,S3
+Y,study,Jocks - Nerds,S4
+Y,calculator,Jocks - Nerds,S5
+Y,brains,Jocks - Nerds,S6
+X,attorney,Lawyers - Politicians,S1
+X,counsel,Lawyers - Politicians,S2
+X,prosecution,Lawyers - Politicians,S3
+Y,mayor,Lawyers - Politicians,S1
+Y,senator,Lawyers - Politicians,S2
+Y,governor,Lawyers - Politicians,S3
+Y,representative,Lawyers - Politicians,S4
+Y,affection,Money - Love,S1
+Y,heart,Money - Love,S2
+Y,relationship,Money - Love,S3
+Y,romance,Money - Love,S4
+X,wealth,Money - Love,S2
+X,investments,Money - Love,S3
+X,cash,Money - Love,S4
+X,military,National Defense - Education,S1
+X,soldiers,National Defense - Education,S2
+X,combat,National Defense - Education,S3
+X,army,National Defense - Education,S4
+X,navy,National Defense - Education,S5
+X,marines,National Defense - Education,S7
+Y,educate,National Defense - Education,S1
+Y,schools,National Defense - Education,S2
+Y,teachers,National Defense - Education,S3
+Y,books,National Defense - Education,S4
+Y,teach,National Defense - Education,S5
+Y,students,National Defense - Education,S7
+Y,supervisors,Organized Labor - Management,S1
+Y,boss,Organized Labor - Management,S2
+Y,administration,Organized Labor - Management,S3
+Y,employer,Organized Labor - Management,S4
+Y,managers,Organized Labor - Management,S5
+X,union,Organized Labor - Management,S1
+X,workers,Organized Labor - Management,S2
+X,employees,Organized Labor - Management,S3
+X,staff,Organized Labor - Management,S4
+X,poor,Poor People - Rich People,S1
+X,impoverished,Poor People - Rich People,S2
+X,broke,Poor People - Rich People,S3
+X,bankrupt,Poor People - Rich People,S4
+Y,wealthy,Poor People - Rich People,S1
+Y,affluent,Poor People - Rich People,S2
+Y,prosperous,Poor People - Rich People,S3
+X,personal,Private - Public,S1
+X,confidential,Private - Public,S2
+X,secret,Private - Public,S3
+X,secluded,Private - Public,S4
+Y,communal,Private - Public,S1
+Y,accessible,Private - Public,S2
+Y,open,Private - Public,S3
+Y,pasta,Protein - Carbohydrates,S1
+Y,bread,Protein - Carbohydrates,S2
+Y,starch,Protein - Carbohydrates,S3
+Y,cereal,Protein - Carbohydrates,S4
+Y,grains,Protein - Carbohydrates,S5
+Y,rice,Protein - Carbohydrates,S6
+X,beef,Protein - Carbohydrates,S1
+X,chicken,Protein - Carbohydrates,S2
+X,eggs,Protein - Carbohydrates,S3
+X,fish,Protein - Carbohydrates,S5
+X,meat,Protein - Carbohydrates,S6
+Y,pardon,Punishment - Forgiveness,S1
+Y,reprieve,Punishment - Forgiveness,S2
+Y,amnesty,Punishment - Forgiveness,S3
+Y,mercy,Punishment - Forgiveness,S5
+X,penalty,Punishment - Forgiveness,S1
+X,retribution,Punishment - Forgiveness,S2
+X,discipline,Punishment - Forgiveness,S3
+X,punitive,Punishment - Forgiveness,S4
+X,sanction,Punishment - Forgiveness,S5
+Y,follow,Rebellious - Conforming,S1
+Y,obey,Rebellious - Conforming,S2
+Y,yield,Rebellious - Conforming,S3
+Y,comply,Rebellious - Conforming,S4
+Y,abide,Rebellious - Conforming,S5
+X,question,Rebellious - Conforming,S1
+X,challenge,Rebellious - Conforming,S2
+X,defy,Rebellious - Conforming,S3
+X,resist,Rebellious - Conforming,S5
+Y,handsome,Rich People - Beautiful People,S1
+Y,gorgeous,Rich People - Beautiful People,S2
+Y,stunning,Rich People - Beautiful People,S3
+Y,attractive,Rich People - Beautiful People,S4
+X,wealthy,Rich People - Beautiful People,S1
+X,prosperous,Rich People - Beautiful People,S3
+X,affluent,Rich People - Beautiful People,S4
+Y,free,Security - Freedom,S1
+Y,liberty,Security - Freedom,S3
+Y,independent,Security - Freedom,S4
+X,safe,Security - Freedom,S1
+X,secure,Security - Freedom,S2
+X,controlled,Security - Freedom,S3
+X,protected,Security - Freedom,S4
+X,questioning,Skeptical - Trusting,S1
+X,hesitant,Skeptical - Trusting,S2
+X,wary,Skeptical - Trusting,S3
+X,doubtful,Skeptical - Trusting,S4
+Y,convinced,Skeptical - Trusting,S1
+Y,confident,Skeptical - Trusting,S2
+Y,accepting,Skeptical - Trusting,S3
+Y,believing,Skeptical - Trusting,S4
+Y,correct,Speed - Accuracy,S1
+Y,accurate,Speed - Accuracy,S2
+Y,precise,Speed - Accuracy,S3
+Y,valid,Speed - Accuracy,S4
+Y,exact,Speed - Accuracy,S5
+X,fast,Speed - Accuracy,S1
+X,swift,Speed - Accuracy,S2
+X,rapid,Speed - Accuracy,S3
+X,quick,Speed - Accuracy,S4
+X,speedy,Speed - Accuracy,S5
+Y,shifting,Stable - Flexible,S1
+Y,new,Stable - Flexible,S2
+Y,different,Stable - Flexible,S3
+Y,variable,Stable - Flexible,S4
+Y,changing,Stable - Flexible,S5
+Y,novelty,Stable - Flexible,S6
+Y,fluctuate,Stable - Flexible,S7
+X,same,Stable - Flexible,S1
+X,familiar,Stable - Flexible,S2
+X,steady,Stable - Flexible,S4
+X,fixed,Stable - Flexible,S5
+X,enduring,Stable - Flexible,S6
+X,permanent,Stable - Flexible,S7
+Y,religion,State - Church,S1
+Y,spirituality,State - Church,S2
+Y,faith,State - Church,S3
+Y,scripture,State - Church,S4
+X,government,State - Church,S1
+X,republic,State - Church,S2
+X,nation,State - Church,S3
+X,constitution,State - Church,S4
+Y,small,Tall People - Short People,S1
+Y,tiny,Tall People - Short People,S2
+Y,little,Tall People - Short People,S3
+Y,slight,Tall People - Short People,S4
+Y,petite,Tall People - Short People,S5
+X,big,Tall People - Short People,S2
+X,large,Tall People - Short People,S3
+X,gigantic,Tall People - Short People,S4
+X,towering,Tall People - Short People,S5
+Y,person,Team - Individual,S1
+Y,autonomous,Team - Individual,S2
+Y,solo,Team - Individual,S3
+Y,one,Team - Individual,S4
+X,squad,Team - Individual,S1
+X,players,Team - Individual,S2
+X,group,Team - Individual,S3
+X,bunch,Team - Individual,S4
+Y,animals,Technology - Nature,S1
+Y,natural,Technology - Nature,S2
+Y,plants,Technology - Nature,S3
+Y,living,Technology - Nature,S4
+X,machines,Technology - Nature,S1
+X,innovation,Technology - Nature,S2
+X,devices,Technology - Nature,S3
+X,invention,Technology - Nature,S4
+Y,development,Tradition - Progress,S1
+Y,advancement,Tradition - Progress,S2
+Y,innovation,Tradition - Progress,S3
+Y,change,Tradition - Progress,S4
+X,ritual,Tradition - Progress,S1
+X,custom,Tradition - Progress,S2
+X,convention,Tradition - Progress,S3
+X,stability,Tradition - Progress,S4
+Y,country,Urban - Rural,S1
+Y,farm,Urban - Rural,S2
+Y,slow,Urban - Rural,S3
+Y,quiet,Urban - Rural,S4
+Y,fields,Urban - Rural,S5
+X,city,Urban - Rural,S1
+X,busy,Urban - Rural,S3
+X,noise,Urban - Rural,S4
+X,buildings,Urban - Rural,S5
+Y,june,Winter - Summer,S1
+Y,hot,Winter - Summer,S2
+Y,july,Winter - Summer,S3
+Y,august,Winter - Summer,S4
+X,january,Winter - Summer,S1
+X,cold,Winter - Summer,S2
+X,february,Winter - Summer,S3
+X,december,Winter - Summer,S4

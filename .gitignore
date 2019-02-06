@@ -44,6 +44,8 @@ data/study1c/raw/COCAshort_words.txt
 exploratory_analyses/2_pretrained_w2v_models/behavior_IAT/iat_gender_full_cache/*
 exploratory_analyses/2_pretrained_w2v_models/behavior_IAT/iat_gender_fullv2_cache/*
 exploratory_analyses/2_pretrained_w2v_models/embedding_IAT/embedding_IAT_summary_cache/*
+data/study1c/processed/trained_coca_fasttext_5.csv
+data/study1c/processed/trained_bnc_fasttext_5.csv
 
 *.feather
 # LaTeX #

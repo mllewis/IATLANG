@@ -2,7 +2,7 @@
 
 library(tidyverse)
 library(here)
-source("IAT_utils.R")
+source(here("analyses/study1c/IAT_utils.R"))
 
 BNC_PATH_F <- here("data/study1c/processed/trained_bnc_fasttext_5.csv")
 COCA_PATH_F <- here("data/study1c/processed/trained_coca_fasttext_5.csv")
@@ -42,5 +42,5 @@ all_es_tidy <- all_es %>%
          model_source = str_split(model_source, "trained_")[[1]][2]) %>%
   select(model_source, domain, effect_size)
 
-write_csv(all_es, OUTFILE)
+write_csv(all_es_tidy, OUTFILE)
 

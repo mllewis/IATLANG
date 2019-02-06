@@ -1,0 +1,479 @@
+domain,cat_id,cat_label,stim_id,stim_name
+Asian - White,X,Asian,S1,chang
+Asian - White,X,Asian,S2,hwang
+Asian - White,X,Asian,S3,wong
+Asian - White,X,Asian,S4,chen
+Asian - White,X,Asian,S5,nguyen
+Asian - White,X,Asian,S6,fujimoto
+Asian - White,X,Asian,S7,lee
+Asian - White,Y,White,S1,smith
+Asian - White,Y,White,S2,jones
+Asian - White,Y,White,S3,adams
+Asian - White,Y,White,S4,harris
+Asian - White,Y,White,S5,miller
+Asian - White,Y,White,S6,perry
+Asian - White,Y,White,S7,ward
+Astrology - Science,X,Astrology,S1,horoscope
+Astrology - Science,X,Astrology,S2,capricorn
+Astrology - Science,X,Astrology,S3,aries
+Astrology - Science,X,Astrology,S4,pisces
+Astrology - Science,X,Astrology,S5,mystic
+Astrology - Science,X,Astrology,S6,libra
+Astrology - Science,Y,Science,S1,experiment
+Astrology - Science,Y,Science,S2,laboratory
+Astrology - Science,Y,Science,S3,physics
+Astrology - Science,Y,Science,S4,chemistry
+Astrology - Science,Y,Science,S5,biology
+Astrology - Science,Y,Science,S6,scientist
+Atheism - Religion,X,Atheism,S1,atheist
+Atheism - Religion,X,Atheism,S2,agnostic
+Atheism - Religion,X,Atheism,S3,skeptic
+Atheism - Religion,Y,Religion,S1,churchgoer
+Atheism - Religion,Y,Religion,S2,religious
+Atheism - Religion,Y,Religion,S3,theist
+Athletic People - Intelligent People,X,Athletic People,S1,fit
+Athletic People - Intelligent People,X,Athletic People,S2,sporty
+Athletic People - Intelligent People,X,Athletic People,S3,in-shape
+Athletic People - Intelligent People,X,Athletic People,S4,active
+Athletic People - Intelligent People,X,Athletic People,S5,nimble
+Athletic People - Intelligent People,X,Athletic People,S6,energetic
+Athletic People - Intelligent People,X,Athletic People,S7,muscular
+Athletic People - Intelligent People,Y,Intelligent People,S1,clever
+Athletic People - Intelligent People,Y,Intelligent People,S2,bright
+Athletic People - Intelligent People,Y,Intelligent People,S3,smart
+Athletic People - Intelligent People,Y,Intelligent People,S4,brilliant
+Athletic People - Intelligent People,Y,Intelligent People,S5,brainy
+Athletic People - Intelligent People,Y,Intelligent People,S6,intellectual
+Athletic People - Intelligent People,Y,Intelligent People,S7,academic
+Avoiding - Approaching,Y,Approaching,S1,toward
+Avoiding - Approaching,Y,Approaching,S2,closer
+Avoiding - Approaching,Y,Approaching,S3,advance
+Avoiding - Approaching,Y,Approaching,S4,forward
+Avoiding - Approaching,Y,Approaching,S5,near
+Avoiding - Approaching,X,Avoiding,S1,back
+Avoiding - Approaching,X,Avoiding,S2,withdraw
+Avoiding - Approaching,X,Avoiding,S3,recoil
+Avoiding - Approaching,X,Avoiding,S4,retreat
+Avoiding - Approaching,X,Avoiding,S5,away
+Career - Family,X,Career,S1,work
+Career - Family,X,Career,S2,business
+Career - Family,X,Career,S3,job
+Career - Family,X,Career,S4,profession
+Career - Family,X,Career,S5,office
+Career - Family,Y,Family,S1,home
+Career - Family,Y,Family,S2,household
+Career - Family,Y,Family,S3,children
+Career - Family,Y,Family,S4,domestic
+Career - Family,Y,Family,S5,kitchen
+Chaos - Order,X,Chaos,S1,anarchy
+Chaos - Order,X,Chaos,S2,scattered
+Chaos - Order,X,Chaos,S3,disarray
+Chaos - Order,X,Chaos,S4,random
+Chaos - Order,Y,Order,S1,control
+Chaos - Order,Y,Order,S2,predictable
+Chaos - Order,Y,Order,S3,discipline
+Chaos - Order,Y,Order,S4,structure
+Cold - Hot,X,Cold,S1,cool
+Cold - Hot,X,Cold,S2,freeze
+Cold - Hot,X,Cold,S3,frozen
+Cold - Hot,X,Cold,S4,ice
+Cold - Hot,X,Cold,S5,chill
+Cold - Hot,Y,Hot,S1,warm
+Cold - Hot,Y,Hot,S2,boil
+Cold - Hot,Y,Hot,S3,heat
+Cold - Hot,Y,Hot,S4,steam
+Cold - Hot,Y,Hot,S5,burn
+Determinism - Free Will,X,Determinism,S1,arranged
+Determinism - Free Will,X,Determinism,S2,destined
+Determinism - Free Will,X,Determinism,S3,fixed
+Determinism - Free Will,Y,Free Will,S1,choice
+Determinism - Free Will,Y,Free Will,S2,intention
+Determinism - Free Will,Y,Free Will,S3,freedom
+Difficult - Simple,X,Difficult,S1,complicated
+Difficult - Simple,X,Difficult,S2,challenging
+Difficult - Simple,X,Difficult,S3,puzzling
+Difficult - Simple,X,Difficult,S4,baffling
+Difficult - Simple,Y,Simple,S1,easy
+Difficult - Simple,Y,Simple,S2,elementary
+Difficult - Simple,Y,Simple,S3,straightforward
+Difficult - Simple,Y,Simple,S4,effortless
+Drinking - Abstaining,Y,Abstaining,S1,abstain
+Drinking - Abstaining,Y,Abstaining,S2,sober
+Drinking - Abstaining,Y,Abstaining,S3,refrain
+Drinking - Abstaining,Y,Abstaining,S4,dry out
+Drinking - Abstaining,X,Drinking,S1,alcohol
+Drinking - Abstaining,X,Drinking,S2,drunk
+Drinking - Abstaining,X,Drinking,S3,intoxicated
+Drinking - Abstaining,X,Drinking,S4,inebriated
+Friends - Family,Y,Family,S1,mother
+Friends - Family,Y,Family,S2,father
+Friends - Family,Y,Family,S3,siblings
+Friends - Family,Y,Family,S4,grandparent
+Friends - Family,Y,Family,S5,child
+Friends - Family,X,Friends,S1,chum
+Friends - Family,X,Friends,S2,buddy
+Friends - Family,X,Friends,S3,pal
+Friends - Family,X,Friends,S4,peers
+Friends - Family,X,Friends,S5,companion
+Helpers - Leaders,X,Helpers,S1,assistant
+Helpers - Leaders,X,Helpers,S2,worker
+Helpers - Leaders,X,Helpers,S3,attendant
+Helpers - Leaders,X,Helpers,S4,employee
+Helpers - Leaders,X,Helpers,S5,aide
+Helpers - Leaders,Y,Leaders,S1,ceo
+Helpers - Leaders,Y,Leaders,S2,president
+Helpers - Leaders,Y,Leaders,S3,boss
+Helpers - Leaders,Y,Leaders,S4,manage
+Helpers - Leaders,Y,Leaders,S5,senator
+Innocence - Wisdom,X,Innocence,S1,simple
+Innocence - Wisdom,X,Innocence,S2,pure
+Innocence - Wisdom,X,Innocence,S3,naive
+Innocence - Wisdom,X,Innocence,S4,inexperience
+Innocence - Wisdom,X,Innocence,S5,youthful
+Innocence - Wisdom,Y,Wisdom,S1,mature
+Innocence - Wisdom,Y,Wisdom,S2,knowledge
+Innocence - Wisdom,Y,Wisdom,S3,enlightened
+Innocence - Wisdom,Y,Wisdom,S4,worldly
+Innocence - Wisdom,Y,Wisdom,S5,sophisticated
+Jews - Christians,Y,Christians,S1,church
+Jews - Christians,Y,Christians,S2,minister
+Jews - Christians,Y,Christians,S3,priest
+Jews - Christians,Y,Christians,S4,gospels
+Jews - Christians,Y,Christians,S5,christmas
+Jews - Christians,Y,Christians,S6,christian
+Jews - Christians,Y,Christians,S7,easter
+Jews - Christians,Y,Christians,S8,sunday
+Jews - Christians,X,Jews,S1,synagogue
+Jews - Christians,X,Jews,S2,rabbi
+Jews - Christians,X,Jews,S3,torah
+Jews - Christians,X,Jews,S4,talmud
+Jews - Christians,X,Jews,S5,hanukkah
+Jews - Christians,X,Jews,S6,jewish
+Jews - Christians,X,Jews,S7,yom kippur
+Jews - Christians,X,Jews,S8,sabbath
+Jocks - Nerds,X,Jocks,S1,sports
+Jocks - Nerds,X,Jocks,S2,strong
+Jocks - Nerds,X,Jocks,S3,athletic
+Jocks - Nerds,X,Jocks,S4,exercise
+Jocks - Nerds,X,Jocks,S5,football
+Jocks - Nerds,X,Jocks,S6,muscles
+Jocks - Nerds,Y,Nerds,S1,studious
+Jocks - Nerds,Y,Nerds,S2,intelligent
+Jocks - Nerds,Y,Nerds,S3,smart
+Jocks - Nerds,Y,Nerds,S4,study
+Jocks - Nerds,Y,Nerds,S5,calculator
+Jocks - Nerds,Y,Nerds,S6,brains
+Lawyers - Politicians,X,Lawyers,S1,attorney
+Lawyers - Politicians,X,Lawyers,S2,counsel
+Lawyers - Politicians,X,Lawyers,S3,prosecution
+Lawyers - Politicians,X,Lawyers,S4,trial lawyer
+Lawyers - Politicians,Y,Politicians,S1,mayor
+Lawyers - Politicians,Y,Politicians,S2,senator
+Lawyers - Politicians,Y,Politicians,S3,governor
+Lawyers - Politicians,Y,Politicians,S4,representative
+Manufactured - Natural,X,Manufactured,S1,artificial
+Manufactured - Natural,X,Manufactured,S2,synthetic
+Manufactured - Natural,X,Manufactured,S3,produced
+Manufactured - Natural,X,Manufactured,S4,constructed
+Manufactured - Natural,Y,Natural,S1,biological
+Manufactured - Natural,Y,Natural,S2,untreated
+Manufactured - Natural,Y,Natural,S3,pure
+Manufactured - Natural,Y,Natural,S4,organic
+Money - Love,Y,Love,S1,affection
+Money - Love,Y,Love,S2,heart
+Money - Love,Y,Love,S3,relationship
+Money - Love,Y,Love,S4,romance
+Money - Love,X,Money,S1,affluence
+Money - Love,X,Money,S2,wealth
+Money - Love,X,Money,S3,investments
+Money - Love,X,Money,S4,cash
+Muslims - Jews,Y,Jews,S1,torah
+Muslims - Jews,Y,Jews,S2,moses
+Muslims - Jews,Y,Jews,S3,temple
+Muslims - Jews,Y,Jews,S4,judaism
+Muslims - Jews,Y,Jews,S5,israel
+Muslims - Jews,X,Muslims,S1,islam
+Muslims - Jews,X,Muslims,S2,mosque
+Muslims - Jews,X,Muslims,S3,mohammed
+Muslims - Jews,X,Muslims,S4,koran
+Muslims - Jews,X,Muslims,S5,palestine
+National Defense - Education,X,Defense,S1,military
+National Defense - Education,X,Defense,S2,soldiers
+National Defense - Education,X,Defense,S3,combat
+National Defense - Education,X,Defense,S4,army
+National Defense - Education,X,Defense,S5,navy
+National Defense - Education,X,Defense,S6,air force
+National Defense - Education,X,Defense,S7,marines
+National Defense - Education,Y,Education,S1,educate
+National Defense - Education,Y,Education,S2,schools
+National Defense - Education,Y,Education,S3,teachers
+National Defense - Education,Y,Education,S4,books
+National Defense - Education,Y,Education,S5,teach
+National Defense - Education,Y,Education,S6,buses
+National Defense - Education,Y,Education,S7,students
+Night - Morning,Y,Morning,S1,a.m.
+Night - Morning,Y,Morning,S2,sun
+Night - Morning,Y,Morning,S3,daylight
+Night - Morning,Y,Morning,S4,dawn
+Night - Morning,Y,Morning,S5,sunrise
+Night - Morning,X,Night,S1,p.m.
+Night - Morning,X,Night,S2,evening
+Night - Morning,X,Night,S3,moon
+Night - Morning,X,Night,S4,midnight
+Night - Morning,X,Night,S5,sunset
+Numbers - Letters,Y,Letters,S1,abc
+Numbers - Letters,Y,Letters,S2,def
+Numbers - Letters,Y,Letters,S3,ghi
+Numbers - Letters,Y,Letters,S4,bcde
+Numbers - Letters,Y,Letters,S5,fghi
+Numbers - Letters,Y,Letters,S6,abcdef
+Numbers - Letters,Y,Letters,S7,defghi
+Numbers - Letters,X,Numbers,S1,123
+Numbers - Letters,X,Numbers,S2,456
+Numbers - Letters,X,Numbers,S3,789
+Numbers - Letters,X,Numbers,S4,2345
+Numbers - Letters,X,Numbers,S5,6789
+Numbers - Letters,X,Numbers,S6,123456
+Numbers - Letters,X,Numbers,S7,456789
+Organized Labor - Management,Y,Management,S1,supervisors
+Organized Labor - Management,Y,Management,S2,boss
+Organized Labor - Management,Y,Management,S3,administration
+Organized Labor - Management,Y,Management,S4,employer
+Organized Labor - Management,Y,Management,S5,managers
+Organized Labor - Management,X,Organized Labor,S1,union
+Organized Labor - Management,X,Organized Labor,S2,workers
+Organized Labor - Management,X,Organized Labor,S3,employees
+Organized Labor - Management,X,Organized Labor,S4,staff
+Organized Labor - Management,X,Organized Labor,S5,subordinates
+Poor People - Rich People,X,Poor People,S1,poor
+Poor People - Rich People,X,Poor People,S2,impoverished
+Poor People - Rich People,X,Poor People,S3,broke
+Poor People - Rich People,X,Poor People,S4,bankrupt
+Poor People - Rich People,Y,Rich People,S1,wealthy
+Poor People - Rich People,Y,Rich People,S2,affluent
+Poor People - Rich People,Y,Rich People,S3,prosperous
+Poor People - Rich People,Y,Rich People,S4,well off
+Private - Public,X,Private,S1,personal
+Private - Public,X,Private,S2,confidential
+Private - Public,X,Private,S3,secret
+Private - Public,X,Private,S4,secluded
+Private - Public,Y,Public,S1,communal
+Private - Public,Y,Public,S2,accessible
+Private - Public,Y,Public,S3,open
+Private - Public,Y,Public,S4,unrestricted
+Protein - Carbohydrates,Y,Carbohydrates,S1,pasta
+Protein - Carbohydrates,Y,Carbohydrates,S2,bread
+Protein - Carbohydrates,Y,Carbohydrates,S3,starch
+Protein - Carbohydrates,Y,Carbohydrates,S4,cereal
+Protein - Carbohydrates,Y,Carbohydrates,S5,grains
+Protein - Carbohydrates,Y,Carbohydrates,S6,rice
+Protein - Carbohydrates,X,Protein,S1,beef
+Protein - Carbohydrates,X,Protein,S2,chicken
+Protein - Carbohydrates,X,Protein,S3,eggs
+Protein - Carbohydrates,X,Protein,S4,peanut butter
+Protein - Carbohydrates,X,Protein,S5,fish
+Protein - Carbohydrates,X,Protein,S6,meat
+Protestants - Catholics,Y,Catholics,S1,rome
+Protestants - Catholics,Y,Catholics,S2,vatican
+Protestants - Catholics,Y,Catholics,S3,pope
+Protestants - Catholics,Y,Catholics,S4,jesuit
+Protestants - Catholics,Y,Catholics,S5,dominican
+Protestants - Catholics,Y,Catholics,S6,saints
+Protestants - Catholics,X,Protestants,S1,anglican
+Protestants - Catholics,X,Protestants,S2,pastor
+Protestants - Catholics,X,Protestants,S3,episcopalian
+Protestants - Catholics,X,Protestants,S4,methodist
+Protestants - Catholics,X,Protestants,S5,baptist
+Protestants - Catholics,X,Protestants,S6,lutheran
+Punishment - Forgiveness,Y,Forgiveness,S1,pardon
+Punishment - Forgiveness,Y,Forgiveness,S2,reprieve
+Punishment - Forgiveness,Y,Forgiveness,S3,amnesty
+Punishment - Forgiveness,Y,Forgiveness,S4,lenience
+Punishment - Forgiveness,Y,Forgiveness,S5,mercy
+Punishment - Forgiveness,X,Punishment,S1,penalty
+Punishment - Forgiveness,X,Punishment,S2,retribution
+Punishment - Forgiveness,X,Punishment,S3,discipline
+Punishment - Forgiveness,X,Punishment,S4,punitive
+Punishment - Forgiveness,X,Punishment,S5,sanction
+Realism - Idealism,Y,Idealism,S1,optimism
+Realism - Idealism,Y,Idealism,S2,hope
+Realism - Idealism,Y,Idealism,S3,utopian
+Realism - Idealism,Y,Idealism,S4,visionary
+Realism - Idealism,X,Realism,S1,practical
+Realism - Idealism,X,Realism,S2,concrete
+Realism - Idealism,X,Realism,S3,pragmatism
+Realism - Idealism,X,Realism,S4,reason
+Reason - Emotions,Y,Emotions,S1,feeling
+Reason - Emotions,Y,Emotions,S2,impulsive
+Reason - Emotions,Y,Emotions,S3,spontaneous
+Reason - Emotions,Y,Emotions,S4,passionate
+Reason - Emotions,Y,Emotions,S5,volatile
+Reason - Emotions,Y,Emotions,S6,sensitive
+Reason - Emotions,Y,Emotions,S7,impassioned
+Reason - Emotions,X,Reason,S1,sensible
+Reason - Emotions,X,Reason,S2,prudent
+Reason - Emotions,X,Reason,S3,logical
+Reason - Emotions,X,Reason,S4,reasoning
+Reason - Emotions,X,Reason,S5,prudent
+Reason - Emotions,X,Reason,S6,practical
+Reason - Emotions,X,Reason,S7,pragmatic
+Rebellious - Conforming,Y,Conforming,S1,follow
+Rebellious - Conforming,Y,Conforming,S2,obey
+Rebellious - Conforming,Y,Conforming,S3,yield
+Rebellious - Conforming,Y,Conforming,S4,comply
+Rebellious - Conforming,Y,Conforming,S5,abide
+Rebellious - Conforming,X,Rebellious,S1,question
+Rebellious - Conforming,X,Rebellious,S2,challenge
+Rebellious - Conforming,X,Rebellious,S3,defy
+Rebellious - Conforming,X,Rebellious,S4,disobey
+Rebellious - Conforming,X,Rebellious,S5,resist
+Receiving - Giving,Y,Giving,S1,bestowing
+Receiving - Giving,Y,Giving,S2,donating
+Receiving - Giving,Y,Giving,S3,endowing
+Receiving - Giving,Y,Giving,S4,awarding
+Receiving - Giving,Y,Giving,S5,providing
+Receiving - Giving,X,Receiving,S1,accepting
+Receiving - Giving,X,Receiving,S2,acquiring
+Receiving - Giving,X,Receiving,S3,gaining
+Receiving - Giving,X,Receiving,S4,obtaining
+Receiving - Giving,X,Receiving,S5,procuring
+Rich People - Beautiful People,Y,Beautiful People,S1,handsome
+Rich People - Beautiful People,Y,Beautiful People,S2,gorgeous
+Rich People - Beautiful People,Y,Beautiful People,S3,stunning
+Rich People - Beautiful People,Y,Beautiful People,S4,attractive
+Rich People - Beautiful People,X,Rich People,S1,wealthy
+Rich People - Beautiful People,X,Rich People,S2,well-off
+Rich People - Beautiful People,X,Rich People,S3,prosperous
+Rich People - Beautiful People,X,Rich People,S4,affluent
+Security - Freedom,Y,Freedom,S1,free
+Security - Freedom,Y,Freedom,S2,unregulated
+Security - Freedom,Y,Freedom,S3,liberty
+Security - Freedom,Y,Freedom,S4,independent
+Security - Freedom,X,Security,S1,safe
+Security - Freedom,X,Security,S2,secure
+Security - Freedom,X,Security,S3,controlled
+Security - Freedom,X,Security,S4,protected
+Single - Married,Y,Married,S1,together
+Single - Married,Y,Married,S2,joined
+Single - Married,Y,Married,S3,couple
+Single - Married,Y,Married,S4,wedded
+Single - Married,Y,Married,S5,committed
+Single - Married,Y,Married,S6,hitched
+Single - Married,X,Single,S1,solitary
+Single - Married,X,Single,S2,independent
+Single - Married,X,Single,S3,autonomous
+Single - Married,X,Single,S4,unmarried
+Single - Married,X,Single,S5,unattached
+Single - Married,X,Single,S6,individual
+Skeptical - Trusting,X,Skeptical,S1,questioning
+Skeptical - Trusting,X,Skeptical,S2,hesitant
+Skeptical - Trusting,X,Skeptical,S3,wary
+Skeptical - Trusting,X,Skeptical,S4,doubtful
+Skeptical - Trusting,Y,Trusting,S1,convinced
+Skeptical - Trusting,Y,Trusting,S2,confident
+Skeptical - Trusting,Y,Trusting,S3,accepting
+Skeptical - Trusting,Y,Trusting,S4,believing
+Solitude - Companionship,Y,Companionship,S1,accompaniment
+Solitude - Companionship,Y,Companionship,S2,comraderie
+Solitude - Companionship,Y,Companionship,S3,company
+Solitude - Companionship,Y,Companionship,S4,fellowship
+Solitude - Companionship,Y,Companionship,S5,togetherness
+Solitude - Companionship,Y,Companionship,S6,relationship
+Solitude - Companionship,X,Solitude,S1,alone
+Solitude - Companionship,X,Solitude,S2,unattached
+Solitude - Companionship,X,Solitude,S3,independent
+Solitude - Companionship,X,Solitude,S4,solo
+Solitude - Companionship,X,Solitude,S5,individual
+Solitude - Companionship,X,Solitude,S6,autonomous
+Speed - Accuracy,Y,Accuracy,S1,correct
+Speed - Accuracy,Y,Accuracy,S2,accurate
+Speed - Accuracy,Y,Accuracy,S3,precise
+Speed - Accuracy,Y,Accuracy,S4,valid
+Speed - Accuracy,Y,Accuracy,S5,exact
+Speed - Accuracy,X,Speed,S1,fast
+Speed - Accuracy,X,Speed,S2,swift
+Speed - Accuracy,X,Speed,S3,rapid
+Speed - Accuracy,X,Speed,S4,quick
+Speed - Accuracy,X,Speed,S5,speedy
+Stable - Flexible,Y,Flexible,S1,shifting
+Stable - Flexible,Y,Flexible,S2,new
+Stable - Flexible,Y,Flexible,S3,different
+Stable - Flexible,Y,Flexible,S4,variable
+Stable - Flexible,Y,Flexible,S5,changing
+Stable - Flexible,Y,Flexible,S6,novelty
+Stable - Flexible,Y,Flexible,S7,fluctuate
+Stable - Flexible,X,Stable,S1,same
+Stable - Flexible,X,Stable,S2,familiar
+Stable - Flexible,X,Stable,S3,unchanging
+Stable - Flexible,X,Stable,S4,steady
+Stable - Flexible,X,Stable,S5,fixed
+Stable - Flexible,X,Stable,S6,enduring
+Stable - Flexible,X,Stable,S7,permanent
+State - Church,Y,Church,S1,religion
+State - Church,Y,Church,S2,spirituality
+State - Church,Y,Church,S3,faith
+State - Church,Y,Church,S4,scripture
+State - Church,X,State,S1,government
+State - Church,X,State,S2,republic
+State - Church,X,State,S3,nation
+State - Church,X,State,S4,constitution
+Strong - Sensitive,Y,Sensitive,S1,perceptive
+Strong - Sensitive,Y,Sensitive,S2,responsive
+Strong - Sensitive,Y,Sensitive,S3,considerate
+Strong - Sensitive,Y,Sensitive,S4,insightful
+Strong - Sensitive,X,Strong,S1,powerful
+Strong - Sensitive,X,Strong,S2,sturdy
+Strong - Sensitive,X,Strong,S3,firm
+Strong - Sensitive,X,Strong,S4,steady
+Tall People - Short People,Y,Short,S1,small
+Tall People - Short People,Y,Short,S2,tiny
+Tall People - Short People,Y,Short,S3,little
+Tall People - Short People,Y,Short,S4,slight
+Tall People - Short People,Y,Short,S5,petite
+Tall People - Short People,X,Tall,S1,lanky
+Tall People - Short People,X,Tall,S2,big
+Tall People - Short People,X,Tall,S3,large
+Tall People - Short People,X,Tall,S4,gigantic
+Tall People - Short People,X,Tall,S5,towering
+Team - Individual,Y,Individual,S1,person
+Team - Individual,Y,Individual,S2,autonomous
+Team - Individual,Y,Individual,S3,solo
+Team - Individual,Y,Individual,S4,one
+Team - Individual,X,Team,S1,squad
+Team - Individual,X,Team,S2,players
+Team - Individual,X,Team,S3,group
+Team - Individual,X,Team,S4,bunch
+Technology - Nature,Y,Nature,S1,animals
+Technology - Nature,Y,Nature,S2,natural
+Technology - Nature,Y,Nature,S3,plants
+Technology - Nature,Y,Nature,S4,living
+Technology - Nature,X,Technology,S1,machines
+Technology - Nature,X,Technology,S2,innovation
+Technology - Nature,X,Technology,S3,devices
+Technology - Nature,X,Technology,S4,invention
+Tradition - Progress,Y,Progress,S1,development
+Tradition - Progress,Y,Progress,S2,advancement
+Tradition - Progress,Y,Progress,S3,innovation
+Tradition - Progress,Y,Progress,S4,change
+Tradition - Progress,X,Tradition,S1,ritual
+Tradition - Progress,X,Tradition,S2,custom
+Tradition - Progress,X,Tradition,S3,convention
+Tradition - Progress,X,Tradition,S4,stability
+Urban - Rural,Y,Rural,S1,country
+Urban - Rural,Y,Rural,S2,farm
+Urban - Rural,Y,Rural,S3,slow
+Urban - Rural,Y,Rural,S4,quiet
+Urban - Rural,Y,Rural,S5,fields
+Urban - Rural,X,Urban,S1,city
+Urban - Rural,X,Urban,S2,skyscraper
+Urban - Rural,X,Urban,S3,busy
+Urban - Rural,X,Urban,S4,noise
+Urban - Rural,X,Urban,S5,buildings
+Winter - Summer,Y,Summer,S1,june
+Winter - Summer,Y,Summer,S2,hot
+Winter - Summer,Y,Summer,S3,july
+Winter - Summer,Y,Summer,S4,august
+Winter - Summer,X,Winter,S1,january
+Winter - Summer,X,Winter,S2,cold
+Winter - Summer,X,Winter,S3,february
+Winter - Summer,X,Winter,S4,december

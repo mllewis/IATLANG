@@ -68,6 +68,6 @@ iat_freq_diff <- map_df(target_domains,
                      get_iat_word_freq_difference, 
                      targ_words, 
                      domain_eval_set,
-                     log_diff_by_word)
+                     diff_by_word)
 
 write_csv(iat_freq_diff, OUTFILE)

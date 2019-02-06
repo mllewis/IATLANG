@@ -1,0 +1,63 @@
+model_source,domain,effect_size
+bnc_fasttext_5,Athletic People - Intelligent People,-0.06877211866215228
+bnc_fasttext_5,Avoiding - Approaching,0.45983963993602556
+bnc_fasttext_5,Career - Family,0.03201253032460222
+bnc_fasttext_5,Chaos - Order,0.8344632428309824
+bnc_fasttext_5,Cold - Hot,-0.652774723071126
+bnc_fasttext_5,Determinism - Free Will,-0.6093613982391807
+bnc_fasttext_5,Friends - Family,1.0282893237557569
+bnc_fasttext_5,Helpers - Leaders,-0.33578995643711995
+bnc_fasttext_5,Innocence - Wisdom,-0.25812329302149006
+bnc_fasttext_5,Jocks - Nerds,-0.06540428205826992
+bnc_fasttext_5,Lawyers - Politicians,-0.20737704007424373
+bnc_fasttext_5,Money - Love,-1.1345050133749095
+bnc_fasttext_5,National Defense - Education,0.6652764838737244
+bnc_fasttext_5,Organized Labor - Management,0.6744591124699494
+bnc_fasttext_5,Poor People - Rich People,0.3327838906751321
+bnc_fasttext_5,Private - Public,0.031106251207320676
+bnc_fasttext_5,Protein - Carbohydrates,0.6574041947669492
+bnc_fasttext_5,Punishment - Forgiveness,0.3499636843213612
+bnc_fasttext_5,Rebellious - Conforming,0.8166579537876734
+bnc_fasttext_5,Rich People - Beautiful People,-0.6465379307249822
+bnc_fasttext_5,Security - Freedom,0.34300326154778626
+bnc_fasttext_5,Skeptical - Trusting,1.104659478564305
+bnc_fasttext_5,Speed - Accuracy,0.5305315644917001
+bnc_fasttext_5,Stable - Flexible,0.05805839453094588
+bnc_fasttext_5,State - Church,-1.1767805600242112
+bnc_fasttext_5,Tall People - Short People,0.682861682904199
+bnc_fasttext_5,Team - Individual,0.2552995278930237
+bnc_fasttext_5,Technology - Nature,-0.9746290106995842
+bnc_fasttext_5,Tradition - Progress,-0.8758861508355118
+bnc_fasttext_5,Urban - Rural,-0.24831688639038424
+bnc_fasttext_5,Winter - Summer,0.2643141968026637
+coca_fasttext_5,Athletic People - Intelligent People,0.3444950410600181
+coca_fasttext_5,Avoiding - Approaching,-0.3776741001432848
+coca_fasttext_5,Career - Family,0.49910208569895503
+coca_fasttext_5,Chaos - Order,-0.9997354162310016
+coca_fasttext_5,Cold - Hot,-0.3625493513773592
+coca_fasttext_5,Determinism - Free Will,0.6835582541358579
+coca_fasttext_5,Friends - Family,0.9233640509923721
+coca_fasttext_5,Helpers - Leaders,-0.49149707337995385
+coca_fasttext_5,Innocence - Wisdom,0.18794690905025735
+coca_fasttext_5,Jocks - Nerds,-0.3392624067782224
+coca_fasttext_5,Lawyers - Politicians,-0.16030746080890118
+coca_fasttext_5,Money - Love,-1.1844918962337545
+coca_fasttext_5,National Defense - Education,-0.3619159666964357
+coca_fasttext_5,Organized Labor - Management,0.5117410724171739
+coca_fasttext_5,Poor People - Rich People,0.39441706598694154
+coca_fasttext_5,Private - Public,-1.0774249823112438
+coca_fasttext_5,Protein - Carbohydrates,0.8376630597179606
+coca_fasttext_5,Punishment - Forgiveness,0.7015053124014914
+coca_fasttext_5,Rebellious - Conforming,0.9877068189580589
+coca_fasttext_5,Rich People - Beautiful People,-0.5289748829354927
+coca_fasttext_5,Security - Freedom,0.7356264300410761
+coca_fasttext_5,Skeptical - Trusting,0.9427822755478197
+coca_fasttext_5,Speed - Accuracy,0.6664864611434279
+coca_fasttext_5,Stable - Flexible,-0.16643012038150917
+coca_fasttext_5,State - Church,-1.4847639257757124
+coca_fasttext_5,Tall People - Short People,0.1073024510581447
+coca_fasttext_5,Team - Individual,0.5090482225238206
+coca_fasttext_5,Technology - Nature,1.0135631210448985
+coca_fasttext_5,Tradition - Progress,-0.8264779820483148
+coca_fasttext_5,Urban - Rural,0.5564107395916242
+coca_fasttext_5,Winter - Summer,0.08437795916539456
