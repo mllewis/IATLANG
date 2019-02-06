@@ -3,9 +3,9 @@
 stimuli/*
 *.DS_Store
 *.dcf
-*.Rdata
 *.rdb
 *.rdx
+*.Rdata
 *.Rhistory
 *_cache/*
 *_files/*
@@ -36,7 +36,15 @@ exploratory_analyses/8_gender_genius/3_behavioral_project_implicit/data/Gender-S
 exploratory_analyses/8_gender_genius/3_behavioral_project_implicit/data/gender_science_by_participant.csv
 data/study1/raw/Gender-Career\ IAT.public.2005-2016.feather
 exploratory_data/*
-.csv
+exploratory_analyses/13_aiid_exploration/*
+exploratory_analyses/misc_plots_for_gary/*
+data/study1c/raw/AIID_subset_exploratory.csv
+data/study1c/raw/BNCspokenFormatted.txt
+data/study1c/raw/COCAshort_words.txt
+exploratory_analyses/2_pretrained_w2v_models/behavior_IAT/iat_gender_full_cache/*
+exploratory_analyses/2_pretrained_w2v_models/behavior_IAT/iat_gender_fullv2_cache/*
+exploratory_analyses/2_pretrained_w2v_models/embedding_IAT/embedding_IAT_summary_cache/*
+
 *.feather
 # LaTeX #
 *.bet
