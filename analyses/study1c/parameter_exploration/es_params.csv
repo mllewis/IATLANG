@@ -60,3 +60,716 @@ Technology - Nature,Technology - Nature,-1.0356663453930697,coca,5,300,TRUE,2
 Tradition - Progress,Tradition - Progress,-0.7249457929480189,coca,5,300,TRUE,2
 Urban - Rural,Urban - Rural,-0.34501521606972524,coca,5,300,TRUE,2
 Winter - Summer,Winter - Summer,0.3249168577690867,coca,5,300,TRUE,2
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.18122120674138975,coca,5,300,TRUE,5
+Avoiding - Approaching,Avoiding - Approaching,0.4668861756525258,coca,5,300,TRUE,5
+Career - Family,Career - Family,0.48967476806122284,coca,5,300,TRUE,5
+Chaos - Order,Chaos - Order,0.95785308289765,coca,5,300,TRUE,5
+Cold - Hot,Cold - Hot,-0.7216887465900086,coca,5,300,TRUE,5
+Determinism - Free Will,Determinism - Free Will,-0.656145170857653,coca,5,300,TRUE,5
+Friends - Family,Friends - Family,0.9165190282681694,coca,5,300,TRUE,5
+Helpers - Leaders,Helpers - Leaders,-0.6066999396091636,coca,5,300,TRUE,5
+Innocence - Wisdom,Innocence - Wisdom,0.32036158164686385,coca,5,300,TRUE,5
+Jocks - Nerds,Jocks - Nerds,-0.15318464935618564,coca,5,300,TRUE,5
+Lawyers - Politicians,Lawyers - Politicians,0.002069020682728134,coca,5,300,TRUE,5
+Money - Love,Money - Love,-1.0951890458771225,coca,5,300,TRUE,5
+National Defense - Education,National Defense - Education,0.5525156180055864,coca,5,300,TRUE,5
+Organized Labor - Management,Organized Labor - Management,0.45493489573760515,coca,5,300,TRUE,5
+Poor People - Rich People,Poor People - Rich People,0.5239499588876592,coca,5,300,TRUE,5
+Private - Public,Private - Public,-0.663690245789264,coca,5,300,TRUE,5
+Protein - Carbohydrates,Protein - Carbohydrates,0.7719675488207401,coca,5,300,TRUE,5
+Punishment - Forgiveness,Punishment - Forgiveness,0.4480881117308617,coca,5,300,TRUE,5
+Rebellious - Conforming,Rebellious - Conforming,0.9179574956759831,coca,5,300,TRUE,5
+Rich People - Beautiful People,Rich People - Beautiful People,-0.7471280159828074,coca,5,300,TRUE,5
+Security - Freedom,Security - Freedom,0.6533008667063608,coca,5,300,TRUE,5
+Skeptical - Trusting,Skeptical - Trusting,0.9868702395241659,coca,5,300,TRUE,5
+Speed - Accuracy,Speed - Accuracy,0.6939268129079424,coca,5,300,TRUE,5
+Stable - Flexible,Stable - Flexible,-0.3394189182427472,coca,5,300,TRUE,5
+State - Church,State - Church,-1.465687659912768,coca,5,300,TRUE,5
+Tall People - Short People,Tall People - Short People,0.312266600593424,coca,5,300,TRUE,5
+Team - Individual,Team - Individual,0.6556477110728025,coca,5,300,TRUE,5
+Technology - Nature,Technology - Nature,-1.116831382768671,coca,5,300,TRUE,5
+Tradition - Progress,Tradition - Progress,-1.0003088104970765,coca,5,300,TRUE,5
+Urban - Rural,Urban - Rural,-0.6611647088295076,coca,5,300,TRUE,5
+Winter - Summer,Winter - Summer,0.20573134798307569,coca,5,300,TRUE,5
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.021615819884529375,coca,5,200,FALSE,5
+Avoiding - Approaching,Avoiding - Approaching,-0.6610440113597863,coca,5,200,FALSE,5
+Career - Family,Career - Family,1.137382633812522,coca,5,200,FALSE,5
+Chaos - Order,Chaos - Order,1.0027397826605593,coca,5,200,FALSE,5
+Cold - Hot,Cold - Hot,-0.1464779055435432,coca,5,200,FALSE,5
+Determinism - Free Will,Determinism - Free Will,1.017363960530576,coca,5,200,FALSE,5
+Friends - Family,Friends - Family,0.3779510053461435,coca,5,200,FALSE,5
+Helpers - Leaders,Helpers - Leaders,0.5092130340551217,coca,5,200,FALSE,5
+Innocence - Wisdom,Innocence - Wisdom,-0.8463936482962418,coca,5,200,FALSE,5
+Jocks - Nerds,Jocks - Nerds,0.47823255450430135,coca,5,200,FALSE,5
+Lawyers - Politicians,Lawyers - Politicians,0.6275563790146069,coca,5,200,FALSE,5
+Money - Love,Money - Love,-0.5660468783095751,coca,5,200,FALSE,5
+National Defense - Education,National Defense - Education,0.2440195326796231,coca,5,200,FALSE,5
+Organized Labor - Management,Organized Labor - Management,0.5742436444907436,coca,5,200,FALSE,5
+Poor People - Rich People,Poor People - Rich People,0.7185872073856002,coca,5,200,FALSE,5
+Private - Public,Private - Public,0.12982176336157403,coca,5,200,FALSE,5
+Protein - Carbohydrates,Protein - Carbohydrates,-0.1342265412076853,coca,5,200,FALSE,5
+Punishment - Forgiveness,Punishment - Forgiveness,-0.8033016926822131,coca,5,200,FALSE,5
+Rebellious - Conforming,Rebellious - Conforming,-0.9600085409450994,coca,5,200,FALSE,5
+Rich People - Beautiful People,Rich People - Beautiful People,0.1641145046771924,coca,5,200,FALSE,5
+Security - Freedom,Security - Freedom,-0.4812516929172911,coca,5,200,FALSE,5
+Skeptical - Trusting,Skeptical - Trusting,0.7135549675692562,coca,5,200,FALSE,5
+Speed - Accuracy,Speed - Accuracy,0.7333265386652374,coca,5,200,FALSE,5
+Stable - Flexible,Stable - Flexible,0.31955739482608936,coca,5,200,FALSE,5
+State - Church,State - Church,-1.1602190461629929,coca,5,200,FALSE,5
+Tall People - Short People,Tall People - Short People,-0.3197035804773714,coca,5,200,FALSE,5
+Team - Individual,Team - Individual,0.7528237169706301,coca,5,200,FALSE,5
+Technology - Nature,Technology - Nature,0.4315087183669192,coca,5,200,FALSE,5
+Tradition - Progress,Tradition - Progress,0.666031271716438,coca,5,200,FALSE,5
+Urban - Rural,Urban - Rural,-0.6305438124580989,coca,5,200,FALSE,5
+Winter - Summer,Winter - Summer,0.5613610832771802,coca,5,200,FALSE,5
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.24208649305826707,coca,5,300,FALSE,5
+Avoiding - Approaching,Avoiding - Approaching,0.9045633923101646,coca,5,300,FALSE,5
+Career - Family,Career - Family,0.5951626154233236,coca,5,300,FALSE,5
+Chaos - Order,Chaos - Order,-1.2874775062859436,coca,5,300,FALSE,5
+Cold - Hot,Cold - Hot,-1.461900958448385,coca,5,300,FALSE,5
+Determinism - Free Will,Determinism - Free Will,-1.1322825016142168,coca,5,300,FALSE,5
+Friends - Family,Friends - Family,0.11650404681784504,coca,5,300,FALSE,5
+Helpers - Leaders,Helpers - Leaders,-0.40134326574880513,coca,5,300,FALSE,5
+Innocence - Wisdom,Innocence - Wisdom,-0.5156696630764317,coca,5,300,FALSE,5
+Jocks - Nerds,Jocks - Nerds,-0.5617510683658296,coca,5,300,FALSE,5
+Lawyers - Politicians,Lawyers - Politicians,-0.5166615118107492,coca,5,300,FALSE,5
+Money - Love,Money - Love,0.7807577420446453,coca,5,300,FALSE,5
+National Defense - Education,National Defense - Education,-0.01243510012710689,coca,5,300,FALSE,5
+Organized Labor - Management,Organized Labor - Management,-0.4772983580685421,coca,5,300,FALSE,5
+Poor People - Rich People,Poor People - Rich People,0.1395713397021369,coca,5,300,FALSE,5
+Private - Public,Private - Public,0.6747660840076786,coca,5,300,FALSE,5
+Protein - Carbohydrates,Protein - Carbohydrates,-0.3176997584264121,coca,5,300,FALSE,5
+Punishment - Forgiveness,Punishment - Forgiveness,0.5256828135640557,coca,5,300,FALSE,5
+Rebellious - Conforming,Rebellious - Conforming,-0.5038235396686597,coca,5,300,FALSE,5
+Rich People - Beautiful People,Rich People - Beautiful People,0.028943360379851707,coca,5,300,FALSE,5
+Security - Freedom,Security - Freedom,0.6276633663940325,coca,5,300,FALSE,5
+Skeptical - Trusting,Skeptical - Trusting,1.4687872738642747,coca,5,300,FALSE,5
+Speed - Accuracy,Speed - Accuracy,0.9043713062666521,coca,5,300,FALSE,5
+Stable - Flexible,Stable - Flexible,0.37015922553487296,coca,5,300,FALSE,5
+State - Church,State - Church,-1.0369283933604687,coca,5,300,FALSE,5
+Tall People - Short People,Tall People - Short People,0.45683324072217346,coca,5,300,FALSE,5
+Team - Individual,Team - Individual,0.4642742289132711,coca,5,300,FALSE,5
+Technology - Nature,Technology - Nature,0.9870035028614452,coca,5,300,FALSE,5
+Tradition - Progress,Tradition - Progress,0.8337778156713781,coca,5,300,FALSE,5
+Urban - Rural,Urban - Rural,-0.8400534576151403,coca,5,300,FALSE,5
+Winter - Summer,Winter - Summer,0.12464826508719605,coca,5,300,FALSE,5
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.386118723450747,coca,5,200,TRUE,10
+Avoiding - Approaching,Avoiding - Approaching,-0.6967403328693526,coca,5,200,TRUE,10
+Career - Family,Career - Family,0.5462549182626604,coca,5,200,TRUE,10
+Chaos - Order,Chaos - Order,1.1133676794659881,coca,5,200,TRUE,10
+Cold - Hot,Cold - Hot,-0.4848623106514869,coca,5,200,TRUE,10
+Determinism - Free Will,Determinism - Free Will,-0.6016831682174195,coca,5,200,TRUE,10
+Friends - Family,Friends - Family,1.014217104554802,coca,5,200,TRUE,10
+Helpers - Leaders,Helpers - Leaders,-0.7278243460526266,coca,5,200,TRUE,10
+Innocence - Wisdom,Innocence - Wisdom,0.17101735479142158,coca,5,200,TRUE,10
+Jocks - Nerds,Jocks - Nerds,-0.33940040608556377,coca,5,200,TRUE,10
+Lawyers - Politicians,Lawyers - Politicians,0.016484255801136737,coca,5,200,TRUE,10
+Money - Love,Money - Love,-1.3676635743332577,coca,5,200,TRUE,10
+National Defense - Education,National Defense - Education,0.42707137534750955,coca,5,200,TRUE,10
+Organized Labor - Management,Organized Labor - Management,0.2705559298456563,coca,5,200,TRUE,10
+Poor People - Rich People,Poor People - Rich People,0.5188920649779495,coca,5,200,TRUE,10
+Private - Public,Private - Public,-0.9668021412695345,coca,5,200,TRUE,10
+Protein - Carbohydrates,Protein - Carbohydrates,0.8246766839509494,coca,5,200,TRUE,10
+Punishment - Forgiveness,Punishment - Forgiveness,0.5961853385604304,coca,5,200,TRUE,10
+Rebellious - Conforming,Rebellious - Conforming,1.189822271140288,coca,5,200,TRUE,10
+Rich People - Beautiful People,Rich People - Beautiful People,-0.7041478321615736,coca,5,200,TRUE,10
+Security - Freedom,Security - Freedom,0.753676734498793,coca,5,200,TRUE,10
+Skeptical - Trusting,Skeptical - Trusting,0.9949308598041251,coca,5,200,TRUE,10
+Speed - Accuracy,Speed - Accuracy,0.7026334636037491,coca,5,200,TRUE,10
+Stable - Flexible,Stable - Flexible,-0.2375700623466041,coca,5,200,TRUE,10
+State - Church,State - Church,-1.4389828626360515,coca,5,200,TRUE,10
+Tall People - Short People,Tall People - Short People,0.09818535167091741,coca,5,200,TRUE,10
+Team - Individual,Team - Individual,0.6334161464535859,coca,5,200,TRUE,10
+Technology - Nature,Technology - Nature,-1.0236434756839041,coca,5,200,TRUE,10
+Tradition - Progress,Tradition - Progress,-0.94499151905462,coca,5,200,TRUE,10
+Urban - Rural,Urban - Rural,-0.40828206583518933,coca,5,200,TRUE,10
+Winter - Summer,Winter - Summer,0.21329400400055554,coca,5,200,TRUE,10
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.3879788921929081,coca,5,300,TRUE,10
+Avoiding - Approaching,Avoiding - Approaching,-0.5436484469338317,coca,5,300,TRUE,10
+Career - Family,Career - Family,0.5797205194367349,coca,5,300,TRUE,10
+Chaos - Order,Chaos - Order,1.0944293312376125,coca,5,300,TRUE,10
+Cold - Hot,Cold - Hot,-0.4529684290816342,coca,5,300,TRUE,10
+Determinism - Free Will,Determinism - Free Will,-0.644428572266575,coca,5,300,TRUE,10
+Friends - Family,Friends - Family,0.9994851643759011,coca,5,300,TRUE,10
+Helpers - Leaders,Helpers - Leaders,-0.7172353216795462,coca,5,300,TRUE,10
+Innocence - Wisdom,Innocence - Wisdom,0.3557755251038013,coca,5,300,TRUE,10
+Jocks - Nerds,Jocks - Nerds,-0.21251419761567938,coca,5,300,TRUE,10
+Lawyers - Politicians,Lawyers - Politicians,0.0860577233852957,coca,5,300,TRUE,10
+Money - Love,Money - Love,-1.292454353690145,coca,5,300,TRUE,10
+National Defense - Education,National Defense - Education,0.41862761788477443,coca,5,300,TRUE,10
+Organized Labor - Management,Organized Labor - Management,0.29260110755748914,coca,5,300,TRUE,10
+Poor People - Rich People,Poor People - Rich People,0.5163914412102278,coca,5,300,TRUE,10
+Private - Public,Private - Public,-0.8673723676453942,coca,5,300,TRUE,10
+Protein - Carbohydrates,Protein - Carbohydrates,0.8567276341445084,coca,5,300,TRUE,10
+Punishment - Forgiveness,Punishment - Forgiveness,0.6011660225416287,coca,5,300,TRUE,10
+Rebellious - Conforming,Rebellious - Conforming,1.1192803612775473,coca,5,300,TRUE,10
+Rich People - Beautiful People,Rich People - Beautiful People,-0.7625330032739532,coca,5,300,TRUE,10
+Security - Freedom,Security - Freedom,0.7886346860094768,coca,5,300,TRUE,10
+Skeptical - Trusting,Skeptical - Trusting,0.9554923250180615,coca,5,300,TRUE,10
+Speed - Accuracy,Speed - Accuracy,0.7727291018388015,coca,5,300,TRUE,10
+Stable - Flexible,Stable - Flexible,-0.17677322892633043,coca,5,300,TRUE,10
+State - Church,State - Church,-1.415360919474192,coca,5,300,TRUE,10
+Tall People - Short People,Tall People - Short People,0.04556825210655183,coca,5,300,TRUE,10
+Team - Individual,Team - Individual,0.6477134451695085,coca,5,300,TRUE,10
+Technology - Nature,Technology - Nature,-1.0211582835771083,coca,5,300,TRUE,10
+Tradition - Progress,Tradition - Progress,-0.9401937844674567,coca,5,300,TRUE,10
+Urban - Rural,Urban - Rural,-0.4096526605934299,coca,5,300,TRUE,10
+Winter - Summer,Winter - Summer,0.06073422540559208,coca,5,300,TRUE,10
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.20505772974991504,coca,5,200,TRUE,5
+Avoiding - Approaching,Avoiding - Approaching,0.45374023277296066,coca,5,200,TRUE,5
+Career - Family,Career - Family,0.47323920171128386,coca,5,200,TRUE,5
+Chaos - Order,Chaos - Order,0.8935899672635674,coca,5,200,TRUE,5
+Cold - Hot,Cold - Hot,-0.7500927896503358,coca,5,200,TRUE,5
+Determinism - Free Will,Determinism - Free Will,-0.5742778400498657,coca,5,200,TRUE,5
+Friends - Family,Friends - Family,0.9198312670558583,coca,5,200,TRUE,5
+Helpers - Leaders,Helpers - Leaders,-0.5777253155702224,coca,5,200,TRUE,5
+Innocence - Wisdom,Innocence - Wisdom,0.24946584553600373,coca,5,200,TRUE,5
+Jocks - Nerds,Jocks - Nerds,-0.0636450021063055,coca,5,200,TRUE,5
+Lawyers - Politicians,Lawyers - Politicians,0.003800570394893511,coca,5,200,TRUE,5
+Money - Love,Money - Love,-1.1858944800152182,coca,5,200,TRUE,5
+National Defense - Education,National Defense - Education,0.5341072263564207,coca,5,200,TRUE,5
+Organized Labor - Management,Organized Labor - Management,0.43648890586861494,coca,5,200,TRUE,5
+Poor People - Rich People,Poor People - Rich People,0.5693983020007456,coca,5,200,TRUE,5
+Private - Public,Private - Public,-0.7813219964854686,coca,5,200,TRUE,5
+Protein - Carbohydrates,Protein - Carbohydrates,0.7493780612536741,coca,5,200,TRUE,5
+Punishment - Forgiveness,Punishment - Forgiveness,0.46127044973846965,coca,5,200,TRUE,5
+Rebellious - Conforming,Rebellious - Conforming,0.9540027439627771,coca,5,200,TRUE,5
+Rich People - Beautiful People,Rich People - Beautiful People,-0.7762729823022002,coca,5,200,TRUE,5
+Security - Freedom,Security - Freedom,0.5427201353063357,coca,5,200,TRUE,5
+Skeptical - Trusting,Skeptical - Trusting,0.9960636829127023,coca,5,200,TRUE,5
+Speed - Accuracy,Speed - Accuracy,0.6879924522343227,coca,5,200,TRUE,5
+Stable - Flexible,Stable - Flexible,-0.299660067903032,coca,5,200,TRUE,5
+State - Church,State - Church,-1.4364811474003578,coca,5,200,TRUE,5
+Tall People - Short People,Tall People - Short People,0.0995947113960502,coca,5,200,TRUE,5
+Team - Individual,Team - Individual,0.6697118104271335,coca,5,200,TRUE,5
+Technology - Nature,Technology - Nature,-1.113223462340026,coca,5,200,TRUE,5
+Tradition - Progress,Tradition - Progress,-0.9688145622700913,coca,5,200,TRUE,5
+Urban - Rural,Urban - Rural,-0.7441639316744915,coca,5,200,TRUE,5
+Winter - Summer,Winter - Summer,0.11128659479892294,coca,5,200,TRUE,5
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.19363413885634606,coca,5,200,FALSE,2
+Avoiding - Approaching,Avoiding - Approaching,0.6595251718289239,coca,5,200,FALSE,2
+Career - Family,Career - Family,-0.028865704481969255,coca,5,200,FALSE,2
+Chaos - Order,Chaos - Order,1.0881955957631595,coca,5,200,FALSE,2
+Cold - Hot,Cold - Hot,-0.6084016506186704,coca,5,200,FALSE,2
+Determinism - Free Will,Determinism - Free Will,0.7313622114416105,coca,5,200,FALSE,2
+Friends - Family,Friends - Family,-0.26344987018010746,coca,5,200,FALSE,2
+Helpers - Leaders,Helpers - Leaders,-0.15626416783303107,coca,5,200,FALSE,2
+Innocence - Wisdom,Innocence - Wisdom,-0.196276963811184,coca,5,200,FALSE,2
+Jocks - Nerds,Jocks - Nerds,-0.1675728329672078,coca,5,200,FALSE,2
+Lawyers - Politicians,Lawyers - Politicians,1.0700880111172788,coca,5,200,FALSE,2
+Money - Love,Money - Love,1.2928883311410935,coca,5,200,FALSE,2
+National Defense - Education,National Defense - Education,0.39372506966184617,coca,5,200,FALSE,2
+Organized Labor - Management,Organized Labor - Management,-0.5572400588811259,coca,5,200,FALSE,2
+Poor People - Rich People,Poor People - Rich People,-0.28329240739378264,coca,5,200,FALSE,2
+Private - Public,Private - Public,0.3207199384909405,coca,5,200,FALSE,2
+Protein - Carbohydrates,Protein - Carbohydrates,-0.5676115704163661,coca,5,200,FALSE,2
+Punishment - Forgiveness,Punishment - Forgiveness,0.9613848811533885,coca,5,200,FALSE,2
+Rebellious - Conforming,Rebellious - Conforming,0.21875873171924287,coca,5,200,FALSE,2
+Rich People - Beautiful People,Rich People - Beautiful People,-0.3551204602356359,coca,5,200,FALSE,2
+Security - Freedom,Security - Freedom,-1.004833416397407,coca,5,200,FALSE,2
+Skeptical - Trusting,Skeptical - Trusting,1.0646885707335079,coca,5,200,FALSE,2
+Speed - Accuracy,Speed - Accuracy,0.6225382407565698,coca,5,200,FALSE,2
+Stable - Flexible,Stable - Flexible,0.025459409602334927,coca,5,200,FALSE,2
+State - Church,State - Church,-0.5303955831483197,coca,5,200,FALSE,2
+Tall People - Short People,Tall People - Short People,-1.5997887744862533,coca,5,200,FALSE,2
+Team - Individual,Team - Individual,-0.03183979441231389,coca,5,200,FALSE,2
+Technology - Nature,Technology - Nature,1.109908625043063,coca,5,200,FALSE,2
+Tradition - Progress,Tradition - Progress,-1.3957766460252616,coca,5,200,FALSE,2
+Urban - Rural,Urban - Rural,-0.7647660670997104,coca,5,200,FALSE,2
+Winter - Summer,Winter - Summer,0.166253845140033,coca,5,200,FALSE,2
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.3786727055277811,coca,5,200,FALSE,10
+Avoiding - Approaching,Avoiding - Approaching,0.33327677574243586,coca,5,200,FALSE,10
+Career - Family,Career - Family,-0.5446983814207709,coca,5,200,FALSE,10
+Chaos - Order,Chaos - Order,0.8718818025459792,coca,5,200,FALSE,10
+Cold - Hot,Cold - Hot,-0.6281183900147245,coca,5,200,FALSE,10
+Determinism - Free Will,Determinism - Free Will,-0.9509220825573952,coca,5,200,FALSE,10
+Friends - Family,Friends - Family,0.21165801882759258,coca,5,200,FALSE,10
+Helpers - Leaders,Helpers - Leaders,0.4599761467542134,coca,5,200,FALSE,10
+Innocence - Wisdom,Innocence - Wisdom,-0.961079301598486,coca,5,200,FALSE,10
+Jocks - Nerds,Jocks - Nerds,-0.4595343070643702,coca,5,200,FALSE,10
+Lawyers - Politicians,Lawyers - Politicians,-0.11203760487703154,coca,5,200,FALSE,10
+Money - Love,Money - Love,0.6939483518623504,coca,5,200,FALSE,10
+National Defense - Education,National Defense - Education,0.4836162444316255,coca,5,200,FALSE,10
+Organized Labor - Management,Organized Labor - Management,0.4489179648046649,coca,5,200,FALSE,10
+Poor People - Rich People,Poor People - Rich People,0.30981544111082304,coca,5,200,FALSE,10
+Private - Public,Private - Public,-0.9673235234295697,coca,5,200,FALSE,10
+Protein - Carbohydrates,Protein - Carbohydrates,-0.08461361822923692,coca,5,200,FALSE,10
+Punishment - Forgiveness,Punishment - Forgiveness,0.005576465119164129,coca,5,200,FALSE,10
+Rebellious - Conforming,Rebellious - Conforming,-0.5477560429431153,coca,5,200,FALSE,10
+Rich People - Beautiful People,Rich People - Beautiful People,-1.090915404399221,coca,5,200,FALSE,10
+Security - Freedom,Security - Freedom,0.8553539334640547,coca,5,200,FALSE,10
+Skeptical - Trusting,Skeptical - Trusting,0.6644619361549519,coca,5,200,FALSE,10
+Speed - Accuracy,Speed - Accuracy,-0.1309679282528606,coca,5,200,FALSE,10
+Stable - Flexible,Stable - Flexible,-0.29513396895577,coca,5,200,FALSE,10
+State - Church,State - Church,0.7364719636414564,coca,5,200,FALSE,10
+Tall People - Short People,Tall People - Short People,-0.38923673483499205,coca,5,200,FALSE,10
+Team - Individual,Team - Individual,-1.272798349759519,coca,5,200,FALSE,10
+Technology - Nature,Technology - Nature,0.02984296644115806,coca,5,200,FALSE,10
+Tradition - Progress,Tradition - Progress,0.11869598578513142,coca,5,200,FALSE,10
+Urban - Rural,Urban - Rural,0.12240206722445095,coca,5,200,FALSE,10
+Winter - Summer,Winter - Summer,0.033738828610346244,coca,5,200,FALSE,10
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.09070797881854749,coca,5,300,FALSE,5
+Avoiding - Approaching,Avoiding - Approaching,-0.11465343334244169,coca,5,300,FALSE,5
+Career - Family,Career - Family,0.37987230640700886,coca,5,300,FALSE,5
+Chaos - Order,Chaos - Order,0.5732465877754959,coca,5,300,FALSE,5
+Cold - Hot,Cold - Hot,-0.8095772601054743,coca,5,300,FALSE,5
+Determinism - Free Will,Determinism - Free Will,0.0683978917016008,coca,5,300,FALSE,5
+Friends - Family,Friends - Family,-0.019739741481937193,coca,5,300,FALSE,5
+Helpers - Leaders,Helpers - Leaders,0.23851983707124916,coca,5,300,FALSE,5
+Innocence - Wisdom,Innocence - Wisdom,-0.45140037145317247,coca,5,300,FALSE,5
+Jocks - Nerds,Jocks - Nerds,-0.001971772380402283,coca,5,300,FALSE,5
+Lawyers - Politicians,Lawyers - Politicians,0.4706435323840423,coca,5,300,FALSE,5
+Money - Love,Money - Love,1.0826626042375591,coca,5,300,FALSE,5
+National Defense - Education,National Defense - Education,-0.35830025485253014,coca,5,300,FALSE,5
+Organized Labor - Management,Organized Labor - Management,0.4242899279595524,coca,5,300,FALSE,5
+Poor People - Rich People,Poor People - Rich People,0.7683800214814884,coca,5,300,FALSE,5
+Private - Public,Private - Public,0.13012186301134643,coca,5,300,FALSE,5
+Protein - Carbohydrates,Protein - Carbohydrates,0.09069322823864877,coca,5,300,FALSE,5
+Punishment - Forgiveness,Punishment - Forgiveness,-0.8904626727334457,coca,5,300,FALSE,5
+Rebellious - Conforming,Rebellious - Conforming,-1.3116181903113788,coca,5,300,FALSE,5
+Rich People - Beautiful People,Rich People - Beautiful People,0.5720490133172783,coca,5,300,FALSE,5
+Security - Freedom,Security - Freedom,-0.5226786630398965,coca,5,300,FALSE,5
+Skeptical - Trusting,Skeptical - Trusting,1.3138190587089174,coca,5,300,FALSE,5
+Speed - Accuracy,Speed - Accuracy,0.98306208361890135,coca,5,300,FALSE,5
+Stable - Flexible,Stable - Flexible,-0.16027421579269258,coca,5,300,FALSE,5
+State - Church,State - Church,-0.9802871542027819,coca,5,300,FALSE,5
+Tall People - Short People,Tall People - Short People,0.2087675153857124,coca,5,300,FALSE,5
+Team - Individual,Team - Individual,0.6138749962627823,coca,5,300,FALSE,5
+Technology - Nature,Technology - Nature,1.0944229258920886,coca,5,300,FALSE,5
+Tradition - Progress,Tradition - Progress,1.0273636879956545,coca,5,300,FALSE,5
+Urban - Rural,Urban - Rural,-0.8352869759067507,coca,5,300,FALSE,5
+Winter - Summer,Winter - Summer,0.6615988847262577,coca,5,300,FALSE,5
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.20952530195315427,coca,5,300,FALSE,10
+Avoiding - Approaching,Avoiding - Approaching,0.9548637956174234,coca,5,300,FALSE,10
+Career - Family,Career - Family,-0.4890753779364125,coca,5,300,FALSE,10
+Chaos - Order,Chaos - Order,0.40538107301784876,coca,5,300,FALSE,10
+Cold - Hot,Cold - Hot,-1.160672362306326,coca,5,300,FALSE,10
+Determinism - Free Will,Determinism - Free Will,-1.108609034693201,coca,5,300,FALSE,10
+Friends - Family,Friends - Family,0.22367630212177256,coca,5,300,FALSE,10
+Helpers - Leaders,Helpers - Leaders,-0.29903740313033084,coca,5,300,FALSE,10
+Innocence - Wisdom,Innocence - Wisdom,0.4191013386722245,coca,5,300,FALSE,10
+Jocks - Nerds,Jocks - Nerds,-0.3712888510167934,coca,5,300,FALSE,10
+Lawyers - Politicians,Lawyers - Politicians,0.48412590101752595,coca,5,300,FALSE,10
+Money - Love,Money - Love,0.7409846316124894,coca,5,300,FALSE,10
+National Defense - Education,National Defense - Education,0.2903679253332272,coca,5,300,FALSE,10
+Organized Labor - Management,Organized Labor - Management,-0.5065217738047866,coca,5,300,FALSE,10
+Poor People - Rich People,Poor People - Rich People,0.25385190401004787,coca,5,300,FALSE,10
+Private - Public,Private - Public,0.2659869957423009,coca,5,300,FALSE,10
+Protein - Carbohydrates,Protein - Carbohydrates,-1.1509818956264155,coca,5,300,FALSE,10
+Punishment - Forgiveness,Punishment - Forgiveness,1.1460989244827704,coca,5,300,FALSE,10
+Rebellious - Conforming,Rebellious - Conforming,-0.32998656855268443,coca,5,300,FALSE,10
+Rich People - Beautiful People,Rich People - Beautiful People,-0.17691322933627704,coca,5,300,FALSE,10
+Security - Freedom,Security - Freedom,-1.3390905716566037,coca,5,300,FALSE,10
+Skeptical - Trusting,Skeptical - Trusting,-0.3625774277034179,coca,5,300,FALSE,10
+Speed - Accuracy,Speed - Accuracy,0.23510949665869224,coca,5,300,FALSE,10
+Stable - Flexible,Stable - Flexible,0.46605160702306353,coca,5,300,FALSE,10
+State - Church,State - Church,0.8093654738611544,coca,5,300,FALSE,10
+Tall People - Short People,Tall People - Short People,-0.0031490184895132667,coca,5,300,FALSE,10
+Team - Individual,Team - Individual,1.3337062730015972,coca,5,300,FALSE,10
+Technology - Nature,Technology - Nature,1.357938709127834,coca,5,300,FALSE,10
+Tradition - Progress,Tradition - Progress,-0.9075473800208698,coca,5,300,FALSE,10
+Urban - Rural,Urban - Rural,0.4764965702396391,coca,5,300,FALSE,10
+Winter - Summer,Winter - Summer,-0.25388491208014274,coca,5,300,FALSE,10
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.44230031715733864,coca,5,300,FALSE,2
+Avoiding - Approaching,Avoiding - Approaching,-0.1886929030110284,coca,5,300,FALSE,2
+Career - Family,Career - Family,0.8214206536698258,coca,5,300,FALSE,2
+Chaos - Order,Chaos - Order,-1.220904495175262,coca,5,300,FALSE,2
+Cold - Hot,Cold - Hot,-0.15183943780765505,coca,5,300,FALSE,2
+Determinism - Free Will,Determinism - Free Will,-0.15182374519237307,coca,5,300,FALSE,2
+Friends - Family,Friends - Family,-0.9229993619923992,coca,5,300,FALSE,2
+Helpers - Leaders,Helpers - Leaders,-0.2456118714844265,coca,5,300,FALSE,2
+Innocence - Wisdom,Innocence - Wisdom,0.1600568227115257,coca,5,300,FALSE,2
+Jocks - Nerds,Jocks - Nerds,0.3684305338408754,coca,5,300,FALSE,2
+Lawyers - Politicians,Lawyers - Politicians,0.5759186382849731,coca,5,300,FALSE,2
+Money - Love,Money - Love,0.404448169887997,coca,5,300,FALSE,2
+National Defense - Education,National Defense - Education,-1.185429615895639,coca,5,300,FALSE,2
+Organized Labor - Management,Organized Labor - Management,0.2695029160890108,coca,5,300,FALSE,2
+Poor People - Rich People,Poor People - Rich People,0.8614646828041955,coca,5,300,FALSE,2
+Private - Public,Private - Public,0.3951268629030713,coca,5,300,FALSE,2
+Protein - Carbohydrates,Protein - Carbohydrates,0.5263939077803752,coca,5,300,FALSE,2
+Punishment - Forgiveness,Punishment - Forgiveness,1.1685019214801047,coca,5,300,FALSE,2
+Rebellious - Conforming,Rebellious - Conforming,-1.0071546210087907,coca,5,300,FALSE,2
+Rich People - Beautiful People,Rich People - Beautiful People,0.8309789404090046,coca,5,300,FALSE,2
+Security - Freedom,Security - Freedom,0.09879208051260717,coca,5,300,FALSE,2
+Skeptical - Trusting,Skeptical - Trusting,-0.3023173308495547,coca,5,300,FALSE,2
+Speed - Accuracy,Speed - Accuracy,0.30901100757729966,coca,5,300,FALSE,2
+Stable - Flexible,Stable - Flexible,-0.8272913815712938,coca,5,300,FALSE,2
+State - Church,State - Church,1.1078829019094616,coca,5,300,FALSE,2
+Tall People - Short People,Tall People - Short People,0.5188462812293129,coca,5,300,FALSE,2
+Team - Individual,Team - Individual,0.1472457514286129,coca,5,300,FALSE,2
+Technology - Nature,Technology - Nature,1.0105717909004919,coca,5,300,FALSE,2
+Tradition - Progress,Tradition - Progress,0.1108259741787922,coca,5,300,FALSE,2
+Urban - Rural,Urban - Rural,0.3603001570228865,coca,5,300,FALSE,2
+Winter - Summer,Winter - Summer,-1.1371104893219424,coca,5,300,FALSE,2
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.0672181934148813,bnc,5,200,TRUE,2
+Avoiding - Approaching,Avoiding - Approaching,0.18552908539736704,bnc,5,200,TRUE,2
+Career - Family,Career - Family,0.03885013166475039,bnc,5,200,TRUE,2
+Chaos - Order,Chaos - Order,0.9906118590173161,bnc,5,200,TRUE,2
+Cold - Hot,Cold - Hot,-0.5085137787271812,bnc,5,200,TRUE,2
+Determinism - Free Will,Determinism - Free Will,-0.6007840154772549,bnc,5,200,TRUE,2
+Friends - Family,Friends - Family,1.0797797635371478,bnc,5,200,TRUE,2
+Helpers - Leaders,Helpers - Leaders,0.02828889030125616,bnc,5,200,TRUE,2
+Innocence - Wisdom,Innocence - Wisdom,0.09536318137835442,bnc,5,200,TRUE,2
+Jocks - Nerds,Jocks - Nerds,-0.09456357009676065,bnc,5,200,TRUE,2
+Lawyers - Politicians,Lawyers - Politicians,-0.10404589223630893,bnc,5,200,TRUE,2
+Money - Love,Money - Love,-1.0581757307987105,bnc,5,200,TRUE,2
+National Defense - Education,National Defense - Education,0.4037074254352292,bnc,5,200,TRUE,2
+Organized Labor - Management,Organized Labor - Management,0.6911138140876674,bnc,5,200,TRUE,2
+Poor People - Rich People,Poor People - Rich People,0.5989334831512909,bnc,5,200,TRUE,2
+Private - Public,Private - Public,-0.1380203919981547,bnc,5,200,TRUE,2
+Protein - Carbohydrates,Protein - Carbohydrates,0.7322863013705436,bnc,5,200,TRUE,2
+Punishment - Forgiveness,Punishment - Forgiveness,0.43157978469180514,bnc,5,200,TRUE,2
+Rebellious - Conforming,Rebellious - Conforming,0.8089672471758903,bnc,5,200,TRUE,2
+Rich People - Beautiful People,Rich People - Beautiful People,-0.9556430595013645,bnc,5,200,TRUE,2
+Security - Freedom,Security - Freedom,0.5309201235423526,bnc,5,200,TRUE,2
+Skeptical - Trusting,Skeptical - Trusting,1.0651427325765732,bnc,5,200,TRUE,2
+Speed - Accuracy,Speed - Accuracy,0.42881618369935753,bnc,5,200,TRUE,2
+Stable - Flexible,Stable - Flexible,-0.07843297373793183,bnc,5,200,TRUE,2
+State - Church,State - Church,-0.9530575285211809,bnc,5,200,TRUE,2
+Tall People - Short People,Tall People - Short People,0.5623416579969782,bnc,5,200,TRUE,2
+Team - Individual,Team - Individual,0.40952231952793017,bnc,5,200,TRUE,2
+Technology - Nature,Technology - Nature,-0.938343946406252,bnc,5,200,TRUE,2
+Tradition - Progress,Tradition - Progress,-0.8400070291460501,bnc,5,200,TRUE,2
+Urban - Rural,Urban - Rural,-0.16428823139699555,bnc,5,200,TRUE,2
+Winter - Summer,Winter - Summer,0.4916068293418994,bnc,5,200,TRUE,2
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.030908273265459252,bnc,5,300,TRUE,2
+Avoiding - Approaching,Avoiding - Approaching,0.03126451985289333,bnc,5,300,TRUE,2
+Career - Family,Career - Family,-0.10809732379842417,bnc,5,300,TRUE,2
+Chaos - Order,Chaos - Order,0.9893245823873525,bnc,5,300,TRUE,2
+Cold - Hot,Cold - Hot,-0.4534994825531003,bnc,5,300,TRUE,2
+Determinism - Free Will,Determinism - Free Will,-0.7227039775765193,bnc,5,300,TRUE,2
+Friends - Family,Friends - Family,1.092030725358157,bnc,5,300,TRUE,2
+Helpers - Leaders,Helpers - Leaders,-0.13279480941412225,bnc,5,300,TRUE,2
+Innocence - Wisdom,Innocence - Wisdom,-0.009553851121695649,bnc,5,300,TRUE,2
+Jocks - Nerds,Jocks - Nerds,-0.21516939473358213,bnc,5,300,TRUE,2
+Lawyers - Politicians,Lawyers - Politicians,-0.006071681950651587,bnc,5,300,TRUE,2
+Money - Love,Money - Love,-1.1291886300729703,bnc,5,300,TRUE,2
+National Defense - Education,National Defense - Education,0.45298222523657317,bnc,5,300,TRUE,2
+Organized Labor - Management,Organized Labor - Management,0.6282654699818884,bnc,5,300,TRUE,2
+Poor People - Rich People,Poor People - Rich People,0.6489178457658976,bnc,5,300,TRUE,2
+Private - Public,Private - Public,0.22203934543443918,bnc,5,300,TRUE,2
+Protein - Carbohydrates,Protein - Carbohydrates,0.7716235653542469,bnc,5,300,TRUE,2
+Punishment - Forgiveness,Punishment - Forgiveness,0.48015514360844597,bnc,5,300,TRUE,2
+Rebellious - Conforming,Rebellious - Conforming,0.7980833531973389,bnc,5,300,TRUE,2
+Rich People - Beautiful People,Rich People - Beautiful People,-0.8674154876270371,bnc,5,300,TRUE,2
+Security - Freedom,Security - Freedom,0.37366264113916375,bnc,5,300,TRUE,2
+Skeptical - Trusting,Skeptical - Trusting,1.060492294646927,bnc,5,300,TRUE,2
+Speed - Accuracy,Speed - Accuracy,0.5347687886976673,bnc,5,300,TRUE,2
+Stable - Flexible,Stable - Flexible,-0.1355576678127253,bnc,5,300,TRUE,2
+State - Church,State - Church,-0.9431978349063349,bnc,5,300,TRUE,2
+Tall People - Short People,Tall People - Short People,0.40722991656217733,bnc,5,300,TRUE,2
+Team - Individual,Team - Individual,0.2624633419046973,bnc,5,300,TRUE,2
+Technology - Nature,Technology - Nature,-0.861427138169183,bnc,5,300,TRUE,2
+Tradition - Progress,Tradition - Progress,-0.9319768852209943,bnc,5,300,TRUE,2
+Urban - Rural,Urban - Rural,-0.125378744535368,bnc,5,300,TRUE,2
+Winter - Summer,Winter - Summer,0.5024148604373292,bnc,5,300,TRUE,2
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.4198002257324301,bnc,5,200,FALSE,2
+Avoiding - Approaching,Avoiding - Approaching,-0.890721449278078,bnc,5,200,FALSE,2
+Career - Family,Career - Family,-0.29957231682254687,bnc,5,200,FALSE,2
+Chaos - Order,Chaos - Order,-0.009186867282129885,bnc,5,200,FALSE,2
+Cold - Hot,Cold - Hot,-0.5771560149466504,bnc,5,200,FALSE,2
+Determinism - Free Will,Determinism - Free Will,-0.5761587457482246,bnc,5,200,FALSE,2
+Friends - Family,Friends - Family,-1.109893249336101,bnc,5,200,FALSE,2
+Helpers - Leaders,Helpers - Leaders,-0.4572893608970679,bnc,5,200,FALSE,2
+Innocence - Wisdom,Innocence - Wisdom,-0.8303046378715442,bnc,5,200,FALSE,2
+Jocks - Nerds,Jocks - Nerds,0.4134827229413019,bnc,5,200,FALSE,2
+Lawyers - Politicians,Lawyers - Politicians,-0.7275344009296726,bnc,5,200,FALSE,2
+Money - Love,Money - Love,-1.444425098839825,bnc,5,200,FALSE,2
+National Defense - Education,National Defense - Education,-0.34691479390730057,bnc,5,200,FALSE,2
+Organized Labor - Management,Organized Labor - Management,-0.48628654723382786,bnc,5,200,FALSE,2
+Poor People - Rich People,Poor People - Rich People,0.018821145549088734,bnc,5,200,FALSE,2
+Private - Public,Private - Public,1.122327040871519,bnc,5,200,FALSE,2
+Protein - Carbohydrates,Protein - Carbohydrates,-0.7147619592807137,bnc,5,200,FALSE,2
+Punishment - Forgiveness,Punishment - Forgiveness,0.02902995766015712,bnc,5,200,FALSE,2
+Rebellious - Conforming,Rebellious - Conforming,-0.2518311019657267,bnc,5,200,FALSE,2
+Rich People - Beautiful People,Rich People - Beautiful People,-0.1663002680546187,bnc,5,200,FALSE,2
+Security - Freedom,Security - Freedom,-0.15100075365607793,bnc,5,200,FALSE,2
+Skeptical - Trusting,Skeptical - Trusting,0.8398356131003395,bnc,5,200,FALSE,2
+Speed - Accuracy,Speed - Accuracy,0.30395255335398175,bnc,5,200,FALSE,2
+Stable - Flexible,Stable - Flexible,0.21946004917871084,bnc,5,200,FALSE,2
+State - Church,State - Church,-0.8624965027119825,bnc,5,200,FALSE,2
+Tall People - Short People,Tall People - Short People,-0.07261470965226521,bnc,5,200,FALSE,2
+Team - Individual,Team - Individual,-1.4202243837741506,bnc,5,200,FALSE,2
+Technology - Nature,Technology - Nature,0.2456570882947474,bnc,5,200,FALSE,2
+Tradition - Progress,Tradition - Progress,-0.8984879604784013,bnc,5,200,FALSE,2
+Urban - Rural,Urban - Rural,-0.2827817580744956,bnc,5,200,FALSE,2
+Winter - Summer,Winter - Summer,0.8757693257162431,bnc,5,200,FALSE,2
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.2846728098026278,bnc,5,300,FALSE,2
+Avoiding - Approaching,Avoiding - Approaching,-0.7873099313197901,bnc,5,300,FALSE,2
+Career - Family,Career - Family,-0.670632635844597,bnc,5,300,FALSE,2
+Chaos - Order,Chaos - Order,0.2844285624462088,bnc,5,300,FALSE,2
+Cold - Hot,Cold - Hot,-0.3090698755831496,bnc,5,300,FALSE,2
+Determinism - Free Will,Determinism - Free Will,-0.42854775570271436,bnc,5,300,FALSE,2
+Friends - Family,Friends - Family,0.5942439524749098,bnc,5,300,FALSE,2
+Helpers - Leaders,Helpers - Leaders,-0.30940859840112706,bnc,5,300,FALSE,2
+Innocence - Wisdom,Innocence - Wisdom,0.2977876268838061,bnc,5,300,FALSE,2
+Jocks - Nerds,Jocks - Nerds,0.26026466302779505,bnc,5,300,FALSE,2
+Lawyers - Politicians,Lawyers - Politicians,0.6760211816862203,bnc,5,300,FALSE,2
+Money - Love,Money - Love,-0.839877890968267,bnc,5,300,FALSE,2
+National Defense - Education,National Defense - Education,0.0563329083177437,bnc,5,300,FALSE,2
+Organized Labor - Management,Organized Labor - Management,-0.004128921180013566,bnc,5,300,FALSE,2
+Poor People - Rich People,Poor People - Rich People,-0.867127981591941,bnc,5,300,FALSE,2
+Private - Public,Private - Public,-0.6364592722138616,bnc,5,300,FALSE,2
+Protein - Carbohydrates,Protein - Carbohydrates,0.453197909735439,bnc,5,300,FALSE,2
+Punishment - Forgiveness,Punishment - Forgiveness,0.8880673218403097,bnc,5,300,FALSE,2
+Rebellious - Conforming,Rebellious - Conforming,1.0275295239066369,bnc,5,300,FALSE,2
+Rich People - Beautiful People,Rich People - Beautiful People,-0.5090326047080124,bnc,5,300,FALSE,2
+Security - Freedom,Security - Freedom,-1.124375654458093,bnc,5,300,FALSE,2
+Skeptical - Trusting,Skeptical - Trusting,-0.017528111673602898,bnc,5,300,FALSE,2
+Speed - Accuracy,Speed - Accuracy,0.5030956509869453,bnc,5,300,FALSE,2
+Stable - Flexible,Stable - Flexible,0.026570025259012427,bnc,5,300,FALSE,2
+State - Church,State - Church,0.11881452611528134,bnc,5,300,FALSE,2
+Tall People - Short People,Tall People - Short People,0.6998719670388278,bnc,5,300,FALSE,2
+Team - Individual,Team - Individual,1.253533340068844,bnc,5,300,FALSE,2
+Technology - Nature,Technology - Nature,0.05556485138758604,bnc,5,300,FALSE,2
+Tradition - Progress,Tradition - Progress,-0.24427006698767906,bnc,5,300,FALSE,2
+Urban - Rural,Urban - Rural,-0.4806263698591748,bnc,5,300,FALSE,2
+Winter - Summer,Winter - Summer,0.6938636997205114,bnc,5,300,FALSE,2
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.15360054028426942,bnc,5,200,TRUE,5
+Avoiding - Approaching,Avoiding - Approaching,0.48230069141714876,bnc,5,200,TRUE,5
+Career - Family,Career - Family,0.07190286049866168,bnc,5,200,TRUE,5
+Chaos - Order,Chaos - Order,0.9461497122518011,bnc,5,200,TRUE,5
+Cold - Hot,Cold - Hot,-0.7908118999303609,bnc,5,200,TRUE,5
+Determinism - Free Will,Determinism - Free Will,-0.6318172659047177,bnc,5,200,TRUE,5
+Friends - Family,Friends - Family,1.081899299367551,bnc,5,200,TRUE,5
+Helpers - Leaders,Helpers - Leaders,-0.35899828438378156,bnc,5,200,TRUE,5
+Innocence - Wisdom,Innocence - Wisdom,0.17233984131137206,bnc,5,200,TRUE,5
+Jocks - Nerds,Jocks - Nerds,-0.10080856368498697,bnc,5,200,TRUE,5
+Lawyers - Politicians,Lawyers - Politicians,-0.2829915420775953,bnc,5,200,TRUE,5
+Money - Love,Money - Love,-1.2412024760923088,bnc,5,200,TRUE,5
+National Defense - Education,National Defense - Education,0.5330471222614159,bnc,5,200,TRUE,5
+Organized Labor - Management,Organized Labor - Management,0.47303012322634863,bnc,5,200,TRUE,5
+Poor People - Rich People,Poor People - Rich People,0.749818894682473,bnc,5,200,TRUE,5
+Private - Public,Private - Public,0.12464482914208133,bnc,5,200,TRUE,5
+Protein - Carbohydrates,Protein - Carbohydrates,0.6348137458731279,bnc,5,200,TRUE,5
+Punishment - Forgiveness,Punishment - Forgiveness,0.5338863388484268,bnc,5,200,TRUE,5
+Rebellious - Conforming,Rebellious - Conforming,0.7793746989101218,bnc,5,200,TRUE,5
+Rich People - Beautiful People,Rich People - Beautiful People,-0.5330790638088702,bnc,5,200,TRUE,5
+Security - Freedom,Security - Freedom,0.24392776410376918,bnc,5,200,TRUE,5
+Skeptical - Trusting,Skeptical - Trusting,1.1636336984531612,bnc,5,200,TRUE,5
+Speed - Accuracy,Speed - Accuracy,0.45688427131306775,bnc,5,200,TRUE,5
+Stable - Flexible,Stable - Flexible,0.029061709407863612,bnc,5,200,TRUE,5
+State - Church,State - Church,-0.9820655305059961,bnc,5,200,TRUE,5
+Tall People - Short People,Tall People - Short People,0.686485504685995,bnc,5,200,TRUE,5
+Team - Individual,Team - Individual,0.45921397988392915,bnc,5,200,TRUE,5
+Technology - Nature,Technology - Nature,-1.0591094879485439,bnc,5,200,TRUE,5
+Tradition - Progress,Tradition - Progress,-0.8353288498248509,bnc,5,200,TRUE,5
+Urban - Rural,Urban - Rural,-0.11976610377334009,bnc,5,200,TRUE,5
+Winter - Summer,Winter - Summer,0.5096053370047313,bnc,5,200,TRUE,5
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.06446169283479804,bnc,5,300,TRUE,5
+Avoiding - Approaching,Avoiding - Approaching,0.4359559563203935,bnc,5,300,TRUE,5
+Career - Family,Career - Family,0.18789559560073865,bnc,5,300,TRUE,5
+Chaos - Order,Chaos - Order,0.9237720715512153,bnc,5,300,TRUE,5
+Cold - Hot,Cold - Hot,-0.7371777015340129,bnc,5,300,TRUE,5
+Determinism - Free Will,Determinism - Free Will,-0.6164179794284145,bnc,5,300,TRUE,5
+Friends - Family,Friends - Family,1.0617102844468458,bnc,5,300,TRUE,5
+Helpers - Leaders,Helpers - Leaders,-0.31092470256314475,bnc,5,300,TRUE,5
+Innocence - Wisdom,Innocence - Wisdom,0.021811926506352563,bnc,5,300,TRUE,5
+Jocks - Nerds,Jocks - Nerds,-0.028846107796465056,bnc,5,300,TRUE,5
+Lawyers - Politicians,Lawyers - Politicians,-0.21938111117695214,bnc,5,300,TRUE,5
+Money - Love,Money - Love,-1.3085319175071481,bnc,5,300,TRUE,5
+National Defense - Education,National Defense - Education,0.4852663519557661,bnc,5,300,TRUE,5
+Organized Labor - Management,Organized Labor - Management,0.46689051154952776,bnc,5,300,TRUE,5
+Poor People - Rich People,Poor People - Rich People,0.6749544995212248,bnc,5,300,TRUE,5
+Private - Public,Private - Public,-0.34461826433733606,bnc,5,300,TRUE,5
+Protein - Carbohydrates,Protein - Carbohydrates,0.6523459882758518,bnc,5,300,TRUE,5
+Punishment - Forgiveness,Punishment - Forgiveness,0.5387343765351463,bnc,5,300,TRUE,5
+Rebellious - Conforming,Rebellious - Conforming,0.8213406226936362,bnc,5,300,TRUE,5
+Rich People - Beautiful People,Rich People - Beautiful People,-0.5632039760190566,bnc,5,300,TRUE,5
+Security - Freedom,Security - Freedom,0.2484365477464205,bnc,5,300,TRUE,5
+Skeptical - Trusting,Skeptical - Trusting,1.1449016874712203,bnc,5,300,TRUE,5
+Speed - Accuracy,Speed - Accuracy,0.4274437949097157,bnc,5,300,TRUE,5
+Stable - Flexible,Stable - Flexible,0.07467709676497461,bnc,5,300,TRUE,5
+State - Church,State - Church,-1.0039494531458661,bnc,5,300,TRUE,5
+Tall People - Short People,Tall People - Short People,0.7844024921598021,bnc,5,300,TRUE,5
+Team - Individual,Team - Individual,0.43342297315998385,bnc,5,300,TRUE,5
+Technology - Nature,Technology - Nature,-1.0802806822702165,bnc,5,300,TRUE,5
+Tradition - Progress,Tradition - Progress,-0.8218549758970259,bnc,5,300,TRUE,5
+Urban - Rural,Urban - Rural,-0.17739345015387378,bnc,5,300,TRUE,5
+Winter - Summer,Winter - Summer,0.5139088479847828,bnc,5,300,TRUE,5
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.5573318567120071,bnc,5,200,FALSE,5
+Avoiding - Approaching,Avoiding - Approaching,-0.7490446116449937,bnc,5,200,FALSE,5
+Career - Family,Career - Family,-0.7583855036039612,bnc,5,200,FALSE,5
+Chaos - Order,Chaos - Order,0.2526545572563042,bnc,5,200,FALSE,5
+Cold - Hot,Cold - Hot,-0.020992580061250002,bnc,5,200,FALSE,5
+Determinism - Free Will,Determinism - Free Will,-0.7839261623609967,bnc,5,200,FALSE,5
+Friends - Family,Friends - Family,0.46904947549633985,bnc,5,200,FALSE,5
+Helpers - Leaders,Helpers - Leaders,-0.0582392340854379,bnc,5,200,FALSE,5
+Innocence - Wisdom,Innocence - Wisdom,0.4805420041047274,bnc,5,200,FALSE,5
+Jocks - Nerds,Jocks - Nerds,0.5509219454415824,bnc,5,200,FALSE,5
+Lawyers - Politicians,Lawyers - Politicians,1.37893799969271,bnc,5,200,FALSE,5
+Money - Love,Money - Love,-0.7104346485291997,bnc,5,200,FALSE,5
+National Defense - Education,National Defense - Education,-0.6081188910937945,bnc,5,200,FALSE,5
+Organized Labor - Management,Organized Labor - Management,0.5962445559463134,bnc,5,200,FALSE,5
+Poor People - Rich People,Poor People - Rich People,0.48379512012043446,bnc,5,200,FALSE,5
+Private - Public,Private - Public,-0.400263846651658,bnc,5,200,FALSE,5
+Protein - Carbohydrates,Protein - Carbohydrates,0.9594571920242306,bnc,5,200,FALSE,5
+Punishment - Forgiveness,Punishment - Forgiveness,1.2264450946133174,bnc,5,200,FALSE,5
+Rebellious - Conforming,Rebellious - Conforming,-0.5126950427840917,bnc,5,200,FALSE,5
+Rich People - Beautiful People,Rich People - Beautiful People,0.34789779385957426,bnc,5,200,FALSE,5
+Security - Freedom,Security - Freedom,-0.4233854416123693,bnc,5,200,FALSE,5
+Skeptical - Trusting,Skeptical - Trusting,0.17966912473670904,bnc,5,200,FALSE,5
+Speed - Accuracy,Speed - Accuracy,0.8083074676613236,bnc,5,200,FALSE,5
+Stable - Flexible,Stable - Flexible,-0.227205993684254,bnc,5,200,FALSE,5
+State - Church,State - Church,0.24160209236844737,bnc,5,200,FALSE,5
+Tall People - Short People,Tall People - Short People,0.31891782931442314,bnc,5,200,FALSE,5
+Team - Individual,Team - Individual,1.3298952292908344,bnc,5,200,FALSE,5
+Technology - Nature,Technology - Nature,0.9336639167172802,bnc,5,200,FALSE,5
+Tradition - Progress,Tradition - Progress,-0.05715790014276215,bnc,5,200,FALSE,5
+Urban - Rural,Urban - Rural,-0.34662725169555336,bnc,5,200,FALSE,5
+Winter - Summer,Winter - Summer,0.7787233874853438,bnc,5,200,FALSE,5
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.8680887493349732,bnc,5,300,FALSE,5
+Avoiding - Approaching,Avoiding - Approaching,-0.3945163815607403,bnc,5,300,FALSE,5
+Career - Family,Career - Family,-0.9582763554282833,bnc,5,300,FALSE,5
+Chaos - Order,Chaos - Order,1.388985484410622,bnc,5,300,FALSE,5
+Cold - Hot,Cold - Hot,0.493337625472898,bnc,5,300,FALSE,5
+Determinism - Free Will,Determinism - Free Will,-0.2142219866230741,bnc,5,300,FALSE,5
+Friends - Family,Friends - Family,-1.3734403306550853,bnc,5,300,FALSE,5
+Helpers - Leaders,Helpers - Leaders,0.18921948323828644,bnc,5,300,FALSE,5
+Innocence - Wisdom,Innocence - Wisdom,-1.2978210337466431,bnc,5,300,FALSE,5
+Jocks - Nerds,Jocks - Nerds,-1.2548334149762992,bnc,5,300,FALSE,5
+Lawyers - Politicians,Lawyers - Politicians,0.024799483927155516,bnc,5,300,FALSE,5
+Money - Love,Money - Love,0.22450291874202596,bnc,5,300,FALSE,5
+National Defense - Education,National Defense - Education,0.418928805233347,bnc,5,300,FALSE,5
+Organized Labor - Management,Organized Labor - Management,-0.7826174324434774,bnc,5,300,FALSE,5
+Poor People - Rich People,Poor People - Rich People,-1.4310954472060977,bnc,5,300,FALSE,5
+Private - Public,Private - Public,1.2124101783181531,bnc,5,300,FALSE,5
+Protein - Carbohydrates,Protein - Carbohydrates,-1.3449915478613135,bnc,5,300,FALSE,5
+Punishment - Forgiveness,Punishment - Forgiveness,0.058308568016509445,bnc,5,300,FALSE,5
+Rebellious - Conforming,Rebellious - Conforming,0.6466232131382389,bnc,5,300,FALSE,5
+Rich People - Beautiful People,Rich People - Beautiful People,-0.6852392715116388,bnc,5,300,FALSE,5
+Security - Freedom,Security - Freedom,-0.36883026982103617,bnc,5,300,FALSE,5
+Skeptical - Trusting,Skeptical - Trusting,0.7681686741676004,bnc,5,300,FALSE,5
+Speed - Accuracy,Speed - Accuracy,0.9232870848060553,bnc,5,300,FALSE,5
+Stable - Flexible,Stable - Flexible,0.017453344088380347,bnc,5,300,FALSE,5
+State - Church,State - Church,-0.7670978926698612,bnc,5,300,FALSE,5
+Tall People - Short People,Tall People - Short People,-0.6863553739450228,bnc,5,300,FALSE,5
+Team - Individual,Team - Individual,-0.9201925742676418,bnc,5,300,FALSE,5
+Technology - Nature,Technology - Nature,0.9953773823128426,bnc,5,300,FALSE,5
+Tradition - Progress,Tradition - Progress,0.6790854913428427,bnc,5,300,FALSE,5
+Urban - Rural,Urban - Rural,0.2690856718446448,bnc,5,300,FALSE,5
+Winter - Summer,Winter - Summer,1.0977505807208443,bnc,5,300,FALSE,5
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.28893902999817933,bnc,5,200,TRUE,10
+Avoiding - Approaching,Avoiding - Approaching,0.11818470213618246,bnc,5,200,TRUE,10
+Career - Family,Career - Family,0.0037324843205259624,bnc,5,200,TRUE,10
+Chaos - Order,Chaos - Order,0.8826087681840096,bnc,5,200,TRUE,10
+Cold - Hot,Cold - Hot,-0.5217719471008729,bnc,5,200,TRUE,10
+Determinism - Free Will,Determinism - Free Will,-0.45458444678839655,bnc,5,200,TRUE,10
+Friends - Family,Friends - Family,0.9906279863409563,bnc,5,200,TRUE,10
+Helpers - Leaders,Helpers - Leaders,-0.5326929988071593,bnc,5,200,TRUE,10
+Innocence - Wisdom,Innocence - Wisdom,-0.016410584911967833,bnc,5,200,TRUE,10
+Jocks - Nerds,Jocks - Nerds,-0.10601237990867064,bnc,5,200,TRUE,10
+Lawyers - Politicians,Lawyers - Politicians,-0.3462400096383896,bnc,5,200,TRUE,10
+Money - Love,Money - Love,-1.2752260654860887,bnc,5,200,TRUE,10
+National Defense - Education,National Defense - Education,0.5094765603927874,bnc,5,200,TRUE,10
+Organized Labor - Management,Organized Labor - Management,0.2804020570057287,bnc,5,200,TRUE,10
+Poor People - Rich People,Poor People - Rich People,0.7032875439567655,bnc,5,200,TRUE,10
+Private - Public,Private - Public,0.3240279952825297,bnc,5,200,TRUE,10
+Protein - Carbohydrates,Protein - Carbohydrates,0.6953661423797375,bnc,5,200,TRUE,10
+Punishment - Forgiveness,Punishment - Forgiveness,0.7148646440930525,bnc,5,200,TRUE,10
+Rebellious - Conforming,Rebellious - Conforming,0.8506620376393457,bnc,5,200,TRUE,10
+Rich People - Beautiful People,Rich People - Beautiful People,-0.45584942035999665,bnc,5,200,TRUE,10
+Security - Freedom,Security - Freedom,0.25717881524190517,bnc,5,200,TRUE,10
+Skeptical - Trusting,Skeptical - Trusting,1.103066325108554,bnc,5,200,TRUE,10
+Speed - Accuracy,Speed - Accuracy,0.6612793251523195,bnc,5,200,TRUE,10
+Stable - Flexible,Stable - Flexible,0.14555881917803956,bnc,5,200,TRUE,10
+State - Church,State - Church,-0.9399817155777778,bnc,5,200,TRUE,10
+Tall People - Short People,Tall People - Short People,0.6891026564344163,bnc,5,200,TRUE,10
+Team - Individual,Team - Individual,0.3046941232912758,bnc,5,200,TRUE,10
+Technology - Nature,Technology - Nature,-1.0094490291326743,bnc,5,200,TRUE,10
+Tradition - Progress,Tradition - Progress,-0.9105579475297282,bnc,5,200,TRUE,10
+Urban - Rural,Urban - Rural,0.20402519186173879,bnc,5,200,TRUE,10
+Winter - Summer,Winter - Summer,0.1341636401737065,bnc,5,200,TRUE,10
+Athletic People - Intelligent People,Athletic People - Intelligent People,0.23820727011660184,bnc,5,300,TRUE,10
+Avoiding - Approaching,Avoiding - Approaching,0.20783234632766617,bnc,5,300,TRUE,10
+Career - Family,Career - Family,0.10396543063810908,bnc,5,300,TRUE,10
+Chaos - Order,Chaos - Order,0.8303451616533666,bnc,5,300,TRUE,10
+Cold - Hot,Cold - Hot,-0.47215778227259947,bnc,5,300,TRUE,10
+Determinism - Free Will,Determinism - Free Will,-0.45041369216507565,bnc,5,300,TRUE,10
+Friends - Family,Friends - Family,0.9540822482622313,bnc,5,300,TRUE,10
+Helpers - Leaders,Helpers - Leaders,-0.5354962939540885,bnc,5,300,TRUE,10
+Innocence - Wisdom,Innocence - Wisdom,-0.11888189584880146,bnc,5,300,TRUE,10
+Jocks - Nerds,Jocks - Nerds,-0.051274781738703375,bnc,5,300,TRUE,10
+Lawyers - Politicians,Lawyers - Politicians,-0.3814236122145987,bnc,5,300,TRUE,10
+Money - Love,Money - Love,-1.251959349149725,bnc,5,300,TRUE,10
+National Defense - Education,National Defense - Education,0.5057169406733889,bnc,5,300,TRUE,10
+Organized Labor - Management,Organized Labor - Management,0.2654110907318432,bnc,5,300,TRUE,10
+Poor People - Rich People,Poor People - Rich People,0.7876821882534857,bnc,5,300,TRUE,10
+Private - Public,Private - Public,0.10403158258171406,bnc,5,300,TRUE,10
+Protein - Carbohydrates,Protein - Carbohydrates,0.7085317832281712,bnc,5,300,TRUE,10
+Punishment - Forgiveness,Punishment - Forgiveness,0.6350873979893773,bnc,5,300,TRUE,10
+Rebellious - Conforming,Rebellious - Conforming,0.795900825999116,bnc,5,300,TRUE,10
+Rich People - Beautiful People,Rich People - Beautiful People,-0.3046443463193729,bnc,5,300,TRUE,10
+Security - Freedom,Security - Freedom,0.37702416490351154,bnc,5,300,TRUE,10
+Skeptical - Trusting,Skeptical - Trusting,1.0907660826166214,bnc,5,300,TRUE,10
+Speed - Accuracy,Speed - Accuracy,0.6459902258057245,bnc,5,300,TRUE,10
+Stable - Flexible,Stable - Flexible,0.15764457263166667,bnc,5,300,TRUE,10
+State - Church,State - Church,-0.9476224577097974,bnc,5,300,TRUE,10
+Tall People - Short People,Tall People - Short People,0.7156741099484173,bnc,5,300,TRUE,10
+Team - Individual,Team - Individual,0.2883985874796319,bnc,5,300,TRUE,10
+Technology - Nature,Technology - Nature,-1.0443317258679021,bnc,5,300,TRUE,10
+Tradition - Progress,Tradition - Progress,-0.8851103914829012,bnc,5,300,TRUE,10
+Urban - Rural,Urban - Rural,0.19875221557463504,bnc,5,300,TRUE,10
+Winter - Summer,Winter - Summer,0.20881082742992566,bnc,5,300,TRUE,10
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.19441106274985162,bnc,5,200,FALSE,10
+Avoiding - Approaching,Avoiding - Approaching,-0.89681865449167,bnc,5,200,FALSE,10
+Career - Family,Career - Family,-0.8262404765653008,bnc,5,200,FALSE,10
+Chaos - Order,Chaos - Order,-0.38573249569407675,bnc,5,200,FALSE,10
+Cold - Hot,Cold - Hot,-0.7515269492050582,bnc,5,200,FALSE,10
+Determinism - Free Will,Determinism - Free Will,-0.3248756187360159,bnc,5,200,FALSE,10
+Friends - Family,Friends - Family,-0.74470444420422,bnc,5,200,FALSE,10
+Helpers - Leaders,Helpers - Leaders,0.21823297597241056,bnc,5,200,FALSE,10
+Innocence - Wisdom,Innocence - Wisdom,-0.5450168706341239,bnc,5,200,FALSE,10
+Jocks - Nerds,Jocks - Nerds,0.3906287130860752,bnc,5,200,FALSE,10
+Lawyers - Politicians,Lawyers - Politicians,0.027967604280666348,bnc,5,200,FALSE,10
+Money - Love,Money - Love,-0.6771970671850165,bnc,5,200,FALSE,10
+National Defense - Education,National Defense - Education,-0.46266301672999416,bnc,5,200,FALSE,10
+Organized Labor - Management,Organized Labor - Management,-0.23109728965006573,bnc,5,200,FALSE,10
+Poor People - Rich People,Poor People - Rich People,-0.9030423032927926,bnc,5,200,FALSE,10
+Private - Public,Private - Public,1.1896634169322073,bnc,5,200,FALSE,10
+Protein - Carbohydrates,Protein - Carbohydrates,-0.5953035947862744,bnc,5,200,FALSE,10
+Punishment - Forgiveness,Punishment - Forgiveness,-0.6624020876236549,bnc,5,200,FALSE,10
+Rebellious - Conforming,Rebellious - Conforming,-0.9981043685531388,bnc,5,200,FALSE,10
+Rich People - Beautiful People,Rich People - Beautiful People,-0.09533239248524078,bnc,5,200,FALSE,10
+Security - Freedom,Security - Freedom,0.227121348332091,bnc,5,200,FALSE,10
+Skeptical - Trusting,Skeptical - Trusting,-0.49063714093131083,bnc,5,200,FALSE,10
+Speed - Accuracy,Speed - Accuracy,0.6366598755670307,bnc,5,200,FALSE,10
+Stable - Flexible,Stable - Flexible,0.36614950252562406,bnc,5,200,FALSE,10
+State - Church,State - Church,-0.1316816122434114,bnc,5,200,FALSE,10
+Tall People - Short People,Tall People - Short People,-0.7522098178049389,bnc,5,200,FALSE,10
+Team - Individual,Team - Individual,-1.3426474480272494,bnc,5,200,FALSE,10
+Technology - Nature,Technology - Nature,0.5632727036054838,bnc,5,200,FALSE,10
+Tradition - Progress,Tradition - Progress,0.44560965514148454,bnc,5,200,FALSE,10
+Urban - Rural,Urban - Rural,-0.6201405394745307,bnc,5,200,FALSE,10
+Winter - Summer,Winter - Summer,0.8893587867408184,bnc,5,200,FALSE,10
+Athletic People - Intelligent People,Athletic People - Intelligent People,-0.7724343451631089,bnc,5,300,FALSE,10
+Avoiding - Approaching,Avoiding - Approaching,-0.8643927556401576,bnc,5,300,FALSE,10
+Career - Family,Career - Family,-0.754125504581956,bnc,5,300,FALSE,10
+Chaos - Order,Chaos - Order,1.3608460656489942,bnc,5,300,FALSE,10
+Cold - Hot,Cold - Hot,0.3100626683454824,bnc,5,300,FALSE,10
+Determinism - Free Will,Determinism - Free Will,-0.11205529408730878,bnc,5,300,FALSE,10
+Friends - Family,Friends - Family,-0.7554452059514581,bnc,5,300,FALSE,10
+Helpers - Leaders,Helpers - Leaders,0.06797868471562071,bnc,5,300,FALSE,10
+Innocence - Wisdom,Innocence - Wisdom,-0.5730972212901849,bnc,5,300,FALSE,10
+Jocks - Nerds,Jocks - Nerds,-0.5572989887187366,bnc,5,300,FALSE,10
+Lawyers - Politicians,Lawyers - Politicians,-0.969345727319024,bnc,5,300,FALSE,10
+Money - Love,Money - Love,-1.5005678787665353,bnc,5,300,FALSE,10
+National Defense - Education,National Defense - Education,0.7283195984234723,bnc,5,300,FALSE,10
+Organized Labor - Management,Organized Labor - Management,-0.14633243514433122,bnc,5,300,FALSE,10
+Poor People - Rich People,Poor People - Rich People,-0.6020603052675992,bnc,5,300,FALSE,10
+Private - Public,Private - Public,0.9815552966125428,bnc,5,300,FALSE,10
+Protein - Carbohydrates,Protein - Carbohydrates,-1.4666386068870636,bnc,5,300,FALSE,10
+Punishment - Forgiveness,Punishment - Forgiveness,-0.07281098909291936,bnc,5,300,FALSE,10
+Rebellious - Conforming,Rebellious - Conforming,-0.7523817377543444,bnc,5,300,FALSE,10
+Rich People - Beautiful People,Rich People - Beautiful People,1.1903890127857504,bnc,5,300,FALSE,10
+Security - Freedom,Security - Freedom,0.2581364244452389,bnc,5,300,FALSE,10
+Skeptical - Trusting,Skeptical - Trusting,-0.33216659920846714,bnc,5,300,FALSE,10
+Speed - Accuracy,Speed - Accuracy,0.6563597795607566,bnc,5,300,FALSE,10
+Stable - Flexible,Stable - Flexible,0.039188093537972604,bnc,5,300,FALSE,10
+State - Church,State - Church,-0.25338672284846897,bnc,5,300,FALSE,10
+Tall People - Short People,Tall People - Short People,0.024944398182142113,bnc,5,300,FALSE,10
+Team - Individual,Team - Individual,-1.0729004669327042,bnc,5,300,FALSE,10
+Technology - Nature,Technology - Nature,-1.0149679620670577,bnc,5,300,FALSE,10
+Tradition - Progress,Tradition - Progress,0.4329889829503045,bnc,5,300,FALSE,10
+Urban - Rural,Urban - Rural,-0.44928292240727447,bnc,5,300,FALSE,10
+Winter - Summer,Winter - Summer,1.066772276581656,bnc,5,300,FALSE,10

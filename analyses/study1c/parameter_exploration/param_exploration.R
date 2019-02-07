@@ -8,6 +8,8 @@ train_model_get_iat <- function(these_params, this_corpus, these_targ_words, the
   this_ngrams <- these_params$ng[1]
   this_window_size <- these_params$ws[1]
   
+  print(c(this_word_count, this_vector_size, this_ngrams, this_window_size))
+  
   # train and save model to google drives
   this_model <- train_the_model(this_corpus, this_word_count, this_vector_size, this_ngrams, this_window_size)
   write_csv(this_model, temp_path)
@@ -60,6 +62,9 @@ train_the_model <- function(corpus, this_wc, this_vs, this_ng, this_ws){
   vectors <- get_word_vectors(model) %>%
     as.data.frame() %>%
     rownames_to_column("target_word")
+  
+  file.remove(tmp_file_txt)
+  file.remove(tmp_file_model)
   
   vectors
 }
