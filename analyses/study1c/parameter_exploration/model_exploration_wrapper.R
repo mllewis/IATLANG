@@ -21,9 +21,9 @@ load(WORD_LIST) # list of target words (all_stim_sets) - this is just to check t
 
 # define params space
 all_params <- cross(list(wc = 5,
-                         vs = c(200, 300),
-                         ng = c(TRUE, FALSE),
-                         ws = c(2, 5, 10)))
+                         vs = c(400),
+                         ng = c(FALSE),
+                         ws = c(5)))
 
 ##### coca corpus ##### 
 coca_corpus <- read_lines(COCA_CORPUS)   %>%
