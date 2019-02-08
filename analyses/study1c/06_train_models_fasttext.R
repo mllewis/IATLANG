@@ -1,18 +1,20 @@
-# train separate fasttext model for coca and aiid dataset. 
+# train separate fasttext model for coca and bnc corpora 
 library(tidyverse)
 library(data.table)
 library(fastrtext)
 library(here)
 
-CORPUS_PATH <-  here("data/study1c/raw/COCAshort_words.txt")  # here("data/study1c/raw/BNCspokenFormatted.txt")
-OUTFILE <- here("data/study1c/processed/trained_coca_fasttext_5.csv") # here("data/study1c/processed/trained_bnc_fasttext_5.csv")
+#CORPUS_PATH <-   here("data/study1c/raw/BNCspokenFormatted.txt") #  
+#OUTFILE <- here("data/study1c/processed/trained_bnc_fasttext_400_10.csv") 
+CORPUS_PATH <- here("data/study1c/raw/COCAshort_words.txt")
+OUTFILE <- here("data/study1c/processed/trained_coca_fasttext_400_10.csv") 
+
 MIN_WORD_COUNT <- 5
-VECTOR_SIZE <- 300
+VECTOR_SIZE <- 400
+WINDOW_SIZE <- 10
 
 # get corpus
 corpus <- read_lines(CORPUS_PATH)   %>%
-  str_replace("<s>", "") %>%
-  str_replace("</s>", "") %>%
   str_split(" ")  %>%
   unlist()
 
@@ -24,11 +26,11 @@ execute(commands = c("skipgram",
                      "-input", tmp_file_txt,
                      "-output", tmp_file_model,
                      #set the window size if needed, default is 5
-                     #"-ws", 5,
+                     "-ws", WINDOW_SIZE,
                      #min length of char ngram, default is 3
-                     #"-minn", 1,
+                     "-minn", 1,
                      #max length of char ngram, default is 6, minn and maxn both as 1 if don’t want to use ngrams
-                     #"-maxn", 1,
+                     "-maxn", 1,
                      #minimal number of word occurrences, default is 5, can set to 100 instead
                      "-minCount", MIN_WORD_COUNT,
                      #max length of word ngram, default is 1

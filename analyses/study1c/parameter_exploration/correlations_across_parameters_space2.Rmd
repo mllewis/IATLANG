@@ -1,0 +1,148 @@
+---
+title: Exploring fasttext correlations across parameter space
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: no
+---
+  
+******
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(here)
+library(broom)
+
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+### Read in language and behavioral effect sizes.
+```{r}
+LANG_ES_PATH <- here("analyses/study1c/parameter_exploration/es_params_400_10.csv")
+lang_es <- read_csv(LANG_ES_PATH,
+                    col_names = c("domain", "x",
+                                  "lang_effect_size", "model",
+                                  "min_word_count", "vector_size", "ngrams", "window_size")) %>%
+  select(-x) %>% 
+  mutate(run = c(rep(1:5, each = 31), rep(1:5, each = 31))) %>%
+  filter(run == 3)
+
+tidy_lang_es <- lang_es %>% 
+  filter(model == "coca") %>%
+  select(-model) %>%
+  full_join(lang_es %>% filter(model == "bnc") %>% select(-model), 
+            by = c("domain", "min_word_count",
+                   "vector_size", "ngrams", "window_size", "run")) %>%
+  rename(coca_lang_es = lang_effect_size.x,
+         bnc_lang_es = lang_effect_size.y) %>%
+  mutate(lang_diff = bnc_lang_es - coca_lang_es) %>%
+  select(run, domain, coca_lang_es, bnc_lang_es, lang_diff) 
+
+BEHAVIORAL_PATH <- here("data/study1c/processed/tidy_behavioral_iat_data.csv")
+tidy_behavioral_es <- read_csv(BEHAVIORAL_PATH) %>%
+  rename(uk_behavior_es = uk,
+         us_behavior_es = us)
+```
+
+```{r}
+
+LAN_ES_PATH2 <- here("data/study1c/processed/bnc_vs_coca_es_400_10.csv")
+es_lang_raw <- read_csv(LAN_ES_PATH2) 
+es_lang_tidy2 <- es_lang_raw %>%
+  spread(model_source, effect_size) %>%
+  mutate(lang_diff2 = bnc_fasttext_400_10 - coca_fasttext_400_10) %>% # get bnc - coca lang difference
+  select(domain, lang_diff2)
+
+
+```
+
+### Get correlations.
+```{r}
+full_df <- tidy_lang_es %>%
+  left_join(tidy_behavioral_es)  %>%
+  left_join(es_lang_tidy2)
+```
+
+```{r}
+ggplot(full_df, aes(x = lang_diff2, y = behavioral_resid_diff)) +
+  geom_text(aes(label = domain)) +
+  geom_smooth(method = "lm") + 
+  theme_classic()
+```
+
+
+```{r}
+
+get_correlations <- function(current_df){
+    cor1 <- tidy(cor.test(current_df$coca_lang_es, current_df$us_behavior_es)) %>%
+                   mutate(corr = "coca_us")
+    cor2 <- tidy(cor.test(current_df$coca_lang_es, current_df$uk_behavior_es)) %>%
+                    mutate(corr = "coca_uk")
+    cor3 <- tidy(cor.test(current_df$bnc_lang_es, current_df$us_behavior_es)) %>%
+                    mutate(corr =  "bnc_us")
+    cor4 <- tidy(cor.test(current_df$bnc_lang_es, current_df$uk_behavior_es)) %>%
+                    mutate(corr = "bnc_uk")
+    cor5 <- tidy(cor.test(current_df$behavioral_resid_diff, current_df$lang_diff)) %>%
+                    mutate(corr = "diff_corr")
+        cor6 <- tidy(cor.test(current_df$coca_lang_es, current_df$bnc_lang_es)) %>%
+                    mutate(corr = "coca_bnc_corr")
+    
+    
+    bind_rows(list(cor1, cor2, cor3, cor4, cor5, cor6)) %>%
+      select(corr, estimate, statistic, p.value,
+             parameter, conf.low, conf.high) %>%
+      list()
+}
+
+all_corrs <- full_df %>%
+  group_by(run) %>%
+  nest() %>% 
+  mutate(model = map(data, ~get_correlations(.))) %>%
+  select(-data) %>%
+  unnest() %>%
+  unnest()
+  
+```
+
+### Plot correlations.
+
+200-500 (right) refer to vector size. 2 - 20 (top) refer to window size.
+```{r, fig.width = 10, fig.height = 10}
+all_corrs %>%
+  mutate(corr = fct_relevel(corr, c("coca_us", "bnc_uk"))) %>%
+  ggplot(aes(x = corr, y = estimate)) +
+  ylab("correlation coefficient") +
+  geom_line() +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  geom_pointrange(aes(ymin = conf.low, ymax = conf.high), size = .4) +
+  facet_grid(. ~ run ) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  
+```
+
+```{r}
+all_corrs %>%
+  group_by(corr) %>%
+  multi_boot_standard(col = "estimate") %>%
+  ungroup() %>%
+  mutate(corr = fct_relevel(corr, c("coca_us", "bnc_uk"))) %>%
+  ggplot(aes(x = corr, y = mean)) +
+  ylab("correlation coefficient") +
+  geom_line() +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper), size = .4) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+```

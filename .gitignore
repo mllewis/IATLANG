@@ -46,6 +46,8 @@ exploratory_analyses/2_pretrained_w2v_models/behavior_IAT/iat_gender_fullv2_cach
 exploratory_analyses/2_pretrained_w2v_models/embedding_IAT/embedding_IAT_summary_cache/*
 data/study1c/processed/trained_coca_fasttext_5.csv
 data/study1c/processed/trained_bnc_fasttext_5.csv
+data/study1c/processed/trained_bnc_fasttext_400_10.csv
+data/study1c/processed/trained_coca_fasttext_400_10.csv
 
 *.feather
 # LaTeX #

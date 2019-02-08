@@ -1,10 +1,9 @@
-# fit mixed effect difference model
+# fit linear model on behavioral vs. language effect sizes
 library(tidyverse)
 library(here)
-library(lme4)
 
 BEHAVIORAL_PATH <- here("data/study1c/processed/tidy_behavioral_iat_data.csv")
-LANGUAGE_PATH <- here("data/study1c/processed/bnc_vs_coca_es_5.csv")
+LANGUAGE_PATH <- here("data/study1c/processed/bnc_vs_coca_es_400_10.csv")
 FREQUENCY_PATH <- here("data/study1c/processed/iat_word_freq_difference_5.csv")
 CAT_ATT_PATH <- here("data/study1c/processed/category_attribute_pair_stim.csv")
 
@@ -12,8 +11,8 @@ CAT_ATT_PATH <- here("data/study1c/processed/category_attribute_pair_stim.csv")
 es_lang_raw <- read_csv(LANGUAGE_PATH) 
 es_lang_tidy <- es_lang_raw %>%
   spread(model_source, effect_size) %>%
-  mutate(fasttext_5_diff = bnc_fasttext_5 - coca_fasttext_5) %>% # get bnc - coca lang difference
-  select(domain, fasttext_5_diff)
+  mutate(fasttext_400_10_diff = bnc_fasttext_400_10 - coca_fasttext_400_10) %>% # get bnc - coca lang difference
+  select(domain, fasttext_400_10_diff)
 
 # read in behavioral data
 es_behavior_tidy <- read_csv(BEHAVIORAL_PATH)
@@ -31,15 +30,15 @@ tidy_iat_data <- es_lang_tidy %>%
   left_join(domain_eval_set) 
 
 ### THE MODEL ##
-ggplot(tidy_iat_data, aes(x = fasttext_5_diff, y = behavioral_resid_diff)) +
+ggplot(tidy_iat_data, aes(x = fasttext_400_10_diff, y = behavioral_resid_diff)) +
   geom_text(aes(label = domain)) +
   geom_smooth(method = "lm") + 
   theme_classic()
 
-m1 <- lmer(behavioral_resid_diff ~ fasttext_5_diff + (1|evaluative_label), 
+m1 <- lm(behavioral_resid_diff ~ fasttext_400_10_diff, 
            data = tidy_iat_data) 
 
-m2 <- lmer(behavioral_resid_diff ~ fasttext_5_diff + mean_freq_diff + (1|evaluative_label), 
+m2 <- lm(behavioral_resid_diff ~ fasttext_400_10_diff + mean_freq_diff , 
            data = tidy_iat_data) 
 
 model_comparision <- anova(m1, m2)

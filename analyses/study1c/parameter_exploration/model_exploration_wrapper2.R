@@ -13,7 +13,7 @@ WORD_LIST <- here("data/study1c/processed/all_stim_lists_5.RData")
 COCA_CORPUS <- here("data/study1c/raw/COCAshort_words.txt")  
 BNC_CORPUS <- here("data/study1c/raw/BNCspokenFormatted.txt")
 TEMP_PATH <- here("analyses/study1c/parameter_exploration/trained_models/temp_model.csv")
-OUTPATH <- here("analyses/study1c/parameter_exploration/es_params.csv")
+OUTPATH <- here("analyses/study1c/parameter_exploration/es_params_400_10.csv")
 
 # load stimuli sets
 all_targ_words <- read_csv(TARG_WORDS)
@@ -32,15 +32,19 @@ coca_corpus <- read_lines(COCA_CORPUS)   %>%
   str_split(" ") %>%
   unlist()
 
-walk(all_params, train_model_get_iat, coca_corpus, 
-    all_targ_words, all_stim_sets, TEMP_PATH, OUTPATH,
-    "coca")  
+for (i in 1:5){
+  walk(all_params, train_model_get_iat, coca_corpus, 
+       all_targ_words, all_stim_sets, TEMP_PATH, OUTPATH,
+       "coca")  
+}
 
 ##### bnc corpus ##### 
 bnc_corpus <- read_lines(BNC_CORPUS)  %>%
   str_split(" ") %>%
   unlist()
 
+for (i in 1:4){
 walk(all_params, train_model_get_iat, bnc_corpus, 
      all_targ_words, all_stim_sets, TEMP_PATH, OUTPATH,
      "bnc")  
+}

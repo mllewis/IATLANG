@@ -4,11 +4,11 @@ library(tidyverse)
 library(here)
 source(here("analyses/study1c/IAT_utils.R"))
 
-BNC_PATH_F <- here("data/study1c/processed/trained_bnc_fasttext_5.csv")
-COCA_PATH_F <- here("data/study1c/processed/trained_coca_fasttext_5.csv")
+BNC_PATH_F <- here("data/study1c/processed/trained_bnc_fasttext_400_10.csv")
+COCA_PATH_F <- here("data/study1c/processed/trained_coca_fasttext_400_10.csv")
 TARG_WORDS <- here("data/study1c/processed/all_target_words_5.csv") 
 WORD_LIST <- here("data/study1c/processed/all_stim_lists_5.RData")
-OUTFILE <- here("data/study1c/processed/bnc_vs_coca_es_5.csv")
+OUTFILE <- here("data/study1c/processed/bnc_vs_coca_es_400_10.csv")
 
 # function for getting iat score for different models
 get_effect_sizes_for_given_model <- function(model_path, word_df, stim_sets){
