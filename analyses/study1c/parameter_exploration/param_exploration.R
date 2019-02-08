@@ -34,9 +34,12 @@ train_the_model <- function(corpus, this_wc, this_vs, this_ng, this_ws){
   
   min_gram <- ifelse(!this_ng, 1, 3)
   max_gram <- ifelse(!this_ng, 1, 5)
+  print(min_gram)
+  print(max_gram)
   
   tmp_file_txt <- tempfile()
   tmp_file_model <- tempfile()
+  
   writeLines(text = corpus, con = tmp_file_txt)
   execute(commands = c("skipgram",
                        #set the input and output files

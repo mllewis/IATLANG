@@ -4,10 +4,11 @@ library(data.table)
 library(fastrtext)
 library(here)
 
-#CORPUS_PATH <-   here("data/study1c/raw/BNCspokenFormatted.txt") #  
-#OUTFILE <- here("data/study1c/processed/trained_bnc_fasttext_400_10.csv") 
-CORPUS_PATH <- here("data/study1c/raw/COCAshort_words.txt")
-OUTFILE <- here("data/study1c/processed/trained_coca_fasttext_400_10.csv") 
+### repeat 5X per model
+CORPUS_PATH <-   here("data/study1c/raw/BNCspokenFormatted.txt") #  
+OUTFILE <- here("data/study1c/processed/trained_bnc_fasttext_400_10.csv")  #_bnc_model_5_400_FALSE_10_
+#CORPUS_PATH <- here("data/study1c/raw/COCAshort_words.txt")
+#OUTFILE <- here("data/study1c/processed/trained_coca_fasttext_400_10.csv") #_coca_model_5_400_FALSE_10_
 
 MIN_WORD_COUNT <- 5
 VECTOR_SIZE <- 400

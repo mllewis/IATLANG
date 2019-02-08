@@ -19,22 +19,36 @@ library(rmarkdown)
 library(tidyverse)
 library(here)
 library(broom)
+library(langcog)
 
 
 opts_chunk$set(echo = T, message = F, warning = F, 
                error = F, tidy = F, cache = F)
 ```
 
+```{r}
+LANG_ES_PATH_PARAMS <- here("analyses/study1c/parameter_exploration/es_params_400_10.csv")
+LANG_ES_PATH_PARAMS2 <- here("analyses/study1c/parameter_exploration/es_params_400_10_v2.csv")
+
+LAN_ES_PATH <- here("data/study1c/processed/bnc_vs_coca_es_400_10.csv")
+BEHAVIORAL_PATH <- here("data/study1c/processed/tidy_behavioral_iat_data.csv")
+```
+
 ### Read in language and behavioral effect sizes.
 ```{r}
-LANG_ES_PATH <- here("analyses/study1c/parameter_exploration/es_params_400_10.csv")
-lang_es <- read_csv(LANG_ES_PATH,
-                    col_names = c("domain", "x",
-                                  "lang_effect_size", "model",
+lang_es1 <- read_csv(LANG_ES_PATH_PARAMS,
+                    col_names = c("domain", "x", "lang_effect_size", "model",
                                   "min_word_count", "vector_size", "ngrams", "window_size")) %>%
   select(-x) %>% 
-  mutate(run = c(rep(1:5, each = 31), rep(1:5, each = 31))) %>%
-  filter(run == 3)
+  mutate(run = c(rep(1:5, each = 31), rep(1:5, each = 31))) 
+
+lang_es2 <- read_csv(LANG_ES_PATH_PARAMS2,
+                    col_names = c("domain", "x", "lang_effect_size", "model",
+                                  "min_word_count", "vector_size", "ngrams", "window_size")) %>%
+  select(-x) %>% 
+  mutate(run = c(rep(6:10, each = 31), rep(6:10, each = 31))) 
+
+lang_es <- bind_rows(lang_es1, lang_es2)
 
 tidy_lang_es <- lang_es %>% 
   filter(model == "coca") %>%
@@ -46,23 +60,22 @@ tidy_lang_es <- lang_es %>%
          bnc_lang_es = lang_effect_size.y) %>%
   mutate(lang_diff = bnc_lang_es - coca_lang_es) %>%
   select(run, domain, coca_lang_es, bnc_lang_es, lang_diff) 
+ # filter(run == 1)
 
-BEHAVIORAL_PATH <- here("data/study1c/processed/tidy_behavioral_iat_data.csv")
-tidy_behavioral_es <- read_csv(BEHAVIORAL_PATH) %>%
-  rename(uk_behavior_es = uk,
-         us_behavior_es = us)
-```
-
-```{r}
-
-LAN_ES_PATH2 <- here("data/study1c/processed/bnc_vs_coca_es_400_10.csv")
-es_lang_raw <- read_csv(LAN_ES_PATH2) 
+es_lang_raw <- read_csv(LAN_ES_PATH) 
 es_lang_tidy2 <- es_lang_raw %>%
   spread(model_source, effect_size) %>%
   mutate(lang_diff2 = bnc_fasttext_400_10 - coca_fasttext_400_10) %>% # get bnc - coca lang difference
   select(domain, lang_diff2)
+```
+
+```{r}
 
 
+
+tidy_behavioral_es <- read_csv(BEHAVIORAL_PATH) %>%
+  rename(uk_behavior_es = uk,
+         us_behavior_es = us)
 ```
 
 ### Get correlations.
@@ -77,11 +90,12 @@ ggplot(full_df, aes(x = lang_diff2, y = behavioral_resid_diff)) +
   geom_text(aes(label = domain)) +
   geom_smooth(method = "lm") + 
   theme_classic()
+
+cor.test(full_df$lang_diff2,  full_df$lang_diff)
 ```
 
 
 ```{r}
-
 get_correlations <- function(current_df){
     cor1 <- tidy(cor.test(current_df$coca_lang_es, current_df$us_behavior_es)) %>%
                    mutate(corr = "coca_us")
@@ -93,9 +107,8 @@ get_correlations <- function(current_df){
                     mutate(corr = "bnc_uk")
     cor5 <- tidy(cor.test(current_df$behavioral_resid_diff, current_df$lang_diff)) %>%
                     mutate(corr = "diff_corr")
-        cor6 <- tidy(cor.test(current_df$coca_lang_es, current_df$bnc_lang_es)) %>%
+    cor6 <- tidy(cor.test(current_df$coca_lang_es, current_df$bnc_lang_es)) %>%
                     mutate(corr = "coca_bnc_corr")
-    
     
     bind_rows(list(cor1, cor2, cor3, cor4, cor5, cor6)) %>%
       select(corr, estimate, statistic, p.value,
@@ -143,6 +156,4 @@ all_corrs %>%
   geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper), size = .4) +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-
 ```
