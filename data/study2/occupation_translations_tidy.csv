@@ -19,6 +19,26 @@ postman/postwoman,english,male_form,t1,postman
 mechanic,english,male_form,t1,mechanic
 hunter,english,male_form,t1,hunter
 firefighter,english,male_form,t1,firefighter
+dancer,arabic,male_form,t1,راقصة
+nurse,arabic,male_form,t1,ممرضة
+singer,arabic,male_form,t1,مطرب
+cleaner,arabic,male_form,t1,منظف
+secretary,arabic,male_form,t1,سكرتير
+waiter,arabic,male_form,t1,نادل
+journalist,arabic,male_form,t1,صحافي
+baker,arabic,male_form,t1,خباز
+author,arabic,male_form,t1,مؤلف
+athlete,arabic,male_form,t1,رياضي
+lawyer,arabic,male_form,t1,المحامية
+doctor/physician,arabic,male_form,t1,طبيب
+professor,arabic,male_form,t1,دكتور^جامعى
+governor,arabic,male_form,t1,محافظ^حاكم
+judge,arabic,male_form,t1,القاضي
+sailor,arabic,male_form,t1,بحار
+postman/postwoman,arabic,male_form,t1,ساعي^البريد
+mechanic,arabic,male_form,t1,الميكانيكي
+hunter,arabic,male_form,t1,صياد
+firefighter,arabic,male_form,t1,رجال^الاطفاء
 dancer,danish,male_form,t1,danser
 nurse,danish,male_form,t1,sygeplejer
 singer,danish,male_form,t1,sanger
@@ -59,25 +79,26 @@ postman/postwoman,spanish,male_form,t1,el^cartero
 mechanic,spanish,male_form,t1,el^mecánico
 hunter,spanish,male_form,t1,el^cazador
 firefighter,spanish,male_form,t1,el^bombero
-dancer,farsi,male_form,t1,raghs^e^mard
-nurse,farsi,male_form,t1,parastâr^e^mard
-singer,farsi,male_form,t1,khânande^e^mard
-cleaner,farsi,male_form,t1,nezâfatchi^e^mard
-secretary,farsi,male_form,t1,sânavi^e^mard
-waiter,farsi,male_form,t1,pishkhedmat
-journalist,farsi,male_form,t1,ruzhâme^negâr^e^mard
-baker,farsi,male_form,t1,nânvâ^e^mard
-author,farsi,male_form,t1,nevisande^e^mard
-athlete,farsi,male_form,t1,varzeshkâr^e^mard
-lawyer,farsi,male_form,t1,vakil^e^mard
-doctor/physician,farsi,male_form,t1,pezeshk^e^mard
-governor,farsi,male_form,t1,farmândâr^e^mard
-judge,farsi,male_form,t1,ghâzi^e^mard
-sailor,farsi,male_form,t1,malavân^e^mard
-postman/postwoman,farsi,male_form,t1,post^e^mard
-mechanic,farsi,male_form,t1,mekâniki^e^mard
-hunter,farsi,male_form,t1,shekârchi^e^mard
-firefighter,farsi,male_form,t1,mamure^âtash^neshani^e^mard
+dancer,farsi,male_form,t1,رقاص،^رقصگر،^رامشگر
+nurse,farsi,male_form,t1,پرستار
+singer,farsi,male_form,t1,خواننده
+cleaner,farsi,male_form,t1,کلفت^خانه
+secretary,farsi,male_form,t1,دبیر
+waiter,farsi,male_form,t1,پیشخدمت
+journalist,farsi,male_form,t1,روزنامه^نگار
+baker,farsi,male_form,t1,نانوا
+author,farsi,male_form,t1,نگارنده
+athlete,farsi,male_form,t1,ورزشکار
+lawyer,farsi,male_form,t1,وکیل^دادگستری
+doctor/physician,farsi,male_form,t1,پزشک
+professor,farsi,male_form,t1,استاد
+governor,farsi,male_form,t1,استاندار
+judge,farsi,male_form,t1,دادرس
+sailor,farsi,male_form,t1,ملوان
+postman/postwoman,farsi,male_form,t1,نامه^رسان
+mechanic,farsi,male_form,t1,مکانیک
+hunter,farsi,male_form,t1,شکارچی
+firefighter,farsi,male_form,t1,مامور^آتش^نشانی
 dancer,finnish,male_form,t1,tanssija
 nurse,finnish,male_form,t1,sairaanhoitaja
 singer,finnish,male_form,t1,laulaja
@@ -138,6 +159,106 @@ postman/postwoman,hebrew,male_form,t1,דור
 mechanic,hebrew,male_form,t1,מכונאי
 hunter,hebrew,male_form,t1,צייד
 firefighter,hebrew,male_form,t1,כבאי
+dancer,hindi,male_form,t1,नर्तकी
+nurse,hindi,male_form,t1,नर्स
+singer,hindi,male_form,t1,गायक[गायिका]
+cleaner,hindi,male_form,t1,सफाईकर्मी
+secretary,hindi,male_form,t1,सहायक[सहायिका]
+waiter,hindi,male_form,t1,वेटर
+journalist,hindi,male_form,t1,पत्रकार
+baker,hindi,male_form,t1,बेकर
+author,hindi,male_form,t1,लेखक[लेखिका]
+athlete,hindi,male_form,t1,खिलाड़ी
+lawyer,hindi,male_form,t1,वकील
+doctor/physician,hindi,male_form,t1,चिकित्सक
+professor,hindi,male_form,t1,प्राध्यापक
+governor,hindi,male_form,t1,राज्यपाल
+judge,hindi,male_form,t1,न्यायाधीश
+sailor,hindi,male_form,t1,नाविक
+postman/postwoman,hindi,male_form,t1,डाकिया
+mechanic,hindi,male_form,t1,मिस्त्री
+hunter,hindi,male_form,t1,शिकारी
+firefighter,hindi,male_form,t1,अग्निशमन^कर्मचारी
+dancer,"Serbian (latin)
+",male_form,t1,plesač
+nurse,"Serbian (latin)
+",male_form,t1,medicinska^sestra
+singer,"Serbian (latin)
+",male_form,t1,pevač
+cleaner,"Serbian (latin)
+",male_form,t1,čistač
+secretary,"Serbian (latin)
+",male_form,t1,sekretar
+waiter,"Serbian (latin)
+",male_form,t1,konobar
+journalist,"Serbian (latin)
+",male_form,t1,novinar
+baker,"Serbian (latin)
+",male_form,t1,pekar
+author,"Serbian (latin)
+",male_form,t1,autor
+athlete,"Serbian (latin)
+",male_form,t1,sportista
+lawyer,"Serbian (latin)
+",male_form,t1,advokat
+doctor/physician,"Serbian (latin)
+",male_form,t1,doktor
+professor,"Serbian (latin)
+",male_form,t1,profesor
+governor,"Serbian (latin)
+",male_form,t1,guverner
+judge,"Serbian (latin)
+",male_form,t1,sudija
+sailor,"Serbian (latin)
+",male_form,t1,mornar
+postman/postwoman,"Serbian (latin)
+",male_form,t1,poštar
+mechanic,"Serbian (latin)
+",male_form,t1,mehaničar
+hunter,"Serbian (latin)
+",male_form,t1,lovac
+firefighter,"Serbian (latin)
+",male_form,t1,vatrogasac
+dancer,serbian (cyrillic),male_form,t1,плесач
+nurse,serbian (cyrillic),male_form,t1,медицинска^сестра
+singer,serbian (cyrillic),male_form,t1,певач
+cleaner,serbian (cyrillic),male_form,t1,чистач
+secretary,serbian (cyrillic),male_form,t1,секретар
+waiter,serbian (cyrillic),male_form,t1,конобар
+journalist,serbian (cyrillic),male_form,t1,новинар
+baker,serbian (cyrillic),male_form,t1,пекар
+author,serbian (cyrillic),male_form,t1,аутор
+athlete,serbian (cyrillic),male_form,t1,спортиста
+lawyer,serbian (cyrillic),male_form,t1,адвокат
+doctor/physician,serbian (cyrillic),male_form,t1,доктор
+professor,serbian (cyrillic),male_form,t1,професор
+governor,serbian (cyrillic),male_form,t1,гувернер
+judge,serbian (cyrillic),male_form,t1,судија
+sailor,serbian (cyrillic),male_form,t1,морнар
+postman/postwoman,serbian (cyrillic),male_form,t1,поштар
+mechanic,serbian (cyrillic),male_form,t1,механичар
+hunter,serbian (cyrillic),male_form,t1,ловац
+firefighter,serbian (cyrillic),male_form,t1,ватрогасац
+dancer,indonesian,male_form,t1,penari
+nurse,indonesian,male_form,t1,perawat
+singer,indonesian,male_form,t1,penyanyi
+cleaner,indonesian,male_form,t1,petugas^kebersihan
+secretary,indonesian,male_form,t1,sekretaris
+waiter,indonesian,male_form,t1,pelayan
+journalist,indonesian,male_form,t1,jurnalis
+baker,indonesian,male_form,t1,tukang^roti
+author,indonesian,male_form,t1,pengarang
+athlete,indonesian,male_form,t1,atlet
+lawyer,indonesian,male_form,t1,pengacara
+doctor/physician,indonesian,male_form,t1,dokter
+professor,indonesian,male_form,t1,profesor
+governor,indonesian,male_form,t1,gubernur
+judge,indonesian,male_form,t1,mengadili
+sailor,indonesian,male_form,t1,kelasi
+postman/postwoman,indonesian,male_form,t1,tukang^pos
+mechanic,indonesian,male_form,t1,montir
+hunter,indonesian,male_form,t1,berburu
+firefighter,indonesian,male_form,t1,petugas^pemadam^kebakaran
 dancer,italian,male_form,t1,ballerino
 nurse,italian,male_form,t1,infermiere
 singer,italian,male_form,t1,cantante
@@ -300,7 +421,7 @@ firefighter,portuguese,male_form,t1,bombeiro
 dancer,romanian,male_form,t1,dansator
 nurse,romanian,male_form,t1,infirmieră
 singer,romanian,male_form,t1,cântăreţ
-cleaner,romanian,male_form,t1,femeie^de^serviciu
+cleaner,romanian,male_form,t1,???
 secretary,romanian,male_form,t1,secretar
 waiter,romanian,male_form,t1,chelner
 journalist,romanian,male_form,t1,jurnalist
@@ -313,10 +434,50 @@ professor,romanian,male_form,t1,profesor
 governor,romanian,male_form,t1,guvernator
 judge,romanian,male_form,t1,judecător
 sailor,romanian,male_form,t1,marinar
-postman/postwoman,romanian,male_form,t1,factor
-mechanic,romanian,male_form,t1,maşinist
+postman/postwoman,romanian,male_form,t1,postas
+mechanic,romanian,male_form,t1,"maşinist^(clt:^this^also^seems^wrong^to^me.^i^would^say^""mecanic""."
 hunter,romanian,male_form,t1,vânător
 firefighter,romanian,male_form,t1,pompier
+dancer,swedish,male_form,t1,dansare
+nurse,swedish,male_form,t1,sjukskötare
+singer,swedish,male_form,t1,sångare
+cleaner,swedish,male_form,t1,städare
+secretary,swedish,male_form,t1,sekreterare
+waiter,swedish,male_form,t1,servitör
+journalist,swedish,male_form,t1,journalist
+baker,swedish,male_form,t1,bagare
+author,swedish,male_form,t1,författare
+athlete,swedish,male_form,t1,idrottare
+lawyer,swedish,male_form,t1,jurist
+doctor/physician,swedish,male_form,t1,doktor
+professor,swedish,male_form,t1,professor
+governor,swedish,male_form,t1,guvernör
+judge,swedish,male_form,t1,domare
+sailor,swedish,male_form,t1,sjöman
+postman/postwoman,swedish,male_form,t1,brevbärare
+mechanic,swedish,male_form,t1,mekaniker
+hunter,swedish,male_form,t1,jägare
+firefighter,swedish,male_form,t1,brandman
+dancer,tagalog,male_form,t1,mananayaw
+nurse,tagalog,male_form,t1,nars
+singer,tagalog,male_form,t1,mang^aawit
+cleaner,tagalog,male_form,t1,katulong
+secretary,tagalog,male_form,t1,sekretarya
+waiter,tagalog,male_form,t1,serbidor
+journalist,tagalog,male_form,t1,peryodista
+baker,tagalog,male_form,t1,magtitinapay
+author,tagalog,male_form,t1,autor
+athlete,tagalog,male_form,t1,manlalaro
+lawyer,tagalog,male_form,t1,abogado
+doctor/physician,tagalog,male_form,t1,doktor
+professor,tagalog,male_form,t1,dalubguro
+governor,tagalog,male_form,t1,gobernador
+judge,tagalog,male_form,t1,hukom
+sailor,tagalog,male_form,t1,mandaragat
+postman/postwoman,tagalog,male_form,t1,kartero
+mechanic,tagalog,male_form,t1,mekaniko
+hunter,tagalog,male_form,t1,mangangaso
+firefighter,tagalog,male_form,t1,bumbero
 dancer,turkish,male_form,t1,dansçi
 nurse,turkish,male_form,t1,hemşire
 singer,turkish,male_form,t1,şarkıcı
@@ -356,6 +517,25 @@ postman/postwoman,chinese,male_form,t1,邮递员
 mechanic,chinese,male_form,t1,技工
 hunter,chinese,male_form,t1,猎人
 firefighter,chinese,male_form,t1,消防员
+dancer,zulu,male_form,t1,umdansi
+nurse,zulu,male_form,t1,umhlengikazi
+singer,zulu,male_form,t1,umculi
+secretary,zulu,male_form,t1,unobhalajikelele
+waiter,zulu,male_form,t1,uweta
+journalist,zulu,male_form,t1,intatheli
+baker,zulu,male_form,t1,umbhaki
+author,zulu,male_form,t1,umenzi
+athlete,zulu,male_form,t1,umbaleki
+lawyer,zulu,male_form,t1,ummeli
+doctor/physician,zulu,male_form,t1,udokotela
+professor,zulu,male_form,t1,usolwazi
+governor,zulu,male_form,t1,umbusi
+judge,zulu,male_form,t1,umehluleli
+sailor,zulu,male_form,t1,itilosi
+postman/postwoman,zulu,male_form,t1,okuthwala^imeyili
+mechanic,zulu,male_form,t1,umakheniki
+hunter,zulu,male_form,t1,umzingeli
+firefighter,zulu,male_form,t1,umacishumlilo
 dancer,german,male_form,t1,tänzer
 nurse,german,male_form,t1,pfleger
 singer,german,male_form,t1,sänger
@@ -384,7 +564,7 @@ secretary,english,female_form,t1,secretary
 waiter,english,female_form,t1,waitress
 journalist,english,female_form,t1,journalist
 baker,english,female_form,t1,baker
-author,english,female_form,t1,author
+author,english,female_form,t1,authoress
 athlete,english,female_form,t1,athlete
 lawyer,english,female_form,t1,lawyer
 doctor/physician,english,female_form,t1,doctor
@@ -396,6 +576,26 @@ postman/postwoman,english,female_form,t1,postwoman
 mechanic,english,female_form,t1,mechanic
 hunter,english,female_form,t1,hunter
 firefighter,english,female_form,t1,firefighter
+dancer,arabic,female_form,t1,راقصة
+nurse,arabic,female_form,t1,ممرضة
+singer,arabic,female_form,t1,مطرب
+cleaner,arabic,female_form,t1,منظف
+secretary,arabic,female_form,t1,سكرتير
+waiter,arabic,female_form,t1,نادل
+journalist,arabic,female_form,t1,صحافي
+baker,arabic,female_form,t1,خباز
+author,arabic,female_form,t1,مؤلف
+athlete,arabic,female_form,t1,رياضي
+lawyer,arabic,female_form,t1,المحامية
+doctor/physician,arabic,female_form,t1,طبيب
+professor,arabic,female_form,t1,دكتور^جامعى
+governor,arabic,female_form,t1,محافظ^حاكم
+judge,arabic,female_form,t1,القاضي
+sailor,arabic,female_form,t1,بحار
+postman/postwoman,arabic,female_form,t1,ساعي^البريد
+mechanic,arabic,female_form,t1,الميكانيكي
+hunter,arabic,female_form,t1,صياد
+firefighter,arabic,female_form,t1,رجال^الاطفاء
 dancer,danish,female_form,t1,danserinde
 nurse,danish,female_form,t1,sygeplejerske
 singer,danish,female_form,t1,sangerinde
@@ -436,25 +636,26 @@ postman/postwoman,spanish,female_form,t1,la^cartera
 mechanic,spanish,female_form,t1,la^mecánica
 hunter,spanish,female_form,t1,la^cazadora
 firefighter,spanish,female_form,t1,la^bombera
-dancer,farsi,female_form,t1,raghs^e^zan
-nurse,farsi,female_form,t1,parastâr^e^zan
-singer,farsi,female_form,t1,khânande^e^zan
-cleaner,farsi,female_form,t1,nezâfatchi^e^zan
-secretary,farsi,female_form,t1,sânavi^e^zan
-waiter,farsi,female_form,t1,pishkhedmate^zan
-journalist,farsi,female_form,t1,ruzhâme^negâr^zan
-baker,farsi,female_form,t1,nânvâ^e^zan
-author,farsi,female_form,t1,nevisande^e^zan
-athlete,farsi,female_form,t1,varzeshkâr^e^zan
-lawyer,farsi,female_form,t1,vakil^e^zan
-doctor/physician,farsi,female_form,t1,pezeshk^e^zan
-governor,farsi,female_form,t1,farmândâr^e^zan
-judge,farsi,female_form,t1,ghâzi^e^zan
-sailor,farsi,female_form,t1,malavân^e^zan
-postman/postwoman,farsi,female_form,t1,post^e^zan
-mechanic,farsi,female_form,t1,mekâniki^e^zan
-hunter,farsi,female_form,t1,shekârchi^e^zan
-firefighter,farsi,female_form,t1,mamure^âtash^neshani^e^zan
+dancer,farsi,female_form,t1,رقاص،^رقصگر،^رامشگر
+nurse,farsi,female_form,t1,پرستار
+singer,farsi,female_form,t1,خواننده
+cleaner,farsi,female_form,t1,کلفت^خانه
+secretary,farsi,female_form,t1,دبیر
+waiter,farsi,female_form,t1,پیشخدمت
+journalist,farsi,female_form,t1,روزنامه^نگار
+baker,farsi,female_form,t1,نانوا
+author,farsi,female_form,t1,نگارنده
+athlete,farsi,female_form,t1,ورزشکار
+lawyer,farsi,female_form,t1,وکیل^دادگستری
+doctor/physician,farsi,female_form,t1,پزشک
+professor,farsi,female_form,t1,استاد
+governor,farsi,female_form,t1,استاندار
+judge,farsi,female_form,t1,دادرس
+sailor,farsi,female_form,t1,ملوان
+postman/postwoman,farsi,female_form,t1,نامه^رسان
+mechanic,farsi,female_form,t1,مکانیک
+hunter,farsi,female_form,t1,شکارچی
+firefighter,farsi,female_form,t1,مامور^آتش^نشانی
 dancer,finnish,female_form,t1,tanssija
 nurse,finnish,female_form,t1,sairaanhoitaja
 singer,finnish,female_form,t1,laulaja
@@ -515,6 +716,106 @@ postman/postwoman,hebrew,female_form,t1,דורית
 mechanic,hebrew,female_form,t1,מכונאית
 hunter,hebrew,female_form,t1,ציידת
 firefighter,hebrew,female_form,t1,כבאית
+dancer,hindi,female_form,t1,नर्तकी
+nurse,hindi,female_form,t1,नर्स
+singer,hindi,female_form,t1,गायक[गायिका]
+cleaner,hindi,female_form,t1,सफाईकर्मी
+secretary,hindi,female_form,t1,सहायक[सहायिका]
+waiter,hindi,female_form,t1,महिला^बैरा
+journalist,hindi,female_form,t1,पत्रकार
+baker,hindi,female_form,t1,बेकर
+author,hindi,female_form,t1,लेखक[लेखिका]
+athlete,hindi,female_form,t1,खिलाड़ी
+lawyer,hindi,female_form,t1,वकील
+doctor/physician,hindi,female_form,t1,चिकित्सक
+professor,hindi,female_form,t1,प्राध्यापक
+governor,hindi,female_form,t1,राज्यपाल
+judge,hindi,female_form,t1,न्यायाधीश
+sailor,hindi,female_form,t1,नाविक
+postman/postwoman,hindi,female_form,t1,डाकिया
+mechanic,hindi,female_form,t1,मिस्त्री
+hunter,hindi,female_form,t1,शिकारी
+firefighter,hindi,female_form,t1,अग्निशमन^कर्मचारी
+dancer,"Serbian (latin)
+",female_form,t1,plesačica
+nurse,"Serbian (latin)
+",female_form,t1,tehničar
+singer,"Serbian (latin)
+",female_form,t1,pevačica
+cleaner,"Serbian (latin)
+",female_form,t1,čistačica
+secretary,"Serbian (latin)
+",female_form,t1,sekretarica
+waiter,"Serbian (latin)
+",female_form,t1,konobarica
+journalist,"Serbian (latin)
+",female_form,t1,novinarka
+baker,"Serbian (latin)
+",female_form,t1,pekarka
+author,"Serbian (latin)
+",female_form,t1,autorka
+athlete,"Serbian (latin)
+",female_form,t1,sportistkinja
+lawyer,"Serbian (latin)
+",female_form,t1,advokatica
+doctor/physician,"Serbian (latin)
+",female_form,t1,doktorka
+professor,"Serbian (latin)
+",female_form,t1,profesorka
+governor,"Serbian (latin)
+",female_form,t1,guverner
+judge,"Serbian (latin)
+",female_form,t1,sudija
+sailor,"Serbian (latin)
+",female_form,t1,mornar
+postman/postwoman,"Serbian (latin)
+",female_form,t1,poštar
+mechanic,"Serbian (latin)
+",female_form,t1,mehaničarka
+hunter,"Serbian (latin)
+",female_form,t1,lovac
+firefighter,"Serbian (latin)
+",female_form,t1,vatrogasac
+dancer,serbian (cyrillic),female_form,t1,плесачица
+nurse,serbian (cyrillic),female_form,t1,техничар
+singer,serbian (cyrillic),female_form,t1,певачица
+cleaner,serbian (cyrillic),female_form,t1,чистачица
+secretary,serbian (cyrillic),female_form,t1,секретарица
+waiter,serbian (cyrillic),female_form,t1,конобарица
+journalist,serbian (cyrillic),female_form,t1,новинарка
+baker,serbian (cyrillic),female_form,t1,пекарка
+author,serbian (cyrillic),female_form,t1,ауторка
+athlete,serbian (cyrillic),female_form,t1,спортисткиња
+lawyer,serbian (cyrillic),female_form,t1,адвокатица
+doctor/physician,serbian (cyrillic),female_form,t1,докторка
+professor,serbian (cyrillic),female_form,t1,професорка
+governor,serbian (cyrillic),female_form,t1,гувернер
+judge,serbian (cyrillic),female_form,t1,судија
+sailor,serbian (cyrillic),female_form,t1,морнар
+postman/postwoman,serbian (cyrillic),female_form,t1,поштар
+mechanic,serbian (cyrillic),female_form,t1,механичарка
+hunter,serbian (cyrillic),female_form,t1,ловац
+firefighter,serbian (cyrillic),female_form,t1,ватрогасац
+dancer,indonesian,female_form,t1,penari
+nurse,indonesian,female_form,t1,perawat
+singer,indonesian,female_form,t1,penyanyi
+cleaner,indonesian,female_form,t1,petugas^kebersihan
+secretary,indonesian,female_form,t1,sekretaris
+waiter,indonesian,female_form,t1,pelayan
+journalist,indonesian,female_form,t1,jurnalis
+baker,indonesian,female_form,t1,tukang^roti
+author,indonesian,female_form,t1,pengarang
+athlete,indonesian,female_form,t1,atlet
+lawyer,indonesian,female_form,t1,pengacara
+doctor/physician,indonesian,female_form,t1,dokter
+professor,indonesian,female_form,t1,profesor
+governor,indonesian,female_form,t1,gubernur
+judge,indonesian,female_form,t1,mengadili
+sailor,indonesian,female_form,t1,kelasi
+postman/postwoman,indonesian,female_form,t1,tukang^pos
+mechanic,indonesian,female_form,t1,montir
+hunter,indonesian,female_form,t1,berburu
+firefighter,indonesian,female_form,t1,petugas^pemadam^kebakaran
 dancer,italian,female_form,t1,ballerina
 nurse,italian,female_form,t1,infermiera
 singer,italian,female_form,t1,cantante
@@ -674,26 +975,66 @@ postman/postwoman,portuguese,female_form,t1,carteira
 mechanic,portuguese,female_form,t1,mecânica
 hunter,portuguese,female_form,t1,caçadora
 firefighter,portuguese,female_form,t1,bombeira
-dancer,romanian,female_form,t1,dansator
-nurse,romanian,female_form,t1,infirmieră
-singer,romanian,female_form,t1,cântăreţ
+dancer,romanian,female_form,t1,dansatoare
+nurse,romanian,female_form,t1,infirmier
+singer,romanian,female_form,t1,cantareata
 cleaner,romanian,female_form,t1,femeie^de^serviciu
 secretary,romanian,female_form,t1,secretară
 waiter,romanian,female_form,t1,chelneriţă
-journalist,romanian,female_form,t1,jurnalist
-baker,romanian,female_form,t1,brutar
-author,romanian,female_form,t1,autor
-athlete,romanian,female_form,t1,atlet
-lawyer,romanian,female_form,t1,avocat
-doctor/physician,romanian,female_form,t1,medic
-professor,romanian,female_form,t1,profesor
-governor,romanian,female_form,t1,guvernator
-judge,romanian,female_form,t1,judecător
-sailor,romanian,female_form,t1,marinar
-postman/postwoman,romanian,female_form,t1,factor
-mechanic,romanian,female_form,t1,maşinist
-hunter,romanian,female_form,t1,vânător
-firefighter,romanian,female_form,t1,pompier
+journalist,romanian,female_form,t1,jurnalista
+baker,romanian,female_form,t1,???
+author,romanian,female_form,t1,autoare
+athlete,romanian,female_form,t1,atleta
+lawyer,romanian,female_form,t1,avocata
+doctor/physician,romanian,female_form,t1,medic^(clt:^the^masculine^version^is^used^even^for^women.)
+professor,romanian,female_form,t1,profesoara
+governor,romanian,female_form,t1,guvernatoare
+judge,romanian,female_form,t1,judecatoare
+sailor,romanian,female_form,t1,???
+postman/postwoman,romanian,female_form,t1,postarita
+mechanic,romanian,female_form,t1,masinista^(mecanica)
+hunter,romanian,female_form,t1,vanatoare
+firefighter,romanian,female_form,t1,pompiera
+dancer,swedish,female_form,t1,dansare
+nurse,swedish,female_form,t1,sjuksköterska
+singer,swedish,female_form,t1,sångerska
+cleaner,swedish,female_form,t1,städerska
+secretary,swedish,female_form,t1,städare
+waiter,swedish,female_form,t1,servitris
+journalist,swedish,female_form,t1,journalist
+baker,swedish,female_form,t1,bagare
+author,swedish,female_form,t1,författarinna
+athlete,swedish,female_form,t1,idrottare
+lawyer,swedish,female_form,t1,jurist
+doctor/physician,swedish,female_form,t1,doktor
+professor,swedish,female_form,t1,professor
+governor,swedish,female_form,t1,guvernör
+judge,swedish,female_form,t1,domare
+sailor,swedish,female_form,t1,sjöman
+postman/postwoman,swedish,female_form,t1,brevbärare
+mechanic,swedish,female_form,t1,mekaniker
+hunter,swedish,female_form,t1,jägare
+firefighter,swedish,female_form,t1,brandman
+dancer,tagalog,female_form,t1,mananayaw
+nurse,tagalog,female_form,t1,nars
+singer,tagalog,female_form,t1,mang^aawit
+cleaner,tagalog,female_form,t1,katulong
+secretary,tagalog,female_form,t1,sekretarya
+waiter,tagalog,female_form,t1,serbidor
+journalist,tagalog,female_form,t1,peryodista
+baker,tagalog,female_form,t1,magtitinapay
+author,tagalog,female_form,t1,autor
+athlete,tagalog,female_form,t1,manlalaro
+lawyer,tagalog,female_form,t1,abogado
+doctor/physician,tagalog,female_form,t1,doktor
+professor,tagalog,female_form,t1,dalubguro
+governor,tagalog,female_form,t1,gobernador
+judge,tagalog,female_form,t1,hukom
+sailor,tagalog,female_form,t1,mandaragat
+postman/postwoman,tagalog,female_form,t1,kartero
+mechanic,tagalog,female_form,t1,mekaniko
+hunter,tagalog,female_form,t1,mangangaso
+firefighter,tagalog,female_form,t1,bumbero
 dancer,turkish,female_form,t1,dansçi
 nurse,turkish,female_form,t1,hemşire
 singer,turkish,female_form,t1,şarkıcı
@@ -733,6 +1074,25 @@ postman/postwoman,chinese,female_form,t1,邮递员
 mechanic,chinese,female_form,t1,技工
 hunter,chinese,female_form,t1,猎人
 firefighter,chinese,female_form,t1,消防员
+dancer,zulu,female_form,t1,umdansi
+nurse,zulu,female_form,t1,umhlengikazi
+singer,zulu,female_form,t1,umculi
+secretary,zulu,female_form,t1,unobhalajikelele
+waiter,zulu,female_form,t1,uweta
+journalist,zulu,female_form,t1,intatheli
+baker,zulu,female_form,t1,umbhaki
+author,zulu,female_form,t1,umenzi
+athlete,zulu,female_form,t1,umbaleki
+lawyer,zulu,female_form,t1,ummeli
+doctor/physician,zulu,female_form,t1,udokotela
+professor,zulu,female_form,t1,usolwazi
+governor,zulu,female_form,t1,umbusi
+judge,zulu,female_form,t1,umehluleli
+sailor,zulu,female_form,t1,itilosi
+postman/postwoman,zulu,female_form,t1,okuthwala^imeyili
+mechanic,zulu,female_form,t1,umakheniki
+hunter,zulu,female_form,t1,umzingeli
+firefighter,zulu,female_form,t1,umacishumlilo
 dancer,german,female_form,t1,tänzerin
 nurse,german,female_form,t1,pflegerin
 singer,german,female_form,t1,sängerin
@@ -755,6 +1115,12 @@ hunter,german,female_form,t1,jägerin
 firefighter,german,female_form,t1,feuerwehrfrau
 postman/postwoman,danish,male_form,t2,postmand
 doctor/physician,french,male_form,t2,médecin
+dancer,"Serbian (latin)
+",male_form,t2,igrač
+doctor/physician,"Serbian (latin)
+",male_form,t2,lekar
+dancer,serbian (cyrillic),male_form,t2,играч
+doctor/physician,serbian (cyrillic),male_form,t2,лекар
 cleaner,italian,male_form,t2,adetto^alle^pulizie
 baker,italian,male_form,t2,panettiere
 doctor/physician,italian,male_form,t2,medico
@@ -775,6 +1141,23 @@ governor,norwegian,male_form,t2,stattholder
 sailor,norwegian,male_form,t2,matros
 postman/postwoman,norwegian,male_form,t2,postmann
 firefighter,norwegian,male_form,t2,fyrbøter
+dancer,swedish,male_form,t2,dansör
+nurse,swedish,male_form,t2,manlig^sjukskoterska
+lawyer,swedish,male_form,t2,advokat
+doctor/physician,swedish,male_form,t2,läkare
+judge,swedish,male_form,t2,bedömare
+firefighter,swedish,male_form,t2,brandsoldat
+cleaner,tagalog,male_form,t2,alila
+waiter,tagalog,male_form,t2,weyter
+baker,tagalog,male_form,t2,panadero
+author,tagalog,male_form,t2,mangangatha
+doctor/physician,tagalog,male_form,t2,manggagamot
+professor,tagalog,male_form,t2,propesor
+governor,tagalog,male_form,t2,tagapamahala
+judge,tagalog,male_form,t2,huwes
+sailor,tagalog,male_form,t2,manlalayag
+mechanic,tagalog,male_form,t2,maninigmo
+firefighter,tagalog,male_form,t2,bombero
 secretary,turkish,male_form,t2,yazman
 doctor/physician,turkish,male_form,t2,hekim
 sailor,turkish,male_form,t2,gemici
@@ -791,6 +1174,15 @@ lawyer,german,male_form,t2,jurist
 sailor,german,male_form,t2,matrose
 postman/postwoman,german,male_form,t2,postbote
 doctor/physician,french,female_form,t2,médecin
+dancer,"Serbian (latin)
+",female_form,t2,igračica
+doctor/physician,"Serbian (latin)
+",female_form,t2,lekarka
+postman/postwoman,"Serbian (latin)
+",female_form,t2,poštarka
+dancer,serbian (cyrillic),female_form,t2,играчица
+doctor/physician,serbian (cyrillic),female_form,t2,лекарка
+postman/postwoman,serbian (cyrillic),female_form,t2,поштарка
 cleaner,italian,female_form,t2,addetta^alle^pulizie
 baker,italian,female_form,t2,panettiera
 doctor/physician,italian,female_form,t2,medico
@@ -810,6 +1202,24 @@ doctor/physician,norwegian,female_form,t2,lege
 professor,norwegian,female_form,t2,universitetslærer
 governor,norwegian,female_form,t2,stattholder
 sailor,norwegian,female_form,t2,matros
+dancer,swedish,female_form,t2,dansös
+nurse,swedish,female_form,t2,barnskoterska
+lawyer,swedish,female_form,t2,advokat
+doctor/physician,swedish,female_form,t2,läkare
+judge,swedish,female_form,t2,bedömare
+sailor,swedish,female_form,t2,?
+firefighter,swedish,female_form,t2,brandsoldat
+cleaner,tagalog,female_form,t2,alila
+waiter,tagalog,female_form,t2,weyter
+baker,tagalog,female_form,t2,panadero
+author,tagalog,female_form,t2,mangangatha
+doctor/physician,tagalog,female_form,t2,manggagamot
+professor,tagalog,female_form,t2,propesor
+governor,tagalog,female_form,t2,tagapamahala
+judge,tagalog,female_form,t2,huwes
+sailor,tagalog,female_form,t2,manlalayag
+mechanic,tagalog,female_form,t2,maninigmo
+firefighter,tagalog,female_form,t2,bombero
 nurse,turkish,female_form,t2,hastabakici
 secretary,turkish,female_form,t2,yazman
 doctor/physician,turkish,female_form,t2,hekim
@@ -831,6 +1241,9 @@ professor,dutch,male_form,t3,meester
 sailor,dutch,male_form,t3,matroos
 waiter,norwegian,male_form,t3,kelner
 lawyer,norwegian,male_form,t3,advokat
+doctor/physician,tagalog,male_form,t3,mediko
+professor,tagalog,male_form,t3,katedratiko
+sailor,tagalog,male_form,t3,marinero
 lawyer,german,male_form,t3,anwalt
 sailor,german,male_form,t3,segler
 athlete,dutch,female_form,t3,atleet
@@ -838,7 +1251,12 @@ professor,dutch,female_form,t3,juf
 sailor,dutch,female_form,t3,matroos
 waiter,norwegian,female_form,t3,kelner
 lawyer,norwegian,female_form,t3,advokat
+doctor/physician,tagalog,female_form,t3,mediko
+professor,tagalog,female_form,t3,katedratiko
+sailor,tagalog,female_form,t3,marinero
 lawyer,german,female_form,t3,anwältin
 sailor,german,female_form,t3,seefahrerin
+sailor,tagalog,male_form,t4,marino
 sailor,german,male_form,t4,seefahrer
 athlete,dutch,female_form,t4,sporter
+sailor,tagalog,female_form,t4,marino

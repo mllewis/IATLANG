@@ -10,8 +10,8 @@ OUTFILE <- here("data/study1c/processed/tidy_behavioral_iat_data.csv")
 # tidy behavioraldata
 behavioral_df <- read_csv(BEHAVIORAL_PATH)
 behavioral_tidy <- behavioral_df %>%
-  select(user_id, domain, exclude_iat, residence, sex, age, education, task_order, block_order, D) %>%
-  mutate_all(funs(replace(., . == "", NA))) %>% # replace missing values with NA
+  select(user_id, datetime_ymdhms,  residence, sex, age, 
+         education, exclude_iat, domain, task_order, block_order, D) %>%
   mutate(domain = case_when(as.character(domain) == "Determinism - Free will" ~ "Determinism - Free Will",
                             TRUE ~ as.character(domain))) %>%
   mutate_if(is.character, as.factor) %>%

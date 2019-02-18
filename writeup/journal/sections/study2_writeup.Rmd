@@ -1,6 +1,7 @@
 ```{r}
 library(tidyverse)
 library(here)
+library(ggrepel)
 ```
 
 # Study 2: Gender bias and grammar
@@ -17,25 +18,25 @@ We hypothesize that grammatical gender might influence cultural stereotypes spec
 We coded the 26 languages in our sample for two variables: whether or not the grammar made any morphosyntactic gender distinction ("Grammatical General Gender") and whether or not the grammar marked gender on persons specifically ("Grammatical General Gender"). We coded Grammatical General Gender by consulting the WALS typological database [Feature 32a;
 @wals] where available and additional resources as necessary. A language was coded as marking General Grammatical Gender if it made a male-female distinction in the grammar. We coded Grammatical Person Gender on the basis of our translations of the 32 IAT words from Study 1b. A language was coded as marking Person Grammatical Gender if it made a gender distinction for any of the target person words. 
 
-### Results and Discussion
 
 ```{r}
+# occupations scores
+INFILE <- here('data/study2/occupation_gender_scores.csv')
+by_lang_scores <- read_csv(INFILE)
 
-LANGKEY_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
-lang_key <- read_csv(LANGKEY_PATH)
+NATIVE_SPEAKER_LANGS <- c("he", "fr", "es", "de", "da", "ms", "pl", "pt",
+                          "hr", "en", "zh", "ko", "nl")
 
-EMPIRICAL_GRAMMAR_PATH <- here("data/study2/person_gender_by_lang.csv")
-grammar_data <- read_csv(EMPIRICAL_GRAMMAR_PATH) %>%
-  rename(language_name = language) %>%
-  left_join(lang_key %>% mutate(language_name = tolower(language_name))) %>%
-  rename(language_code = "wiki_language_code") %>%
-  mutate(empirical_binary_grammatical_gender = 
-           ifelse(empirical_grammatical_gender_score > 0,
-                                                      "Gender", "No Gender"))
-
-LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
-iat_lang_es <- read_csv(LANG_IAT_PATH)
-
+# average across sr and hr
+hr_new_occ <- mean(c(filter(by_lang_scores, language_code == "hr") %>%  pull(mean_prop_overlap_occs),
+         filter(by_lang_scores, language_code == "sr") %>%  pull(mean_prop_overlap_occs)))
+by_lang_scores_tidy <- by_lang_scores %>%
+    mutate(mean_prop_overlap_occs = case_when(language_code == "hr" ~ hr_new_occ,
+                                  TRUE ~ mean_prop_overlap_occs),
+           native_translator = case_when(language_code %in% NATIVE_SPEAKER_LANGS ~ "native",
+                                         TRUE ~ "nonnative")) %>%
+  filter(language_code != "sr") 
+  
 BEHAVIORAL_IAT_PATH <- here("data/study0/processed/by_language_df.csv")
 iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
   rename(language_code = "wiki_language_code") %>%
@@ -46,82 +47,82 @@ iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
 THEORETICAL_GRAMMAR_PATH <- here("data/study2/general_gender_by_lang.csv")
 theoretical_gender <- read_csv(THEORETICAL_GRAMMAR_PATH)  %>%
   select(language_code, wikipedia_grammar_type) %>%
-    mutate(wikipedia_grammar_type2 = ifelse(wikipedia_grammar_type %in%  c("none", "CN"),
+  mutate(wikipedia_grammar_type2 = ifelse(wikipedia_grammar_type %in%  c("none", "CN"),
                                           "No Gender", 
                                           "Gender")) 
 
-weights <- read_csv("/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/data/study1b/language_weights.csv") %>%
-  select(wiki_language_code, n_participants) %>%
-  rename(language_code = wiki_language_code)
+LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
+iat_lang_es <- read_csv(LANG_IAT_PATH)
 
-all_es <- left_join(iat_behavioral_es, iat_lang_es, 
-                    by = "language_code") %>%
-  left_join(grammar_data) %>%
-  left_join(theoretical_gender)  %>%
-  mutate_if(is.character, as.factor) %>%
-  left_join(weights)
+LANG_NAME_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
+language_names <- read_csv(LANG_NAME_PATH) %>%
+  distinct(wiki_language_code, .keep_all = T)
+
+full_df <- full_join(by_lang_scores_tidy, iat_behavioral_es) %>%
+  left_join(theoretical_gender) %>%
+  left_join(iat_lang_es)  %>%
+  left_join(language_names, by = c("language_code" = "wiki_language_code")) 
 ```
 
-```{r, eval = F}
-# implicit
-lm(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender +  median_country_age, weights = n_participants,
-       data = all_es %>% filter(language_code != "hi") ) %>%
-  summary()
-
-# implicit
-#lm(es_iat_sex_age_order_implicit_resid ~ empirical_binary_grammatical_gender + wikipedia_grammar_type2 + median_country_age, weights = n_participants,
- #      data = all_es) %>%
-#  summary()
-
-# explicit
-lm(es_iat_sex_age_order_explicit_resid ~ empirical_binary_grammatical_gender + wikipedia_grammar_type2 + median_country_age, weights = n_participants, data = all_es) %>%
-  car::vif()
-  summary()
-
-  
-count(all_es, empirical_binary_grammatical_gender, wikipedia_grammar_type2)
-```
-
-
-```{r, fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of whether or not the language encodes gender. Left panel shows person-marking grammatical gender and right panel shows theoretical global gender marking type. Each label code corresponds to a language. The vertical line corresponds to the group median."}
-
-ci_df <- all_es %>%
-  group_by(empirical_binary_grammatical_gender) %>%
-  langcog::multi_boot_standard(col = "es_iat_sex_age_order_implicit_resid") %>%
-  ungroup()
-
-ridge_df <- all_es %>%
-  ungroup() %>%
-  distinct(language_code, .keep_all = T) %>%
-  filter(!is.na(empirical_binary_grammatical_gender))  %>%
-  select(language_code, empirical_binary_grammatical_gender,
-         es_iat_sex_age_order_implicit_resid, wikipedia_grammar_type2) %>%
-  gather("grammatical_gender_measure", 
-         "grammatical_gender_value", c(-1,-3)) %>%
-  mutate(grammatical_gender_measure = fct_recode(grammatical_gender_measure, 
-                                                 "General gender marking type" =
-                                                   "wikipedia_grammar_type2",
-                                                 "Empirical person gender marking type" 
-                                                 = "empirical_binary_grammatical_gender"))
-
-ggplot(ridge_df, aes(x = es_iat_sex_age_order_implicit_resid,  
-             y = grammatical_gender_value,
-             color = grammatical_gender_value,
-             fill = grammatical_gender_value)) +
-  scale_color_manual(values = c("blue", "red")) +
-  scale_fill_manual(values = c("blue", "red")) +
-  facet_wrap( . ~grammatical_gender_measure) +
-  ggridges::geom_density_ridges(alpha = .4, scale = .9, 
-                                quantile_lines = TRUE, quantiles = 2)  +
-  geom_text(aes(label = language_code, 
-                y = jitter(as.numeric(as.factor(grammatical_gender_value)) + .2, 1.1)), 
-        color = "black", size = 2) +
+```{r, fig.pos = "!t!", fig.height = 3.5, fig.width = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of the proportion of gender-netural labels for set of words referring to occupations. Range corresponds to 95% CI on linear fit."}
+# implicit behavioral ~ prop neutral
+ggplot(full_df, aes(x = mean_prop_overlap_occs,
+                    y = es_iat_sex_age_order_implicit_resid)) +
+  geom_text_repel(aes(label = language_name), size = 3) +
+  geom_smooth(method = "lm", alpha = .1) +
+  geom_point() +
   theme_classic() +
-  ggtitle("Behavioral Gender Bias and Grammar Type") +
-  xlab("Behavioral IAT Gender Bias (residualized)") +
-  ylab("Grammar Type") +
+  ggtitle("Behavioral Gender Bias and Lexicalized Gender") +
+  ylab("Behavioral IAT Gender Bias (residualized)") +
+  xlab("Proportion Gender-Neutral Occupation Labels") +
   theme(legend.position = "none",
         text = element_text(size = 12),
         axis.text.y = element_text(angle = 90, hjust = 0.5, size = 12))
+```
+Look at native vs. non-native languages
+
+
+```{r, eval = F}
+  
+cor.test(full_df$es_iat_sex_age_order_implicit_resid, 
+         full_df$mean_prop_overlap_occs)
+
+m_base1 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_overlap_occs + median_country_age,
+   data = full_df)
+
+m_base2 <- lm(es_iat_sex_age_order_implicit_resid ~ wikipedia_grammar_type2 + median_country_age,
+   data = full_df)
+
+m_additive <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_overlap_occs + wikipedia_grammar_type2 + median_country_age,
+   data = full_df) 
+
+m_interaction <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_overlap_occs * wikipedia_grammar_type2 + median_country_age,
+   data = full_df)
+
+anova(m_additive, m_interaction)
+
+
+# explicit behavioral
+cor.test(full_df$es_iat_sex_age_order_explicit_resid, 
+         full_df$mean_prop_overlap_occs)
+
+lm(es_iat_sex_age_order_explicit_resid ~ mean_prop_overlap_occs * wikipedia_grammar_type2 + median_country_age,
+   data = full_df) %>%
+  summary()
+
+# wiki iat
+lm(lang_es_wiki ~ mean_prop_overlap_occs * wikipedia_grammar_type2,
+   data = full_df) %>%
+  summary()
+
+lm(lang_es_wiki ~wikipedia_grammar_type2 * mean_prop_overlap_occs,
+   data = full_df) %>%
+  summary()
+
+lm(lang_es_sub ~ mean_prop_overlap_occs * wikipedia_grammar_type2,
+   data = full_df) %>%
+  summary()
+
+
 ```
 
