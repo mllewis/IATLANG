@@ -109,7 +109,7 @@ save_subsetted_model <- function(current_lang,
 }
 
 # get all subsetted models
-walk(all_langs[13:30], 
+walk("ar", 
      save_subsetted_model, 
      translations, 
      MODEL_PREFIX,

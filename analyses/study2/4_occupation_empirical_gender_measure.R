@@ -3,13 +3,14 @@
 library(tidyverse)
 library(here)
 
-INFILE <- here('data/study2/occupation_translations_tidy.csv')
+
 OUTFILE <- here('data/study2/occupation_gender_scores.csv')
 LANG_CODE_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
+INFILE <- here('data/study2/occupation_translations_tidy.csv')
 
-tidy_occs <- read_csv(INFILE)
+tidy_clean_occs <- read_csv(INFILE) 
 
-wide_occs <- tidy_occs %>%
+wide_occs <- tidy_clean_occs %>%
   group_by(language, occupation, word_form_type) %>%
   nest(translation) %>%
   spread(word_form_type, data)
@@ -21,7 +22,9 @@ by_item_lang_scores <-  wide_occs %>%
          male_overlap_with_female = map2_dbl(female_form, male_form, function(x,y) {length(intersect(x$translation,
                                                                                                  y$translation))/length(y$translation)})) %>%
   rowwise() %>%
-  mutate(mean_overlap = mean(c(female_overlap_with_male, male_overlap_with_female)))
+  mutate(mean_overlap = mean(c(female_overlap_with_male, male_overlap_with_female)),
+         mean_overlap = case_when(mean_overlap == "NaN"~ 0,
+                                  TRUE ~ mean_overlap))
 
 full_df <- by_item_lang_scores %>%
   group_by(language) %>%
