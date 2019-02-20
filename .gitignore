@@ -49,6 +49,7 @@ data/study1c/processed/trained_bnc_fasttext_5.csv
 data/study1c/processed/trained_bnc_fasttext_400_10.csv
 data/study1c/processed/trained_coca_fasttext_400_10.csv
 analyses/study1c/parameter_exploration/trained_models/temp_model.csv
+writeup/journal/SI/iatlang_SI_cache/*
 
 *.feather
 # LaTeX #
