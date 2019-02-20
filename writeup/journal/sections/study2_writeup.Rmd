@@ -214,6 +214,9 @@ B_OB_W_partial <- text_tidy_corrs %>%
 Finally, we examined the relationship between gender bias in language statistics and psychological gender bias at the level of languages. Gender bias in language statistics were a strong predictor of behavioral gender bias for both language models
 (Subtitle corpus: `r B_OB_S`; Wikipedia corpus: `r B_OB_W`), and remained reliable after partialling out the effect of median country age (Subtitle corpus: `r B_OB_S_partial`; Wikipedia corpus: `r B_OB_W_partial`; Figure 4).  To examine the relative predictive power of gender bias in language statistics and proportion form overlap, we fit a linear regression predicting behavioral gender bias with both measures, controlling for median country age. [NEITHER IS PREDICTIVE - try mediation model?]. Bias in language statistics did not reliably predict explicit gender bias.
 
+
+# Discussion
+
 ```{r}
 print_tidy_corrs <- tidy_corrs %>%
   filter(rowname != var2) %>%
