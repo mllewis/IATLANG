@@ -537,7 +537,7 @@ corr_exclusions_tidy %>%
 
 # Study 2 Items
 
-In Study 2, we select 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicated more closely associated with women).
+In Study 2, we select 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicate occpuation is perceived as more closely associated with women).
 
 ```{r }
 STUDY2_WORD_ITEMS <- here("data/study2/occupation_gender_scores_by_word.csv")
