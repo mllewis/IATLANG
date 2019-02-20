@@ -1,35 +1,19 @@
-# get gender score for each occupation word in each language
 # get stimuli for occupation norming
+# using existing norms of gender bias in workforce by occupation (Misersky et al., 2014)
 
 library(tidyverse)
-library(data.table)
+library(here)
 
+MISERSKY_PATH <- here("data/study2/mirsesky_norms_clean.csv")
+misersky_norms_raw <- read_csv(MISERSKY_PATH) 
 
-GABRIELPATH <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/exploratory_analyses/11_xling_occupation_norms/gabriel/raw_data/GabrielAPP-B(2008).txt"
-gabriel_norms <- read_delim(GABRIELPATH, delim = "\t") %>%
-  select(1,2) %>%
-  slice(-1:-4) %>%
-  rename(occupation = `Appendix B`,
-         human_english_male_rating_g = X2) %>%
-  mutate(occupation = tolower(occupation),
-         human_english_male_rating_g = as.numeric(human_english_male_rating_g))
-
-
-MISERSKYPATH <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/exploratory_analyses/11_xling_occupation_norms/miseresky/mirsesky_norms_clean.csv"
-
-misersky_norms <- read_csv(MISERSKYPATH) %>%
+misersky_norms <- misersky_norms_raw %>%
   filter(language == "english") %>%
   select(-language) %>%
   mutate(mean_gender_rating = -mean_gender_rating) %>%
-  rename(human_english_male_rating_m = mean_gender_rating)
-
-all_norms <- full_join(gabriel_norms, misersky_norms) %>%
-  filter(!is.na(human_english_male_rating_m)) %>%
+  rename(human_english_male_rating_m = mean_gender_rating) %>%
   mutate(quartile = ntile(human_english_male_rating_m, 4)) %>%
   arrange(quartile)
-
-cor.test(all_norms$human_english_male_rating_g, 
-         all_norms$human_english_male_rating_m)
 
 
 ##Selected items and human rating quantile:

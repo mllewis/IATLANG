@@ -201,7 +201,7 @@ all_es_tidy %>%
   geom_point(size = .7) + #aes(size  = log(n_participants))) + #
   theme_minimal() +
   ggtitle("Behavioral and Linguistic Gender Biases") +
-  ylab("Behavioral IAT Gender Bias (residualized)\n") +
+  ylab("Behavioral IAT Gender Bias \n(residualized)\n") +
   xlab("\nLinguistic Gender Bias\n (effect size)") +
   theme_classic(base_size = 12) 
 ```
@@ -260,35 +260,43 @@ text_tidy_corrs <- tidy_corrs %>%
     mutate_if(is.numeric, ~str_remove(as.character(.), "^0+|^-0+")) 
 
 L_B_sub <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Residualized Behavioral IAT") %>%
+  filter(rowname ==  "Language IAT (Subtitles)",
+         var2 == "Residualized Behavioral IAT") %>%
   pull(r_print_text)
 
 L_B_wiki <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Behavioral IAT") %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", 
+         var2 == "Residualized Behavioral IAT") %>%
   pull(r_print_text)
 
 L_B_sub_partial <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Residualized Behavioral IAT") %>%
+  filter(rowname ==  "Language IAT (Subtitles)", 
+         var2 == "Residualized Behavioral IAT") %>%
   pull(partial_print_text)
 
 L_B_wiki_partial <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Behavioral IAT") %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", 
+         var2 == "Residualized Behavioral IAT") %>%
   pull(partial_print_text)
 
 L_E_sub <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Residualized Explicit Bias") %>%
+  filter(rowname ==  "Language IAT (Subtitles)", 
+         var2 == "Residualized Explicit Bias") %>%
   pull(r_print_text)
 
 L_E_wiki <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Explicit Bias") %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", 
+         var2 == "Residualized Explicit Bias") %>%
   pull(r_print_text)
 
 L_S_sub <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Percent Women in STEM") %>%
+  filter(rowname ==  "Language IAT (Subtitles)", 
+         var2 == "Percent Women in STEM") %>%
   pull(r_print_text)
 
 L_S_wiki <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Percent Women in STEM") %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", 
+         var2 == "Percent Women in STEM") %>%
   pull(r_print_text)
 ```
 
@@ -325,4 +333,4 @@ kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
 ```
 
 ### Discussion 
-In Study 1, we demonstrate that a well-studied psychological gender bias -- the bias to associate men with career and women with family -- is correlated with the magnitude of that same bias as measured in language statistics across a sample of 25 languages.  Our pattern of findings is consistent with the possibility language statistics play a causal role in shaping psychological biases in indiviual speakers (language-as-causal). However, this pattern of findings is also consistent with the possibility that  people's implicit biases are in part caused by input from language and that the linguistic biases simply reflect existing biases (language-as-reflection). In Study 2, we more directly investigate the causal mechanism linking language statistics to psychological biases.
+In Study 1, we demonstrate that a well-studied psychological gender bias -- the bias to associate men with career and women with family -- is correlated with the magnitude of that same bias as measured in language statistics across a sample of 25 languages.  Our pattern of findings is consistent with the hypothesis that language statistics play a causal role in shaping psychological biases in indiviual speakers (language-as-causal). However, this pattern is also consistent with the possibility that  people's implicit biases are in part caused by input from language and that the linguistic biases simply reflect existing biases (language-as-reflection). In Study 2, we more directly investigate the causal mechanism linking language statistics to psychological biases.
