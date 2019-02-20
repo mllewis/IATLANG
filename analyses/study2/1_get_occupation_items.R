@@ -4,7 +4,7 @@
 library(tidyverse)
 library(here)
 
-MISERSKY_PATH <- here("data/study2/mirsesky_norms_clean.csv")
+MISERSKY_PATH <- here("data/study2/misersky_norms_clean.csv")
 misersky_norms_raw <- read_csv(MISERSKY_PATH) 
 
 misersky_norms <- misersky_norms_raw %>%
