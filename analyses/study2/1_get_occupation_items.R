@@ -15,8 +15,7 @@ misersky_norms <- misersky_norms_raw %>%
   mutate(quartile = ntile(human_english_male_rating_m, 4)) %>%
   arrange(quartile)
 
-
-##Selected items and human rating quantile:
+## Selected items and human rating quantile:
 #dancers	1
 #nurses	1
 #singers	1

@@ -183,11 +183,13 @@ shinyApp(
     })
   },
   
-  options = list(height = 600)
+  options = list(height = 500)
 )
 ```
 
-```{r, fig.cap = "Residualized gender bias by country as measured by the IAT. Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias."}
+
+Residualized gender bias by country as measured by the IAT. Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias.
+```{r}
 BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
 country_iat <- read_csv(BY_COUNTRY_DF)
 
@@ -481,7 +483,6 @@ ggplot(all_es_sub, aes(x = sub,
 * averaged across multiple translations
 * what does it look like when you change this criteria
 
-
 # Correlations by language exclusion threshold
 In the main text, we report behavioral IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the main text remains broadly the same when larger thresholds of minimum number of participants per country are used. The plot below shows pairwise correlations between the language bias measures and three behavioral/objective measures: Residualized behavorial IAT, residualized explicit IAT, and percent women in STEM. As in the main text, the residualized values are participant age, sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the p-value of the pairwise Pearson's _r_ coefficient.
 
@@ -534,8 +535,45 @@ corr_exclusions_tidy %>%
   theme_bw()
 ```
 
+# Study 2 Items
+
+In Study 2, we select 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicated more closely associated with women).
+
+```{r }
+STUDY2_WORD_ITEMS <- here("data/study2/occupation_gender_scores_by_word.csv")
+items <- read_csv(STUDY2_WORD_ITEMS) %>%
+  distinct(occupation) %>%
+  pull(occupation)
+
+MISERSKY_PATH <- here("data/study2/misersky_norms_clean.csv")
+misersky_norms_raw <- read_csv(MISERSKY_PATH) 
+
+misersky_norms <- misersky_norms_raw %>%
+  filter(language == "english") %>%
+  select(-language) %>% 
+  mutate(occupation  = substr(occupation, 1, nchar(occupation)-1)) %>% # get rid of plural
+  mutate(occupation = case_when(occupation == "postme" ~ "postman/postwoman",
+                                occupation == "physician" ~ "doctor/physician",
+                                occupation == "secretarie" ~ "secretary",
+                                TRUE ~ occupation)) %>%
+  filter(occupation %in% items) %>%
+  arrange(mean_gender_rating) 
+
+datatable(misersky_norms, colnames = c("Occupation", 
+                    "Perceived Gender Bias \n(Misersky, et al. 2014)"),
+          options = list(
+  autoWidth = TRUE,
+  columnDefs = list(list(width = '200px'))
+))
+
+```
+
 
 **References**
+
+Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). Semantics derived automatically from language corpora contain human-like biases. _Science_, _356_(6334), 183–186.
+
+Misersky, J., Gygax, P. M., Canal, P., Gabriel, U., Garnham, A., Braun, F., . . . others. (2014). Norms on the gender perception of role nouns in Czech, English, French, German, Italian, Norwegian, and Slovak. _Behavior Research Methods_, _46_(3), 841–871.
 
 Nosek, B. A., Banaji, M. R., & Greenwald, A. G. (2002). Harvesting implicit group attitudes and beliefs from a demonstration web site. _Group Dynamics: Theory, Research, and Practice_, _6_(1), 101.
 

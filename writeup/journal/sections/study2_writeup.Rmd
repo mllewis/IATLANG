@@ -17,7 +17,7 @@ Thus, in Study 2, we asked whether languages that make gender distinctions more 
 
 ### Method
 
-We identified 20 words referring to occupations that were relatively high-frequency and balanced for their perceptions of gender bias in the workforce, based on previously-collected gender perception norms  [@misersky2014norms]. We then translated these words into each of the 26 languages in our sample, distinguishing between male and female forms where present. Forms were translated by consulting native speakers or English translation dictionaries.
+We identified 20 words referring to occupations that were relatively high-frequency and balanced for their perceptions of gender bias in the workforce, based on previously-collected gender perception norms  [@misersky2014norms; see Supplementary Information]. We then translated these words into each of the 26 languages in our sample, distinguishing between male and female forms where present. Forms were translated by consulting native speakers or English translation dictionaries.
 
 To estimate the extent to which a language lexically encoded gender, we calculated the proportion of male and female forms that were identical for each item, and then averaged across items within each language. This measure reflects the degree to which a language marks gender lexically, with larger values indicating more  gender-neutral forms. We also estimated the extent to which each occupation word was gender biased in its language statistics using word embedding models trained. This measure was obtained using the same procedure as in Study 1a and 1b based on models trained on both subtitle (_N_ = 20 languages) and Wikipedia corpora  (_N_ = 25 languages) in each language. Larger values indicate greater gender bias (larger difference between associations to females vs. males). [Note here the measure is female - male, where as male - female in 1a above -> should maybe change this so consistent]. We compared these measures to the psychological gender measures described in Study 1b (residualized implicit association bias effect size and explicit bias score).
 
@@ -133,8 +133,7 @@ tidy_corrs_to_print <- print_tidy_corrs %>%
          contains("Occupation"), contains("Labels")) %>%
   rename(" " = "rowname")
 
-tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(8,9,6,1,2,4,5,7,3),] %>% select(` `, "Residualized Behavioral IAT", "Residualized Explicit Bias",
-                                                                                       "Percent Women in STEM","Language IAT (Subtitles)", "Language IAT (Wikipedia)", "Prop. Gender-Neutral Labels", "Occupation Bias (Subtitles)","Occupation Bias (Wikipedia)", "Median Country Age")
+tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(8,9,6,1,2,4,5,7,3),] %>% select(` `, "Residualized Behavioral IAT", "Residualized Explicit Bias","Percent Women in STEM","Language IAT (Subtitles)", "Language IAT (Wikipedia)", "Prop. Gender-Neutral Labels", "Occupation Bias (Subtitles)","Occupation Bias (Wikipedia)", "Median Country Age")
 
 kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
       caption = "Correlation (Pearson's r) for all measures in Study 1 and 2 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.",
