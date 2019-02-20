@@ -5,7 +5,7 @@ library(tidyverse)
 library(data.table)
 
 
-GABRIELPATH <- "raw_data/GabrielAPP-B(2008).txt"
+GABRIELPATH <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/exploratory_analyses/11_xling_occupation_norms/gabriel/raw_data/GabrielAPP-B(2008).txt"
 gabriel_norms <- read_delim(GABRIELPATH, delim = "\t") %>%
   select(1,2) %>%
   slice(-1:-4) %>%

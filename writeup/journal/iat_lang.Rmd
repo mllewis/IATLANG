@@ -70,7 +70,7 @@ Past experimental work suggests a causal link between grammatical gender and psy
 Of course, evidence for a close correspondence between language and psychological gender biases is also consistent with the simpler explanation that language reflects a pre-existing gender bias in its speakers  (_language-as-reflection hypothesis_). We assume that the language-as-reflection hypothesis is true to some extent: some of the ways we talk about gender reflect our knowledge and biases acquired independently of language. For example, we may observe that most nurses are women, and therefore be more likely to use a female pronoun to refer to a nurse of an unknown gender.  Our present goal is to understand the extent to which language may also exert a causal influence on conceptualizations of gender (_language-as-causal hypothesis_).
 
 In what follows, we ask whether the way gender is linguistically encoded
-across 26 different languages predicts cross-cultural variability in a specific manifestation of a gender bias---the bias to associate men with careers and women with family. We begin by describing our  cross-cultural dataset of psychological gender bias. We then examine whether variability in language, as captured by distributional semantics, predicts differences in the gender-career implicit bias (Study 1). We next ask whether the presence of grammatical gender in a language is associated with greater implicit gender bias (Study 2). Together, our data suggest that language not only reflects existing biases, but plays a causal role in shaping culturally-specific notions of gender.
+across 26 different languages predicts cross-cultural variability in a specific manifestation of a gender bias---the bias to associate men with careers and women with family. We begin by describing our  cross-cultural dataset of psychological gender bias. We then examine whether variability in language, as captured by distributional semantics, predicts differences in the gender-career implicit bias (Study 1). We next ask whether the presence of explicit marking of gender on nouns referring to people in a language is associated with greater implicit gender bias (Study 2). Together, our data suggest that language not only reflects existing biases, but plays a causal role in shaping culturally-specific notions of gender.
 
 
 ```{r child = "sections/study0_writeup.Rmd"}
@@ -83,6 +83,13 @@ across 26 different languages predicts cross-cultural variability in a specific 
 ```
 
 # General Discussion
+
+* IAT is only behavioral in a weak sense
+* socialization in development
+* implicit vs. explicit difference
+* pragmatics related to presense of distinction for kids - must be relevenat! - chesnut stuff
+* gender asymmetries in the IAT (women show bigger effect than men?)
+* experimental work to get at causality more so
 
 \newpage
 
