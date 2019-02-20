@@ -138,9 +138,9 @@ tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(8,9,6,1,2,4,5,7,3),]
 kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
       caption = "Correlation (Pearson's r) for all measures in Study 1 and 2 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.",
       align = "lrrrrrr") %>%
-  column_spec(2:10, width = "1.4cm") %>%
+  column_spec(2:10, width = "1.6cm") %>%
   kable_styling(bootstrap_options = "condensed", 
-                full_width = F,  font_size = 7) %>%
+                full_width = F,  font_size = 6) %>%
   landscape()
 ```
 

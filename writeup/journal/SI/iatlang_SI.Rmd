@@ -560,7 +560,7 @@ misersky_norms <- misersky_norms_raw %>%
   arrange(mean_gender_rating) 
 
 datatable(misersky_norms, colnames = c("Occupation", 
-                    "Perceived Gender Bias \n(Misersky, et al. 2014)"),
+                    "Perceived Gender Bias \n(Misersky, et al., 2014)"),
           options = list(
   autoWidth = TRUE,
   columnDefs = list(list(width = '200px'))
