@@ -1,0 +1,41 @@
+country_code,country_name,language_name,family,wiki_language_code
+AE,United Arab Emirates,Arabic,Afro-Asiatic,ar
+AF,Afghanistan,Persian,Indo-European,fa
+AR,Argentina,Spanish,Indo-European,es
+AT,Austria,German,Indo-European,de
+AU,Australia,English,Indo-European,en
+BE,Belgium,Dutch,Indo-European,nl
+BR,Brazil,Portuguese,Indo-European,pt
+CA,Canada,English,Indo-European,en
+CH,Switzerland,German,Indo-European,de
+CN,China,Chinese,Sino-Tibetan,zh
+CN,Hong Kong,Chinese,Sino-Tibetan,zh
+CO,Colombia,Spanish,Indo-European,es
+DE,Germany,German,Indo-European,de
+DK,Denmark,Danish,Indo-European,da
+ES,Spain,Spanish,Indo-European,es
+FI,Finland,Finnish,Uralic,fi
+FR,France,French,Indo-European,fr
+GB,UK,English,Indo-European,en
+HR,Croatia,Croatian,Indo-European,hr
+ID,Indonesia,Indonesian,Austronesian,id
+IE,Ireland,English,Indo-European,en
+IL,Israel,Hebrew,Afro-Asiatic,he
+IN,India,Hindi,Indo-European,hi
+IT,Italy,Italian,Indo-European,it
+JP,Japan,Japanese,Japonic,ja
+KR,Republic of Korea,Korean,Koreanic,ko
+MX,Mexico,Spanish,Indo-European,es
+MY,Malaysia,Malay,Austronesian,ms
+NL,Netherlands,Dutch,Indo-European,nl
+NO,Norway,Norwegian,Indo-European,no
+NZ,New Zealand,English,Indo-European,en
+PH,Philippines,Tagalog,Austronesian,tl
+PL,Poland,Polish,Indo-European,pl
+RO,Romania,Romanian,Indo-European,ro
+SE,Sweden,Swedish,Indo-European,sv
+SG,Singapore,Chinese,Sino-Tibetan,zh
+TR,Turkey,Turkish,Turkic,tr
+TW,Taiwan,Chinese,Sino-Tibetan,zh
+US,United States of America,English,Indo-European,en
+ZA,South Africa,Zulu,Niger-Congo,zu

@@ -10,7 +10,7 @@ output:
     toc: yes
     toc_float: no
 runtime: shiny
-subtitle: Supplementary Information
+subtitle: Supplementary Materials
 ---
 
 ******
@@ -20,15 +20,20 @@ subtitle: Supplementary Information
 # load packages
 library(tidyverse)
 library(knitr)
-library(here)
 library(langcog)
 library(DT)
 library(ggrepel)
 library(shiny)
+library(maps)
+library(countrycode)
+library(viridis)
 
 opts_chunk$set(echo = T, message = F, warning = F, 
                error = F, cache = T, tidy = F, fig.height = 4.5)
+
 theme_set(theme_classic())
+options(shiny.sanitize.errors = FALSE)
+
 ```  
 
 This document was created from an R markdown file. The manuscript itself was also produced from an R markdown file, and all analyses presented in the paper can be reproduced from that document (https://github.com/mllewis/IATLANG/blob/master/writeup/journal/iat_lang.Rmd). The respository for the project can be found here: https://github.com/mllewis/IATLANG/.
@@ -39,7 +44,7 @@ This document was created from an R markdown file. The manuscript itself was als
 ### N by country
 
 ```{r}
-PARTICIPANT_DF <- here("data/study0/processed/by_participant_df.csv")
+PARTICIPANT_DF <- "data/by_participant_df.csv"
 participant_df <- read_csv(PARTICIPANT_DF)
 
 country_ns_final <- participant_df %>%
@@ -96,17 +101,18 @@ country_gender %>%
 ### Age by country
 
 ```{r}
-MEDIAN_AGE_PATH <- here("data/study0/raw/median_country_age_world_factbook.csv")
+MEDIAN_AGE_PATH <- "data/median_country_age_world_factbook.csv"
 median_age <- read_csv(MEDIAN_AGE_PATH)
 
 country_ages <- participant_df %>%
-  mutate(country_name = if_else(country_name == "Hong Kong", "China", country_name)) %>% 
-  mutate(age = exp(log_age)) %>%
-  group_by(country_name) %>%
-  multi_boot_standard(col = "age")
+ mutate(country_name = if_else(country_name == "Hong Kong", "China", country_name)) %>%
+ mutate(age = exp(log_age)) %>%
+ group_by(country_name) %>%
+ multi_boot_standard(col = "age")
 
 country_ages_with_median <- country_ages %>%
   left_join(median_age)
+
 ```
 
 ```{r, fig.cap = "Bars show mean participant age by country; ranges correspond to 95% CIs. Red points show median age by country from CIA factbook data."}
@@ -127,7 +133,7 @@ country_ages_with_median %>%
 For each country, we identified the language with the most speakers using Ethnologue (CITATION). Note that Ethnologue reports "Bavarian" as the primary language of Germany, and "Daric" as the primary language of Afghanistan. In order to map between the other data sources in our study, we used the more general language variant for these countries, German and Persian, respectively. In Section 3 below, rather than assume each country has a single language, we estimate language level biases for each country by weighting by the number of speakers in each country.
 
 ```{r}
-COUNTRY_TO_LANG <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
+COUNTRY_TO_LANG <- "data/top_lang_by_country_ethnologue.csv"
 country_to_lang <- read_csv(COUNTRY_TO_LANG) %>%
   select(country_name, language_name)  %>%
   arrange(country_name)
@@ -190,12 +196,12 @@ shinyApp(
 
 Residualized gender bias by country as measured by the IAT. Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias.
 ```{r}
-BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
+BY_COUNTRY_DF <- "data/by_country_df.csv"
 country_iat <- read_csv(BY_COUNTRY_DF)
 
 
 map_world <- map_data(map = "world") %>%
-    mutate(country_code = countrycode::countrycode(region, 'country.name', 'iso2c'))
+    mutate(country_code = countrycode(region, 'country.name', 'iso2c'))
 
 map_data <- country_iat %>%
   full_join(map_world, by = "country_code") %>%
@@ -208,7 +214,7 @@ full_world <- ggplot(map_data, aes(x = long, y = lat,
   #scale_fill_gradient2(low = "blue", mid = "white", high = "red",
   #                     midpoint = 0, name = "Gender bias") +
 
-  viridis::scale_fill_viridis(direction = -1,  limits=c(-.065, .045))  +
+  scale_fill_viridis(direction = -1,  limits=c(-.065, .045))  +
   geom_polygon(color = "black", size = .1) +
   ggtitle("Implicit psychological gender bias by country ") +
   theme(
@@ -240,7 +246,7 @@ map_europe <- map_data %>%
 europe_inset <- ggplot(map_europe, aes(x = long, y = lat,
                             group = group,
                             fill = es_iat_sex_age_order_implicit_resid)) +
-  viridis::scale_fill_viridis(direction = -1, limits=c(-.065, .045))  +
+  scale_fill_viridis(direction = -1, limits=c(-.065, .045))  +
   #scale_fill_continuous()
   geom_polygon(color = "black", size = .1) +
   theme(panel.grid.major = element_blank(),
@@ -304,12 +310,12 @@ shinyApp(
 
 # Replication of Caliskan et al. (2017){.tabset}
 
-```{r english_language_caliskan_es_wiki}
-CALISKAN_WIKI_PATH <- here("data/SI/caliskan_wiki_es.csv")
+```{r english-language-caliskan-es-wiki}
+CALISKAN_WIKI_PATH <- "data/caliskan_wiki_es.csv"
 wiki_es <- read_csv(CALISKAN_WIKI_PATH,
                             col_names = c("test", "study_name", "wiki"))
 
-CALISKAN_PATH <- here("data/SI/caliskan_paper_es.csv")
+CALISKAN_PATH <- "data/caliskan_paper_es.csv"
 caliskan_es <- read_csv(CALISKAN_PATH)
 all_es <- wiki_es %>%
   left_join(caliskan_es) %>%
@@ -352,13 +358,15 @@ all_es <- wiki_es %>%
                                 `Common Crawl (GloVe)` = "AC_glove",
                                 `Google News (word2vec)` = "AC_w2v"))
 gender_bias_es_wiki <- filter(all_es, study_name == "gender-bias-career-family")$wiki[1]
-gender_bias_es_cc <- filter(all_es, study_name == "gender-bias-career-family" & es_source == "Common Crawl (GloVe)" )$d[1]
-gender_bias_es_gn <- filter(all_es, study_name == "gender-bias-career-family" & es_source == "Google News (word2vec)")$d[1]
+gender_bias_es_cc <- filter(all_es, study_name == "gender-bias-career-family" &
+                              es_source == "Common Crawl (GloVe)" )$d[1]
+gender_bias_es_gn <- filter(all_es, study_name == "gender-bias-career-family" &
+                              es_source == "Google News (word2vec)")$d[1]
 
 ```
 
-```{r english_language_caliskan_es_sub}
-CALISKAN_SUB_PATH <- here("data/SI/caliskan_sub_es.csv")
+```{r english-language-caliskan-es-sub}
+CALISKAN_SUB_PATH <- "data/caliskan_sub_es.csv"
 sub_es <- read_csv(CALISKAN_SUB_PATH,
                             col_names = c("test", "study_name", "sub")) 
 
@@ -475,8 +483,6 @@ ggplot(all_es_sub, aes(x = sub,
         legend.margin = margin(3, 3, 0, 3, unit = 'pt'))
 ```
 
-# Language IAT weighted by speaker population size
-
 # Language exclusions
 
 * 20 percent from *calculated* vectors
@@ -487,7 +493,7 @@ ggplot(all_es_sub, aes(x = sub,
 In the main text, we report behavioral IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the main text remains broadly the same when larger thresholds of minimum number of participants per country are used. The plot below shows pairwise correlations between the language bias measures and three behavioral/objective measures: Residualized behavorial IAT, residualized explicit IAT, and percent women in STEM. As in the main text, the residualized values are participant age, sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the p-value of the pairwise Pearson's _r_ coefficient.
 
 ```{r, fig.width = 9, fig.height = 5}
-exclusions_df <- here("data/SI/corrs_by_exclusions.csv")
+exclusions_df <- "data/corrs_by_exclusions.csv"
 
 corr_exclusions <- read_csv(exclusions_df,
                              col_names = c("var1", "var2", "simple_corr", "simple_p",
@@ -540,12 +546,12 @@ corr_exclusions_tidy %>%
 In Study 2, we select 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicate occpuation is perceived as more closely associated with women).
 
 ```{r }
-STUDY2_WORD_ITEMS <- here("data/study2/occupation_gender_scores_by_word.csv")
+STUDY2_WORD_ITEMS <- "data/occupation_gender_scores_by_word.csv"
 items <- read_csv(STUDY2_WORD_ITEMS) %>%
   distinct(occupation) %>%
   pull(occupation)
 
-MISERSKY_PATH <- here("data/study2/misersky_norms_clean.csv")
+MISERSKY_PATH <- "data/misersky_norms_clean.csv"
 misersky_norms_raw <- read_csv(MISERSKY_PATH) 
 
 misersky_norms <- misersky_norms_raw %>%

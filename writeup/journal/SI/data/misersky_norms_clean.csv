@@ -1,0 +1,2955 @@
+occupation,mean_gender_rating,language
+accountants,0.37,english
+acrobats,0.57,english
+acupuncturists,0.59,english
+administrative workers,0.59,english
+admirals,0.25,english
+aerobics instructors,0.7,english
+air traffic controllers,0.32,english
+alcoholics,0.41,english
+anglers,0.28,english
+animators,0.39,english
+antique dealers,0.38,english
+apprentices,0.4,english
+architects,0.36,english
+archivists,0.44,english
+artists,0.51,english
+assistants,0.65,english
+assistant chefs,0.44,english
+astrologists,0.37,english
+astronauts,0.23,english
+astronomers,0.32,english
+athletes,0.44,english
+au pairs,0.77,english
+auctioneers,0.31,english
+authors,0.51,english
+babies,0.52,english
+babysitters,0.78,english
+bakers,0.49,english
+ballet dancers,0.71,english
+bank clerks,0.43,english
+bankers,0.32,english
+barbers,0.2,english
+bartenders,0.47,english
+baseball players,0.2,english
+basketball players,0.23,english
+bass players,0.35,english
+beauticians,0.84,english
+bikers,0.3,english
+bingo players,0.7,english
+biologists,0.46,english
+birth attendants,0.75,english
+blacksmiths,0.21,english
+bookkeepers,0.48,english
+bosses,0.37,english
+boutique owners,0.77,english
+boxers,0.21,english
+bricklayers,0.16,english
+building contractors,0.21,english
+bus drivers,0.25,english
+butchers,0.21,english
+butlers,0.2,english
+cabinet ministers,0.28,english
+cake decorators,0.72,english
+camera operators,0.36,english
+campers,0.41,english
+canteen assistants,0.72,english
+car mechanics,0.21,english
+card players,0.34,english
+care workers,0.72,english
+caregivers,0.71,english
+caretakers,0.31,english
+carpenters,0.25,english
+cartoonists,0.36,english
+cashiers,0.59,english
+cat owners,0.68,english
+caterers,0.58,english
+celebrities,0.54,english
+chair persons,0.37,english
+chamber-maids,0.82,english
+cheerleaders,0.83,english
+chefs,0.37,english
+chemists,0.46,english
+children,0.51,english
+child educators,0.67,english
+child-minders,0.78,english
+chiropractors,0.46,english
+chocolate lovers,0.7,english
+choreographers,0.59,english
+cinema goers,0.53,english
+clairvoyants,0.64,english
+cleaners,0.71,english
+clerks,0.42,english
+clients,0.51,english
+climbers,0.34,english
+clinical psychologists,0.58,english
+clowns,0.22,english
+colonels,0.23,english
+comedians,0.3,english
+company directors,0.33,english
+composers,0.35,english
+computer programmers,0.26,english
+computer specialists,0.26,english
+computer technicians,0.26,english
+conquerors,0.23,english
+conservationists,0.5,english
+construction workers,0.19,english
+cooks,0.5,english
+coordinators,0.5,english
+counseling psychologists,0.69,english
+counsellors,0.65,english
+couriers,0.34,english
+court reporters,0.46,english
+craft workers,0.52,english
+crane operators,0.19,english
+criminals,0.31,english
+cult members,0.42,english
+curators,0.44,english
+customers,0.58,english
+customs inspectors,0.4,english
+customs officers,0.38,english
+cyclists,0.41,english
+dance instructors,0.7,english
+dancers,0.65,english
+data processors,0.38,english
+database administrators,0.47,english
+deacons,0.37,english
+dental hygienists,0.57,english
+dental technicians,0.5,english
+dentists,0.38,english
+deputies,0.41,english
+designers,0.53,english
+detectives,0.33,english
+dieticians,0.65,english
+diplomats,0.36,english
+doctors of philosophy,0.37,english
+dog owners,0.49,english
+door keepers,0.29,english
+dressmakers,0.75,english
+drivers,0.38,english
+driving instructors,0.35,english
+drug addicts,0.43,english
+drug dealers,0.24,english
+drummers,0.26,english
+economists,0.33,english
+editors,0.47,english
+educational psychologists,0.63,english
+electricians,0.21,english
+embezzlers,0.37,english
+engine-drivers,0.23,english
+engineers,0.24,english
+entertainers,0.46,english
+environmentalists,0.54,english
+estate agents,0.45,english
+executives,0.36,english
+executors,0.26,english
+exercise instructors,0.49,english
+exotic dancers,0.8,english
+explorers,0.33,english
+factory managers,0.28,english
+fans,0.56,english
+farmers,0.27,english
+fashion models,0.7,english
+fencers,0.36,english
+fig. skaters,0.67,english
+film directors,0.31,english
+film stars,0.51,english
+financial advisers,0.36,english
+financial analysts,0.35,english
+firefighters,0.21,english
+flight attendants,0.71,english
+florists,0.77,english
+flute players,0.64,english
+football coaches,0.19,english
+football players,0.21,english
+forensic psychologists,0.48,english
+forest rangers,0.25,english
+fortune tellers,0.75,english
+funeral directors,0.32,english
+game wardens,0.33,english
+gardeners,0.43,english
+generals,0.25,english
+general managers,0.42,english
+geologists,0.42,english
+goalkeepers,0.2,english
+goldsmiths,0.33,english
+golfers,0.27,english
+government officials,0.34,english
+governors,0.33,english
+graphic designers,0.42,english
+groundkeepers,0.27,english
+groupies,0.73,english
+guards,0.23,english
+guitar players,0.37,english
+gymnasts,0.64,english
+gynaecologists,0.5,english
+hairdressers,0.7,english
+heads of department,0.41,english
+head teachers,0.49,english
+health visitors,0.66,english
+"heavy equipment operators""",0.15,english
+historians,0.39,english
+history professors,0.35,english
+hitchhikers,0.37,english
+homeless persons,0.33,english
+horse riders,0.64,english
+horse trainers,0.61,english
+hospital orderlies,0.52,english
+hotel guests,0.49,english
+hotel managers,0.42,english
+housekeepers,0.74,english
+humanitarians,0.53,english
+humanities professors,0.46,english
+hunters,0.2,english
+ice skaters,0.62,english
+infant teachers,0.76,english
+informants,0.42,english
+inmates,0.31,english
+innkeepers,0.41,english
+interior decorators,0.62,english
+interpreters,0.55,english
+inventors,0.31,english
+it consultants,0.29,english
+jailors,0.33,english
+janitors,0.27,english
+jewelers,0.49,english
+job kers,0.43,english
+joggers,0.53,english
+journalists,0.53,english
+judges,0.34,english
+jugglers,0.36,english
+jurors,0.47,english
+karaoke singers,0.6,english
+kids,0.5,english
+killers,0.27,english
+kindergarten teachers,0.79,english
+knitters,0.81,english
+lab technicians,0.44,english
+landscape gardeners,0.4,english
+law clerks,0.41,english
+law professors,0.38,english
+lawyers,0.41,english
+leaders,0.36,english
+librarians,0.67,english
+lieutenants,0.25,english
+lifeguards,0.38,english
+lighthouse keepers,0.27,english
+lodgers,0.42,english
+lorry drivers,0.19,english
+magicians,0.27,english
+magician’s assistants,0.78,english
+make up artists,0.78,english
+managers,0.41,english
+manicurists,0.84,english
+mathematicians,0.32,english
+mayors,0.31,english
+mechanics,0.2,english
+medical doctors,0.4,english
+members of the armed forces,0.24,english
+members of parliament,0.28,english
+metallurgists,0.4,english
+meteorologists,0.37,english
+millionaires,0.34,english
+miners,0.16,english
+models,0.64,english
+mountain climbers,0.33,english
+murderers,0.28,english
+musicians,0.47,english
+nannies,0.82,english
+neighbours,0.52,english
+neurologists,0.42,english
+neurosurgeons,0.34,english
+news readers,0.49,english
+novelists,0.54,english
+nurses,0.74,english
+nursery teachers,0.8,english
+nutritionists,0.66,english
+occupational therapists,0.61,english
+oceanographers,0.47,english
+office workers,0.51,english
+orchestra conductors,0.31,english
+orthodontists,0.43,english
+palm readers,0.77,english
+parachutists,0.36,english
+parents,0.52,english
+pastry chefs,0.5,english
+patients,0.52,english
+pawnbrokers,0.31,english
+pedestrians,0.53,english
+pediatricians,0.52,english
+pensioners,0.52,english
+persons,0.5,english
+personal trainers,0.39,english
+pharmacists,0.53,english
+philanthropists,0.48,english
+photographers,0.46,english
+physicians,0.37,english
+physicists,0.32,english
+physics students,0.28,english
+physiotherapists,0.51,english
+piano players,0.51,english
+pilots,0.24,english
+playgroup leaders,0.77,english
+plumbers,0.21,english
+poets,0.45,english
+police inspectors,0.34,english
+police officers,0.36,english
+police sergeants,0.3,english
+political activists,0.46,english
+politicians,0.29,english
+porters,0.27,english
+postal workers,0.34,english
+postmen,0.25,english
+presidents,0.16,english
+priests,0.16,english
+primary school teachers,0.75,english
+prison guards,0.26,english
+prisoners,0.3,english
+private detectives,0.31,english
+probation officers,0.37,english
+professional athletes,0.42,english
+professors,0.38,english
+projectionists,0.44,english
+proofreaders,0.53,english
+prostitutes,0.81,english
+protestors,0.49,english
+psychiatrists,0.55,english
+psychology students,0.76,english
+publishers,0.47,english
+racing car drivers,0.19,english
+radio announcers,0.43,english
+radio technicians,0.34,english
+rape victims,0.82,english
+rapists,0.15,english
+receptionists,0.75,english
+relatives,0.5,english
+reporters,0.51,english
+rescue workers,0.36,english
+research scientists,0.42,english
+road workers,0.19,english
+roadies,0.38,english
+romantic novelists,0.71,english
+roofers,0.19,english
+rubbish collectors,0.18,english
+runners,0.46,english
+sailors,0.27,english
+sales assistants,0.64,english
+salespersons,0.49,english
+schoolchildrens,0.5,english
+screenwriters,0.4,english
+scuba divers,0.41,english
+sculptors,0.45,english
+secretaries,0.75,english
+serial killers,0.23,english
+sheriffs,0.23,english
+shoemakers,0.34,english
+shoplifters,0.46,english
+shoppers,0.7,english
+singers,0.57,english
+single parents,0.76,english
+skiers,0.44,english
+smugglers,0.32,english
+snooker players,0.2,english
+social workers,0.7,english
+socialites,0.63,english
+solarium users,0.55,english
+soldiers,0.22,english
+sound engineers,0.29,english
+spectators,0.44,english
+speech therapists,0.65,english
+sports coachs,0.33,english
+spies,0.38,english
+statisticians,0.32,english
+stockbrokers,0.28,english
+strippers,0.69,english
+structural engineers,0.26,english
+students,0.55,english
+sunbathers,0.68,english
+supervisors,0.45,english
+surfers,0.36,english
+surgeons,0.33,english
+suspects,0.36,english
+swimmers,0.49,english
+switchboard operators,0.52,english
+synchronized swimmers,0.73,english
+systems analysts,0.33,english
+tailors,0.32,english
+tap dancers,0.64,english
+tarot card readers,0.73,english
+tattooists,0.36,english
+tax advisors,0.34,english
+taxi drivers,0.2,english
+taxidermists,0.35,english
+technicians,0.35,english
+technologists,0.34,english
+teenagers,0.52,english
+telephone operators,0.56,english
+tennis players,0.47,english
+terrorists,0.19,english
+theatre directors,0.43,english
+thieves,0.35,english
+ticket inspectors,0.29,english
+toddlers,0.5,english
+toolmakers,0.24,english
+tour guides,0.49,english
+trade unionists,0.4,english
+traffic engineers,0.26,english
+train conductors,0.25,english
+translators,0.57,english
+travel agents,0.58,english
+trumpet players,0.37,english
+tuba players,0.43,english
+typists,0.64,english
+tyre fitters,0.21,english
+undertakers,0.25,english
+vets,0.5,english
+vice chancellors,0.32,english
+victims,0.63,english
+violinists,0.62,english
+waiters,0.45,english
+wardens,0.35,english
+weavers,0.7,english
+wedding planners,0.78,english
+weight lifters,0.24,english
+welders,0.23,english
+wine connoisseurs,0.38,english
+wood carvers,0.25,english
+wood workers,0.24,english
+workers,0.42,english
+wrestlers,0.2,english
+writers,0.5,english
+x-ray technicians,0.47,english
+youngsters,0.48,english
+zoologists,0.49,english
+accountants,0.39,french
+acrobats,0.55,french
+acupuncturists,0.49,french
+administrative workers,0.57,french
+admirals,0.16,french
+aerobics instructors,0.74,french
+air traffic controllers,0.32,french
+alcoholics,0.36,french
+anglers,0.18,french
+antique dealers,0.39,french
+apprentices,0.45,french
+architects,0.38,french
+archivists,0.46,french
+artists,0.52,french
+assistants,0.58,french
+assistant chefs,0.31,french
+astrologists,0.52,french
+astronauts,0.18,french
+astronomers,0.28,french
+athletes,0.41,french
+au pairs,0.88,french
+auctioneers,0.33,french
+authors,0.5,french
+babies,0.51,french
+babysitters,0.9,french
+bakers,0.41,french
+ballet dancers,0.76,french
+bank clerks,0.49,french
+bankers,0.34,french
+barbers,0.15,french
+bartenders,0.39,french
+baseball players,0.21,french
+basketball players,0.27,french
+bass players,0.29,french
+beauticians,0.86,french
+bikers,0.27,french
+bingo players,0.54,french
+biologists,0.48,french
+birth attendants,0.82,french
+blacksmiths,0.16,french
+bosses,0.29,french
+boutique owners,0.59,french
+boxers,0.2,french
+bricklayers,0.1,french
+building contractors,0.24,french
+bus drivers,0.27,french
+butchers,0.22,french
+butlers,0.27,french
+cabinet ministers,0.25,french
+cake decorators,0.66,french
+camera operators,0.26,french
+campers,0.42,french
+canteen assistants,0.63,french
+card players,0.44,french
+care workers,0.67,french
+caregivers,0.64,french
+carpenters,0.18,french
+cartoonists,0.29,french
+cashiers,0.75,french
+cat owners,0.66,french
+caterers,0.4,french
+celebrities,0.52,french
+chair persons,0.22,french
+chamber-maids,0.82,french
+cheerleaders,0.95,french
+chefs,0.3,french
+chemists,0.3,french
+child educators,0.68,french
+child-minders,0.8,french
+chiropractors,0.44,french
+chocolate lovers,0.63,french
+choreographers,0.59,french
+cinema goers,0.53,french
+clairvoyants,0.78,french
+cleaners,0.43,french
+clerks,0.51,french
+climbers,0.37,french
+clinical psychologists,0.58,french
+clowns,0.18,french
+colonels,0.1,french
+comedians,0.5,french
+composers,0.35,french
+computer programmers,0.26,french
+computer specialists,0.26,french
+computer technicians,0.22,french
+conquerors,0.21,french
+construction workers,0.14,french
+cooks,0.38,french
+coordinators,0.47,french
+counseling psychologists,0.6,french
+counsellors,0.52,french
+couriers,0.29,french
+court reporters,0.5,french
+craft workers,0.39,french
+crane operators,0.13,french
+criminals,0.28,french
+cult members,0.47,french
+curators,0.43,french
+customers,0.56,french
+customs inspectors,0.26,french
+customs officers,0.22,french
+cyclists,0.33,french
+dance instructors,0.65,french
+dancers,0.68,french
+data processors,0.33,french
+database administrators,0.36,french
+deacons,0.26,french
+dental hygienists,0.68,french
+dental technicians,0.57,french
+dentists,0.39,french
+deputies,0.3,french
+designers,0.44,french
+detectives,0.32,french
+dieticians,0.75,french
+diplomats,0.29,french
+dog owners,0.52,french
+door keepers,0.18,french
+dressmakers,0.73,french
+drivers,0.37,french
+driving instructors,0.24,french
+drug addicts,0.39,french
+drug dealers,0.24,french
+drummers,0.25,french
+economists,0.31,french
+educational psychologists,0.61,french
+electricians,0.2,french
+embezzlers,0.29,french
+engine-drivers,0.19,french
+engineers,0.22,french
+entertainers,0.43,french
+environmentalists,0.51,french
+estate agents,0.43,french
+executives,0.29,french
+executors,0.34,french
+exercise instructors,0.44,french
+exotic dancers,0.79,french
+explorers,0.33,french
+factory managers,0.17,french
+fans,0.62,french
+farmers,0.27,french
+fashion models,0.68,french
+fencers,0.38,french
+fig. skaters,0.65,french
+film directors,0.24,french
+film stars,0.51,french
+financial advisers,0.32,french
+financial analysts,0.3,french
+firefighters,0.18,french
+flight attendants,0.68,french
+florists,0.81,french
+flute players,0.63,french
+football coaches,0.18,french
+football players,0.21,french
+forensic psychologists,0.48,french
+forest rangers,0.2,french
+fortune tellers,0.76,french
+funeral directors,0.22,french
+game wardens,0.15,french
+gardeners,0.36,french
+generals,0.14,french
+general managers,0.26,french
+geologists,0.35,french
+goalkeepers,0.19,french
+goldsmiths,0.38,french
+golfers,0.24,french
+government officials,0.41,french
+governors,0.21,french
+graphic designers,0.43,french
+groupies,0.76,french
+guards,0.36,french
+guitar players,0.33,french
+gymnasts,0.59,french
+gynaecologists,0.55,french
+hairdressers,0.75,french
+heads of department,0.31,french
+head teachers,0.37,french
+health visitors,0.64,french
+"heavy equipment operators""",0.17,french
+historians,0.37,french
+history professors,0.37,french
+hitchhikers,0.37,french
+homeless persons,0.35,french
+horse riders,0.55,french
+horse trainers,0.62,french
+hospital orderlies,0.74,french
+hotel guests,0.46,french
+hotel managers,0.29,french
+housekeepers,0.67,french
+humanitarians,0.57,french
+humanities professors,0.46,french
+hunters,0.15,french
+ice skaters,0.64,french
+infant teachers,0.74,french
+informants,0.4,french
+inmates,0.29,french
+innkeepers,0.43,french
+interior decorators,0.69,french
+interpreters,0.55,french
+inventors,0.32,french
+it consultants,0.23,french
+jailors,0.29,french
+janitors,0.4,french
+jewelers,0.51,french
+job kers,0.43,french
+joggers,0.5,french
+judges,0.34,french
+jugglers,0.37,french
+jurors,0.44,french
+karaoke singers,0.57,french
+kids,0.51,french
+killers,0.28,french
+kindergarten teachers,0.8,french
+knitters,0.88,french
+lab technicians,0.42,french
+landscape gardeners,0.28,french
+law clerks,0.49,french
+law professors,0.34,french
+lawyers,0.41,french
+leaders,0.27,french
+librarians,0.67,french
+lieutenants,0.13,french
+lifeguards,0.31,french
+lighthouse keepers,0.22,french
+lodgers,0.46,french
+lorry drivers,0.18,french
+magicians,0.29,french
+magician’s assistants,0.82,french
+make up artists,0.77,french
+managers,0.35,french
+manicurists,0.9,french
+mathematicians,0.22,french
+mayors,0.27,french
+mechanics,0.2,french
+medical doctors,0.39,french
+members of the armed forces,0.12,french
+members of parliament,0.34,french
+metallurgists,0.21,french
+meteorologists,0.4,french
+millionaires,0.26,french
+miners,0.23,french
+models,0.65,french
+mountain climbers,0.32,french
+murderers,0.3,french
+musicians,0.47,french
+neighbours,0.51,french
+neurologists,0.32,french
+neurosurgeons,0.28,french
+news readers,0.56,french
+novelists,0.52,french
+nurses,0.72,french
+nursery teachers,0.78,french
+nutritionists,0.74,french
+occupational therapists,0.62,french
+oceanographers,0.4,french
+office workers,0.55,french
+orchestra conductors,0.2,french
+orthodontists,0.42,french
+palm readers,0.59,french
+parachutists,0.33,french
+parents,0.5,french
+pastry chefs,0.41,french
+patients,0.5,french
+pawnbrokers,0.28,french
+pedestrians,0.52,french
+pediatricians,0.51,french
+pensioners,0.55,french
+persons,0.53,french
+personal trainers,0.34,french
+pharmacists,0.58,french
+philanthropists,0.41,french
+photographers,0.45,french
+physicians,0.36,french
+physicists,0.25,french
+physics students,0.23,french
+physiotherapists,0.51,french
+piano players,0.49,french
+pilots,0.24,french
+playgroup leaders,0.79,french
+plumbers,0.15,french
+poets,0.39,french
+police inspectors,0.31,french
+police officers,0.28,french
+police sergeants,0.25,french
+political activists,0.4,french
+politicians,0.31,french
+porters,0.19,french
+postal workers,0.53,french
+postmen,0.37,french
+presidents,0.15,french
+priests,0.06,french
+primary school teachers,0.72,french
+prison guards,0.19,french
+prisoners,0.31,french
+private detectives,0.28,french
+probation officers,0.38,french
+professional athletes,0.4,french
+professors,0.46,french
+projectionists,0.33,french
+proofreaders,0.56,french
+prostitutes,0.87,french
+protestors,0.47,french
+psychiatrists,0.48,french
+psychology students,0.76,french
+publishers,0.37,french
+racing car drivers,0.16,french
+radio announcers,0.41,french
+radio technicians,0.29,french
+rape victims,0.86,french
+rapists,0.12,french
+receptionists,0.74,french
+relatives,0.53,french
+reporters,0.46,french
+rescue workers,0.4,french
+research scientists,0.38,french
+road workers,0.27,french
+roadies,0.22,french
+romantic novelists,0.7,french
+roofers,0.2,french
+rubbish collectors,0.14,french
+runners,0.45,french
+sailors,0.16,french
+sales assistants,0.55,french
+salespersons,0.65,french
+schoolchildrens,0.53,french
+screenwriters,0.31,french
+scuba divers,0.35,french
+sculptors,0.4,french
+secretaries,0.82,french
+serial killers,0.25,french
+sheriffs,0.19,french
+shoemakers,0.25,french
+shoplifters,0.42,french
+shoppers,0.65,french
+singers,0.58,french
+single parents,0.59,french
+skiers,0.43,french
+smugglers,0.23,french
+snooker players,0.23,french
+social workers,0.69,french
+socialites,0.52,french
+solarium users,0.77,french
+soldiers,0.1,french
+sound engineers,0.26,french
+spectators,0.51,french
+speech therapists,0.66,french
+sports coachs,0.28,french
+spies,0.29,french
+statisticians,0.32,french
+stockbrokers,0.4,french
+strippers,0.79,french
+structural engineers,0.27,french
+students,0.58,french
+sunbathers,0.6,french
+supervisors,0.39,french
+surfers,0.35,french
+surgeons,0.3,french
+suspects,0.36,french
+swimmers,0.44,french
+switchboard operators,0.56,french
+synchronized swimmers,0.69,french
+systems analysts,0.23,french
+tailors,0.46,french
+tap dancers,0.56,french
+tarot card readers,0.59,french
+tattooists,0.29,french
+tax advisors,0.33,french
+taxi drivers,0.18,french
+taxidermists,0.3,french
+technicians,0.3,french
+technologists,0.33,french
+teenagers,0.52,french
+telephone operators,0.55,french
+tennis players,0.44,french
+terrorists,0.19,french
+theatre directors,0.42,french
+thieves,0.34,french
+ticket inspectors,0.3,french
+toddlers,0.58,french
+toolmakers,0.21,french
+tour guides,0.44,french
+trade unionists,0.42,french
+traffic engineers,0.31,french
+train conductors,0.19,french
+translators,0.61,french
+travel agents,0.59,french
+trumpet players,0.33,french
+tuba players,0.29,french
+typists,0.65,french
+tyre fitters,0.12,french
+undertakers,0.23,french
+vets,0.49,french
+vice chancellors,0.29,french
+victims,0.67,french
+violinists,0.56,french
+waiters,0.64,french
+wardens,0.27,french
+weavers,0.62,french
+wedding planners,0.78,french
+weight lifters,0.21,french
+welders,0.19,french
+wine connoisseurs,0.41,french
+wood carvers,0.31,french
+wood workers,0.19,french
+workers,0.26,french
+wrestlers,0.2,french
+writers,0.46,french
+x-ray technicians,0.4,french
+youngsters,0.55,french
+zoologists,0.48,french
+animators,NA,french
+bookkeepers,0.39,french
+car mechanics,0.2,french
+caretakers,0.4,french
+children,0.51,french
+clients,0.56,french
+company directors,0.26,french
+conservationists,0.43,french
+doctors of philosophy,0.39,french
+editors,0.37,french
+groundkeepers,NA,french
+journalists,0.46,french
+nannies,NA,french
+acrobats,0.53,german
+acupuncturists,0.6,german
+administrative workers,0.59,german
+admirals,0.16,german
+aerobics instructors,0.72,german
+air traffic controllers,0.29,german
+alcoholics,0.39,german
+anglers,0.23,german
+animators,0.52,german
+antique dealers,0.37,german
+apprentices,0.45,german
+architects,0.42,german
+archivists,0.54,german
+artists,0.5,german
+assistants,0.65,german
+assistant chefs,0.49,german
+astrologists,0.44,german
+astronauts,0.24,german
+astronomers,0.38,german
+athletes,0.47,german
+au pairs,0.8,german
+auctioneers,0.34,german
+authors,0.48,german
+babies,0.53,german
+babysitters,0.83,german
+bakers,0.41,german
+ballet dancers,0.75,german
+bank clerks,0.49,german
+bankers,0.46,german
+barbers,0.52,german
+bartenders,0.37,german
+baseball players,0.19,german
+basketball players,0.3,german
+bass players,0.3,german
+beauticians,0.85,german
+bikers,0.3,german
+bingo players,0.54,german
+biologists,0.52,german
+birth attendants,0.83,german
+blacksmiths,0.24,german
+bookkeepers,0.48,german
+bosses,0.35,german
+boutique owners,0.71,german
+boxers,0.26,german
+bricklayers,0.19,german
+building contractors,0.24,german
+bus drivers,0.28,german
+butchers,0.26,german
+butlers,0.45,german
+cabinet ministers,0.33,german
+camera operators,0.33,german
+campers,0.44,german
+canteen assistants,0.55,german
+car mechanics,0.19,german
+card players,0.33,german
+care workers,0.64,german
+caregivers,0.67,german
+caretakers,0.47,german
+carpenters,0.22,german
+cartoonists,0.32,german
+cashiers,0.74,german
+cat owners,0.66,german
+caterers,0.5,german
+celebrities,0.52,german
+chair persons,0.31,german
+chamber-maids,0.79,german
+cheerleaders,0.82,german
+chefs,0.31,german
+chemists,0.37,german
+child-minders,0.87,german
+chiropractors,0.45,german
+chocolate lovers,0.67,german
+choreographers,0.53,german
+cinema goers,0.51,german
+clairvoyants,0.74,german
+cleaners,0.75,german
+clerks,0.54,german
+clients,0.51,german
+climbers,0.35,german
+clinical psychologists,0.54,german
+clowns,0.31,german
+colonels,0.3,german
+comedians,0.38,german
+company directors,0.32,german
+composers,0.36,german
+computer programmers,0.2,german
+computer specialists,0.26,german
+computer technicians,0.22,german
+conquerors,0.23,german
+conservationists,0.53,german
+construction workers,0.17,german
+cooks,0.39,german
+coordinators,0.5,german
+counseling psychologists,0.56,german
+counsellors,0.49,german
+couriers,0.28,german
+court reporters,0.55,german
+craft workers,0.23,german
+crane operators,0.16,german
+criminals,0.34,german
+cult members,0.52,german
+curators,0.45,german
+customers,0.56,german
+customs inspectors,0.35,german
+customs officers,0.36,german
+cyclists,0.43,german
+dance instructors,0.57,german
+dancers,0.6,german
+data processors,0.39,german
+database administrators,0.38,german
+deacons,0.39,german
+dental hygienists,0.53,german
+dental technicians,0.56,german
+dentists,0.44,german
+deputies,0.49,german
+designers,0.52,german
+detectives,0.32,german
+dieticians,0.7,german
+diplomats,0.33,german
+doctors of philosophy,0.44,german
+dog owners,0.5,german
+door keepers,0.27,german
+drivers,0.37,german
+driving instructors,0.28,german
+drug addicts,0.42,german
+drug dealers,0.25,german
+drummers,0.27,german
+economists,0.41,german
+editors,0.44,german
+educational psychologists,0.7,german
+electricians,0.22,german
+embezzlers,0.38,german
+engine-drivers,0.24,german
+engineers,0.26,german
+entertainers,0.42,german
+environmentalists,0.53,german
+estate agents,0.45,german
+executives,0.26,german
+executors,0.43,german
+exercise instructors,0.47,german
+exotic dancers,0.72,german
+explorers,0.33,german
+factory managers,0.26,german
+fans,0.49,german
+farmers,0.36,german
+fashion models,0.65,german
+fencers,0.41,german
+fig. skaters,0.67,german
+film directors,0.32,german
+film stars,0.51,german
+financial advisers,0.39,german
+financial analysts,0.38,german
+firefighters,0.23,german
+flight attendants,0.75,german
+florists,0.79,german
+flute players,0.58,german
+football coaches,0.2,german
+football players,0.3,german
+forensic psychologists,0.43,german
+forest rangers,0.25,german
+fortune tellers,0.74,german
+funeral directors,0.28,german
+game wardens,0.3,german
+gardeners,0.39,german
+generals,0.15,german
+general managers,0.32,german
+geologists,0.38,german
+goalkeepers,0.26,german
+goldsmiths,0.39,german
+golfers,0.31,german
+government officials,0.36,german
+governors,0.23,german
+graphic designers,0.49,german
+groundkeepers,0.2,german
+groupies,0.73,german
+guards,0.28,german
+guitar players,0.42,german
+gymnasts,0.53,german
+gynaecologists,0.54,german
+hairdressers,0.78,german
+heads of department,0.36,german
+head teachers,0.39,german
+health visitors,0.63,german
+"heavy equipment operators""",0.17,german
+historians,0.39,german
+history professors,0.33,german
+hitchhikers,0.39,german
+homeless persons,0.36,german
+horse riders,0.65,german
+horse trainers,0.63,german
+hotel guests,0.46,german
+hotel managers,0.35,german
+housekeepers,0.78,german
+humanitarians,0.55,german
+humanities professors,0.5,german
+hunters,0.23,german
+ice skaters,0.62,german
+infant teachers,0.79,german
+informants,0.39,german
+inmates,0.29,german
+innkeepers,0.47,german
+interior decorators,0.6,german
+interpreters,0.6,german
+inventors,0.36,german
+it consultants,0.24,german
+jailors,0.22,german
+janitors,0.23,german
+jewelers,0.44,german
+job kers,0.45,german
+joggers,0.48,german
+journalists,0.52,german
+judges,0.37,german
+jugglers,0.37,german
+jurors,0.44,german
+karaoke singers,0.55,german
+kids,0.53,german
+killers,0.22,german
+kindergarten teachers,0.82,german
+knitters,0.84,german
+lab technicians,0.51,german
+landscape gardeners,0.4,german
+law clerks,0.69,german
+law professors,0.32,german
+lawyers,0.41,german
+leaders,0.37,german
+librarians,0.65,german
+lieutenants,0.2,german
+lifeguards,0.38,german
+lighthouse keepers,0.21,german
+lodgers,0.52,german
+lorry drivers,0.15,german
+magicians,0.3,german
+magician’s assistants,0.8,german
+make up artists,0.81,german
+managers,0.28,german
+manicurists,0.9,german
+mathematicians,0.28,german
+mayors,0.28,german
+mechanics,0.23,german
+medical doctors,0.43,german
+members of the armed forces,0.21,german
+members of parliament,0.32,german
+metallurgists,0.28,german
+meteorologists,0.36,german
+millionaires,0.32,german
+miners,0.13,german
+models,0.7,german
+mountain climbers,0.31,german
+murderers,0.28,german
+musicians,0.5,german
+neighbours,0.5,german
+neurologists,0.41,german
+neurosurgeons,0.38,german
+news readers,0.51,german
+novelists,0.58,german
+nurses,0.65,german
+nursery teachers,0.81,german
+nutritionists,0.67,german
+occupational therapists,0.67,german
+oceanographers,0.48,german
+office workers,0.61,german
+orchestra conductors,0.27,german
+orthodontists,0.42,german
+palm readers,0.75,german
+parachutists,0.33,german
+parents,0.54,german
+pastry chefs,0.53,german
+patients,0.51,german
+pawnbrokers,0.34,german
+pedestrians,0.52,german
+pediatricians,0.58,german
+pensioners,0.57,german
+persons,0.53,german
+personal trainers,0.46,german
+pharmacists,0.61,german
+philanthropists,0.51,german
+photographers,0.5,german
+physicians,0.48,german
+physicists,0.26,german
+physics students,0.23,german
+physiotherapists,0.58,german
+piano players,0.49,german
+pilots,0.23,german
+playgroup leaders,0.8,german
+plumbers,0.18,german
+poets,0.38,german
+police inspectors,0.33,german
+police officers,0.35,german
+police sergeants,0.29,german
+political activists,0.46,german
+politicians,0.33,german
+porters,0.17,german
+postal workers,0.49,german
+postmen,0.45,german
+presidents,0.17,german
+priests,0.18,german
+primary school teachers,0.79,german
+prisoners,0.32,german
+private detectives,0.3,german
+probation officers,0.45,german
+professional athletes,0.41,german
+professors,0.38,german
+projectionists,0.4,german
+proofreaders,0.62,german
+prostitutes,0.75,german
+protestors,0.47,german
+psychiatrists,0.51,german
+psychology students,0.64,german
+publishers,0.44,german
+racing car drivers,0.2,german
+radio announcers,0.45,german
+radio technicians,0.28,german
+rape victims,0.82,german
+rapists,0.17,german
+receptionists,0.69,german
+relatives,0.55,german
+reporters,0.5,german
+rescue workers,0.37,german
+research scientists,0.42,german
+road workers,0.15,german
+roadies,0.3,german
+romantic novelists,0.7,german
+roofers,0.16,german
+rubbish collectors,0.16,german
+runners,0.46,german
+sailors,0.36,german
+sales assistants,0.58,german
+salespersons,0.69,german
+schoolchildrens,0.53,german
+screenwriters,0.39,german
+scuba divers,0.39,german
+sculptors,0.43,german
+secretaries,0.8,german
+serial killers,0.23,german
+sheriffs,0.23,german
+shoemakers,0.29,german
+shoplifters,0.39,german
+shoppers,0.59,german
+singers,0.54,german
+single parents,0.76,german
+skiers,0.41,german
+smugglers,0.29,german
+snooker players,0.3,german
+social workers,0.61,german
+solarium users,0.69,german
+soldiers,0.18,german
+sound engineers,0.32,german
+spectators,0.51,german
+speech therapists,0.68,german
+sports coachs,0.41,german
+spies,0.32,german
+statisticians,0.35,german
+stockbrokers,0.26,german
+strippers,0.68,german
+structural engineers,0.29,german
+students,0.55,german
+sunbathers,0.64,german
+supervisors,0.34,german
+surfers,0.35,german
+surgeons,0.29,german
+suspects,0.33,german
+swimmers,0.47,german
+synchronized swimmers,0.68,german
+systems analysts,0.31,german
+tailors,0.71,german
+tap dancers,0.55,german
+tarot card readers,0.74,german
+tattooists,0.35,german
+tax advisors,0.44,german
+taxi drivers,0.24,german
+taxidermists,0.4,german
+technicians,0.27,german
+technologists,0.31,german
+teenagers,0.53,german
+telephone operators,0.68,german
+tennis players,0.49,german
+terrorists,0.21,german
+theatre directors,0.36,german
+thieves,0.38,german
+ticket inspectors,0.33,german
+toddlers,0.54,german
+toolmakers,0.18,german
+tour guides,0.57,german
+trade unionists,0.43,german
+traffic engineers,0.29,german
+train conductors,0.38,german
+translators,0.64,german
+travel agents,0.58,german
+trumpet players,0.35,german
+tuba players,0.41,german
+typists,0.7,german
+tyre fitters,0.19,german
+undertakers,0.31,german
+vets,0.59,german
+vice chancellors,0.27,german
+victims,0.61,german
+violinists,0.51,german
+waiters,0.61,german
+wardens,0.39,german
+weavers,0.65,german
+wedding planners,0.65,german
+weight lifters,0.22,german
+welders,0.16,german
+wine connoisseurs,0.4,german
+wood carvers,0.3,german
+wood workers,0.24,german
+workers,0.43,german
+wrestlers,0.2,german
+writers,0.49,german
+x-ray technicians,0.46,german
+youngsters,0.51,german
+zoologists,0.48,german
+accountants,0.48,german
+cake decorators,NA,german
+children,0.53,german
+child educators,0.81,german
+dressmakers,NA,german
+hospital orderlies,NA,german
+nannies,NA,german
+prison guards,NA,german
+socialites,NA,german
+switchboard operators,NA,german
+acrobats,0.5,czech
+acupuncturists,0.51,czech
+admirals,0.08,czech
+aerobics instructors,0.85,czech
+air traffic controllers,0.29,czech
+alcoholics,0.4,czech
+anglers,0.12,czech
+animators,0.62,czech
+antique dealers,0.33,czech
+apprentices,0.42,czech
+architects,0.32,czech
+archivists,0.53,czech
+artists,0.49,czech
+assistants,0.71,czech
+assistant chefs,0.48,czech
+astrologists,0.41,czech
+astronauts,0.17,czech
+astronomers,0.23,czech
+athletes,0.44,czech
+au pairs,0.86,czech
+auctioneers,0.36,czech
+authors,0.48,czech
+babies,0.51,czech
+bakers,0.54,czech
+ballet dancers,0.77,czech
+bankers,0.6,czech
+barbers,0.68,czech
+bartenders,0.49,czech
+baseball players,0.25,czech
+basketball players,0.35,czech
+bass players,0.28,czech
+beauticians,0.87,czech
+bingo players,0.46,czech
+biologists,0.48,czech
+birth attendants,0.73,czech
+blacksmiths,0.07,czech
+bookkeepers,0.72,czech
+bosses,0.32,czech
+boutique owners,0.69,czech
+boxers,0.16,czech
+bricklayers,0.09,czech
+building contractors,0.2,czech
+bus drivers,0.19,czech
+butchers,0.16,czech
+cabinet ministers,0.3,czech
+camera operators,0.21,czech
+campers,0.42,czech
+canteen assistants,0.73,czech
+car mechanics,0.1,czech
+card players,0.24,czech
+care workers,0.71,czech
+caretakers,0.44,czech
+carpenters,0.1,czech
+cartoonists,0.31,czech
+cashiers,0.69,czech
+cat owners,0.77,czech
+caterers,0.41,czech
+celebrities,0.55,czech
+chair persons,0.28,czech
+chamber-maids,0.88,czech
+cheerleaders,0.69,czech
+chefs,0.29,czech
+chemists,0.39,czech
+children,0.54,czech
+child educators,0.83,czech
+child-minders,0.85,czech
+chiropractors,0.39,czech
+chocolate lovers,0.69,czech
+choreographers,0.59,czech
+cinema goers,0.49,czech
+clairvoyants,0.73,czech
+cleaners,0.85,czech
+clerks,0.69,czech
+clients,0.52,czech
+clinical psychologists,0.56,czech
+clowns,0.17,czech
+colonels,0.14,czech
+comedians,0.23,czech
+company directors,0.27,czech
+composers,0.3,czech
+computer programmers,0.18,czech
+computer specialists,0.19,czech
+computer technicians,0.16,czech
+conquerors,0.14,czech
+conservationists,0.52,czech
+construction workers,0.07,czech
+cooks,0.5,czech
+coordinators,0.49,czech
+counseling psychologists,0.54,czech
+counsellors,0.45,czech
+couriers,0.26,czech
+court reporters,0.7,czech
+craft workers,0.17,czech
+crane operators,0.12,czech
+criminals,0.29,czech
+cult members,0.41,czech
+curators,0.42,czech
+customs inspectors,0.18,czech
+customs officers,0.25,czech
+cyclists,0.37,czech
+dance instructors,0.59,czech
+dancers,0.68,czech
+data processors,0.53,czech
+database administrators,0.34,czech
+deacons,0.29,czech
+dental hygienists,0.61,czech
+dental technicians,0.55,czech
+dentists,0.56,czech
+deputies,0.49,czech
+designers,0.61,czech
+detectives,0.19,czech
+dieticians,0.68,czech
+diplomats,0.34,czech
+dog owners,0.52,czech
+door keepers,0.27,czech
+drivers,0.37,czech
+driving instructors,0.19,czech
+drug addicts,0.39,czech
+drug dealers,0.23,czech
+drummers,0.24,czech
+economists,0.39,czech
+editors,0.49,czech
+educational psychologists,0.71,czech
+electricians,0.11,czech
+embezzlers,0.36,czech
+engine-drivers,0.16,czech
+engineers,0.36,czech
+entertainers,0.48,czech
+environmentalists,0.45,czech
+estate agents,0.43,czech
+executives,0.34,czech
+executors,0.19,czech
+exercise instructors,0.69,czech
+exotic dancers,0.83,czech
+explorers,0.35,czech
+factory managers,0.24,czech
+farmers,0.24,czech
+fashion models,0.74,czech
+fencers,0.18,czech
+fig. skaters,0.63,czech
+film directors,0.25,czech
+film stars,0.48,czech
+financial advisers,0.47,czech
+financial analysts,0.36,czech
+firefighters,0.15,czech
+flight attendants,0.78,czech
+florists,0.84,czech
+flute players,0.65,czech
+football coaches,0.09,czech
+football players,0.14,czech
+forensic psychologists,0.5,czech
+forest rangers,0.11,czech
+fortune tellers,0.83,czech
+funeral directors,0.29,czech
+game wardens,0.13,czech
+generals,0.06,czech
+general managers,0.3,czech
+geologists,0.33,czech
+goalkeepers,0.15,czech
+goldsmiths,0.45,czech
+golfers,0.25,czech
+government officials,0.58,czech
+governors,0.2,czech
+graphic designers,0.4,czech
+groundkeepers,0.59,czech
+groupies,0.56,czech
+guards,0.19,czech
+guitar players,0.33,czech
+gymnasts,0.68,czech
+gynaecologists,0.47,czech
+hairdressers,0.75,czech
+heads of department,0.36,czech
+head teachers,0.45,czech
+health visitors,0.83,czech
+"heavy equipment operators""",0.11,czech
+historians,0.4,czech
+history professors,0.44,czech
+hitchhikers,0.51,czech
+homeless persons,0.27,czech
+horse riders,0.49,czech
+horse trainers,0.43,czech
+hospital orderlies,0.54,czech
+hotel guests,0.46,czech
+hotel managers,0.38,czech
+housekeepers,0.64,czech
+humanitarians,0.61,czech
+humanities professors,0.57,czech
+hunters,0.15,czech
+ice skaters,0.51,czech
+informants,0.35,czech
+inmates,0.39,czech
+innkeepers,0.36,czech
+interior decorators,0.42,czech
+interpreters,0.63,czech
+inventors,0.23,czech
+it consultants,0.17,czech
+jailors,0.25,czech
+janitors,0.18,czech
+jewelers,0.48,czech
+job kers,0.53,czech
+journalists,0.52,czech
+judges,0.4,czech
+jugglers,0.27,czech
+jurors,0.45,czech
+karaoke singers,0.59,czech
+kids,0.56,czech
+knitters,0.76,czech
+lab technicians,0.57,czech
+landscape gardeners,0.49,czech
+law clerks,0.5,czech
+law professors,0.36,czech
+lawyers,0.43,czech
+librarians,0.78,czech
+lieutenants,0.29,czech
+lifeguards,0.41,czech
+lighthouse keepers,0.19,czech
+lodgers,0.49,czech
+lorry drivers,0.09,czech
+magicians,0.21,czech
+magician’s assistants,0.85,czech
+make up artists,0.64,czech
+managers,0.36,czech
+manicurists,0.88,czech
+mathematicians,0.27,czech
+mayors,0.35,czech
+mechanics,0.13,czech
+medical doctors,0.47,czech
+members of the armed forces,0.15,czech
+members of parliament,0.22,czech
+metallurgists,0.07,czech
+meteorologists,0.52,czech
+millionaires,0.23,czech
+miners,0.03,czech
+models,0.8,czech
+mountain climbers,0.28,czech
+murderers,0.26,czech
+musicians,0.45,czech
+neighbours,0.49,czech
+neurologists,0.4,czech
+neurosurgeons,0.32,czech
+news readers,0.57,czech
+novelists,0.41,czech
+nurses,0.86,czech
+nursery teachers,0.91,czech
+nutritionists,0.73,czech
+occupational therapists,0.5,czech
+oceanographers,0.34,czech
+office workers,0.71,czech
+orchestra conductors,0.21,czech
+orthodontists,0.47,czech
+palm readers,0.89,czech
+parachutists,0.3,czech
+parents,0.57,czech
+pastry chefs,0.72,czech
+patients,0.49,czech
+pawnbrokers,0.26,czech
+pedestrians,0.49,czech
+pediatricians,0.61,czech
+pensioners,0.51,czech
+persons,0.55,czech
+personal trainers,0.38,czech
+pharmacists,0.61,czech
+philanthropists,0.37,czech
+photographers,0.44,czech
+physicians,0.46,czech
+physicists,0.23,czech
+physics students,0.23,czech
+physiotherapists,0.59,czech
+piano players,0.45,czech
+pilots,0.14,czech
+playgroup leaders,0.71,czech
+plumbers,0.09,czech
+poets,0.34,czech
+police inspectors,0.4,czech
+police officers,0.29,czech
+police sergeants,0.23,czech
+political activists,0.39,czech
+politicians,0.23,czech
+porters,0.33,czech
+postal workers,0.73,czech
+postmen,0.69,czech
+presidents,0.12,czech
+priests,0.14,czech
+primary school teachers,0.79,czech
+prison guards,0.24,czech
+prisoners,0.29,czech
+probation officers,0.59,czech
+professional athletes,0.45,czech
+professors,0.48,czech
+projectionists,0.27,czech
+proofreaders,0.56,czech
+prostitutes,0.85,czech
+protestors,0.42,czech
+psychiatrists,0.42,czech
+psychology students,0.66,czech
+publishers,0.35,czech
+racing car drivers,0.15,czech
+radio announcers,0.53,czech
+radio technicians,0.23,czech
+rape victims,0.93,czech
+rapists,0.14,czech
+receptionists,0.76,czech
+relatives,0.5,czech
+reporters,0.52,czech
+rescue workers,0.29,czech
+research scientists,0.36,czech
+road workers,0.17,czech
+roadies,0.38,czech
+romantic novelists,0.77,czech
+roofers,0.09,czech
+rubbish collectors,0.06,czech
+runners,0.45,czech
+sailors,0.09,czech
+salespersons,0.76,czech
+schoolchildrens,0.54,czech
+screenwriters,0.41,czech
+scuba divers,0.3,czech
+sculptors,0.33,czech
+secretaries,0.88,czech
+serial killers,0.18,czech
+sheriffs,0.12,czech
+shoemakers,0.4,czech
+shoppers,0.59,czech
+singers,0.57,czech
+single parents,0.75,czech
+skiers,0.48,czech
+smugglers,0.23,czech
+snooker players,0.24,czech
+social workers,0.83,czech
+socialites,0.44,czech
+solarium users,0.76,czech
+soldiers,0.15,czech
+sound engineers,0.22,czech
+spectators,0.58,czech
+speech therapists,0.71,czech
+sports coachs,0.39,czech
+spies,0.23,czech
+statisticians,0.3,czech
+stockbrokers,0.32,czech
+strippers,0.75,czech
+structural engineers,0.18,czech
+students,0.55,czech
+sunbathers,0.8,czech
+supervisors,0.34,czech
+surfers,0.33,czech
+surgeons,0.31,czech
+suspects,0.34,czech
+swimmers,0.46,czech
+switchboard operators,0.58,czech
+synchronized swimmers,0.9,czech
+systems analysts,0.24,czech
+tailors,0.66,czech
+tap dancers,0.54,czech
+tarot card readers,0.82,czech
+tattooists,0.3,czech
+tax advisors,0.45,czech
+taxi drivers,0.18,czech
+taxidermists,0.31,czech
+technicians,0.21,czech
+technologists,0.22,czech
+teenagers,0.53,czech
+telephone operators,0.63,czech
+tennis players,0.48,czech
+terrorists,0.13,czech
+theatre directors,0.34,czech
+thieves,0.3,czech
+ticket inspectors,0.37,czech
+toddlers,0.52,czech
+toolmakers,0.18,czech
+tour guides,0.67,czech
+trade unionists,0.32,czech
+traffic engineers,0.23,czech
+train conductors,0.5,czech
+translators,0.6,czech
+travel agents,0.65,czech
+trumpet players,0.29,czech
+tuba players,0.31,czech
+typists,0.68,czech
+tyre fitters,0.09,czech
+undertakers,0.24,czech
+vets,0.45,czech
+vice chancellors,0.31,czech
+victims,0.65,czech
+violinists,0.5,czech
+waiters,0.56,czech
+wardens,0.32,czech
+weavers,0.67,czech
+wedding planners,0.64,czech
+weight lifters,0.21,czech
+welders,0.09,czech
+wine connoisseurs,0.34,czech
+wood carvers,0.22,czech
+wood workers,0.1,czech
+workers,0.48,czech
+wrestlers,0.17,czech
+writers,0.45,czech
+x-ray technicians,0.51,czech
+youngsters,0.51,czech
+zoologists,0.46,czech
+accountants,0.72,czech
+administrative workers,0.71,czech
+babysitters,0.85,czech
+bank clerks,0.6,czech
+bikers,0.37,czech
+butlers,NA,czech
+cake decorators,0.72,czech
+caregivers,0.83,czech
+climbers,0.28,czech
+customers,0.59,czech
+doctors of philosophy,0.46,czech
+dressmakers,0.66,czech
+fans,0.56,czech
+gardeners,0.59,czech
+infant teachers,0.91,czech
+joggers,0.45,czech
+killers,0.26,czech
+kindergarten teachers,0.91,czech
+leaders,0.34,czech
+nannies,NA,czech
+private detectives,NA,czech
+sales assistants,0.76,czech
+shoplifters,0.3,czech
+acrobats,0.55,slovak
+acupuncturists,0.55,slovak
+admirals,0.09,slovak
+aerobics instructors,0.84,slovak
+air traffic controllers,0.28,slovak
+alcoholics,0.32,slovak
+anglers,0.11,slovak
+animators,0.74,slovak
+antique dealers,0.47,slovak
+apprentices,0.39,slovak
+architects,0.37,slovak
+archivists,0.61,slovak
+artists,0.45,slovak
+assistants,0.69,slovak
+assistant chefs,0.41,slovak
+astrologists,0.3,slovak
+astronauts,0.14,slovak
+astronomers,0.16,slovak
+athletes,0.45,slovak
+au pairs,0.88,slovak
+auctioneers,0.32,slovak
+authors,0.47,slovak
+babies,0.56,slovak
+babysitters,0.88,slovak
+bakers,0.45,slovak
+ballet dancers,0.82,slovak
+bank clerks,0.56,slovak
+bankers,0.35,slovak
+barbers,0.49,slovak
+bartenders,0.44,slovak
+baseball players,0.13,slovak
+basketball players,0.33,slovak
+bass players,0.21,slovak
+beauticians,0.91,slovak
+bingo players,0.41,slovak
+biologists,0.55,slovak
+birth attendants,0.87,slovak
+blacksmiths,0.11,slovak
+bookkeepers,0.71,slovak
+bosses,0.29,slovak
+boutique owners,0.73,slovak
+boxers,0.12,slovak
+bricklayers,0.04,slovak
+building contractors,0.12,slovak
+bus drivers,0.15,slovak
+butchers,0.16,slovak
+butlers,0.48,slovak
+cabinet ministers,0.18,slovak
+camera operators,0.17,slovak
+campers,0.41,slovak
+canteen assistants,0.79,slovak
+car mechanics,0.07,slovak
+card players,0.19,slovak
+care workers,0.88,slovak
+caregivers,0.81,slovak
+caretakers,0.5,slovak
+carpenters,0.08,slovak
+cartoonists,0.3,slovak
+cashiers,0.76,slovak
+cat owners,0.8,slovak
+caterers,0.22,slovak
+celebrities,0.49,slovak
+chair persons,0.34,slovak
+chamber-maids,0.91,slovak
+cheerleaders,0.96,slovak
+chefs,0.23,slovak
+chemists,0.37,slovak
+children,0.54,slovak
+child educators,0.86,slovak
+child-minders,0.89,slovak
+chiropractors,0.36,slovak
+chocolate lovers,0.69,slovak
+choreographers,0.46,slovak
+cinema goers,0.55,slovak
+clairvoyants,0.8,slovak
+cleaners,0.87,slovak
+clerks,0.68,slovak
+clients,0.5,slovak
+clinical psychologists,0.69,slovak
+clowns,0.19,slovak
+colonels,0.18,slovak
+comedians,0.3,slovak
+company directors,0.27,slovak
+composers,0.26,slovak
+computer programmers,0.14,slovak
+computer specialists,0.13,slovak
+computer technicians,0.11,slovak
+conquerors,0.13,slovak
+conservationists,0.47,slovak
+construction workers,0.06,slovak
+cooks,0.56,slovak
+coordinators,0.46,slovak
+counseling psychologists,0.7,slovak
+counsellors,0.49,slovak
+couriers,0.17,slovak
+court reporters,0.59,slovak
+craft workers,0.23,slovak
+crane operators,0.09,slovak
+criminals,0.24,slovak
+cult members,0.42,slovak
+curators,0.48,slovak
+customs inspectors,0.18,slovak
+customs officers,0.21,slovak
+cyclists,0.24,slovak
+dance instructors,0.62,slovak
+dancers,0.64,slovak
+data processors,0.6,slovak
+database administrators,0.26,slovak
+deacons,0.23,slovak
+dental hygienists,0.65,slovak
+dental technicians,0.47,slovak
+dentists,0.49,slovak
+deputies,0.51,slovak
+designers,0.59,slovak
+detectives,0.22,slovak
+dieticians,0.66,slovak
+diplomats,0.3,slovak
+dog owners,0.5,slovak
+door keepers,0.37,slovak
+drivers,0.32,slovak
+driving instructors,0.15,slovak
+drug addicts,0.39,slovak
+drug dealers,0.14,slovak
+drummers,0.15,slovak
+economists,0.51,slovak
+editors,0.52,slovak
+educational psychologists,0.71,slovak
+electricians,0.12,slovak
+embezzlers,0.35,slovak
+engine-drivers,0.09,slovak
+engineers,0.35,slovak
+entertainers,0.39,slovak
+environmentalists,0.44,slovak
+estate agents,0.48,slovak
+executives,0.29,slovak
+executors,0.29,slovak
+exercise instructors,0.6,slovak
+exotic dancers,0.8,slovak
+explorers,0.25,slovak
+factory managers,0.18,slovak
+farmers,0.26,slovak
+fashion models,0.73,slovak
+fencers,0.27,slovak
+fig. skaters,0.64,slovak
+film directors,0.21,slovak
+film stars,0.51,slovak
+financial advisers,0.31,slovak
+financial analysts,0.3,slovak
+firefighters,0.06,slovak
+flight attendants,0.81,slovak
+florists,0.84,slovak
+flute players,0.72,slovak
+football coaches,0.08,slovak
+football players,0.16,slovak
+forensic psychologists,0.39,slovak
+forest rangers,0.11,slovak
+fortune tellers,0.81,slovak
+funeral directors,0.24,slovak
+game wardens,0.09,slovak
+generals,0.08,slovak
+general managers,0.24,slovak
+geologists,0.27,slovak
+goalkeepers,0.15,slovak
+goldsmiths,0.41,slovak
+golfers,0.25,slovak
+government officials,0.56,slovak
+governors,0.14,slovak
+graphic designers,0.39,slovak
+groundkeepers,0.49,slovak
+groupies,0.51,slovak
+guards,0.12,slovak
+guitar players,0.27,slovak
+gymnasts,0.69,slovak
+gynaecologists,0.44,slovak
+hairdressers,0.73,slovak
+heads of department,0.35,slovak
+head teachers,0.54,slovak
+health visitors,0.68,slovak
+"heavy equipment operators""",0.09,slovak
+historians,0.37,slovak
+history professors,0.4,slovak
+hitchhikers,0.47,slovak
+homeless persons,0.31,slovak
+horse riders,0.53,slovak
+horse trainers,0.52,slovak
+hospital orderlies,0.63,slovak
+hotel guests,0.42,slovak
+hotel managers,0.3,slovak
+housekeepers,0.62,slovak
+humanitarians,0.64,slovak
+humanities professors,0.6,slovak
+hunters,0.13,slovak
+ice skaters,0.59,slovak
+infant teachers,0.89,slovak
+informants,0.58,slovak
+inmates,0.55,slovak
+innkeepers,0.38,slovak
+interior decorators,0.48,slovak
+interpreters,0.65,slovak
+inventors,0.25,slovak
+it consultants,0.15,slovak
+jailors,0.19,slovak
+janitors,0.17,slovak
+jewelers,0.44,slovak
+job kers,0.5,slovak
+journalists,0.47,slovak
+judges,0.34,slovak
+jugglers,0.26,slovak
+jurors,0.47,slovak
+karaoke singers,0.61,slovak
+knitters,0.55,slovak
+lab technicians,0.58,slovak
+landscape gardeners,0.49,slovak
+law clerks,0.44,slovak
+law professors,0.3,slovak
+lawyers,0.4,slovak
+librarians,0.76,slovak
+lieutenants,0.17,slovak
+lifeguards,0.29,slovak
+lighthouse keepers,0.13,slovak
+lodgers,0.49,slovak
+lorry drivers,0.07,slovak
+magicians,0.2,slovak
+magician’s assistants,0.88,slovak
+make up artists,0.73,slovak
+managers,0.35,slovak
+manicurists,0.88,slovak
+mathematicians,0.27,slovak
+mayors,0.29,slovak
+mechanics,0.08,slovak
+medical doctors,0.49,slovak
+members of the armed forces,0.1,slovak
+members of parliament,0.2,slovak
+metallurgists,0.15,slovak
+meteorologists,0.31,slovak
+millionaires,0.21,slovak
+miners,0.04,slovak
+models,0.73,slovak
+mountain climbers,0.23,slovak
+murderers,0.21,slovak
+musicians,0.38,slovak
+nannies,0.86,slovak
+neighbours,0.55,slovak
+neurologists,0.38,slovak
+neurosurgeons,0.31,slovak
+news readers,0.54,slovak
+novelists,0.44,slovak
+nurses,0.9,slovak
+nursery teachers,0.92,slovak
+nutritionists,0.6,slovak
+occupational therapists,0.53,slovak
+oceanographers,0.31,slovak
+office workers,0.78,slovak
+orchestra conductors,0.16,slovak
+orthodontists,0.43,slovak
+palm readers,0.9,slovak
+parachutists,0.22,slovak
+parents,0.54,slovak
+pastry chefs,0.77,slovak
+patients,0.49,slovak
+pawnbrokers,0.43,slovak
+pedestrians,0.5,slovak
+pediatricians,0.72,slovak
+pensioners,0.6,slovak
+persons,0.55,slovak
+personal trainers,0.33,slovak
+pharmacists,0.68,slovak
+philanthropists,0.39,slovak
+photographers,0.41,slovak
+physicians,0.47,slovak
+physicists,0.18,slovak
+physics students,0.19,slovak
+physiotherapists,0.54,slovak
+piano players,0.45,slovak
+pilots,0.1,slovak
+playgroup leaders,0.84,slovak
+plumbers,0.08,slovak
+poets,0.34,slovak
+police inspectors,0.31,slovak
+police officers,0.2,slovak
+police sergeants,0.16,slovak
+political activists,0.29,slovak
+politicians,0.2,slovak
+porters,0.22,slovak
+postal workers,0.72,slovak
+postmen,0.63,slovak
+presidents,0.1,slovak
+priests,0.07,slovak
+primary school teachers,0.82,slovak
+prison guards,0.18,slovak
+prisoners,0.25,slovak
+private detectives,0.13,slovak
+probation officers,0.71,slovak
+professional athletes,0.38,slovak
+professors,0.51,slovak
+projectionists,0.28,slovak
+proofreaders,0.55,slovak
+prostitutes,0.86,slovak
+protestors,0.33,slovak
+psychiatrists,0.47,slovak
+psychology students,0.79,slovak
+publishers,0.4,slovak
+racing car drivers,0.07,slovak
+radio announcers,0.65,slovak
+radio technicians,0.21,slovak
+rape victims,0.89,slovak
+rapists,0.14,slovak
+receptionists,0.78,slovak
+relatives,0.55,slovak
+reporters,0.53,slovak
+rescue workers,0.3,slovak
+research scientists,0.38,slovak
+road workers,0.06,slovak
+romantic novelists,0.56,slovak
+roofers,0.09,slovak
+rubbish collectors,0.06,slovak
+runners,0.43,slovak
+sailors,0.13,slovak
+sales assistants,0.44,slovak
+salespersons,0.7,slovak
+schoolchildrens,0.56,slovak
+screenwriters,0.31,slovak
+scuba divers,0.28,slovak
+sculptors,0.29,slovak
+secretaries,0.87,slovak
+serial killers,0.16,slovak
+sheriffs,0.15,slovak
+shoemakers,0.22,slovak
+shoppers,0.56,slovak
+singers,0.55,slovak
+single parents,0.48,slovak
+skiers,0.42,slovak
+smugglers,0.14,slovak
+snooker players,0.21,slovak
+social workers,0.83,slovak
+socialites,0.46,slovak
+solarium users,0.8,slovak
+soldiers,0.15,slovak
+sound engineers,0.18,slovak
+spectators,0.53,slovak
+speech therapists,0.77,slovak
+sports coachs,0.36,slovak
+spies,0.3,slovak
+statisticians,0.39,slovak
+stockbrokers,0.37,slovak
+strippers,0.76,slovak
+structural engineers,0.23,slovak
+students,0.56,slovak
+sunbathers,0.79,slovak
+supervisors,0.36,slovak
+surfers,0.23,slovak
+surgeons,0.3,slovak
+suspects,0.3,slovak
+swimmers,0.42,slovak
+switchboard operators,0.7,slovak
+synchronized swimmers,0.84,slovak
+systems analysts,0.17,slovak
+tailors,0.84,slovak
+tap dancers,0.44,slovak
+tarot card readers,0.92,slovak
+tattooists,0.2,slovak
+tax advisors,0.41,slovak
+taxi drivers,0.15,slovak
+taxidermists,0.34,slovak
+technicians,0.17,slovak
+technologists,0.19,slovak
+teenagers,0.52,slovak
+telephone operators,0.65,slovak
+tennis players,0.46,slovak
+terrorists,0.12,slovak
+theatre directors,0.31,slovak
+thieves,0.29,slovak
+ticket inspectors,0.43,slovak
+toddlers,0.55,slovak
+toolmakers,0.22,slovak
+tour guides,0.65,slovak
+trade unionists,0.3,slovak
+traffic engineers,0.22,slovak
+train conductors,0.61,slovak
+translators,0.61,slovak
+travel agents,0.74,slovak
+trumpet players,0.25,slovak
+tuba players,0.33,slovak
+typists,0.68,slovak
+tyre fitters,0.08,slovak
+undertakers,0.32,slovak
+vets,0.47,slovak
+vice chancellors,0.31,slovak
+victims,0.7,slovak
+violinists,0.51,slovak
+waiters,0.67,slovak
+wardens,0.3,slovak
+weavers,0.76,slovak
+wedding planners,0.64,slovak
+weight lifters,0.13,slovak
+welders,0.11,slovak
+wine connoisseurs,0.22,slovak
+wood carvers,0.18,slovak
+wood workers,0.12,slovak
+workers,0.49,slovak
+wrestlers,0.16,slovak
+writers,0.47,slovak
+x-ray technicians,0.46,slovak
+youngsters,0.54,slovak
+zoologists,0.39,slovak
+accountants,0.71,slovak
+administrative workers,NA,slovak
+bikers,0.24,slovak
+cake decorators,0.77,slovak
+climbers,0.23,slovak
+customers,0.56,slovak
+doctors of philosophy,0.47,slovak
+dressmakers,0.84,slovak
+fans,0.51,slovak
+gardeners,0.49,slovak
+joggers,0.43,slovak
+kids,NA,slovak
+killers,0.21,slovak
+kindergarten teachers,0.92,slovak
+leaders,0.36,slovak
+roadies,NA,slovak
+shoplifters,0.29,slovak
+accountants,0.42,norwegian
+acrobats,0.53,norwegian
+acupuncturists,0.61,norwegian
+admirals,0.17,norwegian
+aerobics instructors,0.81,norwegian
+air traffic controllers,0.26,norwegian
+alcoholics,0.35,norwegian
+anglers,0.19,norwegian
+animators,0.35,norwegian
+antique dealers,0.42,norwegian
+apprentices,0.47,norwegian
+architects,0.42,norwegian
+archivists,0.57,norwegian
+artists,0.53,norwegian
+assistants,0.63,norwegian
+assistant chefs,0.58,norwegian
+astrologists,0.5,norwegian
+astronauts,0.2,norwegian
+astronomers,0.28,norwegian
+athletes,0.42,norwegian
+au pairs,0.86,norwegian
+auctioneers,0.31,norwegian
+authors,0.51,norwegian
+babies,0.51,norwegian
+bakers,0.48,norwegian
+ballet dancers,0.77,norwegian
+bank clerks,0.52,norwegian
+bankers,0.45,norwegian
+barbers,0.2,norwegian
+bartenders,0.42,norwegian
+baseball players,0.15,norwegian
+basketball players,0.19,norwegian
+bass players,0.26,norwegian
+beauticians,0.85,norwegian
+bikers,0.23,norwegian
+bingo players,0.69,norwegian
+biologists,0.46,norwegian
+birth attendants,0.8,norwegian
+blacksmiths,0.21,norwegian
+bookkeepers,0.53,norwegian
+bosses,0.29,norwegian
+boutique owners,0.46,norwegian
+boxers,0.25,norwegian
+bricklayers,0.19,norwegian
+building contractors,0.25,norwegian
+bus drivers,0.27,norwegian
+butchers,0.26,norwegian
+butlers,0.39,norwegian
+cabinet ministers,0.37,norwegian
+camera operators,0.37,norwegian
+campers,0.45,norwegian
+canteen assistants,0.61,norwegian
+car mechanics,0.16,norwegian
+card players,0.36,norwegian
+care workers,0.71,norwegian
+caregivers,0.77,norwegian
+carpenters,0.15,norwegian
+cartoonists,0.35,norwegian
+cashiers,0.58,norwegian
+cat owners,0.69,norwegian
+caterers,0.69,norwegian
+celebrities,0.52,norwegian
+chair persons,0.3,norwegian
+chamber-maids,0.86,norwegian
+cheerleaders,0.89,norwegian
+chefs,0.38,norwegian
+chemists,0.45,norwegian
+children,0.5,norwegian
+child educators,0.69,norwegian
+child-minders,0.78,norwegian
+chiropractors,0.46,norwegian
+chocolate lovers,0.72,norwegian
+choreographers,0.61,norwegian
+cinema goers,0.51,norwegian
+clairvoyants,0.76,norwegian
+cleaners,0.74,norwegian
+clerks,0.48,norwegian
+clients,0.51,norwegian
+climbers,0.36,norwegian
+clinical psychologists,0.62,norwegian
+clowns,0.24,norwegian
+colonels,0.16,norwegian
+comedians,0.36,norwegian
+composers,0.32,norwegian
+computer programmers,0.23,norwegian
+computer specialists,0.21,norwegian
+computer technicians,0.23,norwegian
+conquerors,0.19,norwegian
+conservationists,0.56,norwegian
+construction workers,0.18,norwegian
+cooks,0.45,norwegian
+counseling psychologists,0.6,norwegian
+counsellors,0.59,norwegian
+couriers,0.44,norwegian
+court reporters,0.52,norwegian
+craft workers,0.29,norwegian
+crane operators,0.15,norwegian
+criminals,0.22,norwegian
+cult members,0.52,norwegian
+curators,0.48,norwegian
+customers,0.52,norwegian
+customs inspectors,0.41,norwegian
+customs officers,0.35,norwegian
+cyclists,0.34,norwegian
+dance instructors,0.77,norwegian
+dancers,0.73,norwegian
+deacons,0.54,norwegian
+dental hygienists,0.71,norwegian
+dental technicians,0.61,norwegian
+dentists,0.49,norwegian
+deputies,0.55,norwegian
+designers,0.65,norwegian
+detectives,0.29,norwegian
+dieticians,0.7,norwegian
+diplomats,0.36,norwegian
+doctors of philosophy,0.34,norwegian
+dog owners,0.53,norwegian
+door keepers,0.16,norwegian
+drivers,0.32,norwegian
+driving instructors,0.29,norwegian
+drug addicts,0.39,norwegian
+drug dealers,0.18,norwegian
+drummers,0.21,norwegian
+economists,0.39,norwegian
+editors,0.43,norwegian
+educational psychologists,0.7,norwegian
+electricians,0.17,norwegian
+embezzlers,0.37,norwegian
+engine-drivers,0.21,norwegian
+engineers,0.29,norwegian
+entertainers,0.54,norwegian
+environmentalists,0.6,norwegian
+estate agents,0.42,norwegian
+executives,0.26,norwegian
+executors,0.44,norwegian
+exercise instructors,0.56,norwegian
+exotic dancers,0.83,norwegian
+explorers,0.25,norwegian
+factory managers,0.25,norwegian
+fans,0.61,norwegian
+farmers,0.29,norwegian
+fashion models,0.72,norwegian
+fencers,0.29,norwegian
+fig. skaters,0.7,norwegian
+film directors,0.32,norwegian
+film stars,0.56,norwegian
+financial advisers,0.41,norwegian
+financial analysts,0.29,norwegian
+firefighters,0.16,norwegian
+flight attendants,0.74,norwegian
+florists,0.72,norwegian
+flute players,0.65,norwegian
+football coaches,0.16,norwegian
+football players,0.22,norwegian
+forensic psychologists,0.45,norwegian
+forest rangers,0.22,norwegian
+game wardens,0.19,norwegian
+gardeners,0.51,norwegian
+generals,0.15,norwegian
+general managers,0.39,norwegian
+geologists,0.37,norwegian
+goalkeepers,0.32,norwegian
+goldsmiths,0.48,norwegian
+golfers,0.41,norwegian
+government officials,0.34,norwegian
+governors,0.23,norwegian
+graphic designers,0.55,norwegian
+groupies,0.77,norwegian
+guards,0.25,norwegian
+guitar players,0.35,norwegian
+gymnasts,0.62,norwegian
+gynaecologists,0.56,norwegian
+hairdressers,0.79,norwegian
+heads of department,0.4,norwegian
+head teachers,0.47,norwegian
+health visitors,0.76,norwegian
+"heavy equipment operators""",0.19,norwegian
+historians,0.34,norwegian
+history professors,0.38,norwegian
+hitchhikers,0.35,norwegian
+homeless persons,0.35,norwegian
+horse riders,0.64,norwegian
+horse trainers,0.72,norwegian
+hospital orderlies,0.34,norwegian
+hotel guests,0.46,norwegian
+hotel managers,0.28,norwegian
+housekeepers,0.79,norwegian
+humanitarians,0.6,norwegian
+humanities professors,0.5,norwegian
+hunters,0.22,norwegian
+ice skaters,0.39,norwegian
+informants,0.42,norwegian
+inmates,0.2,norwegian
+innkeepers,0.5,norwegian
+interior decorators,0.69,norwegian
+interpreters,0.62,norwegian
+inventors,0.33,norwegian
+it consultants,0.25,norwegian
+jailors,0.24,norwegian
+janitors,0.16,norwegian
+jewelers,0.5,norwegian
+job kers,0.49,norwegian
+joggers,0.53,norwegian
+journalists,0.53,norwegian
+judges,0.34,norwegian
+jugglers,0.34,norwegian
+jurors,0.53,norwegian
+karaoke singers,0.56,norwegian
+kids,0.49,norwegian
+killers,0.16,norwegian
+kindergarten teachers,0.79,norwegian
+lab technicians,0.54,norwegian
+landscape gardeners,0.39,norwegian
+law clerks,0.71,norwegian
+law professors,0.37,norwegian
+lawyers,0.44,norwegian
+leaders,0.33,norwegian
+librarians,0.7,norwegian
+lieutenants,0.2,norwegian
+lifeguards,0.41,norwegian
+lighthouse keepers,0.24,norwegian
+lodgers,0.49,norwegian
+lorry drivers,0.19,norwegian
+magicians,0.24,norwegian
+managers,0.31,norwegian
+manicurists,0.88,norwegian
+mathematicians,0.31,norwegian
+mayors,0.32,norwegian
+mechanics,0.19,norwegian
+members of parliament,0.37,norwegian
+metallurgists,0.33,norwegian
+meteorologists,0.55,norwegian
+millionaires,0.29,norwegian
+miners,0.12,norwegian
+models,0.74,norwegian
+mountain climbers,0.33,norwegian
+murderers,0.18,norwegian
+musicians,0.45,norwegian
+nannies,0.79,norwegian
+neighbours,0.49,norwegian
+neurologists,0.37,norwegian
+neurosurgeons,0.29,norwegian
+news readers,0.52,norwegian
+novelists,0.57,norwegian
+nurses,0.78,norwegian
+nursery teachers,0.79,norwegian
+nutritionists,0.69,norwegian
+occupational therapists,0.66,norwegian
+oceanographers,0.45,norwegian
+office workers,0.58,norwegian
+orchestra conductors,0.35,norwegian
+orthodontists,0.4,norwegian
+palm readers,0.75,norwegian
+parachutists,0.31,norwegian
+parents,0.52,norwegian
+pastry chefs,0.54,norwegian
+patients,0.55,norwegian
+pawnbrokers,0.26,norwegian
+pedestrians,0.52,norwegian
+pediatricians,0.5,norwegian
+pensioners,0.57,norwegian
+persons,0.49,norwegian
+personal trainers,0.42,norwegian
+pharmacists,0.75,norwegian
+philanthropists,0.44,norwegian
+photographers,0.51,norwegian
+physicians,0.41,norwegian
+physicists,0.3,norwegian
+physics students,0.3,norwegian
+physiotherapists,0.6,norwegian
+piano players,0.47,norwegian
+pilots,0.19,norwegian
+plumbers,0.14,norwegian
+poets,0.49,norwegian
+police inspectors,0.39,norwegian
+police officers,0.34,norwegian
+police sergeants,0.29,norwegian
+political activists,0.56,norwegian
+politicians,0.42,norwegian
+porters,0.24,norwegian
+postal workers,0.43,norwegian
+postmen,0.4,norwegian
+presidents,0.13,norwegian
+priests,0.36,norwegian
+primary school teachers,0.76,norwegian
+prison guards,0.25,norwegian
+prisoners,0.21,norwegian
+private detectives,0.26,norwegian
+probation officers,0.37,norwegian
+professional athletes,0.43,norwegian
+professors,0.37,norwegian
+projectionists,0.32,norwegian
+proofreaders,0.6,norwegian
+prostitutes,0.83,norwegian
+protestors,0.46,norwegian
+psychiatrists,0.49,norwegian
+psychology students,0.74,norwegian
+publishers,0.45,norwegian
+racing car drivers,0.15,norwegian
+radio announcers,0.49,norwegian
+radio technicians,0.29,norwegian
+rape victims,0.86,norwegian
+rapists,0.1,norwegian
+receptionists,0.71,norwegian
+relatives,0.5,norwegian
+reporters,0.5,norwegian
+rescue workers,0.26,norwegian
+research scientists,0.42,norwegian
+road workers,0.17,norwegian
+roadies,0.46,norwegian
+romantic novelists,0.74,norwegian
+roofers,0.17,norwegian
+rubbish collectors,0.17,norwegian
+runners,0.42,norwegian
+sailors,0.34,norwegian
+sales assistants,0.6,norwegian
+salespersons,0.43,norwegian
+schoolchildrens,0.51,norwegian
+screenwriters,0.43,norwegian
+scuba divers,0.33,norwegian
+sculptors,0.46,norwegian
+secretaries,0.75,norwegian
+serial killers,0.15,norwegian
+sheriffs,0.22,norwegian
+shoemakers,0.29,norwegian
+shoplifters,0.41,norwegian
+shoppers,0.76,norwegian
+singers,0.59,norwegian
+single parents,0.76,norwegian
+skiers,0.45,norwegian
+smugglers,0.23,norwegian
+snooker players,0.28,norwegian
+social workers,0.7,norwegian
+solarium users,0.71,norwegian
+soldiers,0.15,norwegian
+sound engineers,0.24,norwegian
+spectators,0.49,norwegian
+speech therapists,0.59,norwegian
+sports coachs,0.41,norwegian
+spies,0.32,norwegian
+statisticians,0.38,norwegian
+stockbrokers,0.25,norwegian
+strippers,0.81,norwegian
+structural engineers,0.23,norwegian
+students,0.57,norwegian
+supervisors,0.32,norwegian
+surfers,0.3,norwegian
+surgeons,0.3,norwegian
+suspects,0.26,norwegian
+swimmers,0.45,norwegian
+switchboard operators,0.7,norwegian
+synchronized swimmers,0.78,norwegian
+systems analysts,0.36,norwegian
+tailors,0.49,norwegian
+tap dancers,0.59,norwegian
+tarot card readers,0.79,norwegian
+tattooists,0.3,norwegian
+tax advisors,0.44,norwegian
+taxi drivers,0.22,norwegian
+taxidermists,0.26,norwegian
+technicians,0.27,norwegian
+technologists,0.33,norwegian
+teenagers,0.5,norwegian
+telephone operators,0.5,norwegian
+tennis players,0.49,norwegian
+terrorists,0.16,norwegian
+theatre directors,0.4,norwegian
+thieves,0.26,norwegian
+ticket inspectors,0.39,norwegian
+toddlers,0.52,norwegian
+toolmakers,0.2,norwegian
+tour guides,0.64,norwegian
+trade unionists,0.51,norwegian
+traffic engineers,0.32,norwegian
+train conductors,0.26,norwegian
+translators,0.56,norwegian
+travel agents,0.7,norwegian
+trumpet players,0.34,norwegian
+tuba players,0.32,norwegian
+undertakers,0.34,norwegian
+vets,0.63,norwegian
+victims,0.65,norwegian
+violinists,0.59,norwegian
+waiters,0.63,norwegian
+wardens,0.29,norwegian
+weavers,0.83,norwegian
+wedding planners,0.85,norwegian
+weight lifters,0.2,norwegian
+welders,0.18,norwegian
+wine connoisseurs,0.37,norwegian
+wood carvers,0.22,norwegian
+wood workers,0.14,norwegian
+workers,0.38,norwegian
+wrestlers,0.2,norwegian
+writers,0.52,norwegian
+x-ray technicians,0.49,norwegian
+youngsters,0.5,norwegian
+zoologists,0.52,norwegian
+administrative workers,0.75,norwegian
+babysitters,0.78,norwegian
+cake decorators,NA,norwegian
+caretakers,0.32,norwegian
+company directors,0.26,norwegian
+coordinators,NA,norwegian
+data processors,NA,norwegian
+database administrators,NA,norwegian
+dressmakers,0.49,norwegian
+fortune tellers,0.79,norwegian
+funeral directors,0.34,norwegian
+groundkeepers,NA,norwegian
+infant teachers,NA,norwegian
+knitters,NA,norwegian
+magician’s assistants,NA,norwegian
+make up artists,NA,norwegian
+medical doctors,0.41,norwegian
+members of the armed forces,0.15,norwegian
+playgroup leaders,NA,norwegian
+socialites,NA,norwegian
+sunbathers,NA,norwegian
+typists,NA,norwegian
+tyre fitters,NA,norwegian
+vice chancellors,NA,norwegian
+accountants,0.47,italian
+acrobats,0.5,italian
+acupuncturists,0.52,italian
+administrative workers,0.54,italian
+admirals,0.17,italian
+aerobics instructors,0.73,italian
+air traffic controllers,0.45,italian
+alcoholics,0.35,italian
+anglers,0.17,italian
+animators,0.54,italian
+antique dealers,0.4,italian
+apprentices,0.49,italian
+architects,0.43,italian
+archivists,0.53,italian
+artists,0.49,italian
+assistants,0.62,italian
+assistant chefs,0.49,italian
+astrologists,0.45,italian
+astronauts,0.21,italian
+astronomers,0.36,italian
+athletes,0.47,italian
+au pairs,0.66,italian
+auctioneers,0.32,italian
+authors,0.48,italian
+babies,0.54,italian
+babysitters,0.86,italian
+bakers,0.39,italian
+bank clerks,0.48,italian
+bankers,0.34,italian
+barbers,0.21,italian
+bartenders,0.53,italian
+baseball players,0.2,italian
+basketball players,0.27,italian
+bass players,0.28,italian
+beauticians,0.88,italian
+bikers,0.22,italian
+bingo players,0.52,italian
+biologists,0.55,italian
+birth attendants,0.85,italian
+blacksmiths,0.13,italian
+bookkeepers,0.45,italian
+bosses,0.31,italian
+boutique owners,0.51,italian
+boxers,0.19,italian
+bricklayers,0.08,italian
+building contractors,0.22,italian
+bus drivers,0.3,italian
+butchers,0.23,italian
+butlers,0.26,italian
+cabinet ministers,0.26,italian
+cake decorators,0.62,italian
+camera operators,0.36,italian
+campers,0.43,italian
+canteen assistants,0.71,italian
+card players,0.33,italian
+care workers,0.64,italian
+caregivers,0.88,italian
+caretakers,0.28,italian
+cartoonists,0.39,italian
+cashiers,0.71,italian
+cat owners,0.68,italian
+caterers,0.43,italian
+celebrities,0.53,italian
+chair persons,0.23,italian
+chamber-maids,0.57,italian
+cheerleaders,0.91,italian
+chefs,0.39,italian
+chemists,0.42,italian
+children,0.53,italian
+child educators,0.8,italian
+child-minders,0.87,italian
+chiropractors,0.49,italian
+chocolate lovers,0.62,italian
+choreographers,0.54,italian
+cinema goers,0.54,italian
+clairvoyants,0.72,italian
+cleaners,0.77,italian
+clerks,0.58,italian
+clients,0.55,italian
+climbers,0.37,italian
+clinical psychologists,0.57,italian
+clowns,0.31,italian
+colonels,0.18,italian
+comedians,0.38,italian
+company directors,0.29,italian
+composers,0.36,italian
+computer programmers,0.28,italian
+computer specialists,0.26,italian
+computer technicians,0.26,italian
+conquerors,0.32,italian
+conservationists,0.56,italian
+construction workers,0.14,italian
+cooks,0.45,italian
+coordinators,0.5,italian
+counseling psychologists,0.64,italian
+counsellors,0.47,italian
+couriers,0.26,italian
+court reporters,0.32,italian
+craft workers,0.34,italian
+crane operators,0.14,italian
+criminals,0.31,italian
+cult members,0.45,italian
+curators,0.51,italian
+customers,0.54,italian
+customs inspectors,0.27,italian
+customs officers,0.27,italian
+cyclists,0.31,italian
+dance instructors,0.62,italian
+dancers,0.68,italian
+data processors,0.39,italian
+database administrators,0.31,italian
+deacons,0.16,italian
+dental hygienists,0.6,italian
+dental technicians,0.41,italian
+dentists,0.4,italian
+deputies,0.27,italian
+designers,0.54,italian
+detectives,0.3,italian
+dieticians,0.65,italian
+diplomats,0.35,italian
+doctors of philosophy,0.47,italian
+dog owners,0.52,italian
+door keepers,0.41,italian
+drivers,0.4,italian
+driving instructors,0.25,italian
+drug addicts,0.39,italian
+drug dealers,0.21,italian
+drummers,0.23,italian
+economists,0.38,italian
+editors,0.42,italian
+educational psychologists,0.72,italian
+electricians,0.15,italian
+embezzlers,0.39,italian
+engine-drivers,0.19,italian
+engineers,0.29,italian
+entertainers,0.49,italian
+environmentalists,0.56,italian
+estate agents,0.46,italian
+executives,0.48,italian
+executors,0.37,italian
+exercise instructors,0.4,italian
+exotic dancers,0.8,italian
+explorers,0.34,italian
+factory managers,0.31,italian
+fans,0.56,italian
+farmers,0.26,italian
+fencers,0.47,italian
+fig. skaters,0.68,italian
+film directors,0.29,italian
+film stars,0.53,italian
+financial advisers,0.35,italian
+financial analysts,0.34,italian
+firefighters,0.18,italian
+flight attendants,0.71,italian
+florists,0.67,italian
+flute players,0.54,italian
+football coaches,0.13,italian
+football players,0.17,italian
+forensic psychologists,0.54,italian
+forest rangers,0.27,italian
+fortune tellers,0.65,italian
+funeral directors,0.21,italian
+game wardens,0.19,italian
+gardeners,0.28,italian
+generals,0.17,italian
+general managers,0.31,italian
+geologists,0.39,italian
+goalkeepers,0.16,italian
+goldsmiths,0.37,italian
+golfers,0.25,italian
+government officials,0.31,italian
+governors,0.24,italian
+graphic designers,0.47,italian
+groundkeepers,0.26,italian
+groupies,0.68,italian
+guards,0.22,italian
+guitar players,0.31,italian
+gymnasts,0.64,italian
+gynaecologists,0.58,italian
+hairdressers,0.65,italian
+heads of department,0.33,italian
+head teachers,0.43,italian
+"heavy equipment operators""",0.14,italian
+historians,0.4,italian
+history professors,0.55,italian
+hitchhikers,0.38,italian
+homeless persons,0.32,italian
+horse riders,0.52,italian
+horse trainers,0.48,italian
+hospital orderlies,0.64,italian
+hotel guests,0.48,italian
+hotel managers,0.35,italian
+housekeepers,0.79,italian
+humanitarians,0.51,italian
+humanities professors,0.65,italian
+hunters,0.14,italian
+ice skaters,0.64,italian
+informants,0.46,italian
+inmates,0.31,italian
+innkeepers,0.41,italian
+interior decorators,0.64,italian
+interpreters,0.63,italian
+inventors,0.33,italian
+it consultants,0.27,italian
+jailors,0.25,italian
+janitors,0.65,italian
+jewelers,0.43,italian
+job kers,0.57,italian
+joggers,0.42,italian
+journalists,0.48,italian
+judges,0.37,italian
+jugglers,0.34,italian
+jurors,0.42,italian
+karaoke singers,0.56,italian
+kids,0.53,italian
+killers,0.19,italian
+kindergarten teachers,0.86,italian
+knitters,0.75,italian
+lab technicians,0.44,italian
+landscape gardeners,0.48,italian
+law clerks,0.4,italian
+law professors,0.48,italian
+lawyers,0.46,italian
+leaders,0.3,italian
+librarians,0.63,italian
+lieutenants,0.24,italian
+lifeguards,0.31,italian
+lighthouse keepers,0.17,italian
+lodgers,0.51,italian
+lorry drivers,0.15,italian
+magicians,0.28,italian
+magician’s assistants,0.78,italian
+make up artists,0.73,italian
+managers,0.35,italian
+manicurists,0.89,italian
+mathematicians,0.37,italian
+mayors,0.28,italian
+mechanics,0.12,italian
+medical doctors,0.45,italian
+members of the armed forces,0.2,italian
+members of parliament,0.25,italian
+metallurgists,0.18,italian
+meteorologists,0.35,italian
+millionaires,0.29,italian
+miners,0.1,italian
+models,0.65,italian
+mountain climbers,0.29,italian
+murderers,0.31,italian
+musicians,0.45,italian
+neighbours,0.52,italian
+neurologists,0.41,italian
+neurosurgeons,0.32,italian
+news readers,0.65,italian
+novelists,0.49,italian
+nurses,0.67,italian
+nursery teachers,0.88,italian
+nutritionists,0.66,italian
+occupational therapists,0.55,italian
+oceanographers,0.46,italian
+office workers,0.6,italian
+orchestra conductors,0.21,italian
+orthodontists,0.42,italian
+palm readers,0.75,italian
+parachutists,0.32,italian
+parents,0.53,italian
+pastry chefs,0.49,italian
+patients,0.5,italian
+pawnbrokers,0.35,italian
+pedestrians,0.53,italian
+pediatricians,0.58,italian
+pensioners,0.53,italian
+persons,0.55,italian
+personal trainers,0.37,italian
+pharmacists,0.62,italian
+philanthropists,0.47,italian
+photographers,0.45,italian
+physicians,0.45,italian
+physicists,0.31,italian
+physics students,0.33,italian
+physiotherapists,0.49,italian
+piano players,0.42,italian
+pilots,0.2,italian
+playgroup leaders,0.32,italian
+plumbers,0.13,italian
+poets,0.42,italian
+police inspectors,0.35,italian
+police officers,0.34,italian
+police sergeants,0.26,italian
+political activists,0.4,italian
+politicians,0.25,italian
+porters,0.18,italian
+postal workers,0.62,italian
+postmen,0.46,italian
+presidents,0.24,italian
+primary school teachers,0.8,italian
+prison guards,0.28,italian
+prisoners,0.32,italian
+private detectives,0.27,italian
+probation officers,0.21,italian
+professional athletes,0.45,italian
+professors,0.59,italian
+projectionists,0.39,italian
+proofreaders,0.53,italian
+prostitutes,0.83,italian
+protestors,0.49,italian
+psychiatrists,0.53,italian
+psychology students,0.69,italian
+publishers,0.41,italian
+racing car drivers,0.13,italian
+radio announcers,0.48,italian
+radio technicians,0.32,italian
+rape victims,0.88,italian
+rapists,0.11,italian
+receptionists,0.67,italian
+relatives,0.53,italian
+reporters,0.37,italian
+rescue workers,0.43,italian
+research scientists,0.46,italian
+road workers,0.14,italian
+romantic novelists,0.73,italian
+roofers,0.22,italian
+rubbish collectors,0.27,italian
+runners,0.41,italian
+sailors,0.16,italian
+sales assistants,0.71,italian
+salespersons,0.57,italian
+schoolchildrens,0.53,italian
+screenwriters,0.43,italian
+scuba divers,0.3,italian
+sculptors,0.39,italian
+secretaries,0.78,italian
+serial killers,0.26,italian
+sheriffs,0.19,italian
+shoemakers,0.23,italian
+shoplifters,0.35,italian
+shoppers,0.57,italian
+singers,0.52,italian
+single parents,0.77,italian
+skiers,0.44,italian
+smugglers,0.22,italian
+snooker players,0.24,italian
+social workers,0.72,italian
+socialites,0.47,italian
+solarium users,0.65,italian
+soldiers,0.22,italian
+sound engineers,0.28,italian
+spectators,0.53,italian
+speech therapists,0.66,italian
+sports coachs,0.36,italian
+spies,0.39,italian
+statisticians,0.37,italian
+stockbrokers,0.27,italian
+strippers,0.71,italian
+structural engineers,0.34,italian
+students,0.55,italian
+supervisors,0.37,italian
+surfers,0.32,italian
+surgeons,0.33,italian
+suspects,0.37,italian
+swimmers,0.47,italian
+switchboard operators,0.69,italian
+synchronized swimmers,0.79,italian
+systems analysts,0.36,italian
+tailors,0.75,italian
+tap dancers,0.5,italian
+tarot card readers,0.77,italian
+tattooists,0.36,italian
+tax advisors,0.38,italian
+taxi drivers,0.21,italian
+taxidermists,0.3,italian
+technologists,0.31,italian
+teenagers,0.53,italian
+telephone operators,0.63,italian
+tennis players,0.47,italian
+terrorists,0.22,italian
+theatre directors,0.37,italian
+thieves,0.3,italian
+ticket inspectors,0.3,italian
+toddlers,0.53,italian
+toolmakers,0.29,italian
+tour guides,0.63,italian
+trade unionists,0.39,italian
+traffic engineers,0.3,italian
+train conductors,0.21,italian
+translators,0.65,italian
+travel agents,0.58,italian
+trumpet players,0.33,italian
+tuba players,0.37,italian
+typists,0.64,italian
+tyre fitters,0.11,italian
+undertakers,0.15,italian
+vets,0.51,italian
+vice chancellors,0.31,italian
+victims,0.71,italian
+violinists,0.54,italian
+waiters,0.55,italian
+wardens,0.25,italian
+weavers,0.72,italian
+wedding planners,0.73,italian
+weight lifters,0.22,italian
+welders,0.13,italian
+wine connoisseurs,0.34,italian
+wood carvers,0.28,italian
+wood workers,0.15,italian
+workers,0.38,italian
+wrestlers,0.18,italian
+writers,0.49,italian
+x-ray technicians,0.43,italian
+youngsters,0.52,italian
+zoologists,0.49,italian
+ballet dancers,0.68,italian
+car mechanics,NA,italian
+carpenters,0.15,italian
+dressmakers,NA,italian
+fashion models,0.65,italian
+health visitors,0.72,italian
+infant teachers,0.88,italian
+nannies,NA,italian
+priests,NA,italian
+roadies,NA,italian
+sunbathers,NA,italian
+technicians,0.31,italian
