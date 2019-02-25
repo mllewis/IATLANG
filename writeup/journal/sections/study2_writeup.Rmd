@@ -61,11 +61,15 @@ iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
 #                                         "No Gender", 
 #                                         "Gender")) 
 
+LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
+iat_lang_es <- read_csv(LANG_IAT_PATH)
+
 
 all_es_tidy2 <- full_join(by_lang_scores_tidy, iat_behavioral_es) %>%
  # left_join(theoretical_gender) %>%
   left_join(iat_lang_es)  %>%
-  left_join(occupation_semantics)
+  left_join(occupation_semantics) %>%
+  mutate_if(is.numeric, scale)
 ```
 
 
@@ -341,32 +345,56 @@ lm(lang_es_wiki ~ mean_prop_overlap_occs +
 ```
 
 
-```{r, eval = F, include = F}
-
-cor.test(full_df$subt_occu_semantics, 
-         full_df$wiki_occu_semantics)
-
-
-lm(scale(es_iat_sex_age_order_implicit_resid) ~ scale(wiki_occu_semantics)+scale(mean_prop_overlap_occs) + scale(median_country_age),
-   data = full_df) %>%
+```{r mediation, eval = F, include = F}
+# y ~ x
+lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_overlap_occs, 
+  data = all_es_tidy2) %>%
   summary()
 
+# m ~ x
+lm(wiki_occu_semantics ~ mean_prop_overlap_occs, 
+  data = all_es_tidy2) %>%
+  summary()
+
+lm(subt_occu_semantics ~ mean_prop_overlap_occs, 
+  data = all_es_tidy2) %>%
+  summary()
+
+# y ~ x + m
+lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_overlap_occs + wiki_occu_semantics, 
+  data = all_es_tidy2) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~  mean_prop_overlap_occs +
+     subt_occu_semantics  + 
+     median_country_age, 
+  data = all_es_tidy2) %>%
+  summary()
+
+## testing for mediation
 library(multilevel)
-
-sobel(scale(full_df$mean_prop_overlap_occs), scale(full_df$subt_occu_semantics), scale(full_df$es_iat_sex_age_order_implicit_resid))
-
-
-
-lm(scale(es_iat_sex_age_order_implicit_resid) ~ scale(subt_occu_semantics)+median_country_age,
-   data = full_df) %>%
-  summary()
-
-cor.test(full_df$es_iat_sex_age_order_implicit_resid, 
-         abs(full_df$wiki_occu_semantics))
+sobel(scale(all_es_tidy2$mean_prop_overlap_occs), 
+      scale(all_es_tidy2$subt_occu_semantics),
+      scale(all_es_tidy2$es_iat_sex_age_order_implicit_resid))
 
 
-cor.test(full_df$es_iat_sex_age_order_implicit_resid, 
-         full_df$subt_occu_semantics)
+library(robmed)
+all_es_tidy2 %>%
+  fit_mediation(
+    x = "mean_prop_overlap_occs",
+    y = "es_iat_sex_age_order_implicit_resid",
+    m = "subt_occu_semantics",
+    covariates = "median_country_age") %>%
+   test_mediation() %>% 
+   p_value()
+
+all_es_tidy2 %>%
+  fit_mediation(
+    x = "mean_prop_overlap_occs",
+    y = "es_iat_sex_age_order_implicit_resid",
+    m = "subt_occu_semantics") %>%
+   test_mediation() %>% 
+   p_value()
 
 ```
 
