@@ -9,27 +9,12 @@ library(broom)
 # Study 1: Gender bias and semantics
 
 
-Are participants' implicit and explicit gender biases predictable from biases found in the semantic structure of their native languages? For example, are the semantics of the words  “woman” and “family” more similar in Spanish than in English? Both the language-as-reflection and language-as-causal hypotheses predict a positive correlation between the measured biases and biases present in language.
+Are participants' implicit and explicit gender biases predictable from biases found in the semantic structure of the dominant language in the country they're in? For example, are the semantics of the words  “woman” and “family” more similar in Spanish than in English? Both the language-as-reflection and language-as-causal hypotheses predict a positive correlation between the measured biases and biases present in language.
  
 
- 
-As a model of word meanings, we use large-scale distributional semantics
-models derived from auto-encoding neural networks trained on large
-text corpora. The underlying assumption of these models is that the
-meaning of a word can be described by the words it tends to co-occur
-with---words occurring in similar contexts, tend to have similar meanings [@firth1957synopsis]. The word like "dog", for example is represented as more similar to "hound" than to "banana" because
-"dog" co-occurs with words more in common with "hound"
-than "banana."Recent developments in machine learning allow the idea of distributional semantics to be implemented in a way that takes into account many
-features of language structure while remaining computationally
-tractable. The best known of these word embedding models is
-_word2vec_ [@mikolov2013efficient]. The model takes as input a corpus of text and outputs a vector for each word corresponding to its semantics. From these vectors, we can derive a measure of the semantic similarity between two words by taking the distance between their vectors (e.g., cosine distance). 
+To model word meanings, we use semantic embeddings derived from trying to predict words from other words in a large corpus. The underlying assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with---words occurring in similar contexts, tend to have similar meanings [@firth1957synopsis]. A word like "dog", for example is represented as more similar to "cat" and "hound" than to "banana" because "dog" co-occurs with words more in common with "cat" and "hound" than with "banana." [REFS] Recent developments in machine learning allow the idea of distributional semantics to be implemented in a way that takes into account many features of language structure while remaining computationally tractable. The best known of these word embedding models is _word2vec_ [@mikolov2013efficient]. By attempting to predict the words that surround another word, the model is able to learn a vector-based representation for each word that represents its similarity to other words, i.e., a semantic embedding. We can then compute the similarity between two words by taking the distance between their vectors (e.g., cosine of angle). 
 
-As it turns out, many of the biases previously reported using implicit association tests can be predicted from distributional semantics models like word2vec. Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) measured the distance in vector space between the words presented to participants in the IAT task. CBN found that these distance
-measures were highly correlated with reaction times in the behavioral IAT
-task. For example,  CBN find a bias to associate males with career and females with family in the career-gender IAT, suggesting that the biases measured by the IAT are also found in the lexical semantics of natural language.
-
-CBN only measured semantic biases in English, however. In Study 1, we
-use the method described by CBN to examine whether the gender bias of the participants in the Project Implicit dataset is correlated with the gender bias measured in the dominant languages spoken in the countries of these participants. We begin by validating word embedding measures of gender bias by comparing them to explicit human judgements of word genderness (Study 1a). We then apply this method to models trained on text in other languages (Study 1b). To foreshadow the results, we find that the implicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the distributional semantics of the language spoken in the countries of the participants.
+We begin by validating word embedding measures of gender bias by comparing them to explicit human judgements of word genderness (Study 1a). We then apply this method to models trained on text in other languages (Study 1b). To foreshadow the results, we find that the implicit gender biases reported in Study 1 for individual countries are correlated with the biases found in the distributional semantics of the language spoken in the countries of the participants.
 
 
 ## Study 1a: Word embeddings as a measure of psychological gender bias
@@ -201,7 +186,7 @@ all_es_tidy %>%
   geom_point(size = .7) + #aes(size  = log(n_participants))) + #
   theme_minimal() +
   ggtitle("Behavioral and Linguistic Gender Biases") +
-  ylab("Behavioral IAT Gender Bias \n(residualized)\n") +
+  ylab("Behavioral IAT Gender Bias (residualized)\n") +
   xlab("\nLinguistic Gender Bias\n (effect size)") +
   theme_classic(base_size = 12) 
 ```
@@ -260,43 +245,35 @@ text_tidy_corrs <- tidy_corrs %>%
     mutate_if(is.numeric, ~str_remove(as.character(.), "^0+|^-0+")) 
 
 L_B_sub <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Subtitles)",
-         var2 == "Residualized Behavioral IAT") %>%
+  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Residualized Behavioral IAT") %>%
   pull(r_print_text)
 
 L_B_wiki <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Wikipedia)", 
-         var2 == "Residualized Behavioral IAT") %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Behavioral IAT") %>%
   pull(r_print_text)
 
 L_B_sub_partial <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Subtitles)", 
-         var2 == "Residualized Behavioral IAT") %>%
+  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Residualized Behavioral IAT") %>%
   pull(partial_print_text)
 
 L_B_wiki_partial <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Wikipedia)", 
-         var2 == "Residualized Behavioral IAT") %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Behavioral IAT") %>%
   pull(partial_print_text)
 
 L_E_sub <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Subtitles)", 
-         var2 == "Residualized Explicit Bias") %>%
+  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Residualized Explicit Bias") %>%
   pull(r_print_text)
 
 L_E_wiki <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Wikipedia)", 
-         var2 == "Residualized Explicit Bias") %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Explicit Bias") %>%
   pull(r_print_text)
 
 L_S_sub <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Subtitles)", 
-         var2 == "Percent Women in STEM") %>%
+  filter(rowname ==  "Language IAT (Subtitles)", var2 == "Percent Women in STEM") %>%
   pull(r_print_text)
 
 L_S_wiki <- text_tidy_corrs %>%
-  filter(rowname ==  "Language IAT (Wikipedia)", 
-         var2 == "Percent Women in STEM") %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Percent Women in STEM") %>%
   pull(r_print_text)
 ```
 
@@ -325,7 +302,7 @@ tidy_corrs_to_print <- print_tidy_corrs %>%
 tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(1,2,5,6,4,3),]
 
 kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
-      caption = "Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.",
+      caption = "Correlation (Pearson's r) for all measures in Study 1 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single asterisks indicate p < .05 and double asterisks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.",
       align = "lrrrrrr") %>%
   column_spec(2:7, width = "1.6cm") %>%
   kable_styling(bootstrap_options = "condensed", 
@@ -333,4 +310,4 @@ kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
 ```
 
 ### Discussion 
-In Study 1, we demonstrate that a well-studied psychological gender bias -- the bias to associate men with career and women with family -- is correlated with the magnitude of that same bias as measured in language statistics across a sample of 25 languages.  Our pattern of findings is consistent with the hypothesis that language statistics play a causal role in shaping psychological biases in indiviual speakers (language-as-causal). However, this pattern is also consistent with the possibility that  people's implicit biases are in part caused by input from language and that the linguistic biases simply reflect existing biases (language-as-reflection). In Study 2, we more directly investigate the causal mechanism linking language statistics to psychological biases.
+In Study 1, we found that that a previously reported psychological gender bias -- the bias to associate men with career and women with family -- was correlated with the magnitude of that same bias as measured in language statistics of 25 languages.  Participants from countries in which the language statistics (of the country's dominant language) had stronger associations between men and career words and women and family words, showed stronger biases on the gender-career IAT. This result is consistent with both the language-as-reflection and language-as-causal-factor hypotheses. In Study 2, we try to better distinguish between these hypotheses by investigating whether the gender-career bias is associated with _structural_ features of language that are to a large extent independent of the informational _content_ of language. 
