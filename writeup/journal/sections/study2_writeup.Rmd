@@ -23,7 +23,7 @@ We identified 20 words referring to occupations that were relatively common
 <!--[ML] we tried to select ones we thought all languages would have clear tranlstations for--> 
  and balanced for their perceptions of gender bias in the workforce, on the basis of previously-collected gender perception norms  [@misersky2014norms]. We then translated these words into each of the 26 
  <!-- cf. 25 languages in study 1. are all 26 included here?--> 
- <!--[ML] Zulu is the language in question gere. We have translations for the occupation words in Zulu based on an online dictionary, but we don't have any of the language embedding measures (in Study 1b or 2). Maybe we should just exclude Zulu throughout for consistency?--> languages in our sample, distinguishing between male and female variants (e.g., waiter vs. waitress) where present. The words were translated by consulting native speakers and dictionaries as necessary.
+ <!--[ML] Zulu is the language in question gere. We have translations for the occupation words in Zulu based on an online dictionary, but we don't have any of the language embedding measures (in Study 1b or 2). Maybe we should just exclude Zulu throughout for consistency?--> languages in our sample, distinguishing between male and female variants (e.g., "waiter" vs. "waitress") where present. The words were translated by consulting native speakers and dictionaries as necessary.
 
 To estimate the extent to which a language lexically encoded gender, we calculated the proportion of male and female forms that were identical for each item, and then averaged across items within each language. This measure reflects the degree to which a language marks gender lexically, with larger values indicating more  gender-neutral forms. We also estimated the extent to which each occupation word was gender biased in its language statistics using word embedding models trained. This measure was obtained using the same procedure as in Study 1a and 1b based on models trained on both subtitle and Wikipedia corpora in each language. Larger values indicate greater gender bias (larger difference between associations to females vs. males). <!-- Note here the measure is female - male, where as male - female in 1a above -> should maybe change this so consistent - yes, definitely.--> We compared these measures to the psychological gender measures described in Study 1b (implicit association bias effect size adjusted for age, sex and block order, and explicit bias score). 
 
@@ -33,20 +33,7 @@ To estimate the extent to which a language lexically encoded gender, we calculat
 ```{r by_language_data}
 # occupation form overlap by language
 OCCUPATION_OVERLAP_PATH <- here('data/study2/occupation_gender_scores.csv')
-by_lang_scores <- read_csv(OCCUPATION_OVERLAP_PATH)
-NATIVE_SPEAKER_LANGS <- c("he", "fr", "es", "de", "da", "ms", "pl", "pt",
-                          "hr", "en", "zh", "ko", "nl")
-# average across sr and hr
-hr_new_occ <- mean(c(filter(by_lang_scores, language_code == "hr") %>% pull(mean_prop_overlap_occs),
-         filter(by_lang_scores, language_code == "sr") %>%  pull(mean_prop_overlap_occs)))
-
-by_lang_scores_tidy <- by_lang_scores %>%
-    mutate(mean_prop_overlap_occs = case_when(language_code == "hr" ~ hr_new_occ,
-                                  TRUE ~ mean_prop_overlap_occs),
-           native_translator = case_when(language_code %in% NATIVE_SPEAKER_LANGS ~ "native",
-                                         TRUE ~ "nonnative")) %>%
-  filter(language_code != "sr")  %>%
-  mutate(mean_prop_distinct_occs = 1-mean_prop_overlap_occs)
+by_lang_scores_tidy <- read_csv(OCCUPATION_OVERLAP_PATH)
 
 # Occupation semantics by language
 BY_LANGUAGE_OCCUPATION_PATH  <- here("data/study2/occupation_gender_score_by_language.csv")
@@ -77,78 +64,6 @@ all_es_tidy2 <- full_join(by_lang_scores_tidy, iat_behavioral_es) %>%
   left_join(occupation_semantics) 
 ```
 
-
-```{r full_corr_table}
-# corr of lang, behavioral, etc.
-all_corr_vars <- all_es_tidy2 %>%
-  select(lang_es_sub, lang_es_wiki,subt_occu_semantics, wiki_occu_semantics, mean_prop_distinct_occs, es_iat_sex_age_order_explicit_resid, 
-         es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017, median_country_age) %>%
-  rename(`Residualized Behavioral IAT` = "es_iat_sex_age_order_implicit_resid",
-          `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
-          `Language IAT (Subtitles)` = "lang_es_sub",
-          `Language IAT (Wikipedia)` = "lang_es_wiki",
-          `Occupation Bias (Subtitles)` = "subt_occu_semantics",
-          `Occupation Bias (Wikipedia)` = "wiki_occu_semantics",
-          `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
-          `Percent Women in STEM` = "per_women_stem_2012_2017",
-          `Median Country Age` = "median_country_age") 
-
-simple_corr <- psych::corr.test(all_corr_vars, adjust = "none")$r %>%
-  as_tibble(rownames = "rowname") %>%
-  gather("var2", "simple_r", -rowname)
-  
-simple_corr_p <- psych::corr.test(all_corr_vars, adjust = "none")$p %>%
-  as_tibble(rownames = "rowname") %>%
-  gather("var2", "simple_p", -rowname)
-  
-partial_psych_obj <- psych::partial.r(data = all_corr_vars, x = 1:8, y = 9) 
-partial_corr <- psych::corr.p(partial_psych_obj, n = nrow(all_corr_vars) - 1, 
-                              adjust = "none")$r %>%
-  psych_to_mat() %>%
-  as_tibble(rownames = "rowname") %>%
-  gather("var2", "partial_r", -rowname)
-
-partial_corr_p <- psych::corr.p(partial_psych_obj, n = nrow(all_corr_vars) - 1, 
-                                adjust = "none")$p %>%
-  psych_to_mat() %>%
-  as_tibble(rownames = "rowname") %>%
-  gather("var2", "partial_p", -rowname)
-
-tidy_corrs <- simple_corr %>%
-                left_join(simple_corr_p) %>%
-                left_join(partial_corr) %>%
-                left_join(partial_corr_p) 
-```
-
-```{r}
-print_tidy_corrs <- tidy_corrs %>%
-  filter(rowname != var2) %>%
-  mutate_at(vars(simple_p, partial_p), ~ case_when(
-    . < .01 ~ "**", . < .05 ~ "*",  . < .1 ~ "+", TRUE ~ "")) %>%
-  mutate_at(vars(simple_r, partial_r), ~ round(.,2)) %>%
-  mutate_if(is.numeric, ~str_remove(as.character(.), "^0+|^-0+")) %>%
-  mutate(partial_print = case_when(
-    !is.na(partial_r) ~ paste0(" (", partial_r, partial_p, ")"),TRUE ~ ""),
-    r_print = paste0(simple_r, simple_p, partial_print)) %>%
-  select(rowname, var2, r_print)
-tidy_corrs_to_print <- print_tidy_corrs %>%
-  spread(var2, r_print)  %>%
-  mutate_all(funs(replace_na(., ""))) %>%
-  select("rowname", 
-         contains("Residualized"),  contains("STEM"), 
-         contains("IAT"),
-         contains("Occupation"), contains("Labels"),  contains("Labels"), contains("Age")) %>%
-  rename(" " = "rowname")
-tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(8,9,6,1,2,4,5,7,3),]
-kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
-      caption = "Correlation (Pearson's r) for all measures in Study 1 and 2 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single astericks indicate p < .05 and double astericks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.",
-      align = "lrrrrrr") %>%
-  column_spec(2:10, width = "1.6cm") %>%
-  kable_styling(bootstrap_options = "condensed", 
-                full_width = F,  font_size = 6) %>%
-  landscape()
-```
-
 ```{r full_tidy_corrs_for_text}
 text_tidy_corrs <- tidy_corrs %>%
   filter(rowname != var2) %>%
@@ -168,10 +83,12 @@ GN_B <- text_tidy_corrs %>%
 GN_B_partial <- text_tidy_corrs %>%
   filter(rowname ==  "Prop. Gender-Distinct Labels", var2 == "Residualized Behavioral IAT") %>%
   pull(partial_print_text)
+
+# Note: full table produced in study1_writeup
 ```
 
 ```{r, fig.pos = "!t!", fig.height = 3.5, fig.width = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of the proportion of gender-netural labels for set of words referring to occupations. Error bands indicate standard error of the model estimate."}
-# implicit behavioral ~ prop neutral
+# implicit behavioral ~ prop distinct
 ggplot(all_es_tidy2, aes(x = mean_prop_distinct_occs,
                     y = es_iat_sex_age_order_implicit_resid)) +
   geom_smooth(method = "lm", alpha = .1) +
@@ -200,26 +117,29 @@ GENDER_BIAS_BY_WORD_WIKI <- here("data/study2/wiki_occupation_gender_score.csv")
 
 bias_by_word <- read_csv(GENDER_BIAS_BY_WORD_SUB) %>%
   mutate(model = "sub") %>%
-  bind_rows(read_csv(GENDER_BIAS_BY_WORD_WIKI) %>% mutate(model = "wiki"))
+  bind_rows(read_csv(GENDER_BIAS_BY_WORD_WIKI) %>% mutate(model = "wiki")) %>%
+  rename(gender_diff_score_fm = gender_diff_score) %>%
+  mutate(gender_diff_score_mf = male_score - female_score)
 
 DISTINCT_BY_WORD <- here('data/study2/occupation_gender_scores_by_word.csv')
 distinct_by_word <- read_csv(DISTINCT_BY_WORD) %>%
-  mutate(mean_distinct = 1-mean_overlap)
+  mutate(mean_distinct = 1 - mean_overlap)
 
 by_word_df <- full_join(bias_by_word, distinct_by_word) %>%
   mutate_if(is.numeric, scale)
 
 # Subtitles model
-sub_model <- lmer(gender_diff_score ~ mean_distinct + (mean_distinct|language_code),
+sub_model <- lmer(gender_diff_score_fm ~ mean_distinct + (mean_distinct|language_code),
                   data = by_word_df %>% filter(model == "sub")) %>%
   tidy() %>%
   filter(term == "mean_distinct")
+
 sub_model_print <- paste0(round(pull(sub_model, estimate),2), 
                           "; _SE_ = ", round(pull(sub_model, std.error),2),
                           "; _t_ = ", round(pull(sub_model, statistic),2))
 
 # Wiki model
-wiki_model <- lmer(gender_diff_score ~ mean_distinct + (mean_distinct|language_code),
+wiki_model <- lmer(gender_diff_score_fm ~ mean_distinct + (mean_distinct|language_code),
                    data = by_word_df %>% filter(model == "wiki"))   %>%
   tidy() %>%
   filter(term == "mean_distinct")
@@ -277,8 +197,8 @@ B_OB_W_partial <- text_tidy_corrs %>%
 ggplot(all_es_tidy2, aes(x = mean_prop_distinct_occs,
                     y = es_iat_sex_age_order_implicit_resid)) +
   geom_smooth(method = "lm", alpha = .1) +
-  geom_text_repel(aes(label = language_code), size = 3) +
-  geom_point() +
+  geom_text_repel(aes(label = language_code)) +
+  geom_point(size = 2) +
   theme_classic() +
   ggtitle("Behavioral Gender Bias and \nLexicalized Gender") +
   ylab("Behavioral IAT Gender Bias \n(residualized)") +
@@ -295,12 +215,13 @@ Finally, we examined the relationship between gender bias in language statistics
 ```{r fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of mean gender bias of words referring to occupations, with each point corresponding to a language (Study 2). Linguistic biases are estimated from models trained on text in each language from a subtitle corpus (left) and a Wikipedia corpus (right)."}
 # plot lang vs behavioral
 all_es_tidy2 %>%
-  select(language_code, subt_occu_semantics, wiki_occu_semantics,
+  select(language_code, subt_occu_semantics_fm,
+         wiki_occu_semantics_fm,
          es_iat_sex_age_order_implicit_resid) %>%
   gather("model", "occ_lang_es", -language_code,
          -es_iat_sex_age_order_implicit_resid) %>%
-  mutate(model = fct_recode(model, "Subtitle Embeddings" = "subt_occu_semantics",
-                                   "Wikipedia Embeddings" = "wiki_occu_semantics")) %>%
+  mutate(model = fct_recode(model, "Subtitle Embeddings" = "subt_occu_semantics_fm",
+                                   "Wikipedia Embeddings" = "wiki_occu_semantics_fm")) %>%
   ggplot(aes(x = occ_lang_es, y = es_iat_sex_age_order_implicit_resid)) +
   facet_wrap( . ~ model) +
   geom_smooth(method = "lm", alpha = .1, size = .9) +

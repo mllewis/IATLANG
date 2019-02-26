@@ -10,6 +10,9 @@ OUTFILE_WORD_LANGUAGE <- here('data/study2/occupation_gender_scores_by_word.csv'
 LANG_CODE_PATH <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
 INFILE <- here('data/study2/occupation_translations_tidy.csv')
 
+NATIVE_SPEAKER_LANGS <- c("he", "fr", "es", "de", "da", "ms", "pl", "pt",
+                          "hr", "en", "zh", "ko", "nl")
+
 tidy_clean_occs <- read_csv(INFILE) 
 
 wide_occs <- tidy_clean_occs %>%
@@ -42,10 +45,22 @@ by_item_lang_scores_tidy <- by_item_lang_scores %>%
 write_csv(by_item_lang_scores_tidy, OUTFILE_WORD_LANGUAGE)
 
 # get score by language
-by_lang_scores_tidy <- by_item_lang_scores_tidy %>%
+by_lang_scores <- by_item_lang_scores_tidy %>%
   group_by(language_code) %>%
   summarize(mean_prop_overlap_occs = mean(mean_overlap)) %>%
   arrange(mean_prop_overlap_occs)
+
+# average across sr and hr
+hr_new_occ <- mean(c(filter(by_lang_scores, language_code == "hr") %>% pull(mean_prop_overlap_occs),
+                     filter(by_lang_scores, language_code == "sr") %>%  pull(mean_prop_overlap_occs)))
+
+by_lang_scores_tidy <- by_lang_scores %>%
+  mutate(mean_prop_overlap_occs = case_when(language_code == "hr" ~ hr_new_occ,
+                                            TRUE ~ mean_prop_overlap_occs),
+         native_translator = case_when(language_code %in% NATIVE_SPEAKER_LANGS ~ "native",
+                                       TRUE ~ "nonnative")) %>%
+  filter(language_code != "sr")  %>%
+  mutate(mean_prop_distinct_occs = 1 - mean_prop_overlap_occs)
 
 write_csv(by_lang_scores_tidy, OUTFILE_LANGUAGE)
 
