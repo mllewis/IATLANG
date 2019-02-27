@@ -11,7 +11,7 @@
 
 <meta name="author" content="Molly Lewis" />
 
-<meta name="date" content="2019-02-26" />
+<meta name="date" content="2019-02-27" />
 
 <title>Mediation analyses of Study 2 Occupation data</title>
 
@@ -204,7 +204,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Mediation analyses of Study 2 Occupation data</h1>
 <h4 class="author"><em>Molly Lewis</em></h4>
-<h4 class="date"><em>2019-02-26</em></h4>
+<h4 class="date"><em>2019-02-27</em></h4>
 
 </div>
 
@@ -213,6 +213,7 @@ $(document).ready(function () {
 <li><a href="#mediation-models">Mediation models</a></li>
 <li><a href="#formal-tests-of-mediation">Formal tests of mediation</a></li>
 <li><a href="#wiki-models">Wiki models</a></li>
+<li><a href="#occupation-as-mediator">Occupation as mediator</a></li>
 </ul>
 </div>
 
@@ -241,6 +242,7 @@ all_es_tidy2 &lt;- full_join(by_lang_scores_tidy, iat_behavioral_es) %&gt;%
   left_join(occupation_semantics)  %&gt;%
   mutate_if(is.numeric, scale) %&gt;%
   select(subt_occu_semantics_fm, 
+         wiki_occu_semantics_fm,
          median_country_age, 
          es_iat_sex_age_order_implicit_resid, 
          mean_prop_distinct_occs) %&gt;%
@@ -367,11 +369,11 @@ all_es_tidy2 %&gt;%
 ## 
 ## Indirect effect (ab path):
 ##                         Data   Boot
-## subt_occu_semantics_fm 0.253 0.2918
+## subt_occu_semantics_fm 0.253 0.2964
 ## 
 ## 95 percent confidence interval:
 ##                          Lower  Upper
-## subt_occu_semantics_fm -0.1431 0.7804
+## subt_occu_semantics_fm -0.1617 0.7529
 ## 
 ## Number of bootstrap replicates: 5000</code></pre>
 <p>With age as a covariate</p>
@@ -386,11 +388,11 @@ all_es_tidy2 %&gt;%
 ## 
 ## Indirect effect (ab path):
 ##                          Data   Boot
-## subt_occu_semantics_fm 0.2431 0.2475
+## subt_occu_semantics_fm 0.2431 0.2507
 ## 
 ## 95 percent confidence interval:
 ##                          Lower  Upper
-## subt_occu_semantics_fm -0.1953 0.7735
+## subt_occu_semantics_fm -0.1728 0.7796
 ## 
 ## Number of bootstrap replicates: 5000</code></pre>
 </div>
@@ -470,6 +472,70 @@ multilevel::sobel(pred = all_es_tidy4$mean_prop_distinct_occs ,
 ## 
 ## $N
 ## [1] 24</code></pre>
+<p>Same set of languages as subtitles</p>
+<pre class="r"><code>multilevel::sobel(pred = all_es_tidy2$mean_prop_distinct_occs , 
+                  med = all_es_tidy2$wiki_occu_semantics_fm,
+                  out = all_es_tidy2$es_iat_sex_age_order_implicit_resid)</code></pre>
+<pre><code>## $`Mod1: Y~X`
+##               Estimate Std. Error   t value  Pr(&gt;|t|)
+## (Intercept) 0.04075237  0.1783227 0.2285316 0.8218092
+## pred        0.49026352  0.1768870 2.7716192 0.0125780
+## 
+## $`Mod2: Y~X+M`
+##                Estimate Std. Error    t value   Pr(&gt;|t|)
+## (Intercept) 0.008839346  0.1514596 0.05836107 0.95414156
+## pred        0.048667040  0.2157689 0.22555164 0.82423941
+## med         0.623619966  0.2192678 2.84410208 0.01121303
+## 
+## $`Mod3: M~X`
+##               Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) 0.05117383  0.1623644 0.3151789 0.7562504379
+## pred        0.70811793  0.1610572 4.3966851 0.0003480059
+## 
+## $Indirect.Effect
+## [1] 0.4415965
+## 
+## $SE
+## [1] 0.1849213
+## 
+## $z.value
+## [1] 2.388024
+## 
+## $N
+## [1] 20</code></pre>
+</div>
+<div id="occupation-as-mediator" class="section level2">
+<h2>Occupation as mediator</h2>
+<pre class="r"><code>multilevel::sobel(med = all_es_tidy2$mean_prop_distinct_occs , 
+                  pred = all_es_tidy2$subt_occu_semantics_fm,
+                  out = all_es_tidy2$es_iat_sex_age_order_implicit_resid)</code></pre>
+<pre><code>## $`Mod1: Y~X`
+##              Estimate Std. Error   t value    Pr(&gt;|t|)
+## (Intercept) 0.1185384  0.1652453 0.7173483 0.482365468
+## pred        0.5665412  0.1695381 3.3416746 0.003631153
+## 
+## $`Mod2: Y~X+M`
+##               Estimate Std. Error   t value  Pr(&gt;|t|)
+## (Intercept) 0.09158348  0.1726561 0.5304386 0.6026687
+## pred        0.43643040  0.2602769 1.6767930 0.1118734
+## med         0.16988941  0.2548199 0.6667039 0.5139089
+## 
+## $`Mod3: M~X`
+##              Estimate Std. Error  t value     Pr(&gt;|t|)
+## (Intercept) 0.1586617  0.1552625 1.021893 0.3203701708
+## pred        0.7658557  0.1592960 4.807753 0.0001409921
+## 
+## $Indirect.Effect
+## [1] 0.1301108
+## 
+## $SE
+## [1] 0.1970227
+## 
+## $z.value
+## [1] 0.6603845
+## 
+## $N
+## [1] 20</code></pre>
 </div>
 
 

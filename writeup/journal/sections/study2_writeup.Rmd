@@ -20,7 +20,7 @@ Thus, in Study 2, we asked whether languages that make gender distinctions more 
 We identified 20 words referring to occupations that were relatively common
 <!-- are they? "sailor" is not especially high-frequency--> 
 <!--[ML] we tried to select ones we thought all languages would have clear tranlstations for--> 
- and balanced for their perceptions of gender bias in the workforce, on the basis of previously-collected gender perception norms  [@misersky2014norms]. We then translated these words into each of the 26 
+ and balanced for their perceptions of gender bias in the workforce, on the basis of previously-collected gender perception norms  [@misersky2014norms]. We then translated these words into each of the 25 
  <!-- cf. 25 languages in study 1. are all 26 included here?--> 
  <!--[ML] Zulu is the language in question gere. We have translations for the occupation words in Zulu based on an online dictionary, but we don't have any of the language embedding measures (in Study 1b or 2). Maybe we should just exclude Zulu throughout for consistency?--> languages in our sample, distinguishing between male and female variants (e.g., "waiter" vs. "waitress") where present. The words were translated by consulting native speakers and dictionaries as necessary.
 
@@ -32,7 +32,7 @@ To estimate the extent to which a language lexically encoded gender, we calculat
 ```{r by_language_data}
 # occupation form overlap by language
 OCCUPATION_OVERLAP_PATH <- here('data/study2/occupation_gender_scores.csv')
-by_lang_scores_tidy <- read_csv(OCCUPATION_OVERLAP_PATH)
+by_lang_scores_tidy <- read_csv(OCCUPATION_OVERLAP_PATH) 
 
 # Occupation semantics by language
 BY_LANGUAGE_OCCUPATION_PATH  <- here("data/study2/occupation_gender_score_by_language.csv")
@@ -66,10 +66,11 @@ all_es_tidy2 <- full_join(by_lang_scores_tidy, iat_behavioral_es) %>%
  # left_join(theoretical_gender) %>%
   left_join(iat_lang_es)  %>%
   left_join(occupation_semantics)  %>%
-  left_join(language_names)
+  left_join(language_names) %>%
+  filter(language_code != "zu") # exclude zulu as in study 1b
 ```
 
-```{r, fig.pos = "!t!", fig.height = 4, fig.width = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of the proportion of gender-distinct labels for set of words referring to occupations. Error bands indicate standard error of the model estimate."}
+```{r, fig.pos = "!t!", fig.height = 4, fig.width = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of the proportion of gender-distinct labels for set of words referring to occupations. Error band indicates standard error of the linear model estimate."}
 
 distinct_behavior_corr <- cor(all_es_tidy2$mean_prop_distinct_occs,
      all_es_tidy2$es_iat_sex_age_order_implicit_resid) %>%
@@ -204,7 +205,7 @@ GN_OB_W <- text_tidy_corrs %>%
   pull(r_print_text)
 ```
 
-```{r fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of mean gender bias of words referring to occupations, with each point corresponding to a language (Study 2). Linguistic biases are estimated from models trained on text in each language from a subtitle corpus (left) and a Wikipedia corpus (right)."}
+```{r fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of mean gender bias of words referring to occupations, with each point corresponding to a language (Study 2). Linguistic biases are estimated from models trained on text in each language from a subtitle corpus (left) and a Wikipedia corpus (right). Error bands indicates standard error of the linear model estimate."}
 # plot lang vs behavioral
 all_es_tidy2 %>%
   select(language_name, subt_occu_semantics_fm,
