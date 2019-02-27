@@ -1,6 +1,9 @@
 ---
 title             : "Language use shapes cultural stereotypes: Large scale evidence from gender"
 shorttitle        : "Language use shapes cultural stereotypes"
+header-includes: #allows you to add in your own Latex packages
+- \usepackage{float} #use the 'float' package
+- \floatplacement{figure}{t} #make every figure with caption = t
 
 author: 
   - name          : "Molly Lewis"
@@ -53,7 +56,9 @@ source(here("writeup/journal/helpers/psych_to_mat.R"))
 ```{r analysis-preferences}
 set.seed(42) # Seed for random number generation
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed, 
-                      warning = F, cache = F)
+                      warning = F, 
+                      cache = F, 
+                      fig.pos = "t!")
 ```
 
 # Introduction
