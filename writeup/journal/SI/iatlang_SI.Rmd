@@ -40,6 +40,8 @@ This document was created from an R markdown file. The manuscript itself was als
 
 # Description of IAT data
 
+As described in the Main Text, the IAT data come from Project Implicit (https://implicit.harvard.edu/implicit/; Nosek, Banaji, & Greenwald, 2002), for a sample collected 2005 - 2016.
+
 ## Demographics{.tabset}
 ### N by country
 
@@ -53,10 +55,11 @@ country_ns_final <- participant_df %>%
 ```
 Number of participants by country after exclusions. Our final sample `r format(nrow(participant_df), big.mark=",")` participants from `r nrow(country_ns_final)` countries. Participants were exclude who:
 
-* did not have complete gender, country, age, and implicit IAT measures (PERCENT)
-* were from countries with less than 400 participants (in the  "Correlations by language exclusion threshold" section below we show analyses with a range of threshold values)
-* had average latencies for either critical block were over 1,800 ms or whose average overall latency was above 1,500 ms (as in Nosek, Banaji, & Greenwald, 2002; PERCENT)
-* made excess of 25% errors in any single critical block (as in Nosek, Banaji, & Greenwald, 2002; PERCENT). 
+* did not have complete gender, country, age, and implicit IAT measures (53%; the majority of these exclusions (69%) are due to missing IAT data - likely cases where the participant started but did not complete the IAT task).
+* had average latencies for either critical block were over 1,800 ms or whose average overall latency was above 1,500 ms (as in Nosek, Banaji, & Greenwald, 2002; 5% of participants with complete data).
+* made excess of 25% errors in any single critical block (as in Nosek, Banaji, & Greenwald, 2002; 14% of participants with complete data). 
+* were from countries with less than 400 participants (1% of remaining participants; in the  "Correlations by language exclusion threshold" section below we show analyses with a range of threshold values)
+
 
 ```{r, fig.cap = "Note: Data from the US are excluded from this plot because of the large number of participants (N =  638,082)."}
 country_ns_final %>%
@@ -130,7 +133,7 @@ country_ages_with_median %>%
 
 
 ### Language by country
-For each country, we identified the language with the most speakers using Ethnologue (CITATION). Note that Ethnologue reports "Bavarian" as the primary language of Germany, and "Daric" as the primary language of Afghanistan. In order to map between the other data sources in our study, we used the more general language variant for these countries, German and Persian, respectively. In Section 3 below, rather than assume each country has a single language, we estimate language level biases for each country by weighting by the number of speakers in each country.
+For each country, we identified the language with the most speakers using Ethnologue (Simons & Charles, 2018). Note that Ethnologue reports "Bavarian" as the primary language of Germany, and "Daric" as the primary language of Afghanistan. In order to map between the other data sources in our study, we used the more general language variant for these countries, German and Persian, respectively. 
 
 ```{r}
 COUNTRY_TO_LANG <- "data/top_lang_by_country_ethnologue.csv"
@@ -148,11 +151,11 @@ datatable(country_to_lang_tidy, colnames = c("Country", "Language"),
   columnDefs = list(list(width = '200px'))
 ))
 ```
-Asterisks correspond to languages that were excluded from our analysis because native speakers were not available.
+Asterisks correspond to languages that were excluded from our analysis because word embedding models were unavailable.
 
 ## Dependent Measures{.tabset}
 
-Below are histograms for the implicit and explicit measures in the IAT Project Implicit data presented for each country separately. The implicit raw scores are the D-score values (estimate of gender bias, with postive values indicating strong bias to associate men with career), and the residualized values are the D-scores with participant age, sex and trial order residualized out. For the explicit measure, the raw score is the difference between participants answer to the question,  “How strongly do you associate the following with males and females?” for the words “career” and for the word "family". Participants indicated their response on a Likert scale ranging from female (1) to male (7). For each participant, a single explicit score was calculated as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family. The residualized explicit value is the difference score with participant age, sex and trial order residualized out (we had no a priori reason for residualizing out trial order for explicit responses but did so to remain consistent with the residualized implicit measure).
+Below are histograms for the implicit and explicit measures in the IAT Project Implicit data presented for each country separately. The implicit raw scores are the D-score values (estimate of gender bias, with postive values indicating strong bias to associate men with career), and the residualized values are the D-scores with participant age, participant sex and trial order residualized out. For the explicit measure, the raw score is the difference between participants answer to the question,  “How strongly do you associate the following with males and females?” for the words “career” and for the word "family". Participants indicated their response on a Likert scale ranging from female (1) to male (7). For each participant, a single explicit score was calculated as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family. The residualized explicit value is the difference score with participant age, participant sex and trial order residualized out (we had no a priori reason for residualizing out trial order for explicit responses but did so to remain consistent with the residualized implicit measure).
 
 ### Implicit
 
@@ -417,7 +420,7 @@ gender_bias_es_gn_sub <- filter(all_es_sub, study_name == "gender-bias-career-fa
 
 ```
 
-Here we replicate the original set of Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) findings using the models trained on the corpora used in our paper, English Wikipedia and Subtitles.
+Here we replicate the original set of Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) findings using the models trained on the corpora used in our paper, English Wikipedia (Bojanowski, Grave, Joulin, & Mikolov, 2016) and Subtitles (Lison & Tiedemann, 2016; Van Paridon & Thompson, in prep.).
 
 For both the Wikipedia and Subtitle trained models, we calculate an effect size for each of the 10 biases reported in CBN which correspond to behavioral IAT results existing in the literature:   flowers/insects--pleasant/unpleasant, instruments/weapons--pleasant/unpleasant, European-American/Afro-American--pleasant/unpleasant, males/females--career/family, math/arts--male/female, science/arts--male/female, mental-disease/physical-disease--permanent/temporary, and young/old--pleasant/unpleasant (labeled as Word-Embedding Association Test (WEAT) 1-10 in CBN). Note that CBN test three versions of race bias. We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous to the behavioral effect size measure  where larger values indicate larger gender bias.
 
@@ -490,7 +493,7 @@ ggplot(all_es_sub, aes(x = sub,
 * what does it look like when you change this criteria
 
 # Correlations by language exclusion threshold
-In the main text, we report behavioral IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the main text remains broadly the same when larger thresholds of minimum number of participants per country are used. The plot below shows pairwise correlations between the language bias measures and three behavioral/objective measures: Residualized behavorial IAT, residualized explicit IAT, and percent women in STEM. As in the main text, the residualized values are participant age, sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the p-value of the pairwise Pearson's _r_ coefficient.
+In the main text, we report behavioral IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the main text remains broadly the same when larger thresholds of minimum number of participants per country are used. The plot below shows pairwise correlations between the language bias measures and three behavioral/objective measures: Residualized behavorial IAT, residualized explicit IAT, and percent women in STEM. As in the main text, the residualized values are participant age, participant sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the p-value of the pairwise Pearson's _r_ coefficient.
 
 ```{r, fig.width = 9, fig.height = 5}
 exclusions_df <- "data/corrs_by_exclusions.csv"
@@ -543,7 +546,7 @@ corr_exclusions_tidy %>%
 
 # Study 2 Items
 
-In Study 2, we select 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicate occpuation is perceived as more closely associated with women).
+In Study 2, we select 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicate occupation is perceived to be more closely associated with women).
 
 ```{r }
 STUDY2_WORD_ITEMS <- "data/occupation_gender_scores_by_word.csv"
@@ -577,9 +580,17 @@ datatable(misersky_norms, colnames = c("Occupation",
 
 **References**
 
+Bojanowski, P., Grave, E., Joulin, A., & Mikolov, T. (2016). Enriching word vectors with subword information.
+
 Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). Semantics derived automatically from language corpora contain human-like biases. _Science_, _356_(6334), 183–186.
+
+Lison, P., & Tiedemann, J. (2016). OpenSubtitles2016: Extracting large parallel corpora from movie and TV subtitles. In _Proceedings of the 10th International Conference on Language Resources and Evaluation_.
 
 Misersky, J., Gygax, P. M., Canal, P., Gabriel, U., Garnham, A., Braun, F., . . . others. (2014). Norms on the gender perception of role nouns in Czech, English, French, German, Italian, Norwegian, and Slovak. _Behavior Research Methods_, _46_(3), 841–871.
 
 Nosek, B. A., Banaji, M. R., & Greenwald, A. G. (2002). Harvesting implicit group attitudes and beliefs from a demonstration web site. _Group Dynamics: Theory, Research, and Practice_, _6_(1), 101.
+
+Simons, G. F., & Charles, D. F. (Eds.). (2018). Ethnologue: Languages of the world. Dallas,Texas: Online version: http://www.ethnologue.com. SIL International.
+
+Van Paridon, J., & Thompson, B. (in prep.). Sub2Vec: Word embeddings from opensubtitles in 62 languages.
 

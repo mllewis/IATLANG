@@ -23,8 +23,8 @@ data_for_SI <-
 
 copy_to_si_dir <- function(old_filepath) {
   current_file <- read_csv(old_filepath)
-  new_file_path <- paste0("data/", tail(str_split(old_filepath, "/")[[1]],1))
-  write_csv(current_file, new_file_path)
+  new_file_path <- paste0("writeup/journal/SI/data/", tail(str_split(old_filepath, "/")[[1]],1))
+  write_csv(current_file, here(new_file_path))
 }
 
 walk(data_for_SI, copy_to_si_dir)

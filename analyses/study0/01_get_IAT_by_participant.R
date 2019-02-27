@@ -28,7 +28,7 @@ raw_iat_behavioral <- read_feather(RAW_IAT_PATH) %>%
   select(D_biep.Male_Career_all,sex, countryres, PCT_error_3467, 
          Mn_RT_all_3467, Mn_RT_all_3, Mn_RT_all_4, Mn_RT_all_6, 
          Mn_RT_all_7, assocareer, assofamily, N_ERROR_3, N_ERROR_4,
-         N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7,  age, edu_14, Order) %>%
+         N_ERROR_6, N_ERROR_7, N_3, N_4, N_6, N_7, age, edu_14, Order) %>%
   rename(overall_iat_D_score = D_biep.Male_Career_all,
          education = edu_14, 
          order = Order) %>%
@@ -47,28 +47,42 @@ raw_iat_behavioral_complete <- raw_iat_behavioral %>%
          !is.na(overall_iat_D_score)) 
          #!is.na(explicit_dif))
 
+pro_complete_data <- 1 - nrow(raw_iat_behavioral_complete)/nrow(raw_iat_behavioral)
+
 # do behavioral_exclusions
 # same exclusions as Nosek, Banjali, & Greenwald (2002), pg. 104. 
-iat_behavioral_filtered <- raw_iat_behavioral_complete %>%
-  filter(Mn_RT_all_3467 <= 1500, # RTs
+# RTs
+iat_behavioral_filtered_rt <- raw_iat_behavioral_complete %>%
+  filter(Mn_RT_all_3467 <= 1500, 
          Mn_RT_all_3 <= 1800,
          Mn_RT_all_4 <= 1800,
          Mn_RT_all_6 <= 1800,
-         Mn_RT_all_7 <= 1800) %>%
-  filter(N_ERROR_3/N_3 <=.25, # errors
-         N_ERROR_4/N_4 <=.25,
-         N_ERROR_6/N_6 <=.25,
-         N_ERROR_7/N_7 <=.25)
+         Mn_RT_all_7 <= 1800) 
+
+prop_RT_exclusions <-  1 - nrow(iat_behavioral_filtered_rt)/nrow(raw_iat_behavioral_complete)
+
+# errors
+iat_behavioral_filtered <- iat_behavioral_filtered_rt %>%
+  filter(N_ERROR_3/N_3 <= .25,
+         N_ERROR_4/N_4 <= .25,
+         N_ERROR_6/N_6 <= .25,
+         N_ERROR_7/N_7 <= .25)
+
+prop_error_exclusions <-  1 - nrow(iat_behavioral_filtered)/nrow(raw_iat_behavioral_complete)
 
 # filter to only those countries with enough data 
 country_ns <- iat_behavioral_filtered %>%
   count(country_code)  %>%
   filter(n >= MIN_PARTICIPANTS_PER_COUNTRY) %>%
   arrange(n) 
-iat_behavioral_filtered_dense_country <- raw_iat_behavioral_complete %>%
+
+iat_behavioral_filtered_dense_country <- iat_behavioral_filtered %>%
   select(overall_iat_D_score, sex, log_age, education, order, 
          explicit_dif, explicit_dif, country_name, country_code) %>%
   filter(country_code %in% country_ns$country_code) 
+
+prop_error_country <-  1 - nrow(iat_behavioral_filtered_dense_country)/nrow(iat_behavioral_filtered)
+
 
 # add residuals - residualizing out sex, order, and age
 mod1 <- lm(explicit_dif ~ as.factor(sex) + log_age + as.factor(order), data = iat_behavioral_filtered_dense_country)
