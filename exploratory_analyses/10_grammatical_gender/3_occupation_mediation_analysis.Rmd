@@ -1,0 +1,146 @@
+---
+title: Mediation analyses of Study 2 Occupation data
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(langcog)
+library(here)
+library(modelr)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+
+
+```{r by_language_data}
+# occupation form overlap by language
+OCCUPATION_OVERLAP_PATH <- here('data/study2/occupation_gender_scores.csv')
+by_lang_scores_tidy <- read_csv(OCCUPATION_OVERLAP_PATH)
+
+# Occupation semantics by language
+BY_LANGUAGE_OCCUPATION_PATH  <- here("data/study2/occupation_gender_score_by_language.csv")
+occupation_semantics <- read_csv(BY_LANGUAGE_OCCUPATION_PATH) 
+
+# Behavioral IAT by languages measure
+BEHAVIORAL_IAT_PATH <- here("data/study0/processed/by_language_df.csv")
+iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
+  rename(language_code = "wiki_language_code") %>%
+  select(language_code, median_country_age, 
+         prop_male,log_age, es_iat_sex_age_order_explicit_resid,
+         es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017, n_participants)
+
+LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
+iat_lang_es <- read_csv(LANG_IAT_PATH)
+
+all_es_tidy2 <- full_join(by_lang_scores_tidy, iat_behavioral_es) %>%
+  left_join(iat_lang_es)  %>%
+  left_join(occupation_semantics)  %>%
+  mutate_if(is.numeric, scale) %>%
+  select(subt_occu_semantics_fm, 
+         median_country_age, 
+         es_iat_sex_age_order_implicit_resid, 
+         mean_prop_distinct_occs) %>%
+  drop_na()
+```
+
+
+### Mediation models
+Here are the models for the classic mediation test (subtitle models)
+
+y ~ x
+```{r mediation}
+lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs, 
+  data = all_es_tidy2) %>%
+  summary()
+```
+
+ m ~ x
+```{r}
+lm(subt_occu_semantics_fm ~ mean_prop_distinct_occs, 
+  data = all_es_tidy2) %>%
+  summary()
+```
+
+y ~ x + m
+```{r}
+lm(es_iat_sex_age_order_implicit_resid ~  mean_prop_distinct_occs +
+     subt_occu_semantics_fm, 
+  data = all_es_tidy2) %>%
+  summary()
+``` 
+
+### Formal tests of mediation
+
+#### Sobel test
+```{r}
+multilevel::sobel(pred = all_es_tidy2$mean_prop_distinct_occs, 
+      med = all_es_tidy2$subt_occu_semantics_fm,
+      out = all_es_tidy2$es_iat_sex_age_order_implicit_resid)
+```
+
+
+#### Bootstrap 
+```{r}
+library(robmed)
+
+all_es_tidy2 %>%
+  fit_mediation(
+    x = "mean_prop_distinct_occs",
+    y = "es_iat_sex_age_order_implicit_resid",
+    m = "subt_occu_semantics_fm") %>%
+   test_mediation() 
+```
+
+With age as a covariate
+```{r}
+all_es_tidy2 %>%
+  fit_mediation(
+    x = "mean_prop_distinct_occs",
+    y = "es_iat_sex_age_order_implicit_resid",
+    m = "subt_occu_semantics_fm",
+    covariates = "median_country_age") %>%
+   test_mediation()
+```
+
+
+## Wiki models
+```{r}
+all_es_tidy3 <- full_join(by_lang_scores_tidy, iat_behavioral_es) %>%
+  left_join(iat_lang_es)  %>%
+  left_join(occupation_semantics)  %>%
+  select(wiki_occu_semantics_fm,
+         median_country_age, 
+         es_iat_sex_age_order_implicit_resid, 
+         mean_prop_distinct_occs,
+         language_code) 
+
+multilevel::sobel(pred = all_es_tidy3$mean_prop_distinct_occs , 
+                  med = all_es_tidy3$wiki_occu_semantics_fm,
+                  out = all_es_tidy3$es_iat_sex_age_order_implicit_resid)
+```
+
+No effect, but if you exclude hindi, there is:
+```{r}
+
+
+all_es_tidy4 <- all_es_tidy3 %>%
+  filter(!(language_code %in% c("hi")))
+
+multilevel::sobel(pred = all_es_tidy4$mean_prop_distinct_occs , 
+                  med = all_es_tidy4$wiki_occu_semantics_fm,
+                  out = all_es_tidy4$es_iat_sex_age_order_implicit_resid)
+```

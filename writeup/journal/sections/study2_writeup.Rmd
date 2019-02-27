@@ -8,8 +8,7 @@ library(broom)
 
 # Study 2: Gender bias and lexicalized gender
 
-If the correlation between 
-language statistics play a causal role in shaping psychological gender biases, we predicted that those statistics would be influenced by the presence of explictly-marked gender distinctions referring to people. Languages make gender distinctions on words referring to people in order to indicate the biological sex of the referent, as in  "waiter" versus "waitress" in English. We hypothesized that the presence of these kinds of distinctions might *lead to* more gender biased language statistics for those words. This prediction is a stronger test of the language-as-causal hypothesis because these gender markings are fossilized as part of the lexicon, and thus less likely to be caused by people's gender biases. 
+If language statistics play a causal role in shaping psychological gender biases, we predicted that those statistics would be influenced by the presence of explictly-marked gender distinctions referring to people. Languages make gender distinctions on words referring to people in order to indicate the biological sex of the referent, as in  "waiter" versus "waitress" in English. We hypothesized that the presence of these kinds of distinctions might *lead to* more gender biased language statistics for those words. This prediction is a stronger test of the language-as-causal hypothesis because these gender markings are fossilized as part of the lexicon, and thus less likely to be caused by people's gender biases. 
 
 Languages can mark gender distinctions on words referring to people either as part of a  grammatical gender system, as in Spanish ("enfermero" (nurse-<span style="font-variant:small-caps;">masc</span>) versus "enfermera" (nurse-<span style="font-variant:small-caps;">fem</span>)), or through idiosyncratic marking on particular nouns (e.g., "waiter" versus "waitress" in English). Languages that have grammatical gender systems make gender distinctions more frequently, since it is an obligatory part of the grammar.  Further, languages that mark gender on the noun tend to mark gender on other arguments in the sentence as part of an agreement system (“el enfermo alto” (the tall nurse-<span style="font-variant:small-caps;">masc</span>) versus “la enferma alta” (the tall nurse-<span style="font-variant:small-caps;">fem</span>)), potentially making the reference to biological sex even more salient to speakers.
 
@@ -87,7 +86,12 @@ GN_B_partial <- text_tidy_corrs %>%
 # Note: full table produced in study1_writeup
 ```
 
-```{r, fig.pos = "!t!", fig.height = 3.5, fig.width = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of the proportion of gender-netural labels for set of words referring to occupations. Error bands indicate standard error of the model estimate."}
+```{r, fig.pos = "!t!", fig.height = 3.5, fig.width = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of the proportion of gender-distinct labels for set of words referring to occupations. Error bands indicate standard error of the model estimate."}
+
+distinct_behavior_corr <- cor(all_es_tidy2$mean_prop_distinct_occs,
+     all_es_tidy2$es_iat_sex_age_order_implicit_resid) %>%
+  round(2)
+
 # implicit behavioral ~ prop distinct
 ggplot(all_es_tidy2, aes(x = mean_prop_distinct_occs,
                     y = es_iat_sex_age_order_implicit_resid)) +
@@ -98,15 +102,16 @@ ggplot(all_es_tidy2, aes(x = mean_prop_distinct_occs,
   ggtitle("Behavioral Gender Bias and \nLexicalized Gender") +
   ylab("Behavioral IAT Gender Bias \n(residualized)") +
   xlab("Proportion Gender-Distinct Occupation Labels") +
+   annotate("text", x = .75, y = -.05, label = 
+             paste0("r = ", distinct_behavior_corr), 
+           color = "red", size = 4) +
   theme(legend.position = "none",
-        text = element_text(size = 12),
+        text = element_text(size = 10),
         axis.text.y = element_text(angle = 90, hjust = 0.5, size = 12))
 ```
 
 
 <!-- Positive relationships are easier to interpret than negative ones, so I switched the polarity in the caption; please adjust figure to match -->
-
-
 <!-- [ML] Fixed. ] -->
 
 Languages with more distinct forms for male and female referents tended to have speakers with higher psychological gender bias (_M_ = `r  mean(all_es_tidy2$mean_prop_distinct_occs)`, _SD_ = `r  sd(all_es_tidy2$mean_prop_distinct_occs)`; `r GN_B`), even after partialling out the effect of median country age (`r GN_B_partial`; Table 1).
@@ -192,25 +197,9 @@ B_OB_W_partial <- text_tidy_corrs %>%
  # summary()
 ```
 
-```{r, fig.pos = "!t!", fig.height = 3.5, fig.width = 4, fig.cap = "Residualized behavioral IAT gender bias as a function of the proportion of meanings with gender-distinct labels for set of words referring to occupations. Error bands indicate standard error of the model estimate.", include = F}
-# implicit behavioral ~ prop disinct
-ggplot(all_es_tidy2, aes(x = mean_prop_distinct_occs,
-                    y = es_iat_sex_age_order_implicit_resid)) +
-  geom_smooth(method = "lm", alpha = .1) +
-  geom_text_repel(aes(label = language_code)) +
-  geom_point(size = 2) +
-  theme_classic() +
-  ggtitle("Behavioral Gender Bias and \nLexicalized Gender") +
-  ylab("Behavioral IAT Gender Bias \n(residualized)") +
-  xlab("Proportion Gender-Neutral Occupation Labels") +
-  theme(legend.position = "none",
-        text = element_text(size = 12),
-        axis.text.y = element_text(angle = 90, hjust = 0.5, size = 12))
-```
 
-
-Finally, we examined the relationship between gender bias in language statistics and psychological gender bias at the level of languages. Unlike in Study 1, all the target words in the present study referred to people (occupations) and thus potentially could be  marked for the gender of the referenced person. Consequently, if explicit gender marking drives language statistics, we should expect to see a strong positive relationship at the level of languages between bias in language statistics _for occupation words_ and behavioral biases of speakers of that langauge. Consistent with this prediction, gender bias in language statistics for occpuation words was positively correlated with behavioral gender bias for both language models
-(Subtitle corpus: `r B_OB_S`; Wikipedia corpus: `r B_OB_W`), and remained reliable after partialling out the effect of median country age (Subtitle corpus: `r B_OB_S_partial`; Wikipedia corpus: `r B_OB_W_partial`; Figure 4). To examine the relative predictive power of gender bias in language statistics and proportion form overlap, we fit a linear regression predicting behavioral gender bias with both measures, controlling for median country age. Bias in language statistics did not reliably predict explicit gender bias. [MEDIATION MODEL]
+Finally, we examined the relationship between gender bias in language statistics and psychological gender bias at the level of languages. Unlike in Study 1, all the target words in the present study referred to people (occupations) and thus potentially could be  marked for the gender of the referenced person. Consequently, if explicit gender marking drives language statistics, we should expect to see a strong positive relationship at the level of languages between bias in language statistics _for occupation words_ and behavioral biases of speakers of that language. Consistent with this prediction, gender bias in language statistics for occpuation words was positively correlated with behavioral gender bias for both language models
+(Subtitle corpus: `r B_OB_S`; Wikipedia corpus: `r B_OB_W`), and remained reliable after partialling out the effect of median country age (Subtitle corpus: `r B_OB_S_partial`; Wikipedia corpus: `r B_OB_W_partial`; Figure 4). To examine the relative predictive power of gender bias in language statistics and proportion distinct forms, we fit a linear regression predicting behavioral gender bias with both measures, controlling for median country age. Bias in language statistics did not reliably predict explicit gender bias. [MEDIATION MODEL]
 
 ```{r fig.pos = "!t!", fig.height = 3.5, fig.cap = "Residualized behavioral IAT gender bias as a function of mean gender bias of words referring to occupations, with each point corresponding to a language (Study 2). Linguistic biases are estimated from models trained on text in each language from a subtitle corpus (left) and a Wikipedia corpus (right)."}
 # plot lang vs behavioral
