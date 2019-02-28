@@ -33,7 +33,6 @@ opts_chunk$set(echo = T, message = F, warning = F,
 
 theme_set(theme_classic())
 options(shiny.sanitize.errors = FALSE)
-
 ```  
 
 This document was created from an R markdown file. The manuscript itself was also produced from an R markdown file, and all analyses presented in the paper can be reproduced from that document (https://github.com/mllewis/IATLANG/blob/master/writeup/journal/iat_lang.Rmd). The respository for the project can be found here: https://github.com/mllewis/IATLANG/.
@@ -487,7 +486,7 @@ ggplot(all_es_sub, aes(x = sub,
 ```
 
 # Language exclusions
-
+[to do]
 * 20 percent from *calculated* vectors
 * averaged across multiple translations
 * what does it look like when you change this criteria

@@ -4,6 +4,7 @@ library(here)
 library(ggrepel)
 library(lme4)
 library(broom)
+library(robmed) # bootstrap mediation analysis
 ```
 
 # Study 2: Gender bias and lexicalized gender
@@ -15,7 +16,7 @@ Languages can mark gender distinctions on words referring to people either as pa
 Thus, in Study 2, we asked whether languages that make gender distinctions more often on words referring to people tend to have more biased language statistics for those words.  In this cases,  gender marking highlights the gender of the person and thereby might exaggerate the gender biases present in the language. To test this possibility, we used word embedding models to examine the semantic associates that emerge from language statistics for a set words referring to occupations (e.g., "nurse" and "waiter"). We hypothesized that words referring to occupations that contained lexicalized  gender distinctions would be more likely to have biased language statistics. To the extent that language statistics are causally related to people's implicit biases, we also hypothesized that speakers of languages with  more biased language statistics for these words would also have larger overall psychological gender biases, as measured by the IAT. 
 
 
-### Method
+### Methods
 
 We identified 20 words referring to occupations that were relatively common
 <!-- are they? "sailor" is not especially high-frequency--> 
@@ -24,7 +25,7 @@ We identified 20 words referring to occupations that were relatively common
  <!-- cf. 25 languages in study 1. are all 26 included here?--> 
  <!--[ML] Zulu is the language in question gere. We have translations for the occupation words in Zulu based on an online dictionary, but we don't have any of the language embedding measures (in Study 1b or 2). Maybe we should just exclude Zulu throughout for consistency?--> languages in our sample, distinguishing between male and female variants (e.g., "waiter" vs. "waitress") where present. The words were translated by consulting native speakers and dictionaries as necessary.
 
-To estimate the extent to which a language lexically encoded gender, we calculated the proportion of male and female forms that were identical for each item, and then averaged across items within each language. This measure reflects the degree to which a language marks gender lexically, with larger values indicating more  gender-neutral forms. We also estimated the extent to which each occupation word was gender biased in its language statistics using word embedding models trained. This measure was obtained using the same procedure as in Study 1a and 1b based on models trained on both subtitle and Wikipedia corpora in each language. Larger values indicate greater gender bias (larger difference between associations to females vs. males). We compared these measures to the psychological gender measures described in Study 1b (implicit association bias effect size adjusted for age, sex and block order, and explicit bias score). 
+To estimate the extent to which a language lexically encoded gender, we calculated the proportion of male and female forms that were identical for each item, and then averaged across items within each language. This measure reflects the degree to which a language marks gender lexically, with larger values indicating more  gender-neutral forms. We also estimated the extent to which each occupation word was gender biased in its language statistics using word embedding models trained. This measure was obtained using the same procedure as in Study 1a and 1b based on models trained on both subtitle and Wikipedia corpora in each language. Larger values indicate greater gender bias (larger difference between associations to females vs. males). We compared these measures to the psychological gender measures described in Study 1b (implicit association bias effect size and explicit bias, adjusted for age, sex and block order). 
 
 ### Results
 
@@ -199,6 +200,7 @@ GN_OB_S <- text_tidy_corrs %>%
   filter(rowname ==  "mean_prop_distinct_occs", 
          var2 == "subt_occu_semantics_fm") %>%
   pull(r_print_text)
+
 GN_OB_W <- text_tidy_corrs %>%
   filter(rowname ==  "mean_prop_distinct_occs", 
          var2 == "wiki_occu_semantics_fm") %>%
@@ -215,21 +217,21 @@ all_es_tidy2 %>%
          -es_iat_sex_age_order_implicit_resid) %>%
   mutate(model = fct_recode(model, "Subtitle Embeddings" = "subt_occu_semantics_fm",
                                    "Wikipedia Embeddings" = "wiki_occu_semantics_fm")) %>%
-  ggplot(aes(x = occ_lang_es, y = es_iat_sex_age_order_implicit_resid)) +
-  facet_wrap( . ~ model) +
-  
-  geom_smooth(method = "lm", alpha = .1, size = .9) +
-  geom_text_repel(aes(label = language_name), 
-                           size = 2, box.padding = 0.1) + 
-  geom_point(size = .7) + 
-  theme_minimal() +
-  ggtitle("Behavioral and Linguistic Gender Biases") +
-  ylab("Behavioral IAT Gender Bias (residualized)\n") +
-  xlab("Occupation Gender Bias from Language Statistics") +
-  theme_classic() 
+    ggplot(aes(x = occ_lang_es, y = es_iat_sex_age_order_implicit_resid)) +
+    facet_wrap(. ~ model) +
+    
+    geom_smooth(method = "lm", alpha = .1, size = .9) +
+    geom_text_repel(aes(label = language_name), 
+                             size = 2, box.padding = 0.1) + 
+    geom_point(size = .7) + 
+    theme_minimal() +
+    ggtitle("Behavioral and Linguistic Gender Biases") +
+    ylab("Behavioral IAT Gender Bias (residualized)\n") +
+    xlab("Occupation Gender Bias from Language Statistics") +
+    theme_classic() 
 ```
 
-We next examined whether having distinct forms for males and females in a particular occupation was associated with greater gender bias in the language statistics. <!-- Switched polarity from neg to positive in the text; please adjust  model as necessary so that sign of the effect matches the text and the figure -->  <!-- [ML] Fixed --> We fit a mixed effect model predicting degree of gender bias in language statistics (estimated from word embedding models) as a function of degree of overlap between male and female forms for that word, with random intercepts and slopes by language. Degree of form overlap was a strong predictor of language statistic for models trained on both the subtitle corpus ($\beta$ = `r sub_model_print`) and Wikipedia corpus ($\beta$ = `r wiki_model_print`), with words with shared male and female forms tending to have less gender bias. This relationship also held at the level of languages: languages with more distinct forms had a greater gender-career bias in language statistics (Subtitle corpus: `r GN_OB_S`; Wikipedia corpus: `r GN_OB_W`).
+We next examined whether having distinct forms for males and females in a particular occupation was associated with greater gender bias in the language statistics. <!-- Switched polarity from neg to positive in the text; please adjust  model as necessary so that sign of the effect matches the text and the figure -->  <!-- [ML] Fixed --> We fit a mixed effect model predicting degree of gender bias in language statistics (estimated from word embedding models) as a function of degree of distinctiveness between male and female forms for that word, with random intercepts and slopes by language. Degree of form distinctiveness was a strong predictor of language statistic for models trained on both the Subtitle corpus ($\beta$ = `r sub_model_print`) and Wikipedia corpus ($\beta$ = `r wiki_model_print`), with words with shared male and female forms tending to have less gender bias. This relationship also held at the level of languages: languages with more distinct forms had a greater gender-career bias in language statistics (Subtitle corpus: `r GN_OB_S`; Wikipedia corpus: `r GN_OB_W`).
 
 ```{r behavioral_bias}
 B_OB_S <- text_tidy_corrs %>%
@@ -253,9 +255,136 @@ B_OB_W_partial <- text_tidy_corrs %>%
   pull(partial_print_text)
 ```
 
+Finally, we examined the relationship between gender bias in language statistics and psychological gender bias at the level of languages. Unlike in Study 1, all the target words in the present study referred to people (occupations) and thus potentially could be  marked for the gender of the referenced person. Consequently, if explicit gender marking drives language statistics, we should expect to see a strong positive relationship at the level of languages between bias in language statistics _for occupation words_ and behavioral biases of speakers of that language. Consistent with this prediction, gender bias in language statistics for occupation words were positively correlated with behavioral gender bias for both language models (Subtitle corpus: `r B_OB_S`; Wikipedia corpus: `r B_OB_W`), and remained reliable after partialling out the effect of median country age (Subtitle corpus: `r B_OB_S_partial`; Wikipedia corpus: `r B_OB_W_partial`; Figure 4). 
 
-Finally, we examined the relationship between gender bias in language statistics and psychological gender bias at the level of languages. Unlike in Study 1, all the target words in the present study referred to people (occupations) and thus potentially could be  marked for the gender of the referenced person. Consequently, if explicit gender marking drives language statistics, we should expect to see a strong positive relationship at the level of languages between bias in language statistics _for occupation words_ and behavioral biases of speakers of that language. Consistent with this prediction, gender bias in language statistics for occpuation words was positively correlated with behavioral gender bias for both language models
-(Subtitle corpus: `r B_OB_S`; Wikipedia corpus: `r B_OB_W`), and remained reliable after partialling out the effect of median country age (Subtitle corpus: `r B_OB_S_partial`; Wikipedia corpus: `r B_OB_W_partial`; Figure 4). To examine the relative predictive power of gender bias in language statistics and proportion distinct forms, we fit a linear regression predicting behavioral gender bias with both measures, controlling for median country age. Bias in language statistics did not reliably predict explicit gender bias. [MEDIATION MODEL]
 
+```{r}
+
+all_es_tidy2_scaled <- all_es_tidy2 %>%
+  mutate_if(is.numeric, scale)
+
+wiki_regression <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     wiki_occu_semantics_fm +  
+     median_country_age, 
+   data = all_es_tidy2_scaled) 
+
+
+wiki_pretty_text <- wiki_regression %>%
+  tidy() %>%
+  rename(Beta = estimate, SE = std.error, Z = statistic, p = p.value) %>%
+  mutate_if(is.numeric, ~ round(.,2)) %>%
+  mutate(p = ifelse(p == 0, "<.0001", p),
+         p = ifelse(p == "<.0001", p,  paste0("= ", p)),
+         pretty_model = paste0( Beta, ", _SE_ = ", SE,
+                               ", _Z_ = ", Z, ", _p_ ", p))
+
+wiki_corr <- cor.test(all_es_tidy2_scaled$wiki_occu_semantics_fm,
+                      all_es_tidy2_scaled$mean_prop_distinct_occs) %>%
+  tidy() %>%
+  pull(estimate) %>%
+  round(2)
+
+
+# subt
+subt_regression <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     subt_occu_semantics_fm +  
+     median_country_age, 
+   data = all_es_tidy2_scaled)
+
+subt_pretty_text <- subt_regression %>%
+  tidy() %>%
+  rename(Beta = estimate, SE = std.error, Z = statistic, p = p.value) %>%
+  mutate_if(is.numeric, ~ round(.,2)) %>%
+  mutate(p = ifelse(p == 0, "<.0001", p),
+         p = ifelse(p == "<.0001", p,  paste0("= ", p)),
+         pretty_model = paste0( Beta, ", _SE_ = ", SE,
+                               ", _Z_ = ", Z, ", _p_ ", p))
+
+subt_corr <- cor.test(all_es_tidy2_scaled$subt_occu_semantics_fm,
+                      all_es_tidy2_scaled$mean_prop_distinct_occs) %>%
+  tidy() %>%
+  pull(estimate) %>%
+  round(2)
+
+```
+
+```{r}
+# wiki
+boot_mediation_model_wiki <- all_es_tidy2_scaled %>%
+  fit_mediation(
+    x = "mean_prop_distinct_occs",
+    y = "es_iat_sex_age_order_implicit_resid",
+    m = "wiki_occu_semantics_fm") %>%
+   test_mediation(type = "bca")    # bias-corrected bootstrap
+
+wiki_ab <-  boot_mediation_model_wiki %>%
+  coef() %>%
+  as.list() %>%
+  pluck("ab") %>%
+  round(2)
+
+wiki_p <- round(p_value(boot_mediation_model_wiki),2)
+
+# subt
+boot_mediation_model_subt <- all_es_tidy2_scaled %>%
+  fit_mediation(
+    x = "mean_prop_distinct_occs",
+    y = "es_iat_sex_age_order_implicit_resid",
+    m = "subt_occu_semantics_fm") %>%
+   test_mediation(type = "bca")   
+
+subt_ab <-  boot_mediation_model_subt %>%
+  coef() %>%
+  as.list() %>%
+  pluck("ab") %>%
+  round(2)
+
+subt_p <- round(p_value(boot_mediation_model_subt), 2)
+```
+
+
+To understand the relative predictive power of gender bias in language statistics and proportion distinct forms, we fit an additive linear model predicting implicit behavioral gender bias with both measures, controlling for median country age. Neither bias in language statistics (Wikipedia: $\beta$ =  `r filter(wiki_pretty_text, term == "wiki_occu_semantics_fm") %>% pull(pretty_model)`; Subtitle: $\beta$ = `r filter(subt_pretty_text, term == "subt_occu_semantics_fm") %>% pull(pretty_model)`) nor proportion distinct forms (Wikipedia: $\beta$ =  `r filter(wiki_pretty_text, term == "mean_prop_distinct_occs") %>% pull(pretty_model)`; Subtitle: $\beta$ = `r filter(subt_pretty_text, term == "mean_prop_distinct_occs") %>% pull(pretty_model)`)  predicted implicit bias, likely due to collinearity between the two measures (Wikipedia: _r_ = `r wiki_corr`, _p_ < .001; Subtitle: _r_ = `r subt_corr`, _p_ < .001). One possible explanation for this pattern is that the effect of the proportion overlap in distinct forms on behavioral bias is mediated by language statistics. This causal model predicts that having distinct forms to refer to people of different genders _leads to_ biased language statistics. Consistent with this model, a bootstrap test of mediation revealed a significant mediation effect for the Wikipedia model (path-ab = `r wiki_ab`, _p_ = `r wiki_p`) and a marginal effect for the Subtitle model [path-ab = `r subt_ab`, _p_ = `r subt_p`; @robmed].\footnote{Though our power to detect this effect is relatively low (\~\ .4; Schoemann, Boulton, \& Short, 2017).}
+
+```{r}
+
+wiki_regression_iat <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_wiki +  
+     median_country_age, 
+   data = all_es_tidy2_scaled) 
+
+
+wiki_pretty_text_iat <- wiki_regression_iat %>%
+  tidy() %>%
+  rename(Beta = estimate, SE = std.error, Z = statistic, p = p.value) %>%
+  mutate_if(is.numeric, ~ round(.,2)) %>%
+  mutate(p = ifelse(p == 0, "<.0001", p),
+         p = ifelse(p == "<.0001", p,  paste0("= ", p)),
+         pretty_model = paste0( Beta, ", _SE_ = ", SE,
+                               ", _Z_ = ", Z, ", _p_ ", p))
+
+
+
+# subt
+subt_regression_iat <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_sub +  
+     median_country_age, 
+   data = all_es_tidy2_scaled)
+
+subt_pretty_text_iat <- subt_regression_iat %>%
+  tidy() %>%
+  rename(Beta = estimate, SE = std.error, Z = statistic, p = p.value) %>%
+  mutate_if(is.numeric, ~ round(.,2)) %>%
+  mutate(p = ifelse(p == 0, "<.0001", p),
+         p = ifelse(p == "<.0001", p,  paste0("= ", p)),
+         pretty_model = paste0( Beta, ", _SE_ = ", SE,
+                               ", _Z_ = ", Z, ", _p_ ", p))
+```
+
+Here are the models with language IAT as a predictor instead of occupation embeddings. When you control for median country age (when I hadn't done in the model I sent you), iat language isn't predictive. I don't think these models add anything to the narrative.
+
+```{r} 
+print(wiki_pretty_text_iat %>% select(-pretty_model))
+print(subt_pretty_text_iat %>% select(-pretty_model))
+```
 
 # Discussion

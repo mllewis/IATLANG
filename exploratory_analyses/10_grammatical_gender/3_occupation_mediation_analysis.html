@@ -11,7 +11,7 @@
 
 <meta name="author" content="Molly Lewis" />
 
-<meta name="date" content="2019-02-27" />
+<meta name="date" content="2019-02-28" />
 
 <title>Mediation analyses of Study 2 Occupation data</title>
 
@@ -204,7 +204,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Mediation analyses of Study 2 Occupation data</h1>
 <h4 class="author"><em>Molly Lewis</em></h4>
-<h4 class="date"><em>2019-02-27</em></h4>
+<h4 class="date"><em>2019-02-28</em></h4>
 
 </div>
 
@@ -214,6 +214,7 @@ $(document).ready(function () {
 <li><a href="#formal-tests-of-mediation">Formal tests of mediation</a></li>
 <li><a href="#wiki-models">Wiki models</a></li>
 <li><a href="#occupation-as-mediator">Occupation as mediator</a></li>
+<li><a href="#additive-regression-models">Additive regression models</a></li>
 </ul>
 </div>
 
@@ -241,12 +242,17 @@ all_es_tidy2 &lt;- full_join(by_lang_scores_tidy, iat_behavioral_es) %&gt;%
   left_join(iat_lang_es)  %&gt;%
   left_join(occupation_semantics)  %&gt;%
   mutate_if(is.numeric, scale) %&gt;%
-  select(subt_occu_semantics_fm, 
+  filter(language_code != &quot;zu&quot;) %&gt;%
+  select(language_code, 
+         subt_occu_semantics_fm, 
          wiki_occu_semantics_fm,
          median_country_age, 
+         lang_es_wiki,
+         lang_es_sub,
          es_iat_sex_age_order_implicit_resid, 
-         mean_prop_distinct_occs) %&gt;%
-  drop_na()</code></pre>
+         es_iat_sex_age_order_explicit_resid,
+         mean_prop_distinct_occs) 
+ #drop_na()</code></pre>
 <div id="mediation-models" class="section level3">
 <h3>Mediation models</h3>
 <p>Here are the models for the classic mediation test (subtitle models)</p>
@@ -261,18 +267,18 @@ all_es_tidy2 &lt;- full_join(by_lang_scores_tidy, iat_behavioral_es) %&gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -1.32612 -0.42298 -0.05319  0.45622  1.49899 
+## -1.41290 -0.42885 -0.04407  0.58367  1.48053 
 ## 
 ## Coefficients:
-##                         Estimate Std. Error t value Pr(&gt;|t|)  
-## (Intercept)              0.04075    0.17832   0.229   0.8218  
-## mean_prop_distinct_occs  0.49026    0.17689   2.772   0.0126 *
+##                          Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)             0.0007338  0.1712522   0.004  0.99662   
+## mean_prop_distinct_occs 0.5706558  0.1744658   3.271  0.00336 **
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.7875 on 18 degrees of freedom
-## Multiple R-squared:  0.2991, Adjusted R-squared:  0.2602 
-## F-statistic: 7.682 on 1 and 18 DF,  p-value: 0.01258</code></pre>
+## Residual standard error: 0.8556 on 23 degrees of freedom
+## Multiple R-squared:  0.3175, Adjusted R-squared:  0.2878 
+## F-statistic:  10.7 on 1 and 23 DF,  p-value: 0.003357</code></pre>
 <p>m ~ x</p>
 <pre class="r"><code>lm(subt_occu_semantics_fm ~ mean_prop_distinct_occs, 
   data = all_es_tidy2) %&gt;%
@@ -294,6 +300,7 @@ all_es_tidy2 &lt;- full_join(by_lang_scores_tidy, iat_behavioral_es) %&gt;%
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 0.6798 on 18 degrees of freedom
+##   (5 observations deleted due to missingness)
 ## Multiple R-squared:  0.5622, Adjusted R-squared:  0.5379 
 ## F-statistic: 23.11 on 1 and 18 DF,  p-value: 0.000141</code></pre>
 <p>y ~ x + m</p>
@@ -308,17 +315,18 @@ all_es_tidy2 &lt;- full_join(by_lang_scores_tidy, iat_behavioral_es) %&gt;%
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -1.06310 -0.39128 -0.06015  0.45078  1.36877 
+## -1.18854 -0.42849 -0.00183  0.48098  1.33172 
 ## 
 ## Coefficients:
 ##                         Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)              0.09158    0.17266   0.530    0.603
-## mean_prop_distinct_occs  0.16989    0.25482   0.667    0.514
-## subt_occu_semantics_fm   0.43643    0.26028   1.677    0.112
+## (Intercept)              0.08296    0.17151   0.484    0.635
+## mean_prop_distinct_occs  0.21081    0.25313   0.833    0.416
+## subt_occu_semantics_fm   0.43765    0.25855   1.693    0.109
 ## 
-## Residual standard error: 0.7507 on 17 degrees of freedom
-## Multiple R-squared:  0.3986, Adjusted R-squared:  0.3278 
-## F-statistic: 5.633 on 2 and 17 DF,  p-value: 0.01327</code></pre>
+## Residual standard error: 0.7457 on 17 degrees of freedom
+##   (5 observations deleted due to missingness)
+## Multiple R-squared:  0.4325, Adjusted R-squared:  0.3658 
+## F-statistic: 6.479 on 2 and 17 DF,  p-value: 0.008101</code></pre>
 </div>
 <div id="formal-tests-of-mediation" class="section level3">
 <h3>Formal tests of mediation</h3>
@@ -328,15 +336,15 @@ all_es_tidy2 &lt;- full_join(by_lang_scores_tidy, iat_behavioral_es) %&gt;%
       med = all_es_tidy2$subt_occu_semantics_fm,
       out = all_es_tidy2$es_iat_sex_age_order_implicit_resid)</code></pre>
 <pre><code>## $`Mod1: Y~X`
-##               Estimate Std. Error   t value  Pr(&gt;|t|)
-## (Intercept) 0.04075237  0.1783227 0.2285316 0.8218092
-## pred        0.49026352  0.1768870 2.7716192 0.0125780
+##               Estimate Std. Error   t value    Pr(&gt;|t|)
+## (Intercept) 0.03198319  0.1773796 0.1803093 0.858924234
+## pred        0.53207686  0.1759516 3.0239958 0.007294376
 ## 
 ## $`Mod2: Y~X+M`
 ##               Estimate Std. Error   t value  Pr(&gt;|t|)
-## (Intercept) 0.09158348  0.1726561 0.5304386 0.6026687
-## pred        0.16988941  0.2548199 0.6667039 0.5139089
-## med         0.43643040  0.2602769 1.6767930 0.1118734
+## (Intercept) 0.08295606  0.1715113 0.4836769 0.6347866
+## pred        0.21080932  0.2531302 0.8328097 0.4164993
+## med         0.43764747  0.2585511 1.6926927 0.1087585
 ## 
 ## $`Mod3: M~X`
 ##               Estimate Std. Error    t value     Pr(&gt;|t|)
@@ -344,13 +352,13 @@ all_es_tidy2 &lt;- full_join(by_lang_scores_tidy, iat_behavioral_es) %&gt;%
 ## pred         0.7340784  0.1526864  4.8077526 0.0001409921
 ## 
 ## $Indirect.Effect
-## [1] 0.3203741
+## [1] 0.3212675
 ## 
 ## $SE
-## [1] 0.2023507
+## [1] 0.2012165
 ## 
 ## $z.value
-## [1] 1.583262
+## [1] 1.596626
 ## 
 ## $N
 ## [1] 20</code></pre>
@@ -364,16 +372,16 @@ all_es_tidy2 %&gt;%
     x = &quot;mean_prop_distinct_occs&quot;,
     y = &quot;es_iat_sex_age_order_implicit_resid&quot;,
     m = &quot;subt_occu_semantics_fm&quot;) %&gt;%
-   test_mediation() </code></pre>
+   test_mediation()</code></pre>
 <pre><code>## Bootstrap results for indirect effect
 ## 
 ## Indirect effect (ab path):
-##                         Data   Boot
-## subt_occu_semantics_fm 0.253 0.2964
+##                          Data   Boot
+## subt_occu_semantics_fm 0.2427 0.2908
 ## 
 ## 95 percent confidence interval:
-##                          Lower  Upper
-## subt_occu_semantics_fm -0.1617 0.7529
+##                           Lower  Upper
+## subt_occu_semantics_fm -0.09183 0.7031
 ## 
 ## Number of bootstrap replicates: 5000</code></pre>
 <p>With age as a covariate</p>
@@ -388,121 +396,85 @@ all_es_tidy2 %&gt;%
 ## 
 ## Indirect effect (ab path):
 ##                          Data   Boot
-## subt_occu_semantics_fm 0.2431 0.2507
+## subt_occu_semantics_fm 0.1947 0.2143
 ## 
 ## 95 percent confidence interval:
-##                          Lower  Upper
-## subt_occu_semantics_fm -0.1728 0.7796
+##                          Lower Upper
+## subt_occu_semantics_fm -0.1387 0.631
 ## 
 ## Number of bootstrap replicates: 5000</code></pre>
 </div>
 </div>
 <div id="wiki-models" class="section level2">
 <h2>Wiki models</h2>
+<div id="sobel-test-1" class="section level4">
+<h4>Sobel test</h4>
 <pre class="r"><code>all_es_tidy3 &lt;- full_join(by_lang_scores_tidy, iat_behavioral_es) %&gt;%
   left_join(iat_lang_es)  %&gt;%
   left_join(occupation_semantics)  %&gt;%
+  mutate_if(is.numeric, scale) %&gt;%
+  filter(language_code != &quot;zu&quot;)  %&gt;%
   select(wiki_occu_semantics_fm,
          median_country_age, 
          es_iat_sex_age_order_implicit_resid, 
          mean_prop_distinct_occs,
          language_code) 
-
 multilevel::sobel(pred = all_es_tidy3$mean_prop_distinct_occs , 
                   med = all_es_tidy3$wiki_occu_semantics_fm,
                   out = all_es_tidy3$es_iat_sex_age_order_implicit_resid)</code></pre>
 <pre><code>## $`Mod1: Y~X`
-##                Estimate  Std. Error   t value    Pr(&gt;|t|)
-## (Intercept) -0.02374631 0.006987078 -3.398604 0.002466856
-## pred         0.04580551 0.013991032  3.273919 0.003332843
+##                 Estimate Std. Error     t value    Pr(&gt;|t|)
+## (Intercept) 0.0007337709  0.1712522 0.004284739 0.996618231
+## pred        0.5706558112  0.1744658 3.270875531 0.003357305
 ## 
 ## $`Mod2: Y~X+M`
-##                Estimate  Std. Error   t value    Pr(&gt;|t|)
-## (Intercept) -0.02742558 0.007252936 -3.781307 0.001026603
-## pred         0.02606864 0.019081622  1.366165 0.185690535
-## med          0.35389036 0.239207597  1.479428 0.153203794
+##               Estimate Std. Error    t value  Pr(&gt;|t|)
+## (Intercept) 0.01104695  0.1654187 0.06678176 0.9473586
+## pred        0.30074741  0.2355332 1.27687901 0.2149583
+## med         0.38646329  0.2357833 1.63906109 0.1154238
 ## 
 ## $`Mod3: M~X`
-##               Estimate  Std. Error  t value    Pr(&gt;|t|)
-## (Intercept) 0.01039664 0.005939014 1.750566 0.093350282
-## pred        0.05577113 0.011892371 4.689656 0.000100884
+##                Estimate Std. Error    t value    Pr(&gt;|t|)
+## (Intercept) -0.02668605  0.1461817 -0.1825539 0.856747578
+## pred         0.69840632  0.1489249  4.6896560 0.000100884
 ## 
 ## $Indirect.Effect
-## [1] 0.01973686
+## [1] 0.2699084
 ## 
 ## $SE
-## [1] 0.01398897
+## [1] 0.1744406
 ## 
 ## $z.value
-## [1] 1.410888
+## [1] 1.54728
 ## 
 ## $N
 ## [1] 25</code></pre>
-<p>No effect, but if you exclude hindi, there is:</p>
-<pre class="r"><code>all_es_tidy4 &lt;- all_es_tidy3 %&gt;%
-  filter(!(language_code %in% c(&quot;hi&quot;)))
+</div>
+<div id="bootstrap-1" class="section level4">
+<h4>Bootstrap</h4>
+<p>Bootstrap mediation models have more power: <a href="https://journals.sagepub.com/doi/pdf/10.1111/j.1467-9280.2007.01882.x" class="uri">https://journals.sagepub.com/doi/pdf/10.1111/j.1467-9280.2007.01882.x</a></p>
+<pre class="r"><code>mediation_model_bootsrapped &lt;- all_es_tidy3 %&gt;%
+  fit_mediation(
+    x = &quot;mean_prop_distinct_occs&quot;,
+    y = &quot;es_iat_sex_age_order_implicit_resid&quot;,
+    m = &quot;wiki_occu_semantics_fm&quot;) %&gt;%
+   test_mediation()
 
-multilevel::sobel(pred = all_es_tidy4$mean_prop_distinct_occs , 
-                  med = all_es_tidy4$wiki_occu_semantics_fm,
-                  out = all_es_tidy4$es_iat_sex_age_order_implicit_resid)</code></pre>
-<pre><code>## $`Mod1: Y~X`
-##                Estimate  Std. Error   t value    Pr(&gt;|t|)
-## (Intercept) -0.02050899 0.006932775 -2.958266 0.007262937
-## pred         0.04153746 0.013604543  3.053205 0.005827898
+mediation_model_bootsrapped</code></pre>
+<pre><code>## Bootstrap results for indirect effect
 ## 
-## $`Mod2: Y~X+M`
-##                Estimate  Std. Error    t value    Pr(&gt;|t|)
-## (Intercept) -0.02473623 0.006576053 -3.7615624 0.001147293
-## pred         0.01072252 0.018109984  0.5920776 0.560119933
-## med          0.52373577 0.224232328  2.3356836 0.029505689
+## Indirect effect (ab path):
+##                          Data   Boot
+## wiki_occu_semantics_fm 0.3496 0.3399
 ## 
-## $`Mod3: M~X`
-##                Estimate  Std. Error  t value     Pr(&gt;|t|)
-## (Intercept) 0.008071316 0.006011067 1.342743 1.930463e-01
-## pred        0.058836813 0.011795828 4.987934 5.424627e-05
+## 95 percent confidence interval:
+##                          Lower  Upper
+## wiki_occu_semantics_fm 0.02426 0.8618
 ## 
-## $Indirect.Effect
-## [1] 0.03081494
-## 
-## $SE
-## [1] 0.01456793
-## 
-## $z.value
-## [1] 2.115258
-## 
-## $N
-## [1] 24</code></pre>
-<p>Same set of languages as subtitles</p>
-<pre class="r"><code>multilevel::sobel(pred = all_es_tidy2$mean_prop_distinct_occs , 
-                  med = all_es_tidy2$wiki_occu_semantics_fm,
-                  out = all_es_tidy2$es_iat_sex_age_order_implicit_resid)</code></pre>
-<pre><code>## $`Mod1: Y~X`
-##               Estimate Std. Error   t value  Pr(&gt;|t|)
-## (Intercept) 0.04075237  0.1783227 0.2285316 0.8218092
-## pred        0.49026352  0.1768870 2.7716192 0.0125780
-## 
-## $`Mod2: Y~X+M`
-##                Estimate Std. Error    t value   Pr(&gt;|t|)
-## (Intercept) 0.008839346  0.1514596 0.05836107 0.95414156
-## pred        0.048667040  0.2157689 0.22555164 0.82423941
-## med         0.623619966  0.2192678 2.84410208 0.01121303
-## 
-## $`Mod3: M~X`
-##               Estimate Std. Error   t value     Pr(&gt;|t|)
-## (Intercept) 0.05117383  0.1623644 0.3151789 0.7562504379
-## pred        0.70811793  0.1610572 4.3966851 0.0003480059
-## 
-## $Indirect.Effect
-## [1] 0.4415965
-## 
-## $SE
-## [1] 0.1849213
-## 
-## $z.value
-## [1] 2.388024
-## 
-## $N
-## [1] 20</code></pre>
+## Number of bootstrap replicates: 5000</code></pre>
+<pre class="r"><code>p_value(mediation_model_bootsrapped)</code></pre>
+<pre><code>## [1] 0.0372</code></pre>
+</div>
 </div>
 <div id="occupation-as-mediator" class="section level2">
 <h2>Occupation as mediator</h2>
@@ -511,14 +483,14 @@ multilevel::sobel(pred = all_es_tidy4$mean_prop_distinct_occs ,
                   out = all_es_tidy2$es_iat_sex_age_order_implicit_resid)</code></pre>
 <pre><code>## $`Mod1: Y~X`
 ##              Estimate Std. Error   t value    Pr(&gt;|t|)
-## (Intercept) 0.1185384  0.1652453 0.7173483 0.482365468
-## pred        0.5665412  0.1695381 3.3416746 0.003631153
+## (Intercept) 0.1164034  0.1653174 0.7041211 0.490367275
+## pred        0.5990970  0.1696120 3.5321611 0.002380461
 ## 
 ## $`Mod2: Y~X+M`
 ##               Estimate Std. Error   t value  Pr(&gt;|t|)
-## (Intercept) 0.09158348  0.1726561 0.5304386 0.6026687
-## pred        0.43643040  0.2602769 1.6767930 0.1118734
-## med         0.16988941  0.2548199 0.6667039 0.5139089
+## (Intercept) 0.08295606  0.1715113 0.4836769 0.6347866
+## pred        0.43764747  0.2585511 1.6926927 0.1087585
+## med         0.21080932  0.2531302 0.8328097 0.4164993
 ## 
 ## $`Mod3: M~X`
 ##              Estimate Std. Error  t value     Pr(&gt;|t|)
@@ -526,16 +498,151 @@ multilevel::sobel(pred = all_es_tidy4$mean_prop_distinct_occs ,
 ## pred        0.7658557  0.1592960 4.807753 0.0001409921
 ## 
 ## $Indirect.Effect
-## [1] 0.1301108
+## [1] 0.1614495
 ## 
 ## $SE
-## [1] 0.1970227
+## [1] 0.1967482
 ## 
 ## $z.value
-## [1] 0.6603845
+## [1] 0.8205894
 ## 
 ## $N
 ## [1] 20</code></pre>
+</div>
+<div id="additive-regression-models" class="section level2">
+<h2>Additive regression models</h2>
+<pre class="r"><code># wiki
+lm(es_iat_sex_age_order_implicit_resid ~ 
+     mean_prop_distinct_occs + 
+     wiki_occu_semantics_fm +
+     median_country_age,
+   data = all_es_tidy2) %&gt;%
+  summary()</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+##     wiki_occu_semantics_fm + median_country_age, data = all_es_tidy2)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.33644 -0.41351 -0.03424  0.67875  1.12992 
+## 
+## Coefficients:
+##                          Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)             -0.006843   0.144955  -0.047   0.9628  
+## mean_prop_distinct_occs  0.204695   0.209075   0.979   0.3387  
+## wiki_occu_semantics_fm   0.303686   0.208554   1.456   0.1601  
+## median_country_age       0.446497   0.160836   2.776   0.0113 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.723 on 21 degrees of freedom
+## Multiple R-squared:  0.555,  Adjusted R-squared:  0.4915 
+## F-statistic: 8.732 on 3 and 21 DF,  p-value: 0.0005916</code></pre>
+<pre class="r"><code>lm(es_iat_sex_age_order_implicit_resid ~ 
+     mean_prop_distinct_occs + 
+   #  wiki_occu_semantics_fm +  
+     median_country_age, 
+   data = all_es_tidy2) %&gt;%
+  summary()</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+##     median_country_age, data = all_es_tidy2)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.16469 -0.49085 -0.06985  0.55277  1.18407 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)             -0.01612    0.14846  -0.109  0.91450   
+## mean_prop_distinct_occs  0.40525    0.16125   2.513  0.01979 * 
+## median_country_age       0.47998    0.16319   2.941  0.00755 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7412 on 22 degrees of freedom
+## Multiple R-squared:  0.5101, Adjusted R-squared:  0.4656 
+## F-statistic: 11.45 on 2 and 22 DF,  p-value: 0.0003899</code></pre>
+<pre class="r"><code>lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_wiki +  
+     median_country_age,
+   data = all_es_tidy2) %&gt;%
+  summary()</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+##     lang_es_wiki + median_country_age, data = all_es_tidy2)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.13417 -0.47215  0.07784  0.39840  1.09875 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)             -0.05389    0.13920  -0.387   0.7025  
+## mean_prop_distinct_occs  0.38358    0.15029   2.552   0.0186 *
+## lang_es_wiki             0.36448    0.17286   2.109   0.0472 *
+## median_country_age       0.42476    0.15398   2.759   0.0118 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.6892 on 21 degrees of freedom
+## Multiple R-squared:  0.5957, Adjusted R-squared:  0.538 
+## F-statistic: 10.31 on 3 and 21 DF,  p-value: 0.0002229</code></pre>
+<pre class="r"><code># subt
+lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     subt_occu_semantics_fm +  
+     median_country_age, 
+   data = all_es_tidy2) %&gt;%
+  summary()</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+##     subt_occu_semantics_fm + median_country_age, data = all_es_tidy2)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.0514 -0.4102  0.1029  0.3519  1.1883 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)              0.06898    0.16851   0.409    0.688
+## mean_prop_distinct_occs  0.18417    0.24904   0.740    0.470
+## subt_occu_semantics_fm   0.37338    0.25830   1.446    0.168
+## median_country_age       0.25227    0.19444   1.297    0.213
+## 
+## Residual standard error: 0.7311 on 16 degrees of freedom
+##   (5 observations deleted due to missingness)
+## Multiple R-squared:  0.4865, Adjusted R-squared:  0.3903 
+## F-statistic: 5.054 on 3 and 16 DF,  p-value: 0.01188</code></pre>
+<pre class="r"><code>lm(es_iat_sex_age_order_implicit_resid~ mean_prop_distinct_occs + 
+     lang_es_sub +  
+     median_country_age, data = all_es_tidy2) %&gt;%
+  summary()</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+##     lang_es_sub + median_country_age, data = all_es_tidy2)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.2603 -0.3930  0.0297  0.4701  1.1567 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)              0.06848    0.15347   0.446   0.6608  
+## mean_prop_distinct_occs  0.33204    0.16097   2.063   0.0539 .
+## lang_es_sub              0.27296    0.16236   1.681   0.1100  
+## median_country_age       0.30536    0.17192   1.776   0.0926 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7008 on 18 degrees of freedom
+##   (3 observations deleted due to missingness)
+## Multiple R-squared:  0.4948, Adjusted R-squared:  0.4106 
+## F-statistic: 5.877 on 3 and 18 DF,  p-value: 0.005571</code></pre>
 </div>
 
 

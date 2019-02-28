@@ -50,12 +50,17 @@ all_es_tidy2 <- full_join(by_lang_scores_tidy, iat_behavioral_es) %>%
   left_join(iat_lang_es)  %>%
   left_join(occupation_semantics)  %>%
   mutate_if(is.numeric, scale) %>%
-  select(subt_occu_semantics_fm, 
+  filter(language_code != "zu") %>%
+  select(language_code, 
+         subt_occu_semantics_fm, 
          wiki_occu_semantics_fm,
          median_country_age, 
+         lang_es_wiki,
+         lang_es_sub,
          es_iat_sex_age_order_implicit_resid, 
-         mean_prop_distinct_occs) %>%
-  drop_na()
+         es_iat_sex_age_order_explicit_resid,
+         mean_prop_distinct_occs) 
+ #drop_na()
 ```
 
 
@@ -103,7 +108,7 @@ all_es_tidy2 %>%
     x = "mean_prop_distinct_occs",
     y = "es_iat_sex_age_order_implicit_resid",
     m = "subt_occu_semantics_fm") %>%
-   test_mediation() 
+   test_mediation()
 ```
 
 With age as a covariate
@@ -119,45 +124,81 @@ all_es_tidy2 %>%
 
 
 ## Wiki models
+#### Sobel test
 ```{r}
 all_es_tidy3 <- full_join(by_lang_scores_tidy, iat_behavioral_es) %>%
   left_join(iat_lang_es)  %>%
   left_join(occupation_semantics)  %>%
+  mutate_if(is.numeric, scale) %>%
+  filter(language_code != "zu")  %>%
   select(wiki_occu_semantics_fm,
          median_country_age, 
          es_iat_sex_age_order_implicit_resid, 
          mean_prop_distinct_occs,
          language_code) 
-
 multilevel::sobel(pred = all_es_tidy3$mean_prop_distinct_occs , 
                   med = all_es_tidy3$wiki_occu_semantics_fm,
                   out = all_es_tidy3$es_iat_sex_age_order_implicit_resid)
 ```
 
-No effect, but if you exclude hindi, there is:
+#### Bootstrap 
+
+Bootstrap mediation models have more power: https://journals.sagepub.com/doi/pdf/10.1111/j.1467-9280.2007.01882.x
+
 ```{r}
-all_es_tidy4 <- all_es_tidy3 %>%
-  filter(!(language_code %in% c("hi")))
+mediation_model_bootsrapped <- all_es_tidy3 %>%
+  fit_mediation(
+    x = "mean_prop_distinct_occs",
+    y = "es_iat_sex_age_order_implicit_resid",
+    m = "wiki_occu_semantics_fm") %>%
+   test_mediation()
 
-multilevel::sobel(pred = all_es_tidy4$mean_prop_distinct_occs , 
-                  med = all_es_tidy4$wiki_occu_semantics_fm,
-                  out = all_es_tidy4$es_iat_sex_age_order_implicit_resid)
+mediation_model_bootsrapped
+p_value(mediation_model_bootsrapped)
 ```
-
-Same set of languages as subtitles
-```{r}
-
-multilevel::sobel(pred = all_es_tidy2$mean_prop_distinct_occs , 
-                  med = all_es_tidy2$wiki_occu_semantics_fm,
-                  out = all_es_tidy2$es_iat_sex_age_order_implicit_resid)
-```
-
-
 
 ## Occupation as mediator
 ```{r}
 multilevel::sobel(med = all_es_tidy2$mean_prop_distinct_occs , 
                   pred = all_es_tidy2$subt_occu_semantics_fm,
                   out = all_es_tidy2$es_iat_sex_age_order_implicit_resid)
+
+```
+
+## Additive regression models
+```{r}
+
+# wiki
+lm(es_iat_sex_age_order_implicit_resid ~ 
+     mean_prop_distinct_occs + 
+     wiki_occu_semantics_fm +
+     median_country_age,
+   data = all_es_tidy2) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~ 
+     mean_prop_distinct_occs + 
+   #  wiki_occu_semantics_fm +  
+     median_country_age, 
+   data = all_es_tidy2) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_wiki +  
+     median_country_age,
+   data = all_es_tidy2) %>%
+  summary()
+
+# subt
+lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     subt_occu_semantics_fm +  
+     median_country_age, 
+   data = all_es_tidy2) %>%
+  summary()
+
+lm(es_iat_sex_age_order_implicit_resid~ mean_prop_distinct_occs + 
+     lang_es_sub +  
+     median_country_age, data = all_es_tidy2) %>%
+  summary()
 
 ```
