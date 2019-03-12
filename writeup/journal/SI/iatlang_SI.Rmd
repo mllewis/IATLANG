@@ -459,11 +459,13 @@ ggplot(all_es_sub, aes(x = sub,
         legend.margin = margin(3, 3, 0, 3, unit = 'pt'))
 ```
 
+```{r}
 # Language exclusions
-[to do]
-* 20 percent from *calculated* vectors
-* averaged across multiple translations
-* what does it look like when you change this criteria
+#[to do]
+#* 20 percent from *calculated* vectors
+#* averaged across multiple translations
+#* what does it look like when you change this criteria
+```
 
 # Descriptive statistics for all language-level measures
 
