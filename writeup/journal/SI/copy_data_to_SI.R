@@ -9,8 +9,6 @@ library(tidyverse)
 
 data_for_SI <- 
   list(
-    here("data/study0/processed/by_participant_df.csv"),
-    here("data/study0/raw/median_country_age_world_factbook.csv"),
     here("data/study0/processed/top_lang_by_country_ethnologue.csv"),
     here("data/study0/processed/by_country_df.csv"),
     here("data/SI/caliskan_wiki_es.csv"),
@@ -18,7 +16,9 @@ data_for_SI <-
     here("data/SI/caliskan_sub_es.csv"),
     here("data/SI/corrs_by_exclusions.csv"),
     here("data/study2/occupation_gender_scores_by_word.csv"),
-    here("data/study2/misersky_norms_clean.csv")
+    here("data/study2/misersky_norms_clean.csv"),
+    here("data/study2/general_gender_by_lang.csv"),
+    here("data/study2/occupation_translations_tidy.csv")
 )
 
 copy_to_si_dir <- function(old_filepath) {

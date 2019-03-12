@@ -1,0 +1,2162 @@
+country_name,measure,bin,n
+Afghanistan,es_iat_sex_age_order_explicit_resid,-5.5,1
+Afghanistan,es_iat_sex_age_order_explicit_resid,-4.5,6
+Afghanistan,es_iat_sex_age_order_explicit_resid,-3.5,10
+Afghanistan,es_iat_sex_age_order_explicit_resid,-2.75,1
+Afghanistan,es_iat_sex_age_order_explicit_resid,-2.5,16
+Afghanistan,es_iat_sex_age_order_explicit_resid,-1.75,13
+Afghanistan,es_iat_sex_age_order_explicit_resid,-1.5,266
+Afghanistan,es_iat_sex_age_order_explicit_resid,-0.75,4
+Afghanistan,es_iat_sex_age_order_explicit_resid,-0.5,145
+Afghanistan,es_iat_sex_age_order_explicit_resid,0.25,4
+Afghanistan,es_iat_sex_age_order_explicit_resid,0.5,156
+Afghanistan,es_iat_sex_age_order_explicit_resid,1.25,1
+Afghanistan,es_iat_sex_age_order_explicit_resid,1.5,70
+Afghanistan,es_iat_sex_age_order_explicit_resid,2.25,4
+Afghanistan,es_iat_sex_age_order_explicit_resid,2.5,69
+Afghanistan,es_iat_sex_age_order_explicit_resid,3.25,2
+Afghanistan,es_iat_sex_age_order_explicit_resid,3.5,37
+Afghanistan,es_iat_sex_age_order_explicit_resid,4.25,1
+Afghanistan,es_iat_sex_age_order_explicit_resid,4.5,42
+Afghanistan,es_iat_sex_age_order_explicit_resid,NA,15
+Afghanistan,es_iat_sex_age_order_implicit_resid,-1.25,5
+Afghanistan,es_iat_sex_age_order_implicit_resid,-1,8
+Afghanistan,es_iat_sex_age_order_implicit_resid,-0.75,39
+Afghanistan,es_iat_sex_age_order_implicit_resid,-0.5,90
+Afghanistan,es_iat_sex_age_order_implicit_resid,-0.25,159
+Afghanistan,es_iat_sex_age_order_implicit_resid,-0,245
+Afghanistan,es_iat_sex_age_order_implicit_resid,0.25,216
+Afghanistan,es_iat_sex_age_order_implicit_resid,0.5,83
+Afghanistan,es_iat_sex_age_order_implicit_resid,0.75,17
+Afghanistan,es_iat_sex_age_order_implicit_resid,1,1
+Afghanistan,explicit_dif,-4,1
+Afghanistan,explicit_dif,-3,6
+Afghanistan,explicit_dif,-2,10
+Afghanistan,explicit_dif,-1,17
+Afghanistan,explicit_dif,0,279
+Afghanistan,explicit_dif,1,149
+Afghanistan,explicit_dif,2,160
+Afghanistan,explicit_dif,3,71
+Afghanistan,explicit_dif,4,73
+Afghanistan,explicit_dif,5,39
+Afghanistan,explicit_dif,6,43
+Afghanistan,explicit_dif,NA,15
+Afghanistan,overall_iat_D_score,-1,1
+Afghanistan,overall_iat_D_score,-0.75,8
+Afghanistan,overall_iat_D_score,-0.5,16
+Afghanistan,overall_iat_D_score,-0.25,56
+Afghanistan,overall_iat_D_score,-0,131
+Afghanistan,overall_iat_D_score,0.25,196
+Afghanistan,overall_iat_D_score,0.5,237
+Afghanistan,overall_iat_D_score,0.75,167
+Afghanistan,overall_iat_D_score,1,48
+Afghanistan,overall_iat_D_score,1.25,3
+Argentina,es_iat_sex_age_order_explicit_resid,-4.5,1
+Argentina,es_iat_sex_age_order_explicit_resid,-3.75,1
+Argentina,es_iat_sex_age_order_explicit_resid,-3.5,2
+Argentina,es_iat_sex_age_order_explicit_resid,-2.75,1
+Argentina,es_iat_sex_age_order_explicit_resid,-2.5,7
+Argentina,es_iat_sex_age_order_explicit_resid,-1.75,11
+Argentina,es_iat_sex_age_order_explicit_resid,-1.5,174
+Argentina,es_iat_sex_age_order_explicit_resid,-0.75,8
+Argentina,es_iat_sex_age_order_explicit_resid,-0.5,98
+Argentina,es_iat_sex_age_order_explicit_resid,0.25,9
+Argentina,es_iat_sex_age_order_explicit_resid,0.5,108
+Argentina,es_iat_sex_age_order_explicit_resid,1.25,5
+Argentina,es_iat_sex_age_order_explicit_resid,1.5,39
+Argentina,es_iat_sex_age_order_explicit_resid,2.25,3
+Argentina,es_iat_sex_age_order_explicit_resid,2.5,34
+Argentina,es_iat_sex_age_order_explicit_resid,3.25,2
+Argentina,es_iat_sex_age_order_explicit_resid,3.5,9
+Argentina,es_iat_sex_age_order_explicit_resid,4.25,1
+Argentina,es_iat_sex_age_order_explicit_resid,4.5,11
+Argentina,es_iat_sex_age_order_explicit_resid,NA,7
+Argentina,es_iat_sex_age_order_implicit_resid,-1.25,1
+Argentina,es_iat_sex_age_order_implicit_resid,-1,5
+Argentina,es_iat_sex_age_order_implicit_resid,-0.75,18
+Argentina,es_iat_sex_age_order_implicit_resid,-0.5,60
+Argentina,es_iat_sex_age_order_implicit_resid,-0.25,106
+Argentina,es_iat_sex_age_order_implicit_resid,-0,144
+Argentina,es_iat_sex_age_order_implicit_resid,0.25,132
+Argentina,es_iat_sex_age_order_implicit_resid,0.5,45
+Argentina,es_iat_sex_age_order_implicit_resid,0.75,19
+Argentina,es_iat_sex_age_order_implicit_resid,1,1
+Argentina,explicit_dif,-3,1
+Argentina,explicit_dif,-2,3
+Argentina,explicit_dif,-1,8
+Argentina,explicit_dif,0,185
+Argentina,explicit_dif,1,106
+Argentina,explicit_dif,2,117
+Argentina,explicit_dif,3,44
+Argentina,explicit_dif,4,37
+Argentina,explicit_dif,5,11
+Argentina,explicit_dif,6,12
+Argentina,explicit_dif,NA,7
+Argentina,overall_iat_D_score,-0.75,5
+Argentina,overall_iat_D_score,-0.5,7
+Argentina,overall_iat_D_score,-0.25,34
+Argentina,overall_iat_D_score,0,88
+Argentina,overall_iat_D_score,0.25,121
+Argentina,overall_iat_D_score,0.5,156
+Argentina,overall_iat_D_score,0.75,80
+Argentina,overall_iat_D_score,1,32
+Argentina,overall_iat_D_score,1.25,8
+Australia,es_iat_sex_age_order_explicit_resid,-7.5,3
+Australia,es_iat_sex_age_order_explicit_resid,-6.75,1
+Australia,es_iat_sex_age_order_explicit_resid,-6.5,9
+Australia,es_iat_sex_age_order_explicit_resid,-5.5,10
+Australia,es_iat_sex_age_order_explicit_resid,-4.75,2
+Australia,es_iat_sex_age_order_explicit_resid,-4.5,48
+Australia,es_iat_sex_age_order_explicit_resid,-3.75,2
+Australia,es_iat_sex_age_order_explicit_resid,-3.5,69
+Australia,es_iat_sex_age_order_explicit_resid,-2.75,19
+Australia,es_iat_sex_age_order_explicit_resid,-2.5,141
+Australia,es_iat_sex_age_order_explicit_resid,-1.75,422
+Australia,es_iat_sex_age_order_explicit_resid,-1.5,3781
+Australia,es_iat_sex_age_order_explicit_resid,-0.75,225
+Australia,es_iat_sex_age_order_explicit_resid,-0.5,2603
+Australia,es_iat_sex_age_order_explicit_resid,0.25,287
+Australia,es_iat_sex_age_order_explicit_resid,0.5,2664
+Australia,es_iat_sex_age_order_explicit_resid,1.25,83
+Australia,es_iat_sex_age_order_explicit_resid,1.5,1080
+Australia,es_iat_sex_age_order_explicit_resid,2.25,104
+Australia,es_iat_sex_age_order_explicit_resid,2.5,1066
+Australia,es_iat_sex_age_order_explicit_resid,3.25,39
+Australia,es_iat_sex_age_order_explicit_resid,3.5,419
+Australia,es_iat_sex_age_order_explicit_resid,4.25,16
+Australia,es_iat_sex_age_order_explicit_resid,4.5,287
+Australia,es_iat_sex_age_order_explicit_resid,NA,157
+Australia,es_iat_sex_age_order_implicit_resid,-1.5,4
+Australia,es_iat_sex_age_order_implicit_resid,-1.25,19
+Australia,es_iat_sex_age_order_implicit_resid,-1,143
+Australia,es_iat_sex_age_order_implicit_resid,-0.75,497
+Australia,es_iat_sex_age_order_implicit_resid,-0.5,1339
+Australia,es_iat_sex_age_order_implicit_resid,-0.25,2606
+Australia,es_iat_sex_age_order_implicit_resid,-0,3784
+Australia,es_iat_sex_age_order_implicit_resid,0.25,3267
+Australia,es_iat_sex_age_order_implicit_resid,0.5,1530
+Australia,es_iat_sex_age_order_implicit_resid,0.75,328
+Australia,es_iat_sex_age_order_implicit_resid,1,20
+Australia,explicit_dif,-6,3
+Australia,explicit_dif,-5,10
+Australia,explicit_dif,-4,10
+Australia,explicit_dif,-3,50
+Australia,explicit_dif,-2,71
+Australia,explicit_dif,-1,160
+Australia,explicit_dif,0,4203
+Australia,explicit_dif,1,2828
+Australia,explicit_dif,2,2951
+Australia,explicit_dif,3,1163
+Australia,explicit_dif,4,1170
+Australia,explicit_dif,5,458
+Australia,explicit_dif,6,303
+Australia,explicit_dif,NA,157
+Australia,overall_iat_D_score,-1.25,1
+Australia,overall_iat_D_score,-1,8
+Australia,overall_iat_D_score,-0.75,71
+Australia,overall_iat_D_score,-0.5,284
+Australia,overall_iat_D_score,-0.25,830
+Australia,overall_iat_D_score,0,1885
+Australia,overall_iat_D_score,0.25,3118
+Australia,overall_iat_D_score,0.5,3797
+Australia,overall_iat_D_score,0.75,2510
+Australia,overall_iat_D_score,1,927
+Australia,overall_iat_D_score,1.25,102
+Australia,overall_iat_D_score,1.5,4
+Austria,es_iat_sex_age_order_explicit_resid,-5.5,1
+Austria,es_iat_sex_age_order_explicit_resid,-4.5,3
+Austria,es_iat_sex_age_order_explicit_resid,-3.5,3
+Austria,es_iat_sex_age_order_explicit_resid,-2.75,1
+Austria,es_iat_sex_age_order_explicit_resid,-2.5,7
+Austria,es_iat_sex_age_order_explicit_resid,-1.75,5
+Austria,es_iat_sex_age_order_explicit_resid,-1.5,160
+Austria,es_iat_sex_age_order_explicit_resid,-0.75,4
+Austria,es_iat_sex_age_order_explicit_resid,-0.5,126
+Austria,es_iat_sex_age_order_explicit_resid,0.25,10
+Austria,es_iat_sex_age_order_explicit_resid,0.5,182
+Austria,es_iat_sex_age_order_explicit_resid,1.25,4
+Austria,es_iat_sex_age_order_explicit_resid,1.5,62
+Austria,es_iat_sex_age_order_explicit_resid,2.25,7
+Austria,es_iat_sex_age_order_explicit_resid,2.5,81
+Austria,es_iat_sex_age_order_explicit_resid,3.5,30
+Austria,es_iat_sex_age_order_explicit_resid,4.5,16
+Austria,es_iat_sex_age_order_explicit_resid,NA,13
+Austria,es_iat_sex_age_order_implicit_resid,-1.25,3
+Austria,es_iat_sex_age_order_implicit_resid,-1,5
+Austria,es_iat_sex_age_order_implicit_resid,-0.75,32
+Austria,es_iat_sex_age_order_implicit_resid,-0.5,44
+Austria,es_iat_sex_age_order_implicit_resid,-0.25,150
+Austria,es_iat_sex_age_order_implicit_resid,0,191
+Austria,es_iat_sex_age_order_implicit_resid,0.25,164
+Austria,es_iat_sex_age_order_implicit_resid,0.5,100
+Austria,es_iat_sex_age_order_implicit_resid,0.75,22
+Austria,es_iat_sex_age_order_implicit_resid,1,3
+Austria,es_iat_sex_age_order_implicit_resid,1.25,1
+Austria,explicit_dif,-4,1
+Austria,explicit_dif,-3,3
+Austria,explicit_dif,-2,3
+Austria,explicit_dif,-1,8
+Austria,explicit_dif,0,165
+Austria,explicit_dif,1,130
+Austria,explicit_dif,2,192
+Austria,explicit_dif,3,66
+Austria,explicit_dif,4,88
+Austria,explicit_dif,5,30
+Austria,explicit_dif,6,16
+Austria,explicit_dif,NA,13
+Austria,overall_iat_D_score,-0.75,4
+Austria,overall_iat_D_score,-0.5,15
+Austria,overall_iat_D_score,-0.25,40
+Austria,overall_iat_D_score,0,89
+Austria,overall_iat_D_score,0.25,177
+Austria,overall_iat_D_score,0.5,182
+Austria,overall_iat_D_score,0.75,142
+Austria,overall_iat_D_score,1,57
+Austria,overall_iat_D_score,1.25,8
+Austria,overall_iat_D_score,1.75,1
+Belgium,es_iat_sex_age_order_explicit_resid,-5.5,1
+Belgium,es_iat_sex_age_order_explicit_resid,-4.5,2
+Belgium,es_iat_sex_age_order_explicit_resid,-3.5,3
+Belgium,es_iat_sex_age_order_explicit_resid,-2.5,9
+Belgium,es_iat_sex_age_order_explicit_resid,-1.75,21
+Belgium,es_iat_sex_age_order_explicit_resid,-1.5,318
+Belgium,es_iat_sex_age_order_explicit_resid,-0.75,19
+Belgium,es_iat_sex_age_order_explicit_resid,-0.5,233
+Belgium,es_iat_sex_age_order_explicit_resid,0.25,20
+Belgium,es_iat_sex_age_order_explicit_resid,0.5,294
+Belgium,es_iat_sex_age_order_explicit_resid,1.25,7
+Belgium,es_iat_sex_age_order_explicit_resid,1.5,110
+Belgium,es_iat_sex_age_order_explicit_resid,2.25,9
+Belgium,es_iat_sex_age_order_explicit_resid,2.5,108
+Belgium,es_iat_sex_age_order_explicit_resid,3.25,9
+Belgium,es_iat_sex_age_order_explicit_resid,3.5,43
+Belgium,es_iat_sex_age_order_explicit_resid,4.25,3
+Belgium,es_iat_sex_age_order_explicit_resid,4.5,35
+Belgium,es_iat_sex_age_order_explicit_resid,NA,41
+Belgium,es_iat_sex_age_order_implicit_resid,-1.25,3
+Belgium,es_iat_sex_age_order_implicit_resid,-1,10
+Belgium,es_iat_sex_age_order_implicit_resid,-0.75,38
+Belgium,es_iat_sex_age_order_implicit_resid,-0.5,103
+Belgium,es_iat_sex_age_order_implicit_resid,-0.25,246
+Belgium,es_iat_sex_age_order_implicit_resid,0,341
+Belgium,es_iat_sex_age_order_implicit_resid,0.25,342
+Belgium,es_iat_sex_age_order_implicit_resid,0.5,153
+Belgium,es_iat_sex_age_order_implicit_resid,0.75,39
+Belgium,es_iat_sex_age_order_implicit_resid,1,10
+Belgium,explicit_dif,-4,1
+Belgium,explicit_dif,-3,2
+Belgium,explicit_dif,-2,3
+Belgium,explicit_dif,-1,9
+Belgium,explicit_dif,0,339
+Belgium,explicit_dif,1,252
+Belgium,explicit_dif,2,314
+Belgium,explicit_dif,3,117
+Belgium,explicit_dif,4,117
+Belgium,explicit_dif,5,52
+Belgium,explicit_dif,6,38
+Belgium,explicit_dif,NA,41
+Belgium,overall_iat_D_score,-0.75,4
+Belgium,overall_iat_D_score,-0.5,18
+Belgium,overall_iat_D_score,-0.25,69
+Belgium,overall_iat_D_score,0,163
+Belgium,overall_iat_D_score,0.25,291
+Belgium,overall_iat_D_score,0.5,378
+Belgium,overall_iat_D_score,0.75,243
+Belgium,overall_iat_D_score,1,96
+Belgium,overall_iat_D_score,1.25,23
+Brazil,es_iat_sex_age_order_explicit_resid,-5.5,1
+Brazil,es_iat_sex_age_order_explicit_resid,-4.5,2
+Brazil,es_iat_sex_age_order_explicit_resid,-3.75,1
+Brazil,es_iat_sex_age_order_explicit_resid,-3.5,7
+Brazil,es_iat_sex_age_order_explicit_resid,-2.75,1
+Brazil,es_iat_sex_age_order_explicit_resid,-2.5,19
+Brazil,es_iat_sex_age_order_explicit_resid,-1.75,36
+Brazil,es_iat_sex_age_order_explicit_resid,-1.5,460
+Brazil,es_iat_sex_age_order_explicit_resid,-0.75,22
+Brazil,es_iat_sex_age_order_explicit_resid,-0.5,266
+Brazil,es_iat_sex_age_order_explicit_resid,0.25,23
+Brazil,es_iat_sex_age_order_explicit_resid,0.5,275
+Brazil,es_iat_sex_age_order_explicit_resid,1.25,6
+Brazil,es_iat_sex_age_order_explicit_resid,1.5,116
+Brazil,es_iat_sex_age_order_explicit_resid,2.25,11
+Brazil,es_iat_sex_age_order_explicit_resid,2.5,94
+Brazil,es_iat_sex_age_order_explicit_resid,3.25,3
+Brazil,es_iat_sex_age_order_explicit_resid,3.5,34
+Brazil,es_iat_sex_age_order_explicit_resid,4.25,1
+Brazil,es_iat_sex_age_order_explicit_resid,4.5,36
+Brazil,es_iat_sex_age_order_explicit_resid,NA,17
+Brazil,es_iat_sex_age_order_implicit_resid,-1.25,3
+Brazil,es_iat_sex_age_order_implicit_resid,-1,13
+Brazil,es_iat_sex_age_order_implicit_resid,-0.75,39
+Brazil,es_iat_sex_age_order_implicit_resid,-0.5,140
+Brazil,es_iat_sex_age_order_implicit_resid,-0.25,272
+Brazil,es_iat_sex_age_order_implicit_resid,-0,357
+Brazil,es_iat_sex_age_order_implicit_resid,0.25,369
+Brazil,es_iat_sex_age_order_implicit_resid,0.5,180
+Brazil,es_iat_sex_age_order_implicit_resid,0.75,55
+Brazil,es_iat_sex_age_order_implicit_resid,1,3
+Brazil,explicit_dif,-4,1
+Brazil,explicit_dif,-3,2
+Brazil,explicit_dif,-2,8
+Brazil,explicit_dif,-1,20
+Brazil,explicit_dif,0,496
+Brazil,explicit_dif,1,288
+Brazil,explicit_dif,2,298
+Brazil,explicit_dif,3,122
+Brazil,explicit_dif,4,105
+Brazil,explicit_dif,5,37
+Brazil,explicit_dif,6,37
+Brazil,explicit_dif,NA,17
+Brazil,overall_iat_D_score,-0.75,9
+Brazil,overall_iat_D_score,-0.5,20
+Brazil,overall_iat_D_score,-0.25,76
+Brazil,overall_iat_D_score,-0,233
+Brazil,overall_iat_D_score,0.25,293
+Brazil,overall_iat_D_score,0.5,377
+Brazil,overall_iat_D_score,0.75,301
+Brazil,overall_iat_D_score,1,103
+Brazil,overall_iat_D_score,1.25,18
+Brazil,overall_iat_D_score,1.5,1
+Canada,es_iat_sex_age_order_explicit_resid,-7.5,5
+Canada,es_iat_sex_age_order_explicit_resid,-6.5,7
+Canada,es_iat_sex_age_order_explicit_resid,-5.75,1
+Canada,es_iat_sex_age_order_explicit_resid,-5.5,11
+Canada,es_iat_sex_age_order_explicit_resid,-4.75,1
+Canada,es_iat_sex_age_order_explicit_resid,-4.5,56
+Canada,es_iat_sex_age_order_explicit_resid,-3.75,4
+Canada,es_iat_sex_age_order_explicit_resid,-3.5,116
+Canada,es_iat_sex_age_order_explicit_resid,-2.75,8
+Canada,es_iat_sex_age_order_explicit_resid,-2.5,291
+Canada,es_iat_sex_age_order_explicit_resid,-1.75,367
+Canada,es_iat_sex_age_order_explicit_resid,-1.5,6498
+Canada,es_iat_sex_age_order_explicit_resid,-0.75,177
+Canada,es_iat_sex_age_order_explicit_resid,-0.5,4363
+Canada,es_iat_sex_age_order_explicit_resid,0.25,228
+Canada,es_iat_sex_age_order_explicit_resid,0.5,4652
+Canada,es_iat_sex_age_order_explicit_resid,1.25,58
+Canada,es_iat_sex_age_order_explicit_resid,1.5,1638
+Canada,es_iat_sex_age_order_explicit_resid,2.25,74
+Canada,es_iat_sex_age_order_explicit_resid,2.5,1615
+Canada,es_iat_sex_age_order_explicit_resid,3.25,27
+Canada,es_iat_sex_age_order_explicit_resid,3.5,611
+Canada,es_iat_sex_age_order_explicit_resid,4.25,18
+Canada,es_iat_sex_age_order_explicit_resid,4.5,419
+Canada,es_iat_sex_age_order_explicit_resid,NA,425
+Canada,es_iat_sex_age_order_implicit_resid,-1.75,1
+Canada,es_iat_sex_age_order_implicit_resid,-1.5,7
+Canada,es_iat_sex_age_order_implicit_resid,-1.25,38
+Canada,es_iat_sex_age_order_implicit_resid,-1,191
+Canada,es_iat_sex_age_order_implicit_resid,-0.75,797
+Canada,es_iat_sex_age_order_implicit_resid,-0.5,2176
+Canada,es_iat_sex_age_order_implicit_resid,-0.25,4458
+Canada,es_iat_sex_age_order_implicit_resid,0,6029
+Canada,es_iat_sex_age_order_implicit_resid,0.25,5094
+Canada,es_iat_sex_age_order_implicit_resid,0.5,2347
+Canada,es_iat_sex_age_order_implicit_resid,0.75,488
+Canada,es_iat_sex_age_order_implicit_resid,1,41
+Canada,es_iat_sex_age_order_implicit_resid,1.25,3
+Canada,explicit_dif,-6,5
+Canada,explicit_dif,-5,7
+Canada,explicit_dif,-4,12
+Canada,explicit_dif,-3,57
+Canada,explicit_dif,-2,120
+Canada,explicit_dif,-1,299
+Canada,explicit_dif,0,6865
+Canada,explicit_dif,1,4540
+Canada,explicit_dif,2,4880
+Canada,explicit_dif,3,1696
+Canada,explicit_dif,4,1689
+Canada,explicit_dif,5,638
+Canada,explicit_dif,6,437
+Canada,explicit_dif,NA,425
+Canada,overall_iat_D_score,-1.5,1
+Canada,overall_iat_D_score,-1.25,2
+Canada,overall_iat_D_score,-1,19
+Canada,overall_iat_D_score,-0.75,88
+Canada,overall_iat_D_score,-0.5,414
+Canada,overall_iat_D_score,-0.25,1403
+Canada,overall_iat_D_score,0,3150
+Canada,overall_iat_D_score,0.25,5193
+Canada,overall_iat_D_score,0.5,5881
+Canada,overall_iat_D_score,0.75,4034
+Canada,overall_iat_D_score,1,1290
+Canada,overall_iat_D_score,1.25,185
+Canada,overall_iat_D_score,1.5,10
+China,es_iat_sex_age_order_explicit_resid,-6.5,4
+China,es_iat_sex_age_order_explicit_resid,-5.5,5
+China,es_iat_sex_age_order_explicit_resid,-4.5,8
+China,es_iat_sex_age_order_explicit_resid,-3.75,2
+China,es_iat_sex_age_order_explicit_resid,-3.5,27
+China,es_iat_sex_age_order_explicit_resid,-2.75,3
+China,es_iat_sex_age_order_explicit_resid,-2.5,44
+China,es_iat_sex_age_order_explicit_resid,-1.75,15
+China,es_iat_sex_age_order_explicit_resid,-1.5,481
+China,es_iat_sex_age_order_explicit_resid,-0.75,9
+China,es_iat_sex_age_order_explicit_resid,-0.5,262
+China,es_iat_sex_age_order_explicit_resid,0.25,11
+China,es_iat_sex_age_order_explicit_resid,0.5,405
+China,es_iat_sex_age_order_explicit_resid,1.25,6
+China,es_iat_sex_age_order_explicit_resid,1.5,163
+China,es_iat_sex_age_order_explicit_resid,2.25,11
+China,es_iat_sex_age_order_explicit_resid,2.5,223
+China,es_iat_sex_age_order_explicit_resid,3.25,5
+China,es_iat_sex_age_order_explicit_resid,3.5,82
+China,es_iat_sex_age_order_explicit_resid,4.25,2
+China,es_iat_sex_age_order_explicit_resid,4.5,77
+China,es_iat_sex_age_order_explicit_resid,NA,37
+China,es_iat_sex_age_order_implicit_resid,-1.25,3
+China,es_iat_sex_age_order_implicit_resid,-1,9
+China,es_iat_sex_age_order_implicit_resid,-0.75,60
+China,es_iat_sex_age_order_implicit_resid,-0.5,186
+China,es_iat_sex_age_order_implicit_resid,-0.25,374
+China,es_iat_sex_age_order_implicit_resid,0,527
+China,es_iat_sex_age_order_implicit_resid,0.25,443
+China,es_iat_sex_age_order_implicit_resid,0.5,212
+China,es_iat_sex_age_order_implicit_resid,0.75,63
+China,es_iat_sex_age_order_implicit_resid,1,5
+China,explicit_dif,-5,4
+China,explicit_dif,-4,5
+China,explicit_dif,-3,8
+China,explicit_dif,-2,29
+China,explicit_dif,-1,47
+China,explicit_dif,0,496
+China,explicit_dif,1,271
+China,explicit_dif,2,416
+China,explicit_dif,3,169
+China,explicit_dif,4,234
+China,explicit_dif,5,87
+China,explicit_dif,6,79
+China,explicit_dif,NA,37
+China,overall_iat_D_score,-0.75,5
+China,overall_iat_D_score,-0.5,30
+China,overall_iat_D_score,-0.25,117
+China,overall_iat_D_score,-0,252
+China,overall_iat_D_score,0.25,466
+China,overall_iat_D_score,0.5,529
+China,overall_iat_D_score,0.75,335
+China,overall_iat_D_score,1,125
+China,overall_iat_D_score,1.25,22
+China,overall_iat_D_score,1.5,1
+Colombia,es_iat_sex_age_order_explicit_resid,-6.5,1
+Colombia,es_iat_sex_age_order_explicit_resid,-4.5,2
+Colombia,es_iat_sex_age_order_explicit_resid,-3.5,6
+Colombia,es_iat_sex_age_order_explicit_resid,-2.5,11
+Colombia,es_iat_sex_age_order_explicit_resid,-1.75,3
+Colombia,es_iat_sex_age_order_explicit_resid,-1.5,137
+Colombia,es_iat_sex_age_order_explicit_resid,-0.75,1
+Colombia,es_iat_sex_age_order_explicit_resid,-0.5,89
+Colombia,es_iat_sex_age_order_explicit_resid,0.25,2
+Colombia,es_iat_sex_age_order_explicit_resid,0.5,77
+Colombia,es_iat_sex_age_order_explicit_resid,1.25,3
+Colombia,es_iat_sex_age_order_explicit_resid,1.5,48
+Colombia,es_iat_sex_age_order_explicit_resid,2.25,1
+Colombia,es_iat_sex_age_order_explicit_resid,2.5,35
+Colombia,es_iat_sex_age_order_explicit_resid,3.5,22
+Colombia,es_iat_sex_age_order_explicit_resid,4.25,1
+Colombia,es_iat_sex_age_order_explicit_resid,4.5,9
+Colombia,es_iat_sex_age_order_explicit_resid,NA,9
+Colombia,es_iat_sex_age_order_implicit_resid,-1,4
+Colombia,es_iat_sex_age_order_implicit_resid,-0.75,20
+Colombia,es_iat_sex_age_order_implicit_resid,-0.5,57
+Colombia,es_iat_sex_age_order_implicit_resid,-0.25,109
+Colombia,es_iat_sex_age_order_implicit_resid,-0,125
+Colombia,es_iat_sex_age_order_implicit_resid,0.25,98
+Colombia,es_iat_sex_age_order_implicit_resid,0.5,35
+Colombia,es_iat_sex_age_order_implicit_resid,0.75,7
+Colombia,es_iat_sex_age_order_implicit_resid,1,2
+Colombia,explicit_dif,-5,1
+Colombia,explicit_dif,-3,2
+Colombia,explicit_dif,-2,6
+Colombia,explicit_dif,-1,11
+Colombia,explicit_dif,0,140
+Colombia,explicit_dif,1,90
+Colombia,explicit_dif,2,79
+Colombia,explicit_dif,3,51
+Colombia,explicit_dif,4,36
+Colombia,explicit_dif,5,22
+Colombia,explicit_dif,6,10
+Colombia,explicit_dif,NA,9
+Colombia,overall_iat_D_score,-0.75,2
+Colombia,overall_iat_D_score,-0.5,11
+Colombia,overall_iat_D_score,-0.25,34
+Colombia,overall_iat_D_score,-0,79
+Colombia,overall_iat_D_score,0.25,124
+Colombia,overall_iat_D_score,0.5,113
+Colombia,overall_iat_D_score,0.75,71
+Colombia,overall_iat_D_score,1,19
+Colombia,overall_iat_D_score,1.25,2
+Colombia,overall_iat_D_score,1.5,2
+Croatia,es_iat_sex_age_order_explicit_resid,-3.5,2
+Croatia,es_iat_sex_age_order_explicit_resid,-2.5,8
+Croatia,es_iat_sex_age_order_explicit_resid,-1.75,1
+Croatia,es_iat_sex_age_order_explicit_resid,-1.5,211
+Croatia,es_iat_sex_age_order_explicit_resid,-0.75,1
+Croatia,es_iat_sex_age_order_explicit_resid,-0.5,146
+Croatia,es_iat_sex_age_order_explicit_resid,0.25,3
+Croatia,es_iat_sex_age_order_explicit_resid,0.5,141
+Croatia,es_iat_sex_age_order_explicit_resid,1.25,1
+Croatia,es_iat_sex_age_order_explicit_resid,1.5,40
+Croatia,es_iat_sex_age_order_explicit_resid,2.5,29
+Croatia,es_iat_sex_age_order_explicit_resid,3.5,7
+Croatia,es_iat_sex_age_order_explicit_resid,4.5,5
+Croatia,es_iat_sex_age_order_explicit_resid,NA,8
+Croatia,es_iat_sex_age_order_implicit_resid,-1.5,1
+Croatia,es_iat_sex_age_order_implicit_resid,-1.25,2
+Croatia,es_iat_sex_age_order_implicit_resid,-1,6
+Croatia,es_iat_sex_age_order_implicit_resid,-0.75,12
+Croatia,es_iat_sex_age_order_implicit_resid,-0.5,70
+Croatia,es_iat_sex_age_order_implicit_resid,-0.25,107
+Croatia,es_iat_sex_age_order_implicit_resid,0,163
+Croatia,es_iat_sex_age_order_implicit_resid,0.25,156
+Croatia,es_iat_sex_age_order_implicit_resid,0.5,70
+Croatia,es_iat_sex_age_order_implicit_resid,0.75,14
+Croatia,es_iat_sex_age_order_implicit_resid,1,2
+Croatia,explicit_dif,-2,2
+Croatia,explicit_dif,-1,8
+Croatia,explicit_dif,0,212
+Croatia,explicit_dif,1,147
+Croatia,explicit_dif,2,144
+Croatia,explicit_dif,3,41
+Croatia,explicit_dif,4,29
+Croatia,explicit_dif,5,7
+Croatia,explicit_dif,6,5
+Croatia,explicit_dif,NA,8
+Croatia,overall_iat_D_score,-1.25,1
+Croatia,overall_iat_D_score,-1,2
+Croatia,overall_iat_D_score,-0.75,2
+Croatia,overall_iat_D_score,-0.5,4
+Croatia,overall_iat_D_score,-0.25,39
+Croatia,overall_iat_D_score,-0,93
+Croatia,overall_iat_D_score,0.25,128
+Croatia,overall_iat_D_score,0.5,167
+Croatia,overall_iat_D_score,0.75,121
+Croatia,overall_iat_D_score,1,40
+Croatia,overall_iat_D_score,1.25,6
+Denmark,es_iat_sex_age_order_explicit_resid,-7.5,2
+Denmark,es_iat_sex_age_order_explicit_resid,-6.5,1
+Denmark,es_iat_sex_age_order_explicit_resid,-5.5,1
+Denmark,es_iat_sex_age_order_explicit_resid,-4.5,2
+Denmark,es_iat_sex_age_order_explicit_resid,-3.5,5
+Denmark,es_iat_sex_age_order_explicit_resid,-2.5,13
+Denmark,es_iat_sex_age_order_explicit_resid,-1.75,18
+Denmark,es_iat_sex_age_order_explicit_resid,-1.5,261
+Denmark,es_iat_sex_age_order_explicit_resid,-0.75,8
+Denmark,es_iat_sex_age_order_explicit_resid,-0.5,200
+Denmark,es_iat_sex_age_order_explicit_resid,0.25,19
+Denmark,es_iat_sex_age_order_explicit_resid,0.5,262
+Denmark,es_iat_sex_age_order_explicit_resid,1.25,10
+Denmark,es_iat_sex_age_order_explicit_resid,1.5,91
+Denmark,es_iat_sex_age_order_explicit_resid,2.25,13
+Denmark,es_iat_sex_age_order_explicit_resid,2.5,79
+Denmark,es_iat_sex_age_order_explicit_resid,3.25,3
+Denmark,es_iat_sex_age_order_explicit_resid,3.5,19
+Denmark,es_iat_sex_age_order_explicit_resid,4.5,16
+Denmark,es_iat_sex_age_order_explicit_resid,NA,13
+Denmark,es_iat_sex_age_order_implicit_resid,-1.5,1
+Denmark,es_iat_sex_age_order_implicit_resid,-1.25,3
+Denmark,es_iat_sex_age_order_implicit_resid,-1,9
+Denmark,es_iat_sex_age_order_implicit_resid,-0.75,27
+Denmark,es_iat_sex_age_order_implicit_resid,-0.5,89
+Denmark,es_iat_sex_age_order_implicit_resid,-0.25,173
+Denmark,es_iat_sex_age_order_implicit_resid,-0,323
+Denmark,es_iat_sex_age_order_implicit_resid,0.25,251
+Denmark,es_iat_sex_age_order_implicit_resid,0.5,124
+Denmark,es_iat_sex_age_order_implicit_resid,0.75,34
+Denmark,es_iat_sex_age_order_implicit_resid,1,2
+Denmark,explicit_dif,-6,2
+Denmark,explicit_dif,-5,1
+Denmark,explicit_dif,-4,1
+Denmark,explicit_dif,-3,2
+Denmark,explicit_dif,-2,5
+Denmark,explicit_dif,-1,13
+Denmark,explicit_dif,0,279
+Denmark,explicit_dif,1,208
+Denmark,explicit_dif,2,281
+Denmark,explicit_dif,3,101
+Denmark,explicit_dif,4,92
+Denmark,explicit_dif,5,22
+Denmark,explicit_dif,6,16
+Denmark,explicit_dif,NA,13
+Denmark,overall_iat_D_score,-1,1
+Denmark,overall_iat_D_score,-0.75,5
+Denmark,overall_iat_D_score,-0.5,16
+Denmark,overall_iat_D_score,-0.25,49
+Denmark,overall_iat_D_score,0,141
+Denmark,overall_iat_D_score,0.25,236
+Denmark,overall_iat_D_score,0.5,319
+Denmark,overall_iat_D_score,0.75,186
+Denmark,overall_iat_D_score,1,71
+Denmark,overall_iat_D_score,1.25,11
+Denmark,overall_iat_D_score,1.5,1
+Finland,es_iat_sex_age_order_explicit_resid,-4.5,1
+Finland,es_iat_sex_age_order_explicit_resid,-3.5,2
+Finland,es_iat_sex_age_order_explicit_resid,-2.5,16
+Finland,es_iat_sex_age_order_explicit_resid,-1.75,6
+Finland,es_iat_sex_age_order_explicit_resid,-1.5,326
+Finland,es_iat_sex_age_order_explicit_resid,-0.75,3
+Finland,es_iat_sex_age_order_explicit_resid,-0.5,286
+Finland,es_iat_sex_age_order_explicit_resid,0.25,17
+Finland,es_iat_sex_age_order_explicit_resid,0.5,291
+Finland,es_iat_sex_age_order_explicit_resid,1.5,83
+Finland,es_iat_sex_age_order_explicit_resid,2.25,3
+Finland,es_iat_sex_age_order_explicit_resid,2.5,68
+Finland,es_iat_sex_age_order_explicit_resid,3.5,20
+Finland,es_iat_sex_age_order_explicit_resid,4.5,6
+Finland,es_iat_sex_age_order_explicit_resid,NA,17
+Finland,es_iat_sex_age_order_implicit_resid,-1.75,1
+Finland,es_iat_sex_age_order_implicit_resid,-1.5,1
+Finland,es_iat_sex_age_order_implicit_resid,-1.25,1
+Finland,es_iat_sex_age_order_implicit_resid,-1,14
+Finland,es_iat_sex_age_order_implicit_resid,-0.75,47
+Finland,es_iat_sex_age_order_implicit_resid,-0.5,106
+Finland,es_iat_sex_age_order_implicit_resid,-0.25,218
+Finland,es_iat_sex_age_order_implicit_resid,-0,322
+Finland,es_iat_sex_age_order_implicit_resid,0.25,267
+Finland,es_iat_sex_age_order_implicit_resid,0.5,133
+Finland,es_iat_sex_age_order_implicit_resid,0.75,28
+Finland,es_iat_sex_age_order_implicit_resid,1,7
+Finland,explicit_dif,-3,1
+Finland,explicit_dif,-2,2
+Finland,explicit_dif,-1,16
+Finland,explicit_dif,0,332
+Finland,explicit_dif,1,289
+Finland,explicit_dif,2,308
+Finland,explicit_dif,3,83
+Finland,explicit_dif,4,71
+Finland,explicit_dif,5,20
+Finland,explicit_dif,6,6
+Finland,explicit_dif,NA,17
+Finland,overall_iat_D_score,-1.25,2
+Finland,overall_iat_D_score,-1,1
+Finland,overall_iat_D_score,-0.75,2
+Finland,overall_iat_D_score,-0.5,20
+Finland,overall_iat_D_score,-0.25,78
+Finland,overall_iat_D_score,0,158
+Finland,overall_iat_D_score,0.25,282
+Finland,overall_iat_D_score,0.5,317
+Finland,overall_iat_D_score,0.75,200
+Finland,overall_iat_D_score,1,70
+Finland,overall_iat_D_score,1.25,14
+Finland,overall_iat_D_score,1.5,1
+France,es_iat_sex_age_order_explicit_resid,-6.5,2
+France,es_iat_sex_age_order_explicit_resid,-5.5,2
+France,es_iat_sex_age_order_explicit_resid,-4.5,4
+France,es_iat_sex_age_order_explicit_resid,-3.5,7
+France,es_iat_sex_age_order_explicit_resid,-2.5,28
+France,es_iat_sex_age_order_explicit_resid,-1.75,43
+France,es_iat_sex_age_order_explicit_resid,-1.5,798
+France,es_iat_sex_age_order_explicit_resid,-0.75,13
+France,es_iat_sex_age_order_explicit_resid,-0.5,480
+France,es_iat_sex_age_order_explicit_resid,0.25,27
+France,es_iat_sex_age_order_explicit_resid,0.5,609
+France,es_iat_sex_age_order_explicit_resid,1.25,8
+France,es_iat_sex_age_order_explicit_resid,1.5,229
+France,es_iat_sex_age_order_explicit_resid,2.25,14
+France,es_iat_sex_age_order_explicit_resid,2.5,223
+France,es_iat_sex_age_order_explicit_resid,3.25,8
+France,es_iat_sex_age_order_explicit_resid,3.5,81
+France,es_iat_sex_age_order_explicit_resid,4.25,6
+France,es_iat_sex_age_order_explicit_resid,4.5,83
+France,es_iat_sex_age_order_explicit_resid,NA,40
+France,es_iat_sex_age_order_implicit_resid,-1.25,11
+France,es_iat_sex_age_order_implicit_resid,-1,18
+France,es_iat_sex_age_order_implicit_resid,-0.75,101
+France,es_iat_sex_age_order_implicit_resid,-0.5,256
+France,es_iat_sex_age_order_implicit_resid,-0.25,563
+France,es_iat_sex_age_order_implicit_resid,-0,762
+France,es_iat_sex_age_order_implicit_resid,0.25,634
+France,es_iat_sex_age_order_implicit_resid,0.5,292
+France,es_iat_sex_age_order_implicit_resid,0.75,61
+France,es_iat_sex_age_order_implicit_resid,1,7
+France,explicit_dif,-5,2
+France,explicit_dif,-4,2
+France,explicit_dif,-3,4
+France,explicit_dif,-2,7
+France,explicit_dif,-1,28
+France,explicit_dif,0,841
+France,explicit_dif,1,493
+France,explicit_dif,2,636
+France,explicit_dif,3,237
+France,explicit_dif,4,237
+France,explicit_dif,5,89
+France,explicit_dif,6,89
+France,explicit_dif,NA,40
+France,overall_iat_D_score,-1,2
+France,overall_iat_D_score,-0.75,15
+France,overall_iat_D_score,-0.5,51
+France,overall_iat_D_score,-0.25,162
+France,overall_iat_D_score,0,393
+France,overall_iat_D_score,0.25,675
+France,overall_iat_D_score,0.5,712
+France,overall_iat_D_score,0.75,498
+France,overall_iat_D_score,1,165
+France,overall_iat_D_score,1.25,32
+Germany,es_iat_sex_age_order_explicit_resid,-7.5,2
+Germany,es_iat_sex_age_order_explicit_resid,-6.5,1
+Germany,es_iat_sex_age_order_explicit_resid,-5.5,6
+Germany,es_iat_sex_age_order_explicit_resid,-4.75,1
+Germany,es_iat_sex_age_order_explicit_resid,-4.5,5
+Germany,es_iat_sex_age_order_explicit_resid,-3.75,1
+Germany,es_iat_sex_age_order_explicit_resid,-3.5,14
+Germany,es_iat_sex_age_order_explicit_resid,-2.5,42
+Germany,es_iat_sex_age_order_explicit_resid,-1.75,53
+Germany,es_iat_sex_age_order_explicit_resid,-1.5,1002
+Germany,es_iat_sex_age_order_explicit_resid,-0.75,33
+Germany,es_iat_sex_age_order_explicit_resid,-0.5,844
+Germany,es_iat_sex_age_order_explicit_resid,0.25,58
+Germany,es_iat_sex_age_order_explicit_resid,0.5,1142
+Germany,es_iat_sex_age_order_explicit_resid,1.25,20
+Germany,es_iat_sex_age_order_explicit_resid,1.5,486
+Germany,es_iat_sex_age_order_explicit_resid,2.25,30
+Germany,es_iat_sex_age_order_explicit_resid,2.5,460
+Germany,es_iat_sex_age_order_explicit_resid,3.25,8
+Germany,es_iat_sex_age_order_explicit_resid,3.5,186
+Germany,es_iat_sex_age_order_explicit_resid,4.25,6
+Germany,es_iat_sex_age_order_explicit_resid,4.5,117
+Germany,es_iat_sex_age_order_explicit_resid,NA,85
+Germany,es_iat_sex_age_order_implicit_resid,-1.5,2
+Germany,es_iat_sex_age_order_implicit_resid,-1.25,7
+Germany,es_iat_sex_age_order_implicit_resid,-1,37
+Germany,es_iat_sex_age_order_implicit_resid,-0.75,131
+Germany,es_iat_sex_age_order_implicit_resid,-0.5,419
+Germany,es_iat_sex_age_order_implicit_resid,-0.25,902
+Germany,es_iat_sex_age_order_implicit_resid,0,1262
+Germany,es_iat_sex_age_order_implicit_resid,0.25,1146
+Germany,es_iat_sex_age_order_implicit_resid,0.5,548
+Germany,es_iat_sex_age_order_implicit_resid,0.75,132
+Germany,es_iat_sex_age_order_implicit_resid,1,16
+Germany,explicit_dif,-6,2
+Germany,explicit_dif,-5,1
+Germany,explicit_dif,-4,6
+Germany,explicit_dif,-3,6
+Germany,explicit_dif,-2,15
+Germany,explicit_dif,-1,42
+Germany,explicit_dif,0,1055
+Germany,explicit_dif,1,877
+Germany,explicit_dif,2,1200
+Germany,explicit_dif,3,506
+Germany,explicit_dif,4,490
+Germany,explicit_dif,5,194
+Germany,explicit_dif,6,123
+Germany,explicit_dif,NA,85
+Germany,overall_iat_D_score,-1.25,1
+Germany,overall_iat_D_score,-1,4
+Germany,overall_iat_D_score,-0.75,15
+Germany,overall_iat_D_score,-0.5,72
+Germany,overall_iat_D_score,-0.25,266
+Germany,overall_iat_D_score,0,613
+Germany,overall_iat_D_score,0.25,1086
+Germany,overall_iat_D_score,0.5,1262
+Germany,overall_iat_D_score,0.75,933
+Germany,overall_iat_D_score,1,302
+Germany,overall_iat_D_score,1.25,47
+Germany,overall_iat_D_score,1.5,1
+Hong Kong,es_iat_sex_age_order_explicit_resid,-7.5,1
+Hong Kong,es_iat_sex_age_order_explicit_resid,-6.5,1
+Hong Kong,es_iat_sex_age_order_explicit_resid,-5.5,1
+Hong Kong,es_iat_sex_age_order_explicit_resid,-4.75,1
+Hong Kong,es_iat_sex_age_order_explicit_resid,-4.5,6
+Hong Kong,es_iat_sex_age_order_explicit_resid,-3.5,12
+Hong Kong,es_iat_sex_age_order_explicit_resid,-2.75,2
+Hong Kong,es_iat_sex_age_order_explicit_resid,-2.5,22
+Hong Kong,es_iat_sex_age_order_explicit_resid,-1.75,20
+Hong Kong,es_iat_sex_age_order_explicit_resid,-1.5,257
+Hong Kong,es_iat_sex_age_order_explicit_resid,-0.75,19
+Hong Kong,es_iat_sex_age_order_explicit_resid,-0.5,220
+Hong Kong,es_iat_sex_age_order_explicit_resid,0.25,23
+Hong Kong,es_iat_sex_age_order_explicit_resid,0.5,254
+Hong Kong,es_iat_sex_age_order_explicit_resid,1.25,7
+Hong Kong,es_iat_sex_age_order_explicit_resid,1.5,103
+Hong Kong,es_iat_sex_age_order_explicit_resid,2.25,4
+Hong Kong,es_iat_sex_age_order_explicit_resid,2.5,105
+Hong Kong,es_iat_sex_age_order_explicit_resid,3.25,2
+Hong Kong,es_iat_sex_age_order_explicit_resid,3.5,30
+Hong Kong,es_iat_sex_age_order_explicit_resid,4.25,2
+Hong Kong,es_iat_sex_age_order_explicit_resid,4.5,18
+Hong Kong,es_iat_sex_age_order_explicit_resid,NA,18
+Hong Kong,es_iat_sex_age_order_implicit_resid,-1,9
+Hong Kong,es_iat_sex_age_order_implicit_resid,-0.75,34
+Hong Kong,es_iat_sex_age_order_implicit_resid,-0.5,116
+Hong Kong,es_iat_sex_age_order_implicit_resid,-0.25,235
+Hong Kong,es_iat_sex_age_order_implicit_resid,0,283
+Hong Kong,es_iat_sex_age_order_implicit_resid,0.25,296
+Hong Kong,es_iat_sex_age_order_implicit_resid,0.5,114
+Hong Kong,es_iat_sex_age_order_implicit_resid,0.75,37
+Hong Kong,es_iat_sex_age_order_implicit_resid,1,4
+Hong Kong,explicit_dif,-6,1
+Hong Kong,explicit_dif,-5,1
+Hong Kong,explicit_dif,-4,1
+Hong Kong,explicit_dif,-3,7
+Hong Kong,explicit_dif,-2,12
+Hong Kong,explicit_dif,-1,24
+Hong Kong,explicit_dif,0,277
+Hong Kong,explicit_dif,1,239
+Hong Kong,explicit_dif,2,277
+Hong Kong,explicit_dif,3,110
+Hong Kong,explicit_dif,4,109
+Hong Kong,explicit_dif,5,32
+Hong Kong,explicit_dif,6,20
+Hong Kong,explicit_dif,NA,18
+Hong Kong,overall_iat_D_score,-0.75,1
+Hong Kong,overall_iat_D_score,-0.5,24
+Hong Kong,overall_iat_D_score,-0.25,72
+Hong Kong,overall_iat_D_score,-0,179
+Hong Kong,overall_iat_D_score,0.25,232
+Hong Kong,overall_iat_D_score,0.5,339
+Hong Kong,overall_iat_D_score,0.75,191
+Hong Kong,overall_iat_D_score,1,78
+Hong Kong,overall_iat_D_score,1.25,11
+Hong Kong,overall_iat_D_score,1.5,1
+India,es_iat_sex_age_order_explicit_resid,-7.5,2
+India,es_iat_sex_age_order_explicit_resid,-6.5,2
+India,es_iat_sex_age_order_explicit_resid,-5.5,4
+India,es_iat_sex_age_order_explicit_resid,-4.5,19
+India,es_iat_sex_age_order_explicit_resid,-3.75,1
+India,es_iat_sex_age_order_explicit_resid,-3.5,22
+India,es_iat_sex_age_order_explicit_resid,-2.75,2
+India,es_iat_sex_age_order_explicit_resid,-2.5,86
+India,es_iat_sex_age_order_explicit_resid,-1.75,121
+India,es_iat_sex_age_order_explicit_resid,-1.5,1320
+India,es_iat_sex_age_order_explicit_resid,-0.75,46
+India,es_iat_sex_age_order_explicit_resid,-0.5,668
+India,es_iat_sex_age_order_explicit_resid,0.25,58
+India,es_iat_sex_age_order_explicit_resid,0.5,756
+India,es_iat_sex_age_order_explicit_resid,1.25,31
+India,es_iat_sex_age_order_explicit_resid,1.5,337
+India,es_iat_sex_age_order_explicit_resid,2.25,42
+India,es_iat_sex_age_order_explicit_resid,2.5,403
+India,es_iat_sex_age_order_explicit_resid,3.25,17
+India,es_iat_sex_age_order_explicit_resid,3.5,172
+India,es_iat_sex_age_order_explicit_resid,4.25,8
+India,es_iat_sex_age_order_explicit_resid,4.5,154
+India,es_iat_sex_age_order_explicit_resid,NA,70
+India,es_iat_sex_age_order_implicit_resid,-1.5,1
+India,es_iat_sex_age_order_implicit_resid,-1.25,13
+India,es_iat_sex_age_order_implicit_resid,-1,44
+India,es_iat_sex_age_order_implicit_resid,-0.75,185
+India,es_iat_sex_age_order_implicit_resid,-0.5,538
+India,es_iat_sex_age_order_implicit_resid,-0.25,981
+India,es_iat_sex_age_order_implicit_resid,0,1236
+India,es_iat_sex_age_order_implicit_resid,0.25,924
+India,es_iat_sex_age_order_implicit_resid,0.5,354
+India,es_iat_sex_age_order_implicit_resid,0.75,61
+India,es_iat_sex_age_order_implicit_resid,1,4
+India,explicit_dif,-6,2
+India,explicit_dif,-5,2
+India,explicit_dif,-4,4
+India,explicit_dif,-3,19
+India,explicit_dif,-2,23
+India,explicit_dif,-1,88
+India,explicit_dif,0,1441
+India,explicit_dif,1,714
+India,explicit_dif,2,814
+India,explicit_dif,3,368
+India,explicit_dif,4,445
+India,explicit_dif,5,189
+India,explicit_dif,6,162
+India,explicit_dif,NA,70
+India,overall_iat_D_score,-1,7
+India,overall_iat_D_score,-0.75,22
+India,overall_iat_D_score,-0.5,113
+India,overall_iat_D_score,-0.25,366
+India,overall_iat_D_score,0,760
+India,overall_iat_D_score,0.25,1181
+India,overall_iat_D_score,0.5,1099
+India,overall_iat_D_score,0.75,608
+India,overall_iat_D_score,1,165
+India,overall_iat_D_score,1.25,19
+India,overall_iat_D_score,1.5,1
+Indonesia,es_iat_sex_age_order_explicit_resid,-6.5,1
+Indonesia,es_iat_sex_age_order_explicit_resid,-4.5,2
+Indonesia,es_iat_sex_age_order_explicit_resid,-3.5,5
+Indonesia,es_iat_sex_age_order_explicit_resid,-2.5,11
+Indonesia,es_iat_sex_age_order_explicit_resid,-1.75,7
+Indonesia,es_iat_sex_age_order_explicit_resid,-1.5,116
+Indonesia,es_iat_sex_age_order_explicit_resid,-0.75,1
+Indonesia,es_iat_sex_age_order_explicit_resid,-0.5,59
+Indonesia,es_iat_sex_age_order_explicit_resid,0.25,4
+Indonesia,es_iat_sex_age_order_explicit_resid,0.5,70
+Indonesia,es_iat_sex_age_order_explicit_resid,1.5,33
+Indonesia,es_iat_sex_age_order_explicit_resid,2.25,3
+Indonesia,es_iat_sex_age_order_explicit_resid,2.5,45
+Indonesia,es_iat_sex_age_order_explicit_resid,3.25,2
+Indonesia,es_iat_sex_age_order_explicit_resid,3.5,14
+Indonesia,es_iat_sex_age_order_explicit_resid,4.25,1
+Indonesia,es_iat_sex_age_order_explicit_resid,4.5,15
+Indonesia,es_iat_sex_age_order_explicit_resid,NA,12
+Indonesia,es_iat_sex_age_order_implicit_resid,-1,2
+Indonesia,es_iat_sex_age_order_implicit_resid,-0.75,15
+Indonesia,es_iat_sex_age_order_implicit_resid,-0.5,54
+Indonesia,es_iat_sex_age_order_implicit_resid,-0.25,80
+Indonesia,es_iat_sex_age_order_implicit_resid,0,133
+Indonesia,es_iat_sex_age_order_implicit_resid,0.25,81
+Indonesia,es_iat_sex_age_order_implicit_resid,0.5,29
+Indonesia,es_iat_sex_age_order_implicit_resid,0.75,6
+Indonesia,es_iat_sex_age_order_implicit_resid,1,1
+Indonesia,explicit_dif,-5,1
+Indonesia,explicit_dif,-3,2
+Indonesia,explicit_dif,-2,5
+Indonesia,explicit_dif,-1,11
+Indonesia,explicit_dif,0,123
+Indonesia,explicit_dif,1,60
+Indonesia,explicit_dif,2,74
+Indonesia,explicit_dif,3,33
+Indonesia,explicit_dif,4,48
+Indonesia,explicit_dif,5,16
+Indonesia,explicit_dif,6,16
+Indonesia,explicit_dif,NA,12
+Indonesia,overall_iat_D_score,-0.75,1
+Indonesia,overall_iat_D_score,-0.5,6
+Indonesia,overall_iat_D_score,-0.25,38
+Indonesia,overall_iat_D_score,0,72
+Indonesia,overall_iat_D_score,0.25,104
+Indonesia,overall_iat_D_score,0.5,113
+Indonesia,overall_iat_D_score,0.75,45
+Indonesia,overall_iat_D_score,1,20
+Indonesia,overall_iat_D_score,1.25,2
+Ireland,es_iat_sex_age_order_explicit_resid,-6.5,1
+Ireland,es_iat_sex_age_order_explicit_resid,-5.5,1
+Ireland,es_iat_sex_age_order_explicit_resid,-4.5,7
+Ireland,es_iat_sex_age_order_explicit_resid,-3.75,1
+Ireland,es_iat_sex_age_order_explicit_resid,-3.5,12
+Ireland,es_iat_sex_age_order_explicit_resid,-2.75,1
+Ireland,es_iat_sex_age_order_explicit_resid,-2.5,30
+Ireland,es_iat_sex_age_order_explicit_resid,-1.75,43
+Ireland,es_iat_sex_age_order_explicit_resid,-1.5,835
+Ireland,es_iat_sex_age_order_explicit_resid,-0.75,31
+Ireland,es_iat_sex_age_order_explicit_resid,-0.5,568
+Ireland,es_iat_sex_age_order_explicit_resid,0.25,40
+Ireland,es_iat_sex_age_order_explicit_resid,0.5,554
+Ireland,es_iat_sex_age_order_explicit_resid,1.25,11
+Ireland,es_iat_sex_age_order_explicit_resid,1.5,232
+Ireland,es_iat_sex_age_order_explicit_resid,2.25,16
+Ireland,es_iat_sex_age_order_explicit_resid,2.5,210
+Ireland,es_iat_sex_age_order_explicit_resid,3.25,11
+Ireland,es_iat_sex_age_order_explicit_resid,3.5,99
+Ireland,es_iat_sex_age_order_explicit_resid,4.25,8
+Ireland,es_iat_sex_age_order_explicit_resid,4.5,61
+Ireland,es_iat_sex_age_order_explicit_resid,NA,40
+Ireland,es_iat_sex_age_order_implicit_resid,-1.5,3
+Ireland,es_iat_sex_age_order_implicit_resid,-1.25,3
+Ireland,es_iat_sex_age_order_implicit_resid,-1,25
+Ireland,es_iat_sex_age_order_implicit_resid,-0.75,112
+Ireland,es_iat_sex_age_order_implicit_resid,-0.5,282
+Ireland,es_iat_sex_age_order_implicit_resid,-0.25,577
+Ireland,es_iat_sex_age_order_implicit_resid,-0,779
+Ireland,es_iat_sex_age_order_implicit_resid,0.25,618
+Ireland,es_iat_sex_age_order_implicit_resid,0.5,346
+Ireland,es_iat_sex_age_order_implicit_resid,0.75,60
+Ireland,es_iat_sex_age_order_implicit_resid,1,7
+Ireland,explicit_dif,-5,1
+Ireland,explicit_dif,-4,1
+Ireland,explicit_dif,-3,7
+Ireland,explicit_dif,-2,13
+Ireland,explicit_dif,-1,31
+Ireland,explicit_dif,0,878
+Ireland,explicit_dif,1,599
+Ireland,explicit_dif,2,594
+Ireland,explicit_dif,3,243
+Ireland,explicit_dif,4,226
+Ireland,explicit_dif,5,110
+Ireland,explicit_dif,6,69
+Ireland,explicit_dif,NA,40
+Ireland,overall_iat_D_score,-1.25,2
+Ireland,overall_iat_D_score,-1,2
+Ireland,overall_iat_D_score,-0.75,14
+Ireland,overall_iat_D_score,-0.5,60
+Ireland,overall_iat_D_score,-0.25,182
+Ireland,overall_iat_D_score,-0,405
+Ireland,overall_iat_D_score,0.25,687
+Ireland,overall_iat_D_score,0.5,703
+Ireland,overall_iat_D_score,0.75,537
+Ireland,overall_iat_D_score,1,201
+Ireland,overall_iat_D_score,1.25,19
+Israel,es_iat_sex_age_order_explicit_resid,-3.5,4
+Israel,es_iat_sex_age_order_explicit_resid,-2.5,4
+Israel,es_iat_sex_age_order_explicit_resid,-1.75,7
+Israel,es_iat_sex_age_order_explicit_resid,-1.5,197
+Israel,es_iat_sex_age_order_explicit_resid,-0.75,6
+Israel,es_iat_sex_age_order_explicit_resid,-0.5,137
+Israel,es_iat_sex_age_order_explicit_resid,0.25,10
+Israel,es_iat_sex_age_order_explicit_resid,0.5,179
+Israel,es_iat_sex_age_order_explicit_resid,1.25,2
+Israel,es_iat_sex_age_order_explicit_resid,1.5,76
+Israel,es_iat_sex_age_order_explicit_resid,2.25,5
+Israel,es_iat_sex_age_order_explicit_resid,2.5,58
+Israel,es_iat_sex_age_order_explicit_resid,3.25,1
+Israel,es_iat_sex_age_order_explicit_resid,3.5,29
+Israel,es_iat_sex_age_order_explicit_resid,4.25,1
+Israel,es_iat_sex_age_order_explicit_resid,4.5,19
+Israel,es_iat_sex_age_order_explicit_resid,NA,23
+Israel,es_iat_sex_age_order_implicit_resid,-1.25,1
+Israel,es_iat_sex_age_order_implicit_resid,-1,6
+Israel,es_iat_sex_age_order_implicit_resid,-0.75,33
+Israel,es_iat_sex_age_order_implicit_resid,-0.5,67
+Israel,es_iat_sex_age_order_implicit_resid,-0.25,144
+Israel,es_iat_sex_age_order_implicit_resid,-0,195
+Israel,es_iat_sex_age_order_implicit_resid,0.25,182
+Israel,es_iat_sex_age_order_implicit_resid,0.5,105
+Israel,es_iat_sex_age_order_implicit_resid,0.75,22
+Israel,es_iat_sex_age_order_implicit_resid,1,3
+Israel,explicit_dif,-2,4
+Israel,explicit_dif,-1,4
+Israel,explicit_dif,0,204
+Israel,explicit_dif,1,143
+Israel,explicit_dif,2,189
+Israel,explicit_dif,3,78
+Israel,explicit_dif,4,63
+Israel,explicit_dif,5,30
+Israel,explicit_dif,6,20
+Israel,explicit_dif,NA,23
+Israel,overall_iat_D_score,-0.75,3
+Israel,overall_iat_D_score,-0.5,21
+Israel,overall_iat_D_score,-0.25,43
+Israel,overall_iat_D_score,0,95
+Israel,overall_iat_D_score,0.25,170
+Israel,overall_iat_D_score,0.5,194
+Israel,overall_iat_D_score,0.75,163
+Israel,overall_iat_D_score,1,62
+Israel,overall_iat_D_score,1.25,6
+Israel,overall_iat_D_score,1.5,1
+Italy,es_iat_sex_age_order_explicit_resid,-6.5,1
+Italy,es_iat_sex_age_order_explicit_resid,-5.5,1
+Italy,es_iat_sex_age_order_explicit_resid,-4.75,1
+Italy,es_iat_sex_age_order_explicit_resid,-4.5,1
+Italy,es_iat_sex_age_order_explicit_resid,-3.5,7
+Italy,es_iat_sex_age_order_explicit_resid,-2.5,11
+Italy,es_iat_sex_age_order_explicit_resid,-1.75,22
+Italy,es_iat_sex_age_order_explicit_resid,-1.5,273
+Italy,es_iat_sex_age_order_explicit_resid,-0.75,12
+Italy,es_iat_sex_age_order_explicit_resid,-0.5,206
+Italy,es_iat_sex_age_order_explicit_resid,0.25,24
+Italy,es_iat_sex_age_order_explicit_resid,0.5,200
+Italy,es_iat_sex_age_order_explicit_resid,1.25,10
+Italy,es_iat_sex_age_order_explicit_resid,1.5,105
+Italy,es_iat_sex_age_order_explicit_resid,2.25,16
+Italy,es_iat_sex_age_order_explicit_resid,2.5,114
+Italy,es_iat_sex_age_order_explicit_resid,3.25,4
+Italy,es_iat_sex_age_order_explicit_resid,3.5,46
+Italy,es_iat_sex_age_order_explicit_resid,4.25,2
+Italy,es_iat_sex_age_order_explicit_resid,4.5,42
+Italy,es_iat_sex_age_order_explicit_resid,NA,16
+Italy,es_iat_sex_age_order_implicit_resid,-1.25,2
+Italy,es_iat_sex_age_order_implicit_resid,-1,9
+Italy,es_iat_sex_age_order_implicit_resid,-0.75,37
+Italy,es_iat_sex_age_order_implicit_resid,-0.5,100
+Italy,es_iat_sex_age_order_implicit_resid,-0.25,177
+Italy,es_iat_sex_age_order_implicit_resid,-0,344
+Italy,es_iat_sex_age_order_implicit_resid,0.25,279
+Italy,es_iat_sex_age_order_implicit_resid,0.5,131
+Italy,es_iat_sex_age_order_implicit_resid,0.75,34
+Italy,es_iat_sex_age_order_implicit_resid,1,1
+Italy,explicit_dif,-5,1
+Italy,explicit_dif,-4,1
+Italy,explicit_dif,-3,2
+Italy,explicit_dif,-2,7
+Italy,explicit_dif,-1,11
+Italy,explicit_dif,0,295
+Italy,explicit_dif,1,218
+Italy,explicit_dif,2,224
+Italy,explicit_dif,3,115
+Italy,explicit_dif,4,130
+Italy,explicit_dif,5,50
+Italy,explicit_dif,6,44
+Italy,explicit_dif,NA,16
+Italy,overall_iat_D_score,-1,1
+Italy,overall_iat_D_score,-0.75,4
+Italy,overall_iat_D_score,-0.5,15
+Italy,overall_iat_D_score,-0.25,72
+Italy,overall_iat_D_score,0,141
+Italy,overall_iat_D_score,0.25,243
+Italy,overall_iat_D_score,0.5,316
+Italy,overall_iat_D_score,0.75,223
+Italy,overall_iat_D_score,1,85
+Italy,overall_iat_D_score,1.25,14
+Japan,es_iat_sex_age_order_explicit_resid,-7.5,1
+Japan,es_iat_sex_age_order_explicit_resid,-6.5,2
+Japan,es_iat_sex_age_order_explicit_resid,-5.5,3
+Japan,es_iat_sex_age_order_explicit_resid,-4.5,8
+Japan,es_iat_sex_age_order_explicit_resid,-3.75,2
+Japan,es_iat_sex_age_order_explicit_resid,-3.5,8
+Japan,es_iat_sex_age_order_explicit_resid,-2.75,2
+Japan,es_iat_sex_age_order_explicit_resid,-2.5,38
+Japan,es_iat_sex_age_order_explicit_resid,-1.75,39
+Japan,es_iat_sex_age_order_explicit_resid,-1.5,312
+Japan,es_iat_sex_age_order_explicit_resid,-0.75,14
+Japan,es_iat_sex_age_order_explicit_resid,-0.5,221
+Japan,es_iat_sex_age_order_explicit_resid,0.25,11
+Japan,es_iat_sex_age_order_explicit_resid,0.5,262
+Japan,es_iat_sex_age_order_explicit_resid,1.25,3
+Japan,es_iat_sex_age_order_explicit_resid,1.5,84
+Japan,es_iat_sex_age_order_explicit_resid,2.25,13
+Japan,es_iat_sex_age_order_explicit_resid,2.5,112
+Japan,es_iat_sex_age_order_explicit_resid,3.25,4
+Japan,es_iat_sex_age_order_explicit_resid,3.5,39
+Japan,es_iat_sex_age_order_explicit_resid,4.25,3
+Japan,es_iat_sex_age_order_explicit_resid,4.5,29
+Japan,es_iat_sex_age_order_explicit_resid,NA,30
+Japan,es_iat_sex_age_order_implicit_resid,-1.25,2
+Japan,es_iat_sex_age_order_implicit_resid,-1,10
+Japan,es_iat_sex_age_order_implicit_resid,-0.75,40
+Japan,es_iat_sex_age_order_implicit_resid,-0.5,130
+Japan,es_iat_sex_age_order_implicit_resid,-0.25,246
+Japan,es_iat_sex_age_order_implicit_resid,-0,323
+Japan,es_iat_sex_age_order_implicit_resid,0.25,283
+Japan,es_iat_sex_age_order_implicit_resid,0.5,151
+Japan,es_iat_sex_age_order_implicit_resid,0.75,49
+Japan,es_iat_sex_age_order_implicit_resid,1,6
+Japan,explicit_dif,-6,1
+Japan,explicit_dif,-5,2
+Japan,explicit_dif,-4,3
+Japan,explicit_dif,-3,8
+Japan,explicit_dif,-2,10
+Japan,explicit_dif,-1,40
+Japan,explicit_dif,0,351
+Japan,explicit_dif,1,235
+Japan,explicit_dif,2,273
+Japan,explicit_dif,3,87
+Japan,explicit_dif,4,125
+Japan,explicit_dif,5,43
+Japan,explicit_dif,6,32
+Japan,explicit_dif,NA,30
+Japan,overall_iat_D_score,-1,2
+Japan,overall_iat_D_score,-0.75,2
+Japan,overall_iat_D_score,-0.5,25
+Japan,overall_iat_D_score,-0.25,81
+Japan,overall_iat_D_score,0,167
+Japan,overall_iat_D_score,0.25,308
+Japan,overall_iat_D_score,0.5,324
+Japan,overall_iat_D_score,0.75,215
+Japan,overall_iat_D_score,1,95
+Japan,overall_iat_D_score,1.25,21
+Malaysia,es_iat_sex_age_order_explicit_resid,-7.5,1
+Malaysia,es_iat_sex_age_order_explicit_resid,-6.5,1
+Malaysia,es_iat_sex_age_order_explicit_resid,-5.5,4
+Malaysia,es_iat_sex_age_order_explicit_resid,-4.5,7
+Malaysia,es_iat_sex_age_order_explicit_resid,-3.5,27
+Malaysia,es_iat_sex_age_order_explicit_resid,-2.75,1
+Malaysia,es_iat_sex_age_order_explicit_resid,-2.5,29
+Malaysia,es_iat_sex_age_order_explicit_resid,-1.75,8
+Malaysia,es_iat_sex_age_order_explicit_resid,-1.5,261
+Malaysia,es_iat_sex_age_order_explicit_resid,-0.75,6
+Malaysia,es_iat_sex_age_order_explicit_resid,-0.5,120
+Malaysia,es_iat_sex_age_order_explicit_resid,0.25,4
+Malaysia,es_iat_sex_age_order_explicit_resid,0.5,149
+Malaysia,es_iat_sex_age_order_explicit_resid,1.25,2
+Malaysia,es_iat_sex_age_order_explicit_resid,1.5,62
+Malaysia,es_iat_sex_age_order_explicit_resid,2.25,3
+Malaysia,es_iat_sex_age_order_explicit_resid,2.5,95
+Malaysia,es_iat_sex_age_order_explicit_resid,3.5,39
+Malaysia,es_iat_sex_age_order_explicit_resid,4.25,3
+Malaysia,es_iat_sex_age_order_explicit_resid,4.5,40
+Malaysia,es_iat_sex_age_order_explicit_resid,NA,25
+Malaysia,es_iat_sex_age_order_implicit_resid,-1.5,1
+Malaysia,es_iat_sex_age_order_implicit_resid,-1.25,1
+Malaysia,es_iat_sex_age_order_implicit_resid,-1,8
+Malaysia,es_iat_sex_age_order_implicit_resid,-0.75,49
+Malaysia,es_iat_sex_age_order_implicit_resid,-0.5,86
+Malaysia,es_iat_sex_age_order_implicit_resid,-0.25,195
+Malaysia,es_iat_sex_age_order_implicit_resid,0,248
+Malaysia,es_iat_sex_age_order_implicit_resid,0.25,201
+Malaysia,es_iat_sex_age_order_implicit_resid,0.5,72
+Malaysia,es_iat_sex_age_order_implicit_resid,0.75,23
+Malaysia,es_iat_sex_age_order_implicit_resid,1,3
+Malaysia,explicit_dif,-6,1
+Malaysia,explicit_dif,-5,1
+Malaysia,explicit_dif,-4,4
+Malaysia,explicit_dif,-3,7
+Malaysia,explicit_dif,-2,27
+Malaysia,explicit_dif,-1,30
+Malaysia,explicit_dif,0,269
+Malaysia,explicit_dif,1,126
+Malaysia,explicit_dif,2,153
+Malaysia,explicit_dif,3,64
+Malaysia,explicit_dif,4,98
+Malaysia,explicit_dif,5,39
+Malaysia,explicit_dif,6,43
+Malaysia,explicit_dif,NA,25
+Malaysia,overall_iat_D_score,-1,2
+Malaysia,overall_iat_D_score,-0.75,6
+Malaysia,overall_iat_D_score,-0.5,24
+Malaysia,overall_iat_D_score,-0.25,62
+Malaysia,overall_iat_D_score,0,139
+Malaysia,overall_iat_D_score,0.25,234
+Malaysia,overall_iat_D_score,0.5,214
+Malaysia,overall_iat_D_score,0.75,154
+Malaysia,overall_iat_D_score,1,41
+Malaysia,overall_iat_D_score,1.25,11
+Mexico,es_iat_sex_age_order_explicit_resid,-7.5,2
+Mexico,es_iat_sex_age_order_explicit_resid,-6.5,2
+Mexico,es_iat_sex_age_order_explicit_resid,-5.5,2
+Mexico,es_iat_sex_age_order_explicit_resid,-4.5,7
+Mexico,es_iat_sex_age_order_explicit_resid,-3.5,10
+Mexico,es_iat_sex_age_order_explicit_resid,-2.75,2
+Mexico,es_iat_sex_age_order_explicit_resid,-2.5,24
+Mexico,es_iat_sex_age_order_explicit_resid,-1.75,11
+Mexico,es_iat_sex_age_order_explicit_resid,-1.5,323
+Mexico,es_iat_sex_age_order_explicit_resid,-0.75,3
+Mexico,es_iat_sex_age_order_explicit_resid,-0.5,173
+Mexico,es_iat_sex_age_order_explicit_resid,0.25,11
+Mexico,es_iat_sex_age_order_explicit_resid,0.5,173
+Mexico,es_iat_sex_age_order_explicit_resid,1.25,4
+Mexico,es_iat_sex_age_order_explicit_resid,1.5,84
+Mexico,es_iat_sex_age_order_explicit_resid,2.25,5
+Mexico,es_iat_sex_age_order_explicit_resid,2.5,75
+Mexico,es_iat_sex_age_order_explicit_resid,3.25,4
+Mexico,es_iat_sex_age_order_explicit_resid,3.5,47
+Mexico,es_iat_sex_age_order_explicit_resid,4.25,5
+Mexico,es_iat_sex_age_order_explicit_resid,4.5,46
+Mexico,es_iat_sex_age_order_explicit_resid,NA,16
+Mexico,es_iat_sex_age_order_implicit_resid,-1.25,3
+Mexico,es_iat_sex_age_order_implicit_resid,-1,8
+Mexico,es_iat_sex_age_order_implicit_resid,-0.75,51
+Mexico,es_iat_sex_age_order_implicit_resid,-0.5,101
+Mexico,es_iat_sex_age_order_implicit_resid,-0.25,211
+Mexico,es_iat_sex_age_order_implicit_resid,-0,290
+Mexico,es_iat_sex_age_order_implicit_resid,0.25,238
+Mexico,es_iat_sex_age_order_implicit_resid,0.5,102
+Mexico,es_iat_sex_age_order_implicit_resid,0.75,22
+Mexico,es_iat_sex_age_order_implicit_resid,1,3
+Mexico,explicit_dif,-6,2
+Mexico,explicit_dif,-5,2
+Mexico,explicit_dif,-4,2
+Mexico,explicit_dif,-3,7
+Mexico,explicit_dif,-2,10
+Mexico,explicit_dif,-1,26
+Mexico,explicit_dif,0,334
+Mexico,explicit_dif,1,176
+Mexico,explicit_dif,2,184
+Mexico,explicit_dif,3,88
+Mexico,explicit_dif,4,80
+Mexico,explicit_dif,5,51
+Mexico,explicit_dif,6,51
+Mexico,explicit_dif,NA,16
+Mexico,overall_iat_D_score,-0.75,4
+Mexico,overall_iat_D_score,-0.5,25
+Mexico,overall_iat_D_score,-0.25,76
+Mexico,overall_iat_D_score,-0,157
+Mexico,overall_iat_D_score,0.25,257
+Mexico,overall_iat_D_score,0.5,279
+Mexico,overall_iat_D_score,0.75,177
+Mexico,overall_iat_D_score,1,44
+Mexico,overall_iat_D_score,1.25,10
+Netherlands,es_iat_sex_age_order_explicit_resid,-6.5,1
+Netherlands,es_iat_sex_age_order_explicit_resid,-5.5,1
+Netherlands,es_iat_sex_age_order_explicit_resid,-4.5,9
+Netherlands,es_iat_sex_age_order_explicit_resid,-3.75,2
+Netherlands,es_iat_sex_age_order_explicit_resid,-3.5,14
+Netherlands,es_iat_sex_age_order_explicit_resid,-2.75,2
+Netherlands,es_iat_sex_age_order_explicit_resid,-2.5,43
+Netherlands,es_iat_sex_age_order_explicit_resid,-1.75,52
+Netherlands,es_iat_sex_age_order_explicit_resid,-1.5,864
+Netherlands,es_iat_sex_age_order_explicit_resid,-0.75,41
+Netherlands,es_iat_sex_age_order_explicit_resid,-0.5,698
+Netherlands,es_iat_sex_age_order_explicit_resid,0.25,56
+Netherlands,es_iat_sex_age_order_explicit_resid,0.5,1001
+Netherlands,es_iat_sex_age_order_explicit_resid,1.25,13
+Netherlands,es_iat_sex_age_order_explicit_resid,1.5,335
+Netherlands,es_iat_sex_age_order_explicit_resid,2.25,18
+Netherlands,es_iat_sex_age_order_explicit_resid,2.5,378
+Netherlands,es_iat_sex_age_order_explicit_resid,3.25,9
+Netherlands,es_iat_sex_age_order_explicit_resid,3.5,104
+Netherlands,es_iat_sex_age_order_explicit_resid,4.25,7
+Netherlands,es_iat_sex_age_order_explicit_resid,4.5,72
+Netherlands,es_iat_sex_age_order_explicit_resid,NA,53
+Netherlands,es_iat_sex_age_order_implicit_resid,-1.25,6
+Netherlands,es_iat_sex_age_order_implicit_resid,-1,28
+Netherlands,es_iat_sex_age_order_implicit_resid,-0.75,110
+Netherlands,es_iat_sex_age_order_implicit_resid,-0.5,310
+Netherlands,es_iat_sex_age_order_implicit_resid,-0.25,709
+Netherlands,es_iat_sex_age_order_implicit_resid,0,1006
+Netherlands,es_iat_sex_age_order_implicit_resid,0.25,962
+Netherlands,es_iat_sex_age_order_implicit_resid,0.5,499
+Netherlands,es_iat_sex_age_order_implicit_resid,0.75,134
+Netherlands,es_iat_sex_age_order_implicit_resid,1,9
+Netherlands,explicit_dif,-5,1
+Netherlands,explicit_dif,-4,1
+Netherlands,explicit_dif,-3,9
+Netherlands,explicit_dif,-2,16
+Netherlands,explicit_dif,-1,45
+Netherlands,explicit_dif,0,916
+Netherlands,explicit_dif,1,739
+Netherlands,explicit_dif,2,1057
+Netherlands,explicit_dif,3,348
+Netherlands,explicit_dif,4,396
+Netherlands,explicit_dif,5,113
+Netherlands,explicit_dif,6,79
+Netherlands,explicit_dif,NA,53
+Netherlands,overall_iat_D_score,-0.75,17
+Netherlands,overall_iat_D_score,-0.5,65
+Netherlands,overall_iat_D_score,-0.25,182
+Netherlands,overall_iat_D_score,0,487
+Netherlands,overall_iat_D_score,0.25,812
+Netherlands,overall_iat_D_score,0.5,1071
+Netherlands,overall_iat_D_score,0.75,785
+Netherlands,overall_iat_D_score,1,308
+Netherlands,overall_iat_D_score,1.25,45
+Netherlands,overall_iat_D_score,1.5,1
+New Zealand,es_iat_sex_age_order_explicit_resid,-5.5,1
+New Zealand,es_iat_sex_age_order_explicit_resid,-4.5,9
+New Zealand,es_iat_sex_age_order_explicit_resid,-3.5,13
+New Zealand,es_iat_sex_age_order_explicit_resid,-2.5,39
+New Zealand,es_iat_sex_age_order_explicit_resid,-1.75,40
+New Zealand,es_iat_sex_age_order_explicit_resid,-1.5,769
+New Zealand,es_iat_sex_age_order_explicit_resid,-0.75,33
+New Zealand,es_iat_sex_age_order_explicit_resid,-0.5,593
+New Zealand,es_iat_sex_age_order_explicit_resid,0.25,40
+New Zealand,es_iat_sex_age_order_explicit_resid,0.5,639
+New Zealand,es_iat_sex_age_order_explicit_resid,1.25,7
+New Zealand,es_iat_sex_age_order_explicit_resid,1.5,284
+New Zealand,es_iat_sex_age_order_explicit_resid,2.25,12
+New Zealand,es_iat_sex_age_order_explicit_resid,2.5,245
+New Zealand,es_iat_sex_age_order_explicit_resid,3.25,4
+New Zealand,es_iat_sex_age_order_explicit_resid,3.5,95
+New Zealand,es_iat_sex_age_order_explicit_resid,4.25,1
+New Zealand,es_iat_sex_age_order_explicit_resid,4.5,70
+New Zealand,es_iat_sex_age_order_explicit_resid,NA,43
+New Zealand,es_iat_sex_age_order_implicit_resid,-2,1
+New Zealand,es_iat_sex_age_order_implicit_resid,-1.75,2
+New Zealand,es_iat_sex_age_order_implicit_resid,-1.25,4
+New Zealand,es_iat_sex_age_order_implicit_resid,-1,22
+New Zealand,es_iat_sex_age_order_implicit_resid,-0.75,102
+New Zealand,es_iat_sex_age_order_implicit_resid,-0.5,315
+New Zealand,es_iat_sex_age_order_implicit_resid,-0.25,570
+New Zealand,es_iat_sex_age_order_implicit_resid,-0,782
+New Zealand,es_iat_sex_age_order_implicit_resid,0.25,739
+New Zealand,es_iat_sex_age_order_implicit_resid,0.5,334
+New Zealand,es_iat_sex_age_order_implicit_resid,0.75,58
+New Zealand,es_iat_sex_age_order_implicit_resid,1,8
+New Zealand,explicit_dif,-4,1
+New Zealand,explicit_dif,-3,9
+New Zealand,explicit_dif,-2,13
+New Zealand,explicit_dif,-1,39
+New Zealand,explicit_dif,0,809
+New Zealand,explicit_dif,1,626
+New Zealand,explicit_dif,2,679
+New Zealand,explicit_dif,3,291
+New Zealand,explicit_dif,4,257
+New Zealand,explicit_dif,5,99
+New Zealand,explicit_dif,6,71
+New Zealand,explicit_dif,NA,43
+New Zealand,overall_iat_D_score,-1.5,1
+New Zealand,overall_iat_D_score,-1.25,2
+New Zealand,overall_iat_D_score,-1,1
+New Zealand,overall_iat_D_score,-0.75,8
+New Zealand,overall_iat_D_score,-0.5,51
+New Zealand,overall_iat_D_score,-0.25,200
+New Zealand,overall_iat_D_score,-0,425
+New Zealand,overall_iat_D_score,0.25,648
+New Zealand,overall_iat_D_score,0.5,831
+New Zealand,overall_iat_D_score,0.75,563
+New Zealand,overall_iat_D_score,1,183
+New Zealand,overall_iat_D_score,1.25,23
+New Zealand,overall_iat_D_score,1.5,1
+Norway,es_iat_sex_age_order_explicit_resid,-7.75,1
+Norway,es_iat_sex_age_order_explicit_resid,-4.5,3
+Norway,es_iat_sex_age_order_explicit_resid,-3.5,7
+Norway,es_iat_sex_age_order_explicit_resid,-2.5,16
+Norway,es_iat_sex_age_order_explicit_resid,-1.75,12
+Norway,es_iat_sex_age_order_explicit_resid,-1.5,386
+Norway,es_iat_sex_age_order_explicit_resid,-0.75,7
+Norway,es_iat_sex_age_order_explicit_resid,-0.5,355
+Norway,es_iat_sex_age_order_explicit_resid,0.25,11
+Norway,es_iat_sex_age_order_explicit_resid,0.5,365
+Norway,es_iat_sex_age_order_explicit_resid,1.25,3
+Norway,es_iat_sex_age_order_explicit_resid,1.5,75
+Norway,es_iat_sex_age_order_explicit_resid,2.25,1
+Norway,es_iat_sex_age_order_explicit_resid,2.5,68
+Norway,es_iat_sex_age_order_explicit_resid,3.25,1
+Norway,es_iat_sex_age_order_explicit_resid,3.5,12
+Norway,es_iat_sex_age_order_explicit_resid,4.25,2
+Norway,es_iat_sex_age_order_explicit_resid,4.5,11
+Norway,es_iat_sex_age_order_explicit_resid,NA,21
+Norway,es_iat_sex_age_order_implicit_resid,-1.75,1
+Norway,es_iat_sex_age_order_implicit_resid,-1,12
+Norway,es_iat_sex_age_order_implicit_resid,-0.75,42
+Norway,es_iat_sex_age_order_implicit_resid,-0.5,162
+Norway,es_iat_sex_age_order_implicit_resid,-0.25,291
+Norway,es_iat_sex_age_order_implicit_resid,-0,380
+Norway,es_iat_sex_age_order_implicit_resid,0.25,312
+Norway,es_iat_sex_age_order_implicit_resid,0.5,130
+Norway,es_iat_sex_age_order_implicit_resid,0.75,24
+Norway,es_iat_sex_age_order_implicit_resid,1,3
+Norway,explicit_dif,-6,1
+Norway,explicit_dif,-3,3
+Norway,explicit_dif,-2,7
+Norway,explicit_dif,-1,16
+Norway,explicit_dif,0,398
+Norway,explicit_dif,1,362
+Norway,explicit_dif,2,376
+Norway,explicit_dif,3,78
+Norway,explicit_dif,4,69
+Norway,explicit_dif,5,13
+Norway,explicit_dif,6,13
+Norway,explicit_dif,NA,21
+Norway,overall_iat_D_score,-1.25,1
+Norway,overall_iat_D_score,-0.75,1
+Norway,overall_iat_D_score,-0.5,25
+Norway,overall_iat_D_score,-0.25,96
+Norway,overall_iat_D_score,0,223
+Norway,overall_iat_D_score,0.25,331
+Norway,overall_iat_D_score,0.5,366
+Norway,overall_iat_D_score,0.75,240
+Norway,overall_iat_D_score,1,60
+Norway,overall_iat_D_score,1.25,14
+Philippines,es_iat_sex_age_order_explicit_resid,-7.5,2
+Philippines,es_iat_sex_age_order_explicit_resid,-6.5,4
+Philippines,es_iat_sex_age_order_explicit_resid,-5.5,3
+Philippines,es_iat_sex_age_order_explicit_resid,-4.75,1
+Philippines,es_iat_sex_age_order_explicit_resid,-4.5,7
+Philippines,es_iat_sex_age_order_explicit_resid,-3.5,13
+Philippines,es_iat_sex_age_order_explicit_resid,-2.5,25
+Philippines,es_iat_sex_age_order_explicit_resid,-1.75,16
+Philippines,es_iat_sex_age_order_explicit_resid,-1.5,313
+Philippines,es_iat_sex_age_order_explicit_resid,-0.75,2
+Philippines,es_iat_sex_age_order_explicit_resid,-0.5,145
+Philippines,es_iat_sex_age_order_explicit_resid,0.25,7
+Philippines,es_iat_sex_age_order_explicit_resid,0.5,153
+Philippines,es_iat_sex_age_order_explicit_resid,1.25,1
+Philippines,es_iat_sex_age_order_explicit_resid,1.5,95
+Philippines,es_iat_sex_age_order_explicit_resid,2.25,5
+Philippines,es_iat_sex_age_order_explicit_resid,2.5,81
+Philippines,es_iat_sex_age_order_explicit_resid,3.25,3
+Philippines,es_iat_sex_age_order_explicit_resid,3.5,37
+Philippines,es_iat_sex_age_order_explicit_resid,4.5,31
+Philippines,es_iat_sex_age_order_explicit_resid,NA,17
+Philippines,es_iat_sex_age_order_implicit_resid,-1.25,3
+Philippines,es_iat_sex_age_order_implicit_resid,-1,12
+Philippines,es_iat_sex_age_order_implicit_resid,-0.75,35
+Philippines,es_iat_sex_age_order_implicit_resid,-0.5,107
+Philippines,es_iat_sex_age_order_implicit_resid,-0.25,239
+Philippines,es_iat_sex_age_order_implicit_resid,-0,273
+Philippines,es_iat_sex_age_order_implicit_resid,0.25,190
+Philippines,es_iat_sex_age_order_implicit_resid,0.5,85
+Philippines,es_iat_sex_age_order_implicit_resid,0.75,17
+Philippines,explicit_dif,-6,2
+Philippines,explicit_dif,-5,4
+Philippines,explicit_dif,-4,3
+Philippines,explicit_dif,-3,8
+Philippines,explicit_dif,-2,13
+Philippines,explicit_dif,-1,25
+Philippines,explicit_dif,0,329
+Philippines,explicit_dif,1,147
+Philippines,explicit_dif,2,160
+Philippines,explicit_dif,3,96
+Philippines,explicit_dif,4,86
+Philippines,explicit_dif,5,40
+Philippines,explicit_dif,6,31
+Philippines,explicit_dif,NA,17
+Philippines,overall_iat_D_score,-1,1
+Philippines,overall_iat_D_score,-0.75,7
+Philippines,overall_iat_D_score,-0.5,23
+Philippines,overall_iat_D_score,-0.25,56
+Philippines,overall_iat_D_score,-0,178
+Philippines,overall_iat_D_score,0.25,262
+Philippines,overall_iat_D_score,0.5,239
+Philippines,overall_iat_D_score,0.75,137
+Philippines,overall_iat_D_score,1,54
+Philippines,overall_iat_D_score,1.25,4
+Poland,es_iat_sex_age_order_explicit_resid,-6.5,1
+Poland,es_iat_sex_age_order_explicit_resid,-4.5,2
+Poland,es_iat_sex_age_order_explicit_resid,-3.5,3
+Poland,es_iat_sex_age_order_explicit_resid,-2.5,7
+Poland,es_iat_sex_age_order_explicit_resid,-1.75,5
+Poland,es_iat_sex_age_order_explicit_resid,-1.5,183
+Poland,es_iat_sex_age_order_explicit_resid,-0.75,4
+Poland,es_iat_sex_age_order_explicit_resid,-0.5,140
+Poland,es_iat_sex_age_order_explicit_resid,0.25,6
+Poland,es_iat_sex_age_order_explicit_resid,0.5,163
+Poland,es_iat_sex_age_order_explicit_resid,1.25,3
+Poland,es_iat_sex_age_order_explicit_resid,1.5,46
+Poland,es_iat_sex_age_order_explicit_resid,2.5,58
+Poland,es_iat_sex_age_order_explicit_resid,3.5,24
+Poland,es_iat_sex_age_order_explicit_resid,4.5,10
+Poland,es_iat_sex_age_order_explicit_resid,NA,15
+Poland,es_iat_sex_age_order_implicit_resid,-1.25,1
+Poland,es_iat_sex_age_order_implicit_resid,-1,5
+Poland,es_iat_sex_age_order_implicit_resid,-0.75,27
+Poland,es_iat_sex_age_order_implicit_resid,-0.5,68
+Poland,es_iat_sex_age_order_implicit_resid,-0.25,138
+Poland,es_iat_sex_age_order_implicit_resid,0,182
+Poland,es_iat_sex_age_order_implicit_resid,0.25,168
+Poland,es_iat_sex_age_order_implicit_resid,0.5,63
+Poland,es_iat_sex_age_order_implicit_resid,0.75,18
+Poland,explicit_dif,-5,1
+Poland,explicit_dif,-3,2
+Poland,explicit_dif,-2,3
+Poland,explicit_dif,-1,7
+Poland,explicit_dif,0,188
+Poland,explicit_dif,1,144
+Poland,explicit_dif,2,169
+Poland,explicit_dif,3,49
+Poland,explicit_dif,4,58
+Poland,explicit_dif,5,24
+Poland,explicit_dif,6,10
+Poland,explicit_dif,NA,15
+Poland,overall_iat_D_score,-0.75,2
+Poland,overall_iat_D_score,-0.5,10
+Poland,overall_iat_D_score,-0.25,64
+Poland,overall_iat_D_score,0,93
+Poland,overall_iat_D_score,0.25,158
+Poland,overall_iat_D_score,0.5,173
+Poland,overall_iat_D_score,0.75,131
+Poland,overall_iat_D_score,1,33
+Poland,overall_iat_D_score,1.25,6
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-6.5,1
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-5.75,1
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-5.5,1
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-4.5,5
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-3.5,8
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-2.75,2
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-2.5,26
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-1.75,13
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-1.5,230
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-0.75,7
+Republic of Korea,es_iat_sex_age_order_explicit_resid,-0.5,162
+Republic of Korea,es_iat_sex_age_order_explicit_resid,0.25,5
+Republic of Korea,es_iat_sex_age_order_explicit_resid,0.5,155
+Republic of Korea,es_iat_sex_age_order_explicit_resid,1.25,2
+Republic of Korea,es_iat_sex_age_order_explicit_resid,1.5,78
+Republic of Korea,es_iat_sex_age_order_explicit_resid,2.25,2
+Republic of Korea,es_iat_sex_age_order_explicit_resid,2.5,72
+Republic of Korea,es_iat_sex_age_order_explicit_resid,3.25,1
+Republic of Korea,es_iat_sex_age_order_explicit_resid,3.5,20
+Republic of Korea,es_iat_sex_age_order_explicit_resid,4.25,1
+Republic of Korea,es_iat_sex_age_order_explicit_resid,4.5,14
+Republic of Korea,es_iat_sex_age_order_explicit_resid,NA,48
+Republic of Korea,es_iat_sex_age_order_implicit_resid,-1.25,1
+Republic of Korea,es_iat_sex_age_order_implicit_resid,-1,5
+Republic of Korea,es_iat_sex_age_order_implicit_resid,-0.75,28
+Republic of Korea,es_iat_sex_age_order_implicit_resid,-0.5,95
+Republic of Korea,es_iat_sex_age_order_implicit_resid,-0.25,167
+Republic of Korea,es_iat_sex_age_order_implicit_resid,0,233
+Republic of Korea,es_iat_sex_age_order_implicit_resid,0.25,214
+Republic of Korea,es_iat_sex_age_order_implicit_resid,0.5,83
+Republic of Korea,es_iat_sex_age_order_implicit_resid,0.75,27
+Republic of Korea,es_iat_sex_age_order_implicit_resid,1,1
+Republic of Korea,explicit_dif,-5,1
+Republic of Korea,explicit_dif,-4,2
+Republic of Korea,explicit_dif,-3,5
+Republic of Korea,explicit_dif,-2,8
+Republic of Korea,explicit_dif,-1,28
+Republic of Korea,explicit_dif,0,243
+Republic of Korea,explicit_dif,1,169
+Republic of Korea,explicit_dif,2,160
+Republic of Korea,explicit_dif,3,80
+Republic of Korea,explicit_dif,4,74
+Republic of Korea,explicit_dif,5,21
+Republic of Korea,explicit_dif,6,15
+Republic of Korea,explicit_dif,NA,48
+Republic of Korea,overall_iat_D_score,-1,1
+Republic of Korea,overall_iat_D_score,-0.75,2
+Republic of Korea,overall_iat_D_score,-0.5,13
+Republic of Korea,overall_iat_D_score,-0.25,63
+Republic of Korea,overall_iat_D_score,-0,133
+Republic of Korea,overall_iat_D_score,0.25,199
+Republic of Korea,overall_iat_D_score,0.5,242
+Republic of Korea,overall_iat_D_score,0.75,141
+Republic of Korea,overall_iat_D_score,1,53
+Republic of Korea,overall_iat_D_score,1.25,7
+Romania,es_iat_sex_age_order_explicit_resid,-4.5,4
+Romania,es_iat_sex_age_order_explicit_resid,-3.5,3
+Romania,es_iat_sex_age_order_explicit_resid,-2.5,11
+Romania,es_iat_sex_age_order_explicit_resid,-1.75,3
+Romania,es_iat_sex_age_order_explicit_resid,-1.5,129
+Romania,es_iat_sex_age_order_explicit_resid,-0.75,2
+Romania,es_iat_sex_age_order_explicit_resid,-0.5,102
+Romania,es_iat_sex_age_order_explicit_resid,0.25,1
+Romania,es_iat_sex_age_order_explicit_resid,0.5,105
+Romania,es_iat_sex_age_order_explicit_resid,1.25,1
+Romania,es_iat_sex_age_order_explicit_resid,1.5,33
+Romania,es_iat_sex_age_order_explicit_resid,2.25,2
+Romania,es_iat_sex_age_order_explicit_resid,2.5,35
+Romania,es_iat_sex_age_order_explicit_resid,3.5,27
+Romania,es_iat_sex_age_order_explicit_resid,4.5,15
+Romania,es_iat_sex_age_order_explicit_resid,NA,8
+Romania,es_iat_sex_age_order_implicit_resid,-1,2
+Romania,es_iat_sex_age_order_implicit_resid,-0.75,11
+Romania,es_iat_sex_age_order_implicit_resid,-0.5,58
+Romania,es_iat_sex_age_order_implicit_resid,-0.25,85
+Romania,es_iat_sex_age_order_implicit_resid,0,144
+Romania,es_iat_sex_age_order_implicit_resid,0.25,120
+Romania,es_iat_sex_age_order_implicit_resid,0.5,47
+Romania,es_iat_sex_age_order_implicit_resid,0.75,12
+Romania,es_iat_sex_age_order_implicit_resid,1,2
+Romania,explicit_dif,-3,4
+Romania,explicit_dif,-2,3
+Romania,explicit_dif,-1,11
+Romania,explicit_dif,0,132
+Romania,explicit_dif,1,104
+Romania,explicit_dif,2,106
+Romania,explicit_dif,3,34
+Romania,explicit_dif,4,37
+Romania,explicit_dif,5,27
+Romania,explicit_dif,6,15
+Romania,explicit_dif,NA,8
+Romania,overall_iat_D_score,-0.75,1
+Romania,overall_iat_D_score,-0.5,8
+Romania,overall_iat_D_score,-0.25,19
+Romania,overall_iat_D_score,-0,81
+Romania,overall_iat_D_score,0.25,117
+Romania,overall_iat_D_score,0.5,132
+Romania,overall_iat_D_score,0.75,92
+Romania,overall_iat_D_score,1,28
+Romania,overall_iat_D_score,1.25,3
+Singapore,es_iat_sex_age_order_explicit_resid,-6.75,1
+Singapore,es_iat_sex_age_order_explicit_resid,-6.5,1
+Singapore,es_iat_sex_age_order_explicit_resid,-5.5,2
+Singapore,es_iat_sex_age_order_explicit_resid,-4.5,6
+Singapore,es_iat_sex_age_order_explicit_resid,-3.5,17
+Singapore,es_iat_sex_age_order_explicit_resid,-2.75,1
+Singapore,es_iat_sex_age_order_explicit_resid,-2.5,35
+Singapore,es_iat_sex_age_order_explicit_resid,-1.75,54
+Singapore,es_iat_sex_age_order_explicit_resid,-1.5,629
+Singapore,es_iat_sex_age_order_explicit_resid,-0.75,26
+Singapore,es_iat_sex_age_order_explicit_resid,-0.5,454
+Singapore,es_iat_sex_age_order_explicit_resid,0.25,28
+Singapore,es_iat_sex_age_order_explicit_resid,0.5,608
+Singapore,es_iat_sex_age_order_explicit_resid,1.25,13
+Singapore,es_iat_sex_age_order_explicit_resid,1.5,253
+Singapore,es_iat_sex_age_order_explicit_resid,2.25,25
+Singapore,es_iat_sex_age_order_explicit_resid,2.5,287
+Singapore,es_iat_sex_age_order_explicit_resid,3.25,7
+Singapore,es_iat_sex_age_order_explicit_resid,3.5,108
+Singapore,es_iat_sex_age_order_explicit_resid,4.25,4
+Singapore,es_iat_sex_age_order_explicit_resid,4.5,77
+Singapore,es_iat_sex_age_order_explicit_resid,NA,47
+Singapore,es_iat_sex_age_order_implicit_resid,-1.25,5
+Singapore,es_iat_sex_age_order_implicit_resid,-1,29
+Singapore,es_iat_sex_age_order_implicit_resid,-0.75,85
+Singapore,es_iat_sex_age_order_implicit_resid,-0.5,278
+Singapore,es_iat_sex_age_order_implicit_resid,-0.25,553
+Singapore,es_iat_sex_age_order_implicit_resid,-0,746
+Singapore,es_iat_sex_age_order_implicit_resid,0.25,645
+Singapore,es_iat_sex_age_order_implicit_resid,0.5,282
+Singapore,es_iat_sex_age_order_implicit_resid,0.75,55
+Singapore,es_iat_sex_age_order_implicit_resid,1,5
+Singapore,explicit_dif,-5,2
+Singapore,explicit_dif,-4,2
+Singapore,explicit_dif,-3,6
+Singapore,explicit_dif,-2,17
+Singapore,explicit_dif,-1,36
+Singapore,explicit_dif,0,683
+Singapore,explicit_dif,1,480
+Singapore,explicit_dif,2,636
+Singapore,explicit_dif,3,266
+Singapore,explicit_dif,4,312
+Singapore,explicit_dif,5,115
+Singapore,explicit_dif,6,81
+Singapore,explicit_dif,NA,47
+Singapore,overall_iat_D_score,-1,1
+Singapore,overall_iat_D_score,-0.75,15
+Singapore,overall_iat_D_score,-0.5,52
+Singapore,overall_iat_D_score,-0.25,186
+Singapore,overall_iat_D_score,-0,420
+Singapore,overall_iat_D_score,0.25,628
+Singapore,overall_iat_D_score,0.5,714
+Singapore,overall_iat_D_score,0.75,508
+Singapore,overall_iat_D_score,1,141
+Singapore,overall_iat_D_score,1.25,18
+South Africa,es_iat_sex_age_order_explicit_resid,-7.5,1
+South Africa,es_iat_sex_age_order_explicit_resid,-5.5,1
+South Africa,es_iat_sex_age_order_explicit_resid,-4.5,4
+South Africa,es_iat_sex_age_order_explicit_resid,-3.75,1
+South Africa,es_iat_sex_age_order_explicit_resid,-3.5,1
+South Africa,es_iat_sex_age_order_explicit_resid,-2.5,14
+South Africa,es_iat_sex_age_order_explicit_resid,-1.75,13
+South Africa,es_iat_sex_age_order_explicit_resid,-1.5,190
+South Africa,es_iat_sex_age_order_explicit_resid,-0.75,10
+South Africa,es_iat_sex_age_order_explicit_resid,-0.5,112
+South Africa,es_iat_sex_age_order_explicit_resid,0.25,14
+South Africa,es_iat_sex_age_order_explicit_resid,0.5,123
+South Africa,es_iat_sex_age_order_explicit_resid,1.25,3
+South Africa,es_iat_sex_age_order_explicit_resid,1.5,61
+South Africa,es_iat_sex_age_order_explicit_resid,2.25,4
+South Africa,es_iat_sex_age_order_explicit_resid,2.5,73
+South Africa,es_iat_sex_age_order_explicit_resid,3.5,31
+South Africa,es_iat_sex_age_order_explicit_resid,4.25,3
+South Africa,es_iat_sex_age_order_explicit_resid,4.5,32
+South Africa,es_iat_sex_age_order_explicit_resid,NA,8
+South Africa,es_iat_sex_age_order_implicit_resid,-1.25,1
+South Africa,es_iat_sex_age_order_implicit_resid,-1,7
+South Africa,es_iat_sex_age_order_implicit_resid,-0.75,25
+South Africa,es_iat_sex_age_order_implicit_resid,-0.5,75
+South Africa,es_iat_sex_age_order_implicit_resid,-0.25,148
+South Africa,es_iat_sex_age_order_implicit_resid,0,221
+South Africa,es_iat_sex_age_order_implicit_resid,0.25,133
+South Africa,es_iat_sex_age_order_implicit_resid,0.5,70
+South Africa,es_iat_sex_age_order_implicit_resid,0.75,17
+South Africa,es_iat_sex_age_order_implicit_resid,1,2
+South Africa,explicit_dif,-6,1
+South Africa,explicit_dif,-4,1
+South Africa,explicit_dif,-3,4
+South Africa,explicit_dif,-2,2
+South Africa,explicit_dif,-1,14
+South Africa,explicit_dif,0,203
+South Africa,explicit_dif,1,122
+South Africa,explicit_dif,2,137
+South Africa,explicit_dif,3,64
+South Africa,explicit_dif,4,77
+South Africa,explicit_dif,5,31
+South Africa,explicit_dif,6,35
+South Africa,explicit_dif,NA,8
+South Africa,overall_iat_D_score,-1,1
+South Africa,overall_iat_D_score,-0.75,1
+South Africa,overall_iat_D_score,-0.5,19
+South Africa,overall_iat_D_score,-0.25,41
+South Africa,overall_iat_D_score,0,103
+South Africa,overall_iat_D_score,0.25,189
+South Africa,overall_iat_D_score,0.5,189
+South Africa,overall_iat_D_score,0.75,114
+South Africa,overall_iat_D_score,1,33
+South Africa,overall_iat_D_score,1.25,8
+South Africa,overall_iat_D_score,1.5,1
+Spain,es_iat_sex_age_order_explicit_resid,-7.5,1
+Spain,es_iat_sex_age_order_explicit_resid,-6.5,2
+Spain,es_iat_sex_age_order_explicit_resid,-5.5,1
+Spain,es_iat_sex_age_order_explicit_resid,-4.5,2
+Spain,es_iat_sex_age_order_explicit_resid,-3.5,11
+Spain,es_iat_sex_age_order_explicit_resid,-2.5,19
+Spain,es_iat_sex_age_order_explicit_resid,-1.75,36
+Spain,es_iat_sex_age_order_explicit_resid,-1.5,363
+Spain,es_iat_sex_age_order_explicit_resid,-0.75,13
+Spain,es_iat_sex_age_order_explicit_resid,-0.5,217
+Spain,es_iat_sex_age_order_explicit_resid,0.25,19
+Spain,es_iat_sex_age_order_explicit_resid,0.5,205
+Spain,es_iat_sex_age_order_explicit_resid,1.25,8
+Spain,es_iat_sex_age_order_explicit_resid,1.5,82
+Spain,es_iat_sex_age_order_explicit_resid,2.25,6
+Spain,es_iat_sex_age_order_explicit_resid,2.5,73
+Spain,es_iat_sex_age_order_explicit_resid,3.25,3
+Spain,es_iat_sex_age_order_explicit_resid,3.5,34
+Spain,es_iat_sex_age_order_explicit_resid,4.5,30
+Spain,es_iat_sex_age_order_explicit_resid,NA,24
+Spain,es_iat_sex_age_order_implicit_resid,-1.25,1
+Spain,es_iat_sex_age_order_implicit_resid,-1,8
+Spain,es_iat_sex_age_order_implicit_resid,-0.75,45
+Spain,es_iat_sex_age_order_implicit_resid,-0.5,112
+Spain,es_iat_sex_age_order_implicit_resid,-0.25,244
+Spain,es_iat_sex_age_order_implicit_resid,-0,327
+Spain,es_iat_sex_age_order_implicit_resid,0.25,260
+Spain,es_iat_sex_age_order_implicit_resid,0.5,122
+Spain,es_iat_sex_age_order_implicit_resid,0.75,28
+Spain,es_iat_sex_age_order_implicit_resid,1,2
+Spain,explicit_dif,-6,1
+Spain,explicit_dif,-5,2
+Spain,explicit_dif,-4,1
+Spain,explicit_dif,-3,2
+Spain,explicit_dif,-2,11
+Spain,explicit_dif,-1,19
+Spain,explicit_dif,0,399
+Spain,explicit_dif,1,230
+Spain,explicit_dif,2,224
+Spain,explicit_dif,3,90
+Spain,explicit_dif,4,79
+Spain,explicit_dif,5,37
+Spain,explicit_dif,6,30
+Spain,explicit_dif,NA,24
+Spain,overall_iat_D_score,-0.75,2
+Spain,overall_iat_D_score,-0.5,29
+Spain,overall_iat_D_score,-0.25,70
+Spain,overall_iat_D_score,-0,170
+Spain,overall_iat_D_score,0.25,287
+Spain,overall_iat_D_score,0.5,306
+Spain,overall_iat_D_score,0.75,200
+Spain,overall_iat_D_score,1,73
+Spain,overall_iat_D_score,1.25,10
+Spain,overall_iat_D_score,1.5,2
+Sweden,es_iat_sex_age_order_explicit_resid,-4.5,8
+Sweden,es_iat_sex_age_order_explicit_resid,-3.75,1
+Sweden,es_iat_sex_age_order_explicit_resid,-3.5,11
+Sweden,es_iat_sex_age_order_explicit_resid,-2.75,1
+Sweden,es_iat_sex_age_order_explicit_resid,-2.5,20
+Sweden,es_iat_sex_age_order_explicit_resid,-1.75,46
+Sweden,es_iat_sex_age_order_explicit_resid,-1.5,690
+Sweden,es_iat_sex_age_order_explicit_resid,-0.75,29
+Sweden,es_iat_sex_age_order_explicit_resid,-0.5,447
+Sweden,es_iat_sex_age_order_explicit_resid,0.25,47
+Sweden,es_iat_sex_age_order_explicit_resid,0.5,472
+Sweden,es_iat_sex_age_order_explicit_resid,1.25,13
+Sweden,es_iat_sex_age_order_explicit_resid,1.5,159
+Sweden,es_iat_sex_age_order_explicit_resid,2.25,11
+Sweden,es_iat_sex_age_order_explicit_resid,2.5,114
+Sweden,es_iat_sex_age_order_explicit_resid,3.25,5
+Sweden,es_iat_sex_age_order_explicit_resid,3.5,29
+Sweden,es_iat_sex_age_order_explicit_resid,4.25,2
+Sweden,es_iat_sex_age_order_explicit_resid,4.5,30
+Sweden,es_iat_sex_age_order_explicit_resid,NA,34
+Sweden,es_iat_sex_age_order_implicit_resid,-1.25,3
+Sweden,es_iat_sex_age_order_implicit_resid,-1,28
+Sweden,es_iat_sex_age_order_implicit_resid,-0.75,98
+Sweden,es_iat_sex_age_order_implicit_resid,-0.5,223
+Sweden,es_iat_sex_age_order_implicit_resid,-0.25,425
+Sweden,es_iat_sex_age_order_implicit_resid,-0,582
+Sweden,es_iat_sex_age_order_implicit_resid,0.25,542
+Sweden,es_iat_sex_age_order_implicit_resid,0.5,221
+Sweden,es_iat_sex_age_order_implicit_resid,0.75,44
+Sweden,es_iat_sex_age_order_implicit_resid,1,1
+Sweden,es_iat_sex_age_order_implicit_resid,1.25,2
+Sweden,explicit_dif,-3,8
+Sweden,explicit_dif,-2,12
+Sweden,explicit_dif,-1,21
+Sweden,explicit_dif,0,736
+Sweden,explicit_dif,1,476
+Sweden,explicit_dif,2,519
+Sweden,explicit_dif,3,172
+Sweden,explicit_dif,4,125
+Sweden,explicit_dif,5,34
+Sweden,explicit_dif,6,32
+Sweden,explicit_dif,NA,34
+Sweden,overall_iat_D_score,-0.75,13
+Sweden,overall_iat_D_score,-0.5,48
+Sweden,overall_iat_D_score,-0.25,150
+Sweden,overall_iat_D_score,0,321
+Sweden,overall_iat_D_score,0.25,538
+Sweden,overall_iat_D_score,0.5,574
+Sweden,overall_iat_D_score,0.75,410
+Sweden,overall_iat_D_score,1,104
+Sweden,overall_iat_D_score,1.25,9
+Sweden,overall_iat_D_score,1.5,2
+Switzerland,es_iat_sex_age_order_explicit_resid,-6.5,1
+Switzerland,es_iat_sex_age_order_explicit_resid,-5.5,1
+Switzerland,es_iat_sex_age_order_explicit_resid,-4.5,4
+Switzerland,es_iat_sex_age_order_explicit_resid,-3.75,1
+Switzerland,es_iat_sex_age_order_explicit_resid,-3.5,2
+Switzerland,es_iat_sex_age_order_explicit_resid,-2.75,2
+Switzerland,es_iat_sex_age_order_explicit_resid,-2.5,21
+Switzerland,es_iat_sex_age_order_explicit_resid,-1.75,43
+Switzerland,es_iat_sex_age_order_explicit_resid,-1.5,475
+Switzerland,es_iat_sex_age_order_explicit_resid,-0.75,29
+Switzerland,es_iat_sex_age_order_explicit_resid,-0.5,396
+Switzerland,es_iat_sex_age_order_explicit_resid,0.25,47
+Switzerland,es_iat_sex_age_order_explicit_resid,0.5,475
+Switzerland,es_iat_sex_age_order_explicit_resid,1.25,22
+Switzerland,es_iat_sex_age_order_explicit_resid,1.5,226
+Switzerland,es_iat_sex_age_order_explicit_resid,2.25,20
+Switzerland,es_iat_sex_age_order_explicit_resid,2.5,217
+Switzerland,es_iat_sex_age_order_explicit_resid,3.25,7
+Switzerland,es_iat_sex_age_order_explicit_resid,3.5,93
+Switzerland,es_iat_sex_age_order_explicit_resid,4.25,10
+Switzerland,es_iat_sex_age_order_explicit_resid,4.5,55
+Switzerland,es_iat_sex_age_order_explicit_resid,NA,31
+Switzerland,es_iat_sex_age_order_implicit_resid,-1.25,6
+Switzerland,es_iat_sex_age_order_implicit_resid,-1,13
+Switzerland,es_iat_sex_age_order_implicit_resid,-0.75,61
+Switzerland,es_iat_sex_age_order_implicit_resid,-0.5,206
+Switzerland,es_iat_sex_age_order_implicit_resid,-0.25,441
+Switzerland,es_iat_sex_age_order_implicit_resid,-0,596
+Switzerland,es_iat_sex_age_order_implicit_resid,0.25,564
+Switzerland,es_iat_sex_age_order_implicit_resid,0.5,233
+Switzerland,es_iat_sex_age_order_implicit_resid,0.75,53
+Switzerland,es_iat_sex_age_order_implicit_resid,1,5
+Switzerland,explicit_dif,-5,1
+Switzerland,explicit_dif,-4,1
+Switzerland,explicit_dif,-3,4
+Switzerland,explicit_dif,-2,3
+Switzerland,explicit_dif,-1,23
+Switzerland,explicit_dif,0,518
+Switzerland,explicit_dif,1,425
+Switzerland,explicit_dif,2,522
+Switzerland,explicit_dif,3,248
+Switzerland,explicit_dif,4,237
+Switzerland,explicit_dif,5,100
+Switzerland,explicit_dif,6,65
+Switzerland,explicit_dif,NA,31
+Switzerland,overall_iat_D_score,-1,5
+Switzerland,overall_iat_D_score,-0.75,3
+Switzerland,overall_iat_D_score,-0.5,29
+Switzerland,overall_iat_D_score,-0.25,126
+Switzerland,overall_iat_D_score,0,310
+Switzerland,overall_iat_D_score,0.25,514
+Switzerland,overall_iat_D_score,0.5,605
+Switzerland,overall_iat_D_score,0.75,424
+Switzerland,overall_iat_D_score,1,140
+Switzerland,overall_iat_D_score,1.25,19
+Switzerland,overall_iat_D_score,1.5,3
+Taiwan,es_iat_sex_age_order_explicit_resid,-5.5,1
+Taiwan,es_iat_sex_age_order_explicit_resid,-4.5,5
+Taiwan,es_iat_sex_age_order_explicit_resid,-3.75,1
+Taiwan,es_iat_sex_age_order_explicit_resid,-3.5,9
+Taiwan,es_iat_sex_age_order_explicit_resid,-2.75,1
+Taiwan,es_iat_sex_age_order_explicit_resid,-2.5,23
+Taiwan,es_iat_sex_age_order_explicit_resid,-1.75,6
+Taiwan,es_iat_sex_age_order_explicit_resid,-1.5,201
+Taiwan,es_iat_sex_age_order_explicit_resid,-0.75,2
+Taiwan,es_iat_sex_age_order_explicit_resid,-0.5,101
+Taiwan,es_iat_sex_age_order_explicit_resid,0.25,4
+Taiwan,es_iat_sex_age_order_explicit_resid,0.5,97
+Taiwan,es_iat_sex_age_order_explicit_resid,1.25,3
+Taiwan,es_iat_sex_age_order_explicit_resid,1.5,37
+Taiwan,es_iat_sex_age_order_explicit_resid,2.25,1
+Taiwan,es_iat_sex_age_order_explicit_resid,2.5,50
+Taiwan,es_iat_sex_age_order_explicit_resid,3.25,1
+Taiwan,es_iat_sex_age_order_explicit_resid,3.5,16
+Taiwan,es_iat_sex_age_order_explicit_resid,4.5,14
+Taiwan,es_iat_sex_age_order_explicit_resid,NA,18
+Taiwan,es_iat_sex_age_order_implicit_resid,-1,5
+Taiwan,es_iat_sex_age_order_implicit_resid,-0.75,23
+Taiwan,es_iat_sex_age_order_implicit_resid,-0.5,61
+Taiwan,es_iat_sex_age_order_implicit_resid,-0.25,129
+Taiwan,es_iat_sex_age_order_implicit_resid,-0,149
+Taiwan,es_iat_sex_age_order_implicit_resid,0.25,150
+Taiwan,es_iat_sex_age_order_implicit_resid,0.5,59
+Taiwan,es_iat_sex_age_order_implicit_resid,0.75,14
+Taiwan,es_iat_sex_age_order_implicit_resid,1,1
+Taiwan,explicit_dif,-4,1
+Taiwan,explicit_dif,-3,5
+Taiwan,explicit_dif,-2,10
+Taiwan,explicit_dif,-1,24
+Taiwan,explicit_dif,0,207
+Taiwan,explicit_dif,1,103
+Taiwan,explicit_dif,2,101
+Taiwan,explicit_dif,3,40
+Taiwan,explicit_dif,4,51
+Taiwan,explicit_dif,5,17
+Taiwan,explicit_dif,6,14
+Taiwan,explicit_dif,NA,18
+Taiwan,overall_iat_D_score,-0.75,1
+Taiwan,overall_iat_D_score,-0.5,15
+Taiwan,overall_iat_D_score,-0.25,35
+Taiwan,overall_iat_D_score,-0,95
+Taiwan,overall_iat_D_score,0.25,146
+Taiwan,overall_iat_D_score,0.5,154
+Taiwan,overall_iat_D_score,0.75,113
+Taiwan,overall_iat_D_score,1,29
+Taiwan,overall_iat_D_score,1.25,3
+Turkey,es_iat_sex_age_order_explicit_resid,-5.5,3
+Turkey,es_iat_sex_age_order_explicit_resid,-4.5,2
+Turkey,es_iat_sex_age_order_explicit_resid,-3.5,22
+Turkey,es_iat_sex_age_order_explicit_resid,-2.5,19
+Turkey,es_iat_sex_age_order_explicit_resid,-1.75,5
+Turkey,es_iat_sex_age_order_explicit_resid,-1.5,229
+Turkey,es_iat_sex_age_order_explicit_resid,-0.75,2
+Turkey,es_iat_sex_age_order_explicit_resid,-0.5,116
+Turkey,es_iat_sex_age_order_explicit_resid,0.25,3
+Turkey,es_iat_sex_age_order_explicit_resid,0.5,105
+Turkey,es_iat_sex_age_order_explicit_resid,1.25,1
+Turkey,es_iat_sex_age_order_explicit_resid,1.5,64
+Turkey,es_iat_sex_age_order_explicit_resid,2.25,1
+Turkey,es_iat_sex_age_order_explicit_resid,2.5,60
+Turkey,es_iat_sex_age_order_explicit_resid,3.5,20
+Turkey,es_iat_sex_age_order_explicit_resid,4.5,19
+Turkey,es_iat_sex_age_order_explicit_resid,NA,10
+Turkey,es_iat_sex_age_order_implicit_resid,-1,6
+Turkey,es_iat_sex_age_order_implicit_resid,-0.75,24
+Turkey,es_iat_sex_age_order_implicit_resid,-0.5,74
+Turkey,es_iat_sex_age_order_implicit_resid,-0.25,153
+Turkey,es_iat_sex_age_order_implicit_resid,0,208
+Turkey,es_iat_sex_age_order_implicit_resid,0.25,140
+Turkey,es_iat_sex_age_order_implicit_resid,0.5,61
+Turkey,es_iat_sex_age_order_implicit_resid,0.75,14
+Turkey,es_iat_sex_age_order_implicit_resid,1,1
+Turkey,explicit_dif,-4,3
+Turkey,explicit_dif,-3,2
+Turkey,explicit_dif,-2,22
+Turkey,explicit_dif,-1,19
+Turkey,explicit_dif,0,234
+Turkey,explicit_dif,1,118
+Turkey,explicit_dif,2,108
+Turkey,explicit_dif,3,65
+Turkey,explicit_dif,4,61
+Turkey,explicit_dif,5,20
+Turkey,explicit_dif,6,19
+Turkey,explicit_dif,NA,10
+Turkey,overall_iat_D_score,-0.75,2
+Turkey,overall_iat_D_score,-0.5,13
+Turkey,overall_iat_D_score,-0.25,52
+Turkey,overall_iat_D_score,-0,102
+Turkey,overall_iat_D_score,0.25,173
+Turkey,overall_iat_D_score,0.5,195
+Turkey,overall_iat_D_score,0.75,108
+Turkey,overall_iat_D_score,1,27
+Turkey,overall_iat_D_score,1.25,8
+Turkey,overall_iat_D_score,1.5,1
+UK,es_iat_sex_age_order_explicit_resid,-7.75,1
+UK,es_iat_sex_age_order_explicit_resid,-7.5,5
+UK,es_iat_sex_age_order_explicit_resid,-6.5,4
+UK,es_iat_sex_age_order_explicit_resid,-5.5,16
+UK,es_iat_sex_age_order_explicit_resid,-4.75,1
+UK,es_iat_sex_age_order_explicit_resid,-4.5,59
+UK,es_iat_sex_age_order_explicit_resid,-3.75,5
+UK,es_iat_sex_age_order_explicit_resid,-3.5,104
+UK,es_iat_sex_age_order_explicit_resid,-2.75,19
+UK,es_iat_sex_age_order_explicit_resid,-2.5,271
+UK,es_iat_sex_age_order_explicit_resid,-1.75,604
+UK,es_iat_sex_age_order_explicit_resid,-1.5,6373
+UK,es_iat_sex_age_order_explicit_resid,-0.75,419
+UK,es_iat_sex_age_order_explicit_resid,-0.5,4754
+UK,es_iat_sex_age_order_explicit_resid,0.25,497
+UK,es_iat_sex_age_order_explicit_resid,0.5,5004
+UK,es_iat_sex_age_order_explicit_resid,1.25,183
+UK,es_iat_sex_age_order_explicit_resid,1.5,1842
+UK,es_iat_sex_age_order_explicit_resid,2.25,174
+UK,es_iat_sex_age_order_explicit_resid,2.5,1772
+UK,es_iat_sex_age_order_explicit_resid,3.25,76
+UK,es_iat_sex_age_order_explicit_resid,3.5,748
+UK,es_iat_sex_age_order_explicit_resid,4.25,37
+UK,es_iat_sex_age_order_explicit_resid,4.5,409
+UK,es_iat_sex_age_order_explicit_resid,NA,349
+UK,es_iat_sex_age_order_implicit_resid,-2,1
+UK,es_iat_sex_age_order_implicit_resid,-1.75,3
+UK,es_iat_sex_age_order_implicit_resid,-1.5,10
+UK,es_iat_sex_age_order_implicit_resid,-1.25,37
+UK,es_iat_sex_age_order_implicit_resid,-1,243
+UK,es_iat_sex_age_order_implicit_resid,-0.75,868
+UK,es_iat_sex_age_order_implicit_resid,-0.5,2305
+UK,es_iat_sex_age_order_implicit_resid,-0.25,4592
+UK,es_iat_sex_age_order_implicit_resid,0,6410
+UK,es_iat_sex_age_order_implicit_resid,0.25,5819
+UK,es_iat_sex_age_order_implicit_resid,0.5,2809
+UK,es_iat_sex_age_order_implicit_resid,0.75,577
+UK,es_iat_sex_age_order_implicit_resid,1,52
+UK,explicit_dif,-6,6
+UK,explicit_dif,-5,4
+UK,explicit_dif,-4,16
+UK,explicit_dif,-3,60
+UK,explicit_dif,-2,109
+UK,explicit_dif,-1,290
+UK,explicit_dif,0,6977
+UK,explicit_dif,1,5173
+UK,explicit_dif,2,5501
+UK,explicit_dif,3,2025
+UK,explicit_dif,4,1946
+UK,explicit_dif,5,824
+UK,explicit_dif,6,446
+UK,explicit_dif,NA,349
+UK,overall_iat_D_score,-1.75,1
+UK,overall_iat_D_score,-1.5,1
+UK,overall_iat_D_score,-1.25,6
+UK,overall_iat_D_score,-1,16
+UK,overall_iat_D_score,-0.75,126
+UK,overall_iat_D_score,-0.5,488
+UK,overall_iat_D_score,-0.25,1480
+UK,overall_iat_D_score,-0,3267
+UK,overall_iat_D_score,0.25,5396
+UK,overall_iat_D_score,0.5,6474
+UK,overall_iat_D_score,0.75,4609
+UK,overall_iat_D_score,1,1637
+UK,overall_iat_D_score,1.25,220
+UK,overall_iat_D_score,1.5,5
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,-7.5,1
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,-4.5,3
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,-3.5,6
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,-2.5,8
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,-1.75,4
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,-1.5,137
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,-0.75,6
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,-0.5,100
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,0.25,8
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,0.5,107
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,1.25,3
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,1.5,46
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,2.25,2
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,2.5,76
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,3.25,2
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,3.5,27
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,4.25,2
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,4.5,31
+United Arab Emirates,es_iat_sex_age_order_explicit_resid,NA,12
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,-1.25,1
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,-1,4
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,-0.75,17
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,-0.5,65
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,-0.25,132
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,0,161
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,0.25,138
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,0.5,54
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,0.75,7
+United Arab Emirates,es_iat_sex_age_order_implicit_resid,1,2
+United Arab Emirates,explicit_dif,-6,1
+United Arab Emirates,explicit_dif,-3,3
+United Arab Emirates,explicit_dif,-2,6
+United Arab Emirates,explicit_dif,-1,8
+United Arab Emirates,explicit_dif,0,141
+United Arab Emirates,explicit_dif,1,106
+United Arab Emirates,explicit_dif,2,115
+United Arab Emirates,explicit_dif,3,49
+United Arab Emirates,explicit_dif,4,78
+United Arab Emirates,explicit_dif,5,29
+United Arab Emirates,explicit_dif,6,33
+United Arab Emirates,explicit_dif,NA,12
+United Arab Emirates,overall_iat_D_score,-1,1
+United Arab Emirates,overall_iat_D_score,-0.75,1
+United Arab Emirates,overall_iat_D_score,-0.5,9
+United Arab Emirates,overall_iat_D_score,-0.25,42
+United Arab Emirates,overall_iat_D_score,0,99
+United Arab Emirates,overall_iat_D_score,0.25,152
+United Arab Emirates,overall_iat_D_score,0.5,148
+United Arab Emirates,overall_iat_D_score,0.75,100
+United Arab Emirates,overall_iat_D_score,1,21
+United Arab Emirates,overall_iat_D_score,1.25,8
+United States of America,es_iat_sex_age_order_explicit_resid,-7.75,6
+United States of America,es_iat_sex_age_order_explicit_resid,-7.5,368
+United States of America,es_iat_sex_age_order_explicit_resid,-6.75,4
+United States of America,es_iat_sex_age_order_explicit_resid,-6.5,381
+United States of America,es_iat_sex_age_order_explicit_resid,-5.75,11
+United States of America,es_iat_sex_age_order_explicit_resid,-5.5,758
+United States of America,es_iat_sex_age_order_explicit_resid,-4.75,47
+United States of America,es_iat_sex_age_order_explicit_resid,-4.5,2205
+United States of America,es_iat_sex_age_order_explicit_resid,-3.75,90
+United States of America,es_iat_sex_age_order_explicit_resid,-3.5,3926
+United States of America,es_iat_sex_age_order_explicit_resid,-2.75,266
+United States of America,es_iat_sex_age_order_explicit_resid,-2.5,8216
+United States of America,es_iat_sex_age_order_explicit_resid,-1.75,6504
+United States of America,es_iat_sex_age_order_explicit_resid,-1.5,162275
+United States of America,es_iat_sex_age_order_explicit_resid,-0.75,3214
+United States of America,es_iat_sex_age_order_explicit_resid,-0.5,97760
+United States of America,es_iat_sex_age_order_explicit_resid,0.25,3922
+United States of America,es_iat_sex_age_order_explicit_resid,0.5,113213
+United States of America,es_iat_sex_age_order_explicit_resid,1.25,1418
+United States of America,es_iat_sex_age_order_explicit_resid,1.5,44712
+United States of America,es_iat_sex_age_order_explicit_resid,2.25,1745
+United States of America,es_iat_sex_age_order_explicit_resid,2.5,48909
+United States of America,es_iat_sex_age_order_explicit_resid,3.25,540
+United States of America,es_iat_sex_age_order_explicit_resid,3.5,18173
+United States of America,es_iat_sex_age_order_explicit_resid,4.25,434
+United States of America,es_iat_sex_age_order_explicit_resid,4.5,16187
+United States of America,es_iat_sex_age_order_explicit_resid,NA,10389
+United States of America,es_iat_sex_age_order_implicit_resid,-2.25,2
+United States of America,es_iat_sex_age_order_implicit_resid,-2,5
+United States of America,es_iat_sex_age_order_implicit_resid,-1.75,18
+United States of America,es_iat_sex_age_order_implicit_resid,-1.5,141
+United States of America,es_iat_sex_age_order_implicit_resid,-1.25,811
+United States of America,es_iat_sex_age_order_implicit_resid,-1,4501
+United States of America,es_iat_sex_age_order_implicit_resid,-0.75,18532
+United States of America,es_iat_sex_age_order_implicit_resid,-0.5,53854
+United States of America,es_iat_sex_age_order_implicit_resid,-0.25,109337
+United States of America,es_iat_sex_age_order_implicit_resid,-0,151601
+United States of America,es_iat_sex_age_order_implicit_resid,0.25,131937
+United States of America,es_iat_sex_age_order_implicit_resid,0.5,60994
+United States of America,es_iat_sex_age_order_implicit_resid,0.75,12850
+United States of America,es_iat_sex_age_order_implicit_resid,1,1067
+United States of America,es_iat_sex_age_order_implicit_resid,1.25,22
+United States of America,es_iat_sex_age_order_implicit_resid,1.5,1
+United States of America,explicit_dif,-6,374
+United States of America,explicit_dif,-5,385
+United States of America,explicit_dif,-4,769
+United States of America,explicit_dif,-3,2252
+United States of America,explicit_dif,-2,4016
+United States of America,explicit_dif,-1,8482
+United States of America,explicit_dif,0,168779
+United States of America,explicit_dif,1,100974
+United States of America,explicit_dif,2,117135
+United States of America,explicit_dif,3,46130
+United States of America,explicit_dif,4,50654
+United States of America,explicit_dif,5,18713
+United States of America,explicit_dif,6,16621
+United States of America,explicit_dif,NA,10389
+United States of America,overall_iat_D_score,-1.75,3
+United States of America,overall_iat_D_score,-1.5,12
+United States of America,overall_iat_D_score,-1.25,56
+United States of America,overall_iat_D_score,-1,294
+United States of America,overall_iat_D_score,-0.75,2064
+United States of America,overall_iat_D_score,-0.5,9988
+United States of America,overall_iat_D_score,-0.25,33088
+United States of America,overall_iat_D_score,0,78223
+United States of America,overall_iat_D_score,0.25,130002
+United States of America,overall_iat_D_score,0.5,150088
+United States of America,overall_iat_D_score,0.75,102103
+United States of America,overall_iat_D_score,1,34789
+United States of America,overall_iat_D_score,1.25,4763
+United States of America,overall_iat_D_score,1.5,197
+United States of America,overall_iat_D_score,1.75,3

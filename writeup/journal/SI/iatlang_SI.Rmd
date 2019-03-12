@@ -45,14 +45,10 @@ As described in the Main Text, the IAT data come from Project Implicit (https://
 ### N by country
 
 ```{r}
-PARTICIPANT_DF <- "data/by_participant_df.csv"
-participant_df <- read_csv(PARTICIPANT_DF)
-
-country_ns_final <- participant_df %>%
-  mutate(country_name = ifelse(country_name == "Hong Kong", "China", country_name)) %>%
-  count(country_name) 
+BY_COUNTRY_DF <- "data/by_country_df.csv"
+country_iat <- read_csv(BY_COUNTRY_DF)
 ```
-Number of participants by country after exclusions. Our final sample `r format(nrow(participant_df), big.mark=",")` participants from `r nrow(country_ns_final)` countries. Participants were exclude who:
+Number of participants by country after exclusions. Our final sample `r format(sum(country_iat$n_participants), big.mark=",")` participants from `r nrow(country_iat)` countries. Participants were exclude who:
 
 * did not have complete gender, country, age, and implicit IAT measures (53%; the majority of these exclusions (69%) are due to missing IAT data - likely cases where the participant started but did not complete the IAT task).
 * had average latencies for either critical block were over 1,800 ms or whose average overall latency was above 1,500 ms (as in Nosek, Banaji, & Greenwald, 2002; 5% of participants with complete data).
@@ -61,10 +57,10 @@ Number of participants by country after exclusions. Our final sample `r format(n
 
 
 ```{r, fig.cap = "Note: Data from the US are excluded from this plot because of the large number of participants (N =  638,082)."}
-country_ns_final %>%
+country_iat %>%
   filter(country_name != "United States of America")  %>%
-  ggplot(aes(x = fct_reorder(country_name, -n),
-                          y = n)) +
+  ggplot(aes(x = fct_reorder(country_name, -n_participants),
+                          y = n_participants)) +
          geom_bar(stat = "identity")  +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   xlab("Country Name") +
@@ -75,20 +71,15 @@ country_ns_final %>%
 
 ### Gender by country
 
+Across countries, there tended to be more female participants, compared to male participants (_M_ = `r round(mean(country_iat$prop_male),2)` proportion males; _SD_  = `r round(sd(country_iat$prop_male),2)`)
+
 ```{r}
-country_gender <- participant_df %>%
-  mutate(country_name = ifelse(country_name == "Hong Kong", "China", country_name)) %>%
-  group_by(country_name) %>%
-  summarize(Male = sum(sex)/n(),
-            Female = 1-Male) %>%
+country_gender <- country_iat %>%
+  select(country_name, prop_male) %>%
+  rename(Male = prop_male) %>%
+  mutate(Female = 1 - Male) %>%
   gather("Gender", "prop", -country_name)
 
-country_gender_male <- filter(country_gender, Gender == "Male")
-```
-
-Across countries, there tended to be more female participants, compared to male participants (_M_ = `r round(mean(country_gender_male$prop),2)` proportion males; _SD_  = `r round(sd(country_gender_male$prop),2)`)
-
-```{r}
 country_gender %>%
   ggplot(aes(x = country_name, y = prop, fill = Gender, group = Gender)) +
          geom_bar(stat = "identity")  +
@@ -102,28 +93,13 @@ country_gender %>%
 
 ### Age by country
 
-```{r}
-MEDIAN_AGE_PATH <- "data/median_country_age_world_factbook.csv"
-median_age <- read_csv(MEDIAN_AGE_PATH)
-
-country_ages <- participant_df %>%
- mutate(country_name = if_else(country_name == "Hong Kong", "China", country_name)) %>%
- mutate(age = exp(log_age)) %>%
- group_by(country_name) %>%
- multi_boot_standard(col = "age")
-
-country_ages_with_median <- country_ages %>%
-  left_join(median_age)
-
-```
-
 ```{r, fig.cap = "Bars show mean participant age by country; ranges correspond to 95% CIs. Red points show median age by country from CIA factbook data."}
-country_ages_with_median %>%
-  ggplot(aes(x = fct_reorder(country_name, -mean),
-                          y = mean)) +
+country_iat %>%
+  ggplot(aes(x = fct_reorder(country_name, -mean_age),
+                          y = mean_age)) +
          geom_bar(stat = "identity")  +
-  geom_point(aes(x = fct_reorder(country_name, -mean), y = median_age), color = "red") +
-  geom_linerange(aes(ymin = ci_lower, ymax = ci_upper)) +
+  geom_point(aes(x = fct_reorder(country_name, -mean_age), y = median_country_age), color = "red") +
+  geom_linerange(aes(ymin = age_ci_lower, ymax = age_ci_upper)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   xlab("Country Name") +
   ylab("Mean Participant Age (years)") +
@@ -137,17 +113,18 @@ For each country, we identified the language with the most speakers using Ethnol
 ```{r}
 COUNTRY_TO_LANG <- "data/top_lang_by_country_ethnologue.csv"
 country_to_lang <- read_csv(COUNTRY_TO_LANG) %>%
-  select(country_name, language_name)  %>%
+  select(country_name, language_name,family, wiki_language_code)  %>%
   arrange(country_name)
   
 country_to_lang_tidy <- country_to_lang %>%
+  select(-wiki_language_code) %>%
   mutate(language_name = case_when(language_name == "Zulu" ~ "Zulu*",
                                    TRUE ~ language_name))
 
-datatable(country_to_lang_tidy, colnames = c("Country", "Language"),
+datatable(country_to_lang_tidy, colnames = c("Country", "Language", "Language Family"),
           options = list(
   autoWidth = TRUE,
-  columnDefs = list(list(width = '200px'))
+  columnDefs = list(list(width = '250px'))
 ))
 ```
 Asterisks correspond to languages that were excluded from our analysis because word embedding models were unavailable.
@@ -159,10 +136,13 @@ Below are histograms for the implicit and explicit measures in the IAT Project I
 ### Implicit
 
 ```{r, echo = FALSE, cache = F}
+HISTO_DATA_PATH <- "data/DV_histo_data.csv"
+histo_data <- read_csv(HISTO_DATA_PATH)
+
 shinyApp(
   ui = fluidPage(
     selectInput("this_country_name", "Select Country:", 
-                choices = unique(participant_df$country_name), width = '50%'),
+                choices = unique(histo_data$country_name), width = '50%'),
   plotOutput("by_language_plot")
 
   ),
@@ -170,17 +150,15 @@ shinyApp(
   server = function(input, output) {
     
      output$by_language_plot <- renderPlot({
-       participant_df %>%
-        filter(country_name == input$this_country_name) %>%
-        select(overall_iat_D_score, es_iat_sex_age_order_implicit_resid) %>%
-        mutate(id = 1:n()) %>%
-        gather("measure", "value", -id) %>%
+       histo_data %>%
+        filter(country_name == input$this_country_name,
+               measure %in% c("overall_iat_D_score", "es_iat_sex_age_order_implicit_resid")) %>%
         mutate(measure = fct_recode(measure, 
                                     Residualized = "es_iat_sex_age_order_implicit_resid",
                                     Raw = "overall_iat_D_score"),
                measure = fct_rev(measure)) %>%
-        ggplot(aes(x = value)) +
-        geom_histogram() +
+        ggplot(aes(x = bin, y = n)) +
+        geom_bar(stat = "identity", , width = 1) +
         facet_grid(.~measure)  +
         xlab("Score") +
         ggtitle(paste0("\nImplicit IAT data for: ", input$this_country_name)) + 
@@ -195,13 +173,49 @@ shinyApp(
 )
 ```
 
+### Explicit
 
-Residualized gender bias by country as measured by the IAT. Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias.
+```{r, echo = FALSE, cache = F}
+shinyApp(
+  ui = fluidPage(
+    selectInput("this_country_name", "Select Country:", 
+                choices = unique(histo_data$country_name), width = '50%'),
+
+  plotOutput("by_language_plot")
+
+  ),
+  
+  server = function(input, output) {
+    
+     output$by_language_plot <- renderPlot({
+       histo_data %>%
+        filter(country_name == input$this_country_name,
+               measure %in% c("explicit_dif", "es_iat_sex_age_order_explicit_resid")) %>%
+         mutate(measure = fct_recode(measure, 
+                              Residualized = "es_iat_sex_age_order_explicit_resid",
+                              Raw = "explicit_dif"),
+         measure = fct_rev(measure)) %>%
+        ggplot(aes(x = bin, y = n)) +
+          geom_bar(stat = "identity", width = 1) +
+         facet_grid(.~measure)  +
+         xlab("Score") +
+        ggtitle(paste0("\nExplicit bias data for: ", input$this_country_name)) + 
+        theme(
+          strip.text = element_text(size = 16, face = "bold"),
+          text = element_text(size = 17),
+          legend.position = "none")
+    })
+  },
+  
+  options = list(height = 600)
+)
+```
+
+## Geographic distribution of IAT scores  
+
+Residualized implicit gender bias (IAT score) shown by country. Larger values (blue) indicate a larger bias to associate men with the concept of career and women with the concept of family. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias. Inset shows IAT scores European countries only.
+
 ```{r}
-BY_COUNTRY_DF <- "data/by_country_df.csv"
-country_iat <- read_csv(BY_COUNTRY_DF)
-
-
 map_world <- map_data(map = "world") %>%
     mutate(country_code = countrycode(region, 'country.name', 'iso2c'))
 
@@ -213,10 +227,9 @@ map_data <- country_iat %>%
 full_world <- ggplot(map_data, aes(x = long, y = lat,
                             group = group,
                             fill = es_iat_sex_age_order_implicit_resid)) +
-  #scale_fill_gradient2(low = "blue", mid = "white", high = "red",
-  #                     midpoint = 0, name = "Gender bias") +
-
-  scale_fill_viridis(direction = -1,  limits=c(-.065, .045))  +
+  scale_fill_viridis(direction = -1,  limits=c(-.065, .045),
+                       breaks = c(-.06, -.04,  -.02, 0, .02, .04), 
+                     label = c(" (male-\nfamily)", " -.04",  " -.02", " 0.00", " .02", " (male-\ncareer)"))  +
   geom_polygon(color = "black", size = .1) +
   ggtitle("Implicit psychological gender bias by country ") +
   theme(
@@ -227,9 +240,9 @@ full_world <- ggplot(map_data, aes(x = long, y = lat,
         axis.title = element_blank(),
         axis.text = element_blank(),
         axis.ticks = element_blank(),
+        axis.line = element_blank(),
         legend.position = c(.13, .35),
         plot.margin = margin(t = 60, r= 30, 0, 0, "pt"),
-
         legend.title = element_blank(),
        # legend.background = element_rect(fill = alpha('white', 0)),
         legend.key.size = unit(0.3, "in"))
@@ -253,15 +266,16 @@ europe_inset <- ggplot(map_europe, aes(x = long, y = lat,
   geom_polygon(color = "black", size = .1) +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
-        plot.margin = margin(.5,.5,0,0, "cm"),
+        plot.margin = margin(.2,.2,0,0, "cm"),
         panel.background = element_rect(fill = "white"),
         plot.background = element_rect(
             fill = "white",
             colour = "black",
             size = 2),
+        axis.line = element_blank(),
+        axis.ticks = element_blank(),
         axis.title = element_blank(),
         axis.text = element_blank(),
-        axis.ticks = element_blank(),
         legend.position = "none")
 
 full_world +
@@ -269,46 +283,6 @@ full_world +
                     xmin = 40, xmax =160, ymin = 50, ymax = 130)
 ```
 
-
-### Explicit
-
-```{r, echo = FALSE, cache = F}
-shinyApp(
-  ui = fluidPage(
-    selectInput("this_country_name", "Select Country:", 
-                choices = unique(participant_df$country_name), width = '50%'),
-
-  plotOutput("by_language_plot")
-
-  ),
-  
-  server = function(input, output) {
-    
-     output$by_language_plot <- renderPlot({
-       participant_df %>%
-         filter(country_name == input$this_country_name) %>%
-         select(explicit_dif, es_iat_sex_age_order_explicit_resid) %>%
-         mutate(id = 1:n()) %>%
-         gather("measure", "value", -id) %>%
-         mutate(measure = fct_recode(measure, 
-                              Residualized = "es_iat_sex_age_order_explicit_resid",
-                              Raw = "explicit_dif"),
-         measure = fct_rev(measure)) %>%
-        ggplot(aes(x = value)) +
-           geom_histogram(binwidth = 1) +
-        facet_grid(.~measure)  +
-        xlab("Score") +
-        ggtitle(paste0("\nExplicit bias data for: ", input$this_country_name)) + 
-        theme(
-          strip.text = element_text(size = 16, face = "bold"),
-          text = element_text(size = 17),
-          legend.position = "none")
-    })
-  },
-  
-  options = list(height = 600)
-)
-```
 
 # Replication of Caliskan et al. (2017){.tabset}
 
@@ -491,8 +465,40 @@ ggplot(all_es_sub, aes(x = sub,
 * averaged across multiple translations
 * what does it look like when you change this criteria
 
+# Descriptive statistics for all language-level measures
+
+Below are the mean and standard deviations estimates for all measures presented in Table 1 of the Main Text.
+```{r}
+ALL_MEASURES_PATH <- "data/tidy_measures.csv"
+all_es <- read_csv(ALL_MEASURES_PATH) %>%
+  select(median_country_age, es_iat_sex_age_order_explicit_resid,
+         es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017,
+         lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm)  %>%
+        rename(`Residualized Implicit Bias (IAT)` = "es_iat_sex_age_order_implicit_resid",
+          `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
+          `Language IAT (Subtitle)` = "lang_es_sub",
+          `Language IAT (Wikipedia)` = "lang_es_wiki",
+          `Occupation Bias (Subtitle)` = "subt_occu_semantics_fm",
+          `Occupation Bias (Wikipedia)` = "wiki_occu_semantics_fm",
+          `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
+          `Percent Women in STEM` = "per_women_stem_2012_2017",
+          `Median Country Age` = "median_country_age") 
+
+summary_stat <- all_es %>%
+    summarize_all(mean, na.rm = T) %>%
+    gather("Measure", "Mean") %>%
+    full_join(
+      summarize_all(all_es, sd, na.rm = T) %>%
+      gather("Measure", "SD"))
+
+summary_stat_reordered <- summary_stat[c(2,3,4,5,6,8,9,7,1),]
+
+kable(summary_stat_reordered)
+
+```
+
 # Correlations by language exclusion threshold
-In the main text, we report behavioral IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the main text remains broadly the same when larger thresholds of minimum number of participants per country are used. The plot below shows pairwise correlations between the language bias measures and three behavioral/objective measures: Residualized behavorial IAT, residualized explicit IAT, and percent women in STEM. As in the main text, the residualized values are participant age, participant sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the p-value of the pairwise Pearson's _r_ coefficient.
+In the Main Text, we report psychological IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the Main Text remains broadly the same when larger thresholds of minimum number of participants per country are used. The plot below shows pairwise correlations between the language bias measures and three psychological/objective measures described in Study 1: Residualized behavorial IAT, residualized explicit IAT, and percent women in STEM. As in the main text, the residualized values are participant age, participant sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the p-value of the pairwise Pearson's _r_ coefficient.
 
 ```{r, fig.width = 9, fig.height = 5}
 exclusions_df <- "data/corrs_by_exclusions.csv"
@@ -533,7 +539,6 @@ corr_exclusions_tidy %>%
   geom_hline(aes(yintercept = 0), linetype = 2) +
   geom_line() +
   ggtitle("Language IAT correlations with range \nof minimum participants per country thresholds") +
-  #geom_line(aes(linetype = complete_explicit)) +
   geom_point(aes(color = simple_p_cat, size = n)) +
   facet_grid(var1 ~ var2) +
   labs(color = "p-value", size = "# of languages") +
@@ -543,9 +548,37 @@ corr_exclusions_tidy %>%
   theme_bw()
 ```
 
-# Study 2 Items
+# Study 2 language data
 
-In Study 2, we select 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicate occupation is perceived to be more closely associated with women).
+Presented below are grammatical gender coding for each language and occupation items with translations in each language.
+
+## Grammatical gender coding
+
+Below is the binary coding (gender vs. no gender) of each language for a sex-based grammatical gender system, based on WALS (Dryer & Haspelmath, 2013) and other sources when information was not available from WALS.
+
+```{r}
+THEORETICAL_GRAMMAR_PATH <- "data/general_gender_by_lang.csv"
+theoretical_gender <- read_csv(THEORETICAL_GRAMMAR_PATH)  %>%
+  select(language_code, wikipedia_grammar_type) %>%
+  mutate(wikipedia_grammar_type2 = ifelse(wikipedia_grammar_type %in%  c("none", "CN"),
+                                         "No Gender", 
+                                         "Gender"))  %>%
+  left_join(country_to_lang %>% select(wiki_language_code, language_name) %>% distinct(language_name, .keep_all = T),
+            by = c("language_code" = "wiki_language_code")) %>%
+  select(language_name, wikipedia_grammar_type2) %>%
+  filter(language_name != "Zulu")
+
+
+datatable(theoretical_gender, 
+          colnames = c("Language", "Sex-based Grammatical Gender Coding"),
+          options = list(
+  autoWidth = TRUE,
+  columnDefs = list(list(width = '100px'))
+))
+```
+
+## Occupation Items
+In Study 2, we selected 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicate occupation is perceived to be more closely associated with women).
 
 ```{r }
 STUDY2_WORD_ITEMS <- "data/occupation_gender_scores_by_word.csv"
@@ -571,9 +604,33 @@ datatable(misersky_norms, colnames = c("Occupation",
                     "Perceived Gender Bias \n(Misersky, et al., 2014)"),
           options = list(
   autoWidth = TRUE,
-  columnDefs = list(list(width = '200px'))
+  columnDefs = list(list(width = '300px'))
 ))
 
+```
+
+## Occupation Translations
+
+Below are the translations of the 20 occupation words for each of the 25 target langauges. "Translation ID" identifies the translation  when multiple  translations were provided for a given occupation/language.
+
+```{r}
+TRANSLATION_PATH <- "data/occupation_translations_tidy.csv"
+translations <- read_csv(TRANSLATION_PATH) %>%
+  select(language, occupation, word_form_type, translation_id, translation) %>%
+  arrange(language, occupation, word_form_type) %>%
+  mutate(word_form_type = fct_recode(word_form_type, 
+                                     "M" = "male_form", 
+                                     "F" = "female_form"),
+         language = str_to_title(language)) %>%
+  filter(language != "Zulu")
+
+datatable(translations, 
+          colnames = c("Language", "Occupation", "Gender", 
+                       "Translation ID", "Translation"),
+          options = list(
+              autoWidth = TRUE,
+              columnDefs = list(list(width = '500px'))
+))
 ```
 
 
@@ -582,6 +639,8 @@ datatable(misersky_norms, colnames = c("Occupation",
 Bojanowski, P., Grave, E., Joulin, A., & Mikolov, T. (2016). Enriching word vectors with subword information.
 
 Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). Semantics derived automatically from language corpora contain human-like biases. _Science_, _356_(6334), 183–186.
+
+Dryer, M. S., & Haspelmath, M. (Eds.). (2013). _WALS online_. Leipzig: Max Planck Institute for Evolutionary Anthropology. Retrieved from http://wals.info/
 
 Lison, P., & Tiedemann, J. (2016). OpenSubtitles2016: Extracting large parallel corpora from movie and TV subtitles. In _Proceedings of the 10th International Conference on Language Resources and Evaluation_.
 
