@@ -190,17 +190,18 @@ shinyApp(
      output$by_language_plot <- renderPlot({
        histo_data %>%
         filter(country_name == input$this_country_name,
-               measure %in% c("explicit_dif", "es_iat_sex_age_order_explicit_resid")) %>%
+               measure %in% c("explicit_dif", 
+                              "es_iat_sex_age_order_explicit_resid")) %>%
          mutate(measure = fct_recode(measure, 
                               Residualized = "es_iat_sex_age_order_explicit_resid",
                               Raw = "explicit_dif"),
-         measure = fct_rev(measure)) %>%
+              measure = fct_rev(measure)) %>%
         ggplot(aes(x = bin, y = n)) +
           geom_bar(stat = "identity", width = 1) +
-         facet_grid(.~measure)  +
-         xlab("Score") +
-        ggtitle(paste0("\nExplicit bias data for: ", input$this_country_name)) + 
-        theme(
+          facet_grid(.~measure)  +
+          xlab("Score") +
+         ggtitle(paste0("\nExplicit bias data for: ", input$this_country_name)) + 
+         theme(
           strip.text = element_text(size = 16, face = "bold"),
           text = element_text(size = 17),
           legend.position = "none")
@@ -213,7 +214,7 @@ shinyApp(
 
 ## Geographic distribution of IAT scores  
 
-Residualized implicit gender bias (IAT score) shown by country. Larger values (blue) indicate a larger bias to associate men with the concept of career and women with the concept of family. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias. Inset shows IAT scores European countries only.
+Residualized implicit gender bias (IAT score) shown by country. Larger values (blue) indicate a larger bias to associate men with the concept of career and women with the concept of family. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias. Inset shows IAT scores for European countries only.
 
 ```{r}
 map_world <- map_data(map = "world") %>%
@@ -227,13 +228,13 @@ map_data <- country_iat %>%
 full_world <- ggplot(map_data, aes(x = long, y = lat,
                             group = group,
                             fill = es_iat_sex_age_order_implicit_resid)) +
-  scale_fill_viridis(direction = -1,  limits=c(-.065, .045),
-                       breaks = c(-.06, -.04,  -.02, 0, .02, .04), 
-                     label = c(" (male-\nfamily)", " -.04",  " -.02", " 0.00", " .02", " (male-\ncareer)"))  +
+  scale_fill_viridis(direction = -1, 
+                     limits = c(-.065, .045),
+                       breaks = c(-.06, -.04,  -.02, 0, .02, .04),  na.value="white",
+                     label = c(" (male-\n family)", " -0.04",  " -0.02", " 0.00", " 0.02", " (male-\n career)"))  +
   geom_polygon(color = "black", size = .1) +
   ggtitle("Implicit psychological gender bias by country ") +
   theme(
-    #text = element_text(size = TEXT_SIZE),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_rect(fill = "white"),
@@ -241,10 +242,9 @@ full_world <- ggplot(map_data, aes(x = long, y = lat,
         axis.text = element_blank(),
         axis.ticks = element_blank(),
         axis.line = element_blank(),
-        legend.position = c(.13, .35),
+        legend.position = c(.1, .35),
         plot.margin = margin(t = 60, r= 30, 0, 0, "pt"),
         legend.title = element_blank(),
-       # legend.background = element_rect(fill = alpha('white', 0)),
         legend.key.size = unit(0.3, "in"))
 
 
@@ -261,7 +261,7 @@ map_europe <- map_data %>%
 europe_inset <- ggplot(map_europe, aes(x = long, y = lat,
                             group = group,
                             fill = es_iat_sex_age_order_implicit_resid)) +
-  scale_fill_viridis(direction = -1, limits=c(-.065, .045))  +
+  scale_fill_viridis(direction = -1, limits=c(-.065, .045), na.value="white")  +
   #scale_fill_continuous()
   geom_polygon(color = "black", size = .1) +
   theme(panel.grid.major = element_blank(),
@@ -280,7 +280,7 @@ europe_inset <- ggplot(map_europe, aes(x = long, y = lat,
 
 full_world +
   annotation_custom(grob = ggplotGrob(europe_inset),
-                    xmin = 40, xmax =160, ymin = 50, ymax = 130)
+                    xmin = 40, xmax = 160, ymin = 50, ymax = 130)
 ```
 
 
@@ -583,24 +583,8 @@ datatable(theoretical_gender,
 In Study 2, we selected 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicate occupation is perceived to be more closely associated with women).
 
 ```{r }
-STUDY2_WORD_ITEMS <- "data/occupation_gender_scores_by_word.csv"
-items <- read_csv(STUDY2_WORD_ITEMS) %>%
-  distinct(occupation) %>%
-  pull(occupation)
-
-MISERSKY_PATH <- "data/misersky_norms_clean.csv"
-misersky_norms_raw <- read_csv(MISERSKY_PATH) 
-
-misersky_norms <- misersky_norms_raw %>%
-  filter(language == "english") %>%
-  select(-language) %>% 
-  mutate(occupation  = substr(occupation, 1, nchar(occupation)-1)) %>% # get rid of plural
-  mutate(occupation = case_when(occupation == "postme" ~ "postman/postwoman",
-                                occupation == "physician" ~ "doctor/physician",
-                                occupation == "secretarie" ~ "secretary",
-                                TRUE ~ occupation)) %>%
-  filter(occupation %in% items) %>%
-  arrange(mean_gender_rating) 
+MISERSKY_PATH <- "data/misersky_target_items.csv"
+misersky_norms <- read_csv(MISERSKY_PATH)
 
 datatable(misersky_norms, colnames = c("Occupation", 
                     "Perceived Gender Bias \n(Misersky, et al., 2014)"),
@@ -653,4 +637,3 @@ Nosek, B. A., Banaji, M. R., & Greenwald, A. G. (2002). Harvesting implicit grou
 Simons, G. F., & Charles, D. F. (Eds.). (2018). Ethnologue: Languages of the world. Dallas,Texas: Online version: http://www.ethnologue.com. SIL International.
 
 Van Paridon, J., & Thompson, B. (in prep.). Sub2Vec: Word embeddings from opensubtitles in 62 languages.
-

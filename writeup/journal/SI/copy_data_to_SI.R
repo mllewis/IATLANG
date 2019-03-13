@@ -15,8 +15,6 @@ data_for_SI <-
     here("data/SI/caliskan_paper_es.csv"),
     here("data/SI/caliskan_sub_es.csv"),
     here("data/SI/corrs_by_exclusions.csv"),
-    here("data/study2/occupation_gender_scores_by_word.csv"),
-    here("data/study2/misersky_norms_clean.csv"),
     here("data/study2/general_gender_by_lang.csv"),
     here("data/study2/occupation_translations_tidy.csv")
 )
