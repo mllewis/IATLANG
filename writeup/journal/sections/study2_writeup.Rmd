@@ -290,20 +290,6 @@ Finally, we examined the relationship between gender bias in language statistics
 all_es_tidy2_scaled <- all_es_tidy2 %>%
   mutate_if(is.numeric, scale)
 
-wiki_regression <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
-     wiki_occu_semantics_fm +  
-     median_country_age, 
-   data = all_es_tidy2_scaled) 
-
-wiki_pretty_text <- wiki_regression %>%
-  tidy() %>%
-  rename(Beta = estimate, SE = std.error, Z = statistic, p = p.value) %>%
-  mutate_if(is.numeric, ~ round(.,2)) %>%
-  mutate(p = ifelse(p == 0, "<.0001", p),
-         p = ifelse(p == "<.0001", p,  paste0("= ", p)),
-         pretty_model = paste0( Beta, ", _SE_ = ", SE,
-                               ", _Z_ = ", Z, ", _p_ ", p))
-
 wiki_corr <- cor.test(all_es_tidy2_scaled$wiki_occu_semantics_fm,
                       all_es_tidy2_scaled$mean_prop_distinct_occs) %>%
   tidy() %>%
@@ -312,20 +298,6 @@ wiki_corr <- cor.test(all_es_tidy2_scaled$wiki_occu_semantics_fm,
 
 
 # subt
-subt_regression <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
-     subt_occu_semantics_fm +  
-     median_country_age, 
-   data = all_es_tidy2_scaled)
-
-subt_pretty_text <- subt_regression %>%
-  tidy() %>%
-  rename(Beta = estimate, SE = std.error, Z = statistic, p = p.value) %>%
-  mutate_if(is.numeric, ~ round(.,2)) %>%
-  mutate(p = ifelse(p == 0, "<.0001", p),
-         p = ifelse(p == "<.0001", p,  paste0("= ", p)),
-         pretty_model = paste0( Beta, ", _SE_ = ", SE,
-                               ", _Z_ = ", Z, ", _p_ ", p))
-
 subt_corr <- cor.test(all_es_tidy2_scaled$subt_occu_semantics_fm,
                       all_es_tidy2_scaled$mean_prop_distinct_occs) %>%
   tidy() %>%
@@ -372,8 +344,7 @@ subt_p <- round(p_value(boot_mediation_model_subt), 2)
 #car::vif(subt_regression)
 ```
 
-To understand the relative predictive power of language statistics and distinct forms, we fit an additive linear model predicting implicit psychological bias from language statistics and proportion distinct forms, controlling for median country age. <!-- This order of reporting the results is a bit of a downer.. We know the predictors are highly collinear. What about using a residualized predictor from the outset? [ML] statistics are not reliable after residualizing out distinct forms. We could just not include any regression at all and skip right to the mediation analysis, since it's independently motivated and the predictors are colinear. -->
-Neither bias in language statistics (Wikipedia: $\beta$ =  `r filter(wiki_pretty_text, term == "wiki_occu_semantics_fm") %>% pull(pretty_model)`; Subtitle: $\beta$ = `r filter(subt_pretty_text, term == "subt_occu_semantics_fm") %>% pull(pretty_model)`) nor proportion distinct forms (Wikipedia: $\beta$ =  `r filter(wiki_pretty_text, term == "mean_prop_distinct_occs") %>% pull(pretty_model)`; Subtitle: $\beta$ = `r filter(subt_pretty_text, term == "mean_prop_distinct_occs") %>% pull(pretty_model)`)  predicted implicit bias, likely due to collinearity between the two measures (Wikipedia: _r_ = `r wiki_corr`, _p_ < .001; Subtitle: _r_ = `r subt_corr`, _p_ < .001; VIF >= 2 for language statistics and proportion distinct forms in both Subtitle and Wikipedia models). The high degree of collinearity between language statistics and proportion distinct forms is consistent with a causal model in which  language statistics mediate the effect of distinct gender forms on implicit psychological bias: The presence of distinct forms referring to people of different genders _leads to_ biased language statistics, which in turn leads to gender bias in behavior. Consistent with this model, a bootstrap test of mediation revealed  a marginal effect for the Subtitle model [path-ab = `r subt_ab`, _p_ = `r subt_p`; @robmed], and significant mediation effect for the Wikipedia model (path-ab = `r wiki_ab`, _p_ = `r wiki_p`).\footnote{Though our power to detect this effect is relatively low (approximately, .4; Schoemann, Boulton, \& Short, 2017).}
+The high degree of collinearity between language statistics and proportion distinct forms  (Wikipedia: _r_ = `r wiki_corr`, _p_ < .001; Subtitle: _r_ = `r subt_corr`) is consistent with a causal model in which  language statistics mediate the effect of distinct gender forms on implicit psychological bias: The presence of distinct forms referring to people of different genders _leads to_ biased language statistics, which in turn leads to gender bias in behavior. Consistent with this model, a bootstrap test of mediation revealed  a marginal effect for the Subtitle model [path-ab = `r subt_ab`, _p_ = `r subt_p`; @robmed], and significant mediation effect for the Wikipedia model (path-ab = `r wiki_ab`, _p_ = `r wiki_p`).\footnote{Though our power to detect this effect is relatively low (approximately, .4; Schoemann, Boulton, \& Short, 2017).}
 
 
 ```{r, include = F, eval = F}
