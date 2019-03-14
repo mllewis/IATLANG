@@ -11,7 +11,7 @@ Below is a key figure from the paper (Fig. 2) showing that languages with more g
 
 <br>
 
-![](writeup/journal/key_fig.p?raw=true)
+![](writeup/journal/key_fig.png?raw=true)
 
 
 Feel free to email me with questions and comments at mollyllewis@gmail.com.
