@@ -1,7 +1,7 @@
 Language use shapes cultural stereotypes: Large scale evidence from gender.
 ===
 
-Lewis, M. & Lupyan, G. (under review). Language use shapes cultural stereotypes: Large scale evidence from gender. [[preprint]](writeup/journal/iat_lang.pdf) [[source]](writeup/journal/iat_lang.Rmd) [[supplemental materials](https://mollylewis.shinyapps.io/iatlang_SI/).
+Lewis, M. & Lupyan, G. (under review). Language use shapes cultural stereotypes: Large scale evidence from gender. [[preprint]](writeup/journal/iat_lang.pdf) [[source]](writeup/journal/iat_lang.Rmd) [[supplemental materials]](https://mollylewis.shinyapps.io/iatlang_SI/).
 
 In this project, we use word embedding models to measure bias in the distributional statistics of 25 languages and find that languages with larger biases tend to have speakers with larger implicit biases (_N_ = 657,335). These biases are further related to the extent that languages mark gender in their lexical forms (e.g., “waiter”/“waitress”) hinting that linguistic biases may be causally related to biases shown in people's implicit judgments.
 
