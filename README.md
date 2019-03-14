@@ -1,10 +1,17 @@
-Language use shapes cultural norms: Large scale evidence from gender
+Language use shapes cultural stereotypes: Large scale evidence from gender.
 ===
 
-This project examines the relationship between gender bias and lexical semantics using data from IAT Project Implicit and word-embedding models. 
+Lewis, M. & Lupyan, G. (under review). Language use shapes cultural stereotypes: Large scale evidence from gender. [[preprint]](writeup/journal/iat_lang.pdf) [[source]](writeup/journal/iat_lang.Rmd) [[supplemental information]](https://mollylewis.shinyapps.io/iatlang_SI/).
 
-The directory `writup/cosgsci2018` contains all of the analysis code and most of the data for paper (links are given for data too large to fit in this repository). The entire manuscript can be re-rendered from the markdown `writeup/cogsci2018/gender_cogsci_2018.Rmd`. A rendered version of the paper can be found at `writeup/cogsci2018/gender_cogsci_2018.pdf.` Feel free to email me with questions and comments at mollyllewis@gmail.com.
+In this project, we use word embedding models to measure bias in the distributional statistics of 25 languages and find that languages with larger biases tend to have speakers with larger implicit biases (_N_ = 657,335). These biases are further related to the extent that languages mark gender in their lexical forms (e.g., “waiter”/“waitress”) hinting that linguistic biases may be causally related to biases shown in people's implicit judgments.
 
-Below is a key figure from the paper showing cross-cultural variability in the magnitude of the bias to associate men with career and women with family, as measured by effect sizes from the IAT. All countries show a positive bias, with red and blue indicating above and below average bias. 
+The file `writeup/journal/iat_lang.Rmd` contains the text of the paper and the code for the analyses reported in the paper. The entire manuscript can be re-rendered from this Rmarkdown file. A rendered version of the paper can be found at `writeup/journal/iat_lang.pdf`. The `analysis` directory contains all scripts used to pre-process the data before analysis. The `data` directory contains all the relevant.  The Supplemental Information to the paper can be found at https://mollylewis.shinyapps.io/iatlang_SI/, and in the repository at `paper/jounal/SI/`.
 
-![](writeup/cogsci2018/figs/country_gender_bias_map-1.png?raw=true)
+Below is a key figure from the paper (Fig. 2) showing that languages with more gender-biased language statistics tend to have speakers with greater gender bias.
+
+<br>
+
+![](writeup/journal/key_fig.pdf?raw=true)
+
+
+Feel free to email me with questions and comments at mollyllewis@gmail.com.
