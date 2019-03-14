@@ -32,18 +32,18 @@ data/IAT/Gender-Career/Gender-Career\ IAT.public.2005-2016.feather
 data/IAT/Gender-Career/Gender-Career\ IAT.public.2005-2016.sav
 analyses/childrens_books/wiki.en.vec
 data/IAT/Gender-Genius/InternationalIAT_LanguageData.csv
-exploratory_analyses/8_gender_genius/3_behavioral_project_implicit/data/Gender-Science\ IAT.public.2003-2017.sav
-exploratory_analyses/8_gender_genius/3_behavioral_project_implicit/data/gender_science_by_participant.csv
+exploratory_studies/8_gender_genius/3_behavioral_project_implicit/data/Gender-Science\ IAT.public.2003-2017.sav
+exploratory_studies/8_gender_genius/3_behavioral_project_implicit/data/gender_science_by_participant.csv
 data/study1/raw/Gender-Career\ IAT.public.2005-2016.feather
 exploratory_data/*
-exploratory_analyses/13_aiid_exploration/*
-exploratory_analyses/misc_plots_for_gary/*
+exploratory_studies/13_aiid_exploration/*
+exploratory_studies/misc_plots_for_gary/*
 data/study1c/raw/AIID_subset_exploratory.csv
 data/study1c/raw/BNCspokenFormatted.txt
 data/study1c/raw/COCAshort_words.txt
-exploratory_analyses/2_pretrained_w2v_models/behavior_IAT/iat_gender_full_cache/*
-exploratory_analyses/2_pretrained_w2v_models/behavior_IAT/iat_gender_fullv2_cache/*
-exploratory_analyses/2_pretrained_w2v_models/embedding_IAT/embedding_IAT_summary_cache/*
+exploratory_studies/2_pretrained_w2v_models/behavior_IAT/iat_gender_full_cache/*
+exploratory_studies/2_pretrained_w2v_models/behavior_IAT/iat_gender_fullv2_cache/*
+exploratory_studies/2_pretrained_w2v_models/embedding_IAT/embedding_IAT_summary_cache/*
 data/study1c/processed/trained_coca_fasttext_5.csv
 data/study1c/processed/trained_bnc_fasttext_5.csv
 data/study1c/processed/trained_bnc_fasttext_400_10.csv
