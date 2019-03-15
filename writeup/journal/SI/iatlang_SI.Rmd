@@ -27,6 +27,7 @@ library(shiny)
 library(maps)
 library(countrycode)
 library(viridis)
+library(broom)
 
 opts_chunk$set(echo = T, message = F, warning = F, 
                error = F, cache = T, tidy = F, fig.height = 4.5)
@@ -287,6 +288,7 @@ full_world +
                     xmin = 40, xmax = 160, ymin = 50, ymax = 130)
 ```
 
+Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of the linguistic statistics for speakers inIndia as a group.
 
 # Replication of Caliskan et al. (2017){.tabset}
 
@@ -623,6 +625,44 @@ datatable(translations,
 ))
 ```
 
+# Predicting bias with both types of language predictors (Study 2)
+In this analysis, we predict the magnitude of implicit bias by language with an additive linear model. As predictors, we include   proportion gender distinct labels, linguistic bias (as measured by word embeddings of the IAT words), and median country age. Model coefficients are shown below for models based on the Subtitle (top) and Wikipedia (bottom) corpora. 
+
+<b> Subtitle Corpus: </b>
+```{r}
+LANG_MEAUSURE_PATH <- "data/all_es_tidy2_scaled.csv"
+all_lang_model_scaled <- read_csv(LANG_MEAUSURE_PATH)
+
+# regressions with lang_es_sub/wiki instead of occupation statistics
+subt_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_sub +  
+     median_country_age, 
+   data = all_lang_model_scaled) %>%
+  tidy() %>%
+  mutate(term = fct_recode(term,
+         `Language IAT (Subtitle)` = "lang_es_sub",
+         `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
+         `Median Country Age` = "median_country_age"))
+
+
+kable(subt_regression_r2, digits = 3)
+```
+
+<b> Wikipedia Corpus: </b>
+```{r}
+wiki_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_wiki +  
+     median_country_age, 
+   data = all_lang_model_scaled)   %>%
+  tidy() %>%
+  mutate(term = fct_recode(term,
+         `Language IAT (Wikipedia)` = "lang_es_wiki",
+         `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
+         `Median Country Age` = "median_country_age"))
+
+kable(wiki_regression_r2, digits = 3)
+```
+
 
 **References**
 
@@ -638,6 +678,6 @@ Misersky, J., Gygax, P. M., Canal, P., Gabriel, U., Garnham, A., Braun, F., . . 
 
 Nosek, B. A., Banaji, M. R., & Greenwald, A. G. (2002). Harvesting implicit group attitudes and beliefs from a demonstration web site. _Group Dynamics: Theory, Research, and Practice_, _6_(1), 101.
 
-Simons, G. F., & Charles, D. F. (Eds.). (2018). Ethnologue: Languages of the world. Dallas,Texas: Online version: http://www.ethnologue.com. SIL International.
+Simons, G. F., & Charles, D. F. (Eds.). (2018). Ethnologue: Languages of the world. Dallas, Texas: Online version: http://www.ethnologue.com. SIL International.
 
-Van Paridon, J., & Thompson, B. (in prep.). Sub2Vec: Word embeddings from opensubtitles in 62 languages.
+Van Paridon, J., & Thompson, B. (in prep.). Sub2Vec: Word embeddings from OpenSubtitles in 62 languages.
