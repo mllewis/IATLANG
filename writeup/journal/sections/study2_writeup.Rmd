@@ -8,10 +8,9 @@ library(robmed) # bootstrap mediation analysis
 ```
 
 # Study 2: Gender bias and lexicalized gender
+In Study 1 we examined cross-linguistic differences in gender-bias without any reference to structural differences that exist in the languages in our sample. One such structural difference concerns the grammaticalization of gender. Some languages such as Spanish mark gender distinctions in a grammatically obligatory way, e.g., “enfermero” (nurse-<span style="font-variant:small-caps;">masc</span>) versus “enfermera” (nurse-<span style="font-variant:small-caps;">fem</span>)). Grammatical gender systems frequently demand gender-based agreement, e.g., “el enfermero alto”(the tall nurse-<span style="font-variant:small-caps;">masc</span>) versus “la enfermera alta” (the tall nurse-<span style="font-variant:small-caps;">fem</span>), which while informationally redundant, may act to amplify gender biases in the language. Another way languages convey gender is through gender-specific terms such as “waiter” vs. “waitress.” Languages with grammatical gender do tend to use more such terms, but the two are distinct. French has grammatical gender, but many occupation terms are gender-neutral (e.g., auteur, athlète, juge). 
 
-Languages can mark gender distinctions on words referring to people either as part of a grammatical gender system, as in Spanish ("enfermero" (nurse-<span style="font-variant:small-caps;">masc</span>) versus "enfermera" (nurse-<span style="font-variant:small-caps;">fem</span>)), or through idiosyncratic marking on particular nouns (e.g., "waiter" versus "waitress" in English). Languages that have grammatical gender systems make gender distinctions more frequently, since it is an obligatory part of the grammar.  Further, languages that mark gender on the noun tend to mark gender on other arguments in the sentence as part of an agreement system (“el enfermo alto” (the tall nurse-<span style="font-variant:small-caps;">masc</span>) versus “la enferma alta” (the tall nurse-<span style="font-variant:small-caps;">fem</span>)), potentially making the reference to biological sex even more salient to speakers.  <!-- I like this paragraph, but it seems somewhat redudant with some of the text in the intro...could we cut it? -->
-
-In Study 2, we examined whether grammatical gender and preponderance of gender-specific occupation terms are associated with a greater gender-career bias as measured by the IAT and whether this relationship is further mediated by the language statistics. Finding such associations would lend support to the language-as-causal-factor hypothesis because grammatical gender and (to a lesser degree) lexical gender encoding are relatively stable features of language. Although both are subject to change over time, these changes are somewhat independent of the propositional content conveyed by language. For example, a Finnish document about nursing being unsuitable for men would still use a gender-neutral form of "nurse" while a Spanish document promoting nursing careers to men would be committed to using a gender-specific form of "nurse" throughout. <!-- can you double check about Finnish? Substitute with another language as necessary [ML] This is true about finnish-->
+In Study 2, we examined whether grammatical gender and use of gender- specific occupation terms are associated with a greater gender-career bias as measured by the IAT and whether this relationship is further mediated by the language statistics. Finding such associations would lend support to the language-as-causal-factor hypothesis because grammatical gender and (to a lesser degree) lexical gender encoding are relatively stable features of language. Although both can change over time, these changes are somewhat independent of the propositional content conveyed by language. For example, a Finnish document about nursing being unsuitable for men would still use a gender-neutral form of “nurse” while a Spanish document promoting nursing careers to men would be committed to using gender-marked forms. 
 
 ### Methods
 
@@ -88,7 +87,7 @@ grammar_distinct_t_test <- t.test(mean_prop_distinct_occs ~ wikipedia_grammar_ty
   tidy()
 ```
 
-```{r, fig.pos = "!t!", fig.height = 4, fig.width = 4, fig.cap = "Implicit psychological gender bias (adjusted for age, sex, and block order) as a function of the proportion of gender-specific labels for set of words referring to occupations. The Error band indicates standard error of the linear model estimate."}
+```{r, fig.pos = "!t!", fig.height = 4, fig.width = 4, fig.cap = "Implicit  gender bias (adjusted for age, sex, and block order) as a function of the proportion of gender-specific labels for set of words referring to occupations. Error band indicates standard error of the linear model estimate."}
 
 distinct_behavior_corr <- cor(all_es_tidy2$mean_prop_distinct_occs,
      all_es_tidy2$es_iat_sex_age_order_implicit_resid) %>%
@@ -99,17 +98,17 @@ ggplot(all_es_tidy2, aes(x = mean_prop_distinct_occs,
                     y = es_iat_sex_age_order_implicit_resid)) +
   geom_smooth(method = "lm", alpha = .1) +
   geom_text_repel(aes(label = language_name), size = 2.5) +
-  scale_x_continuous(breaks = c(0,.25,.5, .75, 1), limits = c(-.01, 1.01)) +
+  scale_x_continuous(breaks = c(0,.25,.5, .75, 1), 
+                     limits = c(-.01, 1.01)) +
   geom_point(size = 1) +
   theme_classic() +
   ggtitle("Psychological Gender Bias and \nLexicalized Gender") +
-  ylab("Implicit Psychological Gender Bias (residualized)\n") +
+  ylab("Implicit Gender Bias (residualized)") +
   xlab("Proportion Gender-Specific Occupation Labels") +
   annotate("text", x = .75, y = -.05, label = 
              paste0("r = ", distinct_behavior_corr), 
            color = "red", size = 4) +
-  theme(legend.position = "none",
-        axis.text.y = element_text(angle = 90, hjust = 0.5))
+  theme(legend.position = "none")
 ```
 
 
@@ -172,7 +171,7 @@ GN_E_partial <- text_tidy_corrs %>%
 # Note: full table produced in study1_writeup
 ```
 
-In additive linear models controlling for median country age, there was no difference in implicit or explicit psychological gender bias for speakers of languages with a grammatical gender system  (_N_ = `r count(all_es_tidy2,wikipedia_grammar_type2) %>% filter(wikipedia_grammar_type2 == "Gender") %>% pull(n)`), compared to those without (_N_ = `r count(all_es_tidy2,wikipedia_grammar_type2) %>% filter(wikipedia_grammar_type2 == "No Gender") %>% pull(n)`; Implicit: $\beta$ = `r theoretical_gender_model_imp_print`; Explicit: $\beta$ = `r theoretical_gender_model_exp_print`). Languages with grammatical gender systems were more likely to have gender-specific terms for occupations (_t_(`r grammar_distinct_t_test$parameter`) =  `r grammar_distinct_t_test$statistic`, _p_ < .001). Implicit psychological gender bias was reliably correlated with degree of  gender-specific marking on occupation words: Languages with more gender-specific forms tended to have speakers with greater psychological gender bias (`r GN_B`), even after partialling out the effect of median country age (`r GN_B_partial`; Table 1).  There was no relationship between explicit psychological gender bias and lexical marking of occupation words after partialling out the effect of median country age (`r GN_E_partial`).
+In additive linear models controlling for median country age, there was no difference in implicit or explicit psychological gender bias for speakers of languages with a grammatical gender system  (_N_ = `r count(all_es_tidy2,wikipedia_grammar_type2) %>% filter(wikipedia_grammar_type2 == "Gender") %>% pull(n)`), compared to those without (_N_ = `r count(all_es_tidy2,wikipedia_grammar_type2) %>% filter(wikipedia_grammar_type2 == "No Gender") %>% pull(n)`; Implicit: $\beta$ = `r theoretical_gender_model_imp_print`; Explicit: $\beta$ = `r theoretical_gender_model_exp_print`). Languages with grammatical gender systems were more likely to have gender-specific terms for occupations (_t_(`r grammar_distinct_t_test$parameter`) =  `r grammar_distinct_t_test$statistic`, _p_ < .001). Implicit  gender bias was reliably correlated with degree of  gender-specific marking on occupation words: Languages with more gender-specific forms tended to have speakers with greater psychological gender bias (`r GN_B`), even after partialling out the effect of median country age (`r GN_B_partial`; Table 1).  There was no relationship between explicit psychological gender bias and lexical marking of occupation words after partialling out the effect of median country age (`r GN_E_partial`).
 
 ```{r by_word_mixed_effect_models}
 GENDER_BIAS_BY_WORD_SUB <- here("data/study2/sub_occupation_gender_score.csv")
@@ -224,7 +223,7 @@ GN_OB_W <- text_tidy_corrs %>%
   pull(r_print_text)
 ```
 
-```{r, fig.height = 3.5, fig.cap = "Implicit psychological gender bias(adjusted for age, sex, and block order) psychological IAT gender bias as a function of mean gender bias of words referring to occupations, with each point corresponding to a language (Study 2). Occupation gender bias is estimated for each language from word embedding models trained on Subtitle (left) and Wikipedia (right) corpora. Error bands indicate standard error of the linear model estimate. "}
+```{r, fig.height = 3.5, fig.cap = "Implicit gender bias (adjusted for age, sex, and block order) as a function of mean gender bias of words referring to occupations, with each point corresponding to a language (Study 2). Occupation gender bias is estimated for each language from word embedding models trained on Subtitle (left) and Wikipedia (right) corpora. Error bands indicate standard error of the linear model estimate. "}
 
 # plot lang vs behavioral
 all_es_tidy2 %>%
@@ -244,7 +243,7 @@ all_es_tidy2 %>%
     geom_point(size = .7) + 
     theme_minimal() +
     ggtitle("Psychological and Linguistic Gender Biases for Occupations") +
-    ylab("Implicit Psychological Gender Bias\n(residualized)\n") +
+    ylab("Implicit Gender Bias (residualized)\n") +
     xlab("\nOccupation Gender Bias from Language Statistics") +
     theme_classic() 
 ```
@@ -285,7 +284,7 @@ B_OE_W_partial <- text_tidy_corrs %>%
   pull(partial_print_text)
 ```
 
-Finally, we examined the relationship between gender bias in language statistics and  psychological gender biases at the level of languages. Unlike in Study 1, all the target words in the present study referred to people (occupations) and thus potentially could be  marked for the gender of the referenced person. Consequently, if explicit gender marking drives language statistics, we should expect to see a strong positive relationship at the level of languages between bias in language statistics _for occupation words_ and psychological biases for speakers of that language. Consistent with this prediction, gender bias in language statistics for occupation words was positively correlated with implicit psychological gender bias (Subtitle: `r B_OB_S`; Wikipedia: `r B_OB_W`), and remained reliable after partialling out the effect of median country age (Subtitle: `r B_OB_S_partial`; Wikipedia: `r B_OB_W_partial`; Fig. 4). There was no relationship between language statistics for occupation words and explicit psychological gender bias, even after partialling out the effect of median country age (Subtitle: `r B_OE_S_partial`; Wikipedia: `r B_OE_W_partial`).
+Finally, we examined the relationship between gender bias in language statistics and  psychological gender biases at the level of languages. Unlike in Study 1, all the target words in the present study referred to people (occupations) and thus potentially could be  marked for the gender of the referenced person. Consequently, if explicit gender marking drives language statistics, we should expect to see a strong positive relationship at the level of languages between bias in language statistics _for occupation words_ and psychological biases for speakers of that language. Consistent with this prediction, gender bias in language statistics for occupation words was positively correlated with implicit gender bias (Subtitle: `r B_OB_S`; Wikipedia: `r B_OB_W`), and remained reliable after partialling out the effect of median country age (Subtitle: `r B_OB_S_partial`; Wikipedia: `r B_OB_W_partial`; Fig. 4). There was no relationship between language statistics for occupation words and explicit psychological gender bias, even after partialling out the effect of median country age (Subtitle: `r B_OE_S_partial`; Wikipedia: `r B_OE_W_partial`).
 
 ```{r}
 all_es_tidy2_scaled <- all_es_tidy2 %>%
@@ -336,7 +335,7 @@ wiki_pretty_text <- wiki_regression %>%
                                ", _Z_ = ", Z, ", _p_ ", p))
 ```
 
-To understand the relative predictive power of language statistics and distinct forms, we fit an additive linear model predicting implicit psychological bias from language statistics and proportion distinct forms, controlling for median country age. Because language statistics for occupation terms and proportion distinct forms  were highly colinear (Wikipedia: _r_ = `r wiki_corr`, _p_ < .001; Subtitle: _r_ = `r subt_corr`, _p_ < .001), we used the estimate of bias in language statistics for each language based on the set IAT words described in Study 2b. Both gender bias in language statistics (Subtitle: $\beta$ = `r filter(subt_pretty_text, term == "lang_es_sub") %>% pull(pretty_model)`; Wikipedia: $\beta$ =  `r filter(wiki_pretty_text, term == "lang_es_wiki") %>% pull(pretty_model)`) and proportion distinct forms ( Subtitle: $\beta$ = `r filter(subt_pretty_text, term == "mean_prop_distinct_occs") %>% pull(pretty_model)`; Wikipedia: $\beta$ =  `r filter(wiki_pretty_text, term == "mean_prop_distinct_occs") %>% pull(pretty_model)`) were marginally reliable predictors of implicit psychological bias. 
+To understand the relative predictive power of language statistics and distinct forms, we fit an additive linear model predicting implicit bias from language statistics and proportion distinct forms, controlling for median country age. Because language statistics for occupation terms and proportion distinct forms  were highly colinear (Wikipedia: _r_ = `r wiki_corr`, _p_ < .001; Subtitle: _r_ = `r subt_corr`, _p_ < .001), we used the estimate of bias in language statistics for each language based on the set IAT words described in Study 2b. Both gender bias in language statistics (Subtitle: $\beta$ = `r filter(subt_pretty_text, term == "lang_es_sub") %>% pull(pretty_model)`; Wikipedia: $\beta$ =  `r filter(wiki_pretty_text, term == "lang_es_wiki") %>% pull(pretty_model)`) and proportion distinct forms ( Subtitle: $\beta$ = `r filter(subt_pretty_text, term == "mean_prop_distinct_occs") %>% pull(pretty_model)`; Wikipedia: $\beta$ =  `r filter(wiki_pretty_text, term == "mean_prop_distinct_occs") %>% pull(pretty_model)`) were marginally reliable predictors of implicit bias. 
 
 ```{r}
 # wiki
@@ -373,12 +372,11 @@ subt_p <- round(p_value(boot_mediation_model_subt), 2)
 ```
 
 
-The high degree of collinearity between language statistics for occupation terms and proportion gender-specific occupations forms is consistent with a causal model in which  language statistics mediate the effect of  gender-specific forms on implicit psychological bias: The presence of distinct forms referring to people of different genders _leads to_ biased language statistics, which in turn leads to gender bias in behavior. Consistent with this model, a bootstrap test of mediation revealed  a marginal effect for the Subtitle model [path-ab = `r subt_ab`, _p_ = `r subt_p`; @robmed], and significant mediation effect for the Wikipedia model (path-ab = `r wiki_ab`, _p_ = `r wiki_p`).\footnote{Though our power to detect this effect is relatively low (approximately, .4; Schoemann, Boulton, \& Short, 2017).}
+The high degree of collinearity between language statistics for occupation terms and proportion gender-specific occupations forms is consistent with a causal model in which  language statistics mediate the effect of  gender-specific forms on implicit  bias: The presence of distinct forms referring to people of different genders _leads to_ biased language statistics, which in turn leads to gender bias in behavior. Consistent with this model, a bootstrap test of mediation revealed  a marginal effect for the Subtitle model [path-ab = `r subt_ab`, _p_ = `r subt_p`; @robmed], and significant mediation effect for the Wikipedia model (path-ab = `r wiki_ab`, _p_ = `r wiki_p`).\footnote{Though our power to detect this effect is relatively low (approximately, .4; Schoemann, Boulton, \& Short, 2017).}
 
 
 
 
 # Discussion
 
-In Study 2, we asked whether relatively "fossilized" features of language -- the presence of a grammatical gender systems and the propensity to lexicalize gender distinctions -- predicted degree of psychological gender bias in speakers of that language. Notably, we do not find a relationship between the presence of a grammatical gender system in a language and psychological gender bias. We do, however, find a relationship between the degree of lexicalized gender marking -- specifically, occupations -- and implicit psychological gender bias: Languages that have more gender-specific occupation terms tend to have speakers with greater psychological gender bias. Furthermore, we find some evidence to suggest that the effect of lexical gender distinctions on psychological gender bias may be mediated by biased language statistics for those words. In sum, this study provides  support for the language-as-causal-factor hypothesis, and suggests that the relationship between language and psychological biases may be specific to uses of languages that refer to people (rather than system-wide gender distinctions).
-
+In Study 2, we asked whether structural features of language – the presence of a grammatical gender systems and the propensity to lexicalize gender distinctions in occupations – correlated with implicit bias. Grammatical gender was not reliably correlated with implicit bias. Languages that use more gender-specific occupation terms, however did predict a greater implicit bias. There is some evidence that the effect of lexical gender distinctions on implicit bias may be mediated by the influence of this terminology introduces on the ways that gender is statistically encoded in different language. What does this finding mean for our two hypotheses? The fact that, e.g., German explicitly marks the gender of professors while English does not, has cognitive consequences for German speakers and is not simply a matter of current cultural differences being reflected in language. Language does not merely reflect our biases, it seems to contribute to them.
