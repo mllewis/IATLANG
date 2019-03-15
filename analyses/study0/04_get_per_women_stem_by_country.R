@@ -14,7 +14,7 @@ OUTFILE <-  here("data/study0/processed/per_women_stem_by_country.csv")
 
 # tidy dataframe
 raw_data <- read_csv(RAW_PATH) %>%
-  janitor::clean_names() %>%
+  clean_names() %>%
   mutate_if(is.character,as.factor) %>%
   rename(year = time) %>%
   mutate(indicator_clean = str_split(indicator, "graduating from|\\(%\\)|graduates from programmes|graduates from Science,"))  %>%

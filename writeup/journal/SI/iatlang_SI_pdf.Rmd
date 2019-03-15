@@ -2,19 +2,18 @@
 title: 'Language use shapes cultural stereotypes: Large scale evidence from gender'
 author: "Molly Lewis and Gary Lupyan"
 date: "`r Sys.Date()`"
+always_allow_html: yes
 output:
+  pdf_document:
+    toc: yes
   html_document:
     code_folding: hide
     number_sections: yes
     theme: paper
     toc: yes
     toc_float: no
-runtime: shiny
 subtitle: Supplementary Materials
 ---
-
-******
-******
 
 ```{r setup, include = F}
 # load packages
@@ -29,20 +28,25 @@ library(countrycode)
 library(viridis)
 library(broom)
 
-opts_chunk$set(echo = T, message = F, warning = F, 
-               error = F, cache = T, tidy = F, fig.height = 4.5)
+opts_chunk$set(echo = F, message = F, warning = F, 
+               error = F, cache = T, tidy = F)
 
 theme_set(theme_classic())
 options(shiny.sanitize.errors = FALSE)
 ```  
 
+\vspace{16pt} 
+
 This document was created from an R markdown file. The manuscript itself was also produced from an R markdown file, and all analyses presented in the paper can be reproduced from that document (https://github.com/mllewis/IATLANG/blob/master/writeup/journal/iat_lang.Rmd). The respository for the project can be found here: https://github.com/mllewis/IATLANG/.
+
+
+####  NOTE: The SM is intended to be viewed interactively online at https://mlewis.shinyapps.io/iatlang_SI/.
 
 # Description of IAT data
 
 As described in the Main Text, the IAT data come from Project Implicit (https://implicit.harvard.edu/implicit/; Nosek, Banaji, & Greenwald, 2002), for a sample collected 2005 - 2016.
 
-## Demographics{.tabset}
+## Demographics
 ### N by country
 
 ```{r}
@@ -111,6 +115,9 @@ country_iat %>%
 ### Language by country
 For each country, we identified the language with the most speakers using Ethnologue (Simons & Charles, 2018). Note that Ethnologue reports "Bavarian" as the primary language of Germany, and "Daric" as the primary language of Afghanistan. In order to map between the other data sources in our study, we used the more general language variant for these countries, German and Persian, respectively. 
 
+#### NOTE: See online version for this content (https://mlewis.shinyapps.io/iatlang_SI/)
+
+
 ```{r}
 COUNTRY_TO_LANG <- "data/top_lang_by_country_ethnologue.csv"
 country_to_lang <- read_csv(COUNTRY_TO_LANG) %>%
@@ -130,92 +137,9 @@ datatable(country_to_lang_tidy, colnames = c("Country", "Language", "Language Fa
 ```
 Asterisks correspond to languages that were excluded from our analysis because word embedding models were unavailable.
 
-## Dependent Measures{.tabset}
+## Dependent Measures
 
-Below are histograms for the implicit and explicit measures in the IAT Project Implicit data presented for each country separately. The implicit raw scores are the D-score values (estimate of gender bias, with postive values indicating strong bias to associate men with career), and the residualized values are the D-scores with participant age, participant sex and trial order residualized out. For the explicit measure, the raw score is the difference between participants answer to the question,  “How strongly do you associate the following with males and females?” for the words “career” and for the word "family". Participants indicated their response on a Likert scale ranging from female (1) to male (7). For each participant, a single explicit score was calculated as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family. The residualized explicit value is the difference score with participant age, participant sex and trial order residualized out (we had no a priori reason for residualizing out trial order for explicit responses but did so to remain consistent with the residualized implicit measure).
-
-### Implicit
-
-```{r, echo = FALSE, cache = F}
-HISTO_DATA_PATH <- "data/DV_histo_data.csv"
-histo_data <- read_csv(HISTO_DATA_PATH)
-
-shinyApp(
-  ui = fluidPage(
-    selectInput("this_country_name", "Select Country:", 
-                choices = unique(histo_data$country_name), width = '50%'),
-  plotOutput("by_language_plot")
-
-  ),
-  
-  server = function(input, output) {
-    
-     output$by_language_plot <- renderPlot({
-       histo_data %>%
-        filter(country_name == input$this_country_name,
-               measure %in% c("overall_iat_D_score", "es_iat_sex_age_order_implicit_resid")) %>%
-        mutate(measure = fct_recode(measure, 
-                                    Residualized = "es_iat_sex_age_order_implicit_resid",
-                                    Raw = "overall_iat_D_score"),
-               measure = fct_rev(measure)) %>%
-        ggplot(aes(x = bin, y = n)) +
-        geom_bar(stat = "identity", width = .2) +
-        facet_grid(.~measure)  +
-        xlab("Score") +
-        ggtitle(paste0("\nImplicit IAT data for: ", input$this_country_name)) + 
-        theme(
-          strip.text = element_text(size = 16, face = "bold"),
-          text = element_text(size = 17),
-          legend.position = "none")
-    })
-  },
-  
-  options = list(height = 500)
-)
-
- #test <- filter(histo_data, country_name == "Afghanistan",
- #               measure == "es_iat_sex_age_order_implicit_resid")
-   
-```
-
-### Explicit
-
-```{r, echo = FALSE, cache = F}
-shinyApp(
-  ui = fluidPage(
-    selectInput("this_country_name", "Select Country:", 
-                choices = unique(histo_data$country_name), width = '50%'),
-
-  plotOutput("by_language_plot")
-
-  ),
-  
-  server = function(input, output) {
-    
-     output$by_language_plot <- renderPlot({
-       histo_data %>%
-        filter(country_name == input$this_country_name,
-               measure %in% c("explicit_dif", 
-                              "es_iat_sex_age_order_explicit_resid")) %>%
-         mutate(measure = fct_recode(measure, 
-                              Residualized = "es_iat_sex_age_order_explicit_resid",
-                              Raw = "explicit_dif"),
-              measure = fct_rev(measure)) %>%
-        ggplot(aes(x = bin, y = n)) +
-          geom_bar(stat = "identity", width = 1) +
-          facet_grid(.~measure)  +
-          xlab("Score") +
-         ggtitle(paste0("\nExplicit bias data for: ", input$this_country_name)) + 
-         theme(
-          strip.text = element_text(size = 16, face = "bold"),
-          text = element_text(size = 17),
-          legend.position = "none")
-    })
-  },
-  
-  options = list(height = 600)
-)
-```
+Below are histograms for the implicit and explicit measures in the IAT Project Implicit data presented for each country separately. The implicit raw scores are the D-score values (estimate of gender bias, with postive values indicating strong bias to associate men with career), and the residualized values are the D-scores with participant age, participant sex and trial order residualized out. For the explicit measure, the raw score is the difference between participants answer to the question,  “How strongly do you associate the following with males and females?” for the words “career” and for the word "family". Participants indicated their response on a Likert scale ranging from female (1) to male (7). For each participant, a single explicit score was calculated as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family. The residualized explicit value is the difference score with participant age, participant sex and trial order residualized out (we had no a priori reason for residualizing out trial order for explicit responses but did so to remain consistent with the residualized implicit measure). [see online version for this content; https://mlewis.shinyapps.io/iatlang_SI/]
 
 ## Geographic distribution of IAT scores  
 
@@ -290,7 +214,7 @@ full_world +
 
 Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of the linguistic statistics for speakers inIndia as a group.
 
-# Replication of Caliskan et al. (2017){.tabset}
+# Replication of Caliskan et al. (2017)
 
 ```{r english-language-caliskan-es-wiki}
 CALISKAN_WIKI_PATH <- "data/caliskan_wiki_es.csv"
@@ -405,10 +329,9 @@ For both the Wikipedia and Subtitle trained models, we calculate an effect size 
 
 The figure below shows the effect size measures derived from the English Wikipedia corpus and the English Subtitle corpus plotted against effect size estimates reported by CBN from two different models (trained on the Common Crawl and  Google News corpora). With the exception of biases related to race and age, effect sizes from our corpora are comparable to those reported by CBN. In particular, for the gender-career IAT---the bias relevant to our current purposes---we estimate the effect size to be  `r round(gender_bias_es_wiki,2)`, while CBN estimates it as approximately  `r round(mean(c(gender_bias_es_cc,gender_bias_es_gn)),2)`.
 
-## Wikipedia
-```{r, fig.width = 5, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right) corpora.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
+```{r, fig.height = 3, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right) corpora.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
 
-ggplot(all_es, aes(x = wiki, 
+p1 <- ggplot(all_es, aes(x = wiki, 
                    y = d, 
                    shape = es_source, 
                    color = point_color)) +
@@ -428,17 +351,14 @@ ggplot(all_es, aes(x = wiki,
   theme_minimal() +
   scale_shape_discrete(name = "Caliskan et al. model") +
   scale_color_discrete(guide = FALSE) +
-  theme(text = element_text(size = 9),
+    theme(text = element_text(size = 9),
         legend.position = c(.75, 0.15),
         legend.background = element_rect(fill = "white"),
-        legend.text = element_text(size = 9-1),
+        legend.text = element_text(size = 7),
         legend.margin = margin(3, 3, 0, 3, unit = 'pt'))
-```
 
-## Subtitles
-```{r, fig.width = 5, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right corpora).  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
 
-ggplot(all_es_sub, aes(x = sub, 
+p2 <- ggplot(all_es_sub, aes(x = sub, 
                    y = d, 
                    shape = es_source, 
                    color = point_color)) +
@@ -459,10 +379,10 @@ ggplot(all_es_sub, aes(x = sub,
   scale_shape_discrete(name = "Caliskan et al. model") +
   scale_color_discrete(guide = FALSE) +
   theme(text = element_text(size = 9),
-        legend.position = c(.75, 0.15),
-        legend.background = element_rect(fill = "white"),
-        legend.text = element_text(size = 9-1),
-        legend.margin = margin(3, 3, 0, 3, unit = 'pt'))
+        legend.position = "none")
+
+
+gridExtra::grid.arrange(p1, p2, ncol = 2)
 ```
 
 ```{r}
@@ -557,6 +477,8 @@ corr_exclusions_tidy %>%
 ```
 
 # Study 2 language data
+
+#### NOTE: See online version for this content (https://mlewis.shinyapps.io/iatlang_SI/).
 
 Presented below are grammatical gender coding for each language and occupation items with translations in each language.
 

@@ -53,6 +53,9 @@ writeup/journal/SI/iatlang_SI_cache/*
 writeup/journal/iat_lang_files/*
 writeup/journal/sections/study1_writeup_files/*
 writeup/journal/sections/study2_writeup_files/*
+writeup/journal/SI/iatlang_SI_pdf_files/*
+writeup/journal/SI/iatlang_SI_pdf_cache/*
+iwriteup/journal/SI/iatlang_SI_cache/*
 
 *.feather
 # LaTeX #

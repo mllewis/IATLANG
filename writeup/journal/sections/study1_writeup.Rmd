@@ -222,7 +222,7 @@ all_corr_vars <- all_es_tidy %>%
           `Language IAT (Wikipedia)` = "lang_es_wiki",
           `Occupation Bias (Subtitle)` = "subt_occu_semantics_fm",
           `Occupation Bias (Wikipedia)` = "wiki_occu_semantics_fm",
-          `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
+          `Prop. Gendered Occupation Labels` = "mean_prop_distinct_occs",
           `Percent Women in STEM` = "per_women_stem_2012_2017",
           `Median Country Age` = "median_country_age") 
 
@@ -321,11 +321,11 @@ tidy_corrs_to_print <- print_tidy_corrs %>%
   mutate_all(funs(replace_na(., ""))) %>%
   select("rowname", 
          contains("Residualized"),  contains("STEM"), contains("IAT"),
-         contains("Occupation"), contains("Labels"), contains("Labels"),
+          contains("Occupation Labels"), contains("Occupation Bias"),
          contains("Age")) %>%
   rename(" " = "rowname")
 
-tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(8,9,6,1,2,4,5,7,3),]
+tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(8,9,6,1,2,7,4,5,3),]
 
 kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
       caption = "Correlation (Pearson's r) for all measures in Study 1 and 2 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single asterisks indicate p < .05 and double asterisks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.",

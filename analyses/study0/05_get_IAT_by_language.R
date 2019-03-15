@@ -14,7 +14,6 @@ LANGUAGE_DF_OUT <- here("data/study0/processed/by_language_df.csv")
 ############
 
 unique_langs_per_country <- read_csv(LANGUAGE_COUNTRY_IN)
-
 behavioral_means_by_country <- read_csv(COUNTRY_DF_IN)
 
 # average across countries speaking the same language
