@@ -10,23 +10,12 @@ library(here)
 ```
 # Study 1: Relating gender biases in distributional semantics and human behavior 
 
-Are participants' gender biases predictable from the language they speak? Both the language-as-reflection and language-as-causal-factor hypotheses predict a positive correlation between the two, but showing that such a relationship exists is the first step to investigating a possible causal link.
-
- 
-## General approach
-
-As it turns out, various biases studied using IATs can be predicted from the distributional statistics of language (word co-occurrences). Using these statistics, Caliskan, Bryson, and Narayanan (2017; henceforth, CBN) measured the distance between the words presented to participants in the IAT task. CBN found that these distances were highly correlated with the biases computed by a variety of IATs (e.g., valence and Caucasian vs. African-American names; gender and math vs. arts; permanence and mental vs. physical diseases). CBN only measured semantic biases in English. Here, we extend CBN’s method to 25 languages examining whether languages with a stronger gender bias as expressed in distributional semantics predict stronger implicit and explicit gender biases on a large dataset of previously administered gender-career IATs.
-
-To model word meanings, we use semantic embeddings derived from a model that learns meanings by trying to predict a word from surrounding words, given a large corpus. The core assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with---words occurring in similar contexts, tend to have similar meanings [@firth1957synopsis]. A word like "dog," for example is represented as more similar to "cat" and "hound" than to "banana" because "dog" co-occurs with words more in common with "cat" and "hound" than with "banana" [@landauer1997solution; @lund1996producing]. Recent developments in machine learning allow the idea of distributional semantics to be implemented in a way that takes into account many features of language structure while remaining computationally tractable. The best known of these word embedding models is _word2vec_ [@mikolov2013efficient]. By attempting to predict the words that surround another word, the model is able to learn a vector-based representation for each word that represents its similarity to other words, i.e., a semantic embedding. We can then compute the similarity between two words by taking the distance between their vectors (e.g., cosine of angle). 
-
-We begin by validating word embedding measures of gender bias by comparing them to explicit human judgements of word genderness (Study 1a). We then apply this method to models trained on text in other languages (Study 1b). To foreshadow the results, we find that the implicit gender biases for individual countries are correlated with the biases found in the distributional semantics of the language spoken in the countries of the participants.
+Are participants' gender biases predictable from the language they speak? Both the language-as-reflection and language-as-causal-factor hypotheses predict a positive correlation between the two, but showing that such a relationship exists is the first step to investigating a possible causal link. We begin by validating word embedding measures of gender bias by comparing them to explicit human judgements of word genderness (Study 1a). We then apply this method to models trained on text in other languages (Study 1b). We find that the  implicit gender bias of participants in a country is correlated with the gender bias in the language spoken in that country.
 
 
 ## Study 1a: Word embeddings as a measure of psychological gender bias
 
 ### Methods
-
-To validate word embeddings as a measure of psychological gender bias, we asked whether words that were closely associated with males in the word embedding models tended to be rated by human participants as being more male biased. We found human and word-embedding estimates of gender bias to be highly correlated.
 
 
 ```{r}
@@ -62,9 +51,11 @@ all_ratings <- embedding_ratings %>%
   filter(!(word %in% c(MALE_WORDS, FEMALE_WORDS)))
 ```
 
-We used an existing set of word norms in which participants were asked to rate "the gender associated with each word" on a Likert scale ranging from _very feminine_ (1) to _very masculine_  [7; @scott2018glasgow]. We compared these norms to estimates of gender bias  obtained from embedding models pre-trained on two different corpora of English text: Wikipedia [@bojanowski2016enriching] and subtitles from movies and TV shows [@vanparidon;@lison].  The Wikipedia corpus is a large, naturalistic corpus of written language; the Subtitle corpus is a smaller corpus of spoken language. Both models were trained using  the fastText algorithm [a variant of word2vec; @joulin2016bag].
+To model word meanings, we use semantic embeddings derived from a model that learns meanings by trying to predict a word from surrounding words, given a large corpus. The core assumption of these models is that the meaning of a word can be described by the words it tends to co-occur with---words occurring in similar contexts, tend to have similar meanings [@firth1957synopsis]. A word like "dog," for example is represented as more similar to "cat" and "hound" than to "banana" because "dog" co-occurs with words more in common with "cat" and "hound" than with "banana" [@landauer1997solution; @lund1996producing]. Recent developments in machine learning allow the idea of distributional semantics to be implemented in a way that takes into account many features of language structure while remaining computationally tractable. The best known of these word embedding models is _word2vec_ [@mikolov2013efficient]. By attempting to predict the words that surround another word, the model is able to learn a vector-based representation for each word that represents its similarity to other words, i.e., a semantic embedding. We can then compute the similarity between two words by taking the distance between their vectors (e.g., cosine of angle). 
 
-To calculate a gender score from the word embeddings, for each word we calculated the average cosine distance to a standard set of male "anchor" words ("male," "man," "he," "boy," "his," "him," "son," and "brother"; Nosek, Banaji, \& Greenwald, 2002) and the average cosine similarity to a set of female words ("female,"  "woman," "she," "girl," "hers," "her," "daughter," and "sister"). A gender score for each word was then obtained by taking the difference of the similarity estimates (mean male similarity - mean female similarity), such that larger values indicated a stronger association with males. There were `r format(nrow(all_ratings), big.mark = ",")` words in total that overlapped between the word-embedding models and human ratings.
+In order to validate word embeddings as a measure of psychological gender bias, we used an existing set of word norms in which participants were asked to rate "the gender associated with each word" on a Likert scale ranging from _very feminine_ (1) to _very masculine_  [7; @scott2018glasgow]. We compared these norms to estimates of gender bias  obtained from embedding models pre-trained on two different corpora of English text: Wikipedia [@bojanowski2016enriching] and subtitles from movies and TV shows [@vanparidon;@lison].  The Wikipedia corpus is a large, naturalistic corpus of written language; the Subtitle corpus is a smaller corpus of spoken language. Both models were trained using  the fastText algorithm [a variant of word2vec; @joulin2016bag]. There were `r format(nrow(all_ratings), big.mark = ",")` words in total that overlapped between the word-embedding models and human ratings.
+
+Using the word embeddings, we calculated an estimate of gender bias for each word by measuring the average cosine distance to a standard set of male "anchor" words ("male," "man," "he," "boy," "his," "him," "son," and "brother"; Nosek, Banaji, \& Greenwald, 2002) and the average cosine similarity to a set of female words ("female,"  "woman," "she," "girl," "hers," "her," "daughter," and "sister"). A gender score for each word was then obtained by taking the difference of the similarity estimates (mean male similarity - mean female similarity), such that larger values indicated a stronger association with males. 
 
 ### Results
 
@@ -108,6 +99,8 @@ Having validated our method, we now use it to examine the relationship between p
 
 
 ### Methods
+Previous work has shown biases studied using IATs can be predicted from the distributional statistics of language (word co-occurrences). Using these statistics, Caliskan, Bryson, and Narayanan (2017; henceforth, CBN) measured the distance between the words presented to participants in the IAT task. CBN found that these distances were highly correlated with the biases computed by a variety of IATs (e.g., valence and Caucasian vs. African-American names; gender and math vs. arts; permanence and mental vs. physical diseases). CBN only measured semantic biases in English. Here, we extend CBN’s method to 25 languages examining whether languages with a stronger gender bias as expressed in distributional semantics predict stronger implicit and explicit gender biases on a large dataset of previously administered gender-career IATs.
+
 ```{r read_in_es_data}
 LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
 iat_lang_es <- read_csv(LANG_IAT_PATH)
@@ -207,6 +200,8 @@ all_es_tidy %>%
   ylab("Implicit  Gender Bias (residualized)\n") +
   xlab("\nLinguistic Gender Bias\n (effect size)") +
   theme_classic() 
+
+
 ```
 
 
@@ -337,4 +332,4 @@ kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
 ```
 
 ### Discussion 
-In Study 1, we found that a previously reported psychological gender bias – the bias to associate men with career and women with family – was correlated with the magnitude of that same bias as measured in the language statistics of 25 languages. Participants completing the IAT in countries where the dominant language had stronger associations between men and career words, and women and family words, showed stronger biases on the gender-career IAT. This result is consistent with both the _language-as-reflection_ and _language-as-causal-factor_ hypotheses. In Study 2, we try to better distinguish between the two hypotheses by investigating whether the gender-career bias is associated with two structural features of language: grammatical gender and the presence of gendered occupation terms (e.g., waiter/waitress). 
+In Study 1, we found that a previously-reported psychological gender bias – the bias to associate men with career and women with family – was correlated with the magnitude of that same bias as measured in the language statistics of 25 languages. Participants completing the IAT in countries where the dominant language had stronger associations between men and career words, and women and family words, showed stronger biases on the gender-career IAT. This result is consistent with both the _language-as-reflection_ and _language-as-causal-factor_ hypotheses. In Study 2, we try to better distinguish between these hypotheses by investigating whether the gender-career bias is associated with two structural features of language: grammatical gender and the presence of gendered occupation terms (e.g., waiter/waitress). 
