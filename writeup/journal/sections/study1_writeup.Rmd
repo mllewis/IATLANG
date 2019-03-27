@@ -161,11 +161,11 @@ all_es_tidy <- all_es %>%
 
 ```
 
-We identified the most frequently spoken language in each country in our analysis using Ethnologue [@simons2018]. After exclusions (see below), our final sample included `r nrow(all_es) - 1` languages.\footnote{Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of  the linguistic statistics for speakers in India as a group.} For each language, we obtained translations from native speakers for the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting]. Our linguistic stimuli were therefore a set of 8 female and 8 male Target Words (identical to Study 1a), and the set of 8 Attribute Words words used in the Project Implicit gender-career IAT: 8 related to careers ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 related to families ("family," "home,"      "parents,"   "children,"  "cousins,"  "marriage,"  "wedding," "relatives"). For one language, Tagalog, we were unable to obtain translations from a native speaker, and so Tagalog translations were compiled from dictionaries.
+We identified the most frequently spoken language in each country in our analysis using Ethnologue [@simons2018]. After exclusions (see below), our final sample included `r nrow(all_es) - 1` languages.\footnote{Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of  the linguistic statistics for speakers in India as a group.} For each language, we obtained translations from native speakers for the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting]. Our linguistic stimuli were therefore a set of 8 female and 8 male Target Words (identical to Study 1a), and the set of 8 Attribute Words words used in the Project Implicit gender-career IAT: 8 related to careers ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 related to families ("family," "home,"      "parents,"   "children,"  "cousins,"  "marriage,"  "wedding," "relatives"). For one language, Filipino, we were unable to obtain translations from a native speaker, and so Filipino translations were compiled from dictionaries.
 
 We used these translations to calculate a gender bias effect size from word embedding models trained on text in each language. Our effect size measure is a standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). Our effect size measure is identical to that used by CBN with an exception for grammatically gendered languages (see SM for replication of CBN on our corpora). Namely, for languages with grammatically gendered Attribute Words (e.g., ni&ntilde;as for female children in Spanish), we calculated the relationship between Target Words and Attribute Words of the same gender (i.e.\ "hombre" (man) to "ni&ntilde;os" and "mujer" (woman) to "ni&ntilde;as"). In cases where there were multiple translations for a word, we averaged across words such that each of our target words was associated with a single vector in each language. In cases where the translation contained multiple words, we used the entry for the multiword phrase in the model when present, and averaged across words otherwise. Like the psychological measures of bias from the Project Implicit data, larger values indicate larger gender bias.
 
-We calculated gender bias estimates using the same word embedding models as in Study 1a (Subtitle and Wikipedia corpora). We excluded languages from the analysis for which 20% or more of the target words were missing from the model or the model did not exist. This led us to exclude one language (Zulu) from the analysis of the Wikipedia corpus and six languages from the analysis of the Subtitle corpus (Chinese, Croatian, Hindi, Japanese, Tagalog, and Zulu).  Our final sample included `r all_es_tidy %>% filter(!is.na(lang_es_wiki)|  !is.na(lang_es_sub)) %>% nrow()` languages in total (_N_~Wikipedia~ = `r filter(all_es_tidy, !is.na(lang_es_wiki)) %>% nrow()`; _N_~Subtitle~ = `r filter(all_es_tidy, !is.na(lang_es_sub)) %>% nrow()`), representing `r  length(unique(all_es_tidy$family))`  language families.  Finally, we calculated language-level measures for four additional measures by averaging across countries whose participants speak the same language: implicit and explicit psychological gender bias (estimated from the Project Implicit dataset), percentage of women in STEM fields, and median country age.
+We calculated gender bias estimates using the same word embedding models as in Study 1a (Subtitle and Wikipedia corpora). We excluded languages from the analysis for which 20% or more of the target words were missing from the model or the model did not exist. This led us to exclude one language (Zulu) from the analysis of the Wikipedia corpus and six languages from the analysis of the Subtitle corpus (Chinese, Croatian, Hindi, Japanese, Filipino, and Zulu).  Our final sample included `r all_es_tidy %>% filter(!is.na(lang_es_wiki)|  !is.na(lang_es_sub)) %>% nrow()` languages in total (_N_~Wikipedia~ = `r filter(all_es_tidy, !is.na(lang_es_wiki)) %>% nrow()`; _N_~Subtitle~ = `r filter(all_es_tidy, !is.na(lang_es_sub)) %>% nrow()`), representing `r  length(unique(all_es_tidy$family))`  language families.  Finally, we calculated language-level measures for four additional measures by averaging across countries whose participants speak the same language: implicit and explicit psychological gender bias (estimated from the Project Implicit dataset), percentage of women in STEM fields, and median country age.
 
 ### Results
 
@@ -331,5 +331,45 @@ kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
   landscape()
 ```
 
+```{r, eval = F, include = F}
+all_es_tidy_scaled <- mutate_if(all_es_tidy, is.numeric, scale) 
+
+lm(per_women_stem_2012_2017 ~ lang_es_sub + es_iat_sex_age_order_implicit_resid + median_country_age, 
+   data = all_es_tidy_scaled) %>%
+  summary()
+
+cor.test(all_es_tidy_scaled$lang_es_sub, 
+         all_es_tidy_scaled$per_women_stem_2012_2017)
+cor.test()
+
+all_es_tidy_scaled2 <- all_es_tidy_scaled %>%
+  select(lang_es_sub, lang_es_wiki, per_women_stem_2012_2017,  median_country_age, es_iat_sex_age_order_implicit_resid) %>%
+  gather("model", "lang_es", -3:-5)
+
+
+library(robmed) # bootstrap mediation analysis
+
+boot_mediation_model_implicit <- all_es_tidy_scaled %>%
+  fit_mediation(
+    x = "lang_es_wiki",
+    y = "per_women_stem_2012_2017",
+    m = "es_iat_sex_age_order_implicit_resid") %>%
+    #covariates = "median_country_age") %>%
+   test_mediation(type = "bca")   
+
+boot_mediation_model_explicit <- all_es_tidy %>%
+  fit_mediation(
+    x = "lang_es_wiki",
+    y = "per_women_stem_2012_2017",
+    m = "es_iat_sex_age_order_explicit_resid") %>%
+    #covariates = "median_country_age") %>%
+   test_mediation(type = "bca")   
+
+boot_mediation_model_implicit
+boot_mediation_model_explicit
+ round(p_value(boot_mediation_model_implicit), 2)
+
+
+```
 ### Discussion 
 In Study 1, we found that a previously-reported psychological gender bias – the bias to associate men with career and women with family – was correlated with the magnitude of that same bias as measured in the language statistics of 25 languages. Participants completing the IAT in countries where the dominant language had stronger associations between men and career words, and women and family words, showed stronger biases on the gender-career IAT. This result is consistent with both the _language-as-reflection_ and _language-as-causal-factor_ hypotheses. In Study 2, we try to better distinguish between these hypotheses by investigating whether the gender-career bias is associated with two structural features of language: grammatical gender and the presence of gendered occupation terms (e.g., waiter/waitress). 
