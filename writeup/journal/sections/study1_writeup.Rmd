@@ -102,6 +102,17 @@ Having validated our method, we now use it to examine the relationship between p
 Previous work has shown biases studied using IATs can be predicted from the distributional statistics of language (word co-occurrences). Using these statistics, Caliskan, Bryson, and Narayanan (2017; henceforth, CBN) measured the distance between the words presented to participants in the IAT task. CBN found that these distances were highly correlated with the biases computed by a variety of IATs (e.g., valence and Caucasian vs. African-American names; gender and math vs. arts; permanence and mental vs. physical diseases). CBN only measured semantic biases in English. Here, we extend CBN’s method to 25 languages examining whether languages with a stronger gender bias as expressed in distributional semantics predict stronger implicit and explicit gender biases on a large dataset of previously administered gender-career IATs.
 
 ```{r read_in_es_data}
+# behavioral
+BEHAVIORAL_IAT_PATH <- here("data/study0/processed/by_language_df.csv")
+iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
+  rename(language_code = "wiki_language_code") %>%
+  select(language_code, median_country_age, 
+         es_iat_sex_age_order_explicit_resid,
+         es_iat_sex_age_order_implicit_resid, 
+         per_women_stem_2012_2017, 
+         n_participants)
+
+# study 1b
 LANG_IAT_PATH <- here("data/study1b/iat_es_lang.csv")
 iat_lang_es <- read_csv(LANG_IAT_PATH)
 
@@ -111,14 +122,7 @@ lang_family <- read_csv(LANG_FAMILY_PATH) %>%
   rename(language_code = "wiki_language_code") %>%
   distinct()
 
-BEHAVIORAL_IAT_PATH <- here("data/study0/processed/by_language_df.csv")
-iat_behavioral_es <- read_csv(BEHAVIORAL_IAT_PATH) %>%
-  rename(language_code = "wiki_language_code") %>%
-  select(language_code, median_country_age, 
-         prop_male,log_age, es_iat_sex_age_order_explicit_resid,
-         es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017, n_participants)
-
-# Study 2 measures (included here for making single grand table)
+# study 2 measures (included here for making single grand table)
 BY_LANGUAGE_OCCUPATION_PATH  <- here("data/study2/occupation_gender_score_by_language.csv")
 occupation_semantics <- read_csv(BY_LANGUAGE_OCCUPATION_PATH) 
 
@@ -135,7 +139,9 @@ all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
   left_join(lang_family)   %>%
   left_join(occupation_semantics)  %>% # include study 2 measure here so can make table
   left_join(by_lang_scores) %>%
-  left_join(language_names)
+  left_join(language_names) %>%
+    select(language_code,language_name,family,n_participants,es_iat_sex_age_order_implicit_resid, es_iat_sex_age_order_explicit_resid, median_country_age, per_women_stem_2012_2017, lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm)
+
 ```
 
 ```{r deal_with_exclusions}
@@ -158,7 +164,6 @@ all_es_tidy <- all_es %>%
          lang_es_sub = case_when(language_code == "hr" ~ NA_real_, # sr is missing from sub
                                   TRUE ~ lang_es_sub))  %>%
     filter(language_code != "zu")  # exclude proportion overlap measure (study 2) in zulu 
-
 ```
 
 We identified the most frequently spoken language in each country in our analysis using Ethnologue [@simons2018]. After exclusions (see below), our final sample included `r nrow(all_es) - 1` languages.\footnote{Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of  the linguistic statistics for speakers in India as a group.} For each language, we obtained translations from native speakers for the stimuli in the Project Implicit gender-career IAT behavioral task  [@nosek2002harvesting] with one slight modification. In the behavioral task, proper names were used to cue the male and female categories (e.g.\ "John," "Amy"), but because there are not direct translation equivalents of proper names, we instead used a set of generic gendered words which had been previously used for a different version of the gender IAT [e.g., "man," "woman;" @nosek2002harvesting]. Our linguistic stimuli were therefore a set of 8 female and 8 male Target Words (identical to Study 1a), and the set of 8 Attribute Words words used in the Project Implicit gender-career IAT: 8 related to careers ("career," "executive,"    "management,"   "professional," "corporation,"  "salary," "office," "business") and 8 related to families ("family," "home,"      "parents,"   "children,"  "cousins,"  "marriage,"  "wedding," "relatives"). For one language, Filipino, we were unable to obtain translations from a native speaker, and so Filipino translations were compiled from dictionaries.
@@ -332,11 +337,23 @@ kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
 ```
 
 ```{r, eval = F, include = F}
-all_es_tidy_scaled <- mutate_if(all_es_tidy, is.numeric, scale) 
+all_es_tidy_scaled <- mutate_if(all_es_tidy, is.numeric, scale)  
+
+lang_mod <- lm(lang_es_sub~es_iat_sex_age_order_implicit_resid,all_es_tidy_scaled)
+               
+iat_mod <- lm(es_iat_sex_age_order_implicit_resid ~ lang_es_sub,all_es_tidy_scaled) 
+
+all_es_tidy_scaled_resids <- all_es_tidy_scaled %>%
+  modelr::add_residuals(lang_mod, "lang_sub_mod_resid") %>%
+  modelr::add_residuals(iat_mod, "iat_sub_mod_resid")
+
+cor.test(all_es_tidy_scaled_resids$lang_sub_mod_resid, all_es_tidy_scaled_resids$per_women_stem_2012_2017)
+
+cor.test(all_es_tidy_scaled_resids$iat_sub_mod_resid, all_es_tidy_scaled_resids$per_women_stem_2012_2017)
 
 lm(per_women_stem_2012_2017 ~ lang_es_sub + es_iat_sex_age_order_implicit_resid + median_country_age, 
    data = all_es_tidy_scaled) %>%
-  summary()
+  summary(
 
 cor.test(all_es_tidy_scaled$lang_es_sub, 
          all_es_tidy_scaled$per_women_stem_2012_2017)
@@ -349,7 +366,7 @@ all_es_tidy_scaled2 <- all_es_tidy_scaled %>%
 
 library(robmed) # bootstrap mediation analysis
 
-boot_mediation_model_implicit <- all_es_tidy_scaled %>%
+boot_mediation_model_wiki <- all_es_tidy_scaled %>%
   fit_mediation(
     x = "lang_es_wiki",
     y = "per_women_stem_2012_2017",
@@ -357,18 +374,24 @@ boot_mediation_model_implicit <- all_es_tidy_scaled %>%
     #covariates = "median_country_age") %>%
    test_mediation(type = "bca")   
 
-boot_mediation_model_explicit <- all_es_tidy %>%
+round(p_value(boot_mediation_model_wiki), 2)
+
+
+boot_mediation_model_sub <- all_es_tidy_scaled %>%
   fit_mediation(
-    x = "lang_es_wiki",
+    x = "lang_es_sub",
     y = "per_women_stem_2012_2017",
-    m = "es_iat_sex_age_order_explicit_resid") %>%
+    m = "es_iat_sex_age_order_implicit_resid") %>%
     #covariates = "median_country_age") %>%
    test_mediation(type = "bca")   
 
-boot_mediation_model_implicit
-boot_mediation_model_explicit
- round(p_value(boot_mediation_model_implicit), 2)
+psych::mediate(per_women_stem_2012_2017 ~ lang_es_wiki + (es_iat_sex_age_order_implicit_resid), data =all_es_tidy_scaled)
 
+
+psych::mediate(per_women_stem_2012_2017 ~ lang_es_sub + (es_iat_sex_age_order_implicit_resid), data =all_es_tidy_scaled)
+
+
+round(p_value(boot_mediation_model_sub), 2)
 
 ```
 ### Discussion 

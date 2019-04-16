@@ -3,9 +3,9 @@ library(tidyverse)
 library(here)
 library(modelr)
 
-BEHAVIORAL_PATH <- here("data/study1c/raw/AIID_subset_exploratory.csv")
+BEHAVIORAL_PATH <- here("data/study1c/raw/AIID_subset_confirmatory.csv") #here("data/study1c/raw/AIID_subset_exploratory.csv")
 DOMAIN_PATH <- here("data/study1c/processed/all_target_words_5.csv")
-OUTFILE <- here("data/study1c/processed/tidy_behavioral_iat_data.csv")
+OUTFILE <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory.csv") #here("data/study1c/processed/tidy_behavioral_iat_data.csv")
 
 # tidy behavioraldata
 behavioral_df <- read_csv(BEHAVIORAL_PATH)

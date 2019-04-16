@@ -1,0 +1,266 @@
+---
+title: Data readme and results for Study 1c 
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: no
+---
+  
+******
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(here)
+library(broom)
+library(langcog)
+
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+This is a pre-registered study. The pre-registeration can be found here: https://osf.io/3f9ed/. 
+
+In this study, we're interested in whether psychological biases in language are reflected in behavioral measures of bias, as measured by the implicit association task. This is a confirmatory analysis. To do this, we're using an existing dataset (AIID; https://osf.io/pcjwf/) to compare performance on a range of different IATs (N = 31) between British vs. American English participants. We compared the difference in magnitude of these biases between British and American participants to differences in the magnitude of these biases in language. To measure the bias in language, we trained word embedding models on two corpora (BNC and COCA) and calculated the effect size of the bias in each, using the method described in Caliskan, et al. (2017). Our main hypothesis is that the difference in behavioral bias will be positively correlated with the difference in the language bias. 
+
+The raw exploratory IAT data was processed using the script found in `analyses/study1c/09_tidy_behav_IAT_data.R`. The language effect size estimates were produced from scripts in `analyses/study1c/`.
+
+## Data{.tabset}
+### Language effect size 
+
+FILENAME: `bnc_vs_coca_es_400_10_x5.csv`
+
+We have estimates of the language IAT bias for each IAT (N = 31) from 5 different training runs of each of the two corpora (BNC and COCA). 
+```{r}
+LANGUAGE_PATH <- here("data/study1c/processed/bnc_vs_coca_es_400_10_x5.csv")
+
+# language es (5 runs of each model)
+es_lang_raw <- read_csv(LANGUAGE_PATH) 
+es_lang_tidy <- es_lang_raw %>%
+  spread(model, effect_size) %>%
+  rename(coca_lang_es = coca, 
+         bnc_lang_es = bnc) %>%
+  mutate(lang_diff = bnc_lang_es - coca_lang_es) # get bnc - coca language es difference
+
+glimpse(es_lang_tidy)
+```
+
+Description of variables: 
+
+  * `run` - Run ID of model (1-5)
+  
+  * `domain` - IAT domain
+  
+  * `bnc_lang_es` - Estimate of effect size in language based on model trained on BNC.
+  
+  * `coca_lang_es` - - Estimate of effect size in language based on model trained on COCA
+  
+   * `lang_diff` - Difference between BNC and COCA estimates.
+
+
+### Behavioral effect size
+FILENAME: `tidy_behavioral_iat_data.csv`
+
+We have estimates of behavioral bias for each IAT for each sample of participants (UK and USA).
+
+
+```{r}
+BEHAVIORAL_PATH <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory.csv")
+es_behavioral_raw_conf <- read_csv(BEHAVIORAL_PATH)
+es_behavior_tidy_conf <- es_behavioral_raw_conf %>%
+  rename(us_behavior_es = us, 
+         uk_behavior_es = uk) %>%
+  mutate(data_type = "confirmatory")
+
+BEHAVIORAL_PATH_EXP <- here("data/study1c/processed/tidy_behavioral_iat_data.csv")
+es_behavioral_raw_exp <- read_csv(BEHAVIORAL_PATH_EXP)
+es_behavior_tidy_exp <- es_behavioral_raw_exp %>%
+  rename(us_behavior_es = us, 
+         uk_behavior_es = uk) %>%
+  mutate(data_type = "exploratory")
+
+es_behavior_tidy <- bind_rows(es_behavior_tidy_conf, es_behavior_tidy_exp)
+
+glimpse(es_behavior_tidy)
+```
+
+Description of variables: 
+
+  * `domain` - IAT domain
+  
+  * `uk_behavior_es` - Estimate of behavioral IAT effect size of UK participants.
+  
+  * `us_behavior_es` - Estimate of behavioral IAT effect size of USA participants.
+  
+   * `behavioral_resid_diff` - Difference between UK and USA estimates.
+   
+   * `data_type` - Data from exploratory or confirmatory dataset.
+
+
+```{r, eval = F, include = F}
+#**Difference in word frequency for words in each IAT between corpora.**
+FREQUENCY_PATH <- here("data/study1c/processed/iat_word_freq_difference_5.csv")
+freq_tidy <- read_csv(FREQUENCY_PATH)
+
+glimpse(freq_tidy)
+```
+
+
+```{r}
+#Join everything together.
+tidy_iat_data <- es_lang_tidy %>%
+  full_join(es_behavior_tidy)  %>%
+  mutate(data_type = fct_rev(data_type))
+```
+
+## Models
+
+
+
+```{r, eval = F, include = F}
+#### Family - Career
+cf_data <- filter(tidy_iat_data, domain == "Career - Family") %>%
+  arrange(data_type) %>%
+  select(-bnc_lang_es, -coca_lang_es, -uk_behavior_es, -us_behavior_es) %>%
+  group_by(data_type)  %>%
+  summarize(lang_diff = mean(lang_diff),
+            behavioral_resid_diff = mean(behavioral_resid_diff))
+
+cf_data %>%
+  ggplot()
+  
+  mean_all_corrs <- cf_data %>%
+  group_by(corr, data_type) %>%
+  multi_boot_standard(col = "estimate") %>%
+  ungroup() 
+
+ggplot(mean_all_corrs, aes(x = corr, y = mean)) +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  facet_grid(~ data_type) +
+  geom_pointrange(aes(ymin = ci_lower, max = ci_upper)) +
+  theme_classic() +
+  xlab("Correlation Type") +
+  ylab("Mean correlation") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  
+
+```
+
+
+### Difference correlations
+Difference in behavioral scores as a function of difference in language scores. Each color corresponds to a different run of the model. Each point corresponds to a particular IAT (e.g.  "Career - Family").
+```{r, fig.width = 8, fig.height = 4}
+### All IATs
+## simple correlations
+get_correlations <- function(current_df){
+cor1 <- tidy(cor.test(current_df$coca_lang_es, current_df$us_behavior_es)) %>%
+  mutate(corr = "coca_us")
+cor2 <- tidy(cor.test(current_df$coca_lang_es, current_df$uk_behavior_es)) %>%
+  mutate(corr = "coca_uk")
+cor3 <- tidy(cor.test(current_df$bnc_lang_es, current_df$us_behavior_es)) %>%
+  mutate(corr =  "bnc_us")
+cor4 <- tidy(cor.test(current_df$bnc_lang_es, current_df$uk_behavior_es)) %>%
+  mutate(corr = "bnc_uk")
+cor5 <- tidy(cor.test(current_df$bnc_lang_es, current_df$coca_lang_es)) %>%
+  mutate(corr = "coca_bnc_corr")
+cor6 <- tidy(cor.test(current_df$uk_behavior_es, current_df$us_behavior_es)) %>%
+  mutate(corr = "uk_us_corr")
+cor7 <- tidy(cor.test(current_df$behavioral_resid_diff, current_df$lang_diff)) %>%
+  mutate(corr = "diff_corr")
+
+bind_rows(list(cor1, cor2, cor3, cor4, cor5, cor6, cor7)) %>%
+  select(corr, estimate, statistic, p.value,
+         parameter, conf.low, conf.high) %>%
+  list()
+}
+
+# get correlation for each run
+all_corrs <- tidy_iat_data %>%
+  group_by(run, data_type) %>%
+  nest() %>% 
+  mutate(model = map(data, ~ get_correlations(.))) %>%
+  select(-data) %>%
+  unnest() %>%
+  unnest() 
+
+ggplot(tidy_iat_data, aes(x = lang_diff, y = behavioral_resid_diff,
+                          color = run, group = run)) +
+ # ggrepel::geom_text_repel(aes(label = domain)) +
+  facet_grid(~ data_type) +
+  geom_smooth(method = "lm", alpha = .2) + 
+  ylab("Difference in behavorial score between\nAmerican and British participants") +
+    xlab("Difference in language score between American and British corpora") +
+  theme_classic()
+```
+
+```{r, fig.width = 8, fig.height = 4}
+tidy_iat_data %>%
+  group_by(domain, data_type) %>%
+  summarize_if(is_numeric, mean)  %>%
+  ggplot(aes(x = lang_diff, y = behavioral_resid_diff,group = data_type)) +
+    geom_smooth(method = "lm", alpha = .2) + 
+    geom_point(size = .6) +
+    ggrepel::geom_text_repel(aes(label = domain), size = 1.7) +
+    facet_grid(~ data_type) +
+    ylab("Difference in behavorial score between\nAmerican and British participants") +
+    xlab("Difference in language score between American and British corpora") +
+    theme_classic() +
+    theme(legend.position = "none")
+
+```
+
+### Pairwise correlations
+(averaging across 5 runs)
+```{r, fig.width = 6, fig.height = 4}
+# average across runs
+mean_all_corrs <- all_corrs %>%
+  group_by(corr, data_type) %>%
+  multi_boot_standard(col = "estimate") %>%
+  ungroup() 
+
+ggplot(mean_all_corrs, aes(x = corr, y = mean)) +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  facet_grid(~ data_type) +
+  geom_pointrange(aes(ymin = ci_lower, max = ci_upper)) +
+  theme_classic() +
+  xlab("Correlation Type") +
+  ylab("Mean correlation") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+```{r, eval = F, include = F}
+
+#https://link.springer.com/content/pdf/10.3758/BF03334037.pdf
+# https://www.meta-analysis.com/downloads/Meta-analysis%20Effect%20sizes%20based%20on%20correlations.pdf
+
+
+ggplot(all_corrs, aes(x = corr, y = estimate, color = run)) +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  geom_pointrange(aes(ymin = conf.low, max = conf.high)) +
+  theme_classic()
+
+
+
+N <- 5
+mean_value <- transf.rtoz(all_corrs %>% 
+                            filter(corr == "diff_corr") %>%
+                 pull(estimate)) %>%
+                 mean()
+
+ci_lower <- mean_value - (1.96 * sqrt(1/(N-3)))
+ci_upper <- mean_value + (1.96 * sqrt(1/(N-3)))
+
+transf.ztor(mean_value)
+transf.ztor(ci_lower)
+transf.ztor(ci_upper)
+
+
+```

@@ -5,7 +5,7 @@ library(here)
 library(broom)
 library(langcog)
 
-BEHAVIORAL_PATH <- here("data/study1c/processed/tidy_behavioral_iat_data.csv")
+BEHAVIORAL_PATH <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory.csv")
 LANGUAGE_PATH <- here("data/study1c/processed/bnc_vs_coca_es_400_10_x5.csv")
 FREQUENCY_PATH <- here("data/study1c/processed/iat_word_freq_difference_5.csv")
 
@@ -73,12 +73,14 @@ mean_all_corrs <- all_corrs %>%
 
 ggplot(tidy_iat_data, aes(x = lang_diff, y = behavioral_resid_diff,
                           color = run, group = run)) +
+  facet_wrap(~run) +
   geom_text(aes(label = domain), size = 2) +
   geom_smooth(method = "lm") + 
   theme_classic()
 
 ggplot(mean_all_corrs, aes(x = corr, y = mean)) +
   geom_hline(aes(yintercept = 0), linetype = 2) +
+  ylim(-.2, .94) +
   geom_pointrange(aes(ymin = ci_lower, max = ci_upper)) +
   theme_classic()
 
