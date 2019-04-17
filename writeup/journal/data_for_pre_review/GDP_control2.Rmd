@@ -37,11 +37,23 @@ gdp_data <- wbstats::wb(indicator = "NY.GDP.PCAP.CD",
             select(iso2c, value) %>%
             rename(gdp_2017 = value)
 
+pref_data <- readstata13::read.dta13("genderdifferences.dta") %>%
+  mutate(country_code = countrycode::countrycode(ison, "iso3n", "iso2c")) %>%
+  select(country_code, everything()) %>%
+  select(-ison)
+
+STOET_PATH <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/exploratory_studies/7_age_controls/stoet_data.csv"
+stoet_data <- read_csv(STOET_PATH) %>%
+  mutate(country_code = countrycode::countrycode(country_name, "country.name", "iso2c")) %>%
+  select(country_code, everything())
+
 # data from Bill von Hippel
-INPATH <- "Molly data2.csv" 
+INPATH <- "data/Molly data2.csv" 
 country_raw <- read_csv(INPATH) %>%
   janitor::clean_names()  %>%
-  left_join(gdp_data, by = c("country_code" = "iso2c"))  
+  left_join(gdp_data, by = c("country_code" = "iso2c"))   %>%
+  left_join(stoet_data) %>%
+  left_join(pref_data)
 
 # save country data with GDP 2017 data merged in (unscaled)
 # OUTPATH <- "country_level_data_with_GDP.csv"
@@ -49,12 +61,13 @@ country_raw <- read_csv(INPATH) %>%
 
 # scale variables
 country_level <- country_raw %>%
-  mutate_if(is.numeric, base::scale)
+  mutate_if(is.numeric, base::scale) 
 ```
 
-```{r corrplot, fig.height = 6.5, fig.cap = "Pairwise correlation between all country-level measures. Red and blue correspond to positive and negative correlations, respectively. Non-significant correlations (\\textit{p} >= .05) are indicated with white squares."}
+```{r corrplot, fig.height = 10, fig.width = 10, fig.cap = "Pairwise correlation between all country-level measures. Red and blue correspond to positive and negative correlations, respectively. Non-significant correlations (\\textit{p} >= .05) are indicated with white squares."}
 plot_data <- country_level %>%
-  select_if(is.numeric)
+  select_if(is.numeric) %>%
+  select(-n_participants, -gdp_2013)
 
 long_corr <- cor(plot_data, 
                 use = "pairwise.complete.obs") %>%
@@ -74,7 +87,11 @@ corr_df <- full_join(long_corr, long_p) %>%
                               TRUE ~ as.character(round(estimate,2))),
          estimate = case_when(v1 == v2 ~ as.numeric(NA), 
                               TRUE ~ estimate),
-         estimate_color = case_when(p < .05 ~ estimate, TRUE ~ 0 ))
+         estimate_color = case_when(p < .05 ~ estimate, TRUE ~ 0),
+         v1 = fct_relevel(v1, "lang_es_sub", "lang_es_wiki", "subt_occu_semantics_fm",
+                          "wiki_occu_semantics_fm", "mean_prop_distinct_occs", "implicit_resid", "explicit_resid", "median_country_age", "gdp_2017", "per_women_stem", "gender_inequality_index_value", "science_literacy_diff", "intra_indv_diff", "self_efficacy_diff", "intrest_diff", "enjoy_diff", "satisfaction"),
+           v2 = fct_relevel(v2, "lang_es_sub", "lang_es_wiki", "subt_occu_semantics_fm",
+                          "wiki_occu_semantics_fm", "mean_prop_distinct_occs", "implicit_resid", "explicit_resid", "median_country_age", "gdp_2017", "per_women_stem", "gender_inequality_index_value", "science_literacy_diff", "intra_indv_diff", "self_efficacy_diff", "intrest_diff", "enjoy_diff","satisfaction"))
 
 ggplot(corr_df, aes(v1, fct_rev(v2), fill = estimate_color)) + 
   geom_tile() + #rectangles for each correlation
@@ -193,3 +210,196 @@ lmer(overall_iat_D_score ~  lang_es_sub + gdp_2017 + log_age + order + sex + (1|
   
 
 ```
+
+```{r}
+lm(ggi ~ self_efficacy_diff + lang_es_sub   ,  
+   data = country_level) %>%
+  summary()
+
+lm(ggi ~   self_efficacy_diff   ,  
+   data = country_level) %>%
+  summary()
+
+lm(ggi ~   lang_es_sub   ,  
+   data = country_level) %>%
+  summary()
+library(robmed)
+
+mediation_model_bootsrapped <- country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "ggi",
+    m = "self_efficacy_diff",
+    covariates = c("gdp_2017", "median_country_age")) %>%
+   test_mediation()
+
+mediation_model_bootsrapped
+p_value(mediation_model_bootsrapped)
+```
+
+```{r}
+
+#**
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "per_women_stem",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+
+#**
+country_level %>%
+  fit_mediation(
+    x = "lang_es_wiki",
+    y = "per_women_stem",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+
+# **
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "ggi",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+
+country_level %>%
+  fit_mediation(
+    x = "lang_es_wiki",
+    y = "ggi",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+
+# **
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "gini",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+
+country_level %>%
+  fit_mediation(
+    x = "lang_es_wiki",
+    y = "gini",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+
+# **
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "hdi_value",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+
+country_level %>%
+  fit_mediation(
+    x = "lang_es_wiki",
+    y = "hdi_value",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+
+
+
+# +
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "per_women_stem",
+    m = "implicit_resid",
+     covariates = c("median_country_age", "gdp_2017")) %>%
+   test_mediation() %>%
+   p_value()
+
+
+# +
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "per_women_stem",
+    m = "explicit_resid",
+    covariates = c("median_country_age", "gdp_2017")) %>%
+   test_mediation() %>%
+   p_value()
+
+```
+
+lang -> implicit -> self_efficacy
+```{r}
+# +
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "self_efficacy_diff",
+    m = "implicit_resid") %>%
+   test_mediation() %>%
+   p_value()
+
+# +
+country_level %>%
+  fit_mediation(
+    x = "lang_es_wiki",
+    y = "self_efficacy_diff",
+    m = "implicit_resid",
+    covariates = c("median_country_age", "gdp_2017")) %>%
+   test_mediation() %>%
+   p_value()
+
+```
+
+
+```{r}
+
+#**
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "gdp_2017",
+    m = "genderdif") %>%
+   test_mediation() %>%
+   p_value()
+
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "per_women_stem",
+    m = "genderdif") %>%
+   test_mediation() %>%
+   p_value()
+
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "ggi",
+    m = "genderdif") %>%
+   test_mediation() %>%
+   p_value()
+
+country_level %>%
+  fit_mediation(
+    x = "lang_es_wiki",
+    y = "ggi",
+    m = "genderdif") %>%
+   test_mediation() %>%
+   p_value()
+
+
+
+country_level %>%
+  fit_mediation(
+    x = "genderdif",
+    y = "ggi",
+    m = "lang_es_wiki") %>%
+   test_mediation() %>%
+   p_value()
+```
+

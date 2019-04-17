@@ -1,0 +1,241 @@
+---
+title: Exploring Stoet & Geary (2018) and Falk and Hermle (2018) data
+author: Molly Lewis and Gary Lupyan
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(here)
+library(ggrepel)
+library(robmed)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+
+```
+
+Here are the key claims in the two papers: 
+
+**STOET AND GEARY (2018) CLAIM**: At the individual level, boys tend to be *relatively* better STEM than girls. This generally leads boys to be more likely to pursue STEM jobs. But, by expectancy value theory, when there's less economic opportunity, girls are more likely to go against their relative strengths and pursue STEM degrees (because STEM jobs are high paying). As a result, in countries with less economic opporunity there are more girls pursuing STEM jobs, and thus more STEM equality.
+
+* Key measure: `self_efficacy_diff` ("The sex difference  in self efficacy (boys – girls)")
+* Result with respect to language bias: Language bias and STEM are correlated. The effect is mediated by differences in self efficacy, suggesting that language bias leads to differences in self-efficacy (language -> self efficacy -> STEM). This also holds for the wikipedia model. Also holds for three other meaasures of gender inequality (hdi, gini, ggi).
+
+
+**FALK AND HERMLE (2018) CLAIM**: Boys and girls have different preferences. When there's more economic opportunity (GDP), people are more free to express their preferences, leading to greater divergence in gender preferences in countries lots of economic opportunity.
+
+* Key measure: `genderdif` (composite score of "six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust (24); and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.")
+* Result with respect to language bias:  A more plausible causal model is language -> preferences -> GDP. That data support this. This also holds for the wikipedia model. Also holds for ggi, hdi_value and per_women_stem.
+ 
+
+
+## Correlations between all measures at the country level
+
+
+```{r}
+# get GDP 2017 data from World Bank API
+gdp_data <- wbstats::wb(indicator = "NY.GDP.PCAP.CD", 
+                        startdate = 2017, 
+                        enddate = 2017) %>%
+            select(iso2c, value) %>%
+            rename(gdp_2017 = value)
+
+pref_data <- readstata13::read.dta13("genderdifferences.dta") %>%
+  mutate(country_code = countrycode::countrycode(ison, "iso3n", "iso2c")) %>%
+  select(country_code, genderdif) 
+
+STOET_PATH <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/exploratory_studies/7_age_controls/stoet_data.csv"
+stoet_data <- read_csv(STOET_PATH) %>%
+  mutate(country_code = countrycode::countrycode(country_name, "country.name", "iso2c")) %>%
+  select(country_code, everything()) 
+
+# data from Bill von Hippel
+INPATH <- "data/Molly data2.csv" 
+country_raw <- read_csv(INPATH) %>%
+  janitor::clean_names()  %>%
+  left_join(gdp_data, by = c("country_code" = "iso2c"))   %>%
+  left_join(stoet_data) %>%
+  left_join(pref_data)
+
+# save country data with GDP 2017 data merged in (unscaled)
+# OUTPATH <- "country_level_data_with_GDP.csv"
+# write_csv(country_raw, OUTPATH)
+
+# scale variables
+country_level <- country_raw %>%
+  mutate_if(is.numeric, base::scale) 
+```
+
+```{r corrplot, fig.height = 10, fig.width = 10, fig.cap = "Pairwise correlation between all country-level measures. Red and blue correspond to positive and negative correlations, respectively. Non-significant correlations (\\textit{p} >= .05) are indicated with white squares."}
+plot_data <- country_level %>%
+  select_if(is.numeric) %>%
+  select(-n_participants, -gdp_2013)
+
+long_corr <- cor(plot_data, 
+                use = "pairwise.complete.obs") %>%
+  as.data.frame() %>%
+  rownames_to_column("v2") %>%
+  gather("v1", "estimate", -v2)
+
+long_p <- corrplot::cor.mtest(plot_data, 
+                             use = "pairwise.complete.obs")$p %>%
+  as.data.frame(row.names = names(plot_data)) %>%
+  do(setNames(.,names(plot_data))) %>%
+      rownames_to_column("v2") %>%
+  gather("v1", "p", -v2)
+
+corr_df <- full_join(long_corr, long_p) %>%
+  mutate(estimate_char = case_when(v1 == v2 ~ "", 
+                              TRUE ~ as.character(round(estimate,2))),
+         estimate = case_when(v1 == v2 ~ as.numeric(NA), 
+                              TRUE ~ estimate),
+         estimate_color = case_when(p < .05 ~ estimate, TRUE ~ 0),
+         v1 = fct_relevel(v1, "lang_es_sub", "lang_es_wiki", "subt_occu_semantics_fm",
+                          "wiki_occu_semantics_fm", "mean_prop_distinct_occs", "implicit_resid", "explicit_resid", "median_country_age", "gdp_2017", "per_women_stem", "gender_inequality_index_value", "science_literacy_diff", "intra_indv_diff", "self_efficacy_diff", "intrest_diff", "enjoy_diff", "satisfaction"),
+           v2 = fct_relevel(v2, "lang_es_sub", "lang_es_wiki", "subt_occu_semantics_fm",
+                          "wiki_occu_semantics_fm", "mean_prop_distinct_occs", "implicit_resid", "explicit_resid", "median_country_age", "gdp_2017", "per_women_stem", "gender_inequality_index_value", "science_literacy_diff", "intra_indv_diff", "self_efficacy_diff", "intrest_diff", "enjoy_diff","satisfaction"))
+
+ggplot(corr_df, aes(v1, fct_rev(v2), fill = estimate_color)) + 
+  geom_tile() + #rectangles for each correlation
+  #add actual correlation value in the rectangle
+  geom_text(aes(label = estimate_char), size = 3) + 
+  scale_fill_gradient2(low ="blue", mid = "white", high = "red", 
+                       midpoint = 0, space = "Lab", guide = "colourbar",
+                       name = "Pearson's r") +
+  ggtitle("Pairwise Correlation Coefficients") +
+  theme_classic(base_size = 12) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), #, hjust = .95, vjust = .2), 
+        axis.title.x = element_blank(), 
+        axis.title.y = element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = "none")
+```
+
+## STEM Self Efficacy Gender Difference (Stoet & Geary, 2018){.tabset}
+
+Note that this is with their measure (per_women_stem); the mediation isn't siginficant with our women stem measure...not clear why, other than that the data is newer.
+ 
+### Target correlations
+```{r, fig.width = 5}
+country_level %>%
+  ggplot(aes(x = per_women_stem, y = self_efficacy_diff, label = country))+
+  geom_point() +
+  geom_text_repel(size = 3) +
+  ylab("Gender difference in STEM Self Efficacy (Stoet & Geary, 2018)") +
+  xlab("Per. Women in STEM (SG measure)") +
+  ggtitle("STEM measure vs. Gender Dif. in STEM Self Efficacy  ") +
+  geom_smooth(method = "lm", alpha = .2) +
+  theme_classic()
+```
+
+```{r, fig.width = 5}
+country_level %>%
+  ggplot(aes(x = lang_es_sub, y = self_efficacy_diff, label = country))+
+  geom_point() +
+  geom_text_repel(size = 3) +
+  ylab("Gender difference in STEM Self Efficacy (Stoet & Geary, 2018)") +
+  xlab("Linguistic Gender Bias\n(effect size)") +
+  ggtitle("Language Bias vs. Gender Dif. in STEM Self Efficacy  ") +
+  geom_smooth(method = "lm", alpha = .2) +
+  theme_classic()
+```
+
+### Regressions
+```{r}
+lm(per_women_stem ~ self_efficacy_diff + lang_es_sub, data = country_level) %>%
+  summary()
+```
+
+### Mediation Models
+```{r}
+psych::mediate(x = "lang_es_sub", y = "per_women_stem", m = "self_efficacy_diff",
+               data = country_level, plot = T) %>%
+  summary()
+
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "per_women_stem",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+```
+
+This also holds for the wikipedia model. Also holds for three other meaasures of gender inequality (hdi, gini, ggi)
+
+## Composite Preference Differences (Falk & Hermle, 2018){.tabset}
+
+### Target correlations
+
+```{r, fig.width = 5}
+country_level %>%
+  ggplot(aes(x = gdp_2017, y = genderdif, label = country))+
+  ylab("Gender Differences in Preferences (Falk & Hermle, 2018)") +
+  xlab("GDP") +
+  ggtitle("GDP vs. Gender Differences in Preferences ") +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_point() +
+  geom_text_repel(size = 3) +
+  theme_classic(base_size = 12)
+```
+
+
+```{r, fig.width = 5}
+country_level %>%
+  ggplot(aes(x = lang_es_sub, y = genderdif, label = country))+
+  ylab("Gender Differences in Preferences (Falk & Hermle, 2018)") +
+  xlab("Linguistic Gender Bias\n(effect size)") +
+  ggtitle("Language Bias vs. Dif. in Gender Preferences ") +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_point() +
+  geom_text_repel(size = 3) +
+  theme_classic(base_size = 12)
+```
+
+### Regressions
+```{r}
+
+lm(genderdif ~ gdp_2017 + lang_es_sub, data = country_level) %>%
+  summary()
+
+lm(gdp_2017 ~ genderdif + lang_es_sub, data = country_level) %>%
+  summary()
+```
+### Mediation Models
+
+Their causal model is GDP -> preferences. A mediation model suggests that GDP does mediate between language and preferences:
+```{r}
+psych::mediate(x = "lang_es_sub", y = "genderdif", m = "gdp_2017",
+               data = country_level, plot = T) %>%
+  summary()
+```
+
+But a more plausible explanation, which there is also evidence is: 
+language -> preferences -> GDP
+```{r}
+psych::mediate(x = "lang_es_sub", y = "gdp_2017", m = "genderdif",
+               data = country_level, plot = T) %>%
+  summary()
+
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "per_women_stem",
+    m = "genderdif") %>%
+   test_mediation() %>%
+   p_value()
+```
+
+This also holds for the wikipedia model. Also holds for ggi, hdi_value and per_women_stem.

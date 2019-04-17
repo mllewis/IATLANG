@@ -39,6 +39,8 @@ exploratory_data/*
 exploratory_studies/13_aiid_exploration/*
 exploratory_studies/misc_plots_for_gary/*
 data/study1c/raw/AIID_subset_exploratory.csv
+data/study1c/raw/AIID_subset_confirmatory.csv
+data/study1c/processed/tidy_behavioral_iat_data_confirmatory.csv
 data/study1c/raw/BNCspokenFormatted.txt
 data/study1c/raw/COCAshort_words.txt
 exploratory_studies/2_pretrained_w2v_models/behavior_IAT/iat_gender_full_cache/*
@@ -58,9 +60,9 @@ writeup/journal/SI/iatlang_SI_pdf_files/*
 writeup/journal/SI/iatlang_SI_pdf_cache/*
 writeup/journal/SI/iatlang_SI_cache/*
 writeup/journal/data_for_pre_review/data/*
+writeup/journal/data_for_pre_review/genderdifferences.dta
 
-data/study1c/raw/AIID_subset_confirmatory.csv
-data/study1c/processed/tidy_behavioral_iat_data_confirmatory.csv
+
 
 *.feather
 # LaTeX #
