@@ -37,7 +37,7 @@ Here are the key claims in the two papers:
 **FALK AND HERMLE (2018) CLAIM**: Boys and girls have different preferences. When there's more economic opportunity (GDP), people are more free to express their preferences, leading to greater divergence in gender preferences in countries lots of economic opportunity.
 
 * Key measure: `genderdif` (composite score of "six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust (24); and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.")
-* Result with respect to language bias:  A more plausible causal model is language -> preferences -> GDP. That data support this. This also holds for the wikipedia model. Also holds for ggi, hdi_value and per_women_stem.
+* Result with respect to language bias:  A more plausible causals model is language -> preferences -> GDP. That data support this. This also holds for the wikipedia model. Also holds for ggi, hdi_value and per_women_stem.
  
 
 

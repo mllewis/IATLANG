@@ -386,19 +386,9 @@ country_level %>%
 
 country_level %>%
   fit_mediation(
-    x = "lang_es_wiki",
-    y = "ggi",
+    x = "implicit_resid",
+    y = "gdp_2017",
     m = "genderdif") %>%
-   test_mediation() %>%
-   p_value()
-
-
-
-country_level %>%
-  fit_mediation(
-    x = "genderdif",
-    y = "ggi",
-    m = "lang_es_wiki") %>%
    test_mediation() %>%
    p_value()
 ```
