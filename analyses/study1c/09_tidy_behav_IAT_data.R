@@ -5,9 +5,10 @@ library(modelr)
 
 BEHAVIORAL_PATH <- here("data/study1c/raw/AIID_subset_confirmatory.csv") #here("data/study1c/raw/AIID_subset_exploratory.csv")
 DOMAIN_PATH <- here("data/study1c/processed/all_target_words_5.csv")
-OUTFILE <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory.csv") #here("data/study1c/processed/tidy_behavioral_iat_data.csv")
+OUTFILE1 <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory_full.csv") #here("data/study1c/processed/tidy_behavioral_iat_data.csv")
+OUTFILE2 <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory.csv") #here("data/study1c/processed/tidy_behavioral_iat_data.csv")
 
-# tidy behavioraldata
+# tidy behavioral data
 behavioral_df <- read_csv(BEHAVIORAL_PATH)
 behavioral_tidy <- behavioral_df %>%
   select(user_id, datetime_ymdhms,  residence, sex, age, 
@@ -23,9 +24,14 @@ target_domains <- read_csv(DOMAIN_PATH) %>%
   distinct(domain) %>%
   pull(domain)
 
-behavioral_complete <- behavioral_tidy %>%
-  filter(residence %in% c("us", "uk"), # only us and uk residence
-         !exclude_iat, # exlcude participants using pre-defined criteria 
+behavioral_us_uk <- behavioral_tidy %>%
+  filter(residence %in% c("us", "uk")) # only us and uk residence
+
+# count(behavioral_us_uk, residence)
+
+
+behavioral_cmplete <- behavioral_us_uk %>%
+  filter(!exclude_iat, # exlcude participants using pre-defined criteria 
          domain %in% target_domains) %>% # focus only on target domains
   select(-exclude_iat) %>%
   drop_na()
@@ -35,6 +41,8 @@ resid_es <- behavioral_complete %>%
   add_residuals(lm(D ~ task_order + sex + age + block_order + education,
                    data = behavioral_complete))
 
+write_csv(resid_es, OUTFILE1)
+
 # get mean uk-us resid difference, by domain
 es_iat_tidy <- resid_es %>%
   group_by(residence, domain) %>%
@@ -42,4 +50,4 @@ es_iat_tidy <- resid_es %>%
   spread(residence, resid) %>%
   mutate(behavioral_resid_diff = uk - us)
 
-write_csv(es_iat_tidy, OUTFILE)
+write_csv(es_iat_tidy, OUTFILE2)

@@ -1,6 +1,6 @@
 ---
-title             : "Language use shapes cultural stereotypes: Large scale evidence from gender"
-shorttitle        : "Language use shapes cultural stereotypes"
+title             : "What are we learning from language? Associations between gender biases and distributional semantics in 25 languages"
+shorttitle        : "What are we learning from language?"
 header-includes: 
 - \usepackage{float} 
 - \floatplacement{figure}{t} #make every figure with caption = t

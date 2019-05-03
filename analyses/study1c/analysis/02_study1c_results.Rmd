@@ -1,0 +1,128 @@
+---
+title: Data readme and results for Study 1c 
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: no
+---
+  
+******
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(here)
+library(broom)
+library(langcog)
+library(lme4)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+```
+
+We have estimates of the language IAT bias for each IAT (N = 31) from 5 different training runs of each of the two corpora (BNC and COCA). 
+```{r}
+LANGUAGE_PATH <- here("data/study1c/processed/bnc_vs_coca_es_400_10_x5.csv")
+
+# language es (5 runs of each model)
+es_lang_raw <- read_csv(LANGUAGE_PATH) 
+es_lang_tidy <- es_lang_raw %>%
+  spread(model, effect_size) %>%
+  rename(coca_lang_es = coca, 
+         bnc_lang_es = bnc) %>%
+  mutate(lang_diff = bnc_lang_es - coca_lang_es) # get bnc - coca language es difference %
+
+```
+
+
+
+### Behavioral effect size
+FILENAME: `tidy_behavioral_iat_data.csv`
+
+We have estimates of behavioral bias for each IAT for each sample of participants (UK and USA).
+```{r}
+RAW_BEHAVIORAL_CONF <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory_full.csv") 
+
+behavioral <- read_csv(RAW_BEHAVIORAL_CONF) %>%
+  select(user_id, domain, residence, resid)%>%
+  rename(behavioral_effect_resid = resid) %>%
+  mutate(user_id = as.character(user_id)) 
+
+full_df <- behavioral %>%
+  mutate(temp = list(es_lang_tidy)) %>%
+  unnest() %>%
+  filter(domain == domain1) %>%
+  select(-domain1) %>%
+  mutate_if(is.character, as.factor) %>%
+  mutate_if(is.numeric, scale) 
+
+#write_csv(full_df, "long_form_confirmatory_data.csv")
+```
+
+```{r}
+behavioral_effect_resid.lmer <- full_df %>% 
+    group_by(user_id, domain,residence) %>%
+    mutate(residence = fct_rev(residence)) %>%
+    summarize_if(is.numeric,mean) %>%
+    lmer(behavioral_effect_resid ~ residence*lang_diff+(1|user_id)+(1|domain),data=.)
+
+summary(behavioral_effect_resid.lmer)
+```
+
+```{r, misc}
+lm(behavioral_effect_resid ~ residence:lang_diff, data = full_df) %>%
+  summary()
+
+ # mutate(language_es = ifelse(residence == "us", coca_lang_es,
+ #                             bnc_lang_es))
+
+model1 <- lmer(behavioral_effect_resid ~ residence*lang_diff +  (1|run) + (1|domain), data = full_df)
+summary(model1)
+
+model2 <- lmer(behavioral_effect_resid ~ language_es + residence + (1|run) + (1|domain), data = full_df)
+summary(model2)
+
+
+
+
+long_lang <- es_lang_tidy %>% 
+  select(-lang_diff)  %>%
+  rename(us = coca_lang_es, 
+         uk = bnc_lang_es) %>%
+  gather("language", "language_bias", -run, -domain)
+  
+full_df <- behavioral %>%
+  left_join(long_lang, by = c("residence" = "language")) %>%
+  mutate(residence = ifelse(residence == "uk", -0.5, 0.5))
+
+model <- lmer(behavioral_effect_resid ~ lang_diff*residence +   (1|run) + (1|domain) + (1|user_id), data = full_df)
+
+lmer(behavioral_effect_resid ~ language_bias:domain +  (1|run), data = full_df ) %>%
+  summary()
+
+
+lmer(D ~ language_bias:domain + sex+education+age+block_order+ (1|run), data = full_df ) %>%
+  summary()
+```
+
+```{r}
+
+
+full_df <- behavioral %>%
+  mutate(temp = list(es_lang_tidy)) %>%
+  unnest() %>%
+  mutate_if(is.character, as.factor) %>%
+  mutate_if(is.numeric, scale)
+
+
+lmer(behavioral_effect_resid ~ bnc_lang_es*residence + coca_lang_es*residence +  (1|domain) + (1|run), data = full_df ) %>%
+  summary()
+
+lmer(D ~ bnc_lang_es*residence + coca_lang_es*residence + sex+education+age+block_order+ (1|domain) + (1|run), data = full_df ) %>%
+  summary()

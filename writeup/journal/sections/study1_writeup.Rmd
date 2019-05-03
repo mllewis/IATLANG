@@ -7,6 +7,7 @@ output:
 library(broom)
 library(tidyverse)
 library(here)
+library(lme4)
 ```
 # Study 1: Relating gender biases in distributional semantics and human behavior 
 
@@ -336,63 +337,50 @@ kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
   landscape()
 ```
 
-```{r, eval = F, include = F}
-all_es_tidy_scaled <- mutate_if(all_es_tidy, is.numeric, scale)  
+## Study 1c: A pre-registered study of biases in British and American English
+In Study 1c, we conducted a confirmatory, pre-registred analysis of our hypothesis that biases present in language statistics are reflected in psychological biases of speakers of those languages. To do this, we leveraged an exisiting dataset from the Attitiudes, Identities, and Individual Differences Study [AIID; @aiid] containing measures of IAT performance from over 200,000 participants for a wide range of  IAT types (e.g. career - family, team - individual, etc.). Because most participants in this sample were English speakers, we compared biases between participants who spoke two dialects of English: British and American. For each of the 31 IAT types in the sample, we predicted that the degree to which that bias was present in a speaker's English dialect (British or American) would predict the magnitude of their psychological bias, as measured by the IAT. 
 
-lang_mod <- lm(lang_es_sub~es_iat_sex_age_order_implicit_resid,all_es_tidy_scaled)
-               
-iat_mod <- lm(es_iat_sex_age_order_implicit_resid ~ lang_es_sub,all_es_tidy_scaled) 
+## Method
 
-all_es_tidy_scaled_resids <- all_es_tidy_scaled %>%
-  modelr::add_residuals(lang_mod, "lang_sub_mod_resid") %>%
-  modelr::add_residuals(iat_mod, "iat_sub_mod_resid")
+```{r}
+STUDY1C_DATAPATH <- here("data/study1c/processed/long_form_confirmatory_behavior_and_language.csv") 
 
-cor.test(all_es_tidy_scaled_resids$lang_sub_mod_resid, all_es_tidy_scaled_resids$per_women_stem_2012_2017)
+full_1c_df <- read_csv(STUDY1C_DATAPATH)
 
-cor.test(all_es_tidy_scaled_resids$iat_sub_mod_resid, all_es_tidy_scaled_resids$per_women_stem_2012_2017)
+final_participant_counts <- count(full_1c_df, residence) %>%
+  spread(residence, n)
 
-lm(per_women_stem_2012_2017 ~ lang_es_sub + es_iat_sex_age_order_implicit_resid + median_country_age, 
-   data = all_es_tidy_scaled) %>%
-  summary(
+n_iats_per_participant <- full_1c_df %>%
+  count(user_id) %>%
+  summarize(mean = mean(n),
+            sd = sd(n)) 
+```
 
-cor.test(all_es_tidy_scaled$lang_es_sub, 
-         all_es_tidy_scaled$per_women_stem_2012_2017)
-cor.test()
+The AIID datset was partioned into two samples: exploratory (15%) and confirmatory (85%). Based on the exploratory sample, we pre-registed our analysis plan for the conformatory sample (https://osf.io/3f9ed). We note where are analysis diverges from the preregistration plan below. 
 
-all_es_tidy_scaled2 <- all_es_tidy_scaled %>%
-  select(lang_es_sub, lang_es_wiki, per_women_stem_2012_2017,  median_country_age, es_iat_sex_age_order_implicit_resid) %>%
-  gather("model", "lang_es", -3:-5)
+Of the 95 IAT types present in the dataset, we identified 31 types, based on the following criteria: (1) stimuli were words rather than pictures, and (2) 75% of the target words for each IAT test were present in both the BNC and COCA models. To measure the bias in language, we trained word embedding models on comparably-sized corpora of British [British National Corpus; @burnard1995users] and American [Corpus of Contemporary American English; @davies2008corpus] English (see SM for details). We then calculated a language bias effect size for each IAT in each English dialect, using the same method as in Study 1b. 
 
+There were 187,969 IATs in the confirmatory AIID dataset from participants in the USA or UK. Our exclusion procedure for the behavioral data was similiar to Study 1a above (see SM for details). Our final sample included data `r format(nrow(full_1c_df), big.mark = ",")` IATs (USA: _N_ = `r format(pull(final_participant_counts,us), big.mark = ",") `; UK: _N_ = `r format(pull(final_participant_counts,uk), big.mark = ",") `).  Each participant completed an average of `r pull(n_iats_per_participant, mean)` administrations of the IAT (_SD_ = `r pull(n_iats_per_participant, sd)`). For each administrations of the IAT, we calculated a residual IAT score, controlling for  sex, age, education, task order (relative ordering of implicit versus explicit measures), and block order (relative ordering of congruent versus incongruent mappings on IAT task).  
 
-library(robmed) # bootstrap mediation analysis
+We fit a linear mixed effect model predicting the magnitude of the bias for each participant with language dialect (American or British English), magnitude of the  bias difference between the two dialects, and an interaction betwen these two terms as fixed effected. We included participant and domain as random intercepts. This model differs from the pre-registered analysis, which is also consistent with this analysis, but failed to account for participant-level variance; see SM). 
 
-boot_mediation_model_wiki <- all_es_tidy_scaled %>%
-  fit_mediation(
-    x = "lang_es_wiki",
-    y = "per_women_stem_2012_2017",
-    m = "es_iat_sex_age_order_implicit_resid") %>%
-    #covariates = "median_country_age") %>%
-   test_mediation(type = "bca")   
+## Results
+Table 2 shows the model parameters. As predicted, we find that that degree of bias in language is reliable predictor of psychological bias across a range of IAT types. 
 
-round(p_value(boot_mediation_model_wiki), 2)
+```{r}
+full_1c_tidy <- full_1c_df %>% 
+    mutate(residence = fct_rev(residence)) %>%
+    group_by(user_id, domain, residence) %>% # take the mean across model runs
+    summarize_if(is.numeric, mean)
 
+study_1c_model <- lmer(behavioral_effect_resid ~ residence*lang_diff + (1|user_id) + (1|domain), 
+     data = full_1c_tidy)
 
-boot_mediation_model_sub <- all_es_tidy_scaled %>%
-  fit_mediation(
-    x = "lang_es_sub",
-    y = "per_women_stem_2012_2017",
-    m = "es_iat_sex_age_order_implicit_resid") %>%
-    #covariates = "median_country_age") %>%
-   test_mediation(type = "bca")   
-
-psych::mediate(per_women_stem_2012_2017 ~ lang_es_wiki + (es_iat_sex_age_order_implicit_resid), data =all_es_tidy_scaled)
-
-
-psych::mediate(per_women_stem_2012_2017 ~ lang_es_sub + (es_iat_sex_age_order_implicit_resid), data =all_es_tidy_scaled)
-
-
-round(p_value(boot_mediation_model_sub), 2)
-
+papeR::prettify(summary(study_1c_model), confint = F) %>%
+ # kable()
+  kable("latex", digits = 2, booktabs = T, 
+      caption = "Model parameters for Study 1c")  %>%
+  kable_styling(bootstrap_options = "condensed")
 ```
 ### Discussion 
 In Study 1, we found that a previously-reported psychological gender bias – the bias to associate men with career and women with family – was correlated with the magnitude of that same bias as measured in the language statistics of 25 languages. Participants completing the IAT in countries where the dominant language had stronger associations between men and career words, and women and family words, showed stronger biases on the gender-career IAT. This result is consistent with both the _language-as-reflection_ and _language-as-causal-factor_ hypotheses. In Study 2, we try to better distinguish between these hypotheses by investigating whether the gender-career bias is associated with two structural features of language: grammatical gender and the presence of gendered occupation terms (e.g., waiter/waitress). 
