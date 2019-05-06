@@ -153,7 +153,6 @@ ggplot(mean_all_corrs, aes(x = corr, y = mean)) +
 
 ```
 
-
 ### Difference correlations
 Difference in behavioral scores as a function of difference in language scores. Each color corresponds to a different run of the model. Each point corresponds to a particular IAT (e.g.  "Career - Family").
 ```{r, fig.width = 8, fig.height = 4}

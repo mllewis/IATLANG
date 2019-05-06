@@ -3,8 +3,8 @@ library(tidyverse)
 library(here)
 
 LANGUAGE_PATH <- here("data/study1c/processed/bnc_vs_coca_es_400_10_x5.csv")
-RAW_BEHAVIORAL_CONF <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory_full.csv") 
-OUTFILE <- here("data/study1c/processed/long_form_confirmatory_behavior_and_language.csv") 
+RAW_BEHAVIORAL_CONF <- here("data/study1c/processed/tidy_behavioral_iat_data_exploratory_full.csv") #here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory_full.csv") 
+OUTFILE <- here("data/study1c/processed/long_form_exploratory_behavior_and_language.csv")  # here("data/study1c/processed/long_form_confirmatory_behavior_and_language.csv")
 
 # language es (5 runs of each model)
 es_lang_raw <- read_csv(LANGUAGE_PATH) 

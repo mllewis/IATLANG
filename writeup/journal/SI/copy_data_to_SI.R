@@ -3,6 +3,7 @@
 # that when changes are made to processed data in the main analysis scripts these don't get
 # automatically updated in the SI app. This script copies the relevant files and writes them
 # to the SI directory. Run this script before deploying the app to ensure all data is up to do date.
+# note: all_stim_lists_5.RData is manually added to the local folder
 
 library(here)
 library(tidyverse)
@@ -15,8 +16,7 @@ data_for_SI <-
     here("data/SI/caliskan_paper_es.csv"),
     here("data/SI/caliskan_sub_es.csv"),
     here("data/SI/corrs_by_exclusions.csv"),
-    here("data/study2/general_gender_by_lang.csv"),
-    here("data/study2/occupation_translations_tidy.csv")
+    here("data/study2/general_gender_by_lang.csv")
 )
 
 copy_to_si_dir <- function(old_filepath) {
@@ -26,6 +26,4 @@ copy_to_si_dir <- function(old_filepath) {
 }
 
 walk(data_for_SI, copy_to_si_dir)
-
-
 

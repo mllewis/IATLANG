@@ -1,5 +1,5 @@
 ---
-title: 'Language use shapes cultural stereotypes: Large scale evidence from gender'
+title: 'What are we learning from language? Associations between gender biases and distributional semantics in 25 languages'
 author: "Molly Lewis and Gary Lupyan"
 date: "`r Sys.Date()`"
 output:
@@ -290,7 +290,8 @@ full_world +
 
 Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of the linguistic statistics for speakers inIndia as a group.
 
-# Replication of Caliskan et al. (2017){.tabset}
+# Study 1b: Gender bias across languages
+## Replication of Caliskan et al. (2017){.tabset}
 
 ```{r english-language-caliskan-es-wiki}
 CALISKAN_WIKI_PATH <- "data/caliskan_wiki_es.csv"
@@ -405,7 +406,7 @@ For both the Wikipedia and Subtitle trained models, we calculate an effect size 
 
 The figure below shows the effect size measures derived from the English Wikipedia corpus and the English Subtitle corpus plotted against effect size estimates reported by CBN from two different models (trained on the Common Crawl and  Google News corpora). With the exception of biases related to race and age, effect sizes from our corpora are comparable to those reported by CBN. In particular, for the gender-career IAT---the bias relevant to our current purposes---we estimate the effect size to be  `r round(gender_bias_es_wiki,2)`, while CBN estimates it as approximately  `r round(mean(c(gender_bias_es_cc,gender_bias_es_gn)),2)`.
 
-## Wikipedia
+### Wikipedia
 ```{r, fig.width = 5, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right) corpora.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
 
 ggplot(all_es, aes(x = wiki, 
@@ -435,7 +436,7 @@ ggplot(all_es, aes(x = wiki,
         legend.margin = margin(3, 3, 0, 3, unit = 'pt'))
 ```
 
-## Subtitles
+### Subtitles
 ```{r, fig.width = 5, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right corpora).  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
 
 ggplot(all_es_sub, aes(x = sub, 
@@ -473,7 +474,7 @@ ggplot(all_es_sub, aes(x = sub,
 #* what does it look like when you change this criteria
 ```
 
-# Descriptive statistics for all language-level measures
+## Descriptive statistics for all language-level measures
 
 Below are the mean and standard deviations estimates for all measures presented in Table 1 of the Main Text.
 ```{r}
@@ -505,7 +506,7 @@ kable(summary_stat_reordered, digits = 3)
 
 ```
 
-# Correlations by language exclusion threshold
+## Correlations by language exclusion threshold
 In the Main Text, we report psychological IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the Main Text remains broadly the same when larger thresholds of minimum number of participants per country are used. The plot below shows pairwise correlations between the language bias measures and three psychological/objective measures described in Study 1: Residualized behavorial IAT, residualized explicit IAT, and percent women in STEM. As in the main text, the residualized values are participant age, participant sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the p-value of the pairwise Pearson's _r_ coefficient.
 
 ```{r, fig.width = 9, fig.height = 5}
@@ -556,9 +557,100 @@ corr_exclusions_tidy %>%
   theme_bw()
 ```
 
-# Study 1c analyses
+# Study 1c: Pre-registered Analysis of British vs. American English
+The pre-registeration to this study can be found here: https://osf.io/3f9ed.
 
-# Study 2 language data
+## IAT Target Words
+
+Presented below are the target words for each of the 31 IATs used in our analyses. Each IAT has two target categories (e.g. "money" and "love") and two attribute categories (e.g. negative and positive). Select an IAT below to view the corresponding set of target words.
+
+```{r, echo = FALSE, cache = F}
+WORD_LIST <-"data/all_stim_lists_5.RData"
+load(WORD_LIST) # list of target words (all_stim_sets)
+
+iat_types <- map_chr(all_stim_sets,
+                     ~pluck(.,"test_name"))
+
+shinyApp(
+  ui = fluidPage(
+    selectInput("this_iat_name", h4("Select IAT type:"), 
+                choices = iat_types, width = '30%'),
+  #h5(textOutput("bias_type")),
+  textOutput("cat1"),
+  textOutput("cat2"),
+  textOutput("att1"),
+  textOutput("att2")
+  ),
+  
+  server = function(input, output) {
+    
+    target_iat <- reactive({
+      keep(all_stim_sets, ~.x$test_name == input$this_iat_name)[[1]]
+     })
+            
+    output$att1 <- renderText({
+        paste("ATTRIBUTE 1: ", paste(pluck(target_iat(), "attribute_1"), 
+                                             collapse = ", ") )
+    })
+    output$att2 <- renderText({
+        paste("ATTRIBUTE 2: ", paste(pluck(target_iat(), "attribute_2"), 
+                                             collapse = ", ") )
+    })
+    output$cat1 <- renderText({
+        paste("CATEGORY 1: ", paste(pluck(target_iat(), "category_1"), 
+                                             collapse = ", ") )
+    })
+    output$cat2 <- renderText({
+        paste("CATEGORY 2: ", paste(pluck(target_iat(), "category_2"), 
+                                             collapse = ", ") )
+    })
+  },
+  
+  options = list(height = 200)
+)
+
+```
+
+## Word embedding model training
+  
+The word embedding models were trained using the fastrtext package in R (Benesty, 2018). The vector size was 400 and the window size was 10. 
+
+## Behavioral data exclusion criteria
+
+We excluded participants using the pre-defined criteria in the AIID dataset, described below. Participants were excluded if any one of the seven criteria were not satisfied.
+
+1. $>$= 35% responses $<$ 300ms responses in any one practice block.
+2. $>$= 25% responses $<$ 300ms responses in any one critical block.
+3. $>$= 10% responses $<$ 300ms in critical blocks.
+4. $>$= 50% error rate in any one practice block.
+5. $>$= 40% error rate in practice blocks.
+6. $>$= 40% error rate in any one critical block.
+7. $>$= 30% error rate in critical blocks.
+
+## Pre-registered model
+The exact pre-registered analysis (https://osf.io/3f9ed/) of Study 1c is presented below. Pairwise corelations between all variables (language bias, behavioral bias, and UK-US difference measures) are shown, averaging across estimates of language bias from the 5 model runs. Error bars are 95% CIs. As stated in the pre-registration, the key test of our hypothesis is that the correlation between the UK - US linguistic difference and the UK - US behavioral difference is greater than 0 (shown in red below). That data are consistent with this prediction.
+
+The confirmatory dataset is shown on the right, along with the smaller exploratory dataset on the left for reference.
+
+```{r, fig.height = 4.5}
+STUDY1C_ANALYSIS <- "data/study1c_preregistered_analysis.csv"
+study1c_data <- read_csv(STUDY1C_ANALYSIS) %>%
+  mutate(group = case_when(data_type == "confirmatory" & corr == "Behavioral Bias Difference ~ Language Bias Difference" ~ "targ", TRUE ~ "other"))
+
+ggplot(study1c_data, aes(x = corr, y = mean, color = group)) +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  facet_grid(~ fct_rev(data_type)) +
+  geom_pointrange(aes(ymin = ci_lower, max = ci_upper)) +
+  theme_classic() +
+  scale_color_manual(values = c("black", "red")) +
+  xlab("Correlation Type") +
+  ylab("Mean correlation") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none",
+          plot.margin = margin(0, 0, 0, 5, "cm"))
+```
+
+# Study 2: Gender bias and lexicalized gender
 
 Presented below are grammatical gender coding for each language and occupation items with translations in each language.
 
@@ -627,7 +719,7 @@ datatable(translations,
 ))
 ```
 
-# Predicting bias with both types of language predictors (Study 2)
+## Predicting bias with both types of language predictors 
 In this analysis, we predict the magnitude of implicit bias by language with an additive linear model. As predictors, we include   proportion gender distinct labels, linguistic bias (as measured by word embeddings of the IAT words), and median country age. Model coefficients are shown below for models based on the Subtitle (top) and Wikipedia (bottom) corpora. 
 
 <b> Subtitle Corpus: </b>
@@ -668,7 +760,9 @@ kable(wiki_regression_r2, digits = 3)
 
 **References**
 
-Bojanowski, P., Grave, E., Joulin, A., & Mikolov, T. (2016). Enriching word vectors with subword information.
+Benesty, M. (2018). fastrtext: 'fastText' Wrapper for Text Classification and Word Representation (R package version 0.2.5). https://CRAN.R-project.org/package=fastrtext/
+
+Bojanowski, P., Grave, E., Joulin, A., & Mikolov, T. (2016). Enriching word vectors with subword information. https://arxiv.org/abs/1607.04606
 
 Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). Semantics derived automatically from language corpora contain human-like biases. _Science_, _356_(6334), 183–186.
 

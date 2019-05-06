@@ -17,7 +17,9 @@ writeup/journal/iat_lang.ttt
 writeup/journal/iat_lacg_cache/*
 writeup/journal/iat_lacg_files/*
 writeup/journal/iat_lang.fff
+data/study1c/processed/long_form_exploratory_behavior_and_language.csv
 data/study1c/processed/long_form_confirmatory_behavior_and_language.csv
+data/study1c/processed/tidy_behavioral_iat_data_exploratory_full.csv
 data/study1c/processed/tidy_behavioral_iat_data_confirmatory_full.csv
 writeup/cogsci2018/data/study1/Gender-Career\ IAT.public.2005-2016.feather
 writeup/cogsci2018/data/study1/Gender-Career IAT.public.2005-2016.feather
