@@ -12,7 +12,7 @@ es_lang_tidy <- es_lang_raw %>%
   spread(model, effect_size) %>%
   rename(coca_lang_es = coca, 
          bnc_lang_es = bnc) %>%
-  mutate(lang_diff = bnc_lang_es - coca_lang_es) # get bnc - coca language es difference %
+  mutate(lang_diff = bnc_lang_es - coca_lang_es) # get bnc - coca language es difference 
 
 # behavioral
 behavioral <- read_csv(RAW_BEHAVIORAL_CONF) %>%
@@ -26,8 +26,6 @@ full_df <- behavioral %>%
   unnest() %>%
   filter(domain == domain1) %>%
   select(-domain1) %>%
-  mutate_if(is.character, as.factor) %>%
-  mutate_if(is.numeric, scale) 
+  mutate_if(is.character, as.factor) 
 
 write_csv(full_df, OUTFILE)
-

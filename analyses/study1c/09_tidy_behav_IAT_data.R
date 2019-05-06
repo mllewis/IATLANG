@@ -6,7 +6,6 @@ library(modelr)
 BEHAVIORAL_PATH <- here("data/study1c/raw/AIID_subset_confirmatory.csv") #here("data/study1c/raw/AIID_subset_exploratory.csv")
 DOMAIN_PATH <- here("data/study1c/processed/all_target_words_5.csv")
 OUTFILE1 <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory_full.csv") #here("data/study1c/processed/tidy_behavioral_iat_data.csv")
-OUTFILE2 <- here("data/study1c/processed/tidy_behavioral_iat_data_confirmatory.csv") #here("data/study1c/processed/tidy_behavioral_iat_data.csv")
 
 # tidy behavioral data
 behavioral_df <- read_csv(BEHAVIORAL_PATH)
@@ -29,9 +28,8 @@ behavioral_us_uk <- behavioral_tidy %>%
 
 # count(behavioral_us_uk, residence)
 
-
-behavioral_cmplete <- behavioral_us_uk %>%
-  filter(!exclude_iat, # exlcude participants using pre-defined criteria 
+behavioral_complete <- behavioral_us_uk %>%
+  filter(!exclude_iat, # exclude participants using pre-defined criteria 
          domain %in% target_domains) %>% # focus only on target domains
   select(-exclude_iat) %>%
   drop_na()
@@ -42,12 +40,3 @@ resid_es <- behavioral_complete %>%
                    data = behavioral_complete))
 
 write_csv(resid_es, OUTFILE1)
-
-# get mean uk-us resid difference, by domain
-es_iat_tidy <- resid_es %>%
-  group_by(residence, domain) %>%
-  summarize(resid = mean(resid)) %>%
-  spread(residence, resid) %>%
-  mutate(behavioral_resid_diff = uk - us)
-
-write_csv(es_iat_tidy, OUTFILE2)

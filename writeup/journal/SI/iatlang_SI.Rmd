@@ -556,6 +556,8 @@ corr_exclusions_tidy %>%
   theme_bw()
 ```
 
+# Study 1c analyses
+
 # Study 2 language data
 
 Presented below are grammatical gender coding for each language and occupation items with translations in each language.

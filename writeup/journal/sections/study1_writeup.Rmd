@@ -74,7 +74,7 @@ wiki_gender_score_corr <- cor.test(all_ratings$maleness_embedding_wiki,
   tidy()
 ```
 
-```{r, fig.pos = "!t",  fig.height = 4, fig.width = 4, set.cap.width=T, num.cols.cap=1, fig.cap = "Word estimates of gender bias from the Subtitle-trained embedding model as a function of human judgements of gender bias (Study 1a). Each point corresponds to a word. Larger numbers indicate stronger association with females (note that this differs from the design of the rating task, but is changed here for consistency with other plots). Blue line shows linear fit and the error band indicates standard error (too small to be visible)."}
+```{r, fig.pos = "!t",  fig.height = 4, fig.width = 4, set.cap.width=T, num.cols.cap=1, fig.cap = "Human judgements of word gender bias as a function of gender bias from the Subtitle-trained embedding model  (Study 1a). Each point corresponds to a word. Larger numbers indicate stronger association with females (note that this differs from the design of the rating task, but is changed here for consistency with other plots). Blue line shows linear fit and the error band indicates standard error (too small to be visible)."}
 
 ggplot(all_ratings, aes(y = (8-maleness_norm), 
                         x = -maleness_embedding_sub)) + # flip scales for consistency with study 2
@@ -88,7 +88,7 @@ ggplot(all_ratings, aes(y = (8-maleness_norm),
                      label = c("-0.15\n(male)","-.1", "-.05" , "0.0", ".05", ".1", ".15\n(female)")) +
   geom_smooth(method = "lm", color = "blue") +
   annotate("text", y = 2, x = .1, label = 
-             paste0("r = ", round(sub_gender_score_corr$estimate, 2)), 
+             paste0("r = ", f_num(sub_gender_score_corr$estimate, 2)), 
            color = "red", size = 4) +
   theme_classic()
 ```
@@ -142,7 +142,7 @@ all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
   left_join(occupation_semantics)  %>% # include study 2 measure here so can make table
   left_join(by_lang_scores) %>%
   left_join(language_names) %>%
-    select(language_code,language_name,family,n_participants,es_iat_sex_age_order_implicit_resid, es_iat_sex_age_order_explicit_resid, median_country_age, per_women_stem_2012_2017, lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm)
+  select(language_code,language_name,family,n_participants,es_iat_sex_age_order_implicit_resid, es_iat_sex_age_order_explicit_resid, median_country_age, per_women_stem_2012_2017, lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm)
 
 ```
 
@@ -180,101 +180,6 @@ We calculated gender bias estimates using the same word embedding models as in S
 corpus_effect_t_test <- t.test(all_es_tidy$lang_es_sub, 
                                all_es_tidy$lang_es_wiki, 
                                paired = T)
-```
-
-```{r, fig.pos = "t", fig.height = 4, fig.cap = "Implicit gender bias (adjusted for age, sex, and block order) as a function of the linguistic gender bias derived from word-embeddings (Study 1b). Each point corresponds to a language. Linguistic biases are estimated from models trained on text in each language from Subtitle (left) and Wikipedia (right) corpora. Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the linear model estimate."}
-
-# plot lang vs behavioral
-all_es_tidy %>%
-  select(language_name, lang_es_sub, lang_es_wiki,
-         es_iat_sex_age_order_implicit_resid, n_participants) %>%
-  gather("model", "lang_es", -language_name,
-         -es_iat_sex_age_order_implicit_resid, -n_participants) %>%
-  mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
-                                   "Wikipedia Embeddings" = "lang_es_wiki")) %>%
-  ggplot(aes(x = lang_es, y = es_iat_sex_age_order_implicit_resid)) +
-  facet_wrap( . ~ model) +
-  scale_x_continuous(breaks = c(-.3, -0, .5, 1), 
-                     label = c("\n(male-\nfamily)", "0", ".5","1\n(male-\ncareer)") , limits = c(-.35, 1.1)) +
-  scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
-                     label = c("-.075\n(male-\nfamily)", "-.05", "-.025", "0", ".025", ".05\n(male-\ncareer)") , limits = c(-.08, .06) ) +
-  geom_smooth(method = "lm", alpha = .1, size = .9) +
-  ggrepel::geom_text_repel(aes(label = language_name), 
-                           size = 2, box.padding = 0.1) + 
-  geom_point(size = .7) +
-  theme_minimal() +
-  ggtitle("Psychological and  Linguistic Gender Biases") +
-  ylab("Implicit  Gender Bias (residualized)\n") +
-  xlab("\nLinguistic Gender Bias\n (effect size)") +
-  theme_classic() 
-```
-
-```{r, fig.pos = "t", fig.height = 4, fig.cap = "V2: Implicit gender bias (adjusted for age, sex, and block order) as a function of the linguistic gender bias derived from word-embeddings (Study 1b). Each point corresponds to a language. Linguistic biases are estimated from models trained on text in each language from Subtitle (left) and Wikipedia (right) corpora. Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the linear model estimate.",  eval = F, include = F}
-
-LANGUAGE_COUNTRY_IN <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
-lang_by_country <- read_csv(LANGUAGE_COUNTRY_IN) %>%
-  select(country_code, wiki_language_code, language_name) %>%
-  rename(language_code = wiki_language_code)
-
-BEHAVIORAL_P_IAT_PATH <- here("data/study0/processed/by_participant_df.csv")
-participant_level_data <- read_csv(BEHAVIORAL_P_IAT_PATH) 
-
-all_es_tidy_participant <- participant_level_data %>%
-  left_join(lang_by_country) %>%
-  left_join(all_es_tidy %>% select(language_code, lang_es_sub, lang_es_wiki))
-
-df_for_plotting1 <- all_es_tidy %>%
-  select(language_name, lang_es_sub, lang_es_wiki,
-         es_iat_sex_age_order_implicit_resid, n_participants) %>%
-  gather("model", "lang_es", -language_name,
-         -es_iat_sex_age_order_implicit_resid, -n_participants) %>%
-  mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
-                                   "Wikipedia Embeddings" = "lang_es_wiki"))
-
-
-# plot lang vs behavioral
-df_for_plotting2 <- all_es_tidy_participant %>%
-  select(language_name, lang_es_sub, lang_es_wiki,
-         es_iat_sex_age_order_implicit_resid) %>%
-  gather("model", "lang_es", -language_name,
-         -es_iat_sex_age_order_implicit_resid) %>%
-  mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
-                                   "Wikipedia Embeddings" = "lang_es_wiki"))  %>%
-  filter(model ==  "Subtitle Embeddings")
-
-
-  
-# n participants log
-  ggplot(df_for_plotting1, aes(x = lang_es,
-                               y = es_iat_sex_age_order_implicit_resid,)) +
-  geom_point(aes(size = log(n_participants)), alpha = .6) + 
-  geom_smooth(method = "lm") +
-  facet_wrap( . ~ model) +
-  ggrepel::geom_text_repel(aes(label = language_name), 
-                           size = 2, box.padding = 0.4) + 
- 
-  theme_minimal() 
-
-
-
-# violin plots
-  ggplot(df_for_plotting2, aes(x = lang_es, y = es_iat_sex_age_order_implicit_resid)) +
-  geom_violin(aes(x = lang_es, y = es_iat_sex_age_order_implicit_resid, group = language_name), size = .7) +
-  geom_smooth(method = "lm") +
-
-  theme_minimal() 
-
-# 95 CIs
-df_for_plotting2_cis <- df_for_plotting2 %>%
-  group_by(language_name)%>%
-  multi_boot_standard(col = "es_iat_sex_age_order_implicit_resid")
-  
-df_for_plotting2_cis %>%
-    left_join(df_for_plotting2 %>% distinct(language_name, ,lang_es)) %>%
-  ggplot(aes(x = lang_es, y = mean)) +
-  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper)) +
-  geom_smooth(method = "lm") +
-  theme_minimal()
 ```
 
 ```{r full_corr_table}
@@ -320,6 +225,79 @@ tidy_corrs <- simple_corr %>%
                 left_join(partial_corr_p) 
 ```
 
+```{r, df_for_cis, eval = F}
+LANGUAGE_COUNTRY_IN <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
+lang_by_country <- read_csv(LANGUAGE_COUNTRY_IN) %>%
+  select(country_code, wiki_language_code, language_name) %>%
+  rename(language_code = wiki_language_code)
+
+BEHAVIORAL_P_IAT_PATH <- here("data/study0/processed/by_participant_df.csv")
+participant_level_data <- read_csv(BEHAVIORAL_P_IAT_PATH) 
+
+all_es_tidy_participant <- participant_level_data %>%
+  left_join(lang_by_country) %>%
+  left_join(all_es_tidy %>% select(language_code, lang_es_sub, lang_es_wiki))
+
+# plot lang vs behavioral
+df_for_plotting2 <- all_es_tidy_participant %>%
+  select(language_name, lang_es_sub, lang_es_wiki,
+         es_iat_sex_age_order_implicit_resid) %>%
+  gather("model", "lang_es", -language_name,
+         -es_iat_sex_age_order_implicit_resid) %>%
+  mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
+                                   "Wikipedia Embeddings" = "lang_es_wiki"))  
+
+df_for_plotting2_cis <- df_for_plotting2 %>%
+  group_by(language_name, model) %>%
+  langcog::multi_boot_standard(col = "es_iat_sex_age_order_implicit_resid")
+  
+df_for_plotting2_cis %>%
+    left_join(df_for_plotting2 %>% distinct(language_name, lang_es)) %>%
+  ggplot(aes(x = lang_es, y = mean)) +
+  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper)) +
+  geom_smooth(method = "lm") +
+  theme_minimal()
+```
+
+```{r, fig.pos = "t", fig.height = 4.5, fig.cap = "Implicit gender bias (adjusted for age, sex, and block order) as a function of the linguistic gender bias derived from word-embeddings (Study 1b). Each point corresponds to a language, with the size of the point corresponding to the number of participants speaking that langauge. Linguistic biases are estimated from models trained on text in each language from Subtitle (left) and Wikipedia (right) corpora. Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the linear model estimate."}
+
+corr_text_df <- tidy_corrs %>%
+  filter(rowname == "Residualized Implicit Bias (IAT)", 
+         var2 %in% c("Language IAT (Subtitle)",
+                     "Language IAT (Wikipedia)")) %>%
+    mutate(model = fct_recode(var2, "Subtitle Embeddings" = "Language IAT (Subtitle)",
+                                   "Wikipedia Embeddings" = "Language IAT (Wikipedia)"))  %>%
+  select(model, simple_r) %>%
+  mutate(simple_r = paste0("r = ", f_num(simple_r, 2))) %>%
+  mutate(x = .85, y = -.07)
+
+# plot lang vs behavioral
+all_es_tidy %>%
+  select(language_name, lang_es_sub, lang_es_wiki,
+         es_iat_sex_age_order_implicit_resid, n_participants) %>%
+  gather("model", "lang_es", -language_name,
+         -es_iat_sex_age_order_implicit_resid, -n_participants) %>%
+  mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
+                                   "Wikipedia Embeddings" = "lang_es_wiki")) %>%
+  ggplot(aes(x = lang_es, y = es_iat_sex_age_order_implicit_resid, size = n_participants)) +
+  facet_wrap( . ~ model) +
+  geom_smooth(method = "lm", alpha = .1, size = .9) +
+  geom_point(alpha = .2) +
+  ggrepel::geom_text_repel(aes(label = language_name), 
+                           size = 2, box.padding = 0.1) + 
+  scale_x_continuous(breaks = c(-.3, -0, .5, 1), 
+                     label = c("\n(male-\nfamily)", "0", ".5","1\n(male-\ncareer)") , limits = c(-.35, 1.1)) +
+  scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
+                     label = c("-.075\n(male-\nfamily)", "-.05", "-.025", "0", ".025", ".05\n(male-\ncareer)") , limits = c(-.08, .06) ) +
+  scale_size(trans = "log10", labels = scales::comma, name = "N participants") +
+  geom_text(data = corr_text_df, aes(label = simple_r, x = x, y = y), 
+            color = "red", size = 4) +
+  ggtitle("Psychological and  Linguistic Gender Biases") +
+  ylab("Implicit  Gender Bias (residualized)\n") +
+  xlab("\nLinguistic Gender Bias\n (effect size)") +
+  theme_classic()  +
+  theme(legend.position = "bottom")
+```
 
 ```{r tidy_corrs_for_text}
 text_tidy_corrs <- tidy_corrs %>%
@@ -424,8 +402,8 @@ kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
 
 ```
 
-## Study 1c: A pre-registered study of biases in British and American English
-In Study 1c, we conducted a confirmatory, pre-registred analysis of our hypothesis that biases present in language statistics are reflected in psychological biases of speakers of those languages. To do this, we leveraged an exisiting dataset from the Attitiudes, Identities, and Individual Differences Study [AIID; @aiid] containing measures of IAT performance from over 200,000 participants for a wide range of  IAT types (e.g. career - family, team - individual, etc.). Because most participants in this sample were English speakers, we compared biases between participants who spoke two dialects of English: British and American. For each of the 31 IAT types in the sample, we predicted that the degree to which that bias was present in a speaker's English dialect (British or American) would predict the magnitude of their psychological bias, as measured by the IAT. 
+## Study 1c: A pre-registered study of British versus American English biases
+In Study 1c, we conducted a confirmatory, pre-registred analysis of our hypothesis that biases present in language statistics are reflected in psychological biases of speakers of those languages. To do this, we leveraged an exisiting dataset from the Attitiudes, Identities, and Individual Differences Study [AIID; @aiid] containing measures of IAT performance from over 200,000 participants for a wide range of  IAT types (e.g. career - family, team - individual, etc.). Because most participants in this sample were English speakers, we compared biases between participants who spoke one of two dialects of English: British and American. For each of the 31 IAT types in the sample, we predicted that the degree to which that bias was present in a speaker's English dialect (British or American) would predict the magnitude of their psychological bias, as measured by the IAT. 
 
 ## Method
 
@@ -447,27 +425,63 @@ The AIID datset was partioned into two samples: exploratory (15%) and confirmato
 
 Of the 95 IAT types present in the dataset, we identified 31 types, based on the following criteria: (1) stimuli were words rather than pictures, and (2) 75% of the target words for each IAT test were present in both the BNC and COCA models. To measure the bias in language, we trained word embedding models on comparably-sized corpora of British [British National Corpus; @burnard1995users] and American [Corpus of Contemporary American English; @davies2008corpus] English (see SM for details). We then calculated a language bias effect size for each IAT in each English dialect, using the same method as in Study 1b. 
 
-There were 187,969 IATs in the confirmatory AIID dataset from participants in the USA or UK. Our exclusion procedure for the behavioral data was similiar to Study 1a above (see SM for details). Our final sample included data `r format(nrow(full_1c_df), big.mark = ",")` IATs (USA: _N_ = `r format(pull(final_participant_counts,us), big.mark = ",") `; UK: _N_ = `r format(pull(final_participant_counts,uk), big.mark = ",") `).  Each participant completed an average of `r pull(n_iats_per_participant, mean)` administrations of the IAT (_SD_ = `r pull(n_iats_per_participant, sd)`). For each administrations of the IAT, we calculated a residual IAT score, controlling for  sex, age, education, task order (relative ordering of implicit versus explicit measures), and block order (relative ordering of congruent versus incongruent mappings on IAT task).  
+Within the confirmatory AIID dataset, there were 187,969 administrations of the IAT from participants in the USA or UK. Our exclusion procedure for the behavioral data was similiar to Study 1a above (see SM for details). Our final sample included data from `r format(nrow(full_1c_df), big.mark = ",")` administrations of the IAT across the 31 IAT types (USA: _N_ = `r format(pull(final_participant_counts,us), big.mark = ",") `; UK: _N_ = `r format(pull(final_participant_counts,uk), big.mark = ",") `).  Each participant completed an average of `r pull(n_iats_per_participant, mean)` IAT types (_SD_ = `r pull(n_iats_per_participant, sd)`). For each administrations of the IAT, we calculated a residual IAT score, controlling for  sex, age, education, task order (relative ordering of implicit versus explicit measures), and block order (relative ordering of congruent versus incongruent mappings on IAT task).  
 
-We fit a linear mixed effect model predicting the magnitude of the bias for each participant with language dialect (American or British English), magnitude of the  bias difference between the two dialects, and an interaction betwen these two terms as fixed effected. We included participant and domain as random intercepts. This model differs from the pre-registered analysis, which is also consistent with this analysis, but failed to account for participant-level variance; see SM). 
+We fit a linear mixed effect model predicting the magnitude of the bias for each participant with language dialect (British or American English), magnitude of the  bias difference between the two dialects, and an interaction betwen these two terms as fixed effected. We included participant and domain as random intercepts. This model differs from the pre-registered analysis, which is also consistent with results of the presented analysis, but does not account for participant-level variance (see SM for pre-registered model). 
 
 ## Results
-Table 2 shows the model parameters. As predicted, we find that that degree of bias in language is reliable predictor of psychological bias across a range of IAT types. 
 
-```{r}
+```{r 1cmodel}
 full_1c_tidy <- full_1c_df %>% 
-    mutate(residence = fct_rev(residence)) %>%
     group_by(user_id, domain, residence) %>% # take the mean across model runs
     summarize_if(is.numeric, mean)
 
-study_1c_model <- lmer(behavioral_effect_resid ~ residence*lang_diff + (1|user_id) + (1|domain), 
-     data = full_1c_tidy)
+study_1c_model <- full_1c_tidy %>%
+ # mutate_at(vars(behavioral_effect_resid, lang_diff), scale) %>%
+  lmer(behavioral_effect_resid ~ residence*lang_diff + (1|user_id) + (1|domain), 
+     data = .) %>%
+  tidy()
 
-papeR::prettify(summary(study_1c_model), confint = F) %>%
- # kable()
-  kable("latex", digits = 2, booktabs = T, 
-      caption = "Model parameters for Study 1c")  %>%
-  kable_styling(bootstrap_options = "condensed")
+lmer_model_string <- study_1c_model %>% 
+  filter(term == "residenceus:lang_diff") %>%
+  mutate_if(is.numeric, f_num,2) %>%
+  mutate(model_string = paste0("= ", estimate,  ", ","_SE_ = ",
+                               std.error,  ", ", "_t_ = ", statistic))  %>%
+  pull(model_string)
 ```
+
+There was a reliable interaction between language dialect and the magnitude of the  bias difference between the two dialects ($\beta$ `r lmer_model_string`), suggesting that language bias was a reliable predictor of implicit bias. Figure 3 shows the difference in bias (British - American) in language and behavior for each of the 31 IATs in our dataset. 
+
+```{r 1cplot,  fig.height = 4, fig.width = 4, set.cap.width=T, num.cols.cap=1, fig.cap = "Difference (British - American) in implicit bias (y-axis) and linguistic bias (x-axis) for each of the 31 IAT types in our dataset."}
+# get language values for each domain and country (averaging across runs)
+tidy_lang_data <- full_1c_df %>%
+  distinct(residence, domain, run, .keep_all = T) %>%
+  select(residence, domain, run, lang_diff) %>%
+  group_by(domain)%>%
+  summarize(lang_diff = mean(lang_diff))
+
+es_iat_tidy <- full_1c_df %>%
+  group_by(residence, domain) %>%
+  summarize(resid = mean(behavioral_effect_resid)) %>%
+  spread(residence, resid) %>%
+  mutate(behavioral_resid_diff = uk - us) %>%
+  left_join(tidy_lang_data) %>%
+  select(-uk, -us)
+
+corr1c <- cor.test(es_iat_tidy$behavioral_resid_diff, 
+                   es_iat_tidy$lang_diff)$estimate
+
+ggplot(es_iat_tidy, aes(x = lang_diff, y = behavioral_resid_diff)) +
+  ggrepel::geom_text_repel(aes(label = domain), size = 2) +
+  geom_point() +
+  geom_smooth(method = "lm", alpha = .1) + 
+  ylab("Implicit Bias Difference (residualized)") +
+  xlab("Language Bias Difference (effect size)") +
+    annotate("text", y = -.15, x = .9, label = 
+             paste0("r = ", f_num(corr1c, 2)), 
+           color = "red", size = 4) +
+  theme_classic()
+```
+
 ### Discussion 
 In Study 1, we found that a previously-reported psychological gender bias – the bias to associate men with career and women with family – was correlated with the magnitude of that same bias as measured in the language statistics of 25 languages. Participants completing the IAT in countries where the dominant language had stronger associations between men and career words, and women and family words, showed stronger biases on the gender-career IAT. This result is consistent with both the _language-as-reflection_ and _language-as-causal-factor_ hypotheses. In Study 2, we try to better distinguish between these hypotheses by investigating whether the gender-career bias is associated with two structural features of language: grammatical gender and the presence of gendered occupation terms (e.g., waiter/waitress). 
