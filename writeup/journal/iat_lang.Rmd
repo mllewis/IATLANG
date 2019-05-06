@@ -3,7 +3,7 @@ title             : "What are we learning from language? Associations between ge
 shorttitle        : "What are we learning from language?"
 header-includes: 
 - \usepackage{float} 
-- \floatplacement{figure}{t} #make every figure with caption = t
+- \floatplacement{figure}{t!} # make every figure with caption = t
 
 author: 
   - name          : "Molly Lewis"
@@ -49,6 +49,7 @@ output            : papaja::apa6_pdf
 library(papaja)
 library(kableExtra)
 library(here)
+library(numform)
 source(here("writeup/journal/helpers/psych_to_mat.R"))
 ```
 
@@ -56,8 +57,7 @@ source(here("writeup/journal/helpers/psych_to_mat.R"))
 set.seed(42) # Seed for random number generation
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed, 
                       warning = F, 
-                      cache = F, 
-                      fig.pos = "t!")
+                      cache = F)
 ```
 
 # Introduction

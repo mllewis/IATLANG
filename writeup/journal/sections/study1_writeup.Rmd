@@ -76,17 +76,18 @@ wiki_gender_score_corr <- cor.test(all_ratings$maleness_embedding_wiki,
 
 ```{r, fig.pos = "!t",  fig.height = 4, fig.width = 4, set.cap.width=T, num.cols.cap=1, fig.cap = "Word estimates of gender bias from the Subtitle-trained embedding model as a function of human judgements of gender bias (Study 1a). Each point corresponds to a word. Larger numbers indicate stronger association with females (note that this differs from the design of the rating task, but is changed here for consistency with other plots). Blue line shows linear fit and the error band indicates standard error (too small to be visible)."}
 
-ggplot(all_ratings, aes(x = (8-maleness_norm), y = -maleness_embedding_sub)) + # flip scales for consistency with study 2
+ggplot(all_ratings, aes(y = (8-maleness_norm), 
+                        x = -maleness_embedding_sub)) + # flip scales for consistency with study 2
   geom_point(size = .2, alpha = .3) +
   ggtitle("Gender Bias of English Words") +
-  xlab("Human Judgement of Gender Bias") +
-  ylab("Linguistic Gender Bias") +
-  scale_x_continuous(breaks = 1:7, 
+  ylab("Human Judgement of Gender Bias") +
+  xlab("Linguistic Gender Bias") +
+  scale_y_continuous(breaks = 1:7, 
                      label = c("1\n(male)", "2", "3", "4", "5", "6", "7\n(female)   ")) +
-  scale_y_continuous(breaks = c(-.15, -.1,-.05,  -0, .05, .1, .15), 
+  scale_x_continuous(breaks = c(-.15, -.1,-.05,  -0, .05, .1, .15), 
                      label = c("-0.15\n(male)","-.1", "-.05" , "0.0", ".05", ".1", ".15\n(female)")) +
   geom_smooth(method = "lm", color = "blue") +
-  annotate("text", x = 6, y = -.12, label = 
+  annotate("text", y = 2, x = .1, label = 
              paste0("r = ", round(sub_gender_score_corr$estimate, 2)), 
            color = "red", size = 4) +
   theme_classic()
@@ -206,11 +207,75 @@ all_es_tidy %>%
   ylab("Implicit  Gender Bias (residualized)\n") +
   xlab("\nLinguistic Gender Bias\n (effect size)") +
   theme_classic() 
-
-
 ```
 
+```{r, fig.pos = "t", fig.height = 4, fig.cap = "V2: Implicit gender bias (adjusted for age, sex, and block order) as a function of the linguistic gender bias derived from word-embeddings (Study 1b). Each point corresponds to a language. Linguistic biases are estimated from models trained on text in each language from Subtitle (left) and Wikipedia (right) corpora. Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the linear model estimate.",  eval = F, include = F}
 
+LANGUAGE_COUNTRY_IN <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
+lang_by_country <- read_csv(LANGUAGE_COUNTRY_IN) %>%
+  select(country_code, wiki_language_code, language_name) %>%
+  rename(language_code = wiki_language_code)
+
+BEHAVIORAL_P_IAT_PATH <- here("data/study0/processed/by_participant_df.csv")
+participant_level_data <- read_csv(BEHAVIORAL_P_IAT_PATH) 
+
+all_es_tidy_participant <- participant_level_data %>%
+  left_join(lang_by_country) %>%
+  left_join(all_es_tidy %>% select(language_code, lang_es_sub, lang_es_wiki))
+
+df_for_plotting1 <- all_es_tidy %>%
+  select(language_name, lang_es_sub, lang_es_wiki,
+         es_iat_sex_age_order_implicit_resid, n_participants) %>%
+  gather("model", "lang_es", -language_name,
+         -es_iat_sex_age_order_implicit_resid, -n_participants) %>%
+  mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
+                                   "Wikipedia Embeddings" = "lang_es_wiki"))
+
+
+# plot lang vs behavioral
+df_for_plotting2 <- all_es_tidy_participant %>%
+  select(language_name, lang_es_sub, lang_es_wiki,
+         es_iat_sex_age_order_implicit_resid) %>%
+  gather("model", "lang_es", -language_name,
+         -es_iat_sex_age_order_implicit_resid) %>%
+  mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
+                                   "Wikipedia Embeddings" = "lang_es_wiki"))  %>%
+  filter(model ==  "Subtitle Embeddings")
+
+
+  
+# n participants log
+  ggplot(df_for_plotting1, aes(x = lang_es,
+                               y = es_iat_sex_age_order_implicit_resid,)) +
+  geom_point(aes(size = log(n_participants)), alpha = .6) + 
+  geom_smooth(method = "lm") +
+  facet_wrap( . ~ model) +
+  ggrepel::geom_text_repel(aes(label = language_name), 
+                           size = 2, box.padding = 0.4) + 
+ 
+  theme_minimal() 
+
+
+
+# violin plots
+  ggplot(df_for_plotting2, aes(x = lang_es, y = es_iat_sex_age_order_implicit_resid)) +
+  geom_violin(aes(x = lang_es, y = es_iat_sex_age_order_implicit_resid, group = language_name), size = .7) +
+  geom_smooth(method = "lm") +
+
+  theme_minimal() 
+
+# 95 CIs
+df_for_plotting2_cis <- df_for_plotting2 %>%
+  group_by(language_name)%>%
+  multi_boot_standard(col = "es_iat_sex_age_order_implicit_resid")
+  
+df_for_plotting2_cis %>%
+    left_join(df_for_plotting2 %>% distinct(language_name, ,lang_es)) %>%
+  ggplot(aes(x = lang_es, y = mean)) +
+  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper)) +
+  geom_smooth(method = "lm") +
+  theme_minimal()
+```
 
 ```{r full_corr_table}
 # corr of lang, behavioral, etc.
@@ -305,36 +370,58 @@ L_S_wiki <- text_tidy_corrs %>%
 Despite the differences in the specific content conveyed by the Subtitles and Wikipedia corpus, the estimated gender bias for each language was similar across the two corpora (_t_(`r pluck(corpus_effect_t_test$parameter, "df")`) =  `r pluck(corpus_effect_t_test$statistic, "t")`, _p_ =  `r corpus_effect_t_test$p.value`). We next examined the relationship between these estimates of gender bias for each language and the mean IAT bias score for participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals). Implicit gender bias was positively correlated with estimates of language bias from both the Subtitle (`r L_B_sub`) and Wikipedia trained models (`r L_B_wiki`; Fig. 2; Table 1 shows the language-level correlations between all variables in Studies 1b and 2). The relationship between implicit gender bias and language bias remained reliable after partialling out the effect of median country age  (Subtitle: `r L_B_sub_partial`; Wikipedia: `r L_B_wiki_partial`). Linguistic gender bias was not correlated with explicit gender bias (Subtitle: `r L_E_sub`; Wikipedia: `r L_E_wiki`). Estimates of language bias from the Subtitle corpus were correlated with the objective measure of gender equality, percentage of women in STEM fields (`r L_S_sub`); this relationship was not reliable for the Wikipedia corpus (`r L_S_wiki`). 
 
 
-```{r}
+```{r bigtable}
 print_tidy_corrs <- tidy_corrs %>%
   filter(rowname != var2) %>%
+  mutate_at(vars(simple_r, partial_r), ~ format(round(., 2), nsmall = 2) %>%  f_num(., digits = 2)) %>%
+  mutate_at(vars(simple_r, partial_r), ~ 
+               case_when(str_detect(.,"^-") ~ ., TRUE ~ paste0("\\ ", .))) %>% # add leading space so decimals align
   mutate_at(vars(simple_p, partial_p), ~ case_when(
     . < .01 ~ "**", . < .05 ~ "*",  . < .1 ~ "+", TRUE ~ "")) %>%
-  mutate_at(vars(simple_r, partial_r), ~ round(.,2)) %>%
-  mutate_if(is.numeric, ~str_remove(as.character(.), "^0+")) %>%
-  mutate(partial_print = case_when(
-    !is.na(partial_r) ~ paste0(" (", partial_r, partial_p, ")"),TRUE ~ ""),
-    r_print = paste0(simple_r, simple_p, partial_print)) %>%
-  select(rowname, var2, r_print)
+  mutate(r_partial_print = case_when(
+    !is.na(partial_r) ~ paste0(partial_r, partial_p),TRUE ~ ""),
+    r_simple_print = paste0(simple_r, simple_p)) %>%
+  select(rowname, var2, r_simple_print, r_partial_print)
 
-tidy_corrs_to_print <- print_tidy_corrs %>%
-  spread(var2, r_print)  %>%
+tidy_corrs_to_print_simple <- print_tidy_corrs %>%
+  select(-r_partial_print) %>%
+  spread(var2, r_simple_print)  %>%
   mutate_all(funs(replace_na(., ""))) %>%
   select("rowname", 
-         contains("Residualized"),  contains("STEM"), contains("IAT"),
-          contains("Occupation Labels"), contains("Occupation Bias"),
+         contains("Residualized"), contains("STEM"), contains("IAT"),
+         contains("Occupation Labels"), contains("Occupation Bias"),
          contains("Age")) %>%
   rename(" " = "rowname")
 
-tidy_corrs_to_print_reordered <- tidy_corrs_to_print[c(8,9,6,1,2,7,4,5,3),]
+tidy_corrs_to_print_partial <- print_tidy_corrs %>%
+  select(-r_simple_print) %>%
+  spread(var2, r_partial_print)  %>%
+  mutate_all(funs(replace_na(., ""))) %>%
+  select("rowname", 
+         contains("Residualized"), contains("STEM"), contains("IAT"),
+         contains("Occupation Labels"), contains("Occupation Bias")) %>%
+  rename(" " = "rowname") %>%
+  mutate("Median Country Age" = " ") 
+
+tidy_corrs_to_print_reordered_simple <- tidy_corrs_to_print_simple[c(8,9,6,1,2,7,4,5,3),]
+tidy_corrs_to_print_reordered_partial <- tidy_corrs_to_print_partial[c(8,9,6,1,2,7,4,5,3),]
+
+tidy_corrs_to_print_reordered <- bind_rows(tidy_corrs_to_print_reordered_simple, tidy_corrs_to_print_reordered_partial) %>%
+  slice(1:(n()-1))
 
 kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
-      caption = "Correlation (Pearson's r) for all measures in Study 1 and 2 at the level of languages. Numbers in parentheses show partial correlations controlling for median country age. Single asterisks indicate p < .05 and double asterisks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.",
-      align = "lrrrrrr") %>%
-  column_spec(2:10, width = "1.6cm") %>%
-  kable_styling(bootstrap_options = "condensed", 
-                full_width = F,  font_size = 5) %>%
-  landscape()
+      caption = "Correlation (Pearson's r) for all measures in Study 1 and 2 at the level of languages. Top panel shows simple correlations; bottom panel shows partial correlations controlling for median country age. Single asterisks indicate p < .05 and double asterisks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.",
+      align = "l",
+      longtable = T) %>% # this makes it so the table doesn't go at end
+  kable_styling(full_width = F,  font_size = 6)  %>%
+  kableExtra::group_rows(group_label = "Simple Correlations",
+                         start_row = 1,
+                         end_row = 9) %>%
+  kableExtra::group_rows(group_label = "Partial Correlations",
+                         start_row = 10,
+                         end_row = 17) %>%
+  row_spec(0, angle = 90) 
+
 ```
 
 ## Study 1c: A pre-registered study of biases in British and American English

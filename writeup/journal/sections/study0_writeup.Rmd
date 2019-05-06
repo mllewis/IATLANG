@@ -42,15 +42,10 @@ participant_order_t_test <- t.test(overall_iat_D_score ~ order, participant_iat)
 ```
 
 
-```{r mapplot, fig.env="figure", fig.pos = "t", fig.align='center', fig.height = 5, fig.cap = "Gender bias at the country level as measured by the IAT, adjusted for  participant age, participant sex, and block order. Larger values indicate a larger bias to associate women with the concept of family and men with the concept of career. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias.", include = F}
-
+```{r implicit-explicit_corrs}
 BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
 country_iat <- read_csv(BY_COUNTRY_DF)
 
-knitr::include_graphics(here("writeup/journal/figs/map_figure.pdf"))
-```
-
-```{r implicit-explicit_corrs}
 imp_exp_cor_participant <- cor.test(participant_iat$es_iat_sex_age_order_implicit_resid,
          participant_iat$es_iat_sex_age_order_explicit_resid) %>%
   tidy()
