@@ -650,9 +650,16 @@ ggplot(study1c_data, aes(x = corr, y = mean, color = group)) +
           plot.margin = margin(0, 0, 0, 5, "cm"))
 ```
 
-# Study 2: Gender bias and lexicalized gender
+## Mixed-effect model
+The full results to the mixed-effect model described in the paper are presented below:
 
-Presented below are grammatical gender coding for each language and occupation items with translations in each language.
+```{r}
+MODEL_PATH  <- "data/study_1c_model_print.txt"
+model_print <- readChar(MODEL_PATH, file.info(MODEL_PATH)$size)
+```
+`r model_print`
+
+# Study 2: Gender bias and lexicalized gender
 
 ## Grammatical gender coding
 

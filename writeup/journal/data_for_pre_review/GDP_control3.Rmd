@@ -172,8 +172,22 @@ country_level %>%
    test_mediation() %>%
    p_value()
 ```
-
 This also holds for the wikipedia model. Also holds for three other meaasures of gender inequality (hdi, gini, ggi)
+
+```{r}
+psych::mediate(x = "lang_es_sub", y = "intra_indv_diff", m = "self_efficacy_diff",
+               data = country_level, plot = T) %>%
+  summary()
+
+country_level %>%
+  fit_mediation(
+    x = "lang_es_sub",
+    y = "intra_indv_diff",
+    m = "self_efficacy_diff") %>%
+   test_mediation() %>%
+   p_value()
+```
+
 
 ## Composite Preference Differences (Falk & Hermle, 2018){.tabset}
 

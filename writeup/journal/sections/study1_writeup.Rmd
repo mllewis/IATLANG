@@ -403,7 +403,7 @@ kable(tidy_corrs_to_print_reordered, "latex", booktabs = T, escape = F,
 ```
 
 ## Study 1c: A pre-registered study of British versus American English biases
-In Study 1c, we conducted a confirmatory, pre-registred analysis of our hypothesis that biases present in language statistics are reflected in psychological biases of speakers of those languages. To do this, we leveraged an exisiting dataset from the Attitiudes, Identities, and Individual Differences Study [AIID; @aiid] containing measures of IAT performance from over 200,000 participants for a wide range of  IAT types (e.g. career - family, team - individual, etc.). Because most participants in this sample were English speakers, we compared biases between participants who spoke one of two dialects of English: British and American. For each of the 31 IAT types in the sample, we predicted that the degree to which that bias was present in a speaker's English dialect (British or American) would predict the magnitude of their psychological bias, as measured by the IAT. 
+In Study 1c, we conducted a confirmatory, pre-registered analysis of our hypothesis that biases present in language statistics are reflected in the psychological biases of speakers of those languages. To do this, we leveraged an exisiting dataset from the Attitiudes, Identities, and Individual Differences Study [AIID; @aiid] containing measures of IAT performance from over 200,000 participants for a wide range of  IAT types (e.g. career - family, team - individual, etc.). Because most participants in this sample were English speakers, we compared biases between participants who spoke two different dialects of English: British and American. For each of the 31 IAT types in the sample, we predicted that the degree to which that bias was present in a speaker's English dialect (British or American) would predict the magnitude of their psychological bias, as measured by the IAT. 
 
 ## Method
 
@@ -421,13 +421,13 @@ n_iats_per_participant <- full_1c_df %>%
             sd = sd(n)) 
 ```
 
-The AIID datset was partioned into two samples: exploratory (15%) and confirmatory (85%). Based on the exploratory sample, we pre-registed our analysis plan for the conformatory sample (https://osf.io/3f9ed). We note where are analysis diverges from the preregistration plan below. 
+The AIID datset was partioned into two samples: exploratory (15%) and confirmatory (85%). Based on the exploratory sample, we pre-registered our analysis plan for the confirmatory sample (https://osf.io/3f9ed). We note where are analysis diverges from the preregistration plan below. 
 
-Of the 95 IAT types present in the dataset, we identified 31 types, based on the following criteria: (1) stimuli were words rather than pictures, and (2) 75% of the target words for each IAT test were present in both the BNC and COCA models. To measure the bias in language, we trained word embedding models on comparably-sized corpora of British [British National Corpus; @burnard1995users] and American English [Corpus of Contemporary American English; @davies2008corpus; see SM for details]. We then calculated a language bias effect size for each IAT in each English dialect, using the same method as in Study 1b. 
+Of the 95 IAT types present in the dataset, we identified 31 types based on the following criteria: (1) stimuli were words rather than pictures, and (2) 75% of the target words for each IAT test were present in both the BNC and COCA models. To measure the bias in language, we trained word embedding models on comparably-sized corpora of British [British National Corpus; @burnard1995users] and American English [Corpus of Contemporary American English; see SM for details; @davies2008corpus]. We then calculated a language bias effect size for each IAT in each English dialect, using the same method as in Study 1b. 
 
 Within the confirmatory AIID dataset, there were 187,969 administrations of the IAT from participants in the United States (USA) or United Kingdom (UK). Our exclusion procedure for the behavioral data was similiar to Study 1a above (see SM for details). Our final sample included data from `r format(nrow(full_1c_df), big.mark = ",")` administrations of the IAT across the 31 IAT types (USA: _N_ = `r format(pull(final_participant_counts,us), big.mark = ",") `; UK: _N_ = `r format(pull(final_participant_counts,uk), big.mark = ",") `).  Each participant completed an average of `r pull(n_iats_per_participant, mean)` IAT types (_SD_ = `r pull(n_iats_per_participant, sd)`). For each administrations of the IAT, we calculated a residual IAT score, controlling for  sex, age, education, task order (relative ordering of implicit versus explicit measures), and block order (relative ordering of congruent versus incongruent mappings on IAT task).  
 
-We fit a linear mixed effect model predicting the magnitude of the bias for each participant with language dialect (British or American English), magnitude of the  bias difference between the two dialects, and an interaction betwen these two terms as fixed effected. We included participant and domain as random intercepts. This model differs from the pre-registered analysis, which is also consistent with results of the presented analysis, but does not account for participant-level variance (see SM for pre-registered model). 
+We fit a linear mixed effect model predicting the magnitude of the bias for each participant with language dialect (British or American English), magnitude of the  bias difference between the two dialects, and an interaction betwen these two terms as fixed effect. We included participant and IAT type as random intercepts. This model differs from the pre-registered analysis, which is also consistent with results of the presented analysis, but does not account for participant-level variance (see SM for results of pre-registered model). 
 
 ## Results
 
@@ -438,19 +438,20 @@ full_1c_tidy <- full_1c_df %>%
 
 study_1c_model <- full_1c_tidy %>%
  # mutate_at(vars(behavioral_effect_resid, lang_diff), scale) %>%
+  mutate(residence = factor(residence, levels = c("us", "uk"))) %>%
   lmer(behavioral_effect_resid ~ residence*lang_diff + (1|user_id) + (1|domain), 
      data = .) %>%
   tidy()
 
 lmer_model_string <- study_1c_model %>% 
-  filter(term == "residenceus:lang_diff") %>%
+  filter(term == "residenceuk:lang_diff") %>%
   mutate_if(is.numeric, f_num,2) %>%
   mutate(model_string = paste0("= ", estimate,  ", ","_SE_ = ",
                                std.error,  ", ", "_t_ = ", statistic))  %>%
   pull(model_string)
 ```
 
-There was a reliable interaction between language dialect and the magnitude of the  bias difference between the two dialects ($\beta$ `r lmer_model_string`), suggesting that language bias was a reliable predictor of implicit bias. Figure 3 shows the difference in bias (British - American) in language and behavior for each of the 31 IATs in our dataset. 
+As predicted, there was a reliable interaction between language dialect and the magnitude of the  bias difference between the two dialects ($\beta$ `r lmer_model_string`; see SM for full model results), suggesting that language bias was a reliable predictor of implicit bias. Figure 3 shows the difference in bias (British - American) in language and behavior for each of the 31 IATs in our dataset. 
 
 ```{r 1cplot,  fig.height = 4, fig.width = 4, set.cap.width=T, num.cols.cap=1, fig.cap = "Difference (British - American) in implicit bias (y-axis) and linguistic bias (x-axis) for each of the 31 IAT types in our dataset."}
 # get language values for each domain and country (averaging across runs)
@@ -484,4 +485,4 @@ ggplot(es_iat_tidy, aes(x = lang_diff, y = behavioral_resid_diff)) +
 ```
 
 ### Discussion 
-In Study 1, we found that a previously-reported psychological gender bias – the bias to associate men with career and women with family – was correlated with the magnitude of that same bias as measured in the language statistics of 25 languages. Participants completing the IAT in countries where the dominant language had stronger associations between men and career words, and women and family words, showed stronger biases on the gender-career IAT. This result is consistent with both the _language-as-reflection_ and _language-as-causal-factor_ hypotheses. In Study 2, we try to better distinguish between these hypotheses by investigating whether the gender-career bias is associated with two structural features of language: grammatical gender and the presence of gendered occupation terms (e.g., waiter/waitress). 
+In Study 1, we found that a previously-reported psychological gender bias – the bias to associate men with career and women with family – was correlated with the magnitude of that same bias as measured in the language statistics of 25 languages. Participants completing the IAT in countries where the dominant language had stronger associations between men and career words, and women and family words, showed stronger biases on the gender-career IAT. In a pre-registered, confirmatory analysis, we also find that this pattern extends to other biases: In a comparision of 31 different IAT types, the magnitude of the bias in speaker's language predicted their behavioral bias, as measured by the IAT. These results are consistent with both the _language-as-reflection_ and _language-as-causal-factor_ hypotheses. In Study 2, we try to better distinguish between these hypotheses by investigating whether the gender-career bias is associated with two structural features of language: grammatical gender and the presence of gendered occupation terms (e.g., waiter/waitress). 
