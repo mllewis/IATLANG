@@ -5,7 +5,7 @@ library(lme4)
 library(sjPlot)
 
 STUDY1C_DATAPATH <- here("data/study1c/processed/long_form_confirmatory_behavior_and_language.csv") 
-MODEL_OUTPATH <- here("writeup/journal/SI/data/1c_mixed_effect_model.rda")
+MODEL_OUTPATH <- here("writeup/journal/SI/data/study_1c_model_print.txt")
   
 full_1c_df <- read_csv(STUDY1C_DATAPATH)
 
@@ -26,10 +26,7 @@ tab_model(study_1c_model,
                 string.se = "SE",
                 show.ci = F,
                 show.r2 = T,
-                file = "study_1c_model_print.txt",
+                file = MODEL_OUTPATH,
                 pred.labels = c("(intercept)", "country (uk)",
                                 "language bias difference",
                                 "country:language bias difference"))
-
-
-

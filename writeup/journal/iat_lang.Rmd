@@ -42,7 +42,7 @@ draft             : no
 
 documentclass     : "apa6"
 classoption       : "man"
-output            : papaja::apa6_pdf
+output            : word_document #papaja::apa6_pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -53,11 +53,14 @@ library(numform)
 source(here("writeup/journal/helpers/psych_to_mat.R"))
 ```
 
-```{r analysis-preferences}
+```{r analysis-preferences, include = F}
 set.seed(42) # Seed for random number generation
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed, 
-                      warning = F, 
-                      cache = F)
+                      warning = FALSE, 
+                      message = FALSE, 
+                      cache = FALSE,
+                      echo = FALSE,
+                      fig.pos = "t!")
 ```
 
 # Introduction
