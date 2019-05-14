@@ -22,7 +22,7 @@
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.74</td>
 </tr>
 <tr>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">language bias difference</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">language bias difference (uk - us)</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.03</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.07</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.42</td>

@@ -29,7 +29,7 @@ library(countrycode)
 library(viridis)
 library(broom)
 
-opts_chunk$set(echo = T, message = F, warning = F, 
+opts_chunk$set(echo = F, message = F, warning = F, 
                error = F, cache = T, tidy = F, fig.height = 4.5)
 
 theme_set(theme_classic())
@@ -611,10 +611,6 @@ shinyApp(
 
 ```
 
-## Word embedding model training
-  
-The word embedding models were trained using the fastrtext package in R (Benesty, 2018). The vector size was 400 and the window size was 10. 
-
 ## Behavioral data exclusion criteria
 
 We excluded participants using the pre-defined criteria in the AIID dataset, described below. Participants were excluded if any one of the seven criteria were not satisfied.
@@ -628,9 +624,9 @@ We excluded participants using the pre-defined criteria in the AIID dataset, des
 7. $>$= 30% error rate in critical blocks.
 
 ## Pre-registered model
-The exact pre-registered analysis (https://osf.io/3f9ed/) of Study 1c is presented below. Pairwise corelations between all variables (language bias, behavioral bias, and UK-US difference measures) are shown, averaging across estimates of language bias from the 5 model runs. Error bars are 95% CIs. As stated in the pre-registration, the key test of our hypothesis is that the correlation between the UK - US linguistic difference and the UK - US behavioral difference is greater than 0 (shown in red below). That data are consistent with this prediction.
+The exact pre-registered analysis (https://osf.io/3f9ed/) of Study 1c is presented below. Pairwise corelations between all variables (language bias, behavioral bias, and UK-US difference measures) are shown, averaging across estimates of language bias from the 5 model runs. Error bars are 95% CIs. As stated in the pre-registration, the key test of our hypothesis is that the correlation between the UK - US linguistic difference ("Language Bias Difference") and the UK - US behavioral difference  ("Behavioral Bias Difference") is greater than 0 (shown in red below). That data are consistent with this prediction.
 
-The confirmatory dataset is shown on the right, along with the smaller exploratory dataset on the left for reference.
+The confirmatory dataset is shown on the right, along with the smaller exploratory dataset on the left for reference. 
 
 ```{r, fig.height = 4.5}
 STUDY1C_ANALYSIS <- "data/study1c_preregistered_analysis.csv"
@@ -658,6 +654,8 @@ MODEL_PATH  <- "data/study_1c_model_print.txt"
 model_print <- readChar(MODEL_PATH, file.info(MODEL_PATH)$size)
 ```
 `r model_print`
+
+Positive coefficients indicate 
 
 # Study 2: Gender bias and lexicalized gender
 

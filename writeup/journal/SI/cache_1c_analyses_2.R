@@ -28,5 +28,5 @@ tab_model(study_1c_model,
                 show.r2 = T,
                 file = MODEL_OUTPATH,
                 pred.labels = c("(intercept)", "country (uk)",
-                                "language bias difference",
+                                "language bias difference (uk - us)",
                                 "country:language bias difference"))
