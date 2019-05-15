@@ -56,6 +56,10 @@ pref_data <- readstata13::read.dta13("genderdifferences.dta") %>%
   mutate(country_code = countrycode::countrycode(ison, "iso3n", "iso2c")) %>%
   select(country_code, genderdif) 
 
+#pref_data2 <- readstata13::read.dta13("/Users/mollylewis/Downloads/GPS_dataset_country_level/country.dta") %>%
+#  mutate(country_code = countrycode::countrycode(ison, #"iso3n", "iso2c")) %>%
+ # select(country_code, genderdif) 
+
 STOET_PATH <- "/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/exploratory_studies/7_age_controls/stoet_data.csv"
 stoet_data <- read_csv(STOET_PATH) %>%
   mutate(country_code = countrycode::countrycode(country_name, "country.name", "iso2c")) %>%

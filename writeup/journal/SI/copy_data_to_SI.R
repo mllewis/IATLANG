@@ -16,7 +16,9 @@ data_for_SI <-
     here("data/SI/caliskan_paper_es.csv"),
     here("data/SI/caliskan_sub_es.csv"),
     here("data/SI/corrs_by_exclusions.csv"),
-    here("data/study2/general_gender_by_lang.csv")
+    here("data/study2/general_gender_by_lang.csv"),
+    here("data/other/tidy_other_psych_measures.csv")
+    
 )
 
 copy_to_si_dir <- function(old_filepath) {

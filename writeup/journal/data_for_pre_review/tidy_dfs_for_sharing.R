@@ -59,7 +59,10 @@ all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
   left_join(occupation_semantics) %>% 
   left_join(by_lang_scores) %>%
   left_join(language_names) %>%
-  select(language_code,language_name,family,n_participants,es_iat_sex_age_order_implicit_resid, es_iat_sex_age_order_explicit_resid, median_country_age, per_women_stem_2012_2017, lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm)
+  select(language_code,language_name,family,n_participants,
+         es_iat_sex_age_order_implicit_resid, es_iat_sex_age_order_explicit_resid, 
+         median_country_age, per_women_stem_2012_2017, lang_es_sub, lang_es_wiki, 
+         mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm)
 
 #Deal with exclusions, indentified in `analysis/study1b/07_get_prop_iat_words_missing_by_lang.R`.
 EXCLUSIONS_PATH <- here("data/study1b/language_exclusions.csv")

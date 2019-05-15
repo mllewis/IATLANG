@@ -762,6 +762,45 @@ wiki_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinc
 kable(wiki_regression_r2, digits = 3)
 ```
 
+# Language bias and other psychological measures
+## Falk and Hermle (2018)
+
+Key measure: genderdif (composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust (24); and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)
+```{r}
+## TO DO: 
+# add country labels (do this in 01_tidy_other_psych_measure_data)
+# do correct stats that accounts for language dependence
+# add text.
+
+OTHER_PATH <- here("data/other/tidy_other_psych_measures.csv")
+
+other_data <- read_csv(OTHER_PATH) %>%
+  select(country_code, lang_es_sub, genderdif_fh, self_efficacy_diff_sg) 
+
+ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_code)) +
+  ylab("Gender Differences in Preferences (Falk & Hermle, 2018)") +
+  xlab("Linguistic Gender Bias\n(effect size)") +
+  ggtitle("Language Bias vs. Dif. in Gender Preferences") +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_point() +
+  geom_text_repel(size = 3) +
+  theme_classic(base_size = 12)
+
+```
+
+## Stoet and Geary (2018)
+Key measure: self_efficacy_diff (“The sex difference in self efficacy (boys – girls)”)
+
+```{r}
+ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = country_code)) +
+  ylab("Gender difference in STEM Self Efficacy (Stoet & Geary, 2018)") +
+  xlab("Linguistic Gender Bias\n(effect size)") +
+  ggtitle("Language Bias vs. Gender Dif. in STEM Self Efficacy  ") +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_point() +
+  geom_text_repel(size = 3) +
+  theme_classic(base_size = 12)
+```
 
 **References**
 
