@@ -32,10 +32,9 @@ other_data <- full_join(stoet_data, falk_data) %>%
 iat_lang_es <- read_csv(LANG_IAT_PATH)
 
 tidy_other_data <- other_data %>%
- # group_by(language_code, language_name)%>%
- # summarize_if(is.numeric, mean, na.rm = T) %>%
-  filter(!is.na(language_code)) %>%
+  filter(!is.na(language_code),
+         language_code != "zu") %>%
   left_join(iat_lang_es) %>%
-  filter(language_code != "zu")
+  mutate(country_name = countrycode(country_code, "iso2c","country.name"))
 
 write_csv(tidy_other_data, OUTFILE)

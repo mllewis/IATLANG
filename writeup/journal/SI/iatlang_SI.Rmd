@@ -42,7 +42,7 @@ This document was created from an R markdown file. The manuscript itself was als
 
 As described in the Main Text, the IAT data come from Project Implicit (https://implicit.harvard.edu/implicit/; Nosek, Banaji, & Greenwald, 2002), for a sample collected 2005 - 2016.
 
-## Demographics{.tabset}
+## Demographics {.tabset}
 ### N by country
 
 ```{r}
@@ -762,40 +762,40 @@ wiki_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinc
 kable(wiki_regression_r2, digits = 3)
 ```
 
-# Language bias and other psychological measures
+# Language bias and other psychological measures{.tabset}
+
+Several recent studies (Falk & Hermle, 2018; Stoet & Geary, 2018) have presented novel theories to account for cases of structural insequality related to gender. Both of these papers argue that psychological differences play a causal role in the emergence of structural inequality. Here, we show that degree of gender bias in language is correlated with these psychological differences at the country level, consistent with the idea that language experience could be playing a causal role in the emergence of psychological differences.
+
 ## Falk and Hermle (2018)
+Gender differences in preferences (Falk & Hermle, 2018; composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (_r_ = .48; _p_ = .01): Countries with greater differences in gender preferences also have greater gender bias present in their languages.
 
-Key measure: genderdif (composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust (24); and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)
-```{r}
-## TO DO: 
-# add country labels (do this in 01_tidy_other_psych_measure_data)
-# do correct stats that accounts for language dependence
-# add text.
-
+```{r, fig.height = 4.5, fig.width = 4.5}
 OTHER_PATH <- here("data/other/tidy_other_psych_measures.csv")
 
 other_data <- read_csv(OTHER_PATH) %>%
-  select(country_code, lang_es_sub, genderdif_fh, self_efficacy_diff_sg) 
+  select(country_name, lang_es_sub, genderdif_fh, self_efficacy_diff_sg) 
 
-ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_code)) +
-  ylab("Gender Differences in Preferences (Falk & Hermle, 2018)") +
+# cor.test(other_data$lang_es_sub, other_data$genderdif_fh)
+
+ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name)) +
+  ylab("Gender Differences in Preferences\n(Falk & Hermle, 2018)") +
   xlab("Linguistic Gender Bias\n(effect size)") +
-  ggtitle("Language Bias vs. Dif. in Gender Preferences") +
+  ggtitle("Language Bias vs. Gender Differences\nin Preferences") +
   geom_smooth(method = "lm", alpha = .2) +
   geom_point() +
   geom_text_repel(size = 3) +
   theme_classic(base_size = 12)
-
 ```
 
 ## Stoet and Geary (2018)
-Key measure: self_efficacy_diff (“The sex difference in self efficacy (boys – girls)”)
+Gender difference in STEM Self Efficacy (Stoet & Geary, 20178; “The sex difference in self efficacy (boys – girls)”) as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (_r_ = .59; _p_ < .001):  Countries with greater gender differences in self-efficacy also have greater gender bias present in their languages.
 
-```{r}
-ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = country_code)) +
-  ylab("Gender difference in STEM Self Efficacy (Stoet & Geary, 2018)") +
+```{r, fig.height = 4.5, fig.width = 4.5}
+# cor.test(other_data$lang_es_sub, other_data$self_efficacy_diff_sg)
+ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = country_name)) +
+  ylab("Gender difference in STEM Self Efficacy\n(Stoet & Geary, 2018)") +
   xlab("Linguistic Gender Bias\n(effect size)") +
-  ggtitle("Language Bias vs. Gender Dif. in STEM Self Efficacy  ") +
+  ggtitle("Language Bias vs. Gender Differences \nin STEM Self Efficacy  ") +
   geom_smooth(method = "lm", alpha = .2) +
   geom_point() +
   geom_text_repel(size = 3) +
@@ -812,6 +812,8 @@ Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). Semantics derived automatic
 
 Dryer, M. S., & Haspelmath, M. (Eds.). (2013). _WALS online_. Leipzig: Max Planck Institute for Evolutionary Anthropology. Retrieved from http://wals.info/
 
+Falk, A., & Hermle, J. (2018). Relationship of gender differences in preferences to economic development and gender equality. _Science_, 362 (6412), eaas9899.
+
 Lison, P., & Tiedemann, J. (2016). OpenSubtitles2016: Extracting large parallel corpora from movie and TV subtitles. In _Proceedings of the 10th International Conference on Language Resources and Evaluation_.
 
 Misersky, J., Gygax, P. M., Canal, P., Gabriel, U., Garnham, A., Braun, F., . . . others. (2014). Norms on the gender perception of role nouns in Czech, English, French, German, Italian, Norwegian, and Slovak. _Behavior Research Methods_, _46_(3), 841–871.
@@ -819,5 +821,7 @@ Misersky, J., Gygax, P. M., Canal, P., Gabriel, U., Garnham, A., Braun, F., . . 
 Nosek, B. A., Banaji, M. R., & Greenwald, A. G. (2002). Harvesting implicit group attitudes and beliefs from a demonstration web site. _Group Dynamics: Theory, Research, and Practice_, _6_(1), 101.
 
 Simons, G. F., & Charles, D. F. (Eds.). (2018). Ethnologue: Languages of the world. Dallas, Texas: Online version: http://www.ethnologue.com. SIL International.
+
+Stoet, G., & Geary, D. C. (2018). The gender-equality paradox in science, technology, engineering, and mathematics education. _Psychological Science_, 29 (4), 581–593.
 
 Van Paridon, J., & Thompson, B. (in prep.). Sub2Vec: Word embeddings from OpenSubtitles in 62 languages.
