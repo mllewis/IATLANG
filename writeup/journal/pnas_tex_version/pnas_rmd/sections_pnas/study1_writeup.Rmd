@@ -90,7 +90,8 @@ ggplot(all_ratings, aes(y = (8-maleness_norm),
   annotate("text", y = 2, x = .1, label = 
              paste0("r = ", f_num(sub_gender_score_corr$estimate, 2)), 
            color = "red", size = 4) +
-  theme_classic()
+  theme_classic() +
+   theme(axis.line = element_line(size = .8))
 ```
 
 Estimates of gender bias from the Subtitle corpus (_M_ = `r round(mean(all_ratings$maleness_embedding_sub),2)`; _SD_=  `r round(sd(all_ratings$maleness_embedding_sub),2)`) and  the Wikipedia corpus (_M_ = `r round(mean(all_ratings$maleness_embedding_wiki),2)`; _SD_ =  `r round(sd(all_ratings$maleness_embedding_wiki),2)`) were highly correlated with each other (_r_ = `r round(model_gender_score_corr$estimate, 2)`; _p_ <  .0001). Critically, bias estimates from both word embedding models were also highly correlated with human judgements (_M_ = `r round(mean(all_ratings$maleness_norm),2)`; _SD_ =  `r round(sd(all_ratings$maleness_norm),2)`; _r_~Subtitle~ = `r round(sub_gender_score_corr$estimate, 2)`; _p_ <  .0001; _r_~Wikipedia~ = `r round(wiki_gender_score_corr$estimate, 2)`; _p_ <  .0001; Fig. 1). This suggests that the psychological gender bias of a word can be reasonably estimated from word embeddings. 
@@ -225,46 +226,13 @@ tidy_corrs <- simple_corr %>%
                 left_join(partial_corr_p) 
 ```
 
-```{r, df_for_cis, eval = F}
-LANGUAGE_COUNTRY_IN <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
-lang_by_country <- read_csv(LANGUAGE_COUNTRY_IN) %>%
-  select(country_code, wiki_language_code, language_name) %>%
-  rename(language_code = wiki_language_code)
-
-BEHAVIORAL_P_IAT_PATH <- here("data/study0/processed/by_participant_df.csv")
-participant_level_data <- read_csv(BEHAVIORAL_P_IAT_PATH) 
-
-all_es_tidy_participant <- participant_level_data %>%
-  left_join(lang_by_country) %>%
-  left_join(all_es_tidy %>% select(language_code, lang_es_sub, lang_es_wiki))
-
-# plot lang vs behavioral
-df_for_plotting2 <- all_es_tidy_participant %>%
-  select(language_name, lang_es_sub, lang_es_wiki,
-         es_iat_sex_age_order_implicit_resid) %>%
-  gather("model", "lang_es", -language_name,
-         -es_iat_sex_age_order_implicit_resid) %>%
-  mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
-                                   "Wikipedia Embeddings" = "lang_es_wiki"))  
-
-df_for_plotting2_cis <- df_for_plotting2 %>%
-  group_by(language_name, model) %>%
-  langcog::multi_boot_standard(col = "es_iat_sex_age_order_implicit_resid")
-  
-df_for_plotting2_cis %>%
-    left_join(df_for_plotting2 %>% distinct(language_name, lang_es)) %>%
-  ggplot(aes(x = lang_es, y = mean)) +
-  geom_pointrange(aes(ymin = ci_lower, ymax = ci_upper)) +
-  geom_smooth(method = "lm") +
-  theme_minimal()
-```
-
 ```{r, fig.pos = "t", fig.height = 3.2, fig.cap = "Implicit gender bias (adjusted for age, sex, and block order) as a function of the linguistic gender bias derived from word-embeddings (Study 1b). Each point corresponds to a language, with the size of the point corresponding to the number of participants speaking that langauge. Linguistic biases are estimated from models trained on text in each language from Subtitle (left) and Wikipedia (right) corpora. Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the linear model estimate."}
 
 corr_text_df <- tidy_corrs %>%
   filter(rowname == "Residualized Implicit Bias (IAT)", 
          var2 %in% c("Language IAT (Subtitle)",
-                     "Language IAT (Wikipedia)")) %>%
+                     "Language IAT (Wikipedia)"),
+           var2 == "Language IAT (Wikipedia)") %>%
     mutate(model = fct_recode(var2, "Subtitle Embeddings" = "Language IAT (Subtitle)",
                                    "Wikipedia Embeddings" = "Language IAT (Wikipedia)"))  %>%
   select(model, simple_r) %>%
@@ -272,31 +240,38 @@ corr_text_df <- tidy_corrs %>%
   mutate(x = .85, y = -.07)
 
 # plot lang vs behavioral
-all_es_tidy %>%
+study1_plot1 <- all_es_tidy %>%
   select(language_name, lang_es_sub, lang_es_wiki,
          es_iat_sex_age_order_implicit_resid, n_participants) %>%
   gather("model", "lang_es", -language_name,
          -es_iat_sex_age_order_implicit_resid, -n_participants) %>%
+  filter(model == "lang_es_wiki") %>%
   mutate(model = fct_recode(model, "Subtitle Embeddings" = "lang_es_sub",
                                    "Wikipedia Embeddings" = "lang_es_wiki")) %>%
   ggplot(aes(x = lang_es, y = es_iat_sex_age_order_implicit_resid, size = n_participants)) +
-  facet_wrap( . ~ model) +
+  #facet_wrap( . ~ model) +
   geom_smooth(method = "lm", alpha = .1, size = .9) +
   geom_point(alpha = .2) +
   ggrepel::geom_text_repel(aes(label = language_name), 
-                           size = 1.8, box.padding = 0.1) + 
-  scale_x_continuous(breaks = c(-.3, -0, .5, 1), 
-                     label = c("\n(male-\nfamily)", "0", ".5","1\n(male-\ncareer)") , limits = c(-.35, 1.1)) +
+                           size = 2.7, box.padding = 0.1) + 
+  scale_x_continuous(breaks = c(-.15, -0,.25, .5,.75, .9), 
+                     label = c("male-\nfamily", "0", ".25", ".5", ".75", "male-\ncareer") , limits = c(-.2, .9)) +
   scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
-                     label = c("-.075\n(male-\nfamily)", "-.05", "-.025", "0", ".025", ".05\n(male-\ncareer)") , limits = c(-.08, .06) ) +
+                     label = c("-.075\nmale-\nfamily", "-.05", "-.025", "0", ".025", ".05\nmale-\ncareer") , limits = c(-.08, .06) ) +
   scale_size(trans = "log10", labels = scales::comma, name = "N participants") +
-  geom_text(data = corr_text_df, aes(label = simple_r, x = x, y = y), 
-            color = "red", size = 4) +
-  ggtitle("Psychological and  Linguistic Gender Biases") +
+  geom_text(data = corr_text_df, aes(label = simple_r), x = .7, y = -.075, 
+            color = "red", size = 5) +
+  ggtitle("Psychological and Linguistic Gender Biases") +
   ylab("Implicit  Gender Bias (residualized)") +
   xlab("Linguistic Gender Bias (effect size)") +
-  theme_classic(base_size = 9)  +
-  theme(legend.position = "right")
+  theme_classic(base_size = 12)   +
+  theme(legend.position = "right",
+        axis.line = element_line(size = .8))
+  #theme(legend.position = c(0.8, .2),
+  #        legend.box.background = element_rect( size=.3))
+
+
+
 ```
 
 ```{r tidy_corrs_for_text}
@@ -477,20 +452,28 @@ es_iat_tidy <- full_1c_df %>%
 corr1c <- cor.test(es_iat_tidy$behavioral_resid_diff, 
                    es_iat_tidy$lang_diff)$estimate
 
-ggplot(es_iat_tidy, aes(x = lang_diff, y = behavioral_resid_diff)) +
+study1_plot2 <- ggplot(es_iat_tidy, aes(x = lang_diff, y = behavioral_resid_diff)) +
   geom_smooth(method = "lm", alpha = .1) + 
-  ggrepel::geom_text_repel(aes(label = domain2), size = 2) +
+  ggrepel::geom_text_repel(aes(label = domain2), size = 2.2) +
   geom_point() +
   ylab("Implicit Bias Difference (residualized)") +
   xlab("Language Bias Difference (effect size)") +
     annotate("text", y = -.17, x = .9, label = 
              paste0("r = ", f_num(corr1c, 2)), 
-           color = "red", size = 4) +
+           color = "red", size = 5) +
  scale_x_continuous(breaks = c(-1.5, -1, -.5, 0, .5, 1), 
-                     label = c("-1.5\nUS Greater", "-1", "-.5" ,"0", ".5", "1\nUK Greater") , limits = c(-1.6, 1.1) ) +
+                     label = c("-1.5\nUS Greater", "-1", "-.5" ,"0", ".5", "1\nUK Greater") , limits = c(-1.6, 1.2)) +
  scale_y_continuous(breaks = c( -.2,-.1, 0, .1, .2, .3), 
                      label = c("-.2\nUS\nGreater", "-.1", "0", ".1", ".2", ".3\nUK\nGreater"), limits = c(-.2, .32) ) +
-  theme_classic()
+  ggtitle("Psychological and Linguistic Biases in\nBritish and American Participants") +
+  theme_classic(base_size = 12) +
+  theme(axis.line = element_line(size = .8))
+
+pdf("/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/writeup/journal/pnas_tex_version/pnas_rmd/iat_lang_pnas_files/figure-latex/study1_fig.pdf", width = 10.25, height = 4.5)
+cowplot::plot_grid(study1_plot1, study1_plot2, ncol = 2,
+                             labels = c('A','B'), label_size = 16, rel_widths = c(1.3,1))
+dev.off()
+
 ```
 
 ### Discussion 
