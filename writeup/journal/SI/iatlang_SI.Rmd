@@ -769,14 +769,16 @@ kable(wiki_regression_r2, digits = 3)
 Several recent studies (Falk & Hermle, 2018; Stoet & Geary, 2018) have presented novel theories to account for cases of structural insequality related to gender. Both of these papers argue that psychological differences play a causal role in the emergence of structural inequality. Here, we show that degree of gender bias in language is correlated with these psychological differences at the country level, consistent with the idea that language experience could be playing a causal role in the emergence of psychological differences.
 
 ## Falk and Hermle (2018)
-Gender differences in preferences (Falk & Hermle, 2018; composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (_r_ = .48; _p_ = .01): Countries with greater differences in gender preferences also have greater gender bias present in their languages.
+Gender differences in preferences (Falk & Hermle, 2018; composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (_r_ = .48; _p_ = .01): Countries with greater differences in gender preferences also have greater gender bias present in their languages. We also find that per capita GDP (World Bank database; 2017 GDP per capita (current US$) indicator) is correlated with country-level implicit gender stereotypes (_r_ = .43; _p_ < .01).
 
 ```{r, fig.height = 4.5, fig.width = 4.5}
 OTHER_PATH <- "data/tidy_other_psych_measures.csv"
 
 other_data <- read_csv(OTHER_PATH) %>%
-  select(country_name, lang_es_sub, genderdif_fh, self_efficacy_diff_sg) 
+  select(country_name, lang_es_sub, genderdif_fh, self_efficacy_diff_sg, gdp_2017,
+         es_iat_sex_age_order_implicit_resid, per_women_stem) 
 
+# cor.test(other_data$es_iat_sex_age_order_implicit_resid, other_data$gdp_2017)
 # cor.test(other_data$lang_es_sub, other_data$genderdif_fh)
 
 ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name)) +
@@ -790,7 +792,7 @@ ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name))
 ```
 
 ## Stoet and Geary (2018)
-Gender difference in STEM Self Efficacy (Stoet & Geary, 20178; “The sex difference in self efficacy (boys – girls)”) as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (_r_ = .59; _p_ < .001):  Countries with greater gender differences in self-efficacy also have greater gender bias present in their languages.
+
 
 ```{r, fig.height = 4.5, fig.width = 4.5}
 # cor.test(other_data$lang_es_sub, other_data$self_efficacy_diff_sg)
@@ -803,6 +805,26 @@ ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = count
   geom_text_repel(size = 3) +
   theme_classic(base_size = 12)
 ```
+
+```{r}
+boot_mediation_model_sub <- other_data %>%
+  mutate_if(is.numeric, scale) %>%
+  robmed::fit_mediation(
+    x = "lang_es_sub",
+    y = "per_women_stem",
+    m = "self_efficacy_diff_sg") %>%
+   robmed::test_mediation(type = "bca")    # bias-corrected bootstrap
+   
+sub_p <- round(robmed::p_value(boot_mediation_model_sub),2)
+
+sub_ab <-  boot_mediation_model_sub %>%
+  coef() %>%
+  as.list() %>%
+  pluck("ab") %>%
+  round(2)
+```
+
+Gender difference in STEM Self Efficacy (Stoet & Geary, 20178; “The sex difference in self efficacy (boys – girls)”) as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (_r_ = .59; _p_ < .001):  Countries with greater gender differences in self-efficacy also have greater gender bias present in their languages. Futher, self-efficacy mediated the effect of language statistics on percentage of women in stem (path-ab = `r sub_ab`; _p_ = `r sub_p`), suggesting that language statistics could be critical causal factor underlying gender differences in STEM participation. 
 
 **References**
 

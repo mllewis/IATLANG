@@ -79,7 +79,7 @@ wiki_gender_score_corr <- cor.test(all_ratings$maleness_embedding_wiki,
 ggplot(all_ratings, aes(y = (8-maleness_norm), 
                         x = -maleness_embedding_sub)) + # flip scales for consistency with study 2
   geom_point(size = .2, alpha = .3) +
-  ggtitle("Gender Bias of English Words") +
+ # ggtitle("Gender Bias of English Words") +
   ylab("Human Judgement of Gender Bias") +
   xlab("Linguistic Gender Bias") +
   scale_y_continuous(breaks = 1:7, 

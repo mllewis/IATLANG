@@ -20,6 +20,8 @@ library(tidyverse)
 library(here)
 library(ggrepel)
 library(robmed)
+library(readstata13)
+
 
 opts_chunk$set(echo = T, message = F, warning = F, 
                error = F, tidy = F, cache = F)
@@ -52,7 +54,8 @@ gdp_data <- wbstats::wb(indicator = "NY.GDP.PCAP.CD",
             select(iso2c, value) %>%
             rename(gdp_2017 = value)
 
-pref_data <- readstata13::read.dta13("genderdifferences.dta") %>%
+FALK_PATH <- here("data/other/falk_hermle_2018_data.dta")
+pref_data <- read.dta13(FALK_PATH) %>%
   mutate(country_code = countrycode::countrycode(ison, "iso3n", "iso2c")) %>%
   select(country_code, genderdif) 
 
@@ -164,9 +167,9 @@ lm(per_women_stem ~ self_efficacy_diff + lang_es_sub, data = country_level) %>%
 
 ### Mediation Models
 ```{r}
-psych::mediate(x = "lang_es_sub", y = "per_women_stem", m = "self_efficacy_diff",
-               data = country_level, plot = T) %>%
-  summary()
+#psych::mediate(x = "lang_es_sub", y = "per_women_stem", m = "self_efficacy_diff",
+#               data = country_level, plot = T) %>%
+#  summary()
 
 country_level %>%
   fit_mediation(
@@ -179,9 +182,9 @@ country_level %>%
 This also holds for the wikipedia model. Also holds for three other meaasures of gender inequality (hdi, gini, ggi)
 
 ```{r}
-psych::mediate(x = "lang_es_sub", y = "intra_indv_diff", m = "self_efficacy_diff",
-               data = country_level, plot = T) %>%
-  summary()
+#psych::mediate(x = "lang_es_sub", y = "intra_indv_diff", m = "self_efficacy_diff",
+#               data = country_level, plot = T) %>%
+#  summary()
 
 country_level %>%
   fit_mediation(
@@ -235,17 +238,17 @@ lm(gdp_2017 ~ genderdif + lang_es_sub, data = country_level) %>%
 
 Their causal model is GDP -> preferences. A mediation model suggests that GDP does mediate between language and preferences:
 ```{r}
-psych::mediate(x = "lang_es_sub", y = "genderdif", m = "gdp_2017",
-               data = country_level, plot = T) %>%
-  summary()
+#psych::mediate(x = "lang_es_sub", y = "genderdif", m = "gdp_2017",
+ #              data = country_level, plot = T) %>%
+#  summary()
 ```
 
 But a more plausible explanation, which there is also evidence is: 
 language -> preferences -> GDP
 ```{r}
-psych::mediate(x = "lang_es_sub", y = "gdp_2017", m = "genderdif",
-               data = country_level, plot = T) %>%
-  summary()
+#psych::mediate(x = "lang_es_sub", y = "gdp_2017", m = "genderdif",
+#               data = country_level, plot = T) %>%
+#  summary()
 
 country_level %>%
   fit_mediation(
@@ -257,3 +260,22 @@ country_level %>%
 ```
 
 This also holds for the wikipedia model. Also holds for ggi, hdi_value and per_women_stem.
+
+```{r}
+psych::mediate(gdp_2017~lang_es_sub + (genderdif),
+               data = country_level, plot = T) %>%
+  summary()
+
+psych::mediate(gdp_2017~genderdif + (lang_es_wiki),
+               data = country_level, plot = T) %>%
+  summary()
+
+
+country_level %>%
+  fit_mediation(
+    y = "genderdif", #self_efficacy_diff # genderdif
+    x = "gdp_2017", 
+    m = "lang_es_sub") %>%
+   test_mediation() %>%
+   p_value()
+```
