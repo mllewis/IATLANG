@@ -42,7 +42,7 @@ draft             : no
 
 documentclass     : "apa6"
 classoption       : "man"
-output            : papaja::apa6_pdf #word_document #
+output            : papaja::apa6_pdf
 ---
 
 ```{r setup, include = FALSE}
@@ -76,13 +76,13 @@ Discovering that linguistic bias predicts people’s implicit biases can be inte
 
 In Study 1, we examine whether language-derived gender biases predict responses on the gender-career IAT. Our analysis focuses on the _distributional_ structure of language rather than the specifics of the communicated content. In Study 2, we examine how the psychological biases measured by the IAT and the linguistic biases we measure relate to more structural aspects of language: sex-based grammatical gender and the prevalence of gender-specific occupation terms (e.g., “waiter”/“waitress” but “teacher”/“teacher”). The results of Study 2 suggest that language not only reflects existing gender biases, but may play a causal role in shaping them. 
 
-```{r child = "sections/study0_writeup.Rmd"}
+```{r child = "sections_pnas/study0_writeup.Rmd"}
 ```
 
-```{r child = "sections/study1_writeup.Rmd"}
+```{r child = "sections_pnas/study1_writeup.Rmd"}
 ```
 
-```{r child = "sections/study2_writeup.Rmd"}
+```{r child = "sections_pnas/study2_writeup.Rmd"}
 ```
 
 # General Discussion

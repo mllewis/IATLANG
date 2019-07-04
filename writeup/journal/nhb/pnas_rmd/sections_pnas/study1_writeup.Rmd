@@ -74,7 +74,7 @@ wiki_gender_score_corr <- cor.test(all_ratings$maleness_embedding_wiki,
   tidy()
 ```
 
-```{r, fig.pos = "!t",  fig.height = 4, fig.width = 4, set.cap.width=T, num.cols.cap=1, fig.cap = "Human judgements of word gender bias as a function of gender bias from the Subtitle-trained embedding model  (Study 1a). Each point corresponds to a word. Larger numbers indicate stronger association with females (note that this differs from the design of the rating task, but is changed here for consistency with other plots). Blue line shows linear fit and the error band indicates standard error (too small to be visible)."}
+```{r, fig.pos = "!t",  fig.height = 3.6, fig.width = 4, set.cap.width=T, num.cols.cap=1, fig.cap = "Human judgements of word gender bias as a function of gender bias from the Subtitle-trained embedding model  (Study 1a). Each point corresponds to a word. Larger numbers indicate stronger association with females (note that this differs from the design of the rating task, but is changed here for consistency with other plots). Blue line shows linear fit and the error band indicates standard error (too small to be visible)."}
 
 ggplot(all_ratings, aes(y = (8-maleness_norm), 
                         x = -maleness_embedding_sub)) + # flip scales for consistency with study 2
@@ -93,7 +93,7 @@ ggplot(all_ratings, aes(y = (8-maleness_norm),
   theme_classic()
 ```
 
-Estimates of gender bias from the Subtitle corpus (_M_ = `r round(mean(all_ratings$maleness_embedding_sub),2)`; _SD_=  `r round(sd(all_ratings$maleness_embedding_sub),2)`) and  the Wikipedia corpus (_M_ = `r round(mean(all_ratings$maleness_embedding_wiki),2)`; _SD_ =  `r round(sd(all_ratings$maleness_embedding_wiki),2)`) were highly correlated with each other (`r tidy_r_to_text_r(model_gender_score_corr)`). Critically, bias estimates from both word embedding models were also highly correlated with human judgements (_M_ = `r round(mean(all_ratings$maleness_norm),2)`; _SD_ =  `r round(sd(all_ratings$maleness_norm),2)`; _r_~Subtitle~ = `r tidy_r_to_text_r(sub_gender_score_corr)`; _r_~Wikipedia~ = `r tidy_r_to_text_r(wiki_gender_score_corr)`; Fig. 1). This suggests that the psychological gender bias of a word can be reasonably estimated from word embeddings. 
+Estimates of gender bias from the Subtitle corpus (_M_ = `r round(mean(all_ratings$maleness_embedding_sub),2)`; _SD_=  `r round(sd(all_ratings$maleness_embedding_sub),2)`) and  the Wikipedia corpus (_M_ = `r round(mean(all_ratings$maleness_embedding_wiki),2)`; _SD_ =  `r round(sd(all_ratings$maleness_embedding_wiki),2)`) were highly correlated with each other (_r_ = `r round(model_gender_score_corr$estimate, 2)`; _p_ <  .0001). Critically, bias estimates from both word embedding models were also highly correlated with human judgements (_M_ = `r round(mean(all_ratings$maleness_norm),2)`; _SD_ =  `r round(sd(all_ratings$maleness_norm),2)`; _r_~Subtitle~ = `r round(sub_gender_score_corr$estimate, 2)`; _p_ <  .0001; _r_~Wikipedia~ = `r round(wiki_gender_score_corr$estimate, 2)`; _p_ <  .0001; Fig. 1). This suggests that the psychological gender bias of a word can be reasonably estimated from word embeddings. 
 
 
 ## Study 1b: Gender bias across languages
@@ -179,16 +179,7 @@ We calculated gender bias estimates using the same word embedding models as in S
 ```{r, overall_lang_bias_by_source}
 corpus_effect_t_test <- t.test(all_es_tidy$lang_es_sub, 
                                all_es_tidy$lang_es_wiki, 
-                               paired = T) %>%
-  tidy()
-
-corpus_effect_cohens_d <- effsize::cohen.d(
-                  all_es_tidy %>% 
-                  filter(!is.na(lang_es_sub)) %>%
-                   pull(lang_es_sub),
-                 all_es_tidy %>% 
-                  filter(!is.na(lang_es_sub)) %>%
-                  pull(lang_es_wiki)) 
+                               paired = T)
 ```
 
 ```{r full_corr_table}
@@ -241,13 +232,7 @@ lang_by_country <- read_csv(LANGUAGE_COUNTRY_IN) %>%
   rename(language_code = wiki_language_code)
 
 BEHAVIORAL_P_IAT_PATH <- here("data/study0/processed/by_participant_df.csv")
-participant_level_data <- read_csv(BEHAVIORAL_P_IAT_PATH,
-                                   col_names = c("country_code",	"country_name",	
-                                                 "sex",	"log_age",	"education",
-                                                 "overall_iat_D_score",	"order",
-                                                 "explicit_dif",
-                                                 "es_iat_sex_age_order_explicit_resid",
-                                                 "es_iat_sex_age_order_implicit_resid"))
+participant_level_data <- read_csv(BEHAVIORAL_P_IAT_PATH) 
 
 all_es_tidy_participant <- participant_level_data %>%
   left_join(lang_by_country) %>%
@@ -274,7 +259,7 @@ df_for_plotting2_cis %>%
   theme_minimal()
 ```
 
-```{r, fig.pos = "t", fig.height = 4.5, fig.cap = "Implicit gender bias (adjusted for age, sex, and block order) as a function of the linguistic gender bias derived from word-embeddings (Study 1b). Each point corresponds to a language, with the size of the point corresponding to the number of participants speaking that langauge. Linguistic biases are estimated from models trained on text in each language from Subtitle (left) and Wikipedia (right) corpora. Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the linear model estimate."}
+```{r, fig.pos = "t", fig.height = 3.2, fig.cap = "Implicit gender bias (adjusted for age, sex, and block order) as a function of the linguistic gender bias derived from word-embeddings (Study 1b). Each point corresponds to a language, with the size of the point corresponding to the number of participants speaking that langauge. Linguistic biases are estimated from models trained on text in each language from Subtitle (left) and Wikipedia (right) corpora. Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the linear model estimate."}
 
 corr_text_df <- tidy_corrs %>%
   filter(rowname == "Residualized Implicit Bias (IAT)", 
@@ -299,7 +284,7 @@ all_es_tidy %>%
   geom_smooth(method = "lm", alpha = .1, size = .9) +
   geom_point(alpha = .2) +
   ggrepel::geom_text_repel(aes(label = language_name), 
-                           size = 2, box.padding = 0.1) + 
+                           size = 1.8, box.padding = 0.1) + 
   scale_x_continuous(breaks = c(-.3, -0, .5, 1), 
                      label = c("\n(male-\nfamily)", "0", ".5","1\n(male-\ncareer)") , limits = c(-.35, 1.1)) +
   scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
@@ -308,10 +293,10 @@ all_es_tidy %>%
   geom_text(data = corr_text_df, aes(label = simple_r, x = x, y = y), 
             color = "red", size = 4) +
   ggtitle("Psychological and  Linguistic Gender Biases") +
-  ylab("Implicit  Gender Bias (residualized)\n") +
-  xlab("\nLinguistic Gender Bias\n (effect size)") +
-  theme_classic()  +
-  theme(legend.position = "bottom")
+  ylab("Implicit  Gender Bias (residualized)") +
+  xlab("Linguistic Gender Bias (effect size)") +
+  theme_classic(base_size = 9)  +
+  theme(legend.position = "right")
 ```
 
 ```{r tidy_corrs_for_text}
@@ -325,17 +310,15 @@ text_tidy_corrs <- tidy_corrs %>%
                                      TRUE ~ paste0(", _p_ = ", partial_p)),
           r_print_text = paste0("_r_ = ", simple_r , r_equality_sign),
           partial_print_text = paste0("_r_ = ", partial_r , partial_equality_sign)) %>%
-  mutate_if(is.numeric, ~str_remove(as.character(.), "^0+")) 
+    mutate_if(is.numeric, ~str_remove(as.character(.), "^0+")) 
 
-L_B_sub <- cor.test(all_corr_vars$"Language IAT (Subtitle)", 
-                    all_corr_vars$"Residualized Implicit Bias (IAT)") %>%
-  tidy() %>%
-  tidy_r_to_text_r(.)
+L_B_sub <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Subtitle)", var2 == "Residualized Implicit Bias (IAT)") %>%
+  pull(r_print_text)
 
-L_B_wiki <- cor.test(all_corr_vars$"Language IAT (Wikipedia)", 
-                    all_corr_vars$"Residualized Implicit Bias (IAT)") %>%
-  tidy() %>%
-  tidy_r_to_text_r(.)
+L_B_wiki <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Implicit Bias (IAT)") %>%
+  pull(r_print_text)
 
 L_B_sub_partial <- text_tidy_corrs %>%
   filter(rowname ==  "Language IAT (Subtitle)", var2 == "Residualized Implicit Bias (IAT)") %>%
@@ -345,29 +328,24 @@ L_B_wiki_partial <- text_tidy_corrs %>%
   filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Implicit Bias (IAT)") %>%
   pull(partial_print_text)
 
-L_E_sub <- cor.test(all_corr_vars$"Language IAT (Subtitle)", 
-                    all_corr_vars$"Residualized Explicit Bias") %>%
-  tidy() %>%
-  tidy_r_to_text_r(.)
+L_E_sub <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Subtitle)", var2 == "Residualized Explicit Bias") %>%
+  pull(r_print_text)
 
-L_E_wiki <- cor.test(all_corr_vars$"Language IAT (Wikipedia)", 
-                    all_corr_vars$"Residualized Explicit Bias") %>%
-  tidy() %>%
-  tidy_r_to_text_r(.)
+L_E_wiki <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Residualized Explicit Bias") %>%
+  pull(r_print_text)
 
+L_S_sub <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Subtitle)", var2 == "Percent Women in STEM") %>%
+  pull(r_print_text)
 
-L_S_sub <- cor.test(all_corr_vars$"Language IAT (Subtitle)", 
-                    all_corr_vars$"Percent Women in STEM") %>%
-  tidy() %>%
-  tidy_r_to_text_r(.)
-
-L_S_wiki <- cor.test(all_corr_vars$"Language IAT (Wikipedia)", 
-                    all_corr_vars$"Percent Women in STEM") %>%
-  tidy() %>%
-  tidy_r_to_text_r(.)
+L_S_wiki <- text_tidy_corrs %>%
+  filter(rowname ==  "Language IAT (Wikipedia)", var2 == "Percent Women in STEM") %>%
+  pull(r_print_text)
 ```
 
-Despite the differences in the specific content conveyed by the Subtitles and Wikipedia corpus, the estimated gender bias for each language was similar across the two corpora (`r tidy_t_to_text_t(corpus_effect_t_test)`; `r cohen_d_to_text_d(corpus_effect_cohens_d)`) . We next examined the relationship between these estimates of gender bias for each language and the mean IAT bias score for participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals). Implicit gender bias was positively correlated with estimates of language bias from both the Subtitle (`r L_B_sub`) and Wikipedia trained models (`r L_B_wiki`; Fig. 2; Table 1 shows the language-level correlations between all variables in Studies 1b and 2). The relationship between implicit gender bias and language bias remained reliable after partialling out the effect of median country age  (Subtitle: `r L_B_sub_partial`; Wikipedia: `r L_B_wiki_partial`). Linguistic gender bias was not correlated with explicit gender bias (Subtitle: `r L_E_sub`; Wikipedia: `r L_E_wiki`). Estimates of language bias from the Subtitle corpus were correlated with the objective measure of gender equality, percentage of women in STEM fields (`r L_S_sub`); this relationship was not reliable for the Wikipedia corpus (`r L_S_wiki`). 
+Despite the differences in the specific content conveyed by the Subtitles and Wikipedia corpus, the estimated gender bias for each language was similar across the two corpora (_t_(`r pluck(corpus_effect_t_test$parameter, "df")`) =  `r pluck(corpus_effect_t_test$statistic, "t")`, _p_ =  `r corpus_effect_t_test$p.value`). We next examined the relationship between these estimates of gender bias for each language and the mean IAT bias score for participants from countries where that language was dominant (and, we assume, was the native language of most of these individuals). Implicit gender bias was positively correlated with estimates of language bias from both the Subtitle (`r L_B_sub`) and Wikipedia trained models (`r L_B_wiki`; Fig. 2; Table 1 shows the language-level correlations between all variables in Studies 1b and 2). The relationship between implicit gender bias and language bias remained reliable after partialling out the effect of median country age  (Subtitle: `r L_B_sub_partial`; Wikipedia: `r L_B_wiki_partial`). Linguistic gender bias was not correlated with explicit gender bias (Subtitle: `r L_E_sub`; Wikipedia: `r L_E_wiki`). Estimates of language bias from the Subtitle corpus were correlated with the objective measure of gender equality, percentage of women in STEM fields (`r L_S_sub`); this relationship was not reliable for the Wikipedia corpus (`r L_S_wiki`). 
 
 
 ```{r bigtable}
@@ -475,7 +453,7 @@ lmer_model_string <- study_1c_model %>%
 
 As predicted, there was a reliable interaction between language dialect and the magnitude of the  bias difference between the two dialects ($\beta$ `r lmer_model_string`; see SM for full model results), suggesting that language bias was a reliable predictor of implicit bias. Figure 3 shows the difference in bias (British - American) in language and behavior for each of the 31 IATs in our dataset. 
 
-```{r 1cplot,  fig.height = 4, fig.width = 4, set.cap.width=T, num.cols.cap=1, fig.cap = "Difference (British - American) in implicit bias (y-axis) and linguistic bias (x-axis) for each of the 31 IAT types in our dataset."}
+```{r 1cplot,  fig.height = 3.7, fig.width = 4, set.cap.width=T, num.cols.cap=1, fig.cap = "Difference (British - American) in implicit bias versus linguistic bias  for each of  31 IAT types."}
 # get language values for each domain and country (averaging across runs)
 tidy_lang_data <- full_1c_df %>%
   distinct(residence, domain, run, .keep_all = T) %>%
@@ -489,20 +467,29 @@ es_iat_tidy <- full_1c_df %>%
   spread(residence, resid) %>%
   mutate(behavioral_resid_diff = uk - us) %>%
   left_join(tidy_lang_data) %>%
-  select(-uk, -us)
+  select(-uk, -us) %>%
+  mutate(domain2 = str_replace_all(domain, " People", ""),
+         domain2 = str_replace_all(domain2, " - ", "-"),
+         domain2 = fct_recode(domain2, `Protein-Carbs.` = "Protein-Carbohydrates",
+                               "Defense-Education" = "National Defense-Education",
+                               "Labor-Management" = "Organized Labor-Management"))
 
 corr1c <- cor.test(es_iat_tidy$behavioral_resid_diff, 
                    es_iat_tidy$lang_diff)$estimate
 
 ggplot(es_iat_tidy, aes(x = lang_diff, y = behavioral_resid_diff)) +
-  ggrepel::geom_text_repel(aes(label = domain), size = 2) +
-  geom_point() +
   geom_smooth(method = "lm", alpha = .1) + 
+  ggrepel::geom_text_repel(aes(label = domain2), size = 2) +
+  geom_point() +
   ylab("Implicit Bias Difference (residualized)") +
   xlab("Language Bias Difference (effect size)") +
-    annotate("text", y = -.15, x = .9, label = 
+    annotate("text", y = -.17, x = .9, label = 
              paste0("r = ", f_num(corr1c, 2)), 
            color = "red", size = 4) +
+ scale_x_continuous(breaks = c(-1.5, -1, -.5, 0, .5, 1), 
+                     label = c("-1.5\nUS Greater", "-1", "-.5" ,"0", ".5", "1\nUK Greater") , limits = c(-1.6, 1.1) ) +
+ scale_y_continuous(breaks = c( -.2,-.1, 0, .1, .2, .3), 
+                     label = c("-.2\nUS\nGreater", "-.1", "0", ".1", ".2", ".3\nUK\nGreater"), limits = c(-.2, .32) ) +
   theme_classic()
 ```
 

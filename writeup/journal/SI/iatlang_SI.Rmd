@@ -32,6 +32,28 @@ library(broom)
 opts_chunk$set(echo = F, message = F, warning = F, 
                error = F, cache = T, tidy = F, fig.height = 4.5)
 
+tidy_r_to_text_r <- function(tidy_row){
+  round_tidy <- tidy_row %>%
+    mutate_at(vars(estimate, contains("conf")), round, 2)
+  
+  p_value <- case_when(pull(round_tidy, p.value) < .0001 ~ "_p_ < .0001",
+                       pull(round_tidy, p.value) < .001 ~ "_p_ < .001",
+                       TRUE ~ paste0("_p_ = ", round(pull(round_tidy, p.value),2)))
+  
+  paste0(
+    "_r_(",
+    pull(round_tidy, parameter),
+    ") = ", 
+    pull(round_tidy, estimate),
+    " [",
+    pull(round_tidy, conf.low),
+    ", ",
+    pull(round_tidy, conf.high),
+    "], ",
+    p_value
+  )
+}
+
 theme_set(theme_classic())
 options(shiny.sanitize.errors = FALSE)
 ```  
@@ -769,18 +791,27 @@ kable(wiki_regression_r2, digits = 3)
 Several recent studies (Falk & Hermle, 2018; Stoet & Geary, 2018) have presented novel theories to account for cases of structural insequality related to gender. Both of these papers argue that psychological differences play a causal role in the emergence of structural inequality. Here, we show that degree of gender bias in language is correlated with these psychological differences at the country level, consistent with the idea that language experience could be playing a causal role in the emergence of psychological differences.
 
 ## Falk and Hermle (2018)
-Gender differences in preferences (Falk & Hermle, 2018; composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (_r_ = .48; _p_ = .01): Countries with greater differences in gender preferences also have greater gender bias present in their languages. We also find that per capita GDP (World Bank database; 2017 GDP per capita (current US$) indicator) is correlated with country-level implicit gender stereotypes (_r_ = .43; _p_ < .01).
-
-```{r, fig.height = 4.5, fig.width = 4.5}
+```{r}
 OTHER_PATH <- "data/tidy_other_psych_measures.csv"
 
 other_data <- read_csv(OTHER_PATH) %>%
   select(country_name, lang_es_sub, genderdif_fh, self_efficacy_diff_sg, gdp_2017,
          es_iat_sex_age_order_implicit_resid, per_women_stem) 
 
-# cor.test(other_data$es_iat_sex_age_order_implicit_resid, other_data$gdp_2017)
-# cor.test(other_data$lang_es_sub, other_data$genderdif_fh)
+implicit_gdp <- cor.test(other_data$es_iat_sex_age_order_implicit_resid,
+                         other_data$gdp_2017) %>%
+  tidy() %>%
+  tidy_r_to_text_r()
 
+implicit_gender_dif <- cor.test(other_data$lang_es_sub, 
+                                other_data$genderdif_fh) %>%
+    tidy() %>%
+    tidy_r_to_text_r()
+```
+
+Gender differences in preferences (Falk & Hermle, 2018; composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (`r implicit_gender_dif`): Countries with greater differences in gender preferences also have greater gender bias present in their languages. We also find that per capita GDP (World Bank database; 2017 GDP per capita (current US$) indicator) is correlated with country-level implicit gender stereotypes (`r implicit_gdp`).
+
+```{r, fig.height = 4.5, fig.width = 4.5}
 ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name)) +
   ylab("Gender Differences in Preferences\n(Falk & Hermle, 2018)") +
   xlab("Linguistic Gender Bias\n(effect size)") +
@@ -795,7 +826,11 @@ ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name))
 
 
 ```{r, fig.height = 4.5, fig.width = 4.5}
-# cor.test(other_data$lang_es_sub, other_data$self_efficacy_diff_sg)
+lang_sg <- cor.test(other_data$lang_es_sub, 
+                    other_data$self_efficacy_diff_sg) %>%
+    tidy() %>%
+    tidy_r_to_text_r()
+
 ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = country_name)) +
   ylab("Gender difference in STEM Self Efficacy\n(Stoet & Geary, 2018)") +
   xlab("Linguistic Gender Bias\n(effect size)") +
@@ -824,7 +859,7 @@ sub_ab <-  boot_mediation_model_sub %>%
   round(2)
 ```
 
-Gender difference in STEM Self Efficacy (Stoet & Geary, 20178; “The sex difference in self efficacy (boys – girls)”) as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (_r_ = .59; _p_ < .001):  Countries with greater gender differences in self-efficacy also have greater gender bias present in their languages. Futher, self-efficacy mediated the effect of language statistics on percentage of women in stem (path-ab = `r sub_ab`; _p_ = `r sub_p`), suggesting that language statistics could be critical causal factor underlying gender differences in STEM participation. 
+Gender difference in STEM Self Efficacy (Stoet & Geary, 20178; “The sex difference in self efficacy (boys – girls)”) as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (`r lang_sg`):  Countries with greater gender differences in self-efficacy also have greater gender bias present in their languages. Futher, self-efficacy mediated the effect of language statistics on percentage of women in stem (path-ab = `r sub_ab`; _p_ = `r sub_p`), suggesting that language statistics could be critical causal factor underlying gender differences in STEM participation. 
 
 **References**
 
