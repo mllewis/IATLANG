@@ -12,7 +12,22 @@ Meanings are paired in the task by assigning them to the same response keys in a
 
 ```{r}
 BY_PARTICIPANT_DF <-  here("data/study0/processed/by_participant_df.csv")
-participant_iat <- read_csv(BY_PARTICIPANT_DF)
+participant_iat <- read_csv(BY_PARTICIPANT_DF, 
+                            col_types = list(
+                              country_code = "c",
+                              country_name = "c",
+                              sex = "i", 
+                              log_age = "d",
+                              education = col_skip(), 
+                              log_age = "d",
+                              overall_iat_D_score = "d",
+                              order = "i", 
+                              explicit_dif = "d",
+                              es_iat_sex_age_order_explicit_resid = "d", 
+                              es_iat_sex_age_order_implicit_resid = "d"
+                              )
+                            )
+
 country_ns_final <- count(participant_iat, country_code)
 ```
 
@@ -63,11 +78,13 @@ participant_order_d_score <- effsize::cohen.d(
 BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
 country_iat <- read_csv(BY_COUNTRY_DF)
 
-imp_exp_cor_participant <- cor.test(participant_iat$es_iat_sex_age_order_implicit_resid,
+imp_exp_cor_participant <- cor.test(
+          participant_iat$es_iat_sex_age_order_implicit_resid,
          participant_iat$es_iat_sex_age_order_explicit_resid) %>%
   tidy()
 
-imp_exp_cor_country <- cor.test(country_iat$es_iat_sex_age_order_implicit_resid,
+imp_exp_cor_country <- cor.test(
+        country_iat$es_iat_sex_age_order_implicit_resid,
          country_iat$es_iat_sex_age_order_explicit_resid) %>%
   tidy()
 ```
@@ -80,10 +97,12 @@ Because we did not have language information at the participant level, in the re
 (`r tidy_r_to_text_r(imp_exp_cor_participant)`) but not countries (`r tidy_r_to_text_r(imp_exp_cor_country)`)
 
 ```{r country_measures}
-imp_objective <- cor.test(country_iat$es_iat_sex_age_order_implicit_resid, country_iat$per_women_stem_2012_2017) %>%
+imp_objective <- cor.test(country_iat$es_iat_sex_age_order_implicit_resid,
+                          country_iat$per_women_stem_2012_2017) %>%
   tidy()
 
-exp_objective <- cor.test(country_iat$es_iat_sex_age_order_explicit_resid, country_iat$per_women_stem_2012_2017) %>%
+exp_objective <- cor.test(country_iat$es_iat_sex_age_order_explicit_resid,
+                          country_iat$per_women_stem_2012_2017) %>%
   tidy()
 
 country_age <- cor.test(country_iat$es_iat_sex_age_order_implicit_resid,

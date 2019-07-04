@@ -16,7 +16,8 @@ tidy_r_to_text_r <- function(tidy_row){
   
   p_value <- case_when(pull(round_tidy, p.value) < .0001 ~ "_p_ < .0001",
                        pull(round_tidy, p.value) < .001 ~ "_p_ < .001",
-                       TRUE ~ paste0("_p_ = ", round(pull(round_tidy, p.value),2)))
+                    #   pull(round_tidy, p.value) < .01 ~ "_p_ < .01",
+                       TRUE ~ paste0("_p_ = ", round(pull(round_tidy, p.value),3)))
   
   paste0(
     "_r_(",

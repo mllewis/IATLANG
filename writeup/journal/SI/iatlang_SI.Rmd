@@ -798,18 +798,18 @@ other_data <- read_csv(OTHER_PATH) %>%
   select(country_name, lang_es_sub, genderdif_fh, self_efficacy_diff_sg, gdp_2017,
          es_iat_sex_age_order_implicit_resid, per_women_stem) 
 
-implicit_gdp <- cor.test(other_data$es_iat_sex_age_order_implicit_resid,
-                         other_data$gdp_2017) %>%
-  tidy() %>%
-  tidy_r_to_text_r()
-
 implicit_gender_dif <- cor.test(other_data$lang_es_sub, 
                                 other_data$genderdif_fh) %>%
     tidy() %>%
     tidy_r_to_text_r()
+
+implicit_gdp <- cor.test(other_data$lang_es_sub,
+                         other_data$gdp_2017) %>%
+  tidy() %>%
+  tidy_r_to_text_r()
 ```
 
-Gender differences in preferences (Falk & Hermle, 2018; composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (`r implicit_gender_dif`): Countries with greater differences in gender preferences also have greater gender bias present in their languages. We also find that per capita GDP (World Bank database; 2017 GDP per capita (current US$) indicator) is correlated with country-level implicit gender stereotypes (`r implicit_gdp`).
+Gender differences in preferences (Falk & Hermle, 2018; composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (`r implicit_gender_dif`): Countries with greater differences in gender preferences also have greater gender bias present in their languages. We also find that per capita GDP (World Bank database; 2017 GDP per capita (current US$) indicator) is correlated with linguistic gender bias measured in the Subtitle corpus (`r implicit_gdp`).
 
 ```{r, fig.height = 4.5, fig.width = 4.5}
 ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name)) +
