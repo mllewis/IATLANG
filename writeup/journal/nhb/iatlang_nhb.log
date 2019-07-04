@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 JUL 2019 12:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 JUL 2019 13:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2058,7 +2058,7 @@ Underfull \vbox (badness 3623) has occurred while \output is active []
 
  [6]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 588.
+(Font)              <8> on input line 587.
 
 [7] (./iatlang_nhb.bbl
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
@@ -2086,21 +2086,21 @@ ish (COCA).
 ) 
 AED: lastpage setting LastPage
 [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 595.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 595.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 601.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 601.
  (./iatlang_nhb.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 595.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 595.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 601.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 601.
 Package rerunfilecheck Info: File `iatlang_nhb.out' has not changed.
 (rerunfilecheck)             Checksum: E2E616883C6C841678D5073D21283D3D;67.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 595.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 601.
  ) 
 Here is how much of TeX's memory you used:
- 32654 strings out of 493014
- 600068 string characters out of 6133351
- 720021 words of memory out of 5000000
+ 32663 strings out of 493014
+ 600158 string characters out of 6133351
+ 717313 words of memory out of 5000000
  35248 multiletter control sequences out of 15000+600000
- 132166 words of font info for 246 fonts, out of 8000000 for 9000
+ 132682 words of font info for 251 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,11n,56p,10426b,486s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
@@ -2122,10 +2122,10 @@ sr/local/texlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/loca
 l/texlive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texl
 ive/2016/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on iatlang_nhb.pdf (8 pages, 585217 bytes).
+Output written on iatlang_nhb.pdf (8 pages, 585181 bytes).
 PDF statistics:
- 276 PDF objects out of 1000 (max. 8388607)
- 242 compressed objects within 3 object streams
+ 277 PDF objects out of 1000 (max. 8388607)
+ 243 compressed objects within 3 object streams
  55 named destinations out of 1000 (max. 500000)
  51748 words of extra memory for PDF output out of 61914 (max. 10000000)
 

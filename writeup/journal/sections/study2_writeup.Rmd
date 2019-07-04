@@ -329,14 +329,12 @@ all_es_tidy2_scaled <- all_es_tidy2 %>%
 subt_corr <- cor.test(all_es_tidy2_scaled$subt_occu_semantics_fm,
                       all_es_tidy2_scaled$mean_prop_distinct_occs) %>%
   tidy() %>%
-  pull(estimate) %>%
-  round(2)
+  tidy_r_to_text_r(.)
 
 wiki_corr <- cor.test(all_es_tidy2_scaled$wiki_occu_semantics_fm,
                       all_es_tidy2_scaled$mean_prop_distinct_occs) %>%
   tidy() %>%
-  pull(estimate) %>%
-  round(2)
+  tidy_r_to_text_r(.)
 
 # regressions with lang_es_sub/wiki instead of occupation statistics
 subt_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
@@ -356,7 +354,7 @@ wiki_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinc
   round(2) * 100
 ```
 
-To understand the relative predictive power of language statistics and distinct forms, we fit an additive linear model predicting implicit bias from language statistics and proportion distinct forms, controlling for median country age. Because language statistics for occupation terms and proportion distinct forms  were highly colinear (Wikipedia: _r_ = `r wiki_corr`, _p_ < .001; Subtitle: _r_ = `r subt_corr`, _p_ < .001), we used the estimate of bias in language statistics for each language based on the set IAT words described in Study 1b. Both gender bias in language statistics (based on IAT words) and the proportion of gender-specific occupation titles were independent predictors of implicit bias. The two predictors accounted for `r subt_regression_r2`% of variance in implicit bias when using the Subtitle corpus and `r wiki_regression_r2`% of variance for the Wikipedia corpus. Full model results are reported in the SM.
+To understand the relative predictive power of language statistics and distinct forms, we fit an additive linear model predicting implicit bias from language statistics and proportion distinct forms, controlling for median country age. Because language statistics for occupation terms and proportion distinct forms  were highly colinear (Wikipedia: `r wiki_corr`; `r subt_corr`), we used the estimate of bias in language statistics for each language based on the set IAT words described in Study 1b. Both gender bias in language statistics (based on IAT words) and the proportion of gender-specific occupation titles were independent predictors of implicit bias. The two predictors accounted for `r subt_regression_r2`% of variance in implicit bias when using the Subtitle corpus and `r wiki_regression_r2`% of variance for the Wikipedia corpus. Full model results are reported in the SM.
 
 ```{r}
 # wiki
