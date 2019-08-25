@@ -11,6 +11,8 @@ print("get swabs (this is slow)")
 
 
 MODEL_PATH_WIKI <- here("data/study1b/wiki_subsetted_models/calculated/")
+MODEL_PATH_WIKI_CC <- here("data/study1b/wiki_cc_subsetted_models/calculated/")
+
 MODEL_PATH_SUB <- here("data/study1b/subt_subsetted_models/calculated/")
 OUTFILE <- here("data/study1b/iat_swabs.csv")
 NCLUSTERS <- 4
@@ -34,6 +36,13 @@ wiki_langs <- list.files(MODEL_PATH_WIKI) %>%
   rename(lang = ".") %>%
   mutate(path = paste0(MODEL_PATH_WIKI, "wiki."))
 
+wiki_cc_langs <- list.files(MODEL_PATH_WIKI_CC) %>%
+  str_split("\\.|_") %>%
+  map_chr(~.[2]) %>%
+  data.frame() %>%
+  rename(lang = ".") %>%
+  mutate(path = paste0(MODEL_PATH_WIKI, "wiki.cc."))
+
 subt_langs <- list.files(MODEL_PATH_SUB) %>%
   str_split("\\.|_") %>%
   map_chr(~.[3]) %>%
@@ -42,6 +51,7 @@ subt_langs <- list.files(MODEL_PATH_SUB) %>%
   mutate(path = paste0(MODEL_PATH_SUB, "sub.multiword."))
 
 all_langs <- bind_rows(wiki_langs, subt_langs) %>%
+  bind_rows(wiki_cc_langs) %>%
   filter(!(lang %in% BAD_LANGS)) %>%
   mutate(id = 1:n()) %>%
   nest(-id)
@@ -54,6 +64,7 @@ complete <- read_csv(OUTFILE, col_names = c("lang", "model", "category", "x", "y
 
 all_combos <- bind_rows(wiki_langs %>% mutate(model = "wiki"),
                         subt_langs %>% mutate(model = "sub")) %>%
+  bind_rows(wiki_cc_langs %>% mutate(model = "wiki_cc"))
   select(-path) %>%
   mutate(status = "all")
 
@@ -63,6 +74,7 @@ missing_combos = bind_rows(all_combos, complete) %>%
 
 all_langs <- bind_rows(wiki_langs %>% mutate(model = "wiki"),
                        subt_langs %>% mutate(model = "sub")) %>%
+  bind_rows(wiki_cc_langs %>% mutate(model = "wiki_cc")) %>%
   right_join(missing_combos) %>%
   select(-model, -n) %>%
   filter(!(lang %in% BAD_LANGS)) %>%
