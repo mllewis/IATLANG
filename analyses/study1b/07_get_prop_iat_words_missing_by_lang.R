@@ -12,6 +12,9 @@ SUB_CALCULATED_PATH <- here("data/study1b/subt_subsetted_models/calculated/")
 SUB_RAW_PATH <- here("data/study1b/subt_subsetted_models/raw/")
 WIKI_CALCULATED_PATH <- here("data/study1b/wiki_subsetted_models/calculated/")
 WIKI_RAW_PATH <- here("data/study1b/wiki_subsetted_models/raw/")
+WIKI_CC_CALCULATED_PATH <- here("data/study1b/wiki_cc_subsetted_models/calculated/")
+WIKI_CC_RAW_PATH <- here("data/study1b/wiki_cc_subsetted_models/raw/")
+
 TARGET_LANGS_PATH <- here("data/study0/processed/top_lang_by_country_ethnologue.csv")
 
 get_prop_missing <- function(file_path){
@@ -20,9 +23,11 @@ get_prop_missing <- function(file_path){
     
   file_info <- unlist(str_split(str_split(file_path, "//")[[1]][2], "_|\\."))
   file_info <- file_info[file_info != "multiword"]
+  this_model_type <- ifelse(file_info[2] == "cc", "wiki_cc", file_info[1])
+  file_info <- file_info[file_info != "cc"]
   
   vec_df %>%
-      mutate(model_type = file_info[1],
+      mutate(model_type = this_model_type,
              language_code = file_info[2],
              vector_type = file_info[3])
 }
@@ -30,7 +35,9 @@ get_prop_missing <- function(file_path){
 all_missing <- c(list.files(SUB_CALCULATED_PATH, full.names = T),
   list.files(SUB_RAW_PATH, full.names = T),
   list.files(WIKI_CALCULATED_PATH,full.names = T),
-  list.files(WIKI_RAW_PATH, full.names = T)) %>%
+  list.files(WIKI_RAW_PATH, full.names = T),
+  list.files(WIKI_CC_CALCULATED_PATH,full.names = T),
+  list.files(WIKI_CC_RAW_PATH, full.names = T)) %>%
   map_df(get_prop_missing) 
 
 target_langs <- read_csv(TARGET_LANGS_PATH) 
@@ -50,8 +57,9 @@ exclusions_tidy <- exclusions %>%
   mutate(value = TRUE) %>%
   spread("model_type", "value") %>%
   rename(exclude_sub = sub, 
-         exclude_wiki = wiki) %>%
-  replace_na(list(exclude_sub = FALSE, exclude_wiki = FALSE))
+         exclude_wiki = wiki,
+         exclude_wiki_cc = wiki_cc) %>%
+  replace_na(list(exclude_sub = FALSE, exclude_wiki = FALSE, exclude_wiki_cc = FALSE))
 
 
 write_csv(exclusions_tidy, FILEOUT)

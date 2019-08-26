@@ -29,7 +29,8 @@ es_career_swabs_career <- swabs_career %>%
   select(model_source, language_code,  sYXab) %>%
   spread(model_source, sYXab) %>%
   rename(lang_es_sub = sub,
-         lang_es_wiki = wiki)
+         lang_es_wiki = wiki,
+         lang_es_wiki_cc = wiki_cc)
 
 ### write to csv
 write_csv(es_career_swabs_career, OUTFILE)

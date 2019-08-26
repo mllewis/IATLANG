@@ -5,14 +5,13 @@
 library(tidyverse)
 library(parallel)
 library(here)
-source(here("analyses/study1b/0_IAT_utils.R"))
+source(here("analyses/study1b/00_IAT_utils.R"))
 
 print("get swabs (this is slow)")
 
 
 MODEL_PATH_WIKI <- here("data/study1b/wiki_subsetted_models/calculated/")
 MODEL_PATH_WIKI_CC <- here("data/study1b/wiki_cc_subsetted_models/calculated/")
-
 MODEL_PATH_SUB <- here("data/study1b/subt_subsetted_models/calculated/")
 OUTFILE <- here("data/study1b/iat_swabs.csv")
 NCLUSTERS <- 4
@@ -38,10 +37,10 @@ wiki_langs <- list.files(MODEL_PATH_WIKI) %>%
 
 wiki_cc_langs <- list.files(MODEL_PATH_WIKI_CC) %>%
   str_split("\\.|_") %>%
-  map_chr(~.[2]) %>%
+  map_chr(~.[3]) %>%
   data.frame() %>%
   rename(lang = ".") %>%
-  mutate(path = paste0(MODEL_PATH_WIKI, "wiki.cc."))
+  mutate(path = paste0(MODEL_PATH_WIKI_CC, "wiki.cc."))
 
 subt_langs <- list.files(MODEL_PATH_SUB) %>%
   str_split("\\.|_") %>%
@@ -75,11 +74,13 @@ missing_combos = bind_rows(all_combos, complete) %>%
 all_langs <- bind_rows(wiki_langs %>% mutate(model = "wiki"),
                        subt_langs %>% mutate(model = "sub")) %>%
   bind_rows(wiki_cc_langs %>% mutate(model = "wiki_cc")) %>%
-  right_join(missing_combos) %>%
-  select(-model, -n) %>%
+ # right_join(missing_combos) %>%
+  #filter(model == "wiki_cc") %>%
+  select(-model) %>%
   filter(!(lang %in% BAD_LANGS)) %>%
   mutate(id = 1:n()) %>%
   nest(-id) 
+
   
 
  ####

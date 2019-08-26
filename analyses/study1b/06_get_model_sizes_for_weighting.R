@@ -10,6 +10,8 @@ LANGS_NUM_PARICIPANTS <- here("data/study0/processed/by_language_df.csv")
 LANGS <- here("data/study0/processed/top_lang_by_country_ethnologue.csv") 
 MODEL_PREFIX_SUB <- "/Volumes/wilbur_the_great/subtitle_models/sub."
 MODEL_PREFIX_WIKI <- "/Volumes/wilbur_the_great/fasttext_models/wiki."
+MODEL_PREFIX_WIKI_CC <- "/Volumes/wilbur_the_great/wiki_cc_models/wiki_cc."
+
 FILEOUT <- here("data/study1b/language_weights.csv") 
 
 langs <- read_csv(LANGS) %>%
@@ -25,8 +27,10 @@ target_langs <- read_csv(LANGS) %>%
 
 wiki_models <- map_chr(langs, ~paste0(MODEL_PREFIX_SUB, ., ".vec"))
 sub_models <- map_chr(langs, ~paste0(MODEL_PREFIX_WIKI, ., ".vec"))
+wiki_cc_models <- map_chr(langs, ~paste0(MODEL_PREFIX_WIKI_CC, ., ".vec"))
 
-all_models <- c(wiki_models, sub_models)
+
+all_models <- c(wiki_models, sub_models, wiki_cc_models)
 
 get_size <- function(this_file){
   
