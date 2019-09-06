@@ -15,9 +15,12 @@ write_untranslated_corpus <- function(current_language, turn_df, outfile){
   print(current_language)
   es_data <- turn_df %>%
     filter(speaker_language == current_language,
-           turn_language == current_language) 
+           turn_language == current_language)  %>%
+    mutate(turn_text = tolower(turn_text),
+           turn_text = str_remove_all(turn_text, "[’—().,?/!;:\"\'\\/?/-]")) %>%
+    head()
   
-  concatenated_data <- paste(es_data$turn_text, collapse = ' ')
+  concatenated_data <- paste(es_data$turn_text, sep = "\n")
   outfile_path <- paste0(outfile, "untrans_europarl_", current_language, ".txt")
   
   writeLines(concatenated_data, outfile_path)

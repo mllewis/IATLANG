@@ -6,8 +6,8 @@ target_langs <- c("ar", "fa", "es", "de", "en", "nl", "pt", "zh", "da", "fi", "f
                   "he", "hi", "it", "ja", "ko", "ms", "no", "tl", "pl", "ro", "sv", "tr")
 
 OVERLAPPING_LANGS <- c("en", "it", "nl", "fr", "pt", "es", "da", "sv", "de", "fi", "pl", "ro")
-INFILE <- "/Volumes/wilbur_the_great/europarl/sessions/tidy"
-OUTFILE <- "/Volumes/wilbur_the_great/europarl/sessions/all_target_turns.csv"
+INFILE <- "/Volumes/wilbur_the_great/europarl/tidy_csvs/"
+OUTFILE <- "/Volumes/wilbur_the_great/europarl/tidy_csvs/all_target_turns.csv"
 
 files_df <- list.files(INFILE, full.names = T) %>%
   map(fread) %>%
