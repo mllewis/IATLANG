@@ -1,7 +1,7 @@
-language_code,exclude_sub,exclude_wiki
-hi,TRUE,FALSE
-ja,TRUE,FALSE
-sr,TRUE,FALSE
-tl,TRUE,FALSE
-zh,TRUE,FALSE
-zu,TRUE,TRUE
+language_code,exclude_sub,exclude_wiki,exclude_wiki_cc
+hi,TRUE,FALSE,FALSE
+ja,TRUE,FALSE,FALSE
+sr,TRUE,FALSE,TRUE
+tl,TRUE,FALSE,FALSE
+zh,TRUE,FALSE,FALSE
+zu,TRUE,TRUE,TRUE

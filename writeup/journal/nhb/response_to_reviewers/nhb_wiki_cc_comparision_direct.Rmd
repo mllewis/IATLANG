@@ -1,0 +1,78 @@
+---
+title: Wiki cc comparision
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    number_sections: no
+    toc: yes
+---
+  
+******
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(knitr)
+library(broom)
+library(numform)
+library(kableExtra)
+library(here)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+
+source(here("writeup/journal/helpers/psych_to_mat.R"))
+
+```
+
+
+```{r}
+GENDER_NORMS <- here("data/study1a/raw/GlasgowNorms.csv")
+glasgow_norms <- read_csv(GENDER_NORMS) %>%
+  rename(maleness_norm = GEND_M)  %>%
+  select(word, maleness_norm) %>%
+  rowwise() %>%
+  mutate(word =  str_split(word, " ", simplify = T)[1],
+         word = tolower(word)) %>%
+  group_by(word)  %>%
+  summarize(maleness_norm = mean(maleness_norm))  # take the mean across multiple sense of word
+
+EMBEDDING_BIAS_SUB  <- here("data/study1a/processed/gender_bias_by_word_english_sub.csv")
+EMBEDDING_BIAS_WIKI <- here("data/study1a/processed/gender_bias_by_word_english_wiki.csv")
+EMBEDDING_BIAS_WIKI_CC <- here("data/study1a/processed/gender_bias_by_word_english_wikicc.csv")
+
+
+sub_male_bias <- read_csv(EMBEDDING_BIAS_SUB) %>%
+  rename(maleness_embedding_sub = male_score)
+
+wiki_male_bias <- read_csv(EMBEDDING_BIAS_WIKI) %>%
+  rename(maleness_embedding_wiki = male_score)
+
+wikicc_male_bias <- read_csv(EMBEDDING_BIAS_WIKI_CC) %>%
+  rename(maleness_embedding_wikicc = male_score)
+
+embedding_ratings <- sub_male_bias %>%
+  full_join(wiki_male_bias, by = "word") %>%
+   full_join(wikicc_male_bias, by = "word") %>%
+  select(word, contains("embedding")) %>%
+  filter_at(vars(contains("embedding")), any_vars(!is.na(.)))
+
+MALE_WORDS <- c("son", "his","him","he", "brother","boy", "man", "male")
+FEMALE_WORDS <- c("daughter", "hers", "her", "she",  "sister", "girl", "woman", "female")
+
+all_ratings <- embedding_ratings %>%
+  left_join(glasgow_norms) %>%
+  filter(!(word %in% c(MALE_WORDS, FEMALE_WORDS)))
+
+cor.test(all_ratings$maleness_embedding_wikicc, all_ratings$maleness_embedding_wiki)
+cor.test(all_ratings$maleness_embedding_wikicc, all_ratings$maleness_norm)
+cor.test(all_ratings$maleness_embedding_wiki, all_ratings$maleness_norm)
+cor.test(all_ratings$maleness_embedding_sub, all_ratings$maleness_norm)
+
+
+```

@@ -8,7 +8,7 @@ library(here)
 MALE_WORDS <- c("son", "his","him","he", "brother","boy", "man") 
 FEMALE_WORDS <- c("daughter", "hers", "her", "she",  "sister", "girl", "woman")
 GENDER_NORMS <- here("data/study1a/raw/GlasgowNorms.csv")
-MODEL_SOURCE <- "sub" # sub or wiki
+MODEL_SOURCE <- "wiki_cc" # sub/wiki/wiki_cc
 
 if (MODEL_SOURCE == "sub"){
   MODEL_PATH <- "/Volumes/wilbur_the_great/subtitle_models/sub.en.vec"
@@ -16,6 +16,9 @@ if (MODEL_SOURCE == "sub"){
 } else if (MODEL_SOURCE == "wiki"){
   MODEL_PATH <- "/Volumes/wilbur_the_great/wiki_models/wiki.en.vec" 
   OUTFILE  <- here("data/study1a/processed/gender_bias_by_word_english_wiki.csv")
+} else if (MODEL_SOURCE == "wiki_cc"){
+  MODEL_PATH <- "/Volumes/wilbur_the_great/wiki_cc_models/wiki_cc.en.vec" 
+  OUTFILE  <- here("data/study1a/processed/gender_bias_by_word_english_wikicc.csv")
 }
 
 model <- fread(
@@ -33,8 +36,9 @@ glasgow_norms <- read_csv(GENDER_NORMS) %>%
   rowwise() %>%
   mutate(word =  str_split(word, " ", simplify = T)[1],
          word = tolower(word)) %>%
-  distinct()
-
+  distinct() %>%
+  filter(!(word %in% c(MALE_WORDS, FEMALE_WORDS, "gender")))
+  
   #group_by(word) %>%
   #summarize(GEND_M = mean(GEND_M)) %>% # take the mean across multiple sense of word 
   #rename(norm_maleness = GEND_M)  
@@ -55,7 +59,7 @@ all_words <- bind_rows(glasglow_word_coordinates, target_word_coordinates)  %>%
 get_gender_score <- function(this_word, all_words_df){
   print(this_word)
   mat <- all_words_df %>%
-    filter((word == this_word & type == "glasgow")| type == "target")
+    filter((word == this_word & type == "glasgow") | type == "target")
   
   word_word_dists <- coop::cosine(t(as.matrix(mat[,c(-1, -2, -3)])))
   
