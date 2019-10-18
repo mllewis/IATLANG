@@ -114,3 +114,10 @@ analyses/7_age_controls/by_participant_df.csv
 analyses/5_race/data/Race\ IAT.public.2016.sav
 analyses/5_race/data/Race\ IAT.public.2002-2017.sav
 analyses/5_race/data/Race\ IAT.public.2002-2017\ \(1\).zip
+exploratory_studies/16_wiki_native/data/*
+exploratory_studies/16_wiki_native/misc/*
+exploratory_studies/13_europarl/other_data/*
+exploratory_studies/13_europarl/gender_ratings/*
+exploratory_studies/13_europarl/get_iat_bias/*
+exploratory_studies/14_eci/*
+exploratory_studies/15_udbank/*

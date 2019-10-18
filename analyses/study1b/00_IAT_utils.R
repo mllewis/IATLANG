@@ -93,8 +93,9 @@ get_lang_es_separate_gender <- function(current_lang,
     nrow() > 1
   
   current_model <- ifelse(grepl("wiki.cc", model_path), "wiki_cc",
+                          ifelse(grepl("europarl", model_path), "europarl",
                           ifelse(grepl("wiki", model_path), "wiki",
-                          ifelse(grepl("sub", model_path), "sub", NA)))
+                          ifelse(grepl("sub", model_path), "sub", NA))))
   
   if(multi_gender){
     subsetted_model_f <- subsetted_model %>%

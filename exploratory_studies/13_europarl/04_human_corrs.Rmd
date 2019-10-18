@@ -1,0 +1,94 @@
+---
+title: Get human gender correlations by model
+author: Molly Lewis 
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    theme: cerulean
+    code_folding: hide
+---
+
+```{r setup, include = F}
+
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse) 
+library(broom)
+library(here)
+library(data.table)
+
+opts_chunk$set(echo = T, message = F, warning = F, 
+               error = F, tidy = F, cache = F)
+
+```
+
+```{r}
+MODELS <- here("exploratory_studies/13_europarl/gender_ratings/")
+all_model_ratings <- map_df(list.files(MODELS, full.names = T), fread)  %>%
+  mutate(epochs = map(model, ~str_split(pluck(pluck(str_split(., "en_"),1), 2), "ep")),
+         epochs = map(epochs, ~pluck(pluck(.,1),1)),
+         model_type = case_when(str_detect(model, "trans_f") ~ "translated",
+                                str_detect(model, "untrans") ~ "untranslated")) %>%
+  select(model_type, epochs, word, male_score) %>%
+  mutate(epochs = as.character(epochs))
+
+GENDER_NORMS <- here("data/study1a/raw/GlasgowNorms.csv")
+glasgow_norms <- read_csv(GENDER_NORMS) %>%
+  select(word, GEND_M) %>%
+  rename(human_gender_rating = GEND_M) %>%
+  rowwise() %>%
+  mutate(word =  str_split(word, " ", simplify = T)[1],
+         word = tolower(word)) %>%
+  distinct() %>%
+  ungroup()
+
+all_ratings <- all_model_ratings %>%
+  left_join(glasgow_norms) 
+
+ggplot(all_ratings, aes(x  = human_gender_rating, y = male_score)) +
+  geom_point(size = .2, alpha = .2) +
+  geom_smooth(method = "lm") +
+  facet_grid(epochs ~ model_type) +
+  theme_bw()
+  
+
+cor_values <- all_ratings %>%
+  mutate(epochs = as.numeric(epochs)) %>%
+  group_by(model_type, epochs) %>%
+  nest() %>%
+  mutate(temp = map(data, ~tidy(cor.test(.$human_gender_rating, .$male_score)))) %>%
+  select(-data) %>%
+  unnest() 
+
+
+kable(cor_values)
+
+ggplot(cor_values, aes(y = estimate, x = epochs, group = model_type)) +
+  facet_wrap(~model_type) +
+  geom_point() +
+  geom_line() +
+  theme_bw()
+
+```
+
+```{r}
+
+CAREER_WORDS <- c("career", "executive", "management", "professional", "corporation", "salary", "office", "business")
+FAMILY_WORDS <- c("family", "home", "parents", "children", "cousins", "marriage", "wedding", "relatives")
+
+# parents and cousins
+mean_scores <- all_ratings %>%
+  filter(word %in% c(CAREER_WORDS, FAMILY_WORDS)) %>%
+  mutate(career_word_type = case_when(word %in% CAREER_WORDS ~ "career",
+                                 word %in% FAMILY_WORDS ~ "family")) %>%
+  group_by(model_type, epochs, career_word_type) %>%
+  multi_boot_standard(col = "male_score")
+
+ggplot(mean_scores, aes(x = career_word_type, y = mean, ymin = ci_lower, ymax= ci_upper)) +
+  geom_pointrange() +
+    facet_grid(epochs ~ model_type) 
+
+
+```

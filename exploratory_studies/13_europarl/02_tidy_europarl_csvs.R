@@ -10,15 +10,23 @@ INFILE <- "/Volumes/wilbur_the_great/europarl/tidy_csvs/"
 OUTFILE <- "/Volumes/wilbur_the_great/europarl/tidy_csvs/all_target_turns.csv"
 
 files_df <- list.files(INFILE, full.names = T) %>%
-  map(fread) %>%
+  map(fread, colClasses = c("character",
+                            "character",
+                            "integer",
+                            "character",
+                            "character",
+                            "character",
+                            "character",
+                            "character")) %>%
   bind_rows()
 
 all_files_tidy <- files_df %>%
   mutate_at(vars(session, speaker_language, speaker_name,
-                 speaker_country, turn_language), as.factor) %>%
+                 speaker_country, turn_language, chapter), as.factor) %>%
   filter(!is.na(speaker_language)) %>%
   filter(speaker_language %in% OVERLAPPING_LANGS,
          turn_language %in% OVERLAPPING_LANGS)
 
 write_csv(all_files_tidy, OUTFILE)
+
 
