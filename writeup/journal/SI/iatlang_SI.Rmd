@@ -28,9 +28,10 @@ library(maps)
 library(countrycode)
 library(viridis)
 library(broom)
+library(kableExtra)
 
 opts_chunk$set(echo = F, message = F, warning = F, 
-               error = F, cache = T, tidy = F, fig.height = 4.5)
+               error = F, cache = F, tidy = F, fig.height = 4.5)
 
 tidy_r_to_text_r <- function(tidy_row){
   round_tidy <- tidy_row %>%
@@ -506,7 +507,8 @@ ALL_MEASURES_PATH <- "data/tidy_measures.csv"
 all_es <- read_csv(ALL_MEASURES_PATH) %>%
   select(median_country_age, es_iat_sex_age_order_explicit_resid,
          es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017,
-         lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm)  %>%
+         lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, 
+         wiki_occu_semantics_fm)  %>%
         rename(`Residualized Implicit Bias (IAT)` = "es_iat_sex_age_order_implicit_resid",
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
           `Language IAT (Subtitle)` = "lang_es_sub",
@@ -526,7 +528,8 @@ summary_stat <- all_es %>%
 
 summary_stat_reordered <- summary_stat[c(2,3,4,5,6,7,8,9,1),]
 
-kable(summary_stat_reordered, digits = 3)
+kable(summary_stat_reordered, format = "html", digits = 3) %>%
+    kable_styling()
 
 ```
 
@@ -580,6 +583,21 @@ corr_exclusions_tidy %>%
   ylim(-.8, .8) +
   theme_bw()
 ```
+
+## Partial correlations controling for median country age
+Partial correlation (Pearson's r) for all measures in Study 1 and 2 at the level of languages, controlling for median country age. Single asterisks indicate p < .05 and double asterisks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.
+
+```{r}
+CACHE_TABLE_PATH <- here("writeup/journal/SI/data/cached_corr_table.csv")
+cached_corr_table <- read_csv(CACHE_TABLE_PATH, na = character()) %>%
+  rename(" " = X1)
+
+kable(cached_corr_table[10:17,-9],  booktabs = T, escape = F, # partial corrs only
+      align = "l") %>% 
+  kable_styling(full_width = F,font_size = 9)  
+  #row_spec(0, angle = 180) 
+```
+
 
 # Study 1c: Pre-registered Analysis of British vs. American English
 The pre-registeration to this study can be found here: https://osf.io/3f9ed.

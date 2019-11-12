@@ -16,56 +16,54 @@ lang_key <- read_csv(LANGKEY)  %>%
 
 translations <- read_csv(INFILE)  %>%
     left_join(lang_key, by = "language") %>%
-    select(wiki_language_code, word, gender, word_id, translation_id, 
-           translation) 
+    select(wiki_language_code, word, gender, word_id, translation_id,
+           translation)
 
 all_langs <- unique(translations$wiki_language_code)
 
 #### loop over languages and get word vectors ####
 save_subsetted_model <- function(current_lang, trans_df, model_prefix, out_model_prefix){
-  
+
   print(paste0("===== ", current_lang, " ====="))
   model_path <- paste0(model_prefix, current_lang, ".vec")
   # read in model from temp_filename
-  model <- fread(model_path,    
+  model <- fread(model_path,
                  skip = 1,
                  key = "V1",
                  encoding = "UTF-8",
                  data.table = TRUE,
                  verbose = F,
                  quote = "")
-  
-  # get model of the words we care about 
+
+  # get model of the words we care about
   translated_word_list <- trans_df %>%
     filter(wiki_language_code == current_lang)  %>%
     rename(language_code = wiki_language_code)
-  
+
   relevant_vectors <- translated_word_list %>%
     merge(model  %>% rename(translation = V1),  # get vectors for relevant words only
           by = "translation", all.x = TRUE)
-  
+
   # write raw vectors
   write_csv(relevant_vectors, paste0(out_model_prefix, "raw/wiki.", current_lang, "_raw.csv"))
-  
+
   calculated_vectors <- relevant_vectors %>%
     select(-translation) %>%
     group_by(language_code, word, gender, translation_id) %>% # mean across word ids
     summarise_at(vars(V2:V301), mean, na.rm = TRUE) %>%
-    group_by(language_code, word, gender) %>% 
+    group_by(language_code, word, gender) %>%
     summarize_at(vars(V2:V301), mean, na.rm = TRUE) # mean across words
-  
+
   # write calculated vectors
-  write_csv(calculated_vectors, paste0(out_model_prefix, "calculated/wiki.", 
+  write_csv(calculated_vectors, paste0(out_model_prefix, "calculated/wiki.",
                                        current_lang, "_calculated.csv"))
-  
+
 }
 
 # get all subsetted models
 walk("hi",
-  #all_langs, #unique(translations$wiki_language_code), 
-     save_subsetted_model, 
-     translations, 
+  #all_langs, #unique(translations$wiki_language_code),
+     save_subsetted_model,
+     translations,
      MODEL_PREFIX,
      OUTMODEL_PREFIX)
-
-
