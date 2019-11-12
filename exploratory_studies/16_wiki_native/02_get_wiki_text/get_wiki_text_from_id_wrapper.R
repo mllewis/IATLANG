@@ -18,8 +18,7 @@ LANGS <- c("ar", "da", "de", "en", "es", "fa", "fi", "fr", "he", "hi", "hr", "id
            "ko", "ms", "nl", "no", "pl", "pt", "ro", "sv", "tl", "tr", "zh")
 
 
-LANGS <- c("da", "de", "en", "es", "fa", "fi", "fr", "he", "hi", "hr", "id", "it", "ja",
-           "ko", "ms", "nl", "no", "pl", "pt", "ro", "sv", "tl", "tr", "zh")
+LANGS <- c("sr")
 
 source_python(PYTHON_SCRIPT)
 
@@ -29,7 +28,6 @@ process_target_articles_one_lang <- function(current_lang,
                                              langlinks_csv_path) {
 
   print(paste("%%%%%%%%%%%%%", current_lang, "%%%%%%%%%%%%%"))
-
   # download file
   print("====downloading raw xml====")
   current_raw_xml_path <- paste0(raw_xml_path, current_lang, "wiki/latest/", current_lang, "wiki-latest-pages-articles.xml.bz2")
@@ -51,8 +49,9 @@ process_target_articles_one_lang <- function(current_lang,
 
 }
 
+
 walk(LANGS,
-     process_target_articles_one_lang,
+     possibly(process_target_articles_one_lang, NA),
      RAW_XML_PATH,
      RAW_XML_PATH_ZIPPED,
      LANGLINKS_CSV_PATH)

@@ -121,3 +121,4 @@ exploratory_studies/13_europarl/gender_ratings/*
 exploratory_studies/13_europarl/get_iat_bias/*
 exploratory_studies/14_eci/*
 exploratory_studies/15_udbank/*
+exploratory_studies/16_wiki_native/02_get_wiki_text/ar_nativelang_article_text.csv
