@@ -1,18 +1,25 @@
- ,Residualized Explicit Bias,Residualized Implicit Bias (IAT),Percent Women in STEM,Language IAT (Subtitle),Language IAT (Wikipedia),Occupation Bias (Subtitle),Occupation Bias (Wikipedia),Median Country Age
-Residualized Explicit Bias,,\ .18,\ .18,-.08,\ .34+,\ .28,\ .29,-.07
-Residualized Implicit Bias (IAT),\ .18,,-.53*,\ .50*,\ .48*,\ .64**,\ .59**,\ .61**
-Percent Women in STEM,\ .18,-.53*,,-.55*,-.19,-.39,-.32,-.42+
-Language IAT (Subtitle),-.08,\ .50*,-.55*,,\ .51*,\ .42+,\ .40+,\ .31
-Language IAT (Wikipedia),\ .34+,\ .48*,-.19,\ .51*,,\ .28,\ .44*,\ .25
-Prop. Gender-Distinct Labels,\ .11,\ .57**,-.35,\ .28,\ .18,\ .75**,\ .70**,\ .35+
-Occupation Bias (Subtitle),\ .28,\ .64**,-.39,\ .42+,\ .28,,\ .80**,\ .36
-Occupation Bias (Wikipedia),\ .29,\ .59**,-.32,\ .40+,\ .44*,\ .80**,,\ .34+
-Median Country Age,-.07,\ .61**,-.42+,\ .31,\ .25,\ .36,\ .34+,
-Residualized Explicit Bias,,\ .28,\ .16,-.06,\ .38+,\ .33,\ .34, 
-Residualized Implicit Bias (IAT),\ .28,,-.38+,\ .42*,\ .43*,\ .57**,\ .52**, 
-Percent Women in STEM,\ .16,-.38+,,-.49*,-.09,-.28,-.20, 
-Language IAT (Subtitle),-.06,\ .42*,-.49*,,\ .47*,\ .35+,\ .33, 
-Language IAT (Wikipedia),\ .38+,\ .43*,-.09,\ .47*,,\ .21,\ .39+, 
-Prop. Gender-Distinct Labels,\ .14,\ .48*,-.23,\ .20,\ .11,\ .71**,\ .66**, 
-Occupation Bias (Subtitle),\ .33,\ .57**,-.28,\ .35+,\ .21,,\ .77**, 
-Occupation Bias (Wikipedia),\ .34,\ .52**,-.20,\ .33,\ .39+,\ .77**,, 
+ ,Residualized Explicit Bias,Residualized Implicit Bias (IAT),Percent Women in STEM,Language IAT (Subtitle),Language IAT (Wikipedia),"Language IAT
+(Wikipedia, untranslated)",Occupation Bias (Subtitle),Occupation Bias (Wikipedia),"Occupation Bias (Wikipedia, untranslated)",Median Country Age
+Residualized Explicit Bias,,\ .18,\ .18,-.08,\ .34+,\ .21,\ .28,\ .29,\ .37+,-.07
+Residualized Implicit Bias (IAT),\ .18,,-.53*,\ .50*,\ .48*,\ .60**,\ .64**,\ .59**,\ .48*,\ .61**
+Percent Women in STEM,\ .18,-.53*,,-.55*,-.19,-.39+,-.39,-.32,-.31,-.42+
+Language IAT (Subtitle),-.08,\ .50*,-.55*,,\ .51*,\ .49*,\ .42+,\ .40+,\ .32,\ .31
+Language IAT (Wikipedia),\ .34+,\ .48*,-.19,\ .51*,,\ .90**,\ .28,\ .44*,\ .26,\ .25
+"Language IAT
+(Wikipedia, untranslated)",\ .21,\ .60**,-.39+,\ .49*,\ .90**,,\ .25,\ .46*,\ .27,\ .48*
+Prop. Gender-Distinct Labels,\ .11,\ .57**,-.35,\ .28,\ .18,\ .23,\ .75**,\ .70**,\ .72**,\ .35+
+Occupation Bias (Subtitle),\ .28,\ .64**,-.39,\ .42+,\ .28,\ .25,,\ .80**,\ .71**,\ .36
+Occupation Bias (Wikipedia),\ .29,\ .59**,-.32,\ .40+,\ .44*,\ .46*,\ .80**,,\ .88**,\ .34+
+"Occupation Bias (Wikipedia, untranslated)",\ .37+,\ .48*,-.31,\ .32,\ .26,\ .27,\ .71**,\ .88**,,\ .28
+Median Country Age,-.07,\ .61**,-.42+,\ .31,\ .25,\ .48*,\ .36,\ .34+,\ .28,
+Residualized Explicit Bias,,\ .28,\ .16,-.06,\ .38+,\ .28,\ .33,\ .34,\ .41*, 
+Residualized Implicit Bias (IAT),\ .28,,-.38+,\ .42*,\ .43*,\ .44*,\ .57**,\ .52**,\ .40+, 
+Percent Women in STEM,\ .16,-.38+,,-.49*,-.09,-.23,-.28,-.20,-.22, 
+Language IAT (Subtitle),-.06,\ .42*,-.49*,,\ .47*,\ .41*,\ .35+,\ .33,\ .25, 
+Language IAT (Wikipedia),\ .38+,\ .43*,-.09,\ .47*,,\ .92**,\ .21,\ .39+,\ .21, 
+"Language IAT
+(Wikipedia, untranslated)",\ .28,\ .44*,-.23,\ .41*,\ .92**,,\ .09,\ .36+,\ .17, 
+Prop. Gender-Distinct Labels,\ .14,\ .48*,-.23,\ .20,\ .11,\ .07,\ .71**,\ .66**,\ .69**, 
+Occupation Bias (Subtitle),\ .33,\ .57**,-.28,\ .35+,\ .21,\ .09,,\ .77**,\ .68**, 
+Occupation Bias (Wikipedia),\ .34,\ .52**,-.20,\ .33,\ .39+,\ .36+,\ .77**,,\ .87**, 
+"Occupation Bias (Wikipedia, untranslated)",\ .41*,\ .40+,-.22,\ .25,\ .21,\ .17,\ .68**,\ .87**,, 

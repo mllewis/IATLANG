@@ -29,6 +29,7 @@ library(countrycode)
 library(viridis)
 library(broom)
 library(kableExtra)
+library(here)
 
 opts_chunk$set(echo = F, message = F, warning = F, 
                error = F, cache = F, tidy = F, fig.height = 4.5)
@@ -501,25 +502,27 @@ ggplot(all_es_sub, aes(x = sub,
 
 ## Descriptive statistics for all language-level measures
 
-Below are the mean and standard deviations estimates for all measures presented in Table 1 of the Main Text.
+Below are the mean and standard deviation estimates for all measures presented in Table 1 of the Main Text.
 ```{r}
 ALL_MEASURES_PATH <- "data/tidy_measures.csv"
 all_es <- read_csv(ALL_MEASURES_PATH) %>%
   select(median_country_age, es_iat_sex_age_order_explicit_resid,
          es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017,
-         lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, 
-         wiki_occu_semantics_fm)  %>%
+         lang_es_sub, lang_es_wiki, lang_es_wiki_native, mean_prop_distinct_occs, subt_occu_semantics_fm, 
+         wiki_occu_semantics_fm, n_participants)  %>%
         rename(`Residualized Implicit Bias (IAT)` = "es_iat_sex_age_order_implicit_resid",
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
           `Language IAT (Subtitle)` = "lang_es_sub",
           `Language IAT (Wikipedia)` = "lang_es_wiki",
+           `Language IAT (Wikipedia, untranslated)` = "lang_es_wiki_native",
           `Occupation Bias (Subtitle)` = "subt_occu_semantics_fm",
           `Occupation Bias (Wikipedia)` = "wiki_occu_semantics_fm",
           `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
           `Percent Women in STEM` = "per_women_stem_2012_2017",
-          `Median Country Age` = "median_country_age") 
+          `Median Country Age` = "median_country_age")  
 
 summary_stat <- all_es %>%
+    select(-"Language IAT (Wikipedia, untranslated)", -n_participants) %>%
     summarize_all(mean, na.rm = T) %>%
     gather("Measure", "Mean") %>%
     full_join(
@@ -529,7 +532,7 @@ summary_stat <- all_es %>%
 summary_stat_reordered <- summary_stat[c(2,3,4,5,6,7,8,9,1),]
 
 kable(summary_stat_reordered, format = "html", digits = 3) %>%
-    kable_styling()
+    kable_styling(font_size = 9)
 
 ```
 
@@ -592,12 +595,43 @@ CACHE_TABLE_PATH <- here("writeup/journal/SI/data/cached_corr_table.csv")
 cached_corr_table <- read_csv(CACHE_TABLE_PATH, na = character()) %>%
   rename(" " = X1)
 
-kable(cached_corr_table[10:17,-9],  booktabs = T, escape = F, # partial corrs only
+kable(cached_corr_table[c(12:16,18:20),c(-7, -10, -11)],  booktabs = T, escape = F, # partial corrs only
       align = "l") %>% 
   kable_styling(full_width = F,font_size = 9)  
   #row_spec(0, angle = 180) 
 ```
 
+## Replication on untranslated corpora
+Both the Subtitle and Wikipedia coprora likely contain some documents that are translated from other languages (e.g., the Wikipedia article on "Paris" is written in French and then translated into Dutch). The parallel content across languages allows us to estimate the gender bias in language statistics, while holding content constant across languages. Nevertheless, content may itself be a driver of gender bias (e.g. a language has more articles on physics topics relative to politicians). To understand the contribution of language-specific content on gender bias, we constructed a corpus of Wikipedia articles in each language that were originally written in the target language (untranslated). To identify untranslated articles, we did x.
+
+trained models on these corpora, and conducted the same analyses as with the other corpora.
+
+Desriptive statistics
+
+include corr plot?
+
+
+
+note excluedmandarn (n = 34)
+
+
+```{r}
+ggplot(all_es, aes(x = `Language IAT (Wikipedia, untranslated)`, 
+                   y = `Residualized Implicit Bias (IAT)`)) +
+  geom_point(alpha = .8, aes(size = log(n_participants))) +
+  geom_smooth(method = "lm") +
+  theme_classic()
+
+```
+
+Table below shows the correlation (Pearson’s r) for all measures in Study 1 and 2 at the level of languages, including estimates of language bias obtained from models trained on the untranslated Wikipedia corpus (highlighted in yellow).  Single asterisks indicate p < .05 and double asterisks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.
+```{r}
+kable(cached_corr_table[c(1:11),],  booktabs = T, escape = F, # full corrs only
+      align = "l") %>% 
+  kable_styling(full_width = F,font_size = 9)  %>%
+  row_spec(6,  background = "#ffffed") %>%
+  row_spec(10,  background = "#ffffed")
+```
 
 # Study 1c: Pre-registered Analysis of British vs. American English
 The pre-registeration to this study can be found here: https://osf.io/3f9ed.
@@ -697,8 +731,6 @@ model_print <- readChar(MODEL_PATH, file.info(MODEL_PATH)$size)
 ```
 `r model_print`
 
-Positive coefficients indicate 
-
 # Study 2: Gender bias and lexicalized gender
 
 ## Grammatical gender coding
@@ -785,8 +817,8 @@ subt_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinc
          `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
          `Median Country Age` = "median_country_age"))
 
-
-kable(subt_regression_r2, digits = 3)
+kable(subt_regression_r2, digits = 3, format = "html") %>%
+    kable_styling(font_size = 9)
 ```
 
 <b> Wikipedia Corpus: </b>
@@ -801,7 +833,8 @@ wiki_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinc
          `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
          `Median Country Age` = "median_country_age"))
 
-kable(wiki_regression_r2, digits = 3)
+kable(wiki_regression_r2, digits = 3, format = "html") %>%
+    kable_styling(font_size = 9)
 ```
 
 # Language bias and other psychological measures{.tabset}
@@ -841,25 +874,12 @@ ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name))
 ```
 
 ## Stoet and Geary (2018)
-
-
-```{r, fig.height = 4.5, fig.width = 4.5}
+```{r}
 lang_sg <- cor.test(other_data$lang_es_sub, 
                     other_data$self_efficacy_diff_sg) %>%
     tidy() %>%
     tidy_r_to_text_r()
 
-ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = country_name)) +
-  ylab("Gender difference in STEM Self Efficacy\n(Stoet & Geary, 2018)") +
-  xlab("Linguistic Gender Bias\n(effect size)") +
-  ggtitle("Language Bias vs. Gender Differences \nin STEM Self Efficacy  ") +
-  geom_smooth(method = "lm", alpha = .2) +
-  geom_point() +
-  geom_text_repel(size = 3) +
-  theme_classic(base_size = 12)
-```
-
-```{r}
 boot_mediation_model_sub <- other_data %>%
   mutate_if(is.numeric, scale) %>%
   robmed::fit_mediation(
@@ -879,7 +899,21 @@ sub_ab <-  boot_mediation_model_sub %>%
 
 Gender difference in STEM Self Efficacy (Stoet & Geary, 20178; “The sex difference in self efficacy (boys – girls)”) as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (`r lang_sg`):  Countries with greater gender differences in self-efficacy also have greater gender bias present in their languages. Futher, self-efficacy mediated the effect of language statistics on percentage of women in stem (path-ab = `r sub_ab`; _p_ = `r sub_p`), suggesting that language statistics could be critical causal factor underlying gender differences in STEM participation. 
 
-**References**
+
+```{r, fig.height = 4.5, fig.width = 4.5}
+ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = country_name)) +
+  ylab("Gender difference in STEM Self Efficacy\n(Stoet & Geary, 2018)") +
+  xlab("Linguistic Gender Bias\n(effect size)") +
+  ggtitle("Language Bias vs. Gender Differences \nin STEM Self Efficacy  ") +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_point() +
+  geom_text_repel(size = 3) +
+  theme_classic(base_size = 12)
+```
+
+
+
+# References 
 
 Benesty, M. (2018). fastrtext: 'fastText' Wrapper for Text Classification and Word Representation (R package version 0.2.5). https://CRAN.R-project.org/package=fastrtext/
 
