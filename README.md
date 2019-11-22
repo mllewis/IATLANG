@@ -12,7 +12,7 @@ Below is a key figure from the paper (Fig. 2) showing that languages with more g
 
 <br>
 
-<img src="writeup/journal/iat_lang_files/figure-latex/unnamed-chunk-11-1.png?raw=true" height="400">
+<img src="resources/key_fig.png?raw=true" height="400">
 
 
 
