@@ -80,8 +80,8 @@ ggplot(all_ratings, aes(y = (8-maleness_norm),
                         x = -maleness_embedding_sub)) + # flip scales for consistency with study 2
   geom_point(size = .2, alpha = .3) +
  # ggtitle("Gender Bias of English Words") +
-  ylab("Human Judgement of Gender Bias") +
-  xlab("Linguistic Gender Bias") +
+  ylab("Human Judgement of Gender Association") +
+  xlab("Linguistic Gender Association") +
   scale_y_continuous(breaks = 1:7, 
                      label = c("1\n(male)", "2", "3", "4", "5", "6", "7\n(female)   ")) +
   scale_x_continuous(breaks = c(-.15, -.1,-.05,  -0, .05, .1, .15), 
@@ -261,9 +261,9 @@ study1_plot1 <- all_es_tidy %>%
   scale_size(trans = "log10", labels = scales::comma, name = "N participants") +
   geom_text(data = corr_text_df, aes(label = simple_r), x = .7, y = -.075, 
             color = "red", size = 5) +
-  ggtitle("Psychological and Linguistic Gender Biases") +
-  ylab("Implicit  Gender Bias (residualized)") +
-  xlab("Linguistic Gender Bias (effect size)") +
+  ggtitle("Psychological and Linguistic Gender Associations") +
+  ylab("Implicit Gender Association\n(residualized effect size)") +
+  xlab("Linguistic Gender Association\n(effect size)") +
   theme_classic(base_size = 12)   +
   theme(legend.position = "right",
         axis.line = element_line(size = .8))
@@ -456,8 +456,8 @@ study1_plot2 <- ggplot(es_iat_tidy, aes(x = lang_diff, y = behavioral_resid_diff
   geom_smooth(method = "lm", alpha = .1) + 
   ggrepel::geom_text_repel(aes(label = domain2), size = 2.2) +
   geom_point() +
-  ylab("Implicit Bias Difference (residualized)") +
-  xlab("Language Bias Difference (effect size)") +
+  ylab("Implicit Gender Association Difference\n(residualized effect size)") +
+  xlab("Language Gender Association Difference\n(effect size)") +
     annotate("text", y = -.17, x = .9, label = 
              paste0("r = ", f_num(corr1c, 2)), 
            color = "red", size = 5) +
@@ -465,11 +465,11 @@ study1_plot2 <- ggplot(es_iat_tidy, aes(x = lang_diff, y = behavioral_resid_diff
                      label = c("-1.5\nUS Greater", "-1", "-.5" ,"0", ".5", "1\nUK Greater") , limits = c(-1.6, 1.2)) +
  scale_y_continuous(breaks = c( -.2,-.1, 0, .1, .2, .3), 
                      label = c("-.2\nUS\nGreater", "-.1", "0", ".1", ".2", ".3\nUK\nGreater"), limits = c(-.2, .32) ) +
-  ggtitle("Psychological and Linguistic Biases in\nBritish and American Participants") +
+  ggtitle("Psychological and Linguistic Gender\nAssociations in British and American\nParticipants") +
   theme_classic(base_size = 12) +
   theme(axis.line = element_line(size = .8))
 
-pdf("/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/writeup/journal/pnas_tex_version/pnas_rmd/iat_lang_pnas_files/figure-latex/study1_fig.pdf", width = 10.25, height = 4.5)
+pdf("/Users/mollylewis/Documents/research/Projects/1_in_progress/IATLANG/writeup/journal/old/pnas_tex_version/pnas_rmd/iat_lang_pnas_files/figure-latex/study1_fig.pdf", width = 10.25, height = 4.5)
 cowplot::plot_grid(study1_plot1, study1_plot2, ncol = 2,
                              labels = c('A','B'), label_size = 16, rel_widths = c(1.3,1))
 dev.off()
