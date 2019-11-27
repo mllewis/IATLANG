@@ -26,8 +26,8 @@ glasgow_norms <- read_csv(GENDER_NORMS) %>%
   select(word, maleness_norm) %>%
   rowwise() %>%
   mutate(word =  str_split(word, " ", simplify = T)[1],
-         word = tolower(word)) %>%
-  group_by(word)  %>%
+         word = tolower(word)) %>%subt_p <- round(p_value(boot_mediation_model_subt), 2)
+
   summarize(maleness_norm = mean(maleness_norm))  # take the mean across multiple sense of word
 
 EMBEDDING_BIAS_SUB  <- here("data/study1a/processed/gender_bias_by_word_english_sub.csv")

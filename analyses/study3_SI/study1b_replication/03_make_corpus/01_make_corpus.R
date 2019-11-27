@@ -14,7 +14,7 @@ OUTPATH2 <- "_native_wiki_corpus.txt"
 
 raw_path1 = RAW_PATH1
 raw_path2 = RAW_PATH2
-current_language = "ro"
+current_language = "em"
 process_one_lang_corpus <- function(current_language, raw_path1, raw_path2, outpath1, outpath2){
   print(current_language)
   raw_path <- here(paste0(raw_path1, current_language, raw_path2))

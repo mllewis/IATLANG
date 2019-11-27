@@ -292,12 +292,10 @@ df_for_plotting2_cis %>%
 ```{r, fig.pos = "t", fig.height = 4.5, fig.cap = "Implicit gender bias (adjusted for age, sex, and block order) as a function of the linguistic gender bias derived from word-embeddings (Study 1b). Each point corresponds to a language, with the size of the point corresponding to the number of participants speaking that langauge. Linguistic biases are estimated from models trained on text in each language from Subtitle (left) and Wikipedia (right) corpora. Larger values indicate a larger bias to associate men with the concept of career and women with the concept of family. Error bands indicate standard error of the linear model estimate."}
 
 corr_text_df <- tidy_corrs %>%
-  filter(rowname == "Residualized Implicit Bias (IAT)", 
-         var2 %in% c("Language IAT (Subtitle)",
-                     "Language IAT (Wikipedia)"),
-           var2 == "Language IAT (Wikipedia)") %>%
-    mutate(model = fct_recode(var2, "Subtitle Embeddings" = "Language IAT (Subtitle)",
-                                   "Wikipedia Embeddings" = "Language IAT (Wikipedia)"))  %>%
+    filter(rowname == "Language IAT (Wikipedia)", 
+           var2 == "Residualized Implicit Bias (IAT)") %>%
+    mutate(model = fct_recode(var2,"Wikipedia Embeddings" = "Language IAT (Wikipedia)"))  %>%
+
   select(model, simple_r) %>%
   mutate(simple_r = paste0("r = ", f_num(simple_r, 2))) %>%
   mutate(x = .85, y = -.07)
@@ -324,9 +322,9 @@ study1_plot1 <- all_es_tidy %>%
   scale_size(trans = "log10", labels = scales::comma, name = "N participants") +
   geom_text(data = corr_text_df, aes(label = simple_r), x = .7, y = -.075, 
             color = "red", size = 5) +
-  ggtitle("Psychological and Linguistic Gender Associations") +
-  ylab("Implicit Gender Association\n(residualized effect size)") +
-  xlab("Linguistic Gender Association\n(effect size)") +
+  ggtitle("Psychological and Linguistic\nCareer-Gender Association") +
+  ylab("Implicit Career-Gender Association\n(residualized effect size)") +
+  xlab("Language Career-Gender Association\n(effect size)") +
   theme_classic(base_size = 12)   +
   theme(legend.position = "right",
         axis.line = element_line(size = .8))

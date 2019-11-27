@@ -1,5 +1,5 @@
 ---
-title: 'What are we learning from language? Associations between gender biases and distributional semantics in 25 languages'
+title: "What are we learning from language? Similarity in gender associations and distributional semantics in 25 languages"
 author: "Molly Lewis and Gary Lupyan"
 date: "`r Sys.Date()`"
 output:
@@ -158,7 +158,7 @@ Asterisks correspond to languages that were excluded from our analysis because w
 
 ## Dependent Measures{.tabset}
 
-Below are histograms for the implicit and explicit measures in the IAT Project Implicit data presented for each country separately. The implicit raw scores are the D-score values (estimate of gender bias, with postive values indicating strong bias to associate men with career), and the residualized values are the D-scores with participant age, participant sex and trial order residualized out. For the explicit measure, the raw score is the difference between participants answer to the question,  “How strongly do you associate the following with males and females?” for the words “career” and for the word "family". Participants indicated their response on a Likert scale ranging from female (1) to male (7). For each participant, a single explicit score was calculated as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family. The residualized explicit value is the difference score with participant age, participant sex and trial order residualized out (we had no a priori reason for residualizing out trial order for explicit responses but did so to remain consistent with the residualized implicit measure).
+Below are histograms for the implicit and explicit measures in the IAT Project Implicit data presented for each country separately. The implicit raw scores are the D-score values (estimate of career-gender association, with postive values indicating strong bias to associate men with career), and the residualized values are the D-scores with participant age, participant sex and trial order residualized out. For the explicit measure, the raw score is the difference between participants answer to the question,  “How strongly do you associate the following with males and females?” for the words “career” and for the word "family". Participants indicated their response on a Likert scale ranging from female (1) to male (7). For each participant, a single explicit score was calculated as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family. The residualized explicit value is the difference score with participant age, participant sex and trial order residualized out (we had no a priori reason for residualizing out trial order for explicit responses but did so to remain consistent with the residualized implicit measure).
 
 ### Implicit
 
@@ -245,7 +245,7 @@ shinyApp(
 
 ## Geographic distribution of IAT scores  
 
-Residualized implicit gender bias (IAT score) shown by country. Larger values (blue) indicate a larger bias to associate men with the concept of career and women with the concept of family. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias. Inset shows IAT scores for European countries only.
+Residualized implicit career-gender association (IAT score) shown by country. Larger values (blue) indicate a larger bias to associate men with the concept of career and women with the concept of family. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level career-gender association. Inset shows IAT scores for European countries only.
 
 ```{r}
 map_world <- map_data(map = "world") %>%
@@ -264,7 +264,7 @@ full_world <- ggplot(map_data, aes(x = long, y = lat,
                        breaks = c(-.06, -.04,  -.02, 0, .02, .04),  na.value="white",
                      label = c(" (male-\n family)", " -0.04",  " -0.02", " 0.00", " 0.02", " (male-\n career)"))  +
   geom_polygon(color = "black", size = .1) +
-  ggtitle("Implicit psychological gender bias by country ") +
+  ggtitle("Implicit career-gender association by country ") +
   theme(
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -316,7 +316,7 @@ full_world +
 
 Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of the linguistic statistics for speakers inIndia as a group.
 
-# Study 1b: Gender bias across languages
+# Study 1b: Career-Gender association across languages
 ## Replication of Caliskan et al. (2017){.tabset}
 
 ```{r english-language-caliskan-es-wiki}
@@ -463,7 +463,7 @@ ggplot(all_es, aes(x = wiki,
 ```
 
 ### Subtitles
-```{r, fig.width = 5, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right corpora).  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
+```{r, fig.width = 5, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right) corpora.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
 
 ggplot(all_es_sub, aes(x = sub, 
                    y = d, 
@@ -602,11 +602,11 @@ kable(cached_corr_table[c(12:16,18:20),c(-7, -10, -11)],  booktabs = T, escape =
 ```
 
 ## Replication on untranslated corpus
-Both the Subtitle and Wikipedia corpora likely contain some documents that are translated from other languages (e.g., the Wikipedia article on "Paris" is written in French and then translated into Dutch). The parallel content across languages allows us to estimate the gender bias in language statistics, while holding content constant across languages. Nevertheless, content may itself be a driver of gender bias (e.g. one language may have more articles about male politicians relative to another). 
+Both the Subtitle and Wikipedia corpora likely contain some documents that are translated from other languages (e.g., the Wikipedia article on "Paris" is written in French and then translated into English). The parallel content across languages allows us to estimate the gender bias in language statistics, while holding content constant across languages. Nevertheless, content may itself be a driver of gender bias (e.g. one language may have more articles about male politicians relative to another). 
 
-To understand the contribution of language-specific content on gender bias, we constructed a corpus of Wikipedia articles in each language that were originally written in the target language (untranslated). We identify untranslated articles by examining the [interlanguage links](https://en.wikipedia.org/wiki/Help:Interlanguage_links) on a Wikipedia article page. These links are pointers to the same article content in other languages (e.g. the "Paris" article in French contains a link to the "Paris" article in Dutch). Since the original source language of an article could not be inferred, we excluded all articles that contained one or more interlanguage links. This ensured that all remaining articles contained only text originally written in the target language.
+To understand the contribution of language-specific content on gender bias, we constructed a corpus of Wikipedia articles in each language that were originally written in the target language (untranslated). We identified untranslated articles by examining the [interlanguage links](https://en.wikipedia.org/wiki/Help:Interlanguage_links) on a Wikipedia article page. These links are pointers to the same article content in other languages (e.g. the "Paris" article in French contains a link to the "Paris" article in English). Since the original source language of an article could not be inferred, we excluded all articles that contained one or more interlanguage links. This ensured that all remaining articles contained only text originally written in the target language.
 
-We constructed a corpus for each language containing all untranslated articles. There were a median of XX articles per language in the corpus. We trained XX on each corpus with XX parameters. Using models trained on native text, we then calculated by-language IAT bias scores and by-language occupation bias scores, using the same procedure as with the models described in the Main Text (Studies 1b and 2).  One language was excluded following the same exclusion criteria as in the main analyses (>= 20% missing words in model; Mandarin), but the results remain the same  when this language is included. 
+We constructed a corpus for each language containing all untranslated articles. There were a median of 168,326 articles per language (range: 10,307-14,676,484). We trained XX on each language corpus with XX parameters. Using models trained on native text, we then calculated by-language IAT bias scores and by-language occupation bias scores, using the same procedure as with the models described in the Main Text (Studies 1b and 2).  One language was excluded following the same exclusion criteria as in the main analyses (>= 20% missing words in model; Mandarin), but the results remain the same  when this language is included. 
 
 Using models trained on the untranslated corpora, we replicate the key finding from Study 1b showing a postive correlation between the bias measured behaviorally with the IAT and measured in language (_r_ = .60; _p_ = .002; fig below). Notably, the effect size is somewhat larger relative to the other two corpora types, presumably because additional bias is introduced by allowing the corpus content to vary across languages. 
 
@@ -623,10 +623,10 @@ all_es %>%
   scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
                      label = c("-.075\n(male-\nfamily)", "-.05", "-.025", "0", ".025", ".05\n(male-\ncareer)") , limits = c(-.08, .06) ) +
   scale_size(trans = "log10", labels = scales::comma, name = "N participants") +
-  ggtitle("Psychological and Linguistic Gender Biases\n(Unstranslated Corpus)") +
-  ylab("Implicit  Gender Bias (residualized)") +
+  ggtitle("Psychological and Linguistic Career-Gender\nAssociation (Unstranslated Corpus)") +
+  ylab("Implicit  Career-Gender\nAssociation (residualized effect size)") +
   annotate("text", y = -.06, x = .75, label = "r = .60**", color = "red" ) +
-  xlab("Linguistic Gender Bias (effect size)") +
+  xlab("Language Career-Gender Association\n(effect size)") +
   theme_classic()  +
   theme(legend.position = "right")
 ```
@@ -741,7 +741,7 @@ model_print <- readChar(MODEL_PATH, file.info(MODEL_PATH)$size)
 ```
 `r model_print`
 
-# Study 2: Gender bias and lexicalized gender
+# Study 2: Gender association and lexicalized gender
 
 ## Grammatical gender coding
 
@@ -808,46 +808,87 @@ datatable(translations,
 ))
 ```
 
-## Predicting bias with both types of language predictors 
-In this analysis, we predict the magnitude of implicit bias by language with an additive linear model. As predictors, we include   proportion gender distinct labels, linguistic bias (as measured by word embeddings of the IAT words), and median country age. Model coefficients are shown below for models based on the Subtitle (top) and Wikipedia (bottom) corpora. 
+## Predicting career-gender association with both language measures 
+In this analysis, we predict the magnitude of implicit career-gender association by language with an additive linear model. As predictors, we include   proportion gender distinct labels and linguistic career-gender association (as measured by word embeddings of the IAT words). Model coefficients are shown below for models based on the Subtitle (top) and Wikipedia (bottom) corpora. 
 
 <b> Subtitle Corpus: </b>
 ```{r}
-LANG_MEAUSURE_PATH <- "data/all_es_tidy2_scaled.csv"
-all_lang_model_scaled <- read_csv(LANG_MEAUSURE_PATH)
+LANG_MEASURE_PATH <- "data/all_es_tidy2_scaled.csv"
+all_lang_model_scaled <- read_csv(LANG_MEASURE_PATH)
 
+# regressions with lang_es_sub/wiki instead of occupation statistics
+subt_regression_r2_no_age <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_sub, 
+   data = all_lang_model_scaled)
+
+subt_regression_r2_no_age  %>%
+  tidy() %>%
+  mutate(term = fct_recode(term,
+         `Language IAT (Subtitle)` = "lang_es_sub",
+         `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs")) %>%
+  kable(digits = 3, format = "html") %>%
+  kable_styling(font_size = 9)
+```
+This model accounts for `r round(summary(subt_regression_r2_no_age)$r.squared * 100, 2)`% variance. 
+
+<b> Wikipedia Corpus: </b>
+```{r}
+wiki_regression_r2_no_age <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_wiki, 
+   data = all_lang_model_scaled)  
+
+wiki_regression_r2_no_age %>%
+  tidy() %>%
+  mutate(term = fct_recode(term,
+         `Language IAT (Wikipedia)` = "lang_es_wiki",
+         `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs")) %>%
+  kable(digits = 3, format = "html") %>%
+  kable_styling(font_size = 9)
+```
+This model accounts for `r round(summary(wiki_regression_r2_no_age)$r.squared * 100, 2)`% variance. 
+
+
+Presented below are models that include median country age as an additional predictor. 
+
+<b> Subtitle Corpus: </b>
+```{r}
 # regressions with lang_es_sub/wiki instead of occupation statistics
 subt_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
      lang_es_sub +  
      median_country_age, 
-   data = all_lang_model_scaled) %>%
+   data = all_lang_model_scaled) 
+
+subt_regression_r2 %>%
   tidy() %>%
   mutate(term = fct_recode(term,
          `Language IAT (Subtitle)` = "lang_es_sub",
          `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
-         `Median Country Age` = "median_country_age"))
-
-kable(subt_regression_r2, digits = 3, format = "html") %>%
+         `Median Country Age` = "median_country_age")) %>%
+  kable(digits = 3, format = "html") %>%
     kable_styling(font_size = 9)
 ```
+This model accounts for `r round(summary(subt_regression_r2)$r.squared * 100, 2)`% variance. 
 
 <b> Wikipedia Corpus: </b>
+
 ```{r}
 wiki_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
      lang_es_wiki +  
      median_country_age, 
-   data = all_lang_model_scaled)   %>%
+   data = all_lang_model_scaled)  
+
+wiki_regression_r2 %>%
   tidy() %>%
   mutate(term = fct_recode(term,
          `Language IAT (Wikipedia)` = "lang_es_wiki",
          `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
-         `Median Country Age` = "median_country_age"))
-
-kable(wiki_regression_r2, digits = 3, format = "html") %>%
-    kable_styling(font_size = 9)
+         `Median Country Age` = "median_country_age")) %>%
+  kable(digits = 3, format = "html") %>%
+  kable_styling(font_size = 9)
 ```
+This model accounts for `r round(summary(wiki_regression_r2)$r.squared * 100, 2)`% variance. 
 
-# Language bias and other psychological measures{.tabset}
+# Gender associations in language and other psychological measures{.tabset}
 
 Several recent studies (Falk & Hermle, 2018; Stoet & Geary, 2018) have presented novel theories to account for cases of structural insequality related to gender. Both of these papers argue that psychological differences play a causal role in the emergence of structural inequality. Here, we show that degree of gender bias in language is correlated with these psychological differences at the country level, consistent with the idea that language experience could be playing a causal role in the emergence of psychological differences.
 
@@ -870,13 +911,13 @@ implicit_gdp <- cor.test(other_data$lang_es_sub,
   tidy_r_to_text_r()
 ```
 
-Gender differences in preferences (Falk & Hermle, 2018; composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (`r implicit_gender_dif`): Countries with greater differences in gender preferences also have greater gender bias present in their languages. We also find that per capita GDP (World Bank database; 2017 GDP per capita (current US$) indicator) is correlated with linguistic gender bias measured in the Subtitle corpus (`r implicit_gdp`).
+Gender differences in preferences (Falk & Hermle, 2018; composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of linguistic gender bias measured in the Subtitle corpus. Thest two measures are correlated (`r implicit_gender_dif`): Countries with greater differences in gender preferences also have greater gender bias present in their languages. We also find that per capita GDP (World Bank database; 2017 GDP per capita (current US$ indicator) is correlated with linguistic gender bias measured in the Subtitle corpus (`r implicit_gdp`).
 
 ```{r, fig.height = 4.5, fig.width = 4.5}
 ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name)) +
   ylab("Gender Differences in Preferences\n(Falk & Hermle, 2018)") +
-  xlab("Linguistic Gender Bias\n(effect size)") +
-  ggtitle("Language Bias vs. Gender Differences\nin Preferences") +
+  xlab("Language Career-Gender Association \n(effect size)") +
+  ggtitle("Language Career-Gender Association vs.\nGender Differences in Preferences") +
   geom_smooth(method = "lm", alpha = .2) +
   geom_point() +
   geom_text_repel(size = 3) +
@@ -913,8 +954,8 @@ Gender difference in STEM Self Efficacy (Stoet & Geary, 20178; “The sex differ
 ```{r, fig.height = 4.5, fig.width = 4.5}
 ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = country_name)) +
   ylab("Gender difference in STEM Self Efficacy\n(Stoet & Geary, 2018)") +
-  xlab("Linguistic Gender Bias\n(effect size)") +
-  ggtitle("Language Bias vs. Gender Differences \nin STEM Self Efficacy  ") +
+  xlab("Language Career-Gender Association \n(effect size)") +
+  ggtitle("Language Career-Gender Association vs.\nGender Differences in STEM Self Efficacy  ") +
   geom_smooth(method = "lm", alpha = .2) +
   geom_point() +
   geom_text_repel(size = 3) +
@@ -926,7 +967,6 @@ ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = count
 # References 
 
 Benesty, M. (2018). fastrtext: 'fastText' Wrapper for Text Classification and Word Representation (R package version 0.2.5). https://CRAN.R-project.org/package=fastrtext/
-
 Bojanowski, P., Grave, E., Joulin, A., & Mikolov, T. (2016). Enriching word vectors with subword information. https://arxiv.org/abs/1607.04606
 
 Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). Semantics derived automatically from language corpora contain human-like biases. _Science_, _356_(6334), 183–186.

@@ -125,8 +125,8 @@ study2_plot1 <- ggplot(all_es_tidy2, aes(x = mean_prop_distinct_occs,
   theme_classic(base_size = 12) + 
   theme(legend.position = "none",
           axis.line = element_line(size = .8)) +
-  ggtitle("Implicit Gender Association and\nOccupation Terms") +
-  ylab("Implicit Gender Associaiton\n(residualized effect size)") +
+  ggtitle("Implicit Career-Gender Association\nand Occupation Terms") +
+  ylab("Implicit Career-Gender Associaiton\n(residualized effect size)") +
   xlab("Proportion Gender-Specific Occupation Terms") +
   annotate("text", x = .8, y = -.07, label = 
              paste0("r = ", distinct_behavior_corr), 
@@ -188,9 +188,12 @@ GN_B_partial <- text_tidy_corrs %>%
   filter(rowname ==  "mean_prop_distinct_occs", var2 == "es_iat_sex_age_order_implicit_resid") %>%
   pull(partial_print_text)
 
-GN_E <- text_tidy_corrs %>%
-  filter(rowname ==  "mean_prop_distinct_occs", var2 == "es_iat_sex_age_order_explicit_resid") %>%
-  pull(r_print_text)
+GN_E <- 
+  cor.test(all_corr_vars$mean_prop_distinct_occs, 
+                    all_corr_vars$es_iat_sex_age_order_explicit_resid) %>%
+  tidy() %>%
+  tidy_r_to_text_r(.)
+
 # Note: full table produced in study1_writeup
 ```
 
@@ -289,7 +292,7 @@ study2_plot2 <- all_es_tidy2 %>%
     scale_size(trans = "log10", labels = scales::comma, 
                name = "N participants") +
     ggtitle("Psychological and Linguistic Gender\nAssociations for Occupations") +
-    ylab("Implicit Gender Association\n(residualized effect size)") +
+    ylab("Implicit Career-Gender Association\n(residualized effect size)") +
     xlab("Gender Association of Occupation Terms\nfrom Language Statistics") +
     theme_classic(base_size = 12)  +
     theme(legend.position = "right",
