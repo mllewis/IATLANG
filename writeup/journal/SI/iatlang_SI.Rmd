@@ -316,6 +316,27 @@ full_world +
 
 Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of the linguistic statistics for speakers inIndia as a group.
 
+## IAT scores and country age
+
+At the participant level, median country age predicts IAT bias over and above participant age: Countries with older populations tend to have individuals with stronger career-gender associations, even after controlling for participant age. The analysis below presents an additive mixed-effect regression predicting IAT D-score at the participant level with participant age and median country age, controlling for participant sex and trial order. The model includes by-country random intercepts. 
+
+```{r}
+MODEL_PATH_0a  <- "data/study_0a_model_print.txt"
+model_print_0a <- readChar(MODEL_PATH_0a, file.info(MODEL_PATH_0a)$size)
+```
+`r model_print_0a`
+
+<br>
+<br>
+The relationship between median country age and IAT bias holds, even after controlling for the percentage women in STEM. The model below presents an additive mixed effect model predicting IAT D-score at the participant level with participant age, median country age and percentage women in STEM in country,  controlling for participant sex and trial order. The model includes by-country random intercepts. 
+
+
+```{r}
+MODEL_PATH_0b  <- "data/study_0b_model_print.txt"
+model_print_0b <- readChar(MODEL_PATH_0b, file.info(MODEL_PATH_0b)$size)
+```
+`r model_print_0b`
+
 # Study 1b: Career-Gender association across languages
 ## Replication of Caliskan et al. (2017){.tabset}
 
@@ -587,11 +608,11 @@ corr_exclusions_tidy %>%
   theme_bw()
 ```
 
-## Partial correlations controling for median country age
+## Partial correlations controlling for median country age
 Partial correlation (Pearson's r) for all measures in Study 1 and 2 at the level of languages, controlling for median country age. Single asterisks indicate p < .05 and double asterisks indicate p < .01. The + symbol indicates a marginally significant p-value, p < .1.
 
 ```{r}
-CACHE_TABLE_PATH <- here("writeup/journal/SI/data/cached_corr_table.csv")
+CACHE_TABLE_PATH <- "data/cached_corr_table.csv"
 cached_corr_table <- read_csv(CACHE_TABLE_PATH, na = character()) %>%
   rename(" " = X1)
 
@@ -606,7 +627,7 @@ Both the Subtitle and Wikipedia corpora likely contain some documents that are t
 
 To understand the contribution of language-specific content on gender bias, we constructed a corpus of Wikipedia articles in each language that were originally written in the target language (untranslated). We identified untranslated articles by examining the [interlanguage links](https://en.wikipedia.org/wiki/Help:Interlanguage_links) on a Wikipedia article page. These links are pointers to the same article content in other languages (e.g. the "Paris" article in French contains a link to the "Paris" article in English). Since the original source language of an article could not be inferred, we excluded all articles that contained one or more interlanguage links. This ensured that all remaining articles contained only text originally written in the target language.
 
-We constructed a corpus for each language containing all untranslated articles. There were a median of 168,326 articles per language (range: 10,307-14,676,484). We trained XX on each language corpus with XX parameters. Using models trained on native text, we then calculated by-language IAT bias scores and by-language occupation bias scores, using the same procedure as with the models described in the Main Text (Studies 1b and 2).  One language was excluded following the same exclusion criteria as in the main analyses (>= 20% missing words in model; Mandarin), but the results remain the same  when this language is included. 
+We constructed a corpus for each language containing all untranslated articles. There were a median of 168,326 articles per language (range: 10,307-14,676,484). We trained fastText (Joulin, et al. 2016) on each language corpus with default parameters and a dimension size of 200. We then used these models trained on native text to calculate by-language IAT bias scores and by-language occupation bias scores, using the same procedure as with the models described in the Main Text (Studies 1b and 2).  One language was excluded following the same exclusion criteria as in the main analyses (>= 20% missing words in model; Mandarin), but the results remain the same  when this language is included. 
 
 Using models trained on the untranslated corpora, we replicate the key finding from Study 1b showing a postive correlation between the bias measured behaviorally with the IAT and measured in language (_r_ = .60; _p_ = .002; fig below). Notably, the effect size is somewhat larger relative to the other two corpora types, presumably because additional bias is introduced by allowing the corpus content to vary across languages. 
 
@@ -974,6 +995,8 @@ Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). Semantics derived automatic
 Dryer, M. S., & Haspelmath, M. (Eds.). (2013). _WALS online_. Leipzig: Max Planck Institute for Evolutionary Anthropology. Retrieved from http://wals.info/
 
 Falk, A., & Hermle, J. (2018). Relationship of gender differences in preferences to economic development and gender equality. _Science_, 362 (6412), eaas9899.
+
+Joulin A, Grave E, Bojanowski P, Mikolov T (2016) Bag of tricks for efficient text classification. _818arXiv preprint arXiv:1607.01759)_
 
 Lison, P., & Tiedemann, J. (2016). OpenSubtitles2016: Extracting large parallel corpora from movie and TV subtitles. In _Proceedings of the 10th International Conference on Language Resources and Evaluation_.
 
