@@ -36,6 +36,14 @@ We analyzed gender-career IAT scores collected by Project Implicit between 2005 
 To quantify participants' performance on the IAT we adopt the widely used _D-score_, which measures the difference between critical blocks for each participant while controlling for  individual differences in response time [@greenwald2003understanding]. After completing the IAT, participants were asked "How strongly do you associate the following with males and females?" for both the words "career" and "family." Participants indicated their response on a Likert scale ranging from _female_ (1) to _male_ (7). We calculated an explicit gender-career bias score for each participant as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with career. 
 
 ```{r}
+# overall
+
+overall_t_test <- t.test(participant_iat$overall_iat_D_score) %>%
+  tidy()
+
+
+
+
 # age
 participant_age_correlation <- cor.test(participant_iat$overall_iat_D_score,
                                         participant_iat$log_age) %>%
@@ -90,7 +98,7 @@ imp_exp_cor_country <- cor.test(
 ```
 
 ## Results
-At the participant level, implicit bias scores were positively correlated with
+There was a reliable bias for participants to associate men with career and women with family (`r tidy_t_to_text_t(overall_t_test)`). At the participant level, implicit bias scores were positively correlated with
 participant age (`r tidy_r_to_text_r(participant_age_correlation)`). Male participants (_M_ = `r round(pull(filter(sex_summaries, sex == 1), mean_D), 2)`, _SD_ = `r round(pull(filter(sex_summaries, sex == 1), sd_D), 2)`) had a significantly smaller implicit gender bias than female participants (_M_ = `r  round(pull(filter(sex_summaries, sex == 0), mean_D), 2)`, _SD_ = `r round(pull(filter(sex_summaries, sex == 0), sd_D), 2)`; `r tidy_t_to_text_t(participant_sex_t_test)`; `r cohen_d_to_text_d(participant_sex_d_score)`), a pattern consistent with previous findings [@nosek2002harvesting]. Implicit bias scores were larger for participants that received the block of trials with bias-incongruent mappings first relative to the opposite order  (`r tidy_t_to_text_t(participant_order_t_test)`; `r cohen_d_to_text_d(participant_order_d_score)`).
 
 Because we did not have language information at the participant level, in the remaining analyses we examine gender bias and its predictors at the country level. To account for the above-mentioned influences on implicit bias, we calculated a residual implicit bias score for each participant, controlling for participant age, participant sex, and block order. We also calculated a residual explicit bias score controlling for the same set of variables. We then averaged across participants to estimate the country-level gender bias  (Implicit: _M_ = `r mean(country_iat$es_iat_sex_age_order_implicit_resid)`; _SD_ = `r sd(country_iat$es_iat_sex_age_order_implicit_resid)`; Explicit: _M_ = `r mean(country_iat$es_iat_sex_age_order_explicit_resid)`; _SD_ = `r sd(country_iat$es_iat_sex_age_order_explicit_resid)`). Implicit gender biases were moderately correlated with explicit gender biases at the level of participants
