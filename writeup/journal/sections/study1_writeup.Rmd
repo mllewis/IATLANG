@@ -157,7 +157,9 @@ all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
   left_join(occupation_semantics)  %>% # include study 2 measure here so can make table
   left_join(by_lang_scores) %>%
   left_join(language_names) %>%
-  select(language_code,language_name,family,n_participants,es_iat_sex_age_order_implicit_resid, es_iat_sex_age_order_explicit_resid, median_country_age, per_women_stem_2012_2017, lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm)
+  select(language_code,language_name,family,n_participants,es_iat_sex_age_order_implicit_resid, es_iat_sex_age_order_explicit_resid,
+         median_country_age, per_women_stem_2012_2017, lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_gender_diff_score_fm_abs,
+         wiki_gender_diff_score_fm_abs)
 
 ```
 
@@ -209,16 +211,14 @@ corpus_effect_cohens_d <- effsize::cohen.d(
 ```{r full_corr_table}
 # corr of lang, behavioral, etc.
 all_corr_vars <- all_es_tidy %>%
-  select(lang_es_sub, lang_es_wiki,subt_occu_semantics_fm, wiki_occu_semantics_fm, mean_prop_distinct_occs, es_iat_sex_age_order_explicit_resid, 
+  select(lang_es_sub, lang_es_wiki,subt_gender_diff_score_fm_abs, wiki_gender_diff_score_fm_abs, mean_prop_distinct_occs, es_iat_sex_age_order_explicit_resid, 
          es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017, median_country_age) %>%
-  mutate(subt_occu_semantics_fm = abs(subt_occu_semantics_fm), ### TEMP!!!
-         wiki_occu_semantics_fm = abs(wiki_occu_semantics_fm)) %>%
   rename(`Residualized Implicit Bias (IAT)` = "es_iat_sex_age_order_implicit_resid",
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
           `Language IAT (Subtitle)` = "lang_es_sub",
           `Language IAT (Wikipedia)` = "lang_es_wiki",
-          `Occupation Bias (Subtitle)` = "subt_occu_semantics_fm",
-          `Occupation Bias (Wikipedia)` = "wiki_occu_semantics_fm",
+          `Occupation Bias (Subtitle)` = "subt_gender_diff_score_fm_abs",
+          `Occupation Bias (Wikipedia)` = "wiki_gender_diff_score_fm_abs",
           `Prop. Gendered Occupation Labels` = "mean_prop_distinct_occs",
           `Percent Women in STEM` = "per_women_stem_2012_2017",
           `Median Country Age` = "median_country_age") 
@@ -317,16 +317,18 @@ study1_plot1 <- all_es_tidy %>%
   geom_point(alpha = .2) +
   ggrepel::geom_text_repel(aes(label = language_name), 
                            size = 2.7, box.padding = 0.1) + 
-  scale_x_continuous(breaks = c(-.15, -0,.25, .5,.75, .9), 
-                     label = c("male-\nfamily", "0", ".25", ".5", ".75", "male-\ncareer") , limits = c(-.2, .9)) +
+  scale_x_continuous(breaks = c(-.25, -0,.25, .5,.75, 1), 
+                     label = c("-.25\n(weaker)", "0", ".25", ".5", ".75", "1\n(stronger)"),
+                     limits = c(-.25, 1)) +
   scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
-                     label = c("-.075\weaker", "-.05", "-.025", "0", ".025", ".05\stronger") , limits = c(-.08, .06) ) +
+                     label = c("-.075\n(weaker)", "-.05", "-.025", "0", ".025", ".05\n(stronger)"),
+                   limits = c(-.075, .05) ) +
   scale_size(trans = "log10", labels = scales::comma, name = "N participants") +
-  geom_text(data = corr_text_df, aes(label = simple_r), x = .7, y = -.075, 
+  geom_text(data = corr_text_df, aes(label = simple_r), x = .75, y = -.065, 
             color = "red", size = 5) +
-  ggtitle("Psychological and Linguistic\nCareer-Gender Association") +
+  ggtitle("Implicit and Linguistic\nMale-Career Association") +
   ylab("Implicit Male-Career Association\n(residualized effect size)") +
-  xlab("Language Career-Gender Association\n(effect size)") +
+  xlab("Language Male-Career Association\n(effect size)") +
   theme_classic(base_size = 12)   +
   theme(legend.position = "right",
         axis.line = element_line(size = .8))
@@ -525,16 +527,16 @@ study1_plot2 <- ggplot(es_iat_tidy, aes(x = lang_diff, y = behavioral_resid_diff
   geom_smooth(method = "lm", alpha = .1) + 
   ggrepel::geom_text_repel(aes(label = domain2), size = 2.2) +
   geom_point() +
-  ylab("Implicit Gender Association Difference\n(residualized effect size)") +
-  xlab("Language Gender Association Difference\n(effect size)") +
-    annotate("text", y = -.17, x = .9, label = 
+  ylab("Implicit Association Difference\n(residualized effect size)") +
+  xlab("Language Association Difference\n(effect size)") +
+    annotate("text", y = -.15, x = .9, label = 
              paste0("r = ", f_num(corr1c, 2)), 
            color = "red", size = 5) +
  scale_x_continuous(breaks = c(-1.5, -1, -.5, 0, .5, 1), 
-                     label = c("-1.5\nUS Greater", "-1", "-.5" ,"0", ".5", "1\nUK Greater") , limits = c(-1.6, 1.2)) +
+                     label = c("-1.5\n(US Greater)", "-1", "-.5" ,"0", ".5", "1\n(UK Greater)") , limits = c(-1.6, 1.2)) +
  scale_y_continuous(breaks = c( -.2,-.1, 0, .1, .2, .3), 
-                     label = c("-.2\nUS\nGreater", "-.1", "0", ".1", ".2", ".3\nUK\nGreater"), limits = c(-.2, .32) ) +
-  ggtitle("Psychological and Linguistic Gender\nAssociations in British and American\nParticipants") +
+                     label = c("-.2\n(US\nGreater)", "-.1", "0", ".1", ".2", ".3\n(UK\nGreater)"), limits = c(-.2, .32) ) +
+  ggtitle("Implicit and Linguistic Associations\nin British and American Participants") +
   theme_classic(base_size = 12) +
   theme(axis.line = element_line(size = .8))
 

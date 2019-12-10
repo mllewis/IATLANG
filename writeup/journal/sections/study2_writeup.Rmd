@@ -116,18 +116,18 @@ study2_plot1 <- ggplot(all_es_tidy2, aes(x = mean_prop_distinct_occs,
   scale_x_continuous(breaks = c(0,.25,.5, .75, 1), 
                       label = c("0.00\n", "0.25", "0.50", ".75", "1.00\n"),
                      limits = c(-.01, 1.01)) +
-  scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
-                     label = c("-.075\n(male-\nfamily)", "-.05", "-.025", "0", ".025", ".05\n(male-\ncareer)") , limits = c(-.08, .06) ) +
+scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
+                     label = c("-.075\n(weaker)", "-.05", "-.025", "0", ".025", ".05\n(stronger)") , limits = c(-.075, .05) ) +
   geom_point(alpha = .2, aes(size = n_participants)) +
   scale_size(trans = "log10", 
              labels = scales::comma, name = "N participants") +
   theme_classic(base_size = 12) + 
   theme(legend.position = "none",
           axis.line = element_line(size = .8)) +
-  ggtitle("Implicit Career-Gender Association\nand Occupation Terms") +
-  ylab("Implicit Career-Gender Associaiton\n(residualized effect size)") +
-  xlab("Proportion Gender-Specific Occupation Terms") +
-  annotate("text", x = .8, y = -.07, label = 
+  ggtitle("Implicit Male-Career Association\nand Gendered Occupation Terms") +
+  ylab("Implicit Male-Career Association\n(residualized effect size)") +
+  xlab("Prop. Gender-Specific Occupation Terms") +
+  annotate("text", x = .8, y = -.065, label = 
              paste0("r = ", distinct_behavior_corr), 
            color = "red", size = 5)
 ```
@@ -136,7 +136,7 @@ study2_plot1 <- ggplot(all_es_tidy2, aes(x = mean_prop_distinct_occs,
 ```{r full_tidy_corrs_for_text}
 # corr of lang, behavioral, etc.
 all_corr_vars <- all_es_tidy2 %>%
-  select(lang_es_sub, lang_es_wiki, subt_occu_semantics_fm, wiki_occu_semantics_fm, 
+  select(lang_es_sub, lang_es_wiki, subt_gender_diff_score_fm_abs, wiki_gender_diff_score_fm_abs, 
          mean_prop_distinct_occs, es_iat_sex_age_order_explicit_resid, 
          es_iat_sex_age_order_implicit_resid, median_country_age)
 
@@ -216,18 +216,20 @@ bias_by_word_sub <- read_csv(GENDER_BIAS_BY_WORD_SUB) %>%
 
 bias_by_word <- bind_rows(bias_by_word_wiki, bias_by_word_sub) %>%
   rename(gender_diff_score_fm = gender_diff_score) %>%
-  mutate(gender_diff_score_mf = male_score - female_score)
+  mutate(gender_diff_score_fm_abs = abs(gender_diff_score_fm)) %>%
+  select(-gender_diff_score_fm)
 
 DISTINCT_BY_WORD <- here('data/study2/occupation_gender_scores_by_word.csv')
 distinct_by_word <- read_csv(DISTINCT_BY_WORD) %>%
   mutate(mean_distinct = 1 - mean_overlap)
 
-by_word_df <- inner_join(bias_by_word, distinct_by_word, by = c("language_code", "occupation")) %>%
+by_word_df <- inner_join(bias_by_word, distinct_by_word, 
+                         by = c("language_code", "occupation")) %>%
   mutate_if(is.numeric, scale) %>%
   filter(language_code != "zu") # exclude zulu as in study 1b 
 
 # Subtitles model
-sub_model <- lmer(abs(gender_diff_score_fm) ~ mean_distinct + (mean_distinct|language_code),
+sub_model <- lmer(gender_diff_score_fm_abs ~ mean_distinct + (mean_distinct|language_code),
                   data = by_word_df %>% filter(model == "sub")) %>%
   tidy() %>%
   filter(term == "mean_distinct")
@@ -237,7 +239,7 @@ sub_model_print <- paste0(round(pull(sub_model, estimate),2),
                           "; _t_ = ", round(pull(sub_model, statistic),2))
 
 # Wiki model
-wiki_model <- lmer(abs(gender_diff_score_fm) ~ mean_distinct + (mean_distinct|language_code),
+wiki_model <- lmer(gender_diff_score_fm_abs ~ mean_distinct + (mean_distinct|language_code),
                    data = by_word_df %>% filter(model == "wiki"))   %>%
   tidy() %>%
   filter(term == "mean_distinct")
@@ -264,45 +266,33 @@ GN_OB_W <- cor.test(all_corr_vars$mean_prop_distinct_occs,
 
 corr_text_df2 <- tidy_corrs %>%
   filter(rowname == "es_iat_sex_age_order_implicit_resid", 
-         var2 %in% c("subt_occu_semantics_fm",
-                     "wiki_occu_semantics_fm")) %>%
-    mutate(model = fct_recode(var2, 
-                              "Subtitle Embeddings" = "subt_occu_semantics_fm",
-                              "Wikipedia Embeddings" = "wiki_occu_semantics_fm"))  %>%
-  select(model, simple_r) %>%
-  mutate(simple_r = paste0("r = ", f_num(simple_r, 2)),
-         x = .06, y = -.07) %>%
-  filter(model == "Wikipedia Embeddings")
+         var2 == "wiki_gender_diff_score_fm_abs") %>%
+  mutate(simple_r = paste0("r = ", f_num(simple_r, 2)))
 
 # plot lang vs behavioral
 study2_plot2 <- all_es_tidy2 %>%
-  select(language_name, subt_occu_semantics_fm,
-         wiki_occu_semantics_fm,
+  select(language_name, subt_gender_diff_score_fm_abs,
+         wiki_gender_diff_score_fm_abs,
          es_iat_sex_age_order_implicit_resid, n_participants) %>%
-  gather("model", "occ_lang_es", -language_name,
-         -es_iat_sex_age_order_implicit_resid, -n_participants) %>%
-  filter(model == "wiki_occu_semantics_fm") %>%
-  mutate(model = fct_recode(model, "Subtitle Embeddings" = "subt_occu_semantics_fm",
-                                   "Wikipedia Embeddings" = "wiki_occu_semantics_fm")) %>%
-    ggplot(aes(x = occ_lang_es, y = es_iat_sex_age_order_implicit_resid, 
+    ggplot(aes(x = wiki_gender_diff_score_fm_abs, y = es_iat_sex_age_order_implicit_resid, 
                size = n_participants)) +
     geom_smooth(method = "lm", alpha = .1, size = .9) +
     geom_text_repel(aes(label = language_name), 
                              size = 2.7, box.padding = 0.1) + 
     geom_point(alpha = .2) + 
-    geom_text(data = corr_text_df2, aes(label = simple_r), x = .07, y = -.07, 
+    geom_text(data = corr_text_df2, aes(label = simple_r), x = .08, y = -.065, 
             color = "red", size = 5) +
-    scale_x_continuous(breaks = c(-.025, 0, .025, .05, .075),
-                     label = c("-.025\n(male)", "0", ".025", ".05", ".075\n(female)"),
-                     limits = c(-.035,.09)) +
-  scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05),
-                     label = c("-.075\n(male-\nfamily)", "-.05", "-.025", "0", ".025", ".05\n(male-\ncareer)") ,
-                     limits = c(-.08, .06) ) +
+    scale_x_continuous(breaks = c( 0, .025, .05, .075, .1),
+                     label = c("0\n(netural)", ".025", ".05", ".075", ".1\n(gendered)"),
+                     limits = c(0,.1)) +
+    scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
+                     label = c("-.075\n(weaker)", "-.05", "-.025", "0", ".025", ".05\n(stronger)"),
+                   limits = c(-.075, .05) ) +
     scale_size(trans = "log10", labels = scales::comma, 
                name = "N participants") +
-    ggtitle("Psychological and Linguistic Gender\nAssociations for Occupations") +
-    ylab("Implicit Career-Gender Association\n(residualized effect size)") +
-    xlab("Gender Association of Occupation Terms\nfrom Language Statistics") +
+    ggtitle("Implicit Male-Career Association\nand Gender Associations for Occupation Terms") +
+   ylab("Implicit Male-Career Association\n(residualized effect size)") +
+    xlab("Genderness of Occupation Terms") +
     theme_classic(base_size = 12)  +
     theme(legend.position = "right",
           axis.line = element_line(size = .8))

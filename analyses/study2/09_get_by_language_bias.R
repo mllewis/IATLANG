@@ -18,25 +18,15 @@ subt_scores <- read_csv(INFILE2) %>%
 
 by_lang_scores <- wiki_scores %>%
     bind_rows(subt_scores) %>%
-    mutate(gender_diff_score_mf = male_score - female_score) %>%
-    rename(gender_diff_score_fm = gender_diff_score) %>%
+    mutate(gender_diff_score_fm_abs = abs(gender_diff_score)) %>%
+    select(model, language_code, occupation, gender_diff_score_fm_abs) %>%
     group_by(model, language_code) %>%
-    summarize(gender_diff_score_mf = mean(gender_diff_score_mf, na.rm = T),
-              gender_diff_score_fm = mean(gender_diff_score_fm, na.rm = T),
-              gender_diff_score_abs = mean(abs(gender_diff_score_fm), na.rm = T))
+    summarize(gender_diff_score_fm_abs = mean(gender_diff_score_fm_abs, na.rm = T))
 
-by_lang_scores_wide_mf <- by_lang_scores %>%
-  select(-gender_diff_score_fm) %>%
-  spread(model, gender_diff_score_mf) %>%
-  rename(subt_occu_semantics_mf = subt,
-         wiki_occu_semantics_mf = wiki)
 
 by_lang_scores_wide_fm <- by_lang_scores %>%
-  select(-gender_diff_score_mf) %>%
-  spread(model, gender_diff_score_fm) %>%
-  rename(subt_occu_semantics_fm = subt,
-         wiki_occu_semantics_fm = wiki)
+  spread(model, gender_diff_score_fm_abs) %>%
+  rename(subt_gender_diff_score_fm_abs = subt,
+         wiki_gender_diff_score_fm_abs = wiki)
 
-by_lang_scores_wide <- full_join(by_lang_scores_wide_mf, by_lang_scores_wide_fm)
-
-write_csv(by_lang_scores_wide, OUTFILE)
+write_csv(by_lang_scores_wide_fm, OUTFILE)
