@@ -5,12 +5,12 @@ library(tidyverse)
 library(data.table)
 library(here)
 
-MALE_WORDS <- c("son", "his","him", "he", "brother","boy", "man", "male") 
+MALE_WORDS <- c("son", "his","him", "he", "brother","boy", "man", "male")
 FEMALE_WORDS <- c("daughter", "hers", "her", "she",  "sister", "girl", "woman", "female")
-ANCHOR_PATH <- here("data/study2/wiki_calculated_models/")
-OUTFILE  <-  here("data/study2/wiki_occupation_gender_score.csv")
-#ANCHOR_PATH <- here("data/study2/subt_calculated_models/")
-#OUTFILE  <-  here("data/study2/sub_occupation_gender_score.csv")
+#ANCHOR_PATH <- here("data/study2/wiki_calculated_models/")
+#OUTFILE  <-  here("data/study2/wiki_occupation_gender_score.csv")
+ANCHOR_PATH <- here("data/study2/subt_calculated_models/")
+OUTFILE  <-  here("data/study2/sub_occupation_gender_score.csv")
 
 all_models <- map_df(list.files(ANCHOR_PATH, full.names = T), ~ read_csv(.))  %>%
   mutate(word_type = case_when(word %in% MALE_WORDS ~ "anchor_M",
@@ -20,21 +20,21 @@ all_models <- map_df(list.files(ANCHOR_PATH, full.names = T), ~ read_csv(.))  %>
 
 # functions for doign the thing
 get_gender_score_for_one_gender <- function(this_mat, these_anchor_words, target_gender){
-  
+
   target_mat <- this_mat %>%
     filter(gender == target_gender | word_type == paste0("anchor", "_", target_gender))  %>%
     select(-gender)
-  
+
   word_word_dists <- coop::cosine(t(as.matrix(target_mat[,c(-1:-2)])))
-  
+
   wide_word_word_dists <- word_word_dists %>%
     as.data.frame()  %>%
     mutate(word1 =  target_mat$word,
-           word_type1 = target_mat$word_type) %>% 
-    select(word1, word_type1, everything())  
-  
+           word_type1 = target_mat$word_type) %>%
+    select(word1, word_type1, everything())
+
   names(wide_word_word_dists)  = c("word1", "word_type1", wide_word_word_dists$word1)
-  
+
   distances <- wide_word_word_dists  %>%
     filter(word_type1 != "occupation") %>%
     select(-word1, -word_type1) %>%

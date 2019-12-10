@@ -211,6 +211,8 @@ corpus_effect_cohens_d <- effsize::cohen.d(
 all_corr_vars <- all_es_tidy %>%
   select(lang_es_sub, lang_es_wiki,subt_occu_semantics_fm, wiki_occu_semantics_fm, mean_prop_distinct_occs, es_iat_sex_age_order_explicit_resid, 
          es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017, median_country_age) %>%
+  mutate(subt_occu_semantics_fm = abs(subt_occu_semantics_fm), ### TEMP!!!
+         wiki_occu_semantics_fm = abs(wiki_occu_semantics_fm)) %>%
   rename(`Residualized Implicit Bias (IAT)` = "es_iat_sex_age_order_implicit_resid",
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
           `Language IAT (Subtitle)` = "lang_es_sub",
@@ -318,12 +320,12 @@ study1_plot1 <- all_es_tidy %>%
   scale_x_continuous(breaks = c(-.15, -0,.25, .5,.75, .9), 
                      label = c("male-\nfamily", "0", ".25", ".5", ".75", "male-\ncareer") , limits = c(-.2, .9)) +
   scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
-                     label = c("-.075\nmale-\nfamily", "-.05", "-.025", "0", ".025", ".05\nmale-\ncareer") , limits = c(-.08, .06) ) +
+                     label = c("-.075\weaker", "-.05", "-.025", "0", ".025", ".05\stronger") , limits = c(-.08, .06) ) +
   scale_size(trans = "log10", labels = scales::comma, name = "N participants") +
   geom_text(data = corr_text_df, aes(label = simple_r), x = .7, y = -.075, 
             color = "red", size = 5) +
   ggtitle("Psychological and Linguistic\nCareer-Gender Association") +
-  ylab("Implicit Career-Gender Association\n(residualized effect size)") +
+  ylab("Implicit Male-Career Association\n(residualized effect size)") +
   xlab("Language Career-Gender Association\n(effect size)") +
   theme_classic(base_size = 12)   +
   theme(legend.position = "right",

@@ -23,7 +23,6 @@ We coded each language for the presence or absence of a sex-based grammatical ge
 
 ### Results
 
-
 ```{r by_language_data}
 # occupation form overlap by language
 OCCUPATION_OVERLAP_PATH <- here('data/study2/occupation_gender_scores.csv')
@@ -203,9 +202,19 @@ Speakers of languages with a grammatical gender system  (_N_ = `r count(all_es_t
 GENDER_BIAS_BY_WORD_SUB <- here("data/study2/sub_occupation_gender_score.csv")
 GENDER_BIAS_BY_WORD_WIKI <- here("data/study2/wiki_occupation_gender_score.csv")
 
-bias_by_word <- read_csv(GENDER_BIAS_BY_WORD_SUB) %>%
-  mutate(model = "sub") %>%
-  bind_rows(read_csv(GENDER_BIAS_BY_WORD_WIKI) %>% mutate(model = "wiki")) %>%
+bias_by_word_wiki <- read_csv(GENDER_BIAS_BY_WORD_WIKI) %>% 
+  mutate(model = "wiki",
+         language_code = case_when(language_code %in% c("hr", "sr") ~ "hr", # average across hr and sr 
+                                   TRUE~ language_code)) %>%
+  group_by(model, language_code, occupation) %>%
+  summarize_all(mean) %>%
+  ungroup()
+                                   
+bias_by_word_sub <- read_csv(GENDER_BIAS_BY_WORD_SUB) %>%
+  mutate(model = "sub")  %>%
+  filter(language_code != "de") # exclude de (over 50% missing)
+
+bias_by_word <- bind_rows(bias_by_word_wiki, bias_by_word_sub) %>%
   rename(gender_diff_score_fm = gender_diff_score) %>%
   mutate(gender_diff_score_mf = male_score - female_score)
 
@@ -213,11 +222,12 @@ DISTINCT_BY_WORD <- here('data/study2/occupation_gender_scores_by_word.csv')
 distinct_by_word <- read_csv(DISTINCT_BY_WORD) %>%
   mutate(mean_distinct = 1 - mean_overlap)
 
-by_word_df <- full_join(bias_by_word, distinct_by_word) %>%
-  mutate_if(is.numeric, scale)
+by_word_df <- inner_join(bias_by_word, distinct_by_word, by = c("language_code", "occupation")) %>%
+  mutate_if(is.numeric, scale) %>%
+  filter(language_code != "zu") # exclude zulu as in study 1b 
 
 # Subtitles model
-sub_model <- lmer(gender_diff_score_fm ~ mean_distinct + (mean_distinct|language_code),
+sub_model <- lmer(abs(gender_diff_score_fm) ~ mean_distinct + (mean_distinct|language_code),
                   data = by_word_df %>% filter(model == "sub")) %>%
   tidy() %>%
   filter(term == "mean_distinct")
@@ -227,7 +237,7 @@ sub_model_print <- paste0(round(pull(sub_model, estimate),2),
                           "; _t_ = ", round(pull(sub_model, statistic),2))
 
 # Wiki model
-wiki_model <- lmer(gender_diff_score_fm ~ mean_distinct + (mean_distinct|language_code),
+wiki_model <- lmer(abs(gender_diff_score_fm) ~ mean_distinct + (mean_distinct|language_code),
                    data = by_word_df %>% filter(model == "wiki"))   %>%
   tidy() %>%
   filter(term == "mean_distinct")
@@ -238,7 +248,6 @@ wiki_model_print <- paste0(round(pull(wiki_model, estimate),2),
 ```
 
 ```{r by_language_occupation_correlations}
-
 GN_OB_S <- cor.test(all_corr_vars$mean_prop_distinct_occs, 
                     all_corr_vars$subt_occu_semantics_fm) %>%
   tidy() %>%
