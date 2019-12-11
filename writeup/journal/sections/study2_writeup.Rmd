@@ -251,12 +251,12 @@ wiki_model_print <- paste0(round(pull(wiki_model, estimate),2),
 
 ```{r by_language_occupation_correlations}
 GN_OB_S <- cor.test(all_corr_vars$mean_prop_distinct_occs, 
-                    all_corr_vars$subt_occu_semantics_fm) %>%
+                    all_corr_vars$subt_gender_diff_score_fm_abs) %>%
   tidy() %>%
   tidy_r_to_text_r(.)
 
 GN_OB_W <- cor.test(all_corr_vars$mean_prop_distinct_occs, 
-                    all_corr_vars$wiki_occu_semantics_fm) %>%
+                    all_corr_vars$wiki_gender_diff_score_fm_abs) %>%
   tidy() %>%
   tidy_r_to_text_r(.)
 ```
@@ -313,34 +313,34 @@ We next examined whether having gender-specific forms for a particular occupatio
 ```{r behavioral_bias}
 # implicit
 B_OB_S <- cor.test(all_corr_vars$es_iat_sex_age_order_implicit_resid, 
-                    all_corr_vars$subt_occu_semantics_fm) %>%
+                    all_corr_vars$subt_gender_diff_score_fm_abs) %>%
   tidy() %>%
   tidy_r_to_text_r(.)
 
 B_OB_S_partial <- text_tidy_corrs %>%
   filter(rowname ==  "es_iat_sex_age_order_implicit_resid", 
-         var2 == "subt_occu_semantics_fm") %>%
+         var2 == "subt_gender_diff_score_fm_abs") %>%
   pull(partial_print_text)
 
 B_OB_W <- cor.test(all_corr_vars$es_iat_sex_age_order_implicit_resid, 
-                    all_corr_vars$wiki_occu_semantics_fm) %>%
+                    all_corr_vars$wiki_gender_diff_score_fm_abs) %>%
   tidy() %>%
   tidy_r_to_text_r(.)
 
 B_OB_W_partial <- text_tidy_corrs %>%
   filter(rowname ==  "es_iat_sex_age_order_implicit_resid", 
-         var2 == "wiki_occu_semantics_fm") %>%
+         var2 == "wiki_gender_diff_score_fm_abs") %>%
   pull(partial_print_text)
 
 # explicit
 B_OE_W <- cor.test(all_corr_vars$es_iat_sex_age_order_explicit_resid, 
-                    all_corr_vars$wiki_occu_semantics_fm) %>%
+                    all_corr_vars$wiki_gender_diff_score_fm_abs) %>%
   tidy() %>%
   tidy_r_to_text_r(.)
 
 
 B_OE_S <- cor.test(all_corr_vars$es_iat_sex_age_order_explicit_resid, 
-                    all_corr_vars$subt_occu_semantics_fm) %>%
+                    all_corr_vars$subt_gender_diff_score_fm_abs) %>%
   tidy() %>%
   tidy_r_to_text_r(.)
 
@@ -353,12 +353,12 @@ all_es_tidy2_scaled <- all_es_tidy2 %>%
   mutate_if(is.numeric, scale)
 
 # occupation statistics and prop distinct are highly colinear
-subt_corr <- cor.test(all_es_tidy2_scaled$subt_occu_semantics_fm,
+subt_corr <- cor.test(all_es_tidy2_scaled$subt_gender_diff_score_fm_abs,
                       all_es_tidy2_scaled$mean_prop_distinct_occs) %>%
   tidy() %>%
   tidy_r_to_text_r(.)
 
-wiki_corr <- cor.test(all_es_tidy2_scaled$wiki_occu_semantics_fm,
+wiki_corr <- cor.test(all_es_tidy2_scaled$wiki_gender_diff_score_fm_abs,
                       all_es_tidy2_scaled$mean_prop_distinct_occs) %>%
   tidy() %>%
   tidy_r_to_text_r(.)
@@ -389,7 +389,7 @@ boot_mediation_model_wiki <- all_es_tidy2_scaled %>%
   fit_mediation(
     x = "mean_prop_distinct_occs",
     y = "es_iat_sex_age_order_implicit_resid",
-    m = "wiki_occu_semantics_fm") %>%
+    m = "wiki_gender_diff_score_fm_abs") %>%
    test_mediation(type = "bca")    # bias-corrected bootstrap
 
 wiki_ab <-  boot_mediation_model_wiki %>%
@@ -405,7 +405,7 @@ boot_mediation_model_subt <- all_es_tidy2_scaled %>%
   fit_mediation(
     x = "mean_prop_distinct_occs",
     y = "es_iat_sex_age_order_implicit_resid",
-    m = "subt_occu_semantics_fm") %>%
+    m = "subt_gender_diff_score_fm_abs") %>%
    test_mediation(type = "bca")   
 
 subt_ab <-  boot_mediation_model_subt %>%

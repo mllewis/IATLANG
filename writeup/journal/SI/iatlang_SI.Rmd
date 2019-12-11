@@ -447,7 +447,7 @@ gender_bias_es_gn_sub <- filter(all_es_sub, study_name == "gender-bias-career-fa
 
 ```
 
-Here we replicate the original set of Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) findings using the models trained on the corpora used in our paper, English Wikipedia (Bojanowski, Grave, Joulin, & Mikolov, 2016) and Subtitles (Lison & Tiedemann, 2016; Van Paridon & Thompson, in prep.).
+Here we replicate the original set of Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) findings using the models trained on the corpora used in our paper, English Wikipedia (Bojanowski, Grave, Joulin, & Mikolov, 2016) and Subtitles (Lison & Tiedemann, 2016; Van Paridon & Thompson, 2019).
 
 For both the Wikipedia and Subtitle trained models, we calculate an effect size for each of the 10 biases reported in CBN which correspond to behavioral IAT results existing in the literature:   flowers/insects--pleasant/unpleasant, instruments/weapons--pleasant/unpleasant, European-American/Afro-American--pleasant/unpleasant, males/females--career/family, math/arts--male/female, science/arts--male/female, mental-disease/physical-disease--permanent/temporary, and young/old--pleasant/unpleasant (labeled as Word-Embedding Association Test (WEAT) 1-10 in CBN). Note that CBN test three versions of race bias. We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous to the behavioral effect size measure  where larger values indicate larger gender bias.
 
@@ -639,15 +639,17 @@ all_es %>%
   geom_point(alpha = .2) +
   ggrepel::geom_text_repel(aes(label = language_name), 
                            size = 1.8, box.padding = 0.1) + 
-  scale_x_continuous(breaks = c(-.3, -0, .5, 1), 
-                     label = c("\n(male-\nfamily)", "0", ".5","1\n(male-\ncareer)") , limits = c(-.35, 1.1)) +
+  scale_x_continuous(breaks = c(-.25, -0,.25, .5,.75, 1), 
+                     label = c("-.25\n(weaker)", "0", ".25", ".5", ".75", "1\n(stronger)"),
+                     limits = c(-.25, 1)) +
   scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
-                     label = c("-.075\n(male-\nfamily)", "-.05", "-.025", "0", ".025", ".05\n(male-\ncareer)") , limits = c(-.08, .06) ) +
+                     label = c("-.075\n(weaker)", "-.05", "-.025", "0", ".025", ".05\n(stronger)"),
+                   limits = c(-.075, .05) ) +
   scale_size(trans = "log10", labels = scales::comma, name = "N participants") +
-  ggtitle("Psychological and Linguistic Career-Gender\nAssociation (Unstranslated Corpus)") +
-  ylab("Implicit  Career-Gender\nAssociation (residualized effect size)") +
+  ggtitle("Implicit and Linguistic Male-Career Association\n(Unstranslated Corpus)") +
+  ylab("Implicit Male-Career Association\n(residualized effect size)") +
+  xlab("Language Male-Career Association\n(effect size)") +
   annotate("text", y = -.06, x = .75, label = "r = .60**", color = "red" ) +
-  xlab("Language Career-Gender Association\n(effect size)") +
   theme_classic()  +
   theme(legend.position = "right")
 ```
@@ -937,8 +939,8 @@ Gender differences in preferences (Falk & Hermle, 2018; composite score of “si
 ```{r, fig.height = 4.5, fig.width = 4.5}
 ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name)) +
   ylab("Gender Differences in Preferences\n(Falk & Hermle, 2018)") +
-  xlab("Language Career-Gender Association \n(effect size)") +
-  ggtitle("Language Career-Gender Association vs.\nGender Differences in Preferences") +
+  xlab("Language Male-Career Association\n(effect size)") +
+  ggtitle("Language Male-Career Association vs.\nGender Differences in Preferences") +
   geom_smooth(method = "lm", alpha = .2) +
   geom_point() +
   geom_text_repel(size = 3) +
@@ -975,8 +977,8 @@ Gender difference in STEM Self Efficacy (Stoet & Geary, 20178; “The sex differ
 ```{r, fig.height = 4.5, fig.width = 4.5}
 ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = country_name)) +
   ylab("Gender difference in STEM Self Efficacy\n(Stoet & Geary, 2018)") +
-  xlab("Language Career-Gender Association \n(effect size)") +
-  ggtitle("Language Career-Gender Association vs.\nGender Differences in STEM Self Efficacy  ") +
+  xlab("Language Male-Career Association\n(effect size)") +
+  ggtitle("Language Male-Career Association vs.\nGender Differences in STEM Self Efficacy  ") +
   geom_smooth(method = "lm", alpha = .2) +
   geom_point() +
   geom_text_repel(size = 3) +
@@ -1008,4 +1010,4 @@ Simons, G. F., & Charles, D. F. (Eds.). (2018). Ethnologue: Languages of the wor
 
 Stoet, G., & Geary, D. C. (2018). The gender-equality paradox in science, technology, engineering, and mathematics education. _Psychological Science_, 29 (4), 581–593.
 
-Van Paridon, J., & Thompson, B. (in prep.). Sub2Vec: Word embeddings from OpenSubtitles in 62 languages.
+van Paridon J, Thompson B (2019). subs2vec:  Word embeddings from subtitles in 55 languages.

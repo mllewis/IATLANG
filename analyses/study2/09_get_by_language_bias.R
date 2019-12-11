@@ -17,11 +17,17 @@ subt_scores <- read_csv(INFILE2) %>%
   filter(language_code != "de") # over 50% missing
 
 by_lang_scores <- wiki_scores %>%
-    bind_rows(subt_scores) %>%
-    mutate(gender_diff_score_fm_abs = abs(gender_diff_score)) %>%
-    select(model, language_code, occupation, gender_diff_score_fm_abs) %>%
-    group_by(model, language_code) %>%
-    summarize(gender_diff_score_fm_abs = mean(gender_diff_score_fm_abs, na.rm = T))
+ bind_rows(subt_scores) %>%
+ mutate(gender_diff_score_fm_abs = abs(gender_diff_score)) %>%
+ select(model, language_code, occupation, gender_diff_score_fm_abs) %>%
+ group_by(model, language_code) %>%
+ summarize(gender_diff_score_fm_abs = mean(gender_diff_score_fm_abs, na.rm = T))
+
+# by_lang_scores <- wiki_scores %>%
+#   bind_rows(subt_scores) %>%
+#   select(model, language_code, occupation, gender_diff_score) %>%
+#   group_by(model, language_code) %>%
+#   summarize(gender_diff_score_fm_abs = abs(mean(gender_diff_score, na.rm = T)))
 
 
 by_lang_scores_wide_fm <- by_lang_scores %>%
