@@ -51,7 +51,8 @@ tab_model(study_0a_model,
 # median country age AND stem predicting iat
 
 study_0b_model <- participant_iat %>%
-  lmer(overall_iat_D_score ~ sex+log_age + order + median_country_age+ per_women_stem_2012_2017 + (1|country_code),
+  lmer(overall_iat_D_score ~ sex + log_age + order +
+         median_country_age + per_women_stem_2012_2017 + (1|country_code),
        data = .)
 
 

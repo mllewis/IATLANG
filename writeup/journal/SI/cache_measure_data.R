@@ -50,12 +50,11 @@ all_es <- left_join(iat_behavioral_es, iat_lang_es, by = "language_code") %>%
   left_join(lang_family)   %>%
   left_join(occupation_semantics)  %>% # include study 2 measure here so can make table
   left_join(occupation_semantics_native)  %>%
-
   left_join(by_lang_scores) %>%
   left_join(language_names) %>%
   select(language_code,language_name,family,n_participants,es_iat_sex_age_order_implicit_resid,
          es_iat_sex_age_order_explicit_resid, median_country_age, per_women_stem_2012_2017, lang_es_sub, lang_es_wiki, lang_es_wiki_native,
-         mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm, wiki_native_occu_semantics_fm)
+         mean_prop_distinct_occs, subt_gender_diff_score_fm_abs, wiki_gender_diff_score_fm_abs, wiki_native_gender_diff_score_fm_abs)
 
 
 # remove exclusions and fix croatian to be mean of hr and sr (only in wiki)

@@ -211,8 +211,11 @@ corpus_effect_cohens_d <- effsize::cohen.d(
 ```{r full_corr_table}
 # corr of lang, behavioral, etc.
 all_corr_vars <- all_es_tidy %>%
-  select(lang_es_sub, lang_es_wiki,subt_gender_diff_score_fm_abs, wiki_gender_diff_score_fm_abs, mean_prop_distinct_occs, es_iat_sex_age_order_explicit_resid, 
-         es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017, median_country_age) %>%
+  select(lang_es_sub, lang_es_wiki,subt_gender_diff_score_fm_abs,
+         wiki_gender_diff_score_fm_abs, mean_prop_distinct_occs,
+         es_iat_sex_age_order_explicit_resid, 
+         es_iat_sex_age_order_implicit_resid, 
+         per_women_stem_2012_2017, median_country_age) %>%
   rename(`Residualized Implicit Bias (IAT)` = "es_iat_sex_age_order_implicit_resid",
           `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
           `Language IAT (Subtitle)` = "lang_es_sub",

@@ -13,18 +13,18 @@ tidy_measures <- read_csv(TIDY_MEASURES_DF) %>%
          lang_es_sub, lang_es_wiki,
          lang_es_wiki_native,
          mean_prop_distinct_occs,
-         subt_occu_semantics_fm,
-         wiki_occu_semantics_fm,
-         wiki_native_occu_semantics_fm)  %>%
-  rename(`Residualized Implicit Bias (IAT)` = "es_iat_sex_age_order_implicit_resid",
-         `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
-         `Language IAT (Subtitle)` = "lang_es_sub",
-         `Language IAT (Wikipedia)` = "lang_es_wiki",
-         `Language IAT\n(Wikipedia, untranslated)` = "lang_es_wiki_native",
-         `Occupation Bias (Subtitle)` = "subt_occu_semantics_fm_abs",
-         `Occupation Bias (Wikipedia)` = "subt_occu_semantics_fm_abs",
-         `Occupation Bias (Wikipedia, untranslated)` = "wiki_native_occu_semantics_fm",
-         `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
+         subt_gender_diff_score_fm_abs,
+         wiki_gender_diff_score_fm_abs,
+         wiki_native_gender_diff_score_fm_abs)  %>%
+  rename(`Implicit Male-Career Assoc. (IAT)` = "es_iat_sex_age_order_implicit_resid",
+         `Explicit Male-Career Assoc.` = "es_iat_sex_age_order_explicit_resid",
+         `Male-Career Assoc. (Subtitle)` = "lang_es_sub",
+         `Male-Career Assoc. (Wikipedia)` = "lang_es_wiki",
+         `Male-Career Assoc.\n(Wikipedia, untranslated)` = "lang_es_wiki_native",
+         `Lang. Occup. Genderness (Subtitle)` = "subt_gender_diff_score_fm_abs",
+         `Lang. Occup. Genderness (Wikipedia)` = "wiki_gender_diff_score_fm_abs",
+         `Lang. Occup. Genderness\n(Wikipedia, untranslated)` = "wiki_native_gender_diff_score_fm_abs",
+         `Prop. Gendered Occup. Terms` = "mean_prop_distinct_occs",
          `Percent Women in STEM` = "per_women_stem_2012_2017",
          `Median Country Age` = "median_country_age")
 
@@ -73,12 +73,12 @@ tidy_corrs_to_print_simple <- print_tidy_corrs %>%
   spread(var2, r_simple_print)  %>%
   mutate_all(funs(replace_na(., ""))) %>%
   select("rowname",
-         contains("Residualized"), contains("STEM"), "Language IAT (Subtitle)",
-         "Language IAT (Wikipedia)",
-         "Language IAT\n(Wikipedia, untranslated)",
-         contains("Occupation Labels"), "Occupation Bias (Subtitle)",
-         "Occupation Bias (Wikipedia)",
-         "Occupation Bias (Wikipedia, untranslated)",
+         contains("Explicit"), contains("Implicit"),  contains("STEM"), "Male-Career Assoc. (Subtitle)",
+         "Male-Career Assoc. (Wikipedia)",
+         "Male-Career Assoc.\n(Wikipedia, untranslated)",
+         contains("Occup. Terms"),  "Lang. Occup. Genderness (Subtitle)",
+         "Lang. Occup. Genderness (Wikipedia)",
+         "Lang. Occup. Genderness\n(Wikipedia, untranslated)",
          contains("Age")) %>%
   rename(" " = "rowname")
 
@@ -87,17 +87,16 @@ tidy_corrs_to_print_partial <- print_tidy_corrs %>%
   spread(var2, r_partial_print)  %>%
   mutate_all(funs(replace_na(., ""))) %>%
   select("rowname",
-         contains("Residualized"), contains("STEM"), "Language IAT (Subtitle)",
-"Language IAT (Wikipedia)",
-"Language IAT\n(Wikipedia, untranslated)",
-         contains("Occupation Labels"),  "Occupation Bias (Subtitle)",
-"Occupation Bias (Wikipedia)",
-"Occupation Bias (Wikipedia, untranslated)") %>%
-  rename(" " = "rowname") %>%
-  mutate("Median Country Age" = " ")
+         contains("Explicit"), contains("Implicit"), contains("STEM"), "Male-Career Assoc. (Subtitle)",
+         "Male-Career Assoc. (Wikipedia)",
+         "Male-Career Assoc.\n(Wikipedia, untranslated)",
+         contains("Occup. Terms"),  "Lang. Occup. Genderness (Subtitle)",
+"Lang. Occup. Genderness (Wikipedia)",
+"Lang. Occup. Genderness\n(Wikipedia, untranslated)") %>%
+  rename(" " = "rowname") 
 
-tidy_corrs_to_print_reordered_simple <- tidy_corrs_to_print_simple[c(10,11,8,2,3,1,9,5,7,6,4),]
-tidy_corrs_to_print_reordered_partial <- tidy_corrs_to_print_partial[c(10,11,8,2,3,1,9,5,7,6,4),]
+tidy_corrs_to_print_reordered_simple <- tidy_corrs_to_print_simple[c(1,2,10,7,8,6,11,4,5,3,9),]
+tidy_corrs_to_print_reordered_partial <- tidy_corrs_to_print_partial[c(1,2,10,7,8,6,11,4,5,3),]
 
 tidy_corrs_to_print_reordered <- bind_rows(tidy_corrs_to_print_reordered_simple, tidy_corrs_to_print_reordered_partial) %>%
   slice(1:(n()-1))
