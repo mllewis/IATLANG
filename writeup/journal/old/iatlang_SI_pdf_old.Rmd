@@ -1,0 +1,605 @@
+---
+title: 'Language use shapes cultural stereotypes: Large scale evidence from gender'
+author: "Molly Lewis and Gary Lupyan"
+date: "`r Sys.Date()`"
+always_allow_html: yes
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    code_folding: hide
+    number_sections: yes
+    theme: paper
+    toc: yes
+    toc_float: no
+subtitle: Supplementary Materials
+---
+
+```{r setup, include = F}
+# load packages
+library(tidyverse)
+library(knitr)
+library(langcog)
+library(DT)
+library(ggrepel)
+library(shiny)
+library(maps)
+library(countrycode)
+library(viridis)
+library(broom)
+
+opts_chunk$set(echo = F, message = F, warning = F, 
+               error = F, cache = T, tidy = F)
+
+theme_set(theme_classic())
+options(shiny.sanitize.errors = FALSE)
+```  
+
+\vspace{16pt} 
+
+This document was created from an R markdown file. The manuscript itself was also produced from an R markdown file, and all analyses presented in the paper can be reproduced from that document (https://github.com/mllewis/IATLANG/blob/master/writeup/journal/iat_lang.Rmd). The respository for the project can be found here: https://github.com/mllewis/IATLANG/.
+
+
+####  NOTE: The SM is intended to be viewed interactively online at https://mlewis.shinyapps.io/iatlang_SI/.
+
+# Description of IAT data
+
+As described in the Main Text, the IAT data come from Project Implicit (https://implicit.harvard.edu/implicit/; Nosek, Banaji, & Greenwald, 2002), for a sample collected 2005 - 2016.
+
+## Demographics
+### N by country
+
+```{r}
+BY_COUNTRY_DF <- "data/by_country_df.csv"
+country_iat <- read_csv(BY_COUNTRY_DF)
+```
+Number of participants by country after exclusions. Our final sample `r format(sum(country_iat$n_participants), big.mark=",")` participants from `r nrow(country_iat)` countries. Participants were exclude who:
+
+* did not have complete gender, country, age, and implicit IAT measures (53%; the majority of these exclusions (69%) are due to missing IAT data - likely cases where the participant started but did not complete the IAT task).
+* had average latencies for either critical block were over 1,800 ms or whose average overall latency was above 1,500 ms (as in Nosek, Banaji, & Greenwald, 2002; 5% of participants with complete data).
+* made excess of 25% errors in any single critical block (as in Nosek, Banaji, & Greenwald, 2002; 14% of participants with complete data). 
+* were from countries with less than 400 participants (1% of remaining participants; in the  "Correlations by language exclusion threshold" section below we show analyses with a range of threshold values)
+
+
+```{r, fig.cap = "Note: Data from the US are excluded from this plot because of the large number of participants (N =  638,082)."}
+country_iat %>%
+  filter(country_name != "United States of America")  %>%
+  ggplot(aes(x = fct_reorder(country_name, -n_participants),
+                          y = n_participants)) +
+         geom_bar(stat = "identity")  +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  xlab("Country Name") +
+  ylab("N Participants") +
+  scale_y_continuous(breaks=seq(0,30000,5000)) +
+  ggtitle("Number of Participants by Country")
+```
+
+### Gender by country
+
+Across countries, there tended to be more female participants, compared to male participants (_M_ = `r round(mean(country_iat$prop_male),2)` proportion males; _SD_  = `r round(sd(country_iat$prop_male),2)`)
+
+```{r}
+country_gender <- country_iat %>%
+  select(country_name, prop_male) %>%
+  rename(Male = prop_male) %>%
+  mutate(Female = 1 - Male) %>%
+  gather("Gender", "prop", -country_name)
+
+country_gender %>%
+  ggplot(aes(x = country_name, y = prop, fill = Gender, group = Gender)) +
+         geom_bar(stat = "identity")  +
+  scale_fill_manual(values = c("red", "blue")) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  geom_hline(aes(yintercept = .5), linetype = 2) +
+  xlab("Country Name") +
+  ylab("Proportion participants") +
+  ggtitle("Participant Gender by Country")
+```
+
+### Age by country
+
+```{r, fig.cap = "Bars show mean participant age by country; ranges correspond to 95% CIs. Red points show median age by country from CIA factbook data."}
+country_iat %>%
+  ggplot(aes(x = fct_reorder(country_name, -mean_age),
+                          y = mean_age)) +
+         geom_bar(stat = "identity")  +
+  geom_point(aes(x = fct_reorder(country_name, -mean_age), y = median_country_age), color = "red") +
+  geom_linerange(aes(ymin = age_ci_lower, ymax = age_ci_upper)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  xlab("Country Name") +
+  ylab("Mean Participant Age (years)") +
+  ggtitle("Participant Age by Country")
+```
+
+
+### Language by country
+For each country, we identified the language with the most speakers using Ethnologue (Simons & Charles, 2018). Note that Ethnologue reports "Bavarian" as the primary language of Germany, and "Daric" as the primary language of Afghanistan. In order to map between the other data sources in our study, we used the more general language variant for these countries, German and Persian, respectively. 
+
+#### NOTE: See online version for this content (https://mlewis.shinyapps.io/iatlang_SI/)
+
+
+```{r}
+COUNTRY_TO_LANG <- "data/top_lang_by_country_ethnologue.csv"
+country_to_lang <- read_csv(COUNTRY_TO_LANG) %>%
+  select(country_name, language_name,family, wiki_language_code)  %>%
+  arrange(country_name)
+  
+country_to_lang_tidy <- country_to_lang %>%
+  select(-wiki_language_code) %>%
+  mutate(language_name = case_when(language_name == "Zulu" ~ "Zulu*",
+                                   TRUE ~ language_name))
+
+datatable(country_to_lang_tidy, colnames = c("Country", "Language", "Language Family"),
+          options = list(
+  autoWidth = TRUE,
+  columnDefs = list(list(width = '250px'))
+))
+```
+Asterisks correspond to languages that were excluded from our analysis because word embedding models were unavailable.
+
+## Dependent Measures
+
+Below are histograms for the implicit and explicit measures in the IAT Project Implicit data presented for each country separately. The implicit raw scores are the D-score values (estimate of gender bias, with postive values indicating strong bias to associate men with career), and the residualized values are the D-scores with participant age, participant sex and trial order residualized out. For the explicit measure, the raw score is the difference between participants answer to the question,  “How strongly do you associate the following with males and females?” for the words “career” and for the word "family". Participants indicated their response on a Likert scale ranging from female (1) to male (7). For each participant, a single explicit score was calculated as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family. The residualized explicit value is the difference score with participant age, participant sex and trial order residualized out (we had no a priori reason for residualizing out trial order for explicit responses but did so to remain consistent with the residualized implicit measure). [see online version for this content; https://mlewis.shinyapps.io/iatlang_SI/]
+
+## Geographic distribution of IAT scores  
+
+Residualized implicit gender bias (IAT score) shown by country. Larger values (blue) indicate a larger bias to associate men with the concept of career and women with the concept of family. Countries in grey correspond to countries for which there was insufficient data to estimate the country-level gender bias. Inset shows IAT scores for European countries only.
+
+```{r}
+map_world <- map_data(map = "world") %>%
+    mutate(country_code = countrycode(region, 'country.name', 'iso2c'))
+
+map_data <- country_iat %>%
+  full_join(map_world, by = "country_code") %>%
+  filter(lat > -57,
+         long > -165)
+
+full_world <- ggplot(map_data, aes(x = long, y = lat,
+                            group = group,
+                            fill = es_iat_sex_age_order_implicit_resid)) +
+  scale_fill_viridis(direction = -1, 
+                     limits = c(-.065, .045),
+                       breaks = c(-.06, -.04,  -.02, 0, .02, .04),  na.value="white",
+                     label = c(" (male-\n family)", " -0.04",  " -0.02", " 0.00", " 0.02", " (male-\n career)"))  +
+  geom_polygon(color = "black", size = .1) +
+  ggtitle("Implicit psychological gender bias by country ") +
+  theme(
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(fill = "white"),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank(),
+        legend.position = c(.1, .35),
+        plot.margin = margin(t = 60, r= 30, 0, 0, "pt"),
+        legend.title = element_blank(),
+        legend.key.size = unit(0.3, "in"))
+
+
+### Europe
+euro_countries <- c("Austria","Belgium","Bulgaria","Croatia",
+                   "Czech Republic", "France", "Denmark", "Switzerland",
+                   "Germany","Greece","Hungary","Ireland","Italy",
+                   "Luxembourg","Malta","Netherlands","Poland", "UK",
+                   "Portugal","Romania","Slovakia","Slovenia","Spain")
+
+map_europe <- map_data %>%
+  filter(region %in% euro_countries)
+
+europe_inset <- ggplot(map_europe, aes(x = long, y = lat,
+                            group = group,
+                            fill = es_iat_sex_age_order_implicit_resid)) +
+  scale_fill_viridis(direction = -1, limits=c(-.065, .045), na.value="white")  +
+  #scale_fill_continuous()
+  geom_polygon(color = "black", size = .1) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        plot.margin = margin(.2,.2,0,0, "cm"),
+        panel.background = element_rect(fill = "white"),
+        plot.background = element_rect(
+            fill = "white",
+            colour = "black",
+            size = 2),
+        axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        legend.position = "none")
+
+full_world +
+  annotation_custom(grob = ggplotGrob(europe_inset),
+                    xmin = 40, xmax = 160, ymin = 50, ymax = 130)
+```
+
+Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of the linguistic statistics for speakers inIndia as a group.
+
+# Replication of Caliskan et al. (2017)
+
+```{r english-language-caliskan-es-wiki}
+CALISKAN_WIKI_PATH <- "data/caliskan_wiki_es.csv"
+wiki_es <- read_csv(CALISKAN_WIKI_PATH,
+                            col_names = c("test", "study_name", "wiki"))
+
+CALISKAN_PATH <- "data/caliskan_paper_es.csv"
+caliskan_es <- read_csv(CALISKAN_PATH)
+all_es <- wiki_es %>%
+  left_join(caliskan_es) %>%
+  gather("es_source", "d", 4:6)  %>%
+  filter(es_source != "original") %>%
+  mutate(study_name2 = case_when(test == "WEAT_1" ~ "flowers-insects",
+                                  test == "WEAT_2" ~  "instruments-weapons",
+                                  test == "WEAT_3" ~  "race", 
+                                  test == "WEAT_4" ~  "race",
+                                  test == "WEAT_5" ~  "race", 
+                                  test == "WEAT_6" ~  "gender-career",
+                                  test == "WEAT_7" ~  "gender-math",
+                                  test == "WEAT_8" ~  "gender-science",
+                                  test == "WEAT_9" ~  "mental-physical",
+                                  test == "WEAT_10" ~  "age"),
+         WEAT_name = case_when(test == "WEAT_1" ~ "(WEAT 1)",
+                                  test == "WEAT_2" ~  "(WEAT 2)",
+                                  test == "WEAT_3" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_4" ~  "(WEAT 3-5)",
+                                  test == "WEAT_5" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_6" ~  "(WEAT 6)",
+                                  test == "WEAT_7" ~  "(WEAT 7)",
+                                  test == "WEAT_8" ~  "(WEAT 8)",
+                                  test == "WEAT_9" ~  "(WEAT 9)",
+                                  test == "WEAT_10" ~  "(WEAT 10)"),
+         point_color = study_name2,
+         study_name2 = paste0(as.character(study_name2),
+                              "\n", WEAT_name),
+         study_name2 = ifelse(es_source == "AC_w2v" & 
+                                test %in% c("WEAT_1", 
+                                            "WEAT_2",
+                                            "WEAT_3",
+                                            "WEAT_7", 
+                                            "WEAT_8", 
+                                            "WEAT_9", 
+                                            "WEAT_10", 
+                                            "WEAT_6"),
+                              study_name2, ""), 
+         es_source = fct_recode(es_source,
+                                `Common Crawl (GloVe)` = "AC_glove",
+                                `Google News (word2vec)` = "AC_w2v"))
+gender_bias_es_wiki <- filter(all_es, study_name == "gender-bias-career-family")$wiki[1]
+gender_bias_es_cc <- filter(all_es, study_name == "gender-bias-career-family" &
+                              es_source == "Common Crawl (GloVe)" )$d[1]
+gender_bias_es_gn <- filter(all_es, study_name == "gender-bias-career-family" &
+                              es_source == "Google News (word2vec)")$d[1]
+
+```
+
+```{r english-language-caliskan-es-sub}
+CALISKAN_SUB_PATH <- "data/caliskan_sub_es.csv"
+sub_es <- read_csv(CALISKAN_SUB_PATH,
+                            col_names = c("test", "study_name", "sub")) 
+
+all_es_sub <- sub_es %>%
+  left_join(caliskan_es) %>%
+  gather("es_source", "d", 4:6)  %>%
+  filter(es_source != "original") %>%
+  mutate(study_name2 = case_when(test == "WEAT_1" ~ "flowers-insects",
+                                  test == "WEAT_2" ~  "instruments-weapons",
+                                  test == "WEAT_3" ~  "race", 
+                                  test == "WEAT_4" ~  "race",
+                                  test == "WEAT_5" ~  "race", 
+                                  test == "WEAT_6" ~  "gender-career",
+                                  test == "WEAT_7" ~  "gender-math",
+                                  test == "WEAT_8" ~  "gender-science",
+                                  test == "WEAT_9" ~  "mental-physical",
+                                  test == "WEAT_10" ~  "age"),
+         WEAT_name = case_when(test == "WEAT_1" ~ "(WEAT 1)",
+                                  test == "WEAT_2" ~  "(WEAT 2)",
+                                  test == "WEAT_3" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_4" ~  "(WEAT 3-5)",
+                                  test == "WEAT_5" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_6" ~  "(WEAT 6)",
+                                  test == "WEAT_7" ~  "(WEAT 7)",
+                                  test == "WEAT_8" ~  "(WEAT 8)",
+                                  test == "WEAT_9" ~  "(WEAT 9)",
+                                  test == "WEAT_10" ~  "(WEAT 10)"),
+         point_color = study_name2,
+         study_name2 = paste0(as.character(study_name2),
+                              "\n", WEAT_name),
+         study_name2 = ifelse(es_source == "AC_w2v" & 
+                                test %in% c("WEAT_1", 
+                                            "WEAT_2",
+                                            "WEAT_3",
+                                            "WEAT_7", 
+                                            "WEAT_8", 
+                                            "WEAT_9", 
+                                            "WEAT_10", 
+                                            "WEAT_6"),
+                              study_name2, ""), 
+         es_source = fct_recode(es_source,
+                                `Common Crawl (GloVe)` = "AC_glove",
+                                `Google News (word2vec)` = "AC_w2v"))
+
+gender_bias_es_sub <- filter(all_es_sub, study_name == "gender-bias-career-family")$sub[1]
+gender_bias_es_cc_sub <- filter(all_es_sub, study_name == "gender-bias-career-family" & es_source == "Common Crawl (GloVe)" )$d[1]
+gender_bias_es_gn_sub <- filter(all_es_sub, study_name == "gender-bias-career-family" & es_source == "Google News (word2vec)")$d[1]
+
+```
+
+Here we replicate the original set of Caliskan, Bryson, and Narayanan (2017; henceforth _CBN_) findings using the models trained on the corpora used in our paper, English Wikipedia (Bojanowski, Grave, Joulin, & Mikolov, 2016) and Subtitles (Lison & Tiedemann, 2016; Van Paridon & Thompson, in prep.).
+
+For both the Wikipedia and Subtitle trained models, we calculate an effect size for each of the 10 biases reported in CBN which correspond to behavioral IAT results existing in the literature:   flowers/insects--pleasant/unpleasant, instruments/weapons--pleasant/unpleasant, European-American/Afro-American--pleasant/unpleasant, males/females--career/family, math/arts--male/female, science/arts--male/female, mental-disease/physical-disease--permanent/temporary, and young/old--pleasant/unpleasant (labeled as Word-Embedding Association Test (WEAT) 1-10 in CBN). Note that CBN test three versions of race bias. We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous to the behavioral effect size measure  where larger values indicate larger gender bias.
+
+The figure below shows the effect size measures derived from the English Wikipedia corpus and the English Subtitle corpus plotted against effect size estimates reported by CBN from two different models (trained on the Common Crawl and  Google News corpora). With the exception of biases related to race and age, effect sizes from our corpora are comparable to those reported by CBN. In particular, for the gender-career IAT---the bias relevant to our current purposes---we estimate the effect size to be  `r round(gender_bias_es_wiki,2)`, while CBN estimates it as approximately  `r round(mean(c(gender_bias_es_cc,gender_bias_es_gn)),2)`.
+
+```{r, fig.height = 3, fig.cap = "Effect sizes for the 10 IAT biases types (WEAT 1-10) reported in Caliskan et al.\ (2017; CBN). CBN effect sizes  are plotted against effect sizes derived from the Wikipedia (left) and Subtitle (right) corpora.  Point color corresponds to  bias type, and point shape corresponds to the two CBN models trained on different corpora and with different algorithms."}
+
+p1 <- ggplot(all_es, aes(x = wiki, 
+                   y = d, 
+                   shape = es_source, 
+                   color = point_color)) +
+  geom_abline(intercept = 0, slope = 1, linetype = 2, color = "darkgrey") +
+  geom_point(size = 2.5) +
+  ylim(-.6, 2.2) +
+  xlim(-.6, 2.2) +
+  ggtitle("Language-Embedding IAT biases") +
+  xlab("Effect size (Wikipedia corpus)") +
+  ylab("Effect size (Caliskan, et al., 2017)") +
+  geom_text_repel(aes(label = study_name2), 
+                             force = 5, 
+                             color = "black", 
+                             size = 2.3, 
+                             fontface = 'bold', 
+                             point.padding = 1) +
+  theme_minimal() +
+  scale_shape_discrete(name = "Caliskan et al. model") +
+  scale_color_discrete(guide = FALSE) +
+    theme(text = element_text(size = 9),
+        legend.position = c(.75, 0.15),
+        legend.background = element_rect(fill = "white"),
+        legend.text = element_text(size = 7),
+        legend.margin = margin(3, 3, 0, 3, unit = 'pt'))
+
+
+p2 <- ggplot(all_es_sub, aes(x = sub, 
+                   y = d, 
+                   shape = es_source, 
+                   color = point_color)) +
+  geom_abline(intercept = 0, slope = 1, linetype = 2, color = "darkgrey") +
+  geom_point(size = 2.5) +
+  ylim(-.6, 2.2) +
+  xlim(-.6, 2.2) +
+  ggtitle("Language-Embedding IAT biases") +
+  xlab("Effect size (Subtitle corpus)") +
+  ylab("Effect size (Caliskan, et al., 2017)") +
+  geom_text_repel(aes(label = study_name2), 
+                             force = 5, 
+                             color = "black", 
+                             size = 2.3, 
+                             fontface = 'bold', 
+                             point.padding = 1) +
+  theme_minimal() +
+  scale_shape_discrete(name = "Caliskan et al. model") +
+  scale_color_discrete(guide = FALSE) +
+  theme(text = element_text(size = 9),
+        legend.position = "none")
+
+
+gridExtra::grid.arrange(p1, p2, ncol = 2)
+```
+
+```{r}
+# Language exclusions
+#[to do]
+#* 20 percent from *calculated* vectors
+#* averaged across multiple translations
+#* what does it look like when you change this criteria
+```
+
+# Descriptive statistics for all language-level measures
+
+Below are the mean and standard deviations estimates for all measures presented in Table 1 of the Main Text.
+```{r}
+ALL_MEASURES_PATH <- "data/tidy_measures.csv"
+all_es <- read_csv(ALL_MEASURES_PATH) %>%
+  select(median_country_age, es_iat_sex_age_order_explicit_resid,
+         es_iat_sex_age_order_implicit_resid, per_women_stem_2012_2017,
+         lang_es_sub, lang_es_wiki, mean_prop_distinct_occs, subt_occu_semantics_fm, wiki_occu_semantics_fm)  %>%
+        rename(`Residualized Implicit Bias (IAT)` = "es_iat_sex_age_order_implicit_resid",
+          `Residualized Explicit Bias` = "es_iat_sex_age_order_explicit_resid",
+          `Language IAT (Subtitle)` = "lang_es_sub",
+          `Language IAT (Wikipedia)` = "lang_es_wiki",
+          `Occupation Bias (Subtitle)` = "subt_occu_semantics_fm",
+          `Occupation Bias (Wikipedia)` = "wiki_occu_semantics_fm",
+          `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
+          `Percent Women in STEM` = "per_women_stem_2012_2017",
+          `Median Country Age` = "median_country_age") 
+
+summary_stat <- all_es %>%
+    summarize_all(mean, na.rm = T) %>%
+    gather("Measure", "Mean") %>%
+    full_join(
+      summarize_all(all_es, sd, na.rm = T) %>%
+      gather("Measure", "SD"))
+
+summary_stat_reordered <- summary_stat[c(2,3,4,5,6,7,8,9,1),]
+
+kable(summary_stat_reordered, digits = 3)
+
+```
+
+# Correlations by language exclusion threshold
+In the Main Text, we report psychological IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the Main Text remains broadly the same when larger thresholds of minimum number of participants per country are used. The plot below shows pairwise correlations between the language bias measures and three psychological/objective measures described in Study 1: Residualized behavorial IAT, residualized explicit IAT, and percent women in STEM. As in the main text, the residualized values are participant age, participant sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the p-value of the pairwise Pearson's _r_ coefficient.
+
+```{r, fig.width = 9, fig.height = 5}
+exclusions_df <- "data/corrs_by_exclusions.csv"
+
+corr_exclusions <- read_csv(exclusions_df,
+                             col_names = c("var1", "var2", "simple_corr", "simple_p",
+                                           "partial_corr", "partial_p", "min_per_country",
+                                           "complete_explicit", "n_language_sub",
+                                           "n_languages_wiki")) %>%
+         filter(min_per_country >= 400)
+
+corr_exclusions_tidy <- corr_exclusions %>%
+  rowwise()%>%
+  mutate(var1 = sort(c(var1, var2))[1],
+         var2 = sort(c(var1, var2))[2]) %>%
+  distinct(var1, var2, min_per_country, complete_explicit, .keep_all = T) %>%
+  filter(var1 != var2) %>%
+  filter(!(var1 %in%  c("Median Country Age", "Residualized Behavioral IAT")) ) %>%
+  mutate(simple_p_cat = case_when(simple_p < .05 ~ "p < .05",
+                              simple_p < .1 ~ "p < .1",
+                              TRUE ~ "p > .1"),
+         n = case_when(var1 == "Language IAT (Subtitles)" ~ n_language_sub, 
+                       TRUE ~ n_languages_wiki))
+
+women_stem_df <- corr_exclusions_tidy %>%
+ filter(var1 == "Percent Women in STEM") %>%
+ mutate(var1 = var2,
+        var2 = "Percent Women in STEM") %>%
+ distinct(var1, var2)
+
+corr_exclusions_tidy %>%
+  filter(var1 != "Percent Women in STEM",
+         !complete_explicit,) %>%
+  bind_rows(women_stem_df) %>%
+  filter(!is.na(complete_explicit)) %>%
+  ggplot(aes(x = min_per_country, y = simple_corr, 
+             group = complete_explicit)) +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  geom_line() +
+  ggtitle("Language IAT correlations with range \nof minimum participants per country thresholds") +
+  geom_point(aes(color = simple_p_cat, size = n)) +
+  facet_grid(var1 ~ var2) +
+  labs(color = "p-value", size = "# of languages") +
+  ylab("Pairwise Correlation (Pearson's r)") +
+  xlab("Minimum number of participants per country") +
+  ylim(-.8, .8) +
+  theme_bw()
+```
+
+# Study 2 language data
+
+#### NOTE: See online version for this content (https://mlewis.shinyapps.io/iatlang_SI/).
+
+Presented below are grammatical gender coding for each language and occupation items with translations in each language.
+
+## Grammatical gender coding
+
+Below is the binary coding (gender vs. no gender) of each language for a sex-based grammatical gender system, based on WALS (Dryer & Haspelmath, 2013) and other sources when information was not available from WALS.
+
+```{r}
+THEORETICAL_GRAMMAR_PATH <- "data/general_gender_by_lang.csv"
+theoretical_gender <- read_csv(THEORETICAL_GRAMMAR_PATH)  %>%
+  select(language_code, wikipedia_grammar_type) %>%
+  mutate(wikipedia_grammar_type2 = ifelse(wikipedia_grammar_type %in%  c("none", "CN"),
+                                         "No Gender", 
+                                         "Gender"))  %>%
+  left_join(country_to_lang %>% select(wiki_language_code, language_name) %>% distinct(language_name, .keep_all = T),
+            by = c("language_code" = "wiki_language_code")) %>%
+  select(language_name, wikipedia_grammar_type2) %>%
+  filter(language_name != "Zulu")
+
+
+datatable(theoretical_gender, 
+          colnames = c("Language", "Sex-based Grammatical Gender Coding"),
+          options = list(
+  autoWidth = TRUE,
+  columnDefs = list(list(width = '100px'))
+))
+```
+
+## Occupation Items
+In Study 2, we selected 20 occupation labels from the set of items used in Misersky, et al. (2014). Listed below are the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicate occupation is perceived to be more closely associated with women).
+
+```{r }
+MISERSKY_PATH <- "data/misersky_target_items.csv"
+misersky_norms <- read_csv(MISERSKY_PATH)
+
+datatable(misersky_norms, colnames = c("Occupation", 
+                    "Perceived Gender Bias \n(Misersky, et al., 2014)"),
+          options = list(
+  autoWidth = TRUE,
+  columnDefs = list(list(width = '300px'))
+))
+
+```
+
+## Occupation Translations
+
+Below are the translations of the 20 occupation words for each of the 25 target langauges. "Translation ID" identifies the translation  when multiple  translations were provided for a given occupation/language.
+
+```{r}
+TRANSLATION_PATH <- "data/occupation_translations_tidy.csv"
+translations <- read_csv(TRANSLATION_PATH) %>%
+  select(language, occupation, word_form_type, translation_id, translation) %>%
+  arrange(language, occupation, word_form_type) %>%
+  mutate(word_form_type = fct_recode(word_form_type, 
+                                     "M" = "male_form", 
+                                     "F" = "female_form"),
+         language = str_to_title(language)) %>%
+  filter(language != "Zulu")
+
+datatable(translations, 
+          colnames = c("Language", "Occupation", "Gender", 
+                       "Translation ID", "Translation"),
+          options = list(
+              autoWidth = TRUE,
+              columnDefs = list(list(width = '500px'))
+))
+```
+
+# Predicting bias with both types of language predictors (Study 2)
+In this analysis, we predict the magnitude of implicit bias by language with an additive linear model. As predictors, we include   proportion gender distinct labels, linguistic bias (as measured by word embeddings of the IAT words), and median country age. Model coefficients are shown below for models based on the Subtitle (top) and Wikipedia (bottom) corpora. 
+
+<b> Subtitle Corpus: </b>
+```{r}
+LANG_MEAUSURE_PATH <- "data/all_es_tidy2_scaled.csv"
+all_lang_model_scaled <- read_csv(LANG_MEAUSURE_PATH)
+
+# regressions with lang_es_sub/wiki instead of occupation statistics
+subt_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_sub +  
+     median_country_age, 
+   data = all_lang_model_scaled) %>%
+  tidy() %>%
+  mutate(term = fct_recode(term,
+         `Language IAT (Subtitle)` = "lang_es_sub",
+         `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
+         `Median Country Age` = "median_country_age"))
+
+
+kable(subt_regression_r2, digits = 3)
+```
+
+<b> Wikipedia Corpus: </b>
+```{r}
+wiki_regression_r2 <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_wiki +  
+     median_country_age, 
+   data = all_lang_model_scaled)   %>%
+  tidy() %>%
+  mutate(term = fct_recode(term,
+         `Language IAT (Wikipedia)` = "lang_es_wiki",
+         `Prop. Gender-Distinct Labels` = "mean_prop_distinct_occs",
+         `Median Country Age` = "median_country_age"))
+
+kable(wiki_regression_r2, digits = 3)
+```
+
+
+**References**
+
+Bojanowski, P., Grave, E., Joulin, A., & Mikolov, T. (2016). Enriching word vectors with subword information.
+
+Caliskan, A., Bryson, J. J., & Narayanan, A. (2017). Semantics derived automatically from language corpora contain human-like biases. _Science_, _356_(6334), 183–186.
+
+Dryer, M. S., & Haspelmath, M. (Eds.). (2013). _WALS online_. Leipzig: Max Planck Institute for Evolutionary Anthropology. Retrieved from http://wals.info/
+
+Lison, P., & Tiedemann, J. (2016). OpenSubtitles2016: Extracting large parallel corpora from movie and TV subtitles. In _Proceedings of the 10th International Conference on Language Resources and Evaluation_.
+
+Misersky, J., Gygax, P. M., Canal, P., Gabriel, U., Garnham, A., Braun, F., . . . others. (2014). Norms on the gender perception of role nouns in Czech, English, French, German, Italian, Norwegian, and Slovak. _Behavior Research Methods_, _46_(3), 841–871.
+
+Nosek, B. A., Banaji, M. R., & Greenwald, A. G. (2002). Harvesting implicit group attitudes and beliefs from a demonstration web site. _Group Dynamics: Theory, Research, and Practice_, _6_(1), 101.
+
+Simons, G. F., & Charles, D. F. (Eds.). (2018). Ethnologue: Languages of the world. Dallas, Texas: Online version: http://www.ethnologue.com. SIL International.
+
+Van Paridon, J., & Thompson, B. (in prep.). Sub2Vec: Word embeddings from OpenSubtitles in 62 languages.
