@@ -22,7 +22,6 @@ behavioral_means_by_language <- behavioral_means_by_country %>%
     ungroup() %>%
     select(-country_code, -country_name, -language_name) %>%
     group_by(wiki_language_code) %>%
-    summarise_all(mean, na.rm = T) 
+    summarise_all(mean, na.rm = T)
 
 write_csv(behavioral_means_by_language, LANGUAGE_DF_OUT)
-  

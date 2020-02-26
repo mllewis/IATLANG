@@ -93,7 +93,7 @@ p1 <- ggplot(all_ratings, aes(y = (8-maleness_norm),
   geom_smooth(method = "lm", color = "blue") +
   annotate("text", y = 2, x = .1, label = 
              paste0("r = ", f_num(sub_gender_score_corr$estimate, 2)), 
-           color = "red", size = 4) +
+           color = "red", size = 5) +
   theme_classic() +
    theme(axis.line = element_line(size = .8))
 

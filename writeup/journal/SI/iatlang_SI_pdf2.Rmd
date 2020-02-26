@@ -2,19 +2,19 @@
 title: "What are we learning from language? Associations between gender stereotypes and distributional structure in 25 languages"
 author: "Molly Lewis and Gary Lupyan"
 date: "`r Sys.Date()`"
+always_allow_html: yes
 output:
-  html_document:
-    code_folding: hide
-    number_sections: yes
-    theme: paper
+  pdf_document:
     toc: yes
-    toc_float: no
-runtime: shiny
+    latex_engine: xelatex
 subtitle: Supplementary Information
+header-includes:
+ \usepackage{float}
+ \usepackage{booktabs}
+
+ \floatplacement{figure}{H}
 ---
 
-******
-******
 
 ```{r setup, include = F}
 # load packages
@@ -61,9 +61,12 @@ theme_set(theme_classic())
 options(shiny.sanitize.errors = FALSE)
 ```  
 
-<a href="https://github.com/mllewis/IATLANG" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm</style>
+\vspace{16pt} 
 
-This document was created from an R markdown file.  The repository for the project can be found here: https://github.com/mllewis/IATLANG/.
+This document was created from an R markdown file.  The respository for the project can be found here: https://github.com/mllewis/IATLANG/.
+
+
+####  NOTE: The SI is intended to be viewed interactively online at https://mollylewis.shinyapps.io/iatlang_SI/.
 
 # Description of IAT data
 
@@ -138,6 +141,8 @@ country_iat %>%
 ### Language by country
 For each country, we identified the language with the most speakers using Ethnologue (Simons & Charles, 2018). Note that Ethnologue reports "Bavarian" as the primary language of Germany, and "Daric" as the primary language of Afghanistan. In order to map between the other data sources in our study, we used the more general language variant for these countries, German and Persian, respectively. 
 
+#### NOTE: See online version for this content (https://mollylewis.shinyapps.io/iatlang_SI/)
+
 ```{r}
 COUNTRY_TO_LANG <- "data/top_lang_by_country_ethnologue.csv"
 country_to_lang <- read_csv(COUNTRY_TO_LANG) %>%
@@ -161,84 +166,56 @@ Asterisks correspond to languages that were excluded from our analysis because w
 
 Below are histograms for the implicit and explicit measures in the IAT Project Implicit data presented for each country separately. The implicit raw scores are the D-score values (estimate of career-gender association, with positive values indicating strong bias to associate men with career), and the residualized values are the D-scores with participant age, participant sex and trial order residualized out. For the explicit measure, the raw score is the difference between participants answer to the question,  “How strongly do you associate the following with males and females?” for the words “career” and for the word "family". Participants indicated their response on a Likert scale ranging from female (1) to male (7). For each participant, a single explicit score was calculated as the Career response minus the Family response, such that greater values indicate a greater bias to associate males with family. The residualized explicit value is the difference score with participant age, participant sex and trial order residualized out (we had no a priori reason for residualizing out trial order for explicit responses but did so to remain consistent with the residualized implicit measure).
 
+#### NOTE: See online version for this content (https://mollylewis.shinyapps.io/iatlang_SI/).
+
 ### Implicit
 
-```{r, echo = FALSE, cache = F}
+
+```{r, echo = FALSE, cache = F, fig.height = 9}
 HISTO_DATA_PATH <- "data/DV_histo_data.csv"
 histo_data <- read_csv(HISTO_DATA_PATH)
 
-shinyApp(
-  ui = fluidPage(
-    selectInput("this_country_name", "Select Country:", 
-                choices = unique(histo_data$country_name), width = '50%'),
-  plotOutput("by_language_plot")
+histo_data %>%
+  filter(measure %in% c("overall_iat_D_score", "es_iat_sex_age_order_implicit_resid")) %>%
+  mutate(measure = fct_recode(measure, 
+                              Residualized = "es_iat_sex_age_order_implicit_resid",
+                              Raw = "overall_iat_D_score"),
+         measure = fct_rev(measure)) %>%
+  ggplot(aes(x = bin, y = n, fill = measure)) +
+  geom_bar(stat = "identity", width = .2) +
+  facet_wrap(~country_name, scales = "free_y", ncol = 5)  +
+    ggtitle("Implicit IAT data by country") +
 
-  ),
-  
-  server = function(input, output) {
-    
-     output$by_language_plot <- renderPlot({
-       histo_data %>%
-        filter(country_name == input$this_country_name,
-               measure %in% c("overall_iat_D_score", "es_iat_sex_age_order_implicit_resid")) %>%
-        mutate(measure = fct_recode(measure, 
-                                    Residualized = "es_iat_sex_age_order_implicit_resid",
-                                    Raw = "overall_iat_D_score"),
-               measure = fct_rev(measure)) %>%
-        ggplot(aes(x = bin, y = n)) +
-        geom_bar(stat = "identity", width = .2) +
-        facet_grid(.~measure)  +
-        xlab("Score") +
-        ggtitle(paste0("\nImplicit IAT data for: ", input$this_country_name)) + 
-        theme(
-          strip.text = element_text(size = 16, face = "bold"),
-          text = element_text(size = 17),
-          legend.position = "none")
-    })
-  },
-  
-  options = list(height = 500)
-)
+  xlab("Score") +
+  theme(
+    strip.text = element_text(size = 10),
+    text = element_text(size = 10),
+    legend.position = "bottom")
 
 ```
 
 ### Explicit
 
-```{r, echo = FALSE, cache = F}
-shinyApp(
-  ui = fluidPage(
-    selectInput("this_country_name", "Select Country:", 
-                choices = unique(histo_data$country_name), width = '50%'),
-
-  plotOutput("by_language_plot")
-
-  ),
-  
-  server = function(input, output) {
+```{r, echo = FALSE, cache = F, fig.height = 9}
     
-     output$by_language_plot <- renderPlot({
-       histo_data %>%
-        filter(country_name == input$this_country_name,
-               measure %in% c("explicit_dif", 
-                              "es_iat_sex_age_order_explicit_resid")) %>%
-         mutate(measure = fct_recode(measure, 
-                              Residualized = "es_iat_sex_age_order_explicit_resid",
-                              Raw = "explicit_dif"),
-              measure = fct_rev(measure)) %>%
-        ggplot(aes(x = bin, y = n)) +
-          geom_bar(stat = "identity", width = 1) +
-          facet_grid(.~measure)  +
-          xlab("Score") +
-         ggtitle(paste0("\nExplicit bias data for: ", input$this_country_name)) + 
-         theme(
-          strip.text = element_text(size = 16, face = "bold"),
-          text = element_text(size = 17),
-          legend.position = "none")
-    })
-  },
-  
-  options = list(height = 600)
-)
+histo_data %>%
+  filter(measure %in% c("explicit_dif", 
+                        "es_iat_sex_age_order_explicit_resid")) %>%
+   mutate(measure = fct_recode(measure, 
+                        Residualized = "es_iat_sex_age_order_explicit_resid",
+                        Raw = "explicit_dif"),
+        measure = fct_rev(measure),
+        bin2 = round(bin, 0)) %>% # this is because binwidths are different for two measures
+  ggplot(aes(x = bin2, y = n, fill = measure)) +
+    geom_bar(stat = "identity", width = 1) +
+    facet_wrap(~country_name, scales = "free_y", ncol = 5)  +
+    ggtitle("Explicit IAT data by country") +
+    xlab("Score") +
+    theme(
+      strip.text = element_text(size = 10),
+      text = element_text(size = 10),
+      legend.position = "bottom")
+
 ```
 
 ## Geographic distribution of IAT scores  
@@ -259,7 +236,7 @@ full_world <- ggplot(map_data, aes(x = long, y = lat,
                             fill = es_iat_sex_age_order_implicit_resid)) +
   scale_fill_viridis(direction = -1, 
                      limits = c(-.065, .045),
-                       breaks = c(-.06, -.04,  -.02, 0, .02, .04),  na.value="white",
+                      breaks = c(-.06, -.04,  -.02, 0, .02, .04),  na.value="white",
                      label = c(" (male-\n family)", " -0.04",  " -0.02", " 0.00", " 0.02", " (male-\n career)"))  +
   geom_polygon(color = "black", size = .1) +
   ggtitle("Implicit career-gender association by country ") +
@@ -309,7 +286,7 @@ europe_inset <- ggplot(map_europe, aes(x = long, y = lat,
 
 full_world +
   annotation_custom(grob = ggplotGrob(europe_inset),
-                    xmin = 40, xmax = 160, ymin = 50, ymax = 130)
+                    xmin = 60, xmax = 180, ymin = 50, ymax = 130)
 ```
 
 Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of the linguistic statistics for speakers in India as a group.
@@ -321,11 +298,37 @@ At the participant level, median country age predicts IAT bias over and above pa
 ```{r}
 MODEL_PATH_0a  <- "data/study_0a_model_print.txt"
 model_print_0a <- readChar(MODEL_PATH_0a, file.info(MODEL_PATH_0a)$size)
+# converted using https://tableconvert.com/
+
 ```
-`r model_print_0a`
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+
+ & \bf{Overall IAT D-score} & &\\ \hline
+\bf{Predictors} & Estimates & SE & Statistic \\ \hline
+(intercept) & -0.03 & 0.02 & -1.53 \\ \hline
+median country age & 0.00 & 0.00 & 4.96 \\ \hline
+sex (M) & -0.10 & 0.00 & -103.14 \\ \hline
+task order & 0.09 & 0.00 & 105.67 \\ \hline
+log age & 0.06 & 0.00 & 55.05 \\ \hline
+\bf{Random Effects} \\ \hline
+s2 & 0.12 & &\\ \hline
+T00 country code & 0.00 & &\\ \hline
+ICC & 0.00& & \\ \hline
+N country code & 39 & &\\ \hline
+\specialrule{.1em}{.05em}{.05em} 
+Observations & 657335 & &\\ \hline
+Marginal R2 / Conditional R2 & 0.036 / 0.038 & &\\ \hline
+
+\end{tabular}
+\end{table}
 
 <br>
 <br>
+
 The relationship between median country age and IAT bias holds, even after controlling for the percentage women in STEM. The model below presents an additive mixed effect model predicting IAT D-score at the participant level with participant age, median country age and percentage women in STEM in country,  controlling for participant sex and trial order. The model includes by-country random intercepts. 
 
 
@@ -333,7 +336,33 @@ The relationship between median country age and IAT bias holds, even after contr
 MODEL_PATH_0b  <- "data/study_0b_model_print.txt"
 model_print_0b <- readChar(MODEL_PATH_0b, file.info(MODEL_PATH_0b)$size)
 ```
-`r model_print_0b`
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+
+ & \bf{Overall IAT D-score} & & \\ \hline
+Predictors & Estimates & SE & Statistic \\ \hline
+(intercept) & -0.00 & 0.03 & -0.05 \\ \hline
+median country age & 0.00 & 0.00 & 4.11 \\ \hline
+\% women in STEM & -0.00 & 0.00 & -2.73 \\ \hline
+task order & 0.09 & 0.00 & 104.76 \\ \hline
+sex (M) & -0.10 & 0.00 & -102.78 \\ \hline
+log age & 0.06 & 0.00 & 54.56 \\ \hline
+\bf{Random Effects} \\ \hline
+s2 & 0.12 & & \\ \hline
+T00 country\_code & 0.00 & &\\ \hline
+ICC & 0.00 & &\\ \hline
+N country\_code & 33& & \\ \hline
+\specialrule{.1em}{.05em}{.05em} 
+
+Observations & 646271 & &\\ \hline
+Marginal R2 / Conditional R2 & 0.036 / 0.038 & &\\ \hline
+
+\end{tabular}
+\end{table}
+
 
 # Study 1b: Career-Gender association across languages
 ## Replication of Caliskan et al. (2017){.tabset}
@@ -511,6 +540,7 @@ ggplot(all_es_sub, aes(x = sub,
         legend.margin = margin(3, 3, 0, 3, unit = 'pt'))
 ```
 
+
 ## Descriptive statistics for all language-level measures
 
 Below are the mean and standard deviation estimates for all measures presented in Table 1 of the Main Text.
@@ -534,6 +564,8 @@ all_es <- read_csv(ALL_MEASURES_PATH) %>%
          `Percent Women in STEM` = "per_women_stem_2012_2017",
          `Median Country Age` = "median_country_age")
 
+
+
 summary_stat <- all_es %>%
     select(-language_name, -n_participants, -`Male-Career Assoc.\n(Wikipedia, untranslated)`) %>%
     summarize_all(mean, na.rm = T) %>%
@@ -544,8 +576,9 @@ summary_stat <- all_es %>%
 
 summary_stat_reordered <- summary_stat[c(2,3,4,5,6,7,8,9,1),]
 
-kable(summary_stat_reordered, format = "html", digits = 3) %>%
+kable(summary_stat_reordered, digits = 3) %>%
     kable_styling(font_size = 9)
+
 ```
 
 ## Correlations by language exclusion threshold
@@ -609,8 +642,8 @@ cached_corr_table <- read_csv(CACHE_TABLE_PATH, na = character()) %>%
 
 kable(cached_corr_table[c(12:16,18:20),c(-7, -10, -11, -12)],  booktabs = T, escape = F, # partial corrs only
       align = "l") %>% 
-  kable_styling(full_width = F,font_size = 9)  
-  #row_spec(0, angle = 180) 
+  kable_styling(full_width = F, font_size = 9)   %>%
+  row_spec(0, angle = 90) 
 ```
 
 ## Replication on untranslated corpus
@@ -645,14 +678,18 @@ all_es %>%
   theme(legend.position = "right")
 ```
 
-The table below shows the correlation (Pearson’s _r_) for all measures in Study 1 and 2 at the level of languages, including estimates of language bias obtained from models trained on the untranslated Wikipedia corpus (highlighted in yellow).  
+The table below shows the correlation (Pearson’s _r_) for all measures in Study 1 and 2 at the level of languages, including estimates of language bias obtained from models trained on the untranslated Wikipedia corpus.  
 
 ```{r}
-kable(cached_corr_table[c(1:11),],  booktabs = T, escape = F, # full corrs only
+cached_corr_table2 <- cached_corr_table %>%
+  slice(1:11) %>%
+  rename("Lang. Occup. Genderness (Wikipedia, untranslated)" = "Lang. Occup. Genderness\n(Wikipedia, untranslated)",
+         "Male-Career Assoc. (Wikipedia, untranslated)" = "Male-Career Assoc.\n(Wikipedia, untranslated)")
+
+kable(cached_corr_table2,  booktabs = T, escape = F, # full corrs only
       align = "l") %>% 
-  kable_styling(full_width = F,font_size = 9)  %>%
-  row_spec(6,  background = "#ffffed") %>%
-  row_spec(10,  background = "#ffffed")
+  kable_styling(full_width = F, font_size = 6)   %>%
+  row_spec(0, angle = 90)
 ```
 
 Single asterisks indicate $p$ < .05 and double asterisks indicate $p$ < .01. The + symbol indicates a marginally significant $p$-value, $p$ < .1
@@ -662,52 +699,38 @@ The pre-registration to this study can be found here: https://osf.io/3f9ed.
 
 ## IAT Target Words
 
-Presented below are the target words for each of the 31 IATs used in our analyses. Each IAT has two target categories (e.g. "money" and "love") and two attribute categories (e.g. negative and positive). Select an IAT below to view the corresponding set of target words.
+Presented below are the target words for each of the 31 IATs used in our analyses. Each IAT has two target categories (e.g. "money" and "love") and two attribute categories (e.g. negative and positive). 
 
 ```{r, echo = FALSE, cache = F}
 WORD_LIST <- "data/all_stim_lists_5.RData"
 load(WORD_LIST) # list of target words (all_stim_sets)
 
-iat_types <- map_chr(all_stim_sets,
-                     ~pluck(.,"test_name"))
 
-shinyApp(
-  ui = fluidPage(
-    selectInput("this_iat_name", h4("Select IAT type:"), 
-                choices = iat_types, width = '30%'),
-  #h5(textOutput("bias_type")),
-  textOutput("cat1"),
-  textOutput("cat2"),
-  textOutput("att1"),
-  textOutput("att2")
-  ),
+make_df_out_of_list <- function(x){
+  category_1 = paste("CATEGORY 1: ", paste( x$category_1,  collapse = ", "), "\n")
+  category_2 = paste("CATEGORY 2: ", paste( x$category_2,  collapse = ", "), "\n")
+  attribute_1 = paste("ATTRIBUTE 1: ", paste( x$attribute_1,  collapse = ", "), "\n")
+  attribute_2 = paste("ATTRIBUTE 2: ", paste( x$attribute_2,  collapse = ", "), "\n")
+
+  data.frame(test_name = x$test_name,
+             items = paste(category_1, category_2, attribute_1, attribute_2))
   
-  server = function(input, output) {
-    
-    target_iat <- reactive({
-      keep(all_stim_sets, ~.x$test_name == input$this_iat_name)[[1]]
-     })
-            
-    output$att1 <- renderText({
-        paste("ATTRIBUTE 1: ", paste(pluck(target_iat(), "attribute_1"), 
-                                             collapse = ", ") )
-    })
-    output$att2 <- renderText({
-        paste("ATTRIBUTE 2: ", paste(pluck(target_iat(), "attribute_2"), 
-                                             collapse = ", ") )
-    })
-    output$cat1 <- renderText({
-        paste("CATEGORY 1: ", paste(pluck(target_iat(), "category_1"), 
-                                             collapse = ", ") )
-    })
-    output$cat2 <- renderText({
-        paste("CATEGORY 2: ", paste(pluck(target_iat(), "category_2"), 
-                                             collapse = ", ") )
-    })
-  },
+}
   
-  options = list(height = 200)
-)
+
+iat_stim <- map_df(all_stim_sets, make_df_out_of_list) %>%
+  rename("IAT" = "test_name") %>%
+   mutate_all(linebreak) 
+
+iat_stim %>% 
+  slice(1:16) %>%
+  kable(escape = F) %>%
+  kable_styling(font_size = 7)
+
+iat_stim %>% 
+  slice(17:31) %>%
+  kable(escape = F) %>%
+  kable_styling(font_size = 7)
 
 ```
 
@@ -753,9 +776,36 @@ The full results to the mixed-effect model described in the paper are presented 
 MODEL_PATH  <- "data/study_1c_model_print.txt"
 model_print <- readChar(MODEL_PATH, file.info(MODEL_PATH)$size)
 ```
-`r model_print`
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+
+& \bf{Behavioral Effect Resid} & & \\ \hline
+\bf{Predictors} & Estimates & SE & Statistic \\ \hline
+(intercept) & -0.00 & 0.05 & -0.09 \\ \hline
+country (uk) & 0.02 & 0.01 & 1.74 \\ \hline
+language bias difference (uk - us) & -0.03 & 0.07 & -0.42 \\ \hline
+country:language bias difference & 0.05 & 0.02 & 2.88 \\ \hline
+\bf{Random Effects} \\ \hline
+s2 & 0.20  & & \\ \hline
+T00 user id & 0.01  & & \\ \hline
+T00 domain & 0.07 & &  \\ \hline
+ICC & 0.27  & & \\ \hline
+N user id & 22059  & & \\ \hline
+N domain & 31  & & \\ \hline
+\specialrule{.1em}{.05em}{.05em} 
+Observations & 27045  & & \\ \hline
+Marginal R2 / Conditional R2 & 0.001 / 0.273 \\ \hline
+
+\end{tabular}
+\end{table}
 
 # Study 2: Gender association and lexicalized gender
+
+#### NOTE: See online version for this content (https://mollylewis.shinyapps.io/iatlang_SI/).
+
 
 ## Grammatical gender coding
 
@@ -840,7 +890,7 @@ subt_regression_r2_no_age  %>%
   mutate(term = fct_recode(term,
          `Lang. Male-Career Assoc (Subtitle)` = "lang_es_sub",
          `Prop. Gendered Occupuation Terms` = "mean_prop_distinct_occs")) %>%
-  kable(digits = 3, format = "html") %>%
+  kable(digits = 3) %>%
   kable_styling(font_size = 9)
 ```
 This model accounts for `r round(summary(subt_regression_r2_no_age)$r.squared * 100, 2)`% variance. 
@@ -856,7 +906,7 @@ wiki_regression_r2_no_age %>%
   mutate(term = fct_recode(term,
          `Lang. Male-Career Assoc (Wikipedia)` = "lang_es_wiki",
          `Prop. Gendered Occupuation Terms` = "mean_prop_distinct_occs")) %>%
-  kable(digits = 3, format = "html") %>%
+  kable(digits = 3) %>%
   kable_styling(font_size = 9)
 ```
 This model accounts for `r round(summary(wiki_regression_r2_no_age)$r.squared * 100, 2)`% variance. 
@@ -878,7 +928,7 @@ subt_regression_r2 %>%
          `Lang. Male-Career Assoc (Subtitle)` = "lang_es_sub",
          `Prop. Gendered Occupuation Terms` = "mean_prop_distinct_occs",
          `Median Country Age` = "median_country_age")) %>%
-  kable(digits = 3, format = "html") %>%
+  kable(digits = 3) %>%
     kable_styling(font_size = 9)
 ```
 This model accounts for `r round(summary(subt_regression_r2)$r.squared * 100, 2)`% variance. 
@@ -897,7 +947,7 @@ wiki_regression_r2 %>%
          `Lang. Male-Career Assoc (Wikipedia)` = "lang_es_wiki",
          `Prop. Gendered Occupuation Terms` = "mean_prop_distinct_occs",
          `Median Country Age` = "median_country_age")) %>%
-  kable(digits = 3, format = "html") %>%
+  kable(digits = 3) %>%
   kable_styling(font_size = 9)
 ```
 This model accounts for `r round(summary(wiki_regression_r2)$r.squared * 100, 2)`% variance. 

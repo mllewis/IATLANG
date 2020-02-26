@@ -1,0 +1,4 @@
+model,occupation,female_score,male_score,gender_diff_score
+feminized,nurse,0.4123854299285642,NaN,NaN
+masculinized,nurse,NaN,0.3121456402231667,NaN
+orig,nurse,0.3821690653128332,0.2913606557668717,0.09080840954596148

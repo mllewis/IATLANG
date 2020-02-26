@@ -66,7 +66,6 @@ writeup/journal/SI/iatlang_SI_cache/*
 writeup/journal/data_for_pre_review/data/*
 writeup/journal/data_for_pre_review/genderdifferences.dta
 *falk_hermle_2018_data.dta
-*tidy_other_psych_measures.csv
 data/other/tidy_other_psych_measures.csv
 writeup/journal/data_for_pre_review/*
 
@@ -121,3 +120,9 @@ exploratory_studies/13_europarl/get_iat_bias/*
 exploratory_studies/14_eci/*
 exploratory_studies/15_udbank/*
 exploratory_studies/16_wiki_native/02_get_wiki_text/ar_nativelang_article_text.csv
+data/study1b_native_replication_SI/01_processed_links/*
+data/study1b_native_replication_SI/01_raw_links/*
+data/study1b_native_replication_SI/02_text/*
+data/study1b_native_replication_SI/03_native_wiki_corpora/*
+data/study1b_native_replication_SI/04_models/*
+
