@@ -8,7 +8,7 @@ print("save subsetted models")
 INFILE <- here("data/study1b/iat_translations_tidy_wiki.csv")
 LANGKEY <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
 MODEL_PREFIX <- "/Volumes/wilbur_the_great/fasttext_models/es_native_wiki_corpus_dim200_minCount1_ep15_"
-OUTMODEL_PREFIX <- here("data/study1b_statistically_changed_SI/wiki_statistically_changed_models/")
+OUTMODEL_PREFIX <- here("data/study2_statistically_changed_SI/wiki_statistically_changed_models/")
 
 lang_key <- read_csv(LANGKEY)  %>%
   rename(language = language_name) %>%
@@ -17,9 +17,18 @@ lang_key <- read_csv(LANGKEY)  %>%
 translations <- read_csv(INFILE)  %>%
   left_join(lang_key, by = "language") %>%
   select(wiki_language_code, word, gender, word_id, translation_id,
-         translation)
+         translation) %>%
+  add_row(wiki_language_code = "es", word = "nurse_netural1", gender = "M", word_id = "w1", translation_id = "t1", translation = "enfermere") %>%
+  add_row(wiki_language_code = "es", word = "nurse_netural2", gender = "M",  word_id = "w1", translation_id = "t1", translation = "enfermerx") %>%
+  add_row(wiki_language_code = "es", word = "firefighter_netural1", gender = "M", word_id = "w1", translation_id = "t1", translation = "bomberi") %>%
+  add_row(wiki_language_code = "es", word = "firefighter_netural2", gender = "M",  word_id = "w1", translation_id = "t1", translation = "bomberx") %>%
+  add_row(wiki_language_code = "es", word = "nurse_netural1", gender = "F", word_id = "w1", translation_id = "t1", translation = "enfermere") %>%
+  add_row(wiki_language_code = "es", word = "nurse_netural2", gender = "F",  word_id = "w1", translation_id = "t1", translation = "enfermerx") %>%
+  add_row(wiki_language_code = "es", word = "firefighter_netural1", gender = "F", word_id = "w1", translation_id = "t1", translation = "bomberi") %>%
+  add_row(wiki_language_code = "es", word = "firefighter_netural2", gender = "F",  word_id = "w1", translation_id = "t1", translation = "bomberx")
 
-model_types <- c("masculinized", "feminized", "orig")
+
+model_types <- c("neuteredie", "neuteredx")
 
 #### loop over languages and get word vectors ####
 save_subsetted_model <- function(model_type, trans_df, current_lang, model_prefix, out_model_prefix){
@@ -60,7 +69,7 @@ save_subsetted_model <- function(model_type, trans_df, current_lang, model_prefi
 }
 
 # get all subsetted models
-walk(model_types[3],
+walk(model_types,
      save_subsetted_model,
      translations,
      "es",

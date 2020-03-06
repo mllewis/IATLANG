@@ -9,7 +9,7 @@ INFILE <- here("data/study2/occupation_translations_tidy_wiki.csv")
 LANGKEY <- here("data/study0/processed/lang_name_to_wiki_iso.csv")
 MODEL_PREFIX <- "/Volumes/wilbur_the_great/fasttext_models/es_native_wiki_corpus_dim200_minCount1_ep15_"
 FULL_IAT_MODEL_PATH <- here("data/study2_statistically_changed_SI/wiki_statistically_changed_models/calculated/statistically_manipulated_es_")
-OUTMODEL_PREFIX <- here("data/study2_statistically_changed_SI/wiki_statistically_changed_models/")
+OUTMODEL_PREFIX <- here("data/study2_statistically_changed_SI/wiki_statistically_changed_models/occupation_models/")
 
 IAT_GENDER_WORDS <-  c("male", "man", "boy", "brother", "he", "him", "his", "son",
                       "female", "woman", "girl", "sister", "she", "her", "hers", "daughter")
@@ -24,7 +24,17 @@ translations <- read_csv(INFILE)  %>%
     mutate(language = case_when(language == "Serbian (latin)\n" ~ "serbian", TRUE ~ language)) %>%
     left_join(lang_key, by = "language") %>%
     select(wiki_language_code, word, gender, word_id, translation_id,
-           translation)
+           translation) %>%
+  add_row(wiki_language_code = "es", word = "nurse_netural1", gender = "M", word_id = "w1", translation_id = "t1", translation = "enfermere") %>%
+  add_row(wiki_language_code = "es", word = "nurse_netural2", gender = "M",  word_id = "w1", translation_id = "t1", translation = "enfermerx") %>%
+  add_row(wiki_language_code = "es", word = "firefighter_netural1", gender = "M", word_id = "w1", translation_id = "t1", translation = "bomberi") %>%
+  add_row(wiki_language_code = "es", word = "firefighter_netural2", gender = "M",  word_id = "w1", translation_id = "t1", translation = "bomberx") %>%
+  add_row(wiki_language_code = "es", word = "nurse_netural1", gender = "F", word_id = "w1", translation_id = "t1", translation = "enfermere") %>%
+  add_row(wiki_language_code = "es", word = "nurse_netural2", gender = "F",  word_id = "w1", translation_id = "t1", translation = "enfermerx") %>%
+  add_row(wiki_language_code = "es", word = "firefighter_netural1", gender = "F", word_id = "w1", translation_id = "t1", translation = "bomberi") %>%
+  add_row(wiki_language_code = "es", word = "firefighter_netural2", gender = "F",  word_id = "w1", translation_id = "t1", translation = "bomberx")
+
+
 
 all_langs <- unique(translations$wiki_language_code)  %>%
   setdiff(LANGS_TO_EXCLUDE)
@@ -74,7 +84,7 @@ save_subsetted_model_occupation <- function(model_type, current_lang, trans_df, 
 }
 
 # get all subsetted models
-walk(c("feminized", "masculinized", "orig"),
+walk(c("neuteredie", "neuteredx"),
      save_subsetted_model_occupation,
      "es",
      translations,

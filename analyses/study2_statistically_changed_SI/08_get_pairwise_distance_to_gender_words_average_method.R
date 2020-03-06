@@ -66,7 +66,29 @@ crit_dists_df_diffs <- crit_dists_df %>%
   rename(female_score = "F",
          male_score = "M") %>%
   mutate(gender_diff_score = female_score - male_score) %>%
-  filter(occupation == "nurse")
+  filter(occupation %in% c("nurse", "firefighter", "firefighter_netural1", "firefighter_netural2",
+                           "nurse_netural1", "nurse_netural2"),
+         model %in% c("orig", "orig2", "neuteredx", "neuteredie")) %>%
+  arrange(model, occupation) %>%
+  filter(!is.na(female_score), !is.na(male_score)) %>%
+  ungroup() %>%
+  mutate(occupation2 = c("firefighter", "nurse", "firefighter", "nurse", "firefighter", "nurse", "firefighter", "nurse")) %>%
+  arrange(occupation2)
+
+data_long <- crit_dists_df_diffs %>%
+  select(model, occupation2, female_score, male_score, gender_diff_score) %>%
+  gather("measure", "value", -1:-2) %>%
+  mutate(model = fct_relevel(model, "orig", "orig2", "neuteredie", "neuteredx"),
+         measure = fct_relevel(measure, "female_score", "male_score", "gender_diff_score"))
+
+ggplot(data_long, aes(x = model, y = value, fill = model)) +
+  ylab("bias") +
+  geom_bar(stat = "identity") +
+  facet_grid(occupation2~measure) +
+  geom_hline(yintercept = 0, linetype = 2) +
+  theme_classic() +
+  theme(legend.position = 'none')
+
 
 write_csv(crit_dists_df_diffs, OUTFILE)
 
