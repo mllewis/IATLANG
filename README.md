@@ -1,8 +1,7 @@
-Associations between gender biases and distributional semantics in 25 languages
+Gender stereotypes are reflected in the distributional structure of 25 languages
 ===
 
-Lewis, M. & Lupyan, G. (in press). Associations between gender biases
-and distributional semantics in 25 languages. _Nature Human Behavior_. [[preprint]](writeup/journal/iat_lang.pdf) [[source]](writeup/journal/iat_lang.Rmd) [[supplemental materials]](https://mollylewis.shinyapps.io/iatlang_SI/)
+Lewis, M. & Lupyan, G. (in press). Gender stereotypes are reflected in the distributional structure of 25 languages. _Nature Human Behavior_. [[preprint]](writeup/journal/iat_lang.pdf) [[source]](writeup/journal/iat_lang.Rmd) [[supplemental materials]](https://mollylewis.shinyapps.io/iatlang_SI/)
 
 
 <br>
