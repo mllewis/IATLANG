@@ -268,7 +268,7 @@ get_nested_data <- function(var1_name, var2_name, df){
    all_corr_vars %>%
     select(var1_name, var2_name) %>%
       rename(var1 = var1_name,
-                var2 = var2_name) %>%
+            var2 = var2_name) %>%
     mutate(variable1_name = var1_name,
            variable2_name = var2_name) %>%
     select(variable1_name, variable2_name, var1, var2)
@@ -307,18 +307,6 @@ corrs_for_table <- map2_df(crossed_vars$var1, crossed_vars$var2, get_nested_data
 ```
 
 ```{r bigtable}
-print_tidy_corrs <- tidy_corrs %>%
-  filter(rowname != var2) %>%
-  mutate_at(vars(simple_r, partial_r), ~ format(round(., 2), nsmall = 2) %>%  f_num(., digits = 2)) %>%
-  mutate_at(vars(simple_r, partial_r), ~ 
-               case_when(str_detect(.,"^-") ~ ., TRUE ~ paste0("\\ ", .))) %>% # add leading space so decimals align
-  mutate_at(vars(simple_p, partial_p), ~ case_when(
-    . < .01 ~ "**", . < .05 ~ "*",  . < .1 ~ "+", TRUE ~ "")) %>%
-  mutate(r_partial_print = case_when(
-    !is.na(partial_r) ~ paste0(partial_r, partial_p),TRUE ~ ""),
-    r_simple_print = paste0(simple_r, simple_p)) %>%
-  select(rowname, var2, r_simple_print, r_partial_print)
-
 tidy_corrs_to_print_simple <- corrs_for_table %>%
   spread(variable2_name, r_table_text)  %>%
   select(contains("Residualized"), contains("STEM"), contains("IAT"),
