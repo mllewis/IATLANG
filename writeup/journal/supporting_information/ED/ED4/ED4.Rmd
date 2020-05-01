@@ -1,0 +1,235 @@
+---
+title: Caliskan Replication
+subtitle: ED4
+date: "`r Sys.Date()`"
+output:
+  html_document:
+  code_folding: hide
+
+---
+
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(cowplot)
+library(here)
+library(countrycode)
+library(viridis)
+library(ggrepel)
+
+opts_chunk$set(echo = F, message = F, warning = F,
+               error = F, tidy = F, cache = F)
+```
+
+```{r}
+full_width = 7.08661
+FIG_OUTPATH <- here("writeup/journal/supporting_information/ED/ED4/ED4.pdf")
+
+```
+
+## Write data to supplementary information
+
+```{r}
+CALISKAN_SUB_PATH <-  here("data/SI/caliskan_sub_es.csv")
+CALISKAN_WIKI_PATH <- here("data/SI/caliskan_wiki_es.csv")
+CALISKAN_PATH <- here("data/SI/caliskan_paper_es.csv")
+
+SI_OUTPATH <- here("writeup/journal/supporting_information/ED/ED4/ED4_data.csv")
+```
+
+```{r english-language-caliskan-es-wiki}
+wiki_es <- read_csv(CALISKAN_WIKI_PATH,
+                            col_names = c("test", "study_name", "wiki"))
+
+caliskan_es <- read_csv(CALISKAN_PATH)
+all_es <- wiki_es %>%
+  left_join(caliskan_es) %>%
+  gather("es_source", "d", 4:6)  %>%
+  filter(es_source != "original") %>%
+  mutate(study_name2 = case_when(test == "WEAT_1" ~ "flowers-insects",
+                                  test == "WEAT_2" ~  "instruments-weapons",
+                                  test == "WEAT_3" ~  "race", 
+                                  test == "WEAT_4" ~  "race",
+                                  test == "WEAT_5" ~  "race", 
+                                  test == "WEAT_6" ~  "gender-career",
+                                  test == "WEAT_7" ~  "gender-math",
+                                  test == "WEAT_8" ~  "gender-science",
+                                  test == "WEAT_9" ~  "mental-physical",
+                                  test == "WEAT_10" ~  "age"),
+         WEAT_name = case_when(test == "WEAT_1" ~ "(WEAT 1)",
+                                  test == "WEAT_2" ~  "(WEAT 2)",
+                                  test == "WEAT_3" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_4" ~  "(WEAT 3-5)",
+                                  test == "WEAT_5" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_6" ~  "(WEAT 6)",
+                                  test == "WEAT_7" ~  "(WEAT 7)",
+                                  test == "WEAT_8" ~  "(WEAT 8)",
+                                  test == "WEAT_9" ~  "(WEAT 9)",
+                                  test == "WEAT_10" ~  "(WEAT 10)"),
+         point_color = study_name2,
+         study_name2 = paste0(as.character(study_name2),
+                              "\n", WEAT_name),
+         study_name2 = ifelse(es_source == "AC_w2v" & 
+                                test %in% c("WEAT_1", 
+                                            "WEAT_2",
+                                            "WEAT_3",
+                                            "WEAT_7", 
+                                            "WEAT_8", 
+                                            "WEAT_9", 
+                                            "WEAT_10", 
+                                            "WEAT_6"),
+                              study_name2, ""), 
+         es_source = fct_recode(es_source,
+                                `Common Crawl (GloVe)` = "AC_glove",
+                                `Google News (word2vec)` = "AC_w2v")) %>%
+  mutate(replication_model = "English Wikipedia") %>%
+  rename(replication_estimate = "wiki")
+```
+
+```{r english-language-caliskan-es-sub}
+sub_es <- read_csv(CALISKAN_SUB_PATH,
+                            col_names = c("test", "study_name", "sub")) 
+
+all_es_sub <- sub_es %>%
+  left_join(caliskan_es) %>%
+  gather("es_source", "d", 4:6)  %>%
+  filter(es_source != "original") %>%
+  mutate(study_name2 = case_when(test == "WEAT_1" ~ "flowers-insects",
+                                  test == "WEAT_2" ~  "instruments-weapons",
+                                  test == "WEAT_3" ~  "race", 
+                                  test == "WEAT_4" ~  "race",
+                                  test == "WEAT_5" ~  "race", 
+                                  test == "WEAT_6" ~  "gender-career",
+                                  test == "WEAT_7" ~  "gender-math",
+                                  test == "WEAT_8" ~  "gender-science",
+                                  test == "WEAT_9" ~  "mental-physical",
+                                  test == "WEAT_10" ~  "age"),
+         WEAT_name = case_when(test == "WEAT_1" ~ "(WEAT 1)",
+                                  test == "WEAT_2" ~  "(WEAT 2)",
+                                  test == "WEAT_3" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_4" ~  "(WEAT 3-5)",
+                                  test == "WEAT_5" ~  "(WEAT 3-5)", 
+                                  test == "WEAT_6" ~  "(WEAT 6)",
+                                  test == "WEAT_7" ~  "(WEAT 7)",
+                                  test == "WEAT_8" ~  "(WEAT 8)",
+                                  test == "WEAT_9" ~  "(WEAT 9)",
+                                  test == "WEAT_10" ~  "(WEAT 10)"),
+         point_color = study_name2,
+         study_name2 = paste0(as.character(study_name2),
+                              "\n", WEAT_name),
+         study_name2 = ifelse(es_source == "AC_w2v" & 
+                                test %in% c("WEAT_1", 
+                                            "WEAT_2",
+                                            "WEAT_3",
+                                            "WEAT_7", 
+                                            "WEAT_8", 
+                                            "WEAT_9", 
+                                            "WEAT_10", 
+                                            "WEAT_6"),
+                              study_name2, ""), 
+         es_source = fct_recode(es_source,
+                                `Common Crawl (GloVe)` = "AC_glove",
+                                `Google News (word2vec)` = "AC_w2v")) %>%
+  mutate(replication_model = "English Subtitles") %>%
+  rename(replication_estimate = "sub")
+
+all_es_both <- bind_rows(all_es, all_es_sub) %>%
+  rename(caliskan_estimate = d,
+         caliskan_model = es_source) %>%
+  select(test, study_name, caliskan_model, caliskan_estimate, replication_model, replication_estimate, point_color, study_name2)
+
+write_csv(all_es_both %>% select(-point_color, -study_name2), SI_OUTPATH)
+```
+
+
+## Plot
+Replication of Caliskan et al. (2017){.tabset}
+
+```{r}
+all_es_both %>%
+  filter(study_name == "gender-bias-career-family") %>%
+  mutate_if(is.numeric, round, 2) %>%
+  kable()
+
+```
+
+
+
+
+```{r, fig.width = 5}
+p1 <- ggplot(all_es_both %>% filter(replication_model == "English Wikipedia"),
+             aes(x = replication_estimate, 
+                   y = caliskan_estimate, 
+                   shape = caliskan_model, 
+                   color = point_color)) +
+  geom_abline(intercept = 0, slope = 1, linetype = 2, color = "darkgrey") +
+  geom_point(size = 2.5) +
+  ylim(-.6, 2.2) +
+  xlim(-.6, 2.2) +
+  ggtitle("Wikipedia corpus") +
+  xlab("Replication effect size") +
+  ylab("Original effect size") +
+ geom_text_repel(aes(label = study_name2), 
+                             force = 5, 
+                             color = "black", 
+                             size = 1.3, 
+                             fontface = 'bold', 
+                             point.padding = .5,
+                             box.padding = .4)+
+  theme_classic(base_size = 7) +
+  theme(panel.grid = element_line(colour = "grey92"), 
+            panel.grid.minor = element_line(size = rel(0.5)),
+        panel.grid.major = element_line(size = rel(1.2))) +
+  scale_shape_discrete(name = "Caliskan et al. model") +
+  scale_color_discrete(guide = FALSE) +
+  theme(legend.position = "none")
+
+
+p2 <- ggplot(all_es_both %>% filter(replication_model == "English Subtitles"),
+             aes(x = replication_estimate, 
+                   y = caliskan_estimate, 
+                   shape = caliskan_model, 
+                   color = point_color)) +
+  geom_abline(intercept = 0, slope = 1, linetype = 2, color = "darkgrey") +
+  geom_point(size = 2.5) +
+  ylim(-.6, 2.2) +
+  xlim(-.6, 2.2) +
+  ggtitle("Subtitle corpus") +
+  xlab("Replication effect size") +
+  ylab("Original effect size") +
+ geom_text_repel(aes(label = study_name2), 
+                             force = 5, 
+                             color = "black", 
+                             size = 1.3, 
+                             fontface = 'bold', 
+                             point.padding = .5,
+                             box.padding = .4)+
+                            # min.segment.length = .1) +
+  theme_classic(base_size = 7) +
+    theme(panel.grid = element_line(colour = "grey92"), 
+            panel.grid.minor = element_line(size = rel(0.5)),
+        panel.grid.major = element_line(size = rel(1.2))) +
+  scale_shape_discrete(name = "Caliskan et al. corpus") +
+  scale_color_discrete(guide = FALSE ) 
+```
+
+```{r}
+full_fig <- plot_grid(p1, p2, labels = c('a', 'b'), label_size = 12, ncol = 2, rel_widths = c(1,1.48))
+full_fig
+```
+
+
+```{r}
+pdf(FIG_OUTPATH, width = full_width, height = 3.1)
+full_fig
+dev.off()
+```
+
+## Title and Legend 
+
+Replication of Caliskan et al. (2017) with our corpora
+
+We replicate the original set of Caliskan, Bryson, and Narayanan (2017; _CBN_) findings using the English-trained versions of the models used in our main analyses (models trained on the Wikipedia and Subtitles corpora). For each model, we calculate an effect size for each of the 10 IAT types reported in CBN: flowers/insects--pleasant/unpleasant, instruments/weapons--pleasant/unpleasant, European-American/Afro-American--pleasant/unpleasant, males/females--career/family, math/arts--male/female, science/arts--male/female, mental-disease/physical-disease--permanent/temporary, and young/old--pleasant/unpleasant (labelled as Word-Embedding Association Test (WEAT) 1-10 in CBN).  We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous to the behavioural  effect size measure  where larger values indicate larger  bias. The figure shows the effect size measure derived from the English Wikipedia corpus (a) and the English Subtitle corpus (b) plotted against effect size estimates reported by CBN from two different models (trained on Common Crawl and  Google News corpora). Point color corresponds to  bias type, and point shape corresponds to the two CBN models. With the exception of biases related to race and age, effect sizes from our corpora are comparable to those reported by CBN. In particular, for the gender-career IAT---the bias relevant to our current purposes---we estimate the effect size to be  1.78 (Wikipedia)/1.65 (Subtitle), while CBN estimates it to be  1.81 (Common Crawl)/1.89 (Google News).  

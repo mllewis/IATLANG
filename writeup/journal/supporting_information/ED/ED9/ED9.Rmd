@@ -1,0 +1,167 @@
+---
+title: Falk & Hermle/Stoet and Geary data
+subtitle: ED9
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(here)
+library(broom)
+library(ggrepel)
+library(cowplot)
+
+opts_chunk$set(echo = F, message = F, warning = F,
+               error = F, tidy = F, cache = F)
+```
+
+```{r}
+tidy_r_to_text_r <- function(tidy_row){
+  round_tidy <- tidy_row %>%
+    mutate_at(vars(estimate, contains("conf")), round, 2)
+  
+  p_value <- case_when(pull(round_tidy, p.value) < .0001 ~ "_p_ < .0001",
+                       pull(round_tidy, p.value) < .001 ~ "_p_ < .001",
+                       TRUE ~ paste0("_p_ = ", round(pull(round_tidy, p.value),2)))
+  
+  paste0(
+    "_r_(",
+    pull(round_tidy, parameter),
+    ") = ", 
+    pull(round_tidy, estimate),
+    " [",
+    pull(round_tidy, conf.low),
+    ", ",
+    pull(round_tidy, conf.high),
+    "], ",
+    p_value
+  )
+}
+
+
+```
+
+
+```{r}
+full_width = 7.08661
+FIG_OUTPATH <- here("writeup/journal/supporting_information/ED/ED9/ED9f.pdf")
+```
+
+
+```{r}
+OTHER_DATA_PATH <- here("writeup/journal/supporting_information/ED/ED9/ED9_data.csv")
+OTHER_PATH <- here("data/other/tidy_other_psych_measures.csv")
+
+other_data <- read_csv(OTHER_PATH) %>%
+  select(country_name, language_code, lang_es_sub, lang_es_wiki, 
+         genderdif_fh, self_efficacy_diff_sg, gdp_2017,
+         es_iat_sex_age_order_implicit_resid, per_women_stem) 
+
+write_csv(other_data, OTHER_DATA_PATH)
+
+```
+
+
+
+# Plot
+
+
+## Falk and Hermle (2018)
+```{r}
+implicit_gender_dif <- cor.test(other_data$lang_es_sub, 
+                                other_data$genderdif_fh) %>%
+    tidy() %>%
+    tidy_r_to_text_r()
+```
+
+
+
+```{r, fig.height = 4.5, fig.width = 4.5}
+p1 <- ggplot(other_data, aes(x = lang_es_sub, y = genderdif_fh, label = country_name)) +
+  ylab("Gender Differences in Preferences\n(Falk & Hermle, 2018)") +
+  xlab("Language Male-Career Association\n(effect size)") +
+  ggtitle("Language Male-Career Association vs.\nGender Differences in Preferences") +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_point(size = .9) +
+  annotate("text", y = -1.05, x = .9, label = "italic(r) == .48", color = "red", parse = T) +
+  geom_text_repel(size = 2) +
+  theme_classic(base_size = 7)
+```
+
+```{r}
+implicit_gdp_subt <- cor.test(other_data$lang_es_sub,
+                         other_data$gdp_2017) %>%
+  tidy() %>%
+  tidy_r_to_text_r()
+
+implicit_gdp_wiki <- cor.test(other_data$lang_es_wiki,
+                         other_data$gdp_2017) %>%
+  tidy() %>%
+  tidy_r_to_text_r()
+```
+
+
+
+
+## Stoet and Geary (2018)
+```{r}
+lang_sg <- cor.test(other_data$lang_es_sub, 
+                    other_data$self_efficacy_diff_sg) %>%
+    tidy() %>%
+    tidy_r_to_text_r()
+
+boot_mediation_model_sub <- other_data %>%
+  mutate_if(is.numeric, scale) %>%
+  robmed::fit_mediation(
+    x = "lang_es_sub",
+    y = "per_women_stem",
+    m = "self_efficacy_diff_sg") %>%
+   robmed::test_mediation(type = "bca")    # bias-corrected bootstrap
+   
+sub_p <- round(robmed::p_value(boot_mediation_model_sub),2)
+
+sub_ab <-  boot_mediation_model_sub %>%
+  coef() %>%
+  as.list() %>%
+  pluck("ab") %>%
+  round(2)
+```
+
+
+
+```{r, fig.height = 4.5, fig.width = 4.5}
+p2 <- ggplot(other_data, aes(x = lang_es_sub, y = self_efficacy_diff_sg, label = country_name)) +
+  ylab("Gender difference in STEM Self Efficacy\n(Stoet & Geary, 2018)") +
+  xlab("Language Male-Career Association\n(effect size)") +
+  ggtitle("Language Male-Career Association vs.\nGender Differences in STEM Self Efficacy  ") +
+  geom_smooth(method = "lm", alpha = .2) +
+  geom_point(size = .9) +
+  annotate("text", y = -.05, x = .9, label = "italic(r) == .59", color = "red", parse = T) +
+  geom_text_repel(size = 2) +
+  theme_classic(base_size = 7)
+```
+
+
+```{r}
+full_fig <- plot_grid(p1, p2, labels = c('a', 'b'), label_size = 12, ncol = 2 )
+full_fig
+```
+
+
+```{r}
+pdf(FIG_OUTPATH, width = full_width, height = 3.1)
+full_fig
+dev.off()
+```
+
+## Title and Legend 
+
+Gender associations in language and other psychological measures
+
+Several recent studies 6, 35 have presented novel theories to account for cases of structural inequality related to gender. Both of these studies argue that psychological differences play a causal role in the emergence of structural inequality. Here, we show that degree of gender bias in language is correlated with these psychological differences at the country level, consistent with the idea that language experience could be playing a causal role in the emergence of psychological differences. a, Gender differences in preferences35 (composite score of “six fundamental preferences with regard to social and nonsocial domains: willingness to take risks; patience, which captures preferences over the intertemporal timing of rewards; altruism; trust; and positive and negative reciprocity, which capture the costly willingness to reward kind actions or to punish unkind actions, respectively.”)  as a function of language male-career association measured in the Subtitle corpus. These two measures are correlated (`r implicit_gender_dif`): Countries with greater differences in gender preferences also have greater gender bias present in their languages. We also find that per capita GDP49 is correlated with language gender male-career association  measured in both corpora (Wikipedia: `r implicit_gdp_wiki`; Subtitle: `r implicit_gdp_subt`). Futher, the magnitude of the male-career association in the language spoken in a country predicts the magnitude of that bias measured via the behavioral IAT, controlling for both national GDP and median country age, in an additive mixed-effect model. b, Gender difference in STEM Self Efficacy6 (“The sex difference in self efficacy (boys – girls)”) as a function of male-career association  measured in the Subtitle corpus. These two measures are correlated (`r lang_sg`):  Countries with greater gender differences in self-efficacy also have greater gender bias present in their languages. Futher, self-efficacy mediated the effect of language statistics on percentage of women in stem (path-ab = `r sub_ab`; _p_ = `r sub_p`), suggesting that language statistics could be critical causal factor underlying gender differences in STEM participation. 
+

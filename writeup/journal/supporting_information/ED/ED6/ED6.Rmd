@@ -1,0 +1,90 @@
+---
+title: Untranslated replication
+subtitle: ED6
+date: "`r Sys.Date()`"
+output:
+  html_document:
+  code_folding: hide
+
+---
+
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(here)
+opts_chunk$set(echo = F, message = F, warning = F,
+               error = F, tidy = F, cache = F)
+```
+
+```{r}
+full_width = 7.08661
+FIG_OUTPATH <- here("writeup/journal/supporting_information/ED/ED6/ED6.pdf")
+
+```
+
+## Write data to supplementary information
+
+```{r}
+TIDY_MEASURES_DF <- here("writeup/journal/SI/data/tidy_measures.csv")
+SI_OUTPATH <-  here("writeup/journal/supporting_information/ED/ED6/ED6_data.csv")
+
+temp <- read_csv(TIDY_MEASURES_DF) %>%
+  select(language_code, language_name, n_participants, es_iat_sex_age_order_implicit_resid,
+         lang_es_wiki_native)  
+write_csv(temp, SI_OUTPATH)
+
+all_es <- read_csv(SI_OUTPATH)
+```
+
+
+## Replication on untranslated corpus
+
+```{r, fig.width = 5.5}
+all_es_tidy <- all_es %>%
+  rename(`Male-Career Assoc.\n(Wikipedia, untranslated)` = "lang_es_wiki_native",
+         `Implicit Male-Career Assoc. (IAT)` = "es_iat_sex_age_order_implicit_resid")
+
+
+p1 <- all_es_tidy %>%
+  ggplot(aes(x = `Male-Career Assoc.\n(Wikipedia, untranslated)`, 
+             y =  `Implicit Male-Career Assoc. (IAT)`, size = n_participants)) +
+  geom_smooth(method = "lm", alpha = .1, size = .9) +
+  geom_point(alpha = .2) +
+  ggrepel::geom_text_repel(aes(label = language_name), 
+                           size = 1.8, box.padding = 0.1) + 
+  scale_x_continuous(breaks = c(-.25, -0,.25, .5,.75, 1), 
+                     label = c("-.25\n(weaker)", "0", ".25", ".5", ".75", "1\n(stronger)"),
+                     limits = c(-.25, 1.1)) +
+  scale_y_continuous(breaks = c(-.075, -.05, -.025, 0, .025, .05), 
+                     label = c("-.075\n(weaker)", "-.05", "-.025", "0", ".025", ".05\n(stronger)"),
+                   limits = c(-.075, .05) ) +
+  scale_size(trans = "log10", labels = scales::comma, name = "N participants") +
+  ggtitle("Implicit and Linguistic Male-Career Association") +
+  ylab("Implicit Male-Career Association\n(residualized effect size)") +
+  xlab("Language Male-Career Association\n(effect size)") +
+  annotate("text", y = -.06, x = .75, label = "italic(r) == .60", color = "red", parse = T) +
+  theme_classic(base_size = 7)  +
+  theme(legend.position = "right")
+
+p1
+
+cor.test(all_es_tidy$`Implicit Male-Career Assoc. (IAT)`, all_es_tidy$`Male-Career Assoc.
+(Wikipedia, untranslated)`)
+
+```
+
+
+```{r}
+pdf(FIG_OUTPATH, width = 4, height = 3.1)
+p1
+dev.off()
+```
+
+## Title and Legend 
+
+Replication of Study 1b on Wikipedia corpus excluding translations
+
+Both the Subtitle and Wikipedia corpora likely contain some documents that are translated from other languages (e.g., the Wikipedia article on "Paris" is written in French and then translated into English). The parallel content across languages allows us to estimate the gender bias in language statistics, while holding content constant across languages. Nevertheless, content may itself be a driver of gender bias (e.g. one language may have more articles about male politicians relative to another).  To understand the contribution of language-specific content on gender bias, we constructed a corpus of Wikipedia articles in each language that were originally written in the target language (i.e., untranslated). We identified untranslated articles by examining the interlanguage links on a Wikipedia article page. These links are pointers to the same article content in other languages (e.g. the "Paris" article in French contains a link to the "Paris" article in English). Since the original source language of an article could not be inferred, we excluded all articles that contained one or more interlanguage links. This ensured that all remaining articles contained only text originally written in the target language. We constructed a corpus for each language containing all untranslated articles. There were a median of 168,326 articles per language (range: 10,307-14,676,484). We trained fastText42 on each language corpus with default parameters and a dimension size of 200. We then used these models trained on native text to calculate by-language IAT bias scores and by-language occupation bias scores, using the same procedure as with the models described in the Main Text (Studies 1b and 2).  One language was excluded following the same exclusion criteria as in the main analyses (>= 20% missing words in model; Mandarin), but the results remain the same  when this language is included. Using models trained on the untranslated corpora, we replicate the key finding from Study 1b showing a positive correlation between the bias measured behaviorally with the IAT and measured in language (_r_ = .60; _p_ = .002). Notably, the effect size is somewhat larger relative to the other two corpora types, presumably because additional bias is introduced by allowing the corpus content to vary across languages. 

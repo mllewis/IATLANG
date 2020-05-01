@@ -1,0 +1,38 @@
+---
+title: "Partial Correlations"
+output: latex_document
+date: "`r Sys.Date()`"
+subtitle: ED5
+---
+
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(here)
+
+
+opts_chunk$set(echo = F, message = F, warning = F,
+               error = F, tidy = F, cache = F)
+```
+
+
+
+
+```{r}
+PARTIAL_DATA <-  here("writeup/journal/supporting_information/ED/ED5/cached_partial_corr_table.csv")
+```
+
+```{r}
+partial_data <- read_csv(PARTIAL_DATA, na = "NA")
+
+kable(partial_data,format = "latex")
+```
+
+## Title and Legend 
+
+Replication of Caliskan et al. (2017) with our corpora
+
+We replicate the original set of Caliskan, Bryson, and Narayanan (2017; _CBN_) findings using the English-trained versions of the models used in our main analyses (models trained on the Wikipedia and Subtitles corpora). For each model, we calculate an effect size for each of the 10 IAT types reported in CBN: flowers/insects--pleasant/unpleasant, instruments/weapons--pleasant/unpleasant, European-American/Afro-American--pleasant/unpleasant, males/females--career/family, math/arts--male/female, science/arts--male/female, mental-disease/physical-disease--permanent/temporary, and young/old--pleasant/unpleasant (labelled as Word-Embedding Association Test (WEAT) 1-10 in CBN).  We calculate the bias using the same effect size metric described in CBN, a  standardized difference score of the relative similarity of the target words to the target attributes (i.e.\ relative similarity of male to career vs.\ relative similarity of female to career). This measure is  analogous to the behavioural  effect size measure  where larger values indicate larger  bias. The figure shows the effect size measure derived from the English Wikipedia corpus (a) and the English Subtitle corpus (b) plotted against effect size estimates reported by CBN from two different models (trained on Common Crawl and  Google News corpora). Point color corresponds to  bias type, and point shape corresponds to the two CBN models. With the exception of biases related to race and age, effect sizes from our corpora are comparable to those reported by CBN. In particular, for the gender-career IAT---the bias relevant to our current purposes---we estimate the effect size to be  1.78 (Wikipedia)/1.65 (Subtitle), while CBN estimates it to be  1.81 (Common Crawl)/1.89 (Google News).  

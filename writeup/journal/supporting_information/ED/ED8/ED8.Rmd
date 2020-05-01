@@ -1,0 +1,70 @@
+---
+title: Study 1C analyses
+subtitle: ED8
+date: "`r Sys.Date()`"
+output: latex_document
+---
+
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(here)
+library(broom)
+opts_chunk$set(echo = F, message = F, warning = F,
+               error = F, tidy = F, cache = F)
+```
+
+`
+
+
+```{r}
+LANG_MEASURE_PATH <- here("writeup/journal/supporting_information/ED/ED8/ED8_data.csv")
+```
+
+
+
+## Predicting career-gender association with both language measures 
+In this analysis, we predict the magnitude of implicit career-gender association by language with an additive linear model. As predictors, we include   proportion gender distinct labels and linguistic career-gender association (as measured by word embeddings of the IAT words). Model coefficients are shown below for models based on the Subtitle (top) and Wikipedia (bottom) corpora. 
+
+<b> Subtitle Corpus: </b>
+```{r}
+all_lang_model_scaled <- read_csv(LANG_MEASURE_PATH)
+
+# regressions with lang_es_sub/wiki instead of occupation statistics
+subt_regression_r2_no_age <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_sub, 
+   data = all_lang_model_scaled)
+
+subt_regression_r2_no_age  %>%
+  tidy() %>%
+  mutate(term = fct_recode(term,
+         `Lang. Male-Career Assoc (Subtitle)` = "lang_es_sub",
+         `Prop. Gendered Occupuation Terms` = "mean_prop_distinct_occs")) %>%
+  kable(digits = 3) 
+```
+This model accounts for `r round(summary(subt_regression_r2_no_age)$r.squared * 100, 2)`% variance. 
+
+<b> Wikipedia Corpus: </b>
+```{r}
+wiki_regression_r2_no_age <- lm(es_iat_sex_age_order_implicit_resid ~ mean_prop_distinct_occs + 
+     lang_es_wiki, 
+   data = all_lang_model_scaled)  
+
+wiki_regression_r2_no_age %>%
+  tidy() %>%
+  mutate(term = fct_recode(term,
+         `Lang. Male-Career Assoc (Wikipedia)` = "lang_es_wiki",
+         `Prop. Gendered Occupuation Terms` = "mean_prop_distinct_occs")) %>%
+  kable(digits = 3) 
+```
+This model accounts for `r round(summary(wiki_regression_r2_no_age)$r.squared * 100, 2)`% variance. 
+
+
+Presented below are models that include median country age as an additional predictor. 
+
+
+## Title and Legend 
+Models predicting career-gender association with proportion gender distinct labels and linguistic career-gender association (Study 2). In this analysis, we predict the magnitude of implicit career-gender association by language with an additive linear model. As predictors, we include   proportion gender distinct labels and linguistic career-gender association (as measured by word embeddings of the IAT words). Model coefficients are shown below for models based on the Wikipedia (a) and Subtitle (b) corpora. 

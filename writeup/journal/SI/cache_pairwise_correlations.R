@@ -93,12 +93,13 @@ tidy_corrs_to_print_partial <- print_tidy_corrs %>%
          contains("Occup. Terms"),  "Lang. Occup. Genderness (Subtitle)",
 "Lang. Occup. Genderness (Wikipedia)",
 "Lang. Occup. Genderness\n(Wikipedia, untranslated)") %>%
-  rename(" " = "rowname") 
+  rename(" " = "rowname")
 
 tidy_corrs_to_print_reordered_simple <- tidy_corrs_to_print_simple[c(1,2,10,7,8,6,11,4,5,3,9),]
 tidy_corrs_to_print_reordered_partial <- tidy_corrs_to_print_partial[c(1,2,10,7,8,6,11,4,5,3),]
 
-tidy_corrs_to_print_reordered <- bind_rows(tidy_corrs_to_print_reordered_simple, tidy_corrs_to_print_reordered_partial) %>%
+tidy_corrs_to_print_reordered <- bind_rows(tidy_corrs_to_print_reordered_simple,
+                                           tidy_corrs_to_print_reordered_partial) %>%
   slice(1:(n()-1))
 
 write_csv(tidy_corrs_to_print_reordered, CACHE_TABLE_PATH)

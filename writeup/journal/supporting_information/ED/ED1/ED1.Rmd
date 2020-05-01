@@ -1,0 +1,125 @@
+---
+title: IAT demographics by country
+subtitle: ED1
+date: "`r Sys.Date()`"
+output:
+  html_document:
+  code_folding: hide
+
+---
+
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(cowplot)
+library(here)
+
+opts_chunk$set(echo = F, message = F, warning = F,
+               error = F, tidy = F, cache = F)
+```
+
+```{r}
+full_width = 7.08661
+FIG_OUTPATH <- here("writeup/journal/supporting_information/ED/ED1/ED1.pdf")
+
+```
+
+## Write data to supplementary information
+
+```{r}
+BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
+SI_OUTPATH <- here("writeup/journal/supporting_information/ED/ED1/ED1_data.csv")
+temp <- read_csv(BY_COUNTRY_DF) %>%
+  select(country_code, country_name, n_participants, prop_male,median_country_age,age_ci_lower, age_ci_upper, mean_age)
+write_csv(temp, SI_OUTPATH)
+
+country_iat <- read_csv(SI_OUTPATH) %>%
+  mutate(prop_female = 1 - prop_male)
+```
+
+
+## Plot
+```{r}
+# participants by country
+p1 <- country_iat %>%
+  filter(country_name != "United States of America")  %>%
+  ggplot(aes(x = fct_reorder(country_name, -n_participants),
+             y = n_participants)) +
+  geom_bar(stat = "identity")  +
+  xlab("") +
+  ylab("N participants") +
+  scale_y_continuous(breaks = seq(0,30000,5000)) +
+  ggtitle("Number of participants by country") +
+  theme_minimal_hgrid(font_size = 7.5) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1,  vjust = .5)) 
+
+```
+
+
+```{r}
+country_gender <- country_iat %>%
+  select(country_name, prop_male) %>%
+  rename(Male = prop_male) %>%
+  mutate(Female = 1 - Male) %>%
+  gather("Gender", "prop", -country_name)
+
+p2 <- country_gender %>%
+  ggplot(aes(x = fct_reorder(country_name, -prop), y = prop, fill = Gender, group = Gender)) +
+  geom_bar(stat = "identity")  +
+  scale_fill_manual(values = c("#D55E00", "#56B4E9")) +
+  geom_hline(aes(yintercept = .5), linetype = 2) +
+  xlab("") +
+  ylab("Proportion participants") +
+  ggtitle("Participant gender by country") +
+  theme_minimal_hgrid(font_size = 7.5) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1,  vjust = .5))
+     #   legend.position =  c(.2,.95),
+   #             legend.direction = "horizontal",
+#
+    #    panel.grid.major.x = element_blank(),
+    #    #panel.border = element_blank(),
+    #    panel.grid.minor = element_blank(), 
+     #   axis.line = element_line(colour = "black", 
+     #           size = rel(1)),
+     #   panel.background = element_rect(fill = "white", 
+  #          colour = NA) )
+#
+```
+
+```{r}
+p3 <- country_iat %>%
+  ggplot(aes(x = fct_reorder(country_name, -mean_age),
+             y = mean_age)) +
+  geom_bar(stat = "identity")  +
+  geom_point(aes(x = fct_reorder(country_name, -mean_age), y = median_country_age), color = "red", size = .5) +
+  geom_linerange(aes(ymin = age_ci_lower, ymax = age_ci_upper)) +
+  xlab("") +
+  ylab("Mean participant age (years)") +
+  ggtitle("Participant age by country") +
+  theme_minimal_hgrid(font_size = 7.5) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) 
+
+```
+
+```{r}
+bottom_row <- plot_grid(p2, p3, labels = c('b', 'c'), label_size = 12)
+full_fig <- plot_grid(p1, bottom_row, labels = c('a', ''), label_size = 12, ncol = 1)
+full_fig
+```
+
+```{r}
+pdf(FIG_OUTPATH, width = full_width)
+full_fig
+dev.off()
+```
+
+## Title and Legend 
+
+Sample size and demographic characteristics of Project Implicit data (Study 1b)
+
+a, Number of participants by country after exclusions (note that US participants are excluded from the visualization because of the large sample size; _N_ =  545,673). Our final sample included `r format(sum(country_iat$n_participants), big.mark=",")` participants from `r nrow(country_iat)` countries (see Supplementary Information for exclusion criteria). b, Gender distribution of participants by country after exclusions. Across countries, there tended to be more female participants relative to male participants (_M_ = `r round(mean(country_iat$prop_female),2)` proportion females; _SD_  = `r round(sd(country_iat$prop_female),2)`). c, Age distribution of participants by country after exclusions. Ranges correspond to 95% CIs. Red points show median age by country.
+
+

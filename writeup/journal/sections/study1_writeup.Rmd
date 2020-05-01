@@ -484,10 +484,17 @@ STUDY1C_DATAPATH <- here("data/study1c/processed/long_form_confirmatory_behavior
 
 full_1c_df <- read_csv(STUDY1C_DATAPATH)
 
-final_participant_counts <- count(full_1c_df, residence) %>%
+observations <- full_1c_df %>%
+  distinct(user_id, domain) %>%
+  nrow()
+
+final_administration_counts <- full_1c_df %>%
+  distinct(user_id, domain, residence) %>%
+  count( residence) %>%
   spread(residence, n)
 
 n_iats_per_participant <- full_1c_df %>%
+  distinct(user_id, residence, domain) %>%
   count(user_id) %>%
   summarize(mean = mean(n),
             sd = sd(n)) 
@@ -497,7 +504,7 @@ The AIID datset was partioned into two samples: exploratory (15%) and confirmato
 
 Of the 95 IAT types present in the dataset, we identified 31 types based on the following criteria: (1) stimuli were words rather than pictures, and (2) 75% of the target words for each IAT test were present in both the BNC and COCA models. To measure the bias in language, we trained word embedding models on comparably-sized corpora of British [British National Corpus; @burnard1995users] and American English [Corpus of Contemporary American English; see SM for details; @davies2008corpus]. We then calculated a language bias effect size for each IAT in each English dialect, using the same method as in Study 1b. 
 
-Within the confirmatory AIID dataset, there were 187,969 administrations of the IAT from participants in the United States (USA) or United Kingdom (UK). Our exclusion procedure for the behavioral data was similiar to Study 1a above (see SM for details). Our final sample included data from `r format(nrow(full_1c_df), big.mark = ",")` administrations of the IAT across the 31 IAT types (USA: _N_ = `r format(pull(final_participant_counts,us), big.mark = ",") `; UK: _N_ = `r format(pull(final_participant_counts,uk), big.mark = ",") `).  Each participant completed an average of `r pull(n_iats_per_participant, mean)` IAT types (_SD_ = `r pull(n_iats_per_participant, sd)`). For each administrations of the IAT, we calculated a residual IAT score, controlling for  sex, age, education, task order (relative ordering of implicit versus explicit measures), and block order (relative ordering of congruent versus incongruent mappings on IAT task).  
+Within the confirmatory AIID dataset, there were 187,969 administrations of the IAT from participants in the United States (USA) or United Kingdom (UK). Our exclusion procedure for the behavioral data was similiar to Study 1a above (see SM for details). Our final sample included data from `r format(observations, big.mark = ",")` administrations of the IAT across the 31 IAT types (USA: _N_ = `r format(pull(final_administration_counts,us), big.mark = ",") `; UK: _N_ = `r format(pull(final_administration_counts,uk), big.mark = ",") `).  Each participant completed an average of `r pull(n_iats_per_participant, mean)` IAT types (_SD_ = `r pull(n_iats_per_participant, sd)`). For each administrations of the IAT, we calculated a residual IAT score, controlling for  sex, age, education, task order (relative ordering of implicit versus explicit measures), and block order (relative ordering of congruent versus incongruent mappings on IAT task).  
 
 We fit a linear mixed effect model predicting the magnitude of the bias for each participant with language dialect (British or American English), magnitude of the  bias difference between the two dialects, and an interaction betwen these two terms as fixed effect. We included participant and IAT type as random intercepts. This model differs from the pre-registered analysis, which is also consistent with results of the presented analysis, but does not account for participant-level variance (see SM for results of pre-registered model). 
 

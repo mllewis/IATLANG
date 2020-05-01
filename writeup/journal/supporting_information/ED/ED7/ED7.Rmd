@@ -1,0 +1,96 @@
+---
+title: Study 1C analyses
+subtitle: ED6
+date: "`r Sys.Date()`"
+output: latex_document
+---
+
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(here)
+opts_chunk$set(echo = F, message = F, warning = F,
+               error = F, tidy = F, cache = F)
+```
+
+```{r}
+full_width = 7.08661
+FIG_OUTPATH <- here("writeup/journal/supporting_information/ED/ED7/ED7a.pdf")
+
+```
+
+
+```{r}
+DATA_A <- here("writeup/journal/supporting_information/ED/ED7/ED7_data_1.csv")
+DATA_B <- here("writeup/journal/supporting_information/ED/ED7/ED7_study_1c_model_print.txt")
+```
+
+
+## Plot
+
+
+```{r, fig.height = 3.6}
+study1c_data <- read_csv(DATA_A) %>%
+  mutate(group = case_when(data_type == "confirmatory" & corr == "Behavioral Bias Difference ~ Language Bias Difference" ~ "targ", TRUE ~ "other"))
+
+p1 <- ggplot(study1c_data, aes(x = corr, y = mean, color = group)) +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  facet_grid(~ fct_rev(data_type)) +
+  geom_pointrange(aes(ymin = ci_lower, max = ci_upper)) +
+  theme_classic(base_size = 7) +
+  scale_color_manual(values = c("black", "red")) +
+  xlab("Correlation Type") +
+  ylab("Mean correlation") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none",
+          plot.margin = margin(0, 0, 0, 5, "cm"))
+p1
+```
+
+## Mixed-effect model
+
+```{r}
+model_print <- readChar(DATA_B, file.info(DATA_B)$size)
+```
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+
+& \bf{Behavioral Effect Resid} & & \\ \hline
+\bf{Predictors} & Estimates & SE & Statistic \\ \hline
+(intercept) & -0.00 & 0.05 & -0.09 \\ \hline
+country (uk) & 0.02 & 0.01 & 1.74 \\ \hline
+language bias difference (uk - us) & -0.03 & 0.07 & -0.42 \\ \hline
+country:language bias difference & 0.05 & 0.02 & 2.88 \\ \hline
+\bf{Random Effects} \\ \hline
+s2 & 0.20  & & \\ \hline
+T00 user id & 0.01  & & \\ \hline
+T00 domain & 0.07 & &  \\ \hline
+N user id & 22059  & & \\ \hline
+N domain & 31  & & \\ \hline
+\specialrule{.1em}{.05em}{.05em} 
+Observations & 27045  & & \\ \hline
+
+\end{tabular}
+\end{table}
+
+
+```{r}
+pdf(FIG_OUTPATH, width = full_width, height = 4.2)
+p1
+dev.off()
+```
+
+## Title and Legend 
+
+
+The exact pre-registered analysis (https://osf.io/3f9ed/) of Study 1c is presented below. Pairwise correlations between all variables (language bias, behavioral bias, and UK-US difference measures) are shown, averaging across estimates of language bias from the 5 model runs. Error bars are 95% CIs. As stated in the pre-registration, the key test of our hypothesis is that the correlation between the UK - US linguistic difference ("Language Bias Difference") and the UK - US behavioral difference  ("Behavioral Bias Difference") is greater than 0 (shown in red below). That data are consistent with this prediction.
+
+The confirmatory dataset is shown on the right, along with the smaller exploratory dataset on the left for reference. 
+
+The full results to the mixed-effect model described in the paper are presented below:

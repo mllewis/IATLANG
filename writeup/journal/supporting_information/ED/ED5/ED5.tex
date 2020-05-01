@@ -1,0 +1,147 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{tabularx}
+\usepackage{supertabular}
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{supertabular}
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{csquotes}
+\usepackage{upgreek}
+\usepackage{hyperref}
+\usepackage{lineno}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{booktabs}
+
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Partial Correlations},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Partial Correlations}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \subtitle{ED5}
+  \author{}
+    \preauthor{}\postauthor{}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2020-05-01}
+
+
+\begin{document}
+\maketitle
+
+\pagestyle{empty}
+\hfill
+\tiny
+\begin{tabular}{lp{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}}
+ & Explicit Male-Career Assoc. & Implicit Male-Career Assoc. (IAT) & Percent Women in STEM & Male-Career Assoc. (Subt.) & Male-Career Assoc. (Wiki.) & Prop. Gendered Occup. Terms & Lang. Occup. Genderness (Subt.) & Lang. Occup. Genderness (Wiki.)\\
+\midrule
+Explicit Male-Career Assoc. &  & $.28$ $[-.14,.62]$, 0.18 & $.16$ $[-.26,.53]$, 0.45 & $-.06$ $[-.45,.35]$, 0.78 & $.38$ $[-.03,.68]$, 0.07 & $.14$ $[-.28,.52]$, 0.51 & $.21$ $[-.21,.56]$, 0.33 & $.22$ $[-.20,.57]$, 0.31\\
+\addlinespace
+Implicit Male-Career Assoc.\ (IAT) & $.28$ $[-.14,.62]$, 0.18 &  & $-.38$ $[-.68,.03]$, 0.07 & $.42$ $[.02,.70]$, 0.04 & $.43$ $[.03,.71]$, 0.04 & $.48$ $[.09,.74]$, 0.02 & $.31$ $[-.11,.63]$, 0.14 & $.37$ $[-.03,.68]$, 0.07\\
+\addlinespace
+Percent Women in STEM & $.16$ $[-.26,.53]$, 0.45 & $-.38$ $[-.68,.03]$, 0.07 &  & $-.49$ $[-.75,-.11]$, 0.02 & $-.09$ $[-.48,.32]$, 0.67 & $-.23$ $[-.58,.19]$, 0.27 & $-.10$ $[-.48,.32]$, 0.65 & $-.46$ $[-.73,-.07]$, 0.02\\
+\addlinespace
+Male-Career Assoc.\ (Subt.) & $-.06$ $[-.45,.35]$, 0.78 & $.42$ $[.02,.70]$, 0.04 & $-.49$ $[-.75,-.11]$, 0.02 &  & $.47$ $[.08,.73]$, 0.02 & $.20$ $[-.23,.56]$, 0.36 & $.28$ $[-.14,.61]$, 0.18 & $.35$ $[-.07,.66]$, 0.1\\
+\addlinespace
+Male-Career Assoc.\ (Wiki.) & $.38$ $[-.03,.68]$, 0.07 & $.43$ $[.03,.71]$, 0.04 & $-.09$ $[-.48,.32]$, 0.67 & $.47$ $[.08,.73]$, 0.02 &  & $.11$ $[-.31,.49]$, 0.62 & $.46$ $[.06,.73]$, 0.03 & $.49$ $[.11,.75]$, 0.01\\
+\addlinespace
+Prop.\ Gendered Occup.\ Terms & $.14$ $[-.28,.52]$, 0.51 & $.48$ $[.09,.74]$, 0.02 & $-.23$ $[-.58,.19]$, 0.27 & $.20$ $[-.23,.56]$, 0.36 & $.11$ $[-.31,.49]$, 0.62 &  & $.53$ $[.17,.77]$, 0.01 & $.73$ $[.47,.88]$, <.001\\
+\addlinespace
+
+Lang.\ Occup.\ Genderness (Subt.) & $.21$ $[-.21,.56]$, 0.33 & $.31$ $[-.11,.63]$, 0.14 & $-.10$ $[-.48,.32]$, 0.65 & $.28$ $[-.14,.61]$, 0.18 & $.46$ $[.06,.73]$, 0.03 & $.53$ $[.17,.77]$, 0.01 &  & $.79$ $[.56,.90]$, <.001\\
+\addlinespace
+
+Lang.\ Occup.\ Genderness (Wiki.) & $.22$ $[-.20,.57]$, 0.31 & $.37$ $[-.03,.68]$, 0.07 & $-.46$ $[-.73,-.07]$, 0.02 & $.35$ $[-.07,.66]$, 0.1 & $.49$ $[.11,.75]$, 0.01 & $.73$ $[.47,.88]$, <.001 & $.79$ $[.56,.90]$, <.001 & \\
+\bottomrule
+\end{tabular}
+\hfill
+\null
+
+\normalsize
+
+\hypertarget{title-and-legend}{%
+\subsection{Title and Legend}\label{title-and-legend}}
+
+Pairwise Correlations partialing out the effect of median country age
+
+Partial correlations (Pearson’s  \emph{r}) for all measures in Study 1b and 2 using language as the unit of analysis, controlling for median country age. 95\% CIs are given in brackets followed by the corresponding {\it p}-value. Implicit and explicit male-career association measures are residualized for participant age, gender, and task order. "Assoc." = association; "Lang."= language; "Subt."/ "Wiki." = Subtitle/Wikipedia corpora; "Prop. Gendered Occup. Terms." = proportion of occupation terms that are gendered. "Occup. Genderness" = degree to which occupation terms in a language tend to be associated with a particular gender in the language statistics.
+
+
+
+\end{document}
