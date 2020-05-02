@@ -17,11 +17,21 @@ unique_langs_per_country <- read_csv(LANGUAGE_COUNTRY_IN)
 behavioral_means_by_country <- read_csv(COUNTRY_DF_IN)
 
 # average across countries speaking the same language
-behavioral_means_by_language <- behavioral_means_by_country %>%
+by_lang_df <- behavioral_means_by_country %>%
     left_join(unique_langs_per_country) %>%
     ungroup() %>%
-    select(-country_code, -country_name, -language_name) %>%
+    select(-country_code, -country_name, -language_name)
+
+behavioral_means_by_language <- by_lang_df %>%
+    select(-n_participants) %>%
     group_by(wiki_language_code) %>%
     summarise_all(mean, na.rm = T)
 
-write_csv(behavioral_means_by_language, LANGUAGE_DF_OUT)
+n_participants_by_language <- by_lang_df %>%
+    group_by(wiki_language_code) %>%
+    summarize(n_participants = sum(n_participants))
+
+all_data_by_language <- left_join(behavioral_means_by_language,
+                                  n_participants_by_language)
+
+write_csv(all_data_by_language, LANGUAGE_DF_OUT)

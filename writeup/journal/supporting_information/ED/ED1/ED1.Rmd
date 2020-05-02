@@ -53,8 +53,10 @@ p1 <- country_iat %>%
   ylab("N participants") +
   scale_y_continuous(breaks = seq(0,30000,5000)) +
   ggtitle("Number of participants by country") +
-  theme_minimal_hgrid(font_size = 7.5) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1,  vjust = .5)) 
+  #theme_minimal_hgrid(font_size = 7.5) +
+  theme_classic(base_size = 7) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1,  vjust = .5),
+       panel.grid.major.y = element_line(colour = "grey"))
 
 ```
 
@@ -74,19 +76,11 @@ p2 <- country_gender %>%
   xlab("") +
   ylab("Proportion participants") +
   ggtitle("Participant gender by country") +
-  theme_minimal_hgrid(font_size = 7.5) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1,  vjust = .5))
-     #   legend.position =  c(.2,.95),
-   #             legend.direction = "horizontal",
-#
-    #    panel.grid.major.x = element_blank(),
-    #    #panel.border = element_blank(),
-    #    panel.grid.minor = element_blank(), 
-     #   axis.line = element_line(colour = "black", 
-     #           size = rel(1)),
-     #   panel.background = element_rect(fill = "white", 
-  #          colour = NA) )
-#
+   theme_classic(base_size = 7) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1,  vjust = .5),
+       panel.grid.major.y = element_line(colour = "grey"),
+       legend.key.size = unit(.7,"line"))
+
 ```
 
 ```{r}
@@ -99,13 +93,15 @@ p3 <- country_iat %>%
   xlab("") +
   ylab("Mean participant age (years)") +
   ggtitle("Participant age by country") +
-  theme_minimal_hgrid(font_size = 7.5) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) 
+  theme_classic(base_size = 7) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1,  vjust = .5),
+       panel.grid.major.y = element_line(colour = "grey"))
+
 
 ```
 
 ```{r}
-bottom_row <- plot_grid(p2, p3, labels = c('b', 'c'), label_size = 12)
+bottom_row <- plot_grid(p2, p3, labels = c('b', 'c'), label_size = 12, rel_widths = c(1.2, 1))
 full_fig <- plot_grid(p1, bottom_row, labels = c('a', ''), label_size = 12, ncol = 1)
 full_fig
 ```
