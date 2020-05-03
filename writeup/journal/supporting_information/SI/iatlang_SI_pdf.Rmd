@@ -34,28 +34,6 @@ library(here)
 opts_chunk$set(echo = F, message = F, warning = F, 
                error = F, cache = F, tidy = F, fig.height = 4.5)
 
-tidy_r_to_text_r <- function(tidy_row){
-  round_tidy <- tidy_row %>%
-    mutate_at(vars(estimate, contains("conf")), round, 2)
-  
-  p_value <- case_when(pull(round_tidy, p.value) < .0001 ~ "_p_ < .0001",
-                       pull(round_tidy, p.value) < .001 ~ "_p_ < .001",
-                       TRUE ~ paste0("_p_ = ", round(pull(round_tidy, p.value),2)))
-  
-  paste0(
-    "_r_(",
-    pull(round_tidy, parameter),
-    ") = ", 
-    pull(round_tidy, estimate),
-    " [",
-    pull(round_tidy, conf.low),
-    ", ",
-    pull(round_tidy, conf.high),
-    "], ",
-    p_value
-  )
-}
-
 theme_set(theme_classic())
 options(shiny.sanitize.errors = FALSE)
 ```  
@@ -72,6 +50,14 @@ We excluded participants from the Project Implicit data who:
 * had average latencies for either critical block were over 1,800 ms or whose average overall latency was above 1,500 ms (as in Nosek, Banaji, & Greenwald, 2002$^{31}$; 5% of participants with complete data).
 * made excess of 25% errors in any single critical block (as in Nosek, Banaji, & Greenwald, 2002$^{31}$; 14% of participants with complete data), or
 * were from countries with less than 400 participants (1% of remaining participants; see Supplementary Figure 1 for analyses with a range of threshold values).
+
+## Replication of Study 1b on corpus of exclusively untranslated text
+
+We identified untranslated articles by examining the interlanguage links on a Wikipedia article page. These links are pointers to the same article content in other languages (e.g. the “Paris” article in French contains a link to the “Paris” article in English). Since the original source language of an article could not be inferred, we excluded all articles that contained one or more interlanguage links. This ensured that all remaining articles contained only text originally written in the target language. We constructed a corpus for each language containing all untranslated articles. There were a median of 168,326 articles per language (range: 10,307-14,676,484). We trained fastText$^{42}$ on each language corpus with default parameters and a dimension size of 200. One language was excluded following the same exclusion criteria as in the main analyses (>= 20% missing words in model; Mandarin), but the results remain the same when this language is included.
+
+
+
+
 
 ## Behavioral data exclusions for Study 1c
 
@@ -140,7 +126,7 @@ corr_exclusions_tidy %>%
   theme_bw()
 ```
 
-**Language pairwise correlations by language exclusion threshold.** In the Main Text, we report psychological IAT data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the Main Text remains broadly the same when larger thresholds of minimum number of participants per country are used. This figure shows pairwise correlations between the language bias measures and three psychological/objective measures described in Study 1: Residualized behavioral IAT, residualized explicit IAT, and percent women in STEM. As in the Main Text, the residualized values are participant age, participant sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the _p_-value of the pairwise Pearson's _r_ coefficient.
+**Language pairwise correlations by language exclusion threshold.** In the Main Text, we report mplicit male-career association data for participants who came from countries with at least 400 participants. This cutoff was largely arbitrary, but was selected to allow for a relatively large number of languages to be included in our analysis while also excluding languages with small sample sizes (and therefore less reliable estimates). Nevertheless, the pattern of findings we report in the Main Text remains broadly the same when larger thresholds of minimum number of participants per country are used. This figure shows pairwise correlations between the language bias measures and three psychological/objective measures described in Study 1: Residualized male-career association IAT, residualized male-career association, and percent women in STEM. As in the Main Text, the residualized values are participant age, participant sex, and trial order. Point size corresponds to the number of languages included in the analysis at that threshold, and point color corresponds to the _p_-value of the pairwise Pearson's _r_ coefficient.
 \pagebreak
 
 
@@ -233,4 +219,4 @@ misersky_norms %>%
                     "Perceived Gender Bias"), booktabs = T)
 ```
 <br>
-**Study 2 occupational items.** In Study 2, we selected 20 occupation labels from the set of items used in Misersky, et al. (2014)$^{47}$. The table presents the 20 items along with their perceived gender bias as reported in Misersky, et al. (2014; larger values indicate occupation is perceived to be more closely associated with females).
+**Study 2 occupational items.** In Study 2, we selected 20 occupation labels from the set of items normed by Misersky, et al. (2014)$^{47}$. The table presents the 20 items along with their perceived gender bias (larger values indicate occupation is perceived to be more closely associated with females).

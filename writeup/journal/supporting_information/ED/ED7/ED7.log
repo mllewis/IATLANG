@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  1 MAY 2020 17:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 MAY 2020 15:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -702,7 +702,7 @@ Package csquotes Warning: Load 'inputenc' before 'csquotes' on input line 107.
 
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
-No file ED7.aux.
+(./ED7.aux)
 \openout1 = `ED7.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
@@ -722,7 +722,7 @@ LaTeX Font Info:    ... okay on input line 107.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 107.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 107.
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 107.
@@ -777,6 +777,8 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 107.
 LaTeX Info: Redefining \pageref on input line 107.
 LaTeX Info: Redefining \nameref on input line 107.
+
+(./ED7.out) (./ED7.out)
 \@outlinefile=\write3
 \openout3 = `ED7.out'.
 
@@ -829,7 +831,7 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<ED7_files/figure-latex/unnamed-chunk-3-1.pdf, id=4, 396.48125pt x 260.975pt>
+<ED7_files/figure-latex/unnamed-chunk-3-1.pdf, id=8, 396.48125pt x 260.975pt>
 File: ED7_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 <use ED7_files/figure-latex/unnamed-chunk-3-1.pdf>
 Package pdftex.def Info: ED7_files/figure-latex/unnamed-chunk-3-1.pdf  used on 
@@ -899,17 +901,17 @@ Package rerunfilecheck Warning: File `ED7.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `ED7.out':
-(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             Before: 4E264763DEBE8C38140A8F3BC4D06479;130
 (rerunfilecheck)             After:  AEB907FB809DFB5C5AE053CE74E8B265;228.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 14470 strings out of 492616
- 213991 string characters out of 6129482
- 334657 words of memory out of 5000000
- 18139 multiletter control sequences out of 15000+600000
+ 14478 strings out of 492616
+ 214053 string characters out of 6129482
+ 334770 words of memory out of 5000000
+ 18141 multiletter control sequences out of 15000+600000
  37787 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,68p,812b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -920,10 +922,10 @@ ist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
 ype1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /lm/lmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri12.
 pfb>
-Output written on ED7.pdf (2 pages, 140812 bytes).
+Output written on ED7.pdf (2 pages, 140917 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 63 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
  9 named destinations out of 1000 (max. 500000)
- 8198 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 8206 words of extra memory for PDF output out of 10000 (max. 10000000)
 

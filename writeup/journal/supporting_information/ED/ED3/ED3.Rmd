@@ -1,0 +1,166 @@
+---
+title: IAT map
+subtitle: ED2
+date: "`r Sys.Date()`"
+output:
+  html_document:
+  code_folding: hide
+
+---
+
+
+```{r setup, include = F}
+# load packages
+library(knitr)
+library(rmarkdown)
+library(tidyverse)
+library(cowplot)
+library(here)
+library(countrycode)
+library(viridis)
+
+
+
+opts_chunk$set(echo = F, message = F, warning = F,
+               error = F, tidy = F, cache = F)
+```
+
+```{r}
+full_width = 7.08661
+FIG_OUTPATH <- here("writeup/journal/supporting_information/ED/ED3/ED3.pdf")
+
+```
+
+## Write data to supplementary information
+
+```{r}
+BY_COUNTRY_DF <- here("data/study0/processed/by_country_df.csv")
+SI_OUTPATH <- here("writeup/journal/supporting_information/ED/ED3/ED3_data.csv")
+temp <- read_csv(BY_COUNTRY_DF) %>%
+  select(country_code, country_name, es_iat_sex_age_order_implicit_resid, es_iat_sex_age_order_explicit_resid, overall_iat_D_score)
+write_csv(temp, SI_OUTPATH)
+
+country_iat <- read_csv(SI_OUTPATH)
+```
+
+
+## Plot
+
+```{r}
+
+inset <- ggplot(country_iat, aes(overall_iat_D_score)) +
+  geom_density(fill = "black") +
+  geom_vline(aes(xintercept = 0), color = "red", linetype = 2) +
+  ylab("") +
+  xlab("Raw implicit career-gender association") +
+  xlim(-.1, .5) +
+  theme_classic(base_size = 7) +
+  theme(axis.line.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())
+```
+
+```{r}
+map_world <- map_data(map = "world") %>%
+    mutate(country_code = countrycode(region, 'country.name', 'iso2c'))
+
+map_data <- country_iat %>%
+  full_join(map_world, by = "country_code") %>%
+  filter(lat > -57,
+         long > -165)
+
+full_world <- ggplot(map_data, aes(x = long, y = lat,
+                            group = group,
+                            fill = es_iat_sex_age_order_implicit_resid)) +
+  scale_fill_viridis(direction = -1, 
+                     limits = c(-.065, .045),
+                       breaks = c(-.06, -.04,  -.02, 0, .02, .04),  na.value="white",
+                     label = c(" (male-\n family)", " -0.04",  " -0.02", " 0.00", " 0.02", " (male-\n career)"),
+                               name = "Residualized implicit\ncareer-gender association")  +
+  geom_polygon(color = "black", size = .1) +
+ # ggtitle("Residualized implicit career-gender association") +
+  theme(
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_rect(fill = "white"),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank(),
+        #legend.position = c(.99, .46),
+        legend.position = c(.28, 1.1),
+        legend.direction = "horizontal",
+        #plot.margin = margin(t = 70, r= 50, 0, l = 30, "pt"),
+        plot.margin = margin(t = 65, r= 50, 0, l = 30, "pt"),
+        legend.text= element_text(size = 5),
+        legend.title= element_text(size = 8),
+        legend.key.width = unit(0.3, "in"),
+        legend.key.height = unit(0.1, "in"))
+
+
+### Europe
+euro_countries <- c("Austria","Belgium","Bulgaria","Croatia",
+                   "Czech Republic", "France", "Denmark", "Switzerland",
+                   "Germany","Greece","Hungary","Ireland","Italy",
+                   "Luxembourg","Malta","Netherlands","Poland", "UK",
+                   "Portugal","Romania","Slovakia","Slovenia","Spain")
+
+map_europe <- map_data %>%
+  filter(region %in% euro_countries)
+
+europe_inset <- ggplot(map_europe, aes(x = long, y = lat,
+                            group = group,
+                            fill = es_iat_sex_age_order_implicit_resid)) +
+  scale_fill_viridis(direction = -1, limits=c(-.065, .045), na.value="white")  +
+  #scale_fill_continuous()
+  geom_polygon(color = "black", size = .1) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        plot.margin = margin(.2,.2,0,0, "cm"),
+        panel.background = element_rect(fill = "white"),
+        plot.background = element_rect(
+            fill = "white",
+            colour = "black",
+            size = 1),
+        axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        legend.position = "none")
+
+full_map <- full_world +
+  annotation_custom(grob = ggplotGrob(europe_inset),
+                        xmin = 128, xmax = 248, ymin = 50, ymax = 130)
+                  #  xmin = 40, xmax = 160, ymin = 50, ymax = 130)
+```
+
+
+
+```{r}
+
+full_fig <- ggdraw(full_map) +
+  draw_plot(inset, .01, .1, .25, .2) +
+    draw_plot_label(
+    c("a", "b"),
+    c(.022, .02),
+    c(1, .35),
+    size = 15
+  )
+
+full_fig
+```
+
+
+
+```{r}
+pdf(FIG_OUTPATH, width = full_width, height = 3.8)
+full_fig
+dev.off()
+```
+
+## Title and Legend 
+
+Geographic distribution of IAT scores
+
+a, Residualized implicit career-gender association (IAT score) shown by country. IAT scores are residualized for participant age, gender, and task order. Larger values (blue) indicate a larger bias to associate men with the concept of career and women with the concept of family. Countries in white correspond to countries for which there was insufficient data to estimate the country-level career-gender association. Inset shows IAT scores for European countries only. Note that while Hindi is identified as the most frequently spoken language in India, India is highly multilingual and so Hindi embeddings may be a poor representation of the linguistic statistics for speakers in India as a group. b, Distribution of raw implicit career-gender association (IAT D-score) across countries. All countries in our sample showed a tendency to associate men with career and women with family. 
+
