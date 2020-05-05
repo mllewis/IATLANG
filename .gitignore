@@ -10,6 +10,9 @@ stimuli/*
 *_cache/*
 *_files/*
 *resconnect/
+*resources/
+*exploratory_data/
+*exploratory_studies/
 .Rproj.user/*
 *4-Word-Embedding/*
 writeup/journal/iat_lang.tex
