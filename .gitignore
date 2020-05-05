@@ -11,6 +11,7 @@ stimuli/*
 *_files/*
 *resconnect/
 *resources/
+*writeup/journal/iat_lang_cache/*
 *exploratory_data/
 *exploratory_studies/
 .Rproj.user/*
