@@ -12,6 +12,6 @@ In this project, we use word embedding models to measure bias in the distributio
 
 The file `writeup/journal/iat_lang.Rmd` contains the code for the finsal set of analyses reported in the paper.  The `analysis` directory contains all scripts used to pre-process the data before analysis. The `data` directory contains all the relevant data.  An interactive version of the Supplemental Materials to the paper can be found at https://mollylewis.shinyapps.io/iatlang_SI/, and in the repository at `paper/journal/SI/`.
 
-The above figure from the paper suggests that languages with more gender-biased language statistics tend to have speakers with greater gender bias.
+The above figure (Fig. 2 in the paper) suggests that languages with more gender-biased language statistics tend to have speakers with greater gender bias.
 
 Feel free to email me with questions and comments at mollyllewis@gmail.com.
