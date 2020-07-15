@@ -12,7 +12,7 @@
 
 %\templatetype{pnasresearcharticle} % Choose template 
 %pnasmathematics
-\title{What are we learning from language? Gender stereotypes are reflected in the distributional structure of 25 languages}
+\title{Gender stereotypes are reflected in the distributional structure of 25 languages}
 
 % Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
 \author[a,*]{Molly Lewis}
@@ -23,7 +23,7 @@
 
 
 \begin{abstract}
-Cultural stereotypes such as the idea that men are more suited for paid work while women for taking care of the home and family may contribute to gender imbalances in science, technology, engineering and mathematics (STEM) fields among other undesirable gender disparities. We examine whether gender stereotypes are reflected in the large-scale distributional structure of natural language semantics. We measure gender associations embedded in the statistics of 25 languages and relate these to data on an international dataset of psychological gender associations (\emph{N} = 657,335). People's implicit gender associations are strongly predicted by gender associations encoded in the statistics of the language they speak. These associations are further related to the extent that languages mark gender in occupation terms (e.g., ``waiter''/``waitress''). Our pattern of findings is consistent with the possibility that linguistic associations shape  people's implicit judgments.
+Cultural stereotypes such as the idea that men are more suited for paid work while women for taking care of the home and family may contribute to gender imbalances in science, technology, engineering and mathematics (STEM) fields among other undesirable gender disparities. We examine whether gender stereotypes are reflected in the large-scale distributional structure of natural language semantics. We measure gender associations embedded in the statistics of 25 languages and relate these to data on an international dataset of psychological gender associations (\emph{N} = 656,636). People's implicit gender associations are strongly predicted by gender associations encoded in the statistics of the language they speak. These associations are further related to the extent that languages mark gender in occupation terms (e.g., ``waiter''/``waitress''). Our pattern of findings is consistent with the possibility that linguistic associations shape  people's implicit judgments.
 
 \end{abstract}
 
@@ -654,39 +654,15 @@ Both authors designed the research and wrote the manuscript. ML conducted the da
 \subsection*{Competing Interests}
 The authors declare no competing interests.
 
-\subsection*{Figure Legends} ~\\
 
-
-{\bf Fig. 1.} Human judgments of word gender association as
-a function of gender association from the Subtitle-trained embedding model
-(\emph{r}(4669) = 0.63 {[}0.61, 0.65{]}; \emph{p} \textless{} .001; {\emph n} = 4,671; Study 1a). Each point corresponds to a word. Larger numbers indicate
-stronger association with females (note that this differs from the
-design of the rating task, but is changed here for consistency with
-other plots). Blue line shows linear fit and the error band indicates
-standard error.
-
-
- {\bf Fig. 2.} ({\it a})  Implicit male-career association (adjusted for participants' age, gender, and congruent/incongruent block order) as a function of the linguistic male-career association derived from word-embeddings (\emph{r}(23) = 0.48 {[}0.11, 0.74{]}; \emph{p} = 0.01; \emph{n} = 25; Study 1b). Each point corresponds to a language. The size of the point is proportional to the number of participants who come from the country in which the language is dominant ({\it N} total = 656,636 participants). Linguistic associations are estimated from models trained on text in each language from the Wikipedia corpus. Larger values indicate a greater tendency to associate men with the concept of career and women with the concept of family. ({\it b}) Difference (UK minus US) in implicit association versus linguistic association for 31 IAT types (Study 1c). Error bands indicate standard error of the linear model
-estimate.
-
-{\bf Fig. 3.} Implicit male-career association (adjusted for participant age,
-gender, and block order) as a function of the proportion of gender-specific labels for the set of words referring to occupations ({\it a}, left; \emph{r}(23) = 0.57 {[}0.22, 0.79{]}; \emph{p} = 0.003; \emph{n} = 25) and  mean gender association of words
-referring to occupations from word embeddings trained on the Wikipedia corpus ({\it b}, right; \emph{r}(23) = 0.49 {[}0.11, 0.74{]}; \emph{p} = 0.01). Each point corresponds to a language, with the size of the point corresponding to the number of participants
-speaking that language ({\it N} total = 656,636 participants). Error bands indicate standard error of the
-linear model estimate.
-\subsection*{Table 1}~\\
-
-Correlation (Pearson’s  \emph{r}) for all measures in Study 1b and 2 using language as the unit of analysis. 95\% CIs are given in brackets followed by the corresponding {\it p}-value. Implicit and explicit male-career association measures are residualized for participant age, gender, and task order. "Assoc." = association; "Lang."= language; "Subt."/ "Wiki." = Subtitle/Wikipedia corpora; "Prop. Gendered Occup. Terms." = proportion of occupation terms that are gendered. "Occup. Genderness" = degree to which occupation terms in a language tend to be associated with a particular gender in the language statistics.
-\newpage
 
 
 % add caption, check pvals
 \newpage
 
+\newpage
 
-
-
-\pagestyle{empty}
+%\pagestyle{empty}
 \hfill
 \tiny
 \begin{adjustbox}{angle=90}    
@@ -720,6 +696,45 @@ Median Country Age & -0.07  [-0.45,0.33],.73 & 0.61  [0.28,0.81],.001 & -0.42  [
 \end{adjustbox}
 \hfill
 \null
+
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics{../figs/fig1.pdf}
+\caption{ Human judgments of word gender association as
+a function of gender association from the Subtitle-trained embedding model
+(\emph{r}(4669) = 0.63 {[}0.61, 0.65{]}; \emph{p} \textless{} .001; {\emph n} = 4,671; Study 1a). Each point corresponds to a word. Larger numbers indicate
+stronger association with females (note that this differs from the
+design of the rating task, but is changed here for consistency with
+other plots). Blue line shows linear fit and the error band indicates
+standard error.}
+\end{figure}
+
+
+\begin{figure*}
+\centering
+\includegraphics{../figs/fig2.pdf}
+\caption{ ({\it a})  Implicit male-career association (adjusted for participants' age, gender, and congruent/incongruent block order) as a function of the linguistic male-career association derived from word-embeddings (\emph{r}(23) = 0.48 {[}0.11, 0.74{]}; \emph{p} = 0.01; \emph{n} = 25; Study 1b). Each point corresponds to a language. The size of the point is proportional to the number of participants who come from the country in which the language is dominant ({\it N} total = 656,636 participants). Linguistic associations are estimated from models trained on text in each language from the Wikipedia corpus. Larger values indicate a greater tendency to associate men with the concept of career and women with the concept of family. ({\it b}) Difference (UK minus US) in implicit association versus linguistic association for 31 IAT types (Study 1c). Error bands indicate standard error of the linear model
+estimate.}
+\end{figure*}
+
+\begin{figure*}
+\centering
+\includegraphics{../figs/fig3.pdf}
+\caption{ Implicit male-career association (adjusted for participant age,
+gender, and block order) as a function of the proportion of gender-specific labels for the set of words referring to occupations ({\it a}, left; \emph{r}(23) = 0.57 {[}0.22, 0.79{]}; \emph{p} = 0.003; \emph{n} = 25) and  mean gender association of words
+referring to occupations from word embeddings trained on the Wikipedia corpus ({\it b}, right; \emph{r}(23) = 0.49 {[}0.11, 0.74{]}; \emph{p} = 0.01). Each point corresponds to a language, with the size of the point corresponding to the number of participants
+speaking that language ({\it N} total = 656,636 participants). Error bands indicate standard error of the
+linear model estimate.}
+\end{figure*}
+
+
+\newpage
+
+
+
+
 
 
 

@@ -10,7 +10,7 @@
 \usepackage{booktabs}
 \usepackage{csquotes}
 
-%\templatetype{pnasresearcharticle} % Choose template 
+%\templatetype{pnasresearcharticle} % Choose template
 %pnasmathematics
 
 \linespread{1.5}
@@ -18,7 +18,7 @@
 
 % Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
 \author[a,*]{Molly Lewis}
-\author[b]{Gary Lupyan} 
+\author[b]{Gary Lupyan}
 
 \affil[a]{Carnegie Mellon University, Psychology Department/Social and Decision Sciences, Pittsburgh, PA, USA}
 \affil[b]{University of Wisconsin-Madison, Psychology Department, Madison, WI, USA}
@@ -81,12 +81,12 @@ generalization\textsuperscript{10,11}. For example, Cimpian and Markman found th
 gender if the skill is introduced with a generic as opposed to a
 non-generic subject (``{[}Girls are/There is a girl who is{]} really
 good at a game called ``gorp''''). Such work shows that in certain
-experimental settings, language can influence stereotype formation. We ask whether a similar correspondence between language associations and stereotypes exists in a large corpus of naturalistic text and among an international sample of participants. 
+experimental settings, language can influence stereotype formation. We ask whether a similar correspondence between language associations and stereotypes exists in a large corpus of naturalistic text and among an international sample of participants.
 
 A widely used method for quantifying cultural stereotypes at an
 individual level is the Implicit Association Test (IAT)\textsuperscript{12}. Here, we use previously administered IATs designed to measure a particular type of gender
 stereotype: A tendency to associate men with careers and women with family
-(\emph{N} = 657,335)\textsuperscript{13}. These data span 39 countries, allowing us to assess how group-level implicit gender associations\textsuperscript{14-16} vary as a function of language to which participants are exposed. 
+(\emph{N} = 657,335)\textsuperscript{13}. These data span 39 countries, allowing us to assess how group-level implicit gender associations\textsuperscript{14-16} vary as a function of language to which participants are exposed.
 
 To measure cultural stereotypes in language, we use semantic embeddings derived from a distributional semantics model that is trained by predicting words from surrounding words as they occur in a large corpus. The core assumption of these models is that the meaning of a word can be described by the words it co-occurs with---words occurring in similar contexts tend to have similar meanings\textsuperscript{17}. The word \enquote{dog}, for example, is represented as more similar to \enquote{cat} than to \enquote{banana} because contexts containing \enquote{dog} are more similar to contexts containing \enquote{cat} than to contexts containing \enquote{banana}\textsuperscript{18-20}. Gender stereotypes can become encoded in the distributional semantics of language because a word like \enquote{woman} may occur in more similar contexts to words like \enquote{home} and \enquote{family} while a word like \enquote{man} in contexts more similar to \enquote{job} and \enquote{money.} Previous work has shown stereotypes like those studied using IATs can be predicted from the distributional statistics of language (co-occurrences)\textsuperscript{21-24}. This previous work only measured semantic associations in English. Here, we examine gender associations in the distributional semantics of 25 languages and ask whether languages with stronger career-gender associations predict stronger implicit and explicit gender associations in speakers of those languages.
 
@@ -98,7 +98,7 @@ associations measured by the IAT and the linguistic associations we measure rela
 to more structural aspects of language: sex-based grammatical gender and
 the prevalence of gender-specific occupation terms (e.g.,
 \enquote{waiter}/\enquote{waitress}, but
-\enquote{teacher}/\enquote{teacher}). Our results suggest that languages that encode gender stereotypes more strongly -- through either distributional semantics or structural features -- tend to have speakers with stronger stereotypical gender associations. 
+\enquote{teacher}/\enquote{teacher}). Our results suggest that languages that encode gender stereotypes more strongly -- through either distributional semantics or structural features -- tend to have speakers with stronger stereotypical gender associations.
 
 
 \section*{Results}
@@ -132,7 +132,7 @@ response on a Likert scale ranging from female (1) to male
 (7). An explicit gender-career association score was defined as their Career response minus their Family response such that greater values indicate a greater tendency to associate males with career.
 
 Replicating previous analyses\textsuperscript{13}, participants tended to implicitly associate men with career and women with family (\emph{D-Score M} = 0.38 {[}0.38, 0.38{]}; \emph{t}(657334) = 878.3, \emph{p} \textless{} .001). Older participants showed greater implicit associations between women-family and men-career  (\emph{r}(657333) = 0.06 {[}0.06, 0.06{]}, \emph{p} \textless{} .001).  The measured associations were stronger for female participants (\emph{M} = 0.41, \emph{SD} = 0.35) than male participants
-(\emph{M} = 0.32, \emph{SD} = 0.37; \emph{t}(338217.04) = 96.82, \emph{p} \textless{} .001; \emph{d} = 0.27 {[}0.26, 0.27{]}) and were larger for participants that received the block of trials with stereotype-incongruent mappings first than those who received the stereotype-incongruent mappings second (\emph{M} = -0.09 {[}-0.09, -0.09{]}; \emph{t}(652694.18) = -104.03, \emph{p} \textless{} .001; \emph{d} = -0.26 {[}-0.26, -0.25{]}; Extended Data Figure 2). 
+(\emph{M} = 0.32, \emph{SD} = 0.37; \emph{t}(338217.04) = 96.82, \emph{p} \textless{} .001; \emph{d} = 0.27 {[}0.26, 0.27{]}) and were larger for participants that received the block of trials with stereotype-incongruent mappings first than those who received the stereotype-incongruent mappings second (\emph{M} = -0.09 {[}-0.09, -0.09{]}; \emph{t}(652694.18) = -104.03, \emph{p} \textless{} .001; \emph{d} = -0.26 {[}-0.26, -0.25{]}; Extended Data Figure 2).
 
 
 Because we did not have language information at the participant level, in the remaining analyses we examine the career-gender association and its predictors at the country level. To account for the above-mentioned influences on implicit associations, we calculated a residual implicit association score for each participant, controlling for participant age, participant gender, and block order. We also calculated a residual explicit association score controlling for the same set of variables. We then averaged across participants to estimate the country-level gender association (Implicit: \emph{M} = -0.01; \emph{SD} = 0.03; Explicit: \emph{M} = 0.00; \emph{SD} = 0.18; Extended Data Figure 3). Implicit gender associations were correlated with explicit gender associations at the level of participants (\emph{r}(645072) = 0.16 {[}0.16, 0.16{]}, \emph{p} \textless{} .001); At the level of countries, this relationship was stronger, though not statistically reliable (\emph{r}(37) = 0.26 {[}-0.07, 0.53{]}, \emph{p} = 0.12). The weak correlation between implicit and explicit measures is consistent with claims that these two measures tap into different cognitive constructs\textsuperscript{28}.
@@ -207,7 +207,7 @@ not correlated with explicit career-gender association (Subtitle: \emph{r}(18) =
 of the career-gender association from the Subtitle corpus were correlated with the
 objective measure of gender equality and percentage of women in STEM fields
 (\emph{r}(16) = -0.55 {[}-0.81, -0.11{]}, \emph{p} = 0.02). This relationship was not reliable
-for the Wikipedia corpus (\emph{r}(20) = -0.19 {[}-0.57, 0.25{]}, \emph{p} = 0.4). 
+for the Wikipedia corpus (\emph{r}(20) = -0.19 {[}-0.57, 0.25{]}, \emph{p} = 0.4).
 
 
 
@@ -219,7 +219,7 @@ Figure 2b visualizes the critical interaction term. Behavioral performance on th
 In Study 1, we found that a previously-reported psychological gender association – the tendency to associate men with career and women with family – was correlated with the magnitude of that same association in the language statistics of 25 languages. Participants completing the IAT in countries where the dominant language had stronger associations between men and career words, and women and family words, showed stronger associations on the gender-career IAT. In a pre-registered, confirmatory analysis, we also find that this pattern extends to associations beyond career and gender: In a comparison of 31 different IATs, the magnitude of the association in speaker’s dialect of English (US vs.\ UK) predicted their behavioral association, as measured by the IAT. These results suggest a close correspondence between psychological and linguistic gender associations. In Study 2, we try to
 better understand the source of the gender-career association in language by investigating whether it is related to two structural features of
 language: grammatical gender and the presence of gendered occupation
-terms (e.g., waiter/waitress). 
+terms (e.g., waiter/waitress).
 
 
 \subsection*{Study 2: Gender association and lexicalized
@@ -256,7 +256,7 @@ was no relationship between explicit psychological career-gender association and
 lexical marking of occupation words (\emph{r}(23) = 0.11 {[}-0.3, 0.48{]}, \emph{p} = 0.61).
 
 We next examined whether the existence of gender-specific occupation terms was predicted by a greater encoding of gender associations (male versus female) in the distributional statistics of the language. We fit a mixed effects model predicting degree of gender association in language statistics (estimated from word embedding models) from distinctiveness between male and female forms for that word, with random intercepts and slopes by language. Having more distinct occupation terms was associated with greater linguistic gender association for those occupations. This was true for models trained on both the Subtitle corpus (\(\beta\) = 0.46; \emph{SE} = 0.08; \emph{t} = 6.08) and Wikipedia
-corpus (\(\beta\) = 0.89; \emph{SE} = 0.1; \emph{t} = 8.93). For example, \enquote{secretary} has a greater gender association in Italian, which has distinct male and female terms, compared to English, which has only a gender-neutral form. 
+corpus (\(\beta\) = 0.89; \emph{SE} = 0.1; \emph{t} = 8.93). For example, \enquote{secretary} has a greater gender association in Italian, which has distinct male and female terms, compared to English, which has only a gender-neutral form.
 
 This relationship also held at the level of languages: Languages with more
 gendered occupation terms had stronger career-gender associations in their language statistics
@@ -291,17 +291,17 @@ presence of a grammatical gender systems and the propensity to
 lexicalize gender distinctions -- correlated with implicit association.
 Grammatical gender was not reliably correlated with implicit association.
 Languages that use more gender-specific occupation terms, however, did
-predict a greater implicit association. This finding suggests that one driver of the relationship between language and psychological career-gender associations observed in Study 1 may be the presence of gender-specific occupation terms. 
+predict a greater implicit association. This finding suggests that one driver of the relationship between language and psychological career-gender associations observed in Study 1 may be the presence of gender-specific occupation terms.
 
 \section*{Discussion}\label{general-discussion}
 
-Where do we get our gender stereotypes? Non-linguistic experiences surely play a role, but might we also be learning our associations from the language to which we are exposed? We used a large-scale dataset of Implicit Association Tests (IATs) that measure people's implicit associations of men with career and women with family. We related these associations to the linguistic gender associations computed from patterns of word co-occurrences in the dominant language spoken in the country of each participant. In Study 1, we found that languages with stronger gender associations embedded in their distributional structure tend to have speakers that have stronger implicit associations. In Study 2, we found a positive relationship between a structural language feature – the prevalence of gender-marked occupation terms – and the strength of people's implicit associations. 
+Where do we get our gender stereotypes? Non-linguistic experiences surely play a role, but might we also be learning our associations from the language to which we are exposed? We used a large-scale dataset of Implicit Association Tests (IATs) that measure people's implicit associations of men with career and women with family. We related these associations to the linguistic gender associations computed from patterns of word co-occurrences in the dominant language spoken in the country of each participant. In Study 1, we found that languages with stronger gender associations embedded in their distributional structure tend to have speakers that have stronger implicit associations. In Study 2, we found a positive relationship between a structural language feature – the prevalence of gender-marked occupation terms – and the strength of people's implicit associations.
 
 Our work characterizes the relationship between cultural stereotypes and cross-linguistic differences in language statistics. Establishing that this relationship exists is the first step to understanding the underlying causal pathways. The positive correlation between the strength of the career-gender association in language and speakers' IAT results is consistent both with language playing a causal role in the emergence of cultural stereotypes and the idea that language merely reflects existing stereotypes of its speakers\textsuperscript{22,25}. The correlational approach of our studies does not allow us to fully distinguish between these possibilities. Among the findings that could help confirm or disconfirm the hypothesis that language plays a causal role in shaping psychological associations are (i) longitudinal analyses, testing for example whether changes in language statistics predict or follow changes in measured implicit associations\textsuperscript{25}, (ii) quasi-experimental tests that involve, e.g., measuring implicit associations in bilinguals using stimuli in languages that embed different linguistic associations, and (iii) experimental designs that measure the effect of manipulating language statistics on people's implicit associations.
 
-Our results speak to several recent attempts to understand large-scale correlates of gender stereotypes\textsuperscript{6} and differences in gender preferences more broadly\textsuperscript{35}. These studies have argued that increases in institutional gender equality (which are strongly associated with increases in national GDP) allow greater personal freedom, unmasking inherent gender differences and explaining why greater institutional equality is associated with a \textit{lower} female STEM participation\textsuperscript{6} and larger gender differences in preferences (e.g., women being more risk averse and less patient than men)\textsuperscript{35}. Although our results do not contradict this possibility, they suggest that associations learned from language may be a part of the fuller picture. The encoding of gender stereotypes in different languages is itself correlated with GDP (larger GDP correlates with stronger career-gender linguistic associations, \emph{r}(31) = .58 {[}0.29, 0.77{]}, \emph{p} \textless\ .001) and also with previously reported individual-level predictors of STEM inequality such as self-efficacy in science  (\emph{r}(28) = .59 {[}0.3, 0.79{]}, \emph{p} \textless\ .001) and general gender preferences (\emph{r}(25) = .48 {[}0.12, 0.73{]}, \emph{p} = .01; Extended Data Figure 9). 
+Our results speak to several recent attempts to understand large-scale correlates of gender stereotypes\textsuperscript{6} and differences in gender preferences more broadly\textsuperscript{35}. These studies have argued that increases in institutional gender equality (which are strongly associated with increases in national GDP) allow greater personal freedom, unmasking inherent gender differences and explaining why greater institutional equality is associated with a \textit{lower} female STEM participation\textsuperscript{6} and larger gender differences in preferences (e.g., women being more risk averse and less patient than men)\textsuperscript{35}. Although our results do not contradict this possibility, they suggest that associations learned from language may be a part of the fuller picture. The encoding of gender stereotypes in different languages is itself correlated with GDP (larger GDP correlates with stronger career-gender linguistic associations, \emph{r}(31) = .58 {[}0.29, 0.77{]}, \emph{p} \textless\ .001) and also with previously reported individual-level predictors of STEM inequality such as self-efficacy in science  (\emph{r}(28) = .59 {[}0.3, 0.79{]}, \emph{p} \textless\ .001) and general gender preferences (\emph{r}(25) = .48 {[}0.12, 0.73{]}, \emph{p} = .01; Extended Data Figure 9).
 
-One unexpected finding worth commenting on is the substantial relationship between median country age (e.g., 29.9 in Israel; 47.1 in Germany) and the gender-career IAT: countries with older populations have stronger career-gender associations (\emph{r} = .61; see Table 1). The direction of this relationship is consistent with the by-participant analyses (older participants have stronger career-gender associations, \emph{r} = .06), and is consistent with older populations having more traditional gender norms. Importantly, the two effects are distinct: participants from countries with an older population show stronger career-gender associations after adjusting for their own age. This effect holds even after controlling the percentage of women in STEM fields within a country (Extended Data Figure 2b). One (admittedly speculative) possibility is that younger participants from countries with older populations are more likely to be exposed to stronger career-gender associations from language produced by older individuals.  
+One unexpected finding worth commenting on is the substantial relationship between median country age (e.g., 29.9 in Israel; 47.1 in Germany) and the gender-career IAT: countries with older populations have stronger career-gender associations (\emph{r} = .61; see Table 1). The direction of this relationship is consistent with the by-participant analyses (older participants have stronger career-gender associations, \emph{r} = .06), and is consistent with older populations having more traditional gender norms. Importantly, the two effects are distinct: participants from countries with an older population show stronger career-gender associations after adjusting for their own age. This effect holds even after controlling the percentage of women in STEM fields within a country (Extended Data Figure 2b). One (admittedly speculative) possibility is that younger participants from countries with older populations are more likely to be exposed to stronger career-gender associations from language produced by older individuals.
 
 
 
@@ -322,7 +322,7 @@ contribute to undesirable structural inequality. Understanding the extent to whi
 \section*{Methods}
 
 All reported correlations are Pearson's \emph{r} values.  Two-sample \emph{t}-test are calculated using Welch's test. Effect size measures are classic Cohen's \emph{d}.  Brackets indicate 95\% confidence intervals. All statistical tests are two-sided analyses. Data distributions were assumed to be normal but this was not formally tested. Data analysis was not performed blind to the identify of the variables.
- 
+
 \subsection*{Description of IAT dataset}
 
 We analyzed gender-career IAT scores collected by Project Implicit
@@ -413,9 +413,9 @@ families, and corresponded to 656,636  participants in the Project Implicit data
 The AIID dataset was partitioned into two samples: exploratory (15\%) and
 confirmatory (85\%). Based on the exploratory sample, we pre-registered
 our analysis plan for the confirmatory sample
-(\url{https://osf.io/3f9ed}, February 8, 2019) and were given access to the confirmatory dataset only after our pre-registration was approved. 
+(\url{https://osf.io/3f9ed}, February 8, 2019) and were given access to the confirmatory dataset only after our pre-registration was approved.
 
-Of the 95 IATs present in the dataset, we selected 31 based on the following criteria: (1) stimuli were words rather than pictures, and (2) 75\% of the target words for each IAT test were present in both our US and UK English corpora. To measure the associations in language, we trained word embedding models on equally-sized subsets of British National Corpus (BNC)\textsuperscript{44} and Corpus of Contemporary American English (COCA)\textsuperscript{45}. The model was trained using the fastText algorithm\textsuperscript{42}, with a vector size of 400 and  window size of 10. We then calculated an association effect size for each IAT in each English dialect, using the same method as in Study 1b. 
+Of the 95 IATs present in the dataset, we selected 31 based on the following criteria: (1) stimuli were words rather than pictures, and (2) 75\% of the target words for each IAT test were present in both our US and UK English corpora. To measure the associations in language, we trained word embedding models on equally-sized subsets of British National Corpus (BNC)\textsuperscript{44} and Corpus of Contemporary American English (COCA)\textsuperscript{45}. The model was trained using the fastText algorithm\textsuperscript{42}, with a vector size of 400 and  window size of 10. We then calculated an association effect size for each IAT in each English dialect, using the same method as in Study 1b.
 
 
 After data exclusion (using criteria similar to Study 1a; see Supplementary Methods), our final sample
@@ -434,7 +434,7 @@ vs. \enquote{waitress}) where present. The words were translated by
 consulting native speakers and dictionaries.
 
 We coded each language for the presence or absence of a sex-based grammatical gender system using WALS\textsuperscript{48} and other sources, as necessary. We quantified lexical encoding of gender as the proportion of the 20 occupations within each language for which the male and female forms differed. Larger values indicate a preponderance for more gender-specific forms.  Languages with grammatical gender systems were more likely to have gender-specific terms for occupations
-(\emph{M} = 0.51 {[}0.28, 0.73{]}; \emph{t}(14.89) = 4.85, \emph{p} \textless{} .001; \emph{d} = 2 {[}0.98, 3.01{]}). 
+(\emph{M} = 0.51 {[}0.28, 0.73{]}; \emph{t}(14.89) = 4.85, \emph{p} \textless{} .001; \emph{d} = 2 {[}0.98, 3.01{]}).
 
 We then estimated the extent to which each occupation term was associated with a specific gender (``genderness'')  in its language statistics using word
 embedding models trained in each language on the Subtitle and Wikipedia
@@ -448,7 +448,7 @@ explicit associations, adjusted for age, gender and block order).
 
 \subsection*{Data Availability}
 
-The data that support the findings of this study are available in an online repository (\url{https://github.com/mllewis/IATLANG}). 
+The data that support the findings of this study are available in an online repository (\url{https://github.com/mllewis/IATLANG}).
 
 \subsection*{Code Availability}
 All code that supports the findings of this study is available in an online repository (\url{https://github.com/mllewis/IATLANG}).
@@ -490,7 +490,7 @@ All code that supports the findings of this study is available in an online repo
 
 [7] Dryer MS, Haspelmath M, eds. {\em WALS Online}.
 \newblock (Max Planck Institute for Evolutionary Anthropology, Leipzig) (2013).
-  
+
 
 [8] Rhodes M, Brickman D. Preschoolers' responses to social comparisons
   involving relative failure.
@@ -514,7 +514,7 @@ All code that supports the findings of this study is available in an online repo
 
 [13] Nosek BA, Banaji MR, Greenwald AG. Harvesting implicit group attitudes
   and beliefs from a demonstration web site.
-\newblock {\em Group Dynamics: Theory, Research, and Practice} 6(1):101; \url{https://implicit.harvard.edu/implicit/}  (2002). 
+\newblock {\em Group Dynamics: Theory, Research, and Practice} 6(1):101; \url{https://implicit.harvard.edu/implicit/}  (2002).
 
 [14] Payne BK, Vuletich HA, Brown-Iannuzzi JL. Historical roots of implicit
   bias in slavery.
@@ -651,7 +651,7 @@ The authors gratefully acknowledge NSF PAC 1734260 for funding support for this 
 
 \subsection*{Author contributions}
 
-Both authors designed the research and wrote the manuscript. ML conducted the data analysis.
+ML and GL designed the research and wrote the manuscript. ML conducted the data analysis.
 
 \subsection*{Competing Interests}
 The authors declare no competing interests.
@@ -690,8 +690,8 @@ Correlation (Pearson’s  \emph{r}) for all measures in Study 1b and 2 using lan
 \pagestyle{empty}
 \hfill
 \tiny
- 
- 
+
+
 \begin{tabular}{lp{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}p{1.1cm}}
 &Explicit Male-Career Assoc. & Implicit Male-Career Assoc. (IAT) & Percent Women in STEM & Lang. Male-Career Assoc. (Subt.) & Lang. Male-Career Assoc. (Wiki.) & Prop. Gendered Occupation Terms & Lang. Occup. Genderness (Subt.) & Lang. Occup. Genderness (Wiki.) \\
 \midrule

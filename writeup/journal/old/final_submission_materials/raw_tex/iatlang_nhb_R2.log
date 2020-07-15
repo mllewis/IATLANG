@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  2 MAR 2020 17:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  5 MAY 2020 14:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1520,7 +1520,7 @@ Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
 
-No file iatlang_nhb_R2.aux.
+(./iatlang_nhb_R2.aux)
 \openout1 = `iatlang_nhb_R2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -1539,6 +1539,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
 LaTeX Font Info:    ... okay on input line 32.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 32.
+
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
@@ -1593,6 +1594,8 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 32.
 LaTeX Info: Redefining \pageref on input line 32.
 LaTeX Info: Redefining \nameref on input line 32.
+
+(./iatlang_nhb_R2.out) (./iatlang_nhb_R2.out)
 \@outlinefile=\write4
 \openout4 = `iatlang_nhb_R2.out'.
 
@@ -1798,7 +1801,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 9.49997pt on input line 98.
 
-Underfull \vbox (badness 1527) has occurred while \output is active []
+Underfull \vbox (badness 3623) has occurred while \output is active []
 
  [2]
 Underfull \vbox (badness 1527) has occurred while \output is active []
@@ -1808,9 +1811,7 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/9'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Underfull \vbox (badness 1527) has occurred while \output is active []
-
- [4]
+[4]
 Underfull \vbox (badness 3623) has occurred while \output is active []
 
  [5]
@@ -1818,7 +1819,10 @@ Underfull \vbox (badness 3623) has occurred while \output is active []
 
 Package natbib Warning: Citation `wals' on page 7 undefined on input line 437.
 
-[7]
+
+Underfull \vbox (badness 3158) has occurred while \output is active []
+
+ [7]
 Underfull \hbox (badness 10000) in paragraph at lines 580--583
 []\T1/lmr/m/n/9 (+20) [29] CIA. The World Fact-book.
  []
@@ -1828,57 +1832,72 @@ Underfull \hbox (badness 10000) in paragraph at lines 580--583
 \T1/lmr/m/n/9 (+20) https://www.cia.gov/library/publications/the-world-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 657--658
-
- []
-
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 677--678
-
+Overfull \hbox (24.05133pt too wide) in alignment at lines 695--695
+[][][][][][][][][] 
  []
 
+<../figs/fig1.pdf, id=61, 249.93375pt x 216.81pt>
+File: ../figs/fig1.pdf Graphic file (type pdf)
+<use ../figs/fig1.pdf>
+Package pdftex.def Info: ../figs/fig1.pdf  used on input line 704.
+(pdftex.def)             Requested size: 249.93314pt x 216.80946pt.
 
-Overfull \hbox (24.05133pt too wide) in alignment at lines 719--719
-[][][][][][][][][] 
+Overfull \hbox (3.83627pt too wide) in paragraph at lines 704--711
+ [][] 
+ []
+
+<../figs/fig2.pdf, id=62, 511.9125pt x 223.83624pt>
+File: ../figs/fig2.pdf Graphic file (type pdf)
+<use ../figs/fig2.pdf>
+Package pdftex.def Info: ../figs/fig2.pdf  used on input line 717.
+(pdftex.def)             Requested size: 511.91125pt x 223.8357pt.
+
+Overfull \hbox (6.21751pt too wide) in paragraph at lines 717--719
+ [][] 
+ []
+
+<../figs/fig3.pdf, id=63, 511.9125pt x 223.83624pt>
+File: ../figs/fig3.pdf Graphic file (type pdf)
+<use ../figs/fig3.pdf>
+Package pdftex.def Info: ../figs/fig3.pdf  used on input line 724.
+(pdftex.def)             Requested size: 511.91125pt x 223.8357pt.
+
+Overfull \hbox (6.21751pt too wide) in paragraph at lines 724--729
+ [][] 
  []
 
 
 Package natbib Warning: There were undefined citations.
 
 
-Package lastpage Warning: Rerun to get the references right on input line 726.
+Package lastpage Warning: Rerun to get the references right on input line 741.
 
 
 AED: lastpage setting LastPage
-[9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 726.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 726.
- (./iatlang_nhb_R2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 726.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 726.
+[9 <../figs/fig1.pdf>] [10 <../figs/fig2.pdf> <../figs/fig3.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 741.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 741.
 
+(./iatlang_nhb_R2.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 741.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 741.
+Package rerunfilecheck Info: File `iatlang_nhb_R2.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
-Package rerunfilecheck Warning: File `iatlang_nhb_R2.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `iatlang_nhb_R2.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 726.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 741.
  ) 
 Here is how much of TeX's memory you used:
- 36318 strings out of 492616
- 665330 string characters out of 6129482
- 783413 words of memory out of 5000000
- 39400 multiletter control sequences out of 15000+600000
- 621568 words of font info for 181 fonts, out of 8000000 for 9000
+ 36397 strings out of 492616
+ 666400 string characters out of 6129482
+ 782451 words of memory out of 5000000
+ 39427 multiletter control sequences out of 15000+600000
+ 628132 words of font info for 207 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,11n,67p,1606b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,77p,1606b,483s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
 texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
 19/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2019/texmf-dist/f
@@ -1888,15 +1907,16 @@ public/lm/lmcsc10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/
 texlive/2019/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2019
 /texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2019/texmf-dist/
-fonts/type1/public/lm/lmri9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
-/public/lm/lmssbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
-vetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/u
-hvbo8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.
-pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on iatlang_nhb_R2.pdf (9 pages, 271106 bytes).
+fonts/type1/public/lm/lmri7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
+/public/lm/lmri9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/
+lmssbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvb8
+a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
+</usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on iatlang_nhb_R2.pdf (10 pages, 558504 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 36365 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 169 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
+ 14 named destinations out of 1000 (max. 500000)
+ 38428 words of extra memory for PDF output out of 42996 (max. 10000000)
 
