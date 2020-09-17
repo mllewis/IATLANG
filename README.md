@@ -1,7 +1,7 @@
 Gender stereotypes are reflected in the distributional structure of 25 languages
 ===
 
-Lewis, M. & Lupyan, G. (in press). Gender stereotypes are reflected in the distributional structure of 25 languages. _Nature Human Behavior_. [[preprint]](https://psyarxiv.com/7qd3g) [[supplemental app]](https://mollylewis.shinyapps.io/iatlang_SI/)
+Lewis, M. & Lupyan, G. (2020). Gender stereotypes are reflected in the distributional structure of 25 languages. _Nature Human Behavior_. [[preprint]](https://psyarxiv.com/7qd3g) [[supplemental app]](https://mollylewis.shinyapps.io/iatlang_SI/)
 
 
 <br>
